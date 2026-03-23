@@ -11,9 +11,9 @@ export default function TrustedBySection() {
     <section className="py-16 px-4 bg-[#111118] border-y border-[#2A2A38] overflow-hidden">
       <div className="max-w-7xl mx-auto mb-10">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
           className="text-center text-[#8B8B9E] text-lg font-semibold uppercase tracking-widest"
         >

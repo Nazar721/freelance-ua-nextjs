@@ -29,9 +29,9 @@ export default function HowWeWorkSection() {
     <section id="process" className="py-20 px-4 bg-[#111118]">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -51,9 +51,9 @@ export default function HowWeWorkSection() {
             {steps.map((step, index) => (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="relative text-center"
               >

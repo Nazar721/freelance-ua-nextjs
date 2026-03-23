@@ -15,9 +15,9 @@ export default function ServicesSection() {
     <section id="services" className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -33,10 +33,10 @@ export default function ServicesSection() {
           {services.map((service, index) => (
             <motion.div
               key={service.category}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: index * 0.075 }}
               whileHover={{ scale: 1.02 }}
               className="bg-[#111118] border border-[#2A2A38] hover:border-[#6366F1] rounded-2xl p-8 transition-all duration-300"
             >

@@ -32,9 +32,9 @@ export default function CasesSection() {
     <section id="cases" className="py-20 px-4 bg-[#111118]">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -50,10 +50,10 @@ export default function CasesSection() {
           {cases.map((caseItem, index) => (
             <motion.div
               key={caseItem.id}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: index * 0.07 }}
               whileHover={{ scale: 1.02 }}
               className="bg-[#1A1A24] border border-[#2A2A38] hover:border-[#6366F1] rounded-2xl overflow-hidden transition-all duration-300 flex flex-col"
             >
@@ -123,9 +123,9 @@ export default function CasesSection() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
           className="text-center"
         >

@@ -10,16 +10,16 @@ import { siteConfig } from "@/config/site";
 export default function TestimonialsSection() {
   const [emblaRef] = useEmblaCarousel(
     { loop: true, align: "start" },
-    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+    [Autoplay({ delay: 1600, stopOnInteraction: false })]
   );
 
   return (
     <section id="testimonials" className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -34,7 +34,7 @@ export default function TestimonialsSection() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
           className="overflow-hidden mb-10"
           ref={emblaRef}

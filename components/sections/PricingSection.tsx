@@ -17,9 +17,9 @@ export default function PricingSection() {
     <section id="pricing" className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -33,9 +33,9 @@ export default function PricingSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6 }}
             className="bg-[#111118] border border-[#2A2A38] rounded-2xl p-8"
           >
@@ -53,9 +53,9 @@ export default function PricingSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6 }}
             className="bg-gradient-to-br from-[#6366F1]/20 to-[#8B5CF6]/10 border border-[#6366F1]/30 rounded-2xl p-8 text-center"
           >
