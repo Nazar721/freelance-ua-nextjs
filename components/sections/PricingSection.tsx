@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 const pricingFactors = [
   "Складність та обсяг завдання",
@@ -16,49 +16,31 @@ export default function PricingSection() {
   return (
     <section id="pricing" className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <FadeIn className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-4">
             Ціноутворення
           </h2>
           <p className="text-[#8B8B9E] text-lg max-w-2xl mx-auto">
             Кожен проєкт унікальний — ціна завжди індивідуальна
           </p>
-        </motion.div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6 }}
-            className="bg-[#111118] border border-[#2A2A38] rounded-2xl p-8"
-          >
+          <FadeIn delay={0.1} className="bg-[#111118] border border-[#2A2A38] rounded-2xl p-8">
             <h3 className="text-[#F8F8FF] font-bold text-xl mb-6">
               Що впливає на вартість
             </h3>
             <ul className="space-y-4">
               {pricingFactors.map((factor) => (
                 <li key={factor} className="flex items-center gap-3 text-[#8B8B9E]">
-                  <ChevronRight size={16} className="text-[#6366F1] flex-shrink-0" />
+                  <ChevronRight size={16} className="text-[#6366F1] shrink-0" />
                   {factor}
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </FadeIn>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6 }}
-            className="bg-gradient-to-br from-[#6366F1]/20 to-[#8B5CF6]/10 border border-[#6366F1]/30 rounded-2xl p-8 text-center"
-          >
+          <FadeIn delay={0.2} className="bg-linear-to-br from-[#6366F1]/20 to-[#8B5CF6]/10 border border-[#6366F1]/30 rounded-2xl p-8 text-center">
             <div className="text-5xl mb-4">💬</div>
             <h3 className="text-[#F8F8FF] font-bold text-2xl mb-4">
               Безкоштовна консультація
@@ -76,7 +58,7 @@ export default function PricingSection() {
               Отримати оцінку
               <ArrowRight size={18} />
             </a>
-          </motion.div>
+          </FadeIn>
         </div>
       </div>
     </section>

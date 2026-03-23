@@ -46,6 +46,7 @@ export default function Header() {
             width={40}
             height={40}
             className="rounded-lg"
+            priority
           />
           <span className="font-bold text-[#F8F8FF] text-sm md:text-base leading-tight">
             Freelance UA<br />
