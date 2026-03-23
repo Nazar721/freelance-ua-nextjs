@@ -81,7 +81,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-16 flex flex-wrap justify-center gap-8 text-center"
+          className="mt-16 flex flex-wrap justify-center gap-8 text-center [@media(max-height:813px)]:mb-12"
         >
           {[
             { value: "50+", label: "Завершених проєктів" },

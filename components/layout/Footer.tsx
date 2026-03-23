@@ -1,10 +1,10 @@
-import Image from "next/image";
-import { Phone, Send } from "lucide-react";
-import Link from "next/link";
-import { siteConfig } from "@/config/site";
+import Image from 'next/image'
+import { Phone, Send } from 'lucide-react'
+import Link from 'next/link'
+import { siteConfig } from '@/config/site'
 
 export default function Footer() {
-  return (
+	return (
 		<footer
 			id='contacts'
 			className='bg-[#111118] border-t border-[#2A2A38] py-12 pb-[100px] px-4'

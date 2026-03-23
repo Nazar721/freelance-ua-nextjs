@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { brands } from "@/data/brands";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 export default function TrustedBySection() {
   const doubled = [...brands, ...brands];
@@ -10,15 +10,11 @@ export default function TrustedBySection() {
   return (
     <section className="py-16 px-4 bg-[#111118] border-y border-[#2A2A38] overflow-hidden">
       <div className="max-w-7xl mx-auto mb-10">
-        <motion.h2
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
-          className="text-center text-[#8B8B9E] text-lg font-semibold uppercase tracking-widest"
-        >
-          Нам довіряють
-        </motion.h2>
+        <FadeIn>
+          <h2 className="text-center text-[#8B8B9E] text-lg font-semibold uppercase tracking-widest">
+            Нам довіряють
+          </h2>
+        </FadeIn>
       </div>
 
       <div className="relative">
