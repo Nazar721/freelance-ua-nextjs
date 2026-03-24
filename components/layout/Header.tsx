@@ -26,8 +26,9 @@ export default function Header() {
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    }, 320); // wait for mobile menu close animation (300ms)
   };
 
   return (
