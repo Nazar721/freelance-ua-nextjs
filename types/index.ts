@@ -6,6 +6,7 @@ export interface Case {
   review: string;
   image?: string;
   video?: string;
+  link?: string;
 }
 
 export interface Testimonial {
