@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowRight, Quote, Expand } from "lucide-react";
+import { ArrowRight, Quote, Expand, ExternalLink } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
 import Video from "yet-another-react-lightbox/plugins/video";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -11,9 +11,12 @@ import { cases } from "@/data/cases";
 import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/ui/FadeIn";
 
+const getMimeType = (src: string) =>
+  src.endsWith(".webm") ? "video/webm" : "video/mp4";
+
 const slides = cases.map((c) =>
   c.video
-    ? { type: "video" as const, sources: [{ src: c.video, type: "video/mp4" }], autoPlay: true }
+    ? { type: "video" as const, sources: [{ src: c.video, type: getMimeType(c.video) }], autoPlay: true }
     : { type: "image" as const, src: c.image!, alt: c.title }
 );
 
@@ -74,6 +77,17 @@ export default function CasesSection() {
                   <Quote size={14} className="text-[#6366F1] mb-2" />
                   <p className="text-[#8B8B9E] text-xs italic leading-relaxed">{caseItem.review}</p>
                 </div>
+                {caseItem.link && (
+                  <a
+                    href={caseItem.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 text-xs text-[#6366F1] hover:text-[#4F46E5] transition-colors"
+                  >
+                    <ExternalLink size={12} />
+                    Відвідати сайт
+                  </a>
+                )}
               </div>
             </FadeIn>
           ))}
