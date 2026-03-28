@@ -18,7 +18,7 @@ export const services: Service[] = [
 		icon: 'Palette',
 		items: [
 			'Графічний дизайн',
-			'UI/UX дизайн',
+			// 'UI/UX дизайн',
 			'Брендинг та логотипи',
 			'YouTube-банери',
 			'Банери для соцмереж',
