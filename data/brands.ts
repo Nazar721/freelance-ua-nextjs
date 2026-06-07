@@ -30,4 +30,20 @@ export const brands: Brand[] = [
 		name: 'Nextcup',
 		logo: '/media/brands/nextcup.png',
 	},
+	{
+		name: 'Radici E Futuro',
+		logo: '/media/brands/radici-e-futuro.jpg',
+	},
+	{
+		name: 'Floravia',
+		logo: '/media/brands/floravia.jpg',
+	},
+	{
+		name: 'Prime Autoshipping LLC',
+		logo: '/media/brands/prime-autoshipping.jpg',
+	},
+	{
+		name: 'Empresex',
+		logo: '/media/brands/empresex.jpg',
+	},
 ]
