@@ -24,7 +24,7 @@ export const services: Service[] = [
 			'YouTube-банери',
 			'Банери для соцмереж',
 			'Презентації',
-			'3D',
+			// '3D',
 		],
 	},
 	{
