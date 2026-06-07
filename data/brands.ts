@@ -18,4 +18,20 @@ export const brands: Brand[] = [
 		name: 'Sestro – beauty studio',
 		logo: '/media/brands/sestro.jpg',
 	},
+	{
+		name: 'Bee Case',
+		logo: '/media/brands/bee.jpg',
+	},
+	{
+		name: 'Bee Case',
+		logo: '/media/brands/bee.jpg',
+	},
+	{
+		name: 'Lazerhall',
+		logo: '/media/brands/lazerhall.JPG',
+	},
+	{
+		name: 'Nextcup',
+		logo: '/media/brands/nextcup.png',
+	},
 ]
