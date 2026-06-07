@@ -84,7 +84,7 @@ export default function HeroSection() {
           className="mt-16 flex flex-wrap justify-center gap-8 text-center [@media(max-height:813px)]:mb-12"
         >
           {[
-            { value: "50+", label: "Завершених проєктів" },
+            { value: "70+", label: "Завершених проєктів" },
             { value: "100%", label: "Задоволених клієнтів" },
             { value: "3", label: "Напрямки роботи" },
           ].map((stat) => (
