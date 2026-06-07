@@ -23,10 +23,6 @@ export const brands: Brand[] = [
 		logo: '/media/brands/bee.jpg',
 	},
 	{
-		name: 'Bee Case',
-		logo: '/media/brands/bee.jpg',
-	},
-	{
 		name: 'Lazerhall',
 		logo: '/media/brands/lazerhall.JPG',
 	},
