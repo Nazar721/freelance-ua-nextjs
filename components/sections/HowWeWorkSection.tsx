@@ -35,13 +35,14 @@ export default function HowWeWorkSection() {
         </FadeIn>
 
         <div className="relative">
-          <div className="hidden md:block absolute top-15 left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)] h-px bg-linear-to-r from-transparent via-[#6366F1] to-transparent" />
+          <div className="process-line hidden md:block absolute top-15 left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)] h-px bg-linear-to-r from-transparent via-[#6366F1] via-[#06B6D4] to-transparent" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((step, index) => (
-              <FadeIn key={step.title} delay={index * 0.15} className="relative text-center">
+              <FadeIn key={step.title} delay={index * 0.15} className="group relative text-center">
                 <div className="relative inline-flex items-center justify-center mb-6">
-                  <div className="w-20 h-20 bg-[#1A1A24] border-2 border-[#6366F1] rounded-full flex items-center justify-center relative z-10">
+                  <div className="absolute inset-0 rounded-full bg-[#6366F1]/20 blur-xl transition-transform duration-500 group-hover:scale-125" />
+                  <div className="premium-icon w-20 h-20 bg-[#1A1A24] border-2 border-[#6366F1] rounded-full flex items-center justify-center relative z-10">
                     <step.icon size={28} className="text-[#6366F1]" />
                   </div>
                   <span className="absolute -top-2 -right-2 bg-[#6366F1] text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center z-20">

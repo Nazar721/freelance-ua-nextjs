@@ -5,35 +5,33 @@ import { brands } from "@/data/brands";
 import { FadeIn } from "@/components/ui/FadeIn";
 
 export default function TrustedBySection() {
-  const doubled = [...brands, ...brands];
+  const featuredBrands = brands.slice(0, 8);
+  const doubled = [...featuredBrands, ...featuredBrands];
 
   return (
-    <section className="py-16 px-4 bg-[#111118] border-y border-[#2A2A38] overflow-hidden">
-      <div className="max-w-7xl mx-auto mb-10">
-        <FadeIn>
-          <h2 className="text-center text-[#8B8B9E] text-lg font-semibold uppercase tracking-widest">
-            Нам довіряють
+    <section className="trusted-shell px-4 py-16">
+      <div className="relative z-10 mx-auto max-w-3xl">
+        <FadeIn className="text-center">
+          <h2 className="text-2xl font-bold leading-tight text-[#F8F8FF] sm:text-3xl md:text-4xl">
+            <span className="text-[#6366F1]">Нам довіряють</span>
           </h2>
         </FadeIn>
-      </div>
 
-      <div className="relative">
-        <div className="flex animate-marquee gap-12 w-max">
-          {doubled.map((brand, index) => (
-            <div
-              key={`${brand.name}-${index}`}
-              className="flex-none flex items-center justify-center w-32 h-16"
-            >
+        <FadeIn delay={0.12} className="trusted-partners mt-7">
+          <div className="trusted-partners__track animate-trusted-reference">
+            {doubled.map((brand, index) => (
               <Image
+                key={`${brand.name}-${index}`}
                 src={brand.logo}
                 alt={brand.name}
-                width={120}
-                height={60}
-                className="object-contain grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+                width={180}
+                height={70}
+                className="trusted-partners__logo"
+                style={{ width: "auto", height: "34px" }}
               />
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

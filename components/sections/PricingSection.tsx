@@ -26,22 +26,22 @@ export default function PricingSection() {
         </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <FadeIn delay={0.1} className="bg-[#111118] border border-[#2A2A38] rounded-2xl p-8">
+          <FadeIn delay={0.1} className="premium-surface bg-[#111118] border border-[#2A2A38] rounded-2xl p-8">
             <h3 className="text-[#F8F8FF] font-bold text-xl mb-6">
               Що впливає на вартість
             </h3>
             <ul className="space-y-4">
               {pricingFactors.map((factor) => (
-                <li key={factor} className="flex items-center gap-3 text-[#8B8B9E]">
-                  <ChevronRight size={16} className="text-[#6366F1] shrink-0" />
+                <li key={factor} className="group flex items-center gap-3 text-[#8B8B9E] transition-colors duration-300 hover:text-[#F8F8FF]">
+                  <ChevronRight size={16} className="text-[#6366F1] shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
                   {factor}
                 </li>
               ))}
             </ul>
           </FadeIn>
 
-          <FadeIn delay={0.2} className="bg-linear-to-br from-[#6366F1]/20 to-[#8B5CF6]/10 border border-[#6366F1]/30 rounded-2xl p-8 text-center">
-            <div className="text-5xl mb-4">💬</div>
+          <FadeIn delay={0.2} className="premium-surface bg-linear-to-br from-[#6366F1]/20 to-[#8B5CF6]/10 border border-[#6366F1]/30 rounded-2xl p-8 text-center">
+            <div className="premium-icon mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#6366F1]/10 text-4xl mb-4">💬</div>
             <h3 className="text-[#F8F8FF] font-bold text-2xl mb-4">
               Безкоштовна консультація
             </h3>
@@ -53,7 +53,7 @@ export default function PricingSection() {
               href={siteConfig.telegram.consultationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.4)]"
+              className="magnetic-button inline-flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_44px_rgba(99,102,241,0.42)]"
             >
               Отримати оцінку
               <ArrowRight size={18} />

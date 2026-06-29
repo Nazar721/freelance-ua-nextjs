@@ -8,10 +8,12 @@ import PricingSection from "@/components/sections/PricingSection";
 import CasesSection from "@/components/sections/CasesSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import TrustedBySection from "@/components/sections/TrustedBySection";
+import SiteBackdrop from "@/components/ui/SiteBackdrop";
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative isolate overflow-hidden">
+      <SiteBackdrop />
       <Header />
       <HeroSection />
       <WhyUsSection />

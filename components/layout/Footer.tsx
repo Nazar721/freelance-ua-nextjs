@@ -11,7 +11,7 @@ export default function Footer() {
 		>
 			<div className='max-w-7xl mx-auto'>
 				<div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-8'>
-					<div>
+					<div className='premium-surface rounded-2xl border border-[#2A2A38]/60 bg-[#0A0A0F]/20 p-5'>
 						<div className='flex items-center gap-3 mb-4'>
 							<Image
 								src='/media/logo.jpg'
@@ -30,7 +30,7 @@ export default function Footer() {
 						</p>
 					</div>
 
-					<div>
+					<div className='premium-surface rounded-2xl border border-[#2A2A38]/60 bg-[#0A0A0F]/20 p-5'>
 						<h3 className='text-[#F8F8FF] font-semibold mb-4'>Контакти</h3>
 						<div className='flex flex-col gap-3'>
 							<a
@@ -75,7 +75,7 @@ export default function Footer() {
 						</div>
 					</div>
 
-					<div>
+					<div className='premium-surface rounded-2xl border border-[#2A2A38]/60 bg-[#0A0A0F]/20 p-5'>
 						<h3 className='text-[#F8F8FF] font-semibold mb-4'>Наш канал</h3>
 						<a
 							href='https://t.me/freelance24_7_365'
