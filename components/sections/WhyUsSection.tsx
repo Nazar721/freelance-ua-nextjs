@@ -59,9 +59,9 @@ export default function WhyUsSection() {
             <FadeIn
               key={item.title}
               delay={i * 0.06}
-              className="bg-[#1A1A24] border border-[#2A2A38] hover:border-[#6366F1] rounded-2xl p-6 transition-colors duration-300 cursor-default"
+              className="premium-surface bg-[#1A1A24] border border-[#2A2A38] rounded-2xl p-6 cursor-default"
             >
-              <div className="w-12 h-12 bg-[#6366F1]/10 rounded-xl flex items-center justify-center mb-4">
+              <div className="premium-icon w-12 h-12 bg-[#6366F1]/10 rounded-xl flex items-center justify-center mb-4">
                 <item.icon size={24} className="text-[#6366F1]" />
               </div>
               <h3 className="text-[#F8F8FF] font-semibold text-base mb-2">

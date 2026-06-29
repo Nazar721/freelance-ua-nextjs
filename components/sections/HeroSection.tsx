@@ -10,11 +10,10 @@ export default function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
-      {/* Background gradient mesh */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#6366F1]/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#8B5CF6]/15 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#6366F1]/5 rounded-full blur-3xl" />
+        <div className="hero-ambient absolute inset-0 opacity-80" />
+        <div className="luxury-grid absolute inset-0 opacity-70" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-[#0A0A0F] to-transparent" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
@@ -23,7 +22,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <div className="inline-flex items-center gap-2 bg-[#1A1A24] border border-[#2A2A38] rounded-full px-4 py-2 mb-8 text-sm text-[#8B8B9E]">
+          <div className="inline-flex items-center gap-2 bg-[#1A1A24]/80 border border-[#2A2A38] rounded-full px-4 py-2 mb-8 text-sm text-[#8B8B9E] shadow-[0_0_40px_rgba(99,102,241,0.12)] backdrop-blur-md">
             <Zap size={14} className="text-[#6366F1]" />
             Фрілансери, яким довіряють бізнеси
           </div>
@@ -37,7 +36,7 @@ export default function HeroSection() {
         >
           <span className="text-[#F8F8FF]">Ваш цифровий</span>
           <br />
-          <span className="bg-gradient-to-r from-[#6366F1] via-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent">
+          <span className="gradient-text-motion bg-gradient-to-r from-[#6366F1] via-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent">
             бізнес-партнер
           </span>
         </motion.h1>
@@ -62,7 +61,7 @@ export default function HeroSection() {
             href={siteConfig.telegram.consultationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.4)] text-base"
+            className="magnetic-button inline-flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_48px_rgba(99,102,241,0.46)] text-base"
           >
             Обговорити проєкт
             <ArrowRight size={18} />
@@ -71,7 +70,7 @@ export default function HeroSection() {
             href={siteConfig.telegram.channelUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-transparent border border-[#2A2A38] hover:border-[#6366F1] text-[#F8F8FF] font-semibold px-8 py-4 rounded-full transition-all duration-300 text-base"
+            className="magnetic-button inline-flex items-center justify-center gap-2 bg-[#111118]/50 border border-[#2A2A38] hover:border-[#6366F1] text-[#F8F8FF] font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(99,102,241,0.16)] text-base backdrop-blur-md"
           >
             Дивитись кейси
           </a>
@@ -84,11 +83,11 @@ export default function HeroSection() {
           className="mt-16 flex flex-wrap justify-center gap-8 text-center [@media(max-height:813px)]:mb-12"
         >
           {[
-            { value: "70+", label: "Завершених проєктів" },
+            { value: "90+", label: "Завершених проєктів" },
             { value: "100%", label: "Задоволених клієнтів" },
             { value: "3", label: "Напрямки роботи" },
           ].map((stat) => (
-            <div key={stat.label}>
+            <div key={stat.label} className="premium-surface rounded-2xl border border-[#2A2A38]/70 bg-[#111118]/40 px-5 py-4 backdrop-blur-md">
               <div className="text-3xl font-bold text-[#6366F1]">
                 {stat.value}
               </div>

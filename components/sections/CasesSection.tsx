@@ -40,7 +40,7 @@ export default function CasesSection() {
             <FadeIn
               key={caseItem.id}
               delay={index * 0.07}
-              className="bg-[#1A1A24] border border-[#2A2A38] hover:border-[#6366F1] rounded-2xl overflow-hidden transition-colors duration-300 flex flex-col"
+              className="premium-surface bg-[#1A1A24] border border-[#2A2A38] rounded-2xl overflow-hidden flex flex-col"
             >
               <button
                 onClick={() => setLightboxIndex(index)}
@@ -53,17 +53,17 @@ export default function CasesSection() {
                     <video
                       src={caseItem.video}
                       autoPlay muted loop playsInline
-                      className="absolute inset-0 w-full h-full object-contain z-10"
+                      className="absolute inset-0 w-full h-full object-contain z-10 transition-transform duration-700 group-hover:scale-105"
                     />
                   </>
                 ) : caseItem.image ? (
                   <>
                     <Image src={caseItem.image} alt="" fill aria-hidden className="object-cover scale-110 blur-2xl opacity-30" />
-                    <Image src={caseItem.image} alt={caseItem.title} fill className="object-contain z-10" />
+                    <Image src={caseItem.image} alt={caseItem.title} fill className="object-contain z-10 transition-transform duration-700 group-hover:scale-105" />
                   </>
                 ) : null}
-                <div className="absolute inset-0 z-20 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10 backdrop-blur-sm rounded-full p-3 border border-white/20">
+                <div className="absolute inset-0 z-20 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
+                  <div className="opacity-0 scale-75 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 bg-white/10 backdrop-blur-sm rounded-full p-3 border border-white/20">
                     <Expand size={20} className="text-white" />
                   </div>
                 </div>
@@ -73,7 +73,7 @@ export default function CasesSection() {
                 <span className="text-xs font-medium text-[#6366F1] mb-2">{caseItem.category}</span>
                 <h3 className="text-[#F8F8FF] font-bold text-base mb-3">{caseItem.title}</h3>
                 <p className="text-[#8B8B9E] text-sm leading-relaxed mb-4 flex-1">{caseItem.description}</p>
-                <div className="bg-[#0A0A0F] rounded-xl p-4">
+                <div className="bg-[#0A0A0F] rounded-xl p-4 transition-all duration-300 hover:bg-[#0A0A0F]/70 hover:shadow-[inset_0_0_0_1px_rgba(99,102,241,0.22)]">
                   <Quote size={14} className="text-[#6366F1] mb-2" />
                   <p className="text-[#8B8B9E] text-xs italic leading-relaxed">{caseItem.review}</p>
                 </div>

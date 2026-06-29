@@ -31,9 +31,9 @@ export default function TestimonialsSection() {
               {testimonials.map((testimonial) => (
                 <div
                   key={testimonial.id}
-                  className="flex-none w-75 md:w-87.5 bg-[#111118] border border-[#2A2A38] rounded-2xl p-6"
+                  className="premium-surface flex-none w-75 md:w-87.5 bg-[#111118] border border-[#2A2A38] rounded-2xl p-6"
                 >
-                  <Quote size={20} className="text-[#6366F1] mb-4" />
+                  <Quote size={20} className="premium-icon text-[#6366F1] mb-4" />
                   <p className="text-[#F8F8FF] text-sm leading-relaxed mb-4">
                     {testimonial.text}
                   </p>
@@ -53,7 +53,7 @@ export default function TestimonialsSection() {
             href={siteConfig.telegram.reviewsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#6366F1] hover:text-[#8B5CF6] font-semibold transition-colors"
+            className="inline-flex items-center gap-2 text-[#6366F1] hover:text-[#8B5CF6] font-semibold transition-all duration-300 hover:-translate-y-0.5"
           >
             Переглянути всі відгуки
             <ArrowRight size={16} />

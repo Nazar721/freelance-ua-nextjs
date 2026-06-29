@@ -35,7 +35,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0A0A0F]/95 backdrop-blur-md border-b border-[#2A2A38]"
+          ? "bg-[#0A0A0F]/88 backdrop-blur-xl border-b border-[#2A2A38] shadow-[0_18px_60px_rgba(0,0,0,0.24)]"
           : "bg-transparent"
       }`}
     >
@@ -61,10 +61,11 @@ export default function Header() {
             <button
               key={item.href}
               onClick={() => handleNavClick(item.href)}
-              className="cursor-pointer text-[#8B8B9E] hover:text-[#F8F8FF] transition-colors duration-200 text-sm font-medium"
-            >
-              {item.label}
-            </button>
+            className="group relative cursor-pointer text-[#8B8B9E] hover:text-[#F8F8FF] transition-colors duration-300 text-sm font-medium"
+          >
+            {item.label}
+            <span className="absolute -bottom-1 left-0 h-px w-0 bg-[#6366F1] transition-all duration-300 group-hover:w-full" />
+          </button>
           ))}
         </nav>
 
@@ -72,7 +73,7 @@ export default function Header() {
           href={siteConfig.telegram.consultationUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden lg:flex items-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white text-sm font-semibold px-4 py-2 rounded-full transition-all duration-200 hover:scale-105"
+          className="magnetic-button hidden lg:flex items-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)]"
         >
           Написати в Telegram
         </a>
@@ -118,7 +119,7 @@ export default function Header() {
                 href={siteConfig.telegram.consultationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 text-center bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-4 py-3 rounded-full transition-colors"
+                className="magnetic-button mt-2 text-center bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-4 py-3 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.32)]"
               >
                 Написати в Telegram
               </motion.a>

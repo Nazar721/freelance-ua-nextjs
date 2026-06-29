@@ -28,9 +28,9 @@ export default function ServicesSection() {
             <FadeIn
               key={service.category}
               delay={index * 0.1}
-              className="bg-[#111118] border border-[#2A2A38] hover:border-[#6366F1] rounded-2xl p-8 transition-colors duration-300"
+              className="premium-surface bg-[#111118] border border-[#2A2A38] rounded-2xl p-8"
             >
-              <div className="w-16 h-16 bg-[#6366F1]/10 rounded-2xl flex items-center justify-center mb-6">
+              <div className="premium-icon w-16 h-16 bg-[#6366F1]/10 rounded-2xl flex items-center justify-center mb-6">
                 {iconMap[service.icon]}
               </div>
               <h3 className="text-[#F8F8FF] font-bold text-xl mb-6">
@@ -38,8 +38,8 @@ export default function ServicesSection() {
               </h3>
               <ul className="space-y-3">
                 {service.items.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-[#8B8B9E] text-sm">
-                    <span className="w-1.5 h-1.5 bg-[#6366F1] rounded-full shrink-0" />
+                  <li key={item} className="group flex items-center gap-3 text-[#8B8B9E] text-sm transition-colors duration-300 hover:text-[#F8F8FF]">
+                    <span className="w-1.5 h-1.5 bg-[#6366F1] rounded-full shrink-0 transition-all duration-300 group-hover:scale-150 group-hover:shadow-[0_0_14px_rgba(99,102,241,0.75)]" />
                     {item}
                   </li>
                 ))}
