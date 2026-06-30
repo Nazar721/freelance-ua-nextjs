@@ -31,10 +31,10 @@ export default function TestimonialsSection() {
               {testimonials.map((testimonial) => (
                 <div
                   key={testimonial.id}
-                  className="premium-surface flex-none w-75 md:w-87.5 bg-[#111118] border border-[#2A2A38] rounded-2xl p-6"
+                  className="premium-surface flex-none w-75 md:w-87.5 min-h-64 bg-[#111118] border border-[#2A2A38] rounded-2xl p-6 flex flex-col"
                 >
                   <Quote size={20} className="premium-icon text-[#6366F1] mb-4" />
-                  <p className="text-[#F8F8FF] text-sm leading-relaxed mb-4">
+                  <p className="text-[#F8F8FF] text-sm leading-relaxed mb-4 flex-1">
                     {testimonial.text}
                   </p>
                   {testimonial.author && (

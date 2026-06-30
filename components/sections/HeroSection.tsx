@@ -80,18 +80,20 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-16 flex flex-wrap justify-center gap-8 text-center [@media(max-height:813px)]:mb-12"
+          className="mt-12 grid grid-cols-3 gap-2 text-center sm:mt-16 sm:flex sm:flex-wrap sm:justify-center sm:gap-8 [@media(max-height:813px)]:mb-12"
         >
           {[
             { value: "90+", label: "Завершених проєктів" },
             { value: "100%", label: "Задоволених клієнтів" },
             { value: "3", label: "Напрямки роботи" },
           ].map((stat) => (
-            <div key={stat.label} className="premium-surface rounded-2xl border border-[#2A2A38]/70 bg-[#111118]/40 px-5 py-4 backdrop-blur-md">
-              <div className="text-3xl font-bold text-[#6366F1]">
+            <div key={stat.label} className="premium-surface rounded-xl border border-[#2A2A38]/70 bg-[#111118]/40 px-2.5 py-3 backdrop-blur-md sm:rounded-2xl sm:px-5 sm:py-4">
+              <div className="text-2xl font-bold text-[#6366F1] sm:text-3xl">
                 {stat.value}
               </div>
-              <div className="text-sm text-[#8B8B9E] mt-1">{stat.label}</div>
+              <div className="mt-1 text-[11px] leading-tight text-[#8B8B9E] sm:text-sm">
+                {stat.label}
+              </div>
             </div>
           ))}
         </motion.div>
