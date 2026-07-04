@@ -69,14 +69,24 @@ export default function Header() {
           ))}
         </nav>
 
-        <a
-          href={siteConfig.telegram.consultationUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="magnetic-button hidden lg:flex items-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)]"
-        >
-          Написати в Telegram
-        </a>
+        <div className="hidden lg:flex items-center gap-3">
+          <a
+            href={siteConfig.partnerProgramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="magnetic-button flex items-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)]"
+          >
+            Партнерка
+          </a>
+          <a
+            href={siteConfig.telegram.consultationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="magnetic-button flex items-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)]"
+          >
+            Написати в Telegram
+          </a>
+        </div>
 
         {/* Mobile burger */}
         <button
@@ -116,10 +126,21 @@ export default function Header() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navItems.length * 0.05 }}
-                href={siteConfig.telegram.consultationUrl}
+                href={siteConfig.partnerProgramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="magnetic-button mt-2 text-center bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-4 py-3 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.32)]"
+              >
+                Партнерка
+              </motion.a>
+              <motion.a
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navItems.length * 0.05 + 0.05 }}
+                href={siteConfig.telegram.consultationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="magnetic-button text-center bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-4 py-3 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.32)]"
               >
                 Написати в Telegram
               </motion.a>
