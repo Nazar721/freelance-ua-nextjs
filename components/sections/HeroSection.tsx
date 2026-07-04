@@ -83,7 +83,7 @@ export default function HeroSection() {
           className="mt-12 grid grid-cols-3 gap-2 text-center sm:mt-16 sm:flex sm:flex-wrap sm:justify-center sm:gap-8 [@media(max-height:813px)]:mb-12"
         >
           {[
-            { value: "90+", label: "Завершених проєктів" },
+            { value: "100+", label: "Завершених проєктів" },
             { value: "100%", label: "Задоволених клієнтів" },
             { value: "3", label: "Напрямки роботи" },
           ].map((stat) => (
