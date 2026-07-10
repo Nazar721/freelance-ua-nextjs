@@ -99,7 +99,7 @@ export default function Footer() {
 						rel='noopener noreferrer'
 						className='flex items-center gap-2 opacity-75 hover:opacity-100 transition-opacity duration-300'
 					>
-						<span className='text-xs whitespace-nowrap'>Розробник сайту</span>
+						<span className='text-xs whitespace-nowrap'>Розробник сайту партнер</span>
 						<Image
 							src='/media/brands/yednistdigital.webp'
 							alt='Єдність.Digital'
