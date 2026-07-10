@@ -16,10 +16,13 @@ export default function Home() {
       <SiteBackdrop />
       <Header />
       <HeroSection />
+      <div className="section-divider" />
       <WhyUsSection />
       <ServicesSection />
+      <div className="section-divider" />
       <HowWeWorkSection />
       <PricingSection />
+      <div className="section-divider" />
       <CasesSection />
       <TestimonialsSection />
       <TrustedBySection />
