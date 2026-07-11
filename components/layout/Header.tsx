@@ -17,11 +17,18 @@ const navItems = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", check);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", check);
+    };
   }, []);
 
   const handleNavClick = (href: string) => {
@@ -35,7 +42,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0A0A0F]/88 backdrop-blur-xl border-b border-[#2A2A38] shadow-[0_18px_60px_rgba(0,0,0,0.24)]"
+          ? `bg-[#0A0A0F]/88 ${isMobile ? "" : "backdrop-blur-xl"} border-b border-[#2A2A38] shadow-[0_18px_60px_rgba(0,0,0,0.24)]`
           : "bg-transparent"
       }`}
     >

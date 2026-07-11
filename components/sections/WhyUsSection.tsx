@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useCallback, type MouseEvent } from "react";
+import { useRef, useCallback, useState, useEffect, type MouseEvent } from "react";
 import { CheckCircle, Clock, Shield, Sparkles, Users, Zap, Award } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 
@@ -44,21 +44,33 @@ const advantages = [
 
 function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
     el.style.transform = `perspective(800px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg) translateY(-6px)`;
-  }, []);
+  }, [isMobile]);
 
   const handleMouseLeave = useCallback(() => {
     const el = ref.current;
     if (!el) return;
     el.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)";
   }, []);
+
+  if (isMobile) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <div

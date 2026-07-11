@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -39,6 +39,13 @@ export default function ContactFormSection() {
   const [errors, setErrors] = useState<Errors>({});
   const [sending, setSending] = useState(false);
   const [toast, setToast] = useState<Toast | null>(null);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth <= 768);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const validate = useCallback((): boolean => {
     const next: Errors = {};
@@ -100,7 +107,7 @@ export default function ContactFormSection() {
   return (
     <section id="contact-form" className="relative py-20 px-4">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#6366F1]/[0.04] blur-[120px]" />
+        {!isMobile && <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#6366F1]/[0.04] blur-[120px]" />}
       </div>
 
       <div className="max-w-7xl mx-auto">
