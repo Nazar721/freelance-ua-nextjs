@@ -69,7 +69,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-10 pb-6"
     >
       {/* Parallax background layers */}
       <motion.div
@@ -81,7 +81,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Bottom fade */}
-      <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-[#0A0A0F] to-transparent z-[1]" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-[#0A0A0F] to-transparent z-[1]" />
 
       {/* Floating particles — disabled on mobile for performance */}
       {!shouldReduceMotion && !isMobile && (
@@ -122,7 +122,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className={`inline-flex items-center gap-2.5 bg-[#1A1A24]/80 border border-[#2A2A38]/80 rounded-full px-5 py-2.5 mb-8 text-sm text-[#8B8B9E] shadow-[0_0_60px_rgba(99,102,241,0.1)] ${isMobile ? "" : "backdrop-blur-xl"} float`}>
+          <div className={`inline-flex items-center gap-2.5 bg-[#1A1A24]/80 border border-[#2A2A38]/80 rounded-full px-5 py-2.5 mb-5 text-sm text-[#8B8B9E] shadow-[0_0_60px_rgba(99,102,241,0.1)] ${isMobile ? "" : "backdrop-blur-xl"} float`}>
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#6366F1]/15">
               <Zap size={12} className="text-[#6366F1]" />
             </span>
@@ -135,7 +135,7 @@ export default function HeroSection() {
           variants={stagger}
           initial="hidden"
           animate="visible"
-          className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.08] mb-6"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-4"
           style={isMobile ? undefined : { perspective: 800 }}
         >
           <span className="flex flex-wrap justify-center gap-x-[0.3em]" style={isMobile ? undefined : { transformStyle: "preserve-3d" }}>
@@ -164,7 +164,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-lg md:text-xl text-[#8B8B9E] max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-[#8B8B9E] max-w-2xl mx-auto mb-8 leading-relaxed"
         >
           ІТ-розробка, графічний дизайн та відеомонтаж — все в одному місці.
           Якість без переплат, дедлайни без затримок.
@@ -205,7 +205,7 @@ export default function HeroSection() {
           variants={stagger}
           initial="hidden"
           animate="visible"
-          className="mt-12 grid grid-cols-3 gap-3 sm:mt-16 max-w-lg mx-auto"
+          className="mt-8 grid grid-cols-3 gap-3 sm:mt-12 max-w-lg mx-auto"
         >
           {[
             { value: 100, suffix: "+", label: "Завершених проєктів" },
