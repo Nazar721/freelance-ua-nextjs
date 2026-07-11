@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { brands } from "@/data/brands";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -17,7 +17,7 @@ function LogoSet() {
             width={180}
             height={70}
             className="trusted-partners__logo"
-            style={{ width: "auto", height: "34px" }}
+            style={{ width: "auto", height: "60px" }}
           />
         </div>
       ))}
@@ -25,9 +25,23 @@ function LogoSet() {
   );
 }
 
+// MANY stars — dense cluster in center, spread outward
+const stars = Array.from({ length: 80 }, (_, i) => {
+  const isCenter = i < 50;
+  const isEdge = i >= 65;
+  return {
+    id: i,
+    x: isCenter ? 15 + Math.random() * 70 : isEdge ? Math.random() * 100 : 5 + Math.random() * 90,
+    y: 40 + Math.random() * 40,
+    size: isCenter ? (1 + Math.random() * 2) : (0.5 + Math.random() * 1.2),
+    delay: Math.random() * 6,
+    dur: 2 + Math.random() * 5,
+    static: i % 5 === 0, // every 5th star is always visible
+  };
+});
+
 export default function TrustedBySection() {
-  const fxRef = useRef<HTMLDivElement>(null);
-  const fxInView = useInView(fxRef, { once: true, margin: "-40px" });
+  const sectionRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth <= 768);
   useEffect(() => {
@@ -38,7 +52,82 @@ export default function TrustedBySection() {
   }, []);
 
   return (
-    <section className="trusted-shell px-4 py-16">
+    <section ref={sectionRef} className="relative px-4 pt-12 overflow-hidden" style={{ background: "transparent" }}>
+      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
+
+        {/* Purple glow */}
+        <div
+          className="absolute left-0 right-0"
+          style={{
+            top: "15%",
+            height: "60%",
+            background: `
+              radial-gradient(ellipse 75% 70% at 50% 70%, rgba(99,102,241,0.5), transparent 55%),
+              radial-gradient(ellipse 55% 50% at 50% 80%, rgba(139,92,246,0.35), transparent 50%),
+              radial-gradient(ellipse 90% 40% at 50% 85%, rgba(99,102,241,0.25), transparent 45%)
+            `,
+          }}
+        />
+
+        {/* Stars — LOTS of them, many always visible */}
+        {!shouldReduceMotion && stars.map((s) => (
+          <motion.div
+            key={s.id}
+            className="absolute rounded-full pointer-events-none"
+            style={{
+              left: `${s.x}%`,
+              top: `${s.y}%`,
+              width: s.size,
+              height: s.size,
+              background: s.id % 7 === 0 ? "rgba(99,102,241,0.9)" : "white",
+              boxShadow: `0 0 ${s.size + 1}px ${s.size / 2}px ${s.id % 7 === 0 ? "rgba(99,102,241,0.4)" : "rgba(255,255,255,0.3)"}`,
+            }}
+            animate={s.static ? { opacity: [0.6, 1, 0.7, 0.95, 0.6] } : { opacity: [0.1, 0.8, 0.3, 0.9, 0.1] }}
+            transition={{ duration: s.dur, delay: s.delay, repeat: Infinity, ease: "easeInOut" }}
+          />
+        ))}
+
+        {/* Left white glow */}
+        <div
+          className="absolute rounded-full"
+          style={{
+            left: isMobile ? "2%" : "8%",
+            top: "20%",
+            width: isMobile ? 40 : 70,
+            height: isMobile ? 40 : 70,
+            background: "radial-gradient(circle, rgba(255,255,255,0.6), transparent 60%)",
+            filter: "blur(20px)",
+          }}
+        />
+
+        {/* Right white glow */}
+        <div
+          className="absolute rounded-full"
+          style={{
+            right: isMobile ? "2%" : "8%",
+            top: "15%",
+            width: isMobile ? 35 : 60,
+            height: isMobile ? 35 : 60,
+            background: "radial-gradient(circle, rgba(255,255,255,0.5), transparent 60%)",
+            filter: "blur(18px)",
+          }}
+        />
+
+        {/* Dark curved surface */}
+        <div
+          className="absolute"
+          style={{
+            left: "-20%",
+            right: "-20%",
+            bottom: 0,
+            height: "48%",
+            background: "#0A0A0F",
+            borderRadius: "50% 50% 0 0 / 20% 20% 0 0",
+          }}
+        />
+      </div>
+
+      {/* Content */}
       <div className="relative z-10 mx-auto max-w-3xl">
         <FadeIn className="text-center">
           <h2 className="text-2xl font-bold leading-tight text-[#F8F8FF] sm:text-3xl md:text-4xl">
@@ -46,7 +135,7 @@ export default function TrustedBySection() {
           </h2>
         </FadeIn>
 
-        {/* Seamless infinite marquee */}
+        {/* Logo marquee — with BLUR fade at edges */}
         <FadeIn delay={0.12} className="trusted-partners mt-7">
           <div className="trusted-partners__track-wrapper">
             <div className="trusted-partners__track">
@@ -56,141 +145,10 @@ export default function TrustedBySection() {
               <LogoSet />
             </div>
           </div>
-
-          {/* Firefly sparkles at edges — reduced on mobile */}
-          {!shouldReduceMotion && (
-            <>
-              {/* Left edge sparkles — fewer on mobile */}
-              {(isMobile ? [0, 1] : [0, 1, 2, 3]).map((i) => (
-                <motion.div
-                  key={`sparkle-l-${i}`}
-                  className="absolute rounded-full pointer-events-none"
-                  style={{
-                    left: `${6 + i * 3}%`,
-                    width: isMobile ? 2 : (3 + (i % 2) * 2),
-                    height: isMobile ? 2 : (3 + (i % 2) * 2),
-                    background: "radial-gradient(circle, rgba(99,102,241,0.9), rgba(139,92,246,0.4))",
-                    boxShadow: "0 0 6px rgba(99,102,241,0.5), 0 0 12px rgba(99,102,241,0.2)",
-                    top: `${35 + (i % 3) * 15}%`,
-                  }}
-                  animate={{
-                    opacity: [0, 0.7, 0.2, 0.8, 0],
-                    scale: [0.5, 1.1, 0.7, 1.0, 0.5],
-                    y: [0, -3, 1, -2, 0],
-                  }}
-                  transition={{
-                    duration: isMobile ? 3.5 : (2.5 + i * 0.4),
-                    delay: i * (isMobile ? 0.8 : 0.6),
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-              ))}
-
-              {/* Right edge sparkles — fewer on mobile */}
-              {(isMobile ? [0, 1] : [0, 1, 2, 3]).map((i) => (
-                <motion.div
-                  key={`sparkle-r-${i}`}
-                  className="absolute rounded-full pointer-events-none"
-                  style={{
-                    right: `${6 + i * 3}%`,
-                    width: isMobile ? 2 : (3 + (i % 2) * 2),
-                    height: isMobile ? 2 : (3 + (i % 2) * 2),
-                    background: "radial-gradient(circle, rgba(6,182,212,0.9), rgba(99,102,241,0.4))",
-                    boxShadow: "0 0 6px rgba(6,182,212,0.5), 0 0 12px rgba(6,182,212,0.2)",
-                    top: `${30 + (i % 3) * 18}%`,
-                  }}
-                  animate={{
-                    opacity: [0, 0.8, 0.15, 0.7, 0],
-                    scale: [0.5, 1.2, 0.6, 1.1, 0.5],
-                    y: [0, -2, 2, -1, 0],
-                  }}
-                  transition={{
-                    duration: isMobile ? 4 : (2.8 + i * 0.3),
-                    delay: 0.3 + i * (isMobile ? 0.7 : 0.5),
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-              ))}
-            </>
-          )}
         </FadeIn>
-
-        {/* Full-width energy wave effect — simplified on mobile */}
-        <div ref={fxRef} className="relative mt-8 h-16 w-full overflow-hidden">
-          {!shouldReduceMotion && fxInView && (
-            <>
-              {/* Base line */}
-              <motion.div
-                className="absolute top-1/2 left-0 right-0 h-px -translate-y-1/2"
-                style={{
-                  background: "linear-gradient(90deg, transparent 0%, rgba(99,102,241,0.15) 20%, rgba(99,102,241,0.3) 50%, rgba(99,102,241,0.15) 80%, transparent 100%)",
-                }}
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-              />
-
-              {/* SVG wave — simplified on mobile */}
-              <svg
-                className="absolute inset-0 w-full h-full"
-                viewBox="0 0 1200 64"
-                preserveAspectRatio="none"
-                fill="none"
-              >
-                <defs>
-                  <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="rgba(99,102,241,0)" />
-                    <stop offset="20%" stopColor="rgba(99,102,241,0.4)" />
-                    <stop offset="50%" stopColor="rgba(6,182,212,0.5)" />
-                    <stop offset="80%" stopColor="rgba(99,102,241,0.4)" />
-                    <stop offset="100%" stopColor="rgba(99,102,241,0)" />
-                  </linearGradient>
-                </defs>
-
-                <motion.path
-                  d="M0,32 C100,16 200,48 300,32 C400,16 500,48 600,32 C700,16 800,48 900,32 C1000,16 1100,48 1200,32"
-                  stroke="url(#wave-gradient)"
-                  strokeWidth={isMobile ? "1" : "1.5"}
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
-                />
-              </svg>
-
-              {/* Flowing light dots — fewer on mobile */}
-              {(isMobile ? [0, 1] : [0, 1, 2, 3, 4]).map((i) => (
-                <motion.div
-                  key={i}
-                  className="absolute top-1/2 -translate-y-1/2 rounded-full"
-                  style={{
-                    width: isMobile ? 3 : 4,
-                    height: isMobile ? 3 : 4,
-                    background: i % 2 === 0
-                      ? "radial-gradient(circle, #6366F1, rgba(99,102,241,0.4))"
-                      : "radial-gradient(circle, #06B6D4, rgba(6,182,212,0.4))",
-                    boxShadow: i % 2 === 0
-                      ? "0 0 10px rgba(99,102,241,0.6), 0 0 20px rgba(99,102,241,0.3)"
-                      : "0 0 10px rgba(6,182,212,0.6), 0 0 20px rgba(6,182,212,0.3)",
-                  }}
-                  initial={{ left: "-5%", opacity: 0 }}
-                  animate={{
-                    left: ["-5%", "105%"],
-                    opacity: [0, 1, 1, 0],
-                  }}
-                  transition={{
-                    duration: isMobile ? 5 : (4 + i * 0.5),
-                    delay: 1 + i * (isMobile ? 1.2 : 0.8),
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                />
-              ))}
-            </>
-          )}
-        </div>
       </div>
+
+      <div className="h-28 sm:h-36" />
     </section>
   );
 }
