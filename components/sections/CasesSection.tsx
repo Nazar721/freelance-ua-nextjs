@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRight, Quote, Expand, ExternalLink } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
@@ -22,6 +22,13 @@ const slides = cases.map((c) =>
 
 export default function CasesSection() {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth <= 768);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   return (
     <section id="cases" className="py-20 px-4 bg-[#111118]">
@@ -65,7 +72,7 @@ export default function CasesSection() {
                     </>
                   ) : null}
                   <div className="absolute inset-0 z-20 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
-                    <div className="opacity-0 scale-75 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 bg-white/10 backdrop-blur-sm rounded-full p-3 border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.3)]">
+                    <div className={`opacity-0 scale-75 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 bg-white/10 ${isMobile ? "" : "backdrop-blur-sm"} rounded-full p-3 border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.3)]`}>
                       <Expand size={20} className="text-white" />
                     </div>
                   </div>

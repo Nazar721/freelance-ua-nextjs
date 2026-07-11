@@ -819,4 +819,114 @@ body {
       transition: none;
     }
   }
+} /* close @layer utilities */
+
+/* ─── Mobile performance optimizations (OUTSIDE layer to override Tailwind) ─── */
+@media (max-width: 768px) {
+  /* Hide entire backdrop on mobile — biggest perf win */
+  .site-backdrop {
+    display: none;
+  }
+
+  /* Disable continuous decorative animations */
+  .hero-ambient {
+    animation: none;
+  }
+
+  .gradient-text-motion {
+    animation: none;
+    background-size: 100% 100%;
+  }
+
+  .float,
+  .float-delayed {
+    animation: none;
+  }
+
+  .glow-pulse {
+    animation: none;
+  }
+
+  .shimmer::after {
+    animation: none;
+  }
+
+  .process-line {
+    animation: none;
+  }
+
+  .animate-marquee,
+  .animate-marquee-reverse {
+    animation-duration: 60s;
+  }
+
+  /* Trusted marquee slower on mobile */
+  .trusted-partners__track-wrapper {
+    animation-duration: 50s;
+  }
+
+  /* Remove heavy hover effects on touch devices */
+  .premium-surface:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .premium-surface:hover::before {
+    opacity: 0;
+  }
+
+  .premium-surface:hover::after {
+    transform: none;
+  }
+
+  .premium-surface:hover .premium-icon {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .tilt-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .glow-border::before {
+    display: none;
+  }
+
+  /* Disable magnetic button light sweep on mobile */
+  .magnetic-button::before {
+    display: none;
+  }
+
+  /* Disable trusted partners logo hover on mobile */
+  .trusted-partners__logo:hover {
+    transform: none;
+    filter: grayscale(0) brightness(0.9);
+    opacity: 0.85;
+  }
+
+  /* Remove all backdrop-blur on mobile — causes blurriness on mobile GPUs */
+  .backdrop-blur-xl,
+  .backdrop-blur-lg,
+  .backdrop-blur-md,
+  .backdrop-blur-sm {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Remove backdrop blur from contact form inputs */
+  .contact-form-input {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Hide decorative blur circle in contact section */
+  #contact-form .blur-\[120px\] {
+    display: none;
+  }
+
+  /* Simpler scrollbar on mobile */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
 }

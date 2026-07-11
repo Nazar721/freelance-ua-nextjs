@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { brands } from "@/data/brands";
@@ -29,6 +29,13 @@ export default function TrustedBySection() {
   const fxRef = useRef<HTMLDivElement>(null);
   const fxInView = useInView(fxRef, { once: true, margin: "-40px" });
   const shouldReduceMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   return (
     <section className="trusted-shell px-4 py-16">
@@ -50,8 +57,8 @@ export default function TrustedBySection() {
             </div>
           </div>
 
-          {/* Firefly sparkles at edges */}
-          {!shouldReduceMotion && (
+          {/* Firefly sparkles at edges — disabled on mobile */}
+          {!shouldReduceMotion && !isMobile && (
             <>
               {/* Left edge sparkles */}
               {[0, 1, 2, 3].map((i) => (
@@ -112,7 +119,7 @@ export default function TrustedBySection() {
 
         {/* Full-width energy wave effect */}
         <div ref={fxRef} className="relative mt-8 h-16 w-full overflow-hidden">
-          {!shouldReduceMotion && fxInView && (
+          {!shouldReduceMotion && !isMobile && fxInView && (
             <>
               {/* Base line */}
               <motion.div

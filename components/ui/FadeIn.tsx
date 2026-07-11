@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, useEffect, type ReactNode } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
 type FadeInProps = {
@@ -15,6 +15,22 @@ type FadeInProps = {
   style?: React.CSSProperties;
   [key: string]: unknown;
 };
+
+function getIsMobile(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.innerWidth <= 768;
+}
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(getIsMobile);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
 
 export function FadeIn({
   children,
@@ -31,12 +47,38 @@ export function FadeIn({
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px 0px" });
   const shouldReduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
 
   if (shouldReduceMotion) {
     return (
       <div className={className} style={style}>
         {children}
       </div>
+    );
+  }
+
+  // Mobile: simplified animation — only opacity + y, no blur/rotateX, shorter duration
+  if (isMobile) {
+    return (
+      <motion.div
+        ref={ref}
+        className={className}
+        style={style}
+        initial={{ opacity: 0, y: y > 0 ? 16 : 0 }}
+        animate={
+          isInView
+            ? { opacity: 1, y: 0 }
+            : { opacity: 0, y: y > 0 ? 16 : 0 }
+        }
+        transition={{
+          duration: 0.35,
+          delay: Math.min(delay, 0.3),
+          ease: "easeOut",
+        }}
+        {...rest}
+      >
+        {children}
+      </motion.div>
     );
   }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import { siteConfig } from "@/config/site";
@@ -26,6 +26,15 @@ const wordReveal = {
   },
 };
 
+const wordRevealMobile = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
 const particles = Array.from({ length: 20 }, (_, i) => ({
   id: i,
   x: Math.random() * 100,
@@ -38,6 +47,13 @@ const particles = Array.from({ length: 20 }, (_, i) => ({
 export default function HeroSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth <= 768);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -67,8 +83,8 @@ export default function HeroSection() {
       {/* Bottom fade */}
       <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-[#0A0A0F] to-transparent z-[1]" />
 
-      {/* Floating particles */}
-      {!shouldReduceMotion && (
+      {/* Floating particles — disabled on mobile for performance */}
+      {!shouldReduceMotion && !isMobile && (
         <div className="absolute inset-0 pointer-events-none z-[1]">
           {particles.map((p) => (
             <motion.div
@@ -106,7 +122,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="inline-flex items-center gap-2.5 bg-[#1A1A24]/80 border border-[#2A2A38]/80 rounded-full px-5 py-2.5 mb-8 text-sm text-[#8B8B9E] shadow-[0_0_60px_rgba(99,102,241,0.1)] backdrop-blur-xl float">
+          <div className={`inline-flex items-center gap-2.5 bg-[#1A1A24]/80 border border-[#2A2A38]/80 rounded-full px-5 py-2.5 mb-8 text-sm text-[#8B8B9E] shadow-[0_0_60px_rgba(99,102,241,0.1)] ${isMobile ? "" : "backdrop-blur-xl"} float`}>
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#6366F1]/15">
               <Zap size={12} className="text-[#6366F1]" />
             </span>
@@ -120,13 +136,13 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.08] mb-6"
-          style={{ perspective: 800 }}
+          style={isMobile ? undefined : { perspective: 800 }}
         >
-          <span className="flex flex-wrap justify-center gap-x-[0.3em]" style={{ transformStyle: "preserve-3d" }}>
+          <span className="flex flex-wrap justify-center gap-x-[0.3em]" style={isMobile ? undefined : { transformStyle: "preserve-3d" }}>
             {heroWords.map((word) => (
               <motion.span
                 key={word}
-                variants={wordReveal}
+                variants={isMobile ? wordRevealMobile : wordReveal}
                 className="text-[#F8F8FF] inline-block"
               >
                 {word}
@@ -134,9 +150,9 @@ export default function HeroSection() {
             ))}
           </span>
           <motion.span
-            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            initial={{ opacity: 0, y: isMobile ? 16 : 30, scale: isMobile ? 1 : 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
+            transition={{ duration: isMobile ? 0.4 : 1, delay: isMobile ? 0.2 : 0.6, ease: [0.22, 1, 0.36, 1] as const }}
             className="gradient-text-motion bg-gradient-to-r from-[#6366F1] via-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent block -mt-2"
           >
             бізнес-партнер
@@ -176,7 +192,7 @@ export default function HeroSection() {
             href={siteConfig.telegram.channelUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="magnetic-button inline-flex items-center justify-center gap-2 bg-[#111118]/50 border border-[#2A2A38] hover:border-[#6366F1] text-[#F8F8FF] font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(99,102,241,0.16)] text-base backdrop-blur-md"
+            className={`magnetic-button inline-flex items-center justify-center gap-2 bg-[#111118]/50 border border-[#2A2A38] hover:border-[#6366F1] text-[#F8F8FF] font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(99,102,241,0.16)] text-base ${isMobile ? "" : "backdrop-blur-md"}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -207,7 +223,7 @@ export default function HeroSection() {
                   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 1.2 + i * 0.1 },
                 },
               }}
-              className="premium-surface rounded-xl border border-[#2A2A38]/70 bg-[#111118]/40 px-2.5 py-3 backdrop-blur-md sm:rounded-2xl sm:px-5 sm:py-4 shimmer glow-border"
+              className={`premium-surface rounded-xl border border-[#2A2A38]/70 bg-[#111118]/40 px-2.5 py-3 ${isMobile ? "" : "backdrop-blur-md"} sm:rounded-2xl sm:px-5 sm:py-4 shimmer glow-border`}
             >
               <div className="text-2xl font-bold text-[#6366F1] sm:text-3xl">
                 <CountUp value={stat.value} suffix={stat.suffix} />
