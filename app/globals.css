@@ -823,29 +823,24 @@ body {
 
 /* ─── Mobile performance optimizations (OUTSIDE layer to override Tailwind) ─── */
 @media (max-width: 768px) {
-  /* Hide entire backdrop on mobile — biggest perf win */
-  .site-backdrop {
+  /* Show backdrop on mobile — but hide heavy orbs/glow, keep grid */
+  .site-backdrop__orb,
+  .site-backdrop__orb::before,
+  .site-backdrop__orb::after,
+  .site-backdrop__glow,
+  .site-backdrop__nodes span {
     display: none;
   }
 
-  /* Disable continuous decorative animations */
-  .hero-ambient {
-    animation: none;
-  }
+  /* Keep hero-ambient animation on mobile — it's lightweight */
+  /* (animation: none removed — ambient-shift uses only gradients, no blur) */
 
   .gradient-text-motion {
     animation: none;
     background-size: 100% 100%;
   }
 
-  .float,
-  .float-delayed {
-    animation: none;
-  }
-
-  .glow-pulse {
-    animation: none;
-  }
+  /* Float and glow-pulse are lightweight — keep them on mobile */
 
   .shimmer::after {
     animation: none;
