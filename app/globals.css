@@ -659,7 +659,19 @@ body {
     overflow: visible;
     display: flex;
     align-items: center;
-    mask-image: linear-gradient(90deg, transparent 0%, transparent 8%, rgba(0,0,0,0.2) 15%, rgba(0,0,0,0.6) 25%, black 40%, black 60%, rgba(0,0,0,0.6) 75%, rgba(0,0,0,0.2) 85%, transparent 92%, transparent 100%);
+    /* Narrow visible zone — only 1 logo fits in the center */
+    mask-image: linear-gradient(90deg,
+      transparent 0%,
+      transparent 30%,
+      rgba(0,0,0,0.1) 38%,
+      rgba(0,0,0,0.5) 44%,
+      black 48%,
+      black 52%,
+      rgba(0,0,0,0.5) 56%,
+      rgba(0,0,0,0.1) 62%,
+      transparent 70%,
+      transparent 100%
+    );
   }
 
   .trusted-partners::before,
@@ -668,19 +680,21 @@ body {
     position: absolute;
     top: 0;
     z-index: 2;
-    width: 180px;
+    width: 35%;
     height: 100%;
     pointer-events: none;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
   }
 
   .trusted-partners::before {
     left: 0;
-    background: linear-gradient(90deg, #111118 0%, rgba(17, 17, 24, 0) 100%);
+    background: linear-gradient(90deg, rgba(10,10,15,1) 0%, rgba(10,10,15,0.95) 50%, rgba(10, 10, 15, 0) 100%);
   }
 
   .trusted-partners::after {
     right: 0;
-    background: linear-gradient(270deg, #111118 0%, rgba(17, 17, 24, 0) 100%);
+    background: linear-gradient(270deg, rgba(10,10,15,1) 0%, rgba(10,10,15,0.95) 50%, rgba(10, 10, 15, 0) 100%);
   }
 
   .trusted-partners:hover .trusted-partners__track-wrapper {
@@ -691,7 +705,7 @@ body {
     display: flex;
     width: max-content;
     will-change: transform;
-    animation: seamless-marquee 30s linear infinite;
+    animation: seamless-marquee 80s linear infinite;
   }
 
   .trusted-partners__track {
@@ -702,8 +716,8 @@ body {
 
   .trusted-partners__logo {
     width: auto;
-    height: 34px;
-    max-width: 170px;
+    height: 60px;
+    max-width: 220px;
     object-fit: contain;
     filter: grayscale(0) brightness(0.9);
     opacity: 0.85;
@@ -727,6 +741,32 @@ body {
   @keyframes ambient-shift {
     0% { transform: scale(1) translate3d(0, 0, 0); filter: hue-rotate(0deg); }
     100% { transform: scale(1.08) translate3d(0, -18px, 0); filter: hue-rotate(10deg); }
+  }
+
+  /* Holographic grid floor — scrolls forward */
+  @keyframes hologrid-scroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 60px; }
+  }
+
+  /* 3D Sphere rotation */
+  @keyframes sphere-rotate {
+    0% { transform: rotateX(-15deg) rotateY(0deg); }
+    100% { transform: rotateX(-15deg) rotateY(360deg); }
+  }
+
+  /* Orbit dot animations — dots travel along the elliptical path */
+  @keyframes orbit-dot-1 {
+    0% { transform: rotateX(70deg) rotateZ(-20deg) rotateY(0deg); }
+    100% { transform: rotateX(70deg) rotateZ(-20deg) rotateY(360deg); }
+  }
+  @keyframes orbit-dot-2 {
+    0% { transform: rotateX(75deg) rotateZ(30deg) rotateY(0deg); }
+    100% { transform: rotateX(75deg) rotateZ(30deg) rotateY(360deg); }
+  }
+  @keyframes orbit-dot-3 {
+    0% { transform: rotateX(80deg) rotateZ(60deg) rotateY(0deg); }
+    100% { transform: rotateX(80deg) rotateZ(60deg) rotateY(360deg); }
   }
 
   @keyframes gradient-drift {
@@ -857,7 +897,7 @@ body {
 
   /* Trusted marquee slower on mobile */
   .trusted-partners__track-wrapper {
-    animation-duration: 50s;
+    animation-duration: 100s;
   }
 
   /* Remove heavy hover effects on touch devices */
