@@ -97,15 +97,15 @@ export default function Footer() {
 						href='https://yednist.digital'
 						target='_blank'
 						rel='noopener noreferrer'
-						className='flex items-center gap-2 opacity-75 hover:opacity-100 transition-opacity duration-300'
+						className='flex items-center gap-1.5 opacity-60 hover:opacity-100 transition-opacity duration-300'
 					>
-						<span className='text-xs whitespace-nowrap'>Розробник сайту партнер</span>
+						<span className='text-[10px] whitespace-nowrap'>Розробник сайту партнер</span>
 						<Image
 							src='/media/brands/yednistdigital.webp'
 							alt='Єдність.Digital'
-							width={120}
-							height={25}
-							className=''
+							width={80}
+							height={17}
+							className='h-4 w-auto'
 						/>
 					</Link>
 				</div>
