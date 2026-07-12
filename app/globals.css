@@ -966,6 +966,12 @@ body {
 }
 
 /* ─── Trusted by particles ─── */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
 .pf {
   position: absolute;
   border-radius: 50%;

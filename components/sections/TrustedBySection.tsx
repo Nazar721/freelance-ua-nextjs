@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { useReducedMotion } from "framer-motion";
+
 import Image from "next/image";
 import { brands } from "@/data/brands";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -25,13 +25,32 @@ function LogoSet() {
   );
 }
 
-// Generate particle HTML — moderate amount with active drift
-function generateParticles() {
+// Generate two layers: static stars + animated drifting particles
+function generateStaticStars() {
   let html = "";
-  for (let i = 0; i < 150; i++) {
+  for (let i = 0; i < 100; i++) {
     const x = (3 + Math.random() * 94).toFixed(1);
     const y = (30 + Math.random() * 60).toFixed(1);
-    const size = (0.6 + Math.random() * 2.2).toFixed(1);
+    const size = (0.4 + Math.random() * 1.5).toFixed(1);
+    const opacity = (0.2 + Math.random() * 0.5).toFixed(2);
+    const isPurple = i % 8 === 0;
+    const isBlue = !isPurple && i % 5 === 0;
+    const color = isPurple
+      ? "rgba(139,92,246,"
+      : isBlue
+        ? "rgba(99,102,241,"
+        : "rgba(255,255,255,";
+    html += `<div class="star" style="left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${color}${opacity});box-shadow:0 0 ${Number(size) * 2}px ${Number(size) * 0.5}px ${color}0.3)"></div>`;
+  }
+  return html;
+}
+
+function generateAnimatedParticles() {
+  let html = "";
+  for (let i = 0; i < 80; i++) {
+    const x = (3 + Math.random() * 94).toFixed(1);
+    const y = (30 + Math.random() * 60).toFixed(1);
+    const size = (0.8 + Math.random() * 2.2).toFixed(1);
     const dur = (4 + Math.random() * 6).toFixed(1);
     const delay = (Math.random() * 6).toFixed(1);
     const isPurple = i % 7 === 0;
@@ -53,11 +72,11 @@ function generateParticles() {
   return html;
 }
 
-const particlesHTML = generateParticles();
+const staticStarsHTML = generateStaticStars();
+const animatedParticlesHTML = generateAnimatedParticles();
 
 export default function TrustedBySection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth <= 768);
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
@@ -95,13 +114,17 @@ export default function TrustedBySection() {
           }}
         />
 
-        {/* Particles — 1000+ CSS-animated stars */}
-        {!shouldReduceMotion && (
-          <div
-            className="absolute inset-0 overflow-hidden"
-            dangerouslySetInnerHTML={{ __html: particlesHTML }}
-          />
-        )}
+        {/* Static stars — always visible */}
+        <div
+          className="absolute inset-0 overflow-hidden"
+          dangerouslySetInnerHTML={{ __html: staticStarsHTML }}
+        />
+
+        {/* Animated particles — drift */}
+        <div
+          className="absolute inset-0 overflow-hidden"
+          dangerouslySetInnerHTML={{ __html: animatedParticlesHTML }}
+        />
 
         {/* Left glow — atmospheric light source */}
         <div
