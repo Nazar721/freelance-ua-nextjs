@@ -964,3 +964,48 @@ body {
     width: 4px;
   }
 }
+
+/* ─── Trusted by particles ─── */
+.pf {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation-fill-mode: both;
+}
+.pf0 { animation-name: pf-drift0; animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1); }
+.pf1 { animation-name: pf-drift1; animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1); }
+.pf2 { animation-name: pf-drift2; animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1); }
+.pf3 { animation-name: pf-drift3; animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1); }
+
+@keyframes pf-drift0 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.25; }
+  20% { transform: translate(25px, -18px) scale(1.2); opacity: 0.85; }
+  40% { transform: translate(-15px, 22px) scale(0.85); opacity: 0.55; }
+  60% { transform: translate(20px, 12px) scale(1.15); opacity: 0.9; }
+  80% { transform: translate(-8px, -10px) scale(0.95); opacity: 0.6; }
+}
+
+@keyframes pf-drift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  20% { transform: translate(-30px, 14px) scale(1.15); opacity: 0.8; }
+  40% { transform: translate(18px, -20px) scale(0.88); opacity: 0.65; }
+  60% { transform: translate(-12px, 25px) scale(1.1); opacity: 0.85; }
+  80% { transform: translate(10px, -8px) scale(0.92); opacity: 0.5; }
+}
+
+@keyframes pf-drift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.35; }
+  20% { transform: translate(20px, 16px) scale(1.1); opacity: 0.75; }
+  40% { transform: translate(-22px, -12px) scale(0.9); opacity: 0.85; }
+  60% { transform: translate(15px, -18px) scale(1.12); opacity: 0.7; }
+  80% { transform: translate(-10px, 14px) scale(0.95); opacity: 0.6; }
+}
+
+@keyframes pf-drift3 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  20% { transform: translate(-18px, -22px) scale(1.18); opacity: 0.8; }
+  40% { transform: translate(25px, 10px) scale(0.85); opacity: 0.9; }
+  60% { transform: translate(-14px, 18px) scale(1.08); opacity: 0.65; }
+  80% { transform: translate(12px, -12px) scale(0.92); opacity: 0.75; }
+}
