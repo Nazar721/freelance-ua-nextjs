@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { brands } from "@/data/brands";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -10,14 +10,14 @@ function LogoSet() {
   return (
     <>
       {brands.map((brand, i) => (
-        <div key={`a-${i}`} className="flex items-center shrink-0" style={{ marginRight: 48 }}>
+        <div key={`a-${i}`} className="flex items-center justify-center shrink-0" style={{ width: 220, height: 60 }}>
           <Image
             src={brand.logo}
             alt={brand.name}
             width={180}
             height={70}
             className="trusted-partners__logo"
-            style={{ width: "auto", height: "60px" }}
+            style={{ width: "auto", height: "60px", maxWidth: 180 }}
           />
         </div>
       ))}
@@ -25,18 +25,35 @@ function LogoSet() {
   );
 }
 
-// Particles — scattered stars and dust across the dark area
-const particles = Array.from({ length: 120 }, (_, i) => ({
-  id: i,
-  startX: 2 + Math.random() * 96,
-  startY: 30 + Math.random() * 60,
-  driftX: -40 + Math.random() * 80,
-  driftY: -25 + Math.random() * 50,
-  size: 0.8 + Math.random() * 3,
-  delay: Math.random() * 8,
-  dur: 3 + Math.random() * 5,
-  type: i % 5 === 0 ? "purple" : i % 3 === 0 ? "blue" : "white",
-}));
+// Generate particle HTML — moderate amount with active drift
+function generateParticles() {
+  let html = "";
+  for (let i = 0; i < 150; i++) {
+    const x = (3 + Math.random() * 94).toFixed(1);
+    const y = (30 + Math.random() * 60).toFixed(1);
+    const size = (0.6 + Math.random() * 2.2).toFixed(1);
+    const dur = (4 + Math.random() * 6).toFixed(1);
+    const delay = (Math.random() * 6).toFixed(1);
+    const isPurple = i % 7 === 0;
+    const isBlue = !isPurple && i % 4 === 0;
+    const color = isPurple
+      ? "rgba(139,92,246,0.85)"
+      : isBlue
+        ? "rgba(99,102,241,0.85)"
+        : "rgba(255,255,255,0.9)";
+    const glowColor = isPurple
+      ? "rgba(139,92,246,0.6)"
+      : isBlue
+        ? "rgba(99,102,241,0.5)"
+        : "rgba(255,255,255,0.5)";
+    const glowSize = isPurple ? 5 : isBlue ? 4 : 3;
+
+    html += `<div class="pf pf${i % 4}" style="left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${color};box-shadow:0 0 ${glowSize * Number(size)}px ${Number(size)}px ${glowColor};animation-duration:${dur}s;animation-delay:${delay}s"></div>`;
+  }
+  return html;
+}
+
+const particlesHTML = generateParticles();
 
 export default function TrustedBySection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -78,41 +95,13 @@ export default function TrustedBySection() {
           }}
         />
 
-        {/* Particles — stars and cosmic dust with active drift */}
-        {!shouldReduceMotion && particles.map((p) => (
-          <motion.div
-            key={p.id}
-            className="absolute rounded-full pointer-events-none"
-            style={{
-              left: `${p.startX}%`,
-              top: `${p.startY}%`,
-              width: p.size,
-              height: p.size,
-              background: p.type === "purple"
-                ? "rgba(139,92,246,1)"
-                : p.type === "blue"
-                  ? "rgba(99,102,241,1)"
-                  : "rgba(255,255,255,0.9)",
-              boxShadow: p.type === "purple"
-                ? `0 0 ${p.size * 6}px ${p.size * 2}px rgba(139,92,246,0.7)`
-                : p.type === "blue"
-                  ? `0 0 ${p.size * 5}px ${p.size * 1.5}px rgba(99,102,241,0.6)`
-                  : `0 0 ${p.size * 4}px ${p.size}px rgba(255,255,255,0.5)`,
-            }}
-            animate={{
-              opacity: [0.2, 0.9, 0.3, 0.95, 0.2],
-              scale: [0.85, 1.15, 0.9, 1.1, 0.85],
-              x: [0, p.driftX * 0.4, p.driftX, p.driftX * 0.7, 0],
-              y: [0, p.driftY * 0.5, p.driftY, p.driftY * 0.6, 0],
-            }}
-            transition={{
-              duration: p.dur,
-              delay: p.delay,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+        {/* Particles — 1000+ CSS-animated stars */}
+        {!shouldReduceMotion && (
+          <div
+            className="absolute inset-0 overflow-hidden"
+            dangerouslySetInnerHTML={{ __html: particlesHTML }}
           />
-        ))}
+        )}
 
         {/* Left glow — atmospheric light source */}
         <div
