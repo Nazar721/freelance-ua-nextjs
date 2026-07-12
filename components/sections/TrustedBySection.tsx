@@ -25,15 +25,17 @@ function LogoSet() {
   );
 }
 
-// Fireflies — BELOW the horizon line, active and bright
-const fireflies = Array.from({ length: 70 }, (_, i) => ({
+// Particles — scattered stars and dust across the dark area
+const particles = Array.from({ length: 60 }, (_, i) => ({
   id: i,
-  x: 3 + Math.random() * 94,
-  y: 65 + Math.random() * 30,
-  size: 1.2 + Math.random() * 2.5,
-  delay: Math.random() * 8,
-  dur: 3 + Math.random() * 6,
-  purple: i % 3 === 0,
+  startX: 5 + Math.random() * 90,
+  startY: 35 + Math.random() * 55,
+  driftX: -15 + Math.random() * 30,
+  driftY: -10 + Math.random() * 20,
+  size: 1 + Math.random() * 2.5,
+  delay: Math.random() * 12,
+  dur: 6 + Math.random() * 10,
+  type: i % 5 === 0 ? "purple" : i % 3 === 0 ? "blue" : "white",
 }));
 
 export default function TrustedBySection() {
@@ -51,95 +53,103 @@ export default function TrustedBySection() {
     <section ref={sectionRef} className="relative px-4 pt-12 overflow-hidden" style={{ background: "transparent" }}>
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
 
-        {/* Purple glow */}
+        {/* Atmospheric purple glow */}
         <div
           className="absolute left-0 right-0"
           style={{
-            top: "10%",
-            height: "70%",
+            top: "20%",
+            height: "60%",
             background: `
-              radial-gradient(ellipse 70% 50% at 50% 85%, rgba(99,102,241,0.55), transparent 50%),
-              radial-gradient(ellipse 50% 40% at 50% 90%, rgba(139,92,246,0.4), transparent 45%),
-              radial-gradient(ellipse 85% 35% at 50% 95%, rgba(99,102,241,0.3), transparent 40%)
+              radial-gradient(ellipse 65% 50% at 50% 75%, rgba(99,102,241,0.5), transparent 50%),
+              radial-gradient(ellipse 50% 40% at 50% 80%, rgba(139,92,246,0.4), transparent 45%),
+              radial-gradient(ellipse 80% 35% at 50% 85%, rgba(99,102,241,0.3), transparent 40%)
             `,
           }}
         />
 
-        {/* HORIZON LINE — the "earth" edge */}
+        {/* HORIZON LINE — visible earth edge */}
         <div
           className="absolute left-0 right-0"
           style={{
-            top: "62%",
+            top: "58%",
             height: "2px",
-            background: "linear-gradient(90deg, transparent 5%, rgba(99,102,241,0.2) 20%, rgba(139,92,246,0.35) 50%, rgba(99,102,241,0.2) 80%, transparent 95%)",
-            boxShadow: "0 0 12px rgba(99,102,241,0.25), 0 0 30px rgba(99,102,241,0.12)",
+            background: "linear-gradient(90deg, transparent 5%, rgba(99,102,241,0.2) 15%, rgba(139,92,246,0.4) 50%, rgba(99,102,241,0.2) 85%, transparent 95%)",
+            boxShadow: "0 0 15px rgba(99,102,241,0.3), 0 0 40px rgba(99,102,241,0.15)",
           }}
         />
 
-        {/* Fireflies — ALL below horizon, active with glow */}
-        {!shouldReduceMotion && fireflies.map((f) => (
+        {/* Particles — stars and cosmic dust with drift */}
+        {!shouldReduceMotion && particles.map((p) => (
           <motion.div
-            key={f.id}
+            key={p.id}
             className="absolute rounded-full pointer-events-none"
             style={{
-              left: `${f.x}%`,
-              top: `${f.y}%`,
-              width: f.size,
-              height: f.size,
-              background: f.purple ? "rgba(160,140,255,1)" : "rgba(255,255,255,0.9)",
-              boxShadow: f.purple
-                ? `0 0 ${f.size * 5}px ${f.size * 2}px rgba(99,102,241,0.6)`
-                : `0 0 ${f.size * 3}px ${f.size}px rgba(255,255,255,0.45)`,
+              left: `${p.startX}%`,
+              top: `${p.startY}%`,
+              width: p.size,
+              height: p.size,
+              background: p.type === "purple"
+                ? "rgba(139,92,246,1)"
+                : p.type === "blue"
+                  ? "rgba(99,102,241,1)"
+                  : "rgba(255,255,255,0.9)",
+              boxShadow: p.type === "purple"
+                ? `0 0 ${p.size * 5}px ${p.size * 1.5}px rgba(139,92,246,0.6)`
+                : p.type === "blue"
+                  ? `0 0 ${p.size * 4}px ${p.size * 1.2}px rgba(99,102,241,0.5)`
+                  : `0 0 ${p.size * 3}px ${p.size * 0.8}px rgba(255,255,255,0.4)`,
             }}
             animate={{
-              opacity: [0.1, 0.9, 0.15, 0.95, 0.1],
-              scale: [0.7, 1.3, 0.8, 1.25, 0.7],
+              opacity: [0.15, 0.7, 0.2, 0.75, 0.15],
+              scale: [0.9, 1.1, 0.92, 1.08, 0.9],
+              x: [0, p.driftX * 0.5, p.driftX, p.driftX * 0.3, 0],
+              y: [0, p.driftY * 0.6, p.driftY, p.driftY * 0.4, 0],
             }}
             transition={{
-              duration: f.dur,
-              delay: f.delay,
+              duration: p.dur,
+              delay: p.delay,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: [0.4, 0, 0.6, 1],
             }}
           />
         ))}
 
-        {/* Left white glow */}
+        {/* Left glow — atmospheric light source */}
         <div
           className="absolute rounded-full"
           style={{
-            left: isMobile ? "0%" : "5%",
+            left: isMobile ? "0%" : "3%",
             top: "15%",
+            width: isMobile ? 60 : 120,
+            height: isMobile ? 60 : 120,
+            background: "radial-gradient(circle, rgba(255,255,255,0.6), rgba(99,102,241,0.3) 40%, transparent 70%)",
+            filter: "blur(35px)",
+          }}
+        />
+
+        {/* Right glow — atmospheric light source */}
+        <div
+          className="absolute rounded-full"
+          style={{
+            right: isMobile ? "0%" : "3%",
+            top: "10%",
             width: isMobile ? 50 : 100,
             height: isMobile ? 50 : 100,
-            background: "radial-gradient(circle, rgba(255,255,255,0.7), transparent 50%)",
-            filter: "blur(25px)",
+            background: "radial-gradient(circle, rgba(255,255,255,0.5), rgba(139,92,246,0.25) 40%, transparent 70%)",
+            filter: "blur(30px)",
           }}
         />
 
-        {/* Right white glow */}
-        <div
-          className="absolute rounded-full"
-          style={{
-            right: isMobile ? "0%" : "5%",
-            top: "10%",
-            width: isMobile ? 45 : 90,
-            height: isMobile ? 45 : 90,
-            background: "radial-gradient(circle, rgba(255,255,255,0.6), transparent 50%)",
-            filter: "blur(22px)",
-          }}
-        />
-
-        {/* Dark curved surface */}
+        {/* Dark curved surface — planet-like horizon */}
         <div
           className="absolute"
           style={{
-            left: "-20%",
-            right: "-20%",
+            left: "-30%",
+            right: "-30%",
             bottom: 0,
-            height: "48%",
-            background: "#0A0A0F",
-            borderRadius: "50% 50% 0 0 / 20% 20% 0 0",
+            height: "42%",
+            background: "linear-gradient(to bottom, rgba(5,5,10,0.9), #050508)",
+            borderRadius: "50% 50% 0 0 / 22% 22% 0 0",
           }}
         />
       </div>
