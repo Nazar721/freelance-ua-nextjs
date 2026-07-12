@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-
+import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { brands } from "@/data/brands";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -25,65 +24,113 @@ function LogoSet() {
   );
 }
 
-// Generate two layers: static stars + animated drifting particles
-function generateStaticStars() {
-  let html = "";
-  for (let i = 0; i < 100; i++) {
-    const x = (3 + Math.random() * 94).toFixed(1);
-    const y = (30 + Math.random() * 60).toFixed(1);
-    const size = (0.4 + Math.random() * 1.5).toFixed(1);
-    const opacity = (0.2 + Math.random() * 0.5).toFixed(2);
-    const isPurple = i % 8 === 0;
-    const isBlue = !isPurple && i % 5 === 0;
-    const color = isPurple
-      ? "rgba(139,92,246,"
-      : isBlue
-        ? "rgba(99,102,241,"
-        : "rgba(255,255,255,";
-    html += `<div class="star" style="left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${color}${opacity});box-shadow:0 0 ${Number(size) * 2}px ${Number(size) * 0.5}px ${color}0.3)"></div>`;
-  }
-  return html;
+interface Particle {
+  x: number;
+  y: number;
+  baseX: number;
+  baseY: number;
+  size: number;
+  opacity: number;
+  baseOpacity: number;
+  phase: number;
+  phaseSpeed: number;
+  driftRadiusX: number;
+  driftRadiusY: number;
+  r: number;
+  g: number;
+  b: number;
+  glowSize: number;
 }
 
-function generateAnimatedParticles() {
-  let html = "";
-  for (let i = 0; i < 80; i++) {
-    const x = (3 + Math.random() * 94).toFixed(1);
-    const y = (30 + Math.random() * 60).toFixed(1);
-    const size = (0.8 + Math.random() * 2.2).toFixed(1);
-    const dur = (4 + Math.random() * 6).toFixed(1);
-    const delay = (Math.random() * 6).toFixed(1);
+function createParticles(count: number): Particle[] {
+  const particles: Particle[] = [];
+  for (let i = 0; i < count; i++) {
+    const x = 0.03 + Math.random() * 0.94;
+    const y = 0.25 + Math.random() * 0.65;
     const isPurple = i % 7 === 0;
     const isBlue = !isPurple && i % 4 === 0;
-    const color = isPurple
-      ? "rgba(139,92,246,0.85)"
-      : isBlue
-        ? "rgba(99,102,241,0.85)"
-        : "rgba(255,255,255,0.9)";
-    const glowColor = isPurple
-      ? "rgba(139,92,246,0.6)"
-      : isBlue
-        ? "rgba(99,102,241,0.5)"
-        : "rgba(255,255,255,0.5)";
-    const glowSize = isPurple ? 5 : isBlue ? 4 : 3;
-
-    html += `<div class="pf pf${i % 4}" style="left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${color};box-shadow:0 0 ${glowSize * Number(size)}px ${Number(size)}px ${glowColor};animation-duration:${dur}s;animation-delay:${delay}s"></div>`;
+    particles.push({
+      x, y, baseX: x, baseY: y,
+      size: 0.6 + Math.random() * 2.2,
+      opacity: 0.4 + Math.random() * 0.6,
+      baseOpacity: 0.4 + Math.random() * 0.6,
+      phase: Math.random() * Math.PI * 2,
+      phaseSpeed: 0.002 + Math.random() * 0.004,
+      driftRadiusX: 0.02 + Math.random() * 0.04,
+      driftRadiusY: 0.015 + Math.random() * 0.03,
+      r: isPurple ? 139 : isBlue ? 99 : 255,
+      g: isPurple ? 92 : isBlue ? 102 : 255,
+      b: isPurple ? 246 : isBlue ? 241 : 255,
+      glowSize: isPurple ? 6 : isBlue ? 5 : 3,
+    });
   }
-  return html;
+  return particles;
 }
-
-const staticStarsHTML = generateStaticStars();
-const animatedParticlesHTML = generateAnimatedParticles();
 
 export default function TrustedBySection() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animRef = useRef<number>(0);
+  const particlesRef = useRef<Particle[]>([]);
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth <= 768);
+
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
+
+  const animate = useCallback(() => {
+    const canvas = canvasRef.current;
+    const section = sectionRef.current;
+    if (!canvas || !section) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const rect = section.getBoundingClientRect();
+    const w = rect.width;
+    const h = rect.height;
+
+    if (canvas.width !== w * 2 || canvas.height !== h * 2) {
+      canvas.width = w * 2;
+      canvas.height = h * 2;
+      canvas.style.width = w + "px";
+      canvas.style.height = h + "px";
+      ctx.scale(2, 2);
+    }
+
+    ctx.clearRect(0, 0, w, h);
+
+    for (const p of particlesRef.current) {
+      p.phase += p.phaseSpeed;
+      p.x = p.baseX + Math.sin(p.phase) * p.driftRadiusX + Math.cos(p.phase * 0.7) * p.driftRadiusX * 0.6;
+      p.y = p.baseY + Math.cos(p.phase * 1.3) * p.driftRadiusY + Math.sin(p.phase * 0.5) * p.driftRadiusY * 0.5;
+      p.opacity = p.baseOpacity * (0.3 + 0.7 * Math.abs(Math.sin(p.phase * 2)));
+
+      const px = p.x * w;
+      const py = p.y * h;
+
+      const grad = ctx.createRadialGradient(px, py, 0, px, py, p.size + p.glowSize);
+      grad.addColorStop(0, `rgba(${p.r},${p.g},${p.b},${p.opacity})`);
+      grad.addColorStop(0.4, `rgba(${p.r},${p.g},${p.b},${p.opacity * 0.4})`);
+      grad.addColorStop(1, `rgba(${p.r},${p.g},${p.b},0)`);
+
+      ctx.beginPath();
+      ctx.arc(px, py, p.size + p.glowSize, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    animRef.current = requestAnimationFrame(animate);
+  }, []);
+
+  useEffect(() => {
+    particlesRef.current = createParticles(250);
+    animRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animRef.current);
+  }, [animate]);
 
   return (
     <section ref={sectionRef} className="relative px-4 pt-12 overflow-hidden" style={{ background: "transparent" }}>
@@ -103,7 +150,7 @@ export default function TrustedBySection() {
           }}
         />
 
-        {/* HORIZON LINE — visible earth edge */}
+        {/* HORIZON LINE */}
         <div
           className="absolute left-0 right-0"
           style={{
@@ -114,19 +161,14 @@ export default function TrustedBySection() {
           }}
         />
 
-        {/* Static stars — always visible */}
-        <div
-          className="absolute inset-0 overflow-hidden"
-          dangerouslySetInnerHTML={{ __html: staticStarsHTML }}
+        {/* Canvas particles — never stops */}
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 pointer-events-none"
+          style={{ width: "100%", height: "100%" }}
         />
 
-        {/* Animated particles — drift */}
-        <div
-          className="absolute inset-0 overflow-hidden"
-          dangerouslySetInnerHTML={{ __html: animatedParticlesHTML }}
-        />
-
-        {/* Left glow — atmospheric light source */}
+        {/* Left glow */}
         <div
           className="absolute rounded-full"
           style={{
@@ -139,7 +181,7 @@ export default function TrustedBySection() {
           }}
         />
 
-        {/* Right glow — atmospheric light source */}
+        {/* Right glow */}
         <div
           className="absolute rounded-full"
           style={{
@@ -152,7 +194,7 @@ export default function TrustedBySection() {
           }}
         />
 
-        {/* Dark curved surface — planet-like horizon */}
+        {/* Dark curved surface */}
         <div
           className="absolute"
           style={{
