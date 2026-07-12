@@ -83,8 +83,8 @@ export default function HeroSection() {
       {/* Bottom fade */}
       <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-[#0A0A0F] to-transparent z-[1]" />
 
-      {/* Floating particles — disabled on mobile for performance */}
-      {!shouldReduceMotion && !isMobile && (
+      {/* Floating particles — active on all devices */}
+      {!shouldReduceMotion && (
         <div className="absolute inset-0 pointer-events-none z-[1]">
           {particles.map((p) => (
             <motion.div

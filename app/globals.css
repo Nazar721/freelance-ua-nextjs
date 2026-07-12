@@ -864,13 +864,19 @@ body {
 
 /* ─── Mobile performance optimizations (OUTSIDE layer to override Tailwind) ─── */
 @media (max-width: 768px) {
-  /* Show backdrop on mobile — but hide heavy orbs/glow, keep grid */
+  /* Keep backdrop animated on mobile — reduced intensity */
   .site-backdrop__orb,
+  .site-backdrop__glow {
+    opacity: 0.5;
+  }
+
   .site-backdrop__orb::before,
-  .site-backdrop__orb::after,
-  .site-backdrop__glow,
+  .site-backdrop__orb::after {
+    opacity: 0.3;
+  }
+
   .site-backdrop__nodes span {
-    display: none;
+    opacity: 0.4;
   }
 
   /* Keep hero-ambient animation on mobile — it's lightweight */

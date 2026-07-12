@@ -36,28 +36,31 @@ interface Particle {
   phaseSpeed: number;
   driftRadiusX: number;
   driftRadiusY: number;
+  animated: boolean;
   r: number;
   g: number;
   b: number;
   glowSize: number;
 }
 
-function createParticles(count: number): Particle[] {
+function createParticles(count: number, animatedRatio: number): Particle[] {
   const particles: Particle[] = [];
   for (let i = 0; i < count; i++) {
     const x = 0.03 + Math.random() * 0.94;
     const y = 0.25 + Math.random() * 0.65;
     const isPurple = i % 7 === 0;
     const isBlue = !isPurple && i % 4 === 0;
+    const isAnimated = i < count * animatedRatio;
     particles.push({
       x, y, baseX: x, baseY: y,
       size: 0.6 + Math.random() * 2.2,
-      opacity: 0.4 + Math.random() * 0.6,
-      baseOpacity: 0.4 + Math.random() * 0.6,
+      opacity: 0.3 + Math.random() * 0.6,
+      baseOpacity: 0.3 + Math.random() * 0.6,
       phase: Math.random() * Math.PI * 2,
-      phaseSpeed: 0.002 + Math.random() * 0.004,
-      driftRadiusX: 0.02 + Math.random() * 0.04,
-      driftRadiusY: 0.015 + Math.random() * 0.03,
+      phaseSpeed: isAnimated ? 0.002 + Math.random() * 0.004 : 0,
+      driftRadiusX: isAnimated ? 0.02 + Math.random() * 0.04 : 0,
+      driftRadiusY: isAnimated ? 0.015 + Math.random() * 0.03 : 0,
+      animated: isAnimated,
       r: isPurple ? 139 : isBlue ? 99 : 255,
       g: isPurple ? 92 : isBlue ? 102 : 255,
       b: isPurple ? 246 : isBlue ? 241 : 255,
@@ -104,10 +107,15 @@ export default function TrustedBySection() {
     ctx.clearRect(0, 0, w, h);
 
     for (const p of particlesRef.current) {
-      p.phase += p.phaseSpeed;
-      p.x = p.baseX + Math.sin(p.phase) * p.driftRadiusX + Math.cos(p.phase * 0.7) * p.driftRadiusX * 0.6;
-      p.y = p.baseY + Math.cos(p.phase * 1.3) * p.driftRadiusY + Math.sin(p.phase * 0.5) * p.driftRadiusY * 0.5;
-      p.opacity = p.baseOpacity * (0.3 + 0.7 * Math.abs(Math.sin(p.phase * 2)));
+      if (p.animated) {
+        p.phase += p.phaseSpeed;
+        p.x = p.baseX + Math.sin(p.phase) * p.driftRadiusX + Math.cos(p.phase * 0.7) * p.driftRadiusX * 0.6;
+        p.y = p.baseY + Math.cos(p.phase * 1.3) * p.driftRadiusY + Math.sin(p.phase * 0.5) * p.driftRadiusY * 0.5;
+        p.opacity = p.baseOpacity * (0.3 + 0.7 * Math.abs(Math.sin(p.phase * 2)));
+      } else {
+        p.opacity = p.baseOpacity * (0.15 + 0.15 * Math.sin(p.phase * 0.05));
+        p.phase += 0.0003;
+      }
 
       const px = p.x * w;
       const py = p.y * h;
@@ -127,7 +135,7 @@ export default function TrustedBySection() {
   }, []);
 
   useEffect(() => {
-    particlesRef.current = createParticles(250);
+    particlesRef.current = createParticles(250, 0.5);
     animRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animRef.current);
   }, [animate]);
