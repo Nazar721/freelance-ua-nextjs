@@ -9,7 +9,7 @@ import { FadeIn } from "@/components/ui/FadeIn";
 function LogoSet() {
   return (
     <>
-      {brands.slice(0, 8).map((brand, i) => (
+      {brands.map((brand, i) => (
         <div key={`a-${i}`} className="flex items-center shrink-0" style={{ marginRight: 48 }}>
           <Image
             src={brand.logo}
@@ -25,20 +25,16 @@ function LogoSet() {
   );
 }
 
-// MANY stars — dense cluster in center, spread outward
-const stars = Array.from({ length: 80 }, (_, i) => {
-  const isCenter = i < 50;
-  const isEdge = i >= 65;
-  return {
-    id: i,
-    x: isCenter ? 15 + Math.random() * 70 : isEdge ? Math.random() * 100 : 5 + Math.random() * 90,
-    y: 40 + Math.random() * 40,
-    size: isCenter ? (1 + Math.random() * 2) : (0.5 + Math.random() * 1.2),
-    delay: Math.random() * 6,
-    dur: 2 + Math.random() * 5,
-    static: i % 5 === 0, // every 5th star is always visible
-  };
-});
+// Fireflies — BELOW the horizon line, active and bright
+const fireflies = Array.from({ length: 70 }, (_, i) => ({
+  id: i,
+  x: 3 + Math.random() * 94,
+  y: 65 + Math.random() * 30,
+  size: 1.2 + Math.random() * 2.5,
+  delay: Math.random() * 8,
+  dur: 3 + Math.random() * 6,
+  purple: i % 3 === 0,
+}));
 
 export default function TrustedBySection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -59,31 +55,52 @@ export default function TrustedBySection() {
         <div
           className="absolute left-0 right-0"
           style={{
-            top: "15%",
-            height: "60%",
+            top: "10%",
+            height: "70%",
             background: `
-              radial-gradient(ellipse 75% 70% at 50% 70%, rgba(99,102,241,0.5), transparent 55%),
-              radial-gradient(ellipse 55% 50% at 50% 80%, rgba(139,92,246,0.35), transparent 50%),
-              radial-gradient(ellipse 90% 40% at 50% 85%, rgba(99,102,241,0.25), transparent 45%)
+              radial-gradient(ellipse 70% 50% at 50% 85%, rgba(99,102,241,0.55), transparent 50%),
+              radial-gradient(ellipse 50% 40% at 50% 90%, rgba(139,92,246,0.4), transparent 45%),
+              radial-gradient(ellipse 85% 35% at 50% 95%, rgba(99,102,241,0.3), transparent 40%)
             `,
           }}
         />
 
-        {/* Stars — LOTS of them, many always visible */}
-        {!shouldReduceMotion && stars.map((s) => (
+        {/* HORIZON LINE — the "earth" edge */}
+        <div
+          className="absolute left-0 right-0"
+          style={{
+            top: "62%",
+            height: "2px",
+            background: "linear-gradient(90deg, transparent 5%, rgba(99,102,241,0.2) 20%, rgba(139,92,246,0.35) 50%, rgba(99,102,241,0.2) 80%, transparent 95%)",
+            boxShadow: "0 0 12px rgba(99,102,241,0.25), 0 0 30px rgba(99,102,241,0.12)",
+          }}
+        />
+
+        {/* Fireflies — ALL below horizon, active with glow */}
+        {!shouldReduceMotion && fireflies.map((f) => (
           <motion.div
-            key={s.id}
+            key={f.id}
             className="absolute rounded-full pointer-events-none"
             style={{
-              left: `${s.x}%`,
-              top: `${s.y}%`,
-              width: s.size,
-              height: s.size,
-              background: s.id % 7 === 0 ? "rgba(99,102,241,0.9)" : "white",
-              boxShadow: `0 0 ${s.size + 1}px ${s.size / 2}px ${s.id % 7 === 0 ? "rgba(99,102,241,0.4)" : "rgba(255,255,255,0.3)"}`,
+              left: `${f.x}%`,
+              top: `${f.y}%`,
+              width: f.size,
+              height: f.size,
+              background: f.purple ? "rgba(160,140,255,1)" : "rgba(255,255,255,0.9)",
+              boxShadow: f.purple
+                ? `0 0 ${f.size * 5}px ${f.size * 2}px rgba(99,102,241,0.6)`
+                : `0 0 ${f.size * 3}px ${f.size}px rgba(255,255,255,0.45)`,
             }}
-            animate={s.static ? { opacity: [0.6, 1, 0.7, 0.95, 0.6] } : { opacity: [0.1, 0.8, 0.3, 0.9, 0.1] }}
-            transition={{ duration: s.dur, delay: s.delay, repeat: Infinity, ease: "easeInOut" }}
+            animate={{
+              opacity: [0.1, 0.9, 0.15, 0.95, 0.1],
+              scale: [0.7, 1.3, 0.8, 1.25, 0.7],
+            }}
+            transition={{
+              duration: f.dur,
+              delay: f.delay,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
           />
         ))}
 
@@ -91,12 +108,12 @@ export default function TrustedBySection() {
         <div
           className="absolute rounded-full"
           style={{
-            left: isMobile ? "2%" : "8%",
-            top: "20%",
-            width: isMobile ? 40 : 70,
-            height: isMobile ? 40 : 70,
-            background: "radial-gradient(circle, rgba(255,255,255,0.6), transparent 60%)",
-            filter: "blur(20px)",
+            left: isMobile ? "0%" : "5%",
+            top: "15%",
+            width: isMobile ? 50 : 100,
+            height: isMobile ? 50 : 100,
+            background: "radial-gradient(circle, rgba(255,255,255,0.7), transparent 50%)",
+            filter: "blur(25px)",
           }}
         />
 
@@ -104,12 +121,12 @@ export default function TrustedBySection() {
         <div
           className="absolute rounded-full"
           style={{
-            right: isMobile ? "2%" : "8%",
-            top: "15%",
-            width: isMobile ? 35 : 60,
-            height: isMobile ? 35 : 60,
-            background: "radial-gradient(circle, rgba(255,255,255,0.5), transparent 60%)",
-            filter: "blur(18px)",
+            right: isMobile ? "0%" : "5%",
+            top: "10%",
+            width: isMobile ? 45 : 90,
+            height: isMobile ? 45 : 90,
+            background: "radial-gradient(circle, rgba(255,255,255,0.6), transparent 50%)",
+            filter: "blur(22px)",
           }}
         />
 
@@ -135,7 +152,6 @@ export default function TrustedBySection() {
           </h2>
         </FadeIn>
 
-        {/* Logo marquee — with BLUR fade at edges */}
         <FadeIn delay={0.12} className="trusted-partners mt-7">
           <div className="trusted-partners__track-wrapper">
             <div className="trusted-partners__track">
