@@ -26,15 +26,15 @@ function LogoSet() {
 }
 
 // Particles — scattered stars and dust across the dark area
-const particles = Array.from({ length: 60 }, (_, i) => ({
+const particles = Array.from({ length: 120 }, (_, i) => ({
   id: i,
-  startX: 5 + Math.random() * 90,
-  startY: 35 + Math.random() * 55,
-  driftX: -15 + Math.random() * 30,
-  driftY: -10 + Math.random() * 20,
-  size: 1 + Math.random() * 2.5,
-  delay: Math.random() * 12,
-  dur: 6 + Math.random() * 10,
+  startX: 2 + Math.random() * 96,
+  startY: 30 + Math.random() * 60,
+  driftX: -40 + Math.random() * 80,
+  driftY: -25 + Math.random() * 50,
+  size: 0.8 + Math.random() * 3,
+  delay: Math.random() * 8,
+  dur: 3 + Math.random() * 5,
   type: i % 5 === 0 ? "purple" : i % 3 === 0 ? "blue" : "white",
 }));
 
@@ -78,7 +78,7 @@ export default function TrustedBySection() {
           }}
         />
 
-        {/* Particles — stars and cosmic dust with drift */}
+        {/* Particles — stars and cosmic dust with active drift */}
         {!shouldReduceMotion && particles.map((p) => (
           <motion.div
             key={p.id}
@@ -94,22 +94,22 @@ export default function TrustedBySection() {
                   ? "rgba(99,102,241,1)"
                   : "rgba(255,255,255,0.9)",
               boxShadow: p.type === "purple"
-                ? `0 0 ${p.size * 5}px ${p.size * 1.5}px rgba(139,92,246,0.6)`
+                ? `0 0 ${p.size * 6}px ${p.size * 2}px rgba(139,92,246,0.7)`
                 : p.type === "blue"
-                  ? `0 0 ${p.size * 4}px ${p.size * 1.2}px rgba(99,102,241,0.5)`
-                  : `0 0 ${p.size * 3}px ${p.size * 0.8}px rgba(255,255,255,0.4)`,
+                  ? `0 0 ${p.size * 5}px ${p.size * 1.5}px rgba(99,102,241,0.6)`
+                  : `0 0 ${p.size * 4}px ${p.size}px rgba(255,255,255,0.5)`,
             }}
             animate={{
-              opacity: [0.15, 0.7, 0.2, 0.75, 0.15],
-              scale: [0.9, 1.1, 0.92, 1.08, 0.9],
-              x: [0, p.driftX * 0.5, p.driftX, p.driftX * 0.3, 0],
-              y: [0, p.driftY * 0.6, p.driftY, p.driftY * 0.4, 0],
+              opacity: [0.2, 0.9, 0.3, 0.95, 0.2],
+              scale: [0.85, 1.15, 0.9, 1.1, 0.85],
+              x: [0, p.driftX * 0.4, p.driftX, p.driftX * 0.7, 0],
+              y: [0, p.driftY * 0.5, p.driftY, p.driftY * 0.6, 0],
             }}
             transition={{
               duration: p.dur,
               delay: p.delay,
               repeat: Infinity,
-              ease: [0.4, 0, 0.6, 1],
+              ease: "easeInOut",
             }}
           />
         ))}
