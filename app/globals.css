@@ -659,17 +659,21 @@ body {
     overflow: visible;
     display: flex;
     align-items: center;
-    /* Narrow visible zone — only 1 logo fits in the center */
+    /* Wide visible zone — more space between blur frames */
     mask-image: linear-gradient(90deg,
       transparent 0%,
-      transparent 30%,
-      rgba(0,0,0,0.1) 38%,
-      rgba(0,0,0,0.5) 44%,
-      black 48%,
-      black 52%,
-      rgba(0,0,0,0.5) 56%,
-      rgba(0,0,0,0.1) 62%,
-      transparent 70%,
+      transparent 12%,
+      rgba(0,0,0,0.08) 18%,
+      rgba(0,0,0,0.25) 24%,
+      rgba(0,0,0,0.55) 30%,
+      rgba(0,0,0,0.85) 36%,
+      black 42%,
+      black 58%,
+      rgba(0,0,0,0.85) 64%,
+      rgba(0,0,0,0.55) 70%,
+      rgba(0,0,0,0.25) 76%,
+      rgba(0,0,0,0.08) 82%,
+      transparent 88%,
       transparent 100%
     );
   }
@@ -678,34 +682,35 @@ body {
   .trusted-partners::after {
     content: "";
     position: absolute;
-    top: 0;
+    top: -15px;
     z-index: 2;
-    width: 35%;
-    height: 100%;
+    width: 48%;
+    height: calc(100% + 30px);
     pointer-events: none;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
 
   .trusted-partners::before {
     left: 0;
-    background: linear-gradient(90deg, rgba(10,10,15,1) 0%, rgba(10,10,15,0.95) 50%, rgba(10, 10, 15, 0) 100%);
+    background: linear-gradient(90deg, rgba(10,10,15,1) 0%, rgba(10,10,15,1) 30%, rgba(10, 10, 15, 0) 100%);
   }
 
   .trusted-partners::after {
     right: 0;
-    background: linear-gradient(270deg, rgba(10,10,15,1) 0%, rgba(10,10,15,0.95) 50%, rgba(10, 10, 15, 0) 100%);
+    background: linear-gradient(270deg, rgba(10,10,15,1) 0%, rgba(10,10,15,1) 30%, rgba(10, 10, 15, 0) 100%);
   }
 
   .trusted-partners:hover .trusted-partners__track-wrapper {
-    animation-play-state: paused;
+    /* NO pause — smooth continuous motion */
   }
 
   .trusted-partners__track-wrapper {
     display: flex;
     width: max-content;
     will-change: transform;
-    animation: seamless-marquee 80s linear infinite;
+    animation: seamless-marquee 90s linear infinite;
+    transform: translate3d(0, 0, 0);
   }
 
   .trusted-partners__track {
