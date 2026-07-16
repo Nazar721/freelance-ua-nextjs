@@ -1,9 +1,9 @@
 export interface Case {
   id: number;
-  category: string;
-  title: string;
-  description: string;
-  review: string;
+  categoryKey: string;
+  titleKey: string;
+  descriptionKey: string;
+  reviewKey: string;
   image?: string;
   video?: string;
   link?: string;
@@ -11,7 +11,7 @@ export interface Case {
 
 export interface Testimonial {
   id: number;
-  text: string;
+  textKey: string;
   author?: string;
 }
 

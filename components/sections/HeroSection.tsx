@@ -5,8 +5,9 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { ArrowRight, Zap } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import CountUp from "@/components/ui/CountUp";
+import { useTranslation } from "@/lib/LanguageContext";
 
-const heroWords = ["Ваш", "цифровий"];
+const heroWords = ["hero.word1", "hero.word2"];
 
 const stagger = {
   hidden: {},
@@ -45,6 +46,7 @@ const particles = Array.from({ length: 20 }, (_, i) => ({
 }));
 
 export default function HeroSection() {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth <= 768);
@@ -126,7 +128,7 @@ export default function HeroSection() {
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#6366F1]/15">
               <Zap size={12} className="text-[#6366F1]" />
             </span>
-            Фрілансери, яким довіряють бізнеси
+            {t("hero.badge")}
           </div>
         </motion.div>
 
@@ -139,13 +141,13 @@ export default function HeroSection() {
           style={isMobile ? undefined : { perspective: 800 }}
         >
           <span className="flex flex-wrap justify-center gap-x-[0.3em]" style={isMobile ? undefined : { transformStyle: "preserve-3d" }}>
-            {heroWords.map((word) => (
+            {heroWords.map((key) => (
               <motion.span
-                key={word}
+                key={key}
                 variants={isMobile ? wordRevealMobile : wordReveal}
                 className="text-[#F8F8FF] inline-block"
               >
-                {word}
+                {t(key)}
               </motion.span>
             ))}
           </span>
@@ -155,7 +157,7 @@ export default function HeroSection() {
             transition={{ duration: isMobile ? 0.4 : 1, delay: isMobile ? 0.2 : 0.6, ease: [0.22, 1, 0.36, 1] as const }}
             className="gradient-text-motion bg-gradient-to-r from-[#6366F1] via-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent block -mt-2"
           >
-            бізнес-партнер
+            {t("hero.partner")}
           </motion.span>
         </motion.h1>
 
@@ -166,8 +168,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-base sm:text-lg md:text-xl text-[#8B8B9E] max-w-2xl mx-auto mb-8 leading-relaxed"
         >
-          ІТ-розробка, графічний дизайн та відеомонтаж — все в одному місці.
-          Якість без переплат, дедлайни без затримок.
+          {t("hero.desc")}
         </motion.p>
 
         {/* CTA buttons */}
@@ -185,7 +186,7 @@ export default function HeroSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
           >
-            Обговорити проєкт
+            {t("hero.cta.start")}
             <ArrowRight size={18} />
           </motion.a>
           <motion.a
@@ -196,7 +197,7 @@ export default function HeroSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
           >
-            Дивитись кейси
+            {t("hero.cta.portfolio")}
           </motion.a>
         </motion.div>
 
@@ -208,9 +209,9 @@ export default function HeroSection() {
           className="mt-8 grid grid-cols-3 gap-3 sm:mt-12 max-w-lg mx-auto"
         >
           {[
-            { value: 100, suffix: "+", label: "Завершених проєктів" },
-            { value: 100, suffix: "%", label: "Задоволених клієнтів" },
-            { value: 3, suffix: "", label: "Напрямки роботи" },
+            { value: 100, suffix: "+", label: t("hero.stat.projects") },
+            { value: 100, suffix: "%", label: t("hero.stat.clients") },
+            { value: 3, suffix: "", label: t("hero.stat.years") },
           ].map((stat, i) => (
             <motion.div
               key={stat.label}

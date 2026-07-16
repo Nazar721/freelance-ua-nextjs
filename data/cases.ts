@@ -3,106 +3,68 @@ import { Case } from "@/types";
 export const cases: Case[] = [
 	{
 		id: 1,
-		category: 'Вебсайт 🌐',
-		title: 'Лендинг для Південь Солар',
-		description:
-			'Розробили лендинг для компанії з встановлення сонячних панелей «Південь Солар».',
-		review:
-			'Все чудово, за 5 годин зробили сайт який ми хотіли. Дякуємо команді за швидку та професійну роботу!',
+		categoryKey: 'cases.1.category',
+		titleKey: 'cases.1.title',
+		descriptionKey: 'cases.1.description',
+		reviewKey: 'cases.1.review',
 		video: '/media/cases/case_pivdensolar.webm',
 		link: 'https://pivdensolar.com.ua',
 	},
 	{
 		id: 13,
-		category: 'Вебсайт 🌐',
-		title: 'Сайт + адмінка для автосервісу з 🇵🇱',
-		description: 'Розробляли сайт для польської компанії, по автомобілям 🔧',
-		review:
-			'Був кейс повʼязаний із кузовним ремонтом та маляркою у Варшаві. Зробили сайт на чистому коді й дуже швидко. Дякую 👍',
+		categoryKey: 'cases.2.category',
+		titleKey: 'cases.2.title',
+		descriptionKey: 'cases.2.description',
+		reviewKey: 'cases.2.review',
 		video: '/media/cases/repair_collision_9.mp4',
 		link: 'https://kolizjaoc.pl/pl',
 	},
-	// {
-	// 	id: 2,
-	// 	category: 'Графічний дизайн 🎨',
-	// 	title: 'YouTube-банер для DJANOVA',
-	// 	description:
-	// 		'Виконали замовлення на оформлення банеру для YouTube від діджейки DJANOVA. Клієнт у захваті.',
-	// 	review:
-	// 		'Дякую велике за розробку мого банера, ваша команда відтворила саме те що я хотіла...',
-	// 	image: '/media/cases/case_1_yt_bannertdjanova.jpg',
-	// },
 	{
 		id: 11,
-		category: 'Моушн-дизайн 🎬',
-		title: 'Відеоогляду сайту Selloflow',
-		description: 'Створили відеоогляд сайту для стартапу (selloflow.store)',
-		review:
-			'Дякую агенції Freelance UA за роботу. Робили вступне відео для стартапу Selloflow. Вийшло якісніше, ніж очікував. Дякую',
+		categoryKey: 'cases.3.category',
+		titleKey: 'cases.3.title',
+		descriptionKey: 'cases.3.description',
+		reviewKey: 'cases.3.review',
 		video: '/media/cases/case_selloflow_2.mp4',
 	},
 	{
-		id: 3,
-		category: 'Моушн-дизайн 🎬',
-		title: 'Motion-графіка для огляду бота',
-		description: 'Створили моушн-графіку для відеоогляду Telegram-бота.',
-		review:
-			'Мені дуже подобається. Дякую Freelance UA || Digital Agency, як завжди все чітко...',
-		video: '/media/cases/case_2.mp4',
-	},
-	// {
-	//   id: 3,
-	//   category: "Telegram-бот 🤖",
-	//   title: "Бот для автоматизації онбордингу",
-	//   description: "Розробили Telegram-бот для автоматизації онбордингу та прийому платежів з веб-адмінпанеллю, двостороннім чатом, інтеграцією Convert2pay.",
-	//   review: "ТГ бот вийшов навіть краще ніж ми очікували, тих моментальна підтримка...",
-	//   image: "/media/cases/case_3.jpg",
-	// },
-	{
 		id: 4,
-		category: 'Відеомонтаж 🎥',
-		title: 'Відео для блогера (крипта)',
-		description:
-			'Виконали замовлення від блогера Нікіта Шеремет (крипта). Домовились про подальшу співпрацю.',
-		review:
-			'Результатом дуже задоволений, якість, швидкість та результат на найвищому рівні...',
+		categoryKey: 'cases.4.category',
+		titleKey: 'cases.4.title',
+		descriptionKey: 'cases.4.description',
+		reviewKey: 'cases.4.review',
 		video: '/media/cases/shermet.mp4',
 	},
-
-	// {
-	// 	id: 10,
-	// 	category: 'Дизайн 🎨',
-	// 	title: 'Дизайн Інстаграм-профілю',
-	// 	description: 'Створили дизайн  інстаграм для компанії "Південь Солар".',
-	// 	review:
-	// 		'Все пройшло чудово, комунікацію виражає, всім задовлений, рекомендую!',
-	// 	image: '/media/cases/design_pivdensolar.jpg',
-	// },
+	{
+		id: 31,
+		categoryKey: 'cases.5.category',
+		titleKey: 'cases.5.title',
+		descriptionKey: 'cases.5.description',
+		reviewKey: 'cases.5.review',
+		image: '/media/cases/conference-banner.jpg',
+	},
 	{
 		id: 30,
-		category: 'Дизайн 🎨',
-		title: 'Банер для Instagram',
-		description: 'Створили банер для Instagram сторінки за побажаннями клієнта',
-		review:
-			'дуже дякую за оперативність, всі побажання враховані, я дуже задоволена, буду замовляти ще, ще раз дякую!!',
+		categoryKey: 'cases.6.category',
+		titleKey: 'cases.6.title',
+		descriptionKey: 'cases.6.description',
+		reviewKey: 'cases.6.review',
 		image: '/media/cases/design-inst.webp',
 	},
 	{
 		id: 12,
-		category: 'Відеомонтаж АІ 🦾',
-		title: 'Маска за допомогою AI',
-		description: 'Накладали маску, за допомогою AI',
-		review:
-			'Працювали над накладанням AI-маски на мʼязи плеча. Все вийшло чітко: маска лежить ідеально, відео — просто вогонь! Результатом задоволений на всі 100%, виглядає дуже потужно. Рекомендую як профі у темі АІ!',
-		video: '/media/cases/case_1_1.mp4',
+		categoryKey: 'cases.7.category',
+		titleKey: 'cases.7.title',
+		descriptionKey: 'cases.7.description',
+		reviewKey: 'cases.7.review',
+		video: '/media/cases/ai-video-event.mp4',
 	},
 	{
 		id: 15,
-		category: 'Відеомонтаж АІ 🦾',
-		title: 'АІ відео для салону краси',
-		description: 'створили  відео за допомогою АІ для салону краси Sestro',
-		review:
-			'Все сподобалось, комунікація на висоті, відео вийшло чудове, співпрацею забарвлена, буду звертатися ще, дуже дякую!',
+		categoryKey: 'cases.8.category',
+		titleKey: 'cases.8.title',
+		descriptionKey: 'cases.8.description',
+		reviewKey: 'cases.8.review',
 		video: '/media/cases/ren2.mp4',
 	},
 ]

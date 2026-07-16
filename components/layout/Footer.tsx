@@ -1,9 +1,13 @@
+"use client";
+
 import Image from 'next/image'
 import { Phone, Send } from 'lucide-react'
-import Link from 'next/link'
 import { siteConfig } from '@/config/site'
+import { useTranslation } from "@/lib/LanguageContext";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
 	return (
 		<footer
 			id='contacts'
@@ -26,12 +30,12 @@ export default function Footer() {
 							</div>
 						</div>
 						<p className='text-[#8B8B9E] text-sm leading-relaxed'>
-							Команда фрілансерів для вашого бізнесу. ІТ, дизайн, відео.
+							{t("footer.desc")}
 						</p>
 					</div>
 
 					<div className='premium-surface rounded-2xl border border-[#2A2A38]/60 bg-[#0A0A0F]/20 p-5'>
-						<h3 className='text-[#F8F8FF] font-semibold mb-4'>Контакти</h3>
+						<h3 className='text-[#F8F8FF] font-semibold mb-4'>{t("footer.contact")}</h3>
 						<div className='flex flex-col gap-3'>
 							<a
 								href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
@@ -76,7 +80,7 @@ export default function Footer() {
 					</div>
 
 					<div className='premium-surface rounded-2xl border border-[#2A2A38]/60 bg-[#0A0A0F]/20 p-5'>
-						<h3 className='text-[#F8F8FF] font-semibold mb-4'>Наш канал</h3>
+						<h3 className='text-[#F8F8FF] font-semibold mb-4'>{t("footer.services")}</h3>
 						<a
 							href='https://t.me/freelance24_7_365'
 							target='_blank'
@@ -84,30 +88,15 @@ export default function Footer() {
 							className='inline-flex items-center gap-2 text-[#6366F1] hover:text-[#8B5CF6] transition-colors text-sm font-medium'
 						>
 							<Send size={16} />
-							Telegram-канал з кейсами
+							{t("footer.telegram")}
 						</a>
 					</div>
 				</div>
 
 				<div className='border-t border-[#2A2A38] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[#555568] text-sm'>
 					<span>
-						© {new Date().getFullYear()} {siteConfig.name}. Всі права захищені.
+						© {new Date().getFullYear()} {siteConfig.name}. {t("footer.rights")}
 					</span>
-					<Link
-						href='https://yednist.digital'
-						target='_blank'
-						rel='noopener noreferrer'
-						className='flex items-center gap-1.5 opacity-60 hover:opacity-100 transition-opacity duration-300'
-					>
-						<span className='text-[10px] whitespace-nowrap'>Розробник сайту партнер</span>
-						<Image
-							src='/media/brands/yednistdigital.webp'
-							alt='Єдність.Digital'
-							width={80}
-							height={17}
-							className='h-4 w-auto'
-						/>
-					</Link>
 				</div>
 			</div>
 		</footer>

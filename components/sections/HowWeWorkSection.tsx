@@ -3,26 +3,14 @@
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { MessageSquare, Settings, CheckCircle2 } from "lucide-react";
+import { useTranslation } from "@/lib/LanguageContext";
 
-const steps = [
-  {
-    icon: MessageSquare,
-    title: "Обговорення",
-    description: "Пишете нам у Telegram — обговорюємо деталі, терміни та вартість. Без зайвих формальностей.",
-  },
-  {
-    icon: Settings,
-    title: "Виконання",
-    description: "Беремось до роботи відразу. Регулярно надсилаємо проміжні результати та тримаємо вас у курсі.",
-  },
-  {
-    icon: CheckCircle2,
-    title: "Здача та правки",
-    description: "Здаємо готовий результат. Вносимо правки безкоштовно до вашого повного задоволення.",
-  },
-];
+const stepIcons = [MessageSquare, Settings, CheckCircle2];
+const stepKeys = ["process.1", "process.2", "process.3", "process.4"];
+   
 
 export default function HowWeWorkSection() {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px 0px" });
   const reduced = useReducedMotion();
@@ -38,10 +26,10 @@ export default function HowWeWorkSection() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-4">
-            Як ми працюємо
+            {t("process.title")}
           </h2>
           <p className="text-[#8B8B9E] text-lg max-w-2xl mx-auto">
-            Три простих кроки до вашого результату
+            {t("process.desc")}
           </p>
         </motion.div>
 
@@ -58,12 +46,13 @@ export default function HowWeWorkSection() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {steps.map((step, index) => {
+            {stepKeys.slice(0, 3).map((key, index) => {
+              const Icon = stepIcons[index];
               const d = 0.2 + index * 0.18;
 
               return (
                 <motion.div
-                  key={step.title}
+                  key={key}
                   className="text-center"
                   initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
                   animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
@@ -128,7 +117,7 @@ export default function HowWeWorkSection() {
                           delay: d + 0.15,
                         }}
                       >
-                        <step.icon size={28} className="text-[#6366F1]" />
+                        <Icon size={28} className="text-[#6366F1]" />
                       </motion.div>
                     </motion.div>
 
@@ -149,9 +138,9 @@ export default function HowWeWorkSection() {
                   </div>
 
                   {/* Text */}
-                  <h3 className="text-[#F8F8FF] font-bold text-xl mb-3">{step.title}</h3>
+                  <h3 className="text-[#F8F8FF] font-bold text-xl mb-3">{t(key + ".title")}</h3>
                   <p className="text-[#8B8B9E] text-sm leading-relaxed max-w-xs mx-auto">
-                    {step.description}
+                    {t(key + ".desc")}
                   </p>
                 </motion.div>
               );
