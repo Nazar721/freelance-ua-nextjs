@@ -3,25 +3,28 @@
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useTranslation } from "@/lib/LanguageContext";
 
-const pricingFactors = [
-  "Складність та обсяг завдання",
-  "Терміни виконання",
-  "Кількість правок та ітерацій",
-  "Унікальність і рівень кастомізації",
-  "Технічні вимоги до проєкту",
+const pricingFactorKeys = [
+  "pricing.factor.1",
+  "pricing.factor.2",
+  "pricing.factor.3",
+  "pricing.factor.4",
+  "pricing.factor.5",
 ];
 
 export default function PricingSection() {
+  const { t } = useTranslation();
+
   return (
     <section id="pricing" className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <FadeIn className="text-center mb-16" y={30} blur={8}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-4">
-            Ціноутворення
+            {t("pricing.title")}
           </h2>
           <p className="text-[#8B8B9E] text-lg max-w-2xl mx-auto">
-            Кожен проєкт унікальний — ціна завжди індивідуальна
+            {t("pricing.desc")}
           </p>
         </FadeIn>
 
@@ -29,19 +32,19 @@ export default function PricingSection() {
           <FadeIn delay={0.15} y={40} blur={6}>
             <div className="premium-surface glow-border bg-[#111118] border border-[#2A2A38] rounded-2xl p-8 h-full">
               <h3 className="text-[#F8F8FF] font-bold text-xl mb-6">
-                Що впливає на вартість
+                {t("pricing.factorsTitle")}
               </h3>
               <ul className="space-y-4">
-                {pricingFactors.map((factor, i) => (
+                {pricingFactorKeys.map((key, i) => (
                   <FadeIn
-                    key={factor}
+                    key={key}
                     delay={0.3 + i * 0.08}
                     x={-20}
                     blur={0}
                   >
                     <li className="group flex items-center gap-3 text-[#8B8B9E] transition-all duration-300 hover:text-[#F8F8FF] hover:translate-x-1">
                       <ChevronRight size={16} className="text-[#6366F1] shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
-                      {factor}
+                      {t(key)}
                     </li>
                   </FadeIn>
                 ))}
@@ -55,11 +58,10 @@ export default function PricingSection() {
                 💬
               </div>
               <h3 className="text-[#F8F8FF] font-bold text-2xl mb-4">
-                Безкоштовна консультація
+                {t("pricing.consultTitle")}
               </h3>
               <p className="text-[#8B8B9E] mb-8 leading-relaxed">
-                Опишіть ваше завдання — ми оцінимо проєкт та запропонуємо
-                оптимальне рішення за чесною ціною.
+                {t("pricing.consultDesc")}
               </p>
               <a
                 href={siteConfig.telegram.consultationUrl}
@@ -67,7 +69,7 @@ export default function PricingSection() {
                 rel="noopener noreferrer"
                 className="magnetic-button inline-flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_44px_rgba(99,102,241,0.42)]"
               >
-                Отримати оцінку
+                {t("pricing.getEstimate")}
                 <ArrowRight size={18} />
               </a>
             </div>

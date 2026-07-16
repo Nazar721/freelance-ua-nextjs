@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { brands } from "@/data/brands";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useTranslation } from "@/lib/LanguageContext";
 
 function LogoSet() {
   return (
@@ -71,6 +72,7 @@ function createParticles(count: number, animatedRatio: number): Particle[] {
 }
 
 export default function TrustedBySection() {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
@@ -220,7 +222,7 @@ export default function TrustedBySection() {
       <div className="relative z-10 mx-auto max-w-3xl">
         <FadeIn className="text-center">
           <h2 className="text-2xl font-bold leading-tight text-[#F8F8FF] sm:text-3xl md:text-4xl">
-            <span className="text-[#6366F1]">Нам довіряють</span>
+            <span className="text-[#6366F1]">{t("trusted.title")}</span>
           </h2>
         </FadeIn>
 

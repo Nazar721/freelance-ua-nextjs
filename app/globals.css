@@ -581,9 +581,9 @@ body {
   }
 
   .premium-surface:hover {
-    transform: translateY(-8px);
-    border-color: rgba(99, 102, 241, 0.72);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34), 0 0 42px rgba(99, 102, 241, 0.14);
+    transform: translateY(-10px);
+    border-color: rgba(99, 102, 241, 0.8);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 0 60px rgba(99, 102, 241, 0.2);
   }
 
   .premium-surface:hover::before {
@@ -595,12 +595,13 @@ body {
   }
 
   .premium-icon {
-    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 420ms ease;
+    transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 450ms ease, background 450ms ease;
   }
 
   .premium-surface:hover .premium-icon {
-    transform: translateY(-4px) scale(1.06);
-    box-shadow: 0 0 34px rgba(99, 102, 241, 0.22);
+    transform: translateY(-8px) scale(1.12);
+    box-shadow: 0 0 60px rgba(99, 102, 241, 0.4), 0 0 120px rgba(99, 102, 241, 0.15);
+    background: rgba(99, 102, 241, 0.25);
   }
 
   .magnetic-button {
@@ -873,6 +874,56 @@ body {
     display: none;
   }
 
+  /* Static premium surface on mobile — no hover effects */
+  .premium-surface-static:hover {
+    transform: none;
+    border-color: #2A2A38;
+    box-shadow: none;
+  }
+
+  .premium-surface-static:hover::before {
+    opacity: 0;
+  }
+
+  .premium-surface-static:hover::after {
+    transform: none;
+  }
+
+  /* Icon visible by default on mobile */
+  .premium-surface-static .premium-icon {
+    background: rgba(99, 102, 241, 0.2) !important;
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.15) !important;
+  }
+
+  .premium-surface-static:hover .premium-icon {
+    transform: none;
+  }
+
+  /* Remove hover effects on list items on mobile */
+  .premium-surface-static .group\/item:hover {
+    transform: none;
+    color: #8B8B9E;
+  }
+
+  .premium-surface-static .group\/item:hover span {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Make decorative background icons visible on mobile */
+  .premium-surface-static > .absolute {
+    opacity: 1 !important;
+    color: rgba(99, 102, 241, 0.08) !important;
+  }
+
+  /* Remove ALL hover transitions on mobile */
+  .premium-surface-static,
+  .premium-surface-static *,
+  .premium-surface-static *::before,
+  .premium-surface-static *::after {
+    transition: none !important;
+  }
+
   /* Keep hero-ambient animation on mobile — it's lightweight */
   /* (animation: none removed — ambient-shift uses only gradients, no blur) */
 
@@ -901,42 +952,96 @@ body {
     animation-duration: 140s;
   }
 
-  /* Remove heavy hover effects on touch devices */
-  .premium-surface:hover {
-    transform: none;
-    box-shadow: none;
+  /* ===== KILL ALL HOVER EFFECTS ON MOBILE ===== */
+
+  /* Premium surface — no lift, no glow, no shine */
+  .premium-surface:hover,
+  .premium-surface-static:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: #2A2A38 !important;
   }
 
-  .premium-surface:hover::before {
-    opacity: 0;
+  .premium-surface:hover::before,
+  .premium-surface-static:hover::before {
+    opacity: 0 !important;
   }
 
-  .premium-surface:hover::after {
-    transform: none;
+  .premium-surface:hover::after,
+  .premium-surface-static:hover::after {
+    transform: none !important;
   }
 
-  .premium-surface:hover .premium-icon {
-    transform: none;
-    box-shadow: none;
+  .premium-surface:hover .premium-icon,
+  .premium-surface-static:hover .premium-icon {
+    transform: none !important;
+    box-shadow: none !important;
   }
 
+  /* Tilt cards — no 3D tilt */
   .tilt-card:hover {
-    transform: none;
-    box-shadow: none;
+    transform: none !important;
+    box-shadow: none !important;
   }
 
+  /* Glow border — hide overlay */
   .glow-border::before {
-    display: none;
+    display: none !important;
   }
 
-  /* Disable magnetic button light sweep on mobile */
+  /* Magnetic button — no light sweep */
   .magnetic-button::before {
-    display: none;
+    display: none !important;
   }
 
-  /* Disable trusted partners logo hover on mobile */
+  /* Trusted partners logo — no scale */
   .trusted-partners__logo:hover {
-    transform: none;
+    transform: none !important;
+  }
+
+  /* ALL Tailwind hover: classes — kill transforms, shadows, scales */
+  [class*="hover\\:scale"],
+  [class*="hover\\:-translate"],
+  [class*="hover\\:shadow"],
+  [class*="hover\\:bg-"],
+  [class*="hover\\:border-"],
+  [class*="hover\\:text-"],
+  [class*="hover\\:underline"] {
+    --tw-translate-x: 0 !important;
+    --tw-translate-y: 0 !important;
+    --tw-scale-x: 1 !important;
+    --tw-scale-y: 1 !important;
+  }
+
+  /* Kill hover transforms on buttons */
+  .magnetic-button:hover {
+    transform: none !important;
+  }
+
+  /* Group hover on list items — no translate, no color change */
+  .group\/item:hover {
+    transform: none !important;
+    color: #8B8B9E !important;
+  }
+
+  .group\/item:hover span {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Group hover on nav links — no underline animation */
+  .group:hover span {
+    width: 0 !important;
+  }
+
+  /* Cases card — no scale on images */
+  .group\/card:hover img {
+    transform: none !important;
+  }
+
+  /* Testimonials card — no shadow */
+  .group:hover {
+    box-shadow: none !important;
   }
 
   /* Remove all backdrop-blur on mobile — causes blurriness on mobile GPUs */

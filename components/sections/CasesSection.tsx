@@ -10,18 +10,20 @@ import "yet-another-react-lightbox/styles.css";
 import { cases } from "@/data/cases";
 import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useTranslation } from "@/lib/LanguageContext";
 
 const getMimeType = (src: string) =>
   src.endsWith(".webm") ? "video/webm" : "video/mp4";
 
-const slides = cases.map((c) =>
-  c.video
-    ? { type: "video" as const, sources: [{ src: c.video, type: getMimeType(c.video) }], autoPlay: true }
-    : { type: "image" as const, src: c.image!, alt: c.title }
-);
-
 export default function CasesSection() {
+  const { t } = useTranslation();
   const [lightboxIndex, setLightboxIndex] = useState(-1);
+  const slides = cases.map((c) =>
+    c.video
+      ? { type: "video" as const, sources: [{ src: c.video, type: getMimeType(c.video) }], autoPlay: true }
+      : { type: "image" as const, src: c.image!, alt: t(c.titleKey) }
+  );
+
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth <= 768);
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
@@ -35,10 +37,10 @@ export default function CasesSection() {
       <div className="max-w-7xl mx-auto">
         <FadeIn className="text-center mb-16" y={30} blur={8}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-4">
-            Наші кейси
+            {t("cases.title")}
           </h2>
           <p className="text-[#8B8B9E] text-lg max-w-2xl mx-auto">
-            Реальні проєкти — реальні результати
+            {t("cases.desc")}
           </p>
         </FadeIn>
 
@@ -54,7 +56,7 @@ export default function CasesSection() {
                 <button
                   onClick={() => setLightboxIndex(index)}
                   className="relative w-full h-52 bg-[#0A0A0F] overflow-hidden group cursor-zoom-in"
-                  aria-label={`Відкрити медіа: ${caseItem.title}`}
+                  aria-label={`${t("cases.openMedia")} ${t(caseItem.titleKey)}`}
                 >
                   {caseItem.video ? (
                     <>
@@ -68,7 +70,7 @@ export default function CasesSection() {
                   ) : caseItem.image ? (
                     <>
                       <Image src={caseItem.image} alt="" fill aria-hidden className="object-cover scale-110 blur-2xl opacity-30" />
-                      <Image src={caseItem.image} alt={caseItem.title} fill className="object-contain z-10 transition-transform duration-700 group-hover:scale-110" />
+                      <Image src={caseItem.image} alt={t(caseItem.titleKey)} fill className="object-contain z-10 transition-transform duration-700 group-hover:scale-110" />
                     </>
                   ) : null}
                   <div className="absolute inset-0 z-20 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
@@ -79,12 +81,12 @@ export default function CasesSection() {
                 </button>
 
                 <div className="p-6 flex flex-col flex-1">
-                  <span className="text-xs font-medium text-[#6366F1] mb-2">{caseItem.category}</span>
-                  <h3 className="text-[#F8F8FF] font-bold text-base mb-3">{caseItem.title}</h3>
-                  <p className="text-[#8B8B9E] text-sm leading-relaxed mb-4 flex-1">{caseItem.description}</p>
+                  <span className="text-xs font-medium text-[#6366F1] mb-2">{t(caseItem.categoryKey)}</span>
+                  <h3 className="text-[#F8F8FF] font-bold text-base mb-3">{t(caseItem.titleKey)}</h3>
+                  <p className="text-[#8B8B9E] text-sm leading-relaxed mb-4 flex-1">{t(caseItem.descriptionKey)}</p>
                   <div className="bg-[#0A0A0F] rounded-xl p-4 transition-all duration-300 hover:bg-[#0A0A0F]/70 hover:shadow-[inset_0_0_0_1px_rgba(99,102,241,0.22)]">
                     <Quote size={14} className="text-[#6366F1] mb-2" />
-                    <p className="text-[#8B8B9E] text-xs italic leading-relaxed">{caseItem.review}</p>
+                    <p className="text-[#8B8B9E] text-xs italic leading-relaxed">{t(caseItem.reviewKey)}</p>
                   </div>
                   {caseItem.link && (
                     <a
@@ -94,7 +96,7 @@ export default function CasesSection() {
                       className="mt-4 inline-flex items-center gap-1.5 text-xs text-[#6366F1] hover:text-[#4F46E5] transition-all duration-300 hover:translate-x-0.5"
                     >
                       <ExternalLink size={12} />
-                      Відвідати сайт
+                      {t("cases.visit")}
                     </a>
                   )}
                 </div>
@@ -110,7 +112,7 @@ export default function CasesSection() {
             rel="noopener noreferrer"
             className="magnetic-button inline-flex items-center gap-2 border border-[#6366F1] text-[#6366F1] hover:bg-[#6366F1] hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]"
           >
-            Дивитись всі кейси
+            {t("cases.allCases")}
             <ArrowRight size={18} />
           </a>
         </FadeIn>

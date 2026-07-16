@@ -6,8 +6,10 @@ import { Quote, ArrowRight } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useTranslation } from "@/lib/LanguageContext";
 
 export default function TestimonialsSection() {
+  const { t } = useTranslation();
   const [emblaRef] = useEmblaCarousel(
     { loop: true, align: "start" },
     [Autoplay({ delay: 1600, stopOnInteraction: false })]
@@ -18,10 +20,10 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto">
         <FadeIn className="text-center mb-16" y={30} blur={8}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-4">
-            Відгуки клієнтів
+            {t("testimonials.title")}
           </h2>
           <p className="text-[#8B8B9E] text-lg max-w-2xl mx-auto">
-            Що кажуть ті, хто вже з нами працював
+            {t("testimonials.desc")}
           </p>
         </FadeIn>
 
@@ -37,7 +39,7 @@ export default function TestimonialsSection() {
                     <Quote size={18} className="text-[#6366F1]" />
                   </div>
                   <p className="text-[#F8F8FF]/90 text-sm leading-relaxed mb-4 flex-1">
-                    {testimonial.text}
+                    {t(testimonial.textKey)}
                   </p>
                   {testimonial.author && (
                     <p className="text-[#6366F1] text-sm font-semibold">
@@ -57,7 +59,7 @@ export default function TestimonialsSection() {
             rel="noopener noreferrer"
             className="magnetic-button inline-flex items-center gap-2 text-[#6366F1] hover:text-[#8B5CF6] font-semibold transition-all duration-300 hover:-translate-y-0.5 group"
           >
-            Переглянути всі відгуки
+            {t("testimonials.allReviews")}
             <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </div>

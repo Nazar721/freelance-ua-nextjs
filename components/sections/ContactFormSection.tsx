@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useTranslation } from "@/lib/LanguageContext";
 
 // ============================================================
 // EmailJS placeholders — replace with your real values
@@ -31,6 +32,7 @@ interface Toast {
 }
 
 export default function ContactFormSection() {
+  const { t } = useTranslation();
   const [form, setForm] = useState<FormState>({
     name: "",
     telegram: "",
@@ -49,12 +51,12 @@ export default function ContactFormSection() {
 
   const validate = useCallback((): boolean => {
     const next: Errors = {};
-    if (!form.name.trim()) next.name = "Введіть ваше ім'я";
-    if (!form.telegram.trim()) next.telegram = "Введіть Telegram Username";
-    if (!form.message.trim()) next.message = "Опишіть ваш проєкт";
+    if (!form.name.trim()) next.name = t("contact.validation.name");
+    if (!form.telegram.trim()) next.telegram = t("contact.validation.telegram");
+    if (!form.message.trim()) next.message = t("contact.validation.message");
     setErrors(next);
     return Object.keys(next).length === 0;
-  }, [form]);
+  }, [form, t]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -93,11 +95,11 @@ export default function ContactFormSection() {
       );
 
       setForm({ name: "", telegram: "", message: "" });
-      showToast("success", "Повідомлення надіслано! Ми зв'яжемось з вами.");
+      showToast("success", t("contact.toast.success"));
     } catch {
       showToast(
         "error",
-        "Щось пішло не так. Спробуйте ще раз або напишіть у Telegram."
+        t("contact.toast.error")
       );
     } finally {
       setSending(false);
@@ -113,10 +115,10 @@ export default function ContactFormSection() {
       <div className="max-w-7xl mx-auto">
         <FadeIn className="text-center mb-14" y={30} blur={8}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-4">
-            Обговоримо ваш проєкт
+            {t("contact.title")}
           </h2>
           <p className="text-[#8B8B9E] text-lg max-w-xl mx-auto leading-relaxed">
-            Опишіть завдання, і ми зв&apos;яжемось з вами найближчим часом
+            {t("contact.desc")}
           </p>
         </FadeIn>
 
@@ -132,14 +134,14 @@ export default function ContactFormSection() {
                   htmlFor="contact-name"
                   className="block text-sm font-medium text-[#F8F8FF]/80 mb-2"
                 >
-                  Ваше ім&apos;я <span className="text-[#6366F1]">*</span>
+                  {t("contact.name")} <span className="text-[#6366F1]">*</span>
                 </label>
                 <input
                   id="contact-name"
                   name="name"
                   type="text"
                   autoComplete="name"
-                  placeholder="Наприклад, Олександр"
+                  placeholder={t("contact.namePlaceholder")}
                   value={form.name}
                   onChange={handleChange}
                   disabled={sending}
@@ -157,7 +159,7 @@ export default function ContactFormSection() {
                   htmlFor="contact-telegram"
                   className="block text-sm font-medium text-[#F8F8FF]/80 mb-2"
                 >
-                  Telegram Username{" "}
+                  {t("contact.telegram")}{" "}
                   <span className="text-[#6366F1]">*</span>
                 </label>
                 <input
@@ -183,13 +185,13 @@ export default function ContactFormSection() {
                   htmlFor="contact-message"
                   className="block text-sm font-medium text-[#F8F8FF]/80 mb-2"
                 >
-                  Опис проєкту <span className="text-[#6366F1]">*</span>
+                  {t("contact.projectDesc")} <span className="text-[#6366F1]">*</span>
                 </label>
                 <textarea
                   id="contact-message"
                   name="message"
                   rows={5}
-                  placeholder="Опишіть ваше завдання, терміни та побажання..."
+                  placeholder={t("contact.messagePlaceholder")}
                   value={form.message}
                   onChange={handleChange}
                   disabled={sending}
@@ -210,12 +212,12 @@ export default function ContactFormSection() {
                 {sending ? (
                   <>
                     <div className="spinner" />
-                    Надсилаємо...
+                    {t("contact.sending")}
                   </>
                 ) : (
                   <>
                     <Send size={18} />
-                    Надіслати запит
+                    {t("contact.send")}
                   </>
                 )}
               </button>
