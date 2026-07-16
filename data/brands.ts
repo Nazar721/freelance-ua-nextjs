@@ -50,4 +50,8 @@ export const brands: Brand[] = [
 		name: 'Ruslan Aviation',
 		logo: '/media/brands/ruslan-aviation.png',
 	},
+	{
+		name: 'E.V.A.CODE',
+		logo: '/media/brands/eva-code.png',
+	},
 ]
