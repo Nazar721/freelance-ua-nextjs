@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Freelance UA || Digital Agency",
-  phone: "093 215 53 91",
+  phone: "093 215 53 92",
   partnerProgramUrl: "https://nazar263.github.io/partners/",
   telegram: {
     username: "@PREMIUM1914",
