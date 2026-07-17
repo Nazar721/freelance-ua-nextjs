@@ -5,13 +5,13 @@ import { siteConfig } from "@/config/site";
 import { Providers } from "./providers";
 
 const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin"],
   variable: "--font-space-grotesk",
   display: "swap",
 });
 
 const syne = Syne({
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin"],
   variable: "--font-syne",
   display: "swap",
 });
