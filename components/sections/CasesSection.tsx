@@ -55,7 +55,7 @@ export default function CasesSection() {
               <div className="premium-surface glow-border bg-[#1A1A24] border border-[#2A2A38] rounded-2xl overflow-hidden flex flex-col h-full group/card">
                 <button
                   onClick={() => setLightboxIndex(index)}
-                  className="relative w-full h-52 bg-[#0A0A0F] overflow-hidden group cursor-zoom-in"
+                  className="relative w-full bg-[#0A0A0F] overflow-hidden group cursor-zoom-in flex items-center justify-center"
                   aria-label={`${t("cases.openMedia")} ${t(caseItem.titleKey)}`}
                 >
                   {caseItem.video ? (
@@ -64,14 +64,11 @@ export default function CasesSection() {
                       <video
                         src={caseItem.video}
                         autoPlay muted loop playsInline
-                        className="absolute inset-0 w-full h-full object-contain z-10 transition-transform duration-700 group-hover:scale-110"
+                        className="relative w-full h-auto max-h-80 object-contain z-10 transition-transform duration-700 group-hover:scale-110"
                       />
                     </>
                   ) : caseItem.image ? (
-                    <>
-                      <Image src={caseItem.image} alt="" fill aria-hidden className="object-cover scale-110 blur-2xl opacity-30" />
-                      <Image src={caseItem.image} alt={t(caseItem.titleKey)} fill className="object-contain z-10 transition-transform duration-700 group-hover:scale-110" />
-                    </>
+                    <Image src={caseItem.image} alt={t(caseItem.titleKey)} width={800} height={600} className="relative w-full h-auto max-h-80 object-contain z-10 transition-transform duration-700 group-hover:scale-110" />
                   ) : null}
                   <div className="absolute inset-0 z-20 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
                     <div className={`opacity-0 scale-75 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 bg-white/10 ${isMobile ? "" : "backdrop-blur-sm"} rounded-full p-3 border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.3)]`}>

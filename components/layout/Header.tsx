@@ -6,12 +6,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { useTranslation } from "@/lib/LanguageContext";
+import LanguageToggle from "@/components/ui/LanguageToggle";
 
 const navKeys = ["nav.about", "nav.services", "nav.cases", "nav.process", "nav.contacts"];
 const navHrefs = ["#about", "#services", "#cases", "#process", "#contacts"];
 
 export default function Header() {
-  const { locale, setLocale, t } = useTranslation();
+  const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -33,10 +34,6 @@ export default function Header() {
     setTimeout(() => {
       document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     }, 320);
-  };
-
-  const toggleLocale = () => {
-    setLocale(locale === "uk" ? "en" : "uk");
   };
 
   return (
@@ -78,56 +75,10 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          {/* Language switcher — premium animated pill */}
-          <button
-            onClick={toggleLocale}
-            className="group relative flex items-center h-10 w-[76px] rounded-full border border-[#2A2A38] hover:border-[#6366F1]/60 transition-all duration-500 overflow-hidden bg-[#111118]/80 backdrop-blur-sm"
-            aria-label={locale === "uk" ? "Switch to English" : "Переключити на українську"}
-            style={{ perspective: 600 }}
-          >
-            {/* Glow background on hover */}
-            <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.12),transparent_70%)]" />
-
-            {/* Sliding active indicator */}
-            <motion.span
-              className="absolute top-1 bottom-1 w-[34px] rounded-full"
-              style={{
-                background: "linear-gradient(135deg, rgba(99,102,241,0.25) 0%, rgba(139,92,246,0.15) 100%)",
-                boxShadow: "0 0 20px rgba(99,102,241,0.2), inset 0 0 0 1px rgba(99,102,241,0.2)",
-              }}
-              animate={{ x: locale === "uk" ? 3 : 39 }}
-              transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }}
-            />
-
-            {/* UA label */}
-            <motion.span
-              className="relative z-10 w-[38px] text-center text-xs font-bold tracking-wide"
-              animate={{
-                color: locale === "uk" ? "#F8F8FF" : "#555568",
-                rotateY: locale === "uk" ? 0 : -8,
-                scale: locale === "uk" ? 1 : 0.9,
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              UA
-            </motion.span>
-
-            {/* EN label */}
-            <motion.span
-              className="relative z-10 w-[38px] text-center text-xs font-bold tracking-wide"
-              animate={{
-                color: locale === "en" ? "#F8F8FF" : "#555568",
-                rotateY: locale === "en" ? 0 : 8,
-                scale: locale === "en" ? 1 : 0.9,
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              EN
-            </motion.span>
-
-            {/* Subtle shine sweep on hover */}
-            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/[0.04] to-transparent pointer-events-none" />
-          </button>
+          {/* Language switcher — claw machine toggle */}
+          <div className="mr-16">
+            <LanguageToggle />
+          </div>
           <a
             href={siteConfig.partnerProgramUrl}
             target="_blank"
@@ -148,43 +99,7 @@ export default function Header() {
 
         {/* Mobile burger */}
         <div className="lg:hidden flex items-center gap-2">
-          <button
-            onClick={toggleLocale}
-            className="group relative flex items-center h-8 w-[60px] rounded-full border border-[#2A2A38] hover:border-[#6366F1]/60 transition-all duration-500 overflow-hidden bg-[#111118]/80 backdrop-blur-sm"
-            aria-label={locale === "uk" ? "Switch to English" : "Переключити на українську"}
-          >
-            <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.12),transparent_70%)]" />
-            <motion.span
-              className="absolute top-0.5 bottom-0.5 w-[28px] rounded-full"
-              style={{
-                background: "linear-gradient(135deg, rgba(99,102,241,0.25) 0%, rgba(139,92,246,0.15) 100%)",
-                boxShadow: "0 0 14px rgba(99,102,241,0.2), inset 0 0 0 1px rgba(99,102,241,0.2)",
-              }}
-              animate={{ x: locale === "uk" ? 2 : 30 }}
-              transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }}
-            />
-            <motion.span
-              className="relative z-10 w-[30px] text-center text-[10px] font-bold tracking-wide"
-              animate={{
-                color: locale === "uk" ? "#F8F8FF" : "#555568",
-                scale: locale === "uk" ? 1 : 0.9,
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              UA
-            </motion.span>
-            <motion.span
-              className="relative z-10 w-[30px] text-center text-[10px] font-bold tracking-wide"
-              animate={{
-                color: locale === "en" ? "#F8F8FF" : "#555568",
-                scale: locale === "en" ? 1 : 0.9,
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              EN
-            </motion.span>
-            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/[0.04] to-transparent pointer-events-none" />
-          </button>
+          <LanguageToggle />
           <button
             className="text-[#F8F8FF] p-2"
             onClick={() => setMenuOpen(!menuOpen)}

@@ -79,4 +79,14 @@ export const testimonials: Testimonial[] = [
     id: 19,
     textKey: "testimonial.19.text",
   },
+  {
+    id: 20,
+    textKey: "testimonial.19.text",
+    video: "/media/testimonials/video-1.mp4",
+  },
+  {
+    id: 21,
+    textKey: "testimonial.19.text",
+    video: "/media/testimonials/video-3.mp4",
+  },
 ];

@@ -3,6 +3,7 @@ import { Space_Grotesk, Syne } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Providers } from "./providers";
+import LoadingScreen from "@/components/ui/LoadingScreen";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="uk" className={`${spaceGrotesk.variable} ${syne.variable}`}>
       <body>
+        <LoadingScreen />
         <Providers>{children}</Providers>
       </body>
     </html>

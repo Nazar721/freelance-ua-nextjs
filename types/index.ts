@@ -13,6 +13,7 @@ export interface Testimonial {
   id: number;
   textKey: string;
   author?: string;
+  video?: string;
 }
 
 export interface Service {
