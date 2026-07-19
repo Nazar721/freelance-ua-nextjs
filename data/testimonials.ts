@@ -82,11 +82,11 @@ export const testimonials: Testimonial[] = [
   {
     id: 20,
     textKey: "testimonial.19.text",
-    video: "/media/testimonials/video-1.mp4",
+    video: "/media/testimonials/video-2.mp4",
   },
   {
     id: 21,
     textKey: "testimonial.19.text",
-    video: "/media/testimonials/video-3.mp4",
+    video: "/media/testimonials/video-1.mp4",
   },
 ];
