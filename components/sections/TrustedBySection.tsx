@@ -137,10 +137,10 @@ export default function TrustedBySection() {
   }, []);
 
   useEffect(() => {
-    particlesRef.current = createParticles(250, 0.5);
+    particlesRef.current = createParticles(isMobile ? 80 : 250, isMobile ? 0.3 : 0.5);
     animRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animRef.current);
-  }, [animate]);
+  }, [animate, isMobile]);
 
   return (
     <section ref={sectionRef} className="relative px-4 pt-12 overflow-hidden" style={{ background: "transparent" }}>

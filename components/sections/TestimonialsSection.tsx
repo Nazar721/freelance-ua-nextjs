@@ -5,7 +5,19 @@ import { Quote, ArrowRight, Play, X, ChevronLeft, ChevronRight, MoveHorizontal }
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { LazyVideo } from "@/components/ui/LazyVideo";
 import { useTranslation } from "@/lib/LanguageContext";
+
+function useIsMobile(breakpoint = 768) {
+  const [m, setM] = useState(() => typeof window !== "undefined" && window.innerWidth <= breakpoint);
+  useEffect(() => {
+    const check = () => setM(window.innerWidth <= breakpoint);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [breakpoint]);
+  return m;
+}
 
 function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -55,16 +67,18 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
 function TestimonialCard({ testimonial, t, onVideoOpen }: { testimonial: typeof testimonials[number]; t: (key: string) => string; onVideoOpen?: (src: string) => void }) {
   if (testimonial.video) {
     return (
-      <div className="shimmer flex-none w-75 md:w-87.5 min-h-64 bg-[#111118] border border-[#2A2A38] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#6366F1]/40 hover:shadow-[0_8px_40px_rgba(99,102,241,0.1)]">
+      <div className="shimmer flex-none w-64 md:w-87.5 min-h-56 md:min-h-64 bg-[#111118] border border-[#2A2A38] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#6366F1]/40 hover:shadow-[0_8px_40px_rgba(99,102,241,0.1)]">
         <button
           onClick={() => onVideoOpen?.(testimonial.video!)}
-          className="relative w-full h-full min-h-64 bg-[#0A0A0F] cursor-pointer group/video"
+          className="relative w-full h-full min-h-56 md:min-h-64 bg-[#0A0A0F] cursor-pointer group/video"
+          style={{ touchAction: "manipulation" }}
         >
-          <video
+          <LazyVideo
             src={testimonial.video}
             loop
             playsInline
             muted
+            autoPlay
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover/video:bg-black/40 transition-all duration-300">
@@ -78,7 +92,7 @@ function TestimonialCard({ testimonial, t, onVideoOpen }: { testimonial: typeof 
   }
 
   return (
-    <div className="shimmer flex-none w-75 md:w-87.5 min-h-64 bg-[#111118] border border-[#2A2A38] rounded-2xl p-6 flex flex-col transition-all duration-500 hover:border-[#6366F1]/40 hover:shadow-[0_8px_40px_rgba(99,102,241,0.1)]">
+    <div className="shimmer flex-none w-64 md:w-87.5 min-h-56 md:min-h-64 bg-[#111118] border border-[#2A2A38] rounded-2xl p-5 md:p-6 flex flex-col transition-all duration-500 hover:border-[#6366F1]/40 hover:shadow-[0_8px_40px_rgba(99,102,241,0.1)]">
       <div className="w-10 h-10 rounded-xl bg-[#6366F1]/10 border border-[#6366F1]/20 flex items-center justify-center mb-4">
         <Quote size={18} className="text-[#6366F1]" />
       </div>
@@ -96,24 +110,26 @@ function TestimonialCard({ testimonial, t, onVideoOpen }: { testimonial: typeof 
 
 export default function TestimonialsSection() {
   const { t } = useTranslation();
+  const isMobile = useIsMobile();
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [videoModalSrc, setVideoModalSrc] = useState<string | null>(null);
   const [showHint, setShowHint] = useState(true);
+  const [userInteracted, setUserInteracted] = useState(false);
 
   // Refs for animation state
-  const xRef = useRef(0);           // current translateX (px)
-  const autoRef = useRef(true);     // auto-scrolling?
-  const pointerDownRef = useRef(false); // is pointer currently down?
+  const xRef = useRef(0);
+  const autoRef = useRef(true);
+  const pointerDownRef = useRef(false);
   const draggingRef = useRef(false);
   const dragStartXRef = useRef(0);
   const dragStartPosRef = useRef(0);
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const singleWRef = useRef(0);     // width of one set of cards
+  const singleWRef = useRef(0);
 
-  const duplicated = [...testimonials, ...testimonials, ...testimonials]; // 3 copies
+  const duplicated = [...testimonials, ...testimonials, ...testimonials];
 
-  // Measure single-set width: distance from first card of set 1 to first card of set 2
+  // Measure single-set width
   useEffect(() => {
     const measure = () => {
       const track = trackRef.current;
@@ -121,10 +137,8 @@ export default function TestimonialsSection() {
       const children = Array.from(track.children) as HTMLElement[];
       const n = testimonials.length;
       if (children.length < n + 1) return;
-      // Distance from copy1[0] to copy2[0] = one full set width including the gap between copies
       singleWRef.current = children[n].offsetLeft - children[0].offsetLeft;
     };
-    // Retry measurement until layout is ready
     let attempts = 0;
     const tryMeasure = () => {
       measure();
@@ -142,21 +156,20 @@ export default function TestimonialsSection() {
   useEffect(() => {
     let raf: number;
     let last = 0;
-    const SPEED = 0.5; // px per ms = 500px/s... too fast. Let's do 0.05 = 50px/s
+    // Mobile: 30px/s (gentle), Desktop: 50px/s
+    const speed = isMobile ? 0.03 : 0.05;
 
     const tick = (now: number) => {
       if (autoRef.current && !draggingRef.current && last) {
         const dt = Math.min(now - last, 50);
-        xRef.current -= 0.05 * dt; // move left ~50px/s
+        xRef.current -= speed * dt;
 
-        // Seamless loop: when translated past one full set, jump back
         if (singleWRef.current > 0 && xRef.current <= -singleWRef.current) {
           xRef.current += singleWRef.current;
         }
       }
       last = now;
 
-      // Apply transform
       if (trackRef.current) {
         trackRef.current.style.transform = `translateX(${xRef.current}px)`;
       }
@@ -166,7 +179,7 @@ export default function TestimonialsSection() {
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [isMobile]);
 
   // ── Pause / Resume ──
   const pause = useCallback(() => {
@@ -175,18 +188,19 @@ export default function TestimonialsSection() {
   }, []);
 
   const scheduleResume = useCallback(() => {
+    if (isMobile) return; // On mobile, never auto-resume after user interaction
     if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
     resumeTimerRef.current = setTimeout(() => {
       autoRef.current = true;
     }, 3000);
-  }, []);
+  }, [isMobile]);
 
   // ── Drag (touch + mouse) ──
   useEffect(() => {
     const el = viewportRef.current;
     if (!el) return;
 
-    const DRAG_THRESHOLD = 8;
+    const DRAG_THRESHOLD = 6;
 
     const onDown = (e: PointerEvent) => {
       pointerDownRef.current = true;
@@ -196,7 +210,7 @@ export default function TestimonialsSection() {
     };
 
     const onMove = (e: PointerEvent) => {
-      if (!pointerDownRef.current) return; // ignore hover movement
+      if (!pointerDownRef.current) return;
       if (draggingRef.current) {
         xRef.current = dragStartPosRef.current + (e.clientX - dragStartXRef.current);
         return;
@@ -205,6 +219,7 @@ export default function TestimonialsSection() {
         draggingRef.current = true;
         pause();
         setShowHint(false);
+        setUserInteracted(true);
         xRef.current = dragStartPosRef.current + (e.clientX - dragStartXRef.current);
       }
     };
@@ -214,7 +229,6 @@ export default function TestimonialsSection() {
       if (!draggingRef.current) return;
       draggingRef.current = false;
 
-      // Seamless loop snap — keep xRef between -singleW and 0
       if (singleWRef.current > 0) {
         while (xRef.current < -singleWRef.current) xRef.current += singleWRef.current;
         while (xRef.current > 0) xRef.current -= singleWRef.current;
@@ -224,14 +238,13 @@ export default function TestimonialsSection() {
     };
 
     const onWheel = (e: WheelEvent) => {
-      // ONLY respond to deliberate horizontal scroll (trackpad horizontal swipe)
-      // Must be clearly more horizontal than vertical to avoid intercepting page scroll
       if (Math.abs(e.deltaX) <= Math.abs(e.deltaY) || Math.abs(e.deltaX) < 3) return;
 
       e.preventDefault();
       xRef.current -= e.deltaX;
       pause();
       setShowHint(false);
+      setUserInteracted(true);
       scheduleResume();
     };
 
@@ -263,6 +276,8 @@ export default function TestimonialsSection() {
 
   const scrollTo = (dir: "left" | "right") => {
     pause();
+    setShowHint(false);
+    setUserInteracted(true);
     const cardW = trackRef.current?.querySelector<HTMLElement>(":scope > *")?.offsetWidth ?? 300;
     xRef.current += dir === "left" ? cardW + 24 : -(cardW + 24);
     scheduleResume();
@@ -281,25 +296,25 @@ export default function TestimonialsSection() {
         </FadeIn>
 
         <FadeIn delay={0.15} y={20} blur={4}>
-          <div className="relative mb-10 group/carousel">
-            {/* Arrows */}
+          <div className="relative mb-10">
+            {/* Arrows — always visible on mobile, hover-only on desktop */}
             <button
               onClick={() => scrollTo("left")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 z-10 w-10 h-10 rounded-full bg-[#1A1A28] border border-[#2A2A38] flex items-center justify-center hover:bg-[#252538] hover:border-[#6366F1]/40 transition-all duration-300 cursor-pointer shadow-lg opacity-0 group-hover/carousel:opacity-100"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 z-10 w-10 h-10 rounded-full bg-[#1A1A28] border border-[#2A2A38] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg md:opacity-0 md:group-hover/carousel:opacity-100 md:hover:bg-[#252538] md:hover:border-[#6366F1]/40"
             >
               <ChevronLeft size={18} className="text-[#F8F8FF]" />
             </button>
             <button
               onClick={() => scrollTo("right")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 z-10 w-10 h-10 rounded-full bg-[#1A1A28] border border-[#2A2A38] flex items-center justify-center hover:bg-[#252538] hover:border-[#6366F1]/40 transition-all duration-300 cursor-pointer shadow-lg opacity-0 group-hover/carousel:opacity-100"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 z-10 w-10 h-10 rounded-full bg-[#1A1A28] border border-[#2A2A38] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg md:opacity-0 md:group-hover/carousel:opacity-100 md:hover:bg-[#252538] md:hover:border-[#6366F1]/40"
             >
               <ChevronRight size={18} className="text-[#F8F8FF]" />
             </button>
 
-            {/* Hint */}
+            {/* Hint — always visible on mobile for first 5s, desktop hover only */}
             {showHint && (
-              <div className="absolute right-8 top-1/2 -translate-y-1/2 z-10 flex items-center gap-2 pointer-events-none">
-                <span className="text-[#8B8B9E] text-xs hidden md:inline">Гортайте</span>
+              <div className={`absolute right-8 top-1/2 -translate-y-1/2 z-10 flex items-center gap-2 pointer-events-none ${isMobile ? "" : "hidden md:flex"}`}>
+                <span className="text-[#8B8B9E] text-xs">{isMobile ? "Свайпайте" : "Гортайте"}</span>
                 <MoveHorizontal size={18} className="text-[#6366F1] scroll-hint-bounce" />
               </div>
             )}
@@ -308,10 +323,11 @@ export default function TestimonialsSection() {
             <div className="absolute left-0 top-0 bottom-4 w-12 bg-gradient-to-r from-[#07070D] to-transparent z-[1] pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-[#07070D] to-transparent z-[1] pointer-events-none" />
 
-            {/* Viewport — overflow hidden, track moves via transform */}
+            {/* Viewport */}
             <div
               ref={viewportRef}
               className="overflow-hidden cursor-grab active:cursor-grabbing"
+              style={{ touchAction: "pan-y" }}
             >
               <div
                 ref={trackRef}
@@ -328,6 +344,15 @@ export default function TestimonialsSection() {
                 ))}
               </div>
             </div>
+
+            {/* Mobile: show dot indicators for position awareness */}
+            {isMobile && (
+              <div className="flex justify-center gap-1.5 mt-4">
+                {testimonials.slice(0, Math.min(testimonials.length, 5)).map((_, i) => (
+                  <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#6366F1]/40" />
+                ))}
+              </div>
+            )}
           </div>
         </FadeIn>
 
