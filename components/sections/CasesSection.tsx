@@ -10,6 +10,7 @@ import "yet-another-react-lightbox/styles.css";
 import { cases } from "@/data/cases";
 import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { LazyVideo } from "@/components/ui/LazyVideo";
 import { useTranslation } from "@/lib/LanguageContext";
 
 const getMimeType = (src: string) =>
@@ -61,7 +62,7 @@ export default function CasesSection() {
                   {caseItem.video ? (
                     <>
                       <div className="absolute inset-0 bg-linear-to-br from-[#1A1A24] to-[#0A0A0F]" />
-                      <video
+                      <LazyVideo
                         src={caseItem.video}
                         autoPlay muted loop playsInline
                         className="relative w-full h-auto max-h-80 object-contain z-10 transition-transform duration-700 group-hover:scale-110"
