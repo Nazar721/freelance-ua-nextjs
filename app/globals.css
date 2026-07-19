@@ -361,14 +361,14 @@ body {
     100% { transform: translateX(100%); }
   }
 
-  /* ─── Testimonials infinite marquee ─── */
-  .testimonials-marquee-track {
-    animation: testimonials-marquee 90s linear infinite;
+  /* ─── Testimonials carousel ─── */
+  .scroll-hint-bounce {
+    animation: scroll-hint 1.5s ease-in-out infinite;
   }
 
-  @keyframes testimonials-marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  @keyframes scroll-hint {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(6px); }
   }
 
   /* ─── Gradient border glow ─── */
@@ -859,8 +859,7 @@ body {
     .float,
     .float-delayed,
     .glow-pulse,
-    .shimmer::after,
-    .testimonials-marquee-track {
+    .shimmer::after {
       animation: none !important;
     }
 
@@ -961,11 +960,6 @@ body {
   /* Trusted marquee slower on mobile */
   .trusted-partners__track-wrapper {
     animation-duration: 140s;
-  }
-
-  /* Testimonials marquee slower on mobile */
-  .testimonials-marquee-track {
-    animation-duration: 60s;
   }
 
   /* ===== KILL ALL HOVER EFFECTS ON MOBILE ===== */

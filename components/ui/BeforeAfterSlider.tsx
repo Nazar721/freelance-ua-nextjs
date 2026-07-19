@@ -124,7 +124,7 @@ export function BeforeAfterSlider({
             fill
             sizes="(max-width: 768px) 100vw, 65vw"
             quality={90}
-            className="object-contain"
+            className="object-cover"
             draggable={false}
           />
         )}
@@ -140,7 +140,7 @@ export function BeforeAfterSlider({
             fill
             sizes="(max-width: 768px) 100vw, 65vw"
             quality={90}
-            className="object-contain"
+            className="object-cover"
             draggable={false}
           />
         </div>
