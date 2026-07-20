@@ -4,6 +4,7 @@ import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Providers } from "./providers";
 import LoadingScreen from "@/components/ui/LoadingScreen";
+import ContentProtection from "@/components/ui/ContentProtection";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="uk" className={`${spaceGrotesk.variable} ${syne.variable}`}>
       <body>
+        <ContentProtection />
         <LoadingScreen />
         <Providers>{children}</Providers>
       </body>
