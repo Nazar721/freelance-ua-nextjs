@@ -1,6 +1,7 @@
 import { Testimonial } from "@/types";
 
 export const testimonials: Testimonial[] = [
+   
   {
     id: 1,
     textKey: "testimonial.1.text",
@@ -9,6 +10,16 @@ export const testimonials: Testimonial[] = [
   {
     id: 2,
     textKey: "testimonial.2.text",
+  },
+    {
+    id: 20,
+    textKey: "testimonial.20.text",
+    video: "/media/testimonials/video-2.mp4",
+  },
+  {
+    id: 21,
+    textKey: "testimonial.21.text",
+    video: "/media/testimonials/video-1.mp4",
   },
   {
     id: 3,
@@ -19,6 +30,7 @@ export const testimonials: Testimonial[] = [
     textKey: "testimonial.4.text",
     author: "Нікіта Шеремет",
   },
+
   {
     id: 5,
     textKey: "testimonial.5.text",
@@ -79,14 +91,5 @@ export const testimonials: Testimonial[] = [
     id: 19,
     textKey: "testimonial.19.text",
   },
-  {
-    id: 20,
-    textKey: "testimonial.19.text",
-    video: "/media/testimonials/video-2.mp4",
-  },
-  {
-    id: 21,
-    textKey: "testimonial.19.text",
-    video: "/media/testimonials/video-1.mp4",
-  },
+
 ];
