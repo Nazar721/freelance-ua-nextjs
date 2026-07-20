@@ -1080,4 +1080,23 @@ body {
   }
 }
 
+/* ─── Content protection ─── */
+img, video, picture, figure, [data-no-download] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: auto;
+}
+
+img, video {
+  -webkit-touch-callout: none;
+}
+
 /* ─── Trusted by particles (canvas-based, no CSS needed) ─── */
