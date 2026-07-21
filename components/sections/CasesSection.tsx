@@ -69,7 +69,7 @@ export default function CasesSection() {
                       />
                     </>
                   ) : caseItem.image ? (
-                    <Image src={caseItem.image} alt={t(caseItem.titleKey)} width={800} height={600} className="relative w-full h-auto max-h-80 object-contain z-10 transition-transform duration-700 group-hover:scale-110" />
+                    <Image src={caseItem.image} alt={t(caseItem.titleKey)} width={800} height={600} draggable={false} onContextMenu={(e) => e.preventDefault()} className="relative w-full h-auto max-h-80 object-contain z-10 transition-transform duration-700 group-hover:scale-110" />
                   ) : null}
                   <div className="absolute inset-0 z-20 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
                     <div className={`opacity-0 scale-75 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 bg-white/10 ${isMobile ? "" : "backdrop-blur-sm"} rounded-full p-3 border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.3)]`}>

@@ -1093,10 +1093,25 @@ img, video, picture, figure, [data-no-download] {
   user-drag: none;
   -webkit-touch-callout: none;
   pointer-events: auto;
+  /* Prevent long-press and touch-based interactions on mobile */
+  touch-action: manipulation;
 }
 
 img, video {
   -webkit-touch-callout: none;
+  /* Additional mobile protection */
+  touch-action: manipulation;
+}
+
+/* Extra protection for video elements — disable native controls overlay on mobile */
+video[controls]::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+/* Prevent image preview on iOS long-press */
+img {
+  -webkit-touch-callout: none !important;
+  touch-callout: none !important;
 }
 
 /* ─── Trusted by particles (canvas-based, no CSS needed) ─── */

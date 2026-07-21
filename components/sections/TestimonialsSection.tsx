@@ -57,8 +57,10 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
         controls
         autoPlay
         playsInline
+        draggable={false}
         className="max-w-[95vw] max-h-[90vh] w-auto h-auto object-contain rounded-lg"
         onClick={(e) => e.stopPropagation()}
+        onContextMenu={(e) => e.preventDefault()}
       />
     </div>
   );
