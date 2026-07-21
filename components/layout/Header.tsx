@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -8,14 +8,16 @@ import { siteConfig } from "@/config/site";
 import { useTranslation } from "@/lib/LanguageContext";
 import LanguageToggle from "@/components/ui/LanguageToggle";
 
-const navKeys = ["nav.about", "nav.services", "nav.cases", "nav.process", "nav.contacts"];
-const navHrefs = ["#about", "#services", "#cases", "#process", "#contacts"];
+const navKeys = ["nav.about", "nav.services", "nav.process", "nav.cases", "nav.testimonials", "nav.contacts"];
+const navHrefs = ["#about", "#services", "#process", "#cases", "#testimonials", "#contacts"];
+const sectionIds = ["about", "services", "process", "cases", "testimonials", "contacts"];
 
 export default function Header() {
   const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
@@ -29,12 +31,40 @@ export default function Header() {
     };
   }, []);
 
+  // Intersection Observer for active section tracking
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(id);
+          }
+        },
+        { rootMargin: "-20% 0px -60% 0px" }
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((o) => o.disconnect());
+    };
+  }, []);
+
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
     setTimeout(() => {
       document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     }, 320);
   };
+
+  const isActive = (href: string) => activeSection === href.slice(1);
 
   return (
     <header
@@ -62,21 +92,30 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-8">
-          {navKeys.map((key, i) => (
-            <button
-              key={navHrefs[i]}
-              onClick={() => handleNavClick(navHrefs[i])}
-              className="group relative cursor-pointer text-[#8B8B9E] hover:text-[#F8F8FF] transition-colors duration-300 text-sm font-medium"
-            >
-              {t(key)}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-[#6366F1] transition-all duration-300 group-hover:w-full" />
-            </button>
-          ))}
+          {navKeys.map((key, i) => {
+            const active = isActive(navHrefs[i]);
+            return (
+              <button
+                key={navHrefs[i]}
+                onClick={() => handleNavClick(navHrefs[i])}
+                className={`group relative cursor-pointer transition-colors duration-300 text-sm font-medium ${
+                  active ? "text-[#F8F8FF]" : "text-[#8B8B9E] hover:text-[#F8F8FF]"
+                }`}
+              >
+                {t(key)}
+                <span
+                  className={`absolute -bottom-1 left-0 h-px bg-[#6366F1] transition-all duration-300 ${
+                    active ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
+              </button>
+            );
+          })}
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          {/* Language switcher — claw machine toggle */}
-          <div className="mr-16">
+          {/* Language switcher */}
+          <div className="mr-4">
             <LanguageToggle />
           </div>
           <a
@@ -122,18 +161,23 @@ export default function Header() {
             className="lg:hidden overflow-hidden bg-[#111118] border-t border-[#2A2A38]"
           >
             <div className="px-4 py-6 flex flex-col gap-4">
-              {navKeys.map((key, i) => (
-                <motion.button
-                  key={navHrefs[i]}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  onClick={() => handleNavClick(navHrefs[i])}
-                  className="cursor-pointer text-[#8B8B9E] hover:text-[#F8F8FF] transition-colors text-left text-base font-medium py-2"
-                >
-                  {t(key)}
-                </motion.button>
-              ))}
+              {navKeys.map((key, i) => {
+                const active = isActive(navHrefs[i]);
+                return (
+                  <motion.button
+                    key={navHrefs[i]}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    onClick={() => handleNavClick(navHrefs[i])}
+                    className={`cursor-pointer transition-colors text-left text-base font-medium py-2 ${
+                      active ? "text-[#F8F8FF]" : "text-[#8B8B9E] hover:text-[#F8F8FF]"
+                    }`}
+                  >
+                    {t(key)}
+                  </motion.button>
+                );
+              })}
               <motion.a
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}

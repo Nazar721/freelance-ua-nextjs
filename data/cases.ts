@@ -1,14 +1,16 @@
 import { Case } from "@/types";
 
 export const cases: Case[] = [
+	// IT — 4 кейси (вебсайти)
 	{
 		id: 1,
 		categoryKey: 'cases.1.category',
 		titleKey: 'cases.1.title',
 		descriptionKey: 'cases.1.description',
 		reviewKey: 'cases.1.review',
-		video: '/media/cases/case_pivdensolar.webm',
+		image: '/media/cases/pd.png',
 		link: 'https://pivdensolar.com.ua',
+		section: 'it',
 	},
 	{
 		id: 13,
@@ -16,8 +18,78 @@ export const cases: Case[] = [
 		titleKey: 'cases.2.title',
 		descriptionKey: 'cases.2.description',
 		reviewKey: 'cases.2.review',
-		video: '/media/cases/repair_collision_9.mp4',
+		image: '/media/cases/Repair Collision.png',
 		link: 'https://kolizjaoc.pl/pl',
+		section: 'it',
+	},
+	{
+		id: 16,
+		categoryKey: 'cases.9.category',
+		titleKey: 'cases.9.title',
+		descriptionKey: 'cases.9.description',
+		reviewKey: 'cases.9.review',
+		image: '/media/cases/prime-autoshipping.png',
+		link: 'https://prime-autoshippingllc.com/',
+		section: 'it',
+	},
+	{
+		id: 17,
+		categoryKey: 'cases.10.category',
+		titleKey: 'cases.10.title',
+		descriptionKey: 'cases.10.description',
+		reviewKey: 'cases.10.review',
+		image: '/media/cases/asandra-soul.png',
+		link: 'https://t.me/asandrasoul_bot',
+		section: 'it',
+	},
+
+	// Дизайн — 4 кейси
+	{
+		id: 31,
+		categoryKey: 'cases.5.category',
+		titleKey: 'cases.5.title',
+		descriptionKey: 'cases.5.description',
+		reviewKey: 'cases.5.review',
+		image: '/media/cases/conference-banner.jpg',
+		section: 'design',
+	},
+	{
+		id: 32,
+		categoryKey: 'cases.11.category',
+		titleKey: 'cases.11.title',
+		descriptionKey: 'cases.11.description',
+		reviewKey: 'cases.11.review',
+		image: '/media/cases/conference-banner-2.png',
+		section: 'design',
+	},
+	{
+		id: 33,
+		categoryKey: 'cases.12.category',
+		titleKey: 'cases.12.title',
+		descriptionKey: 'cases.12.description',
+		reviewKey: 'cases.12.review',
+		image: '/media/cases/stickers-conference.png',
+		section: 'design',
+	},
+	{
+		id: 34,
+		categoryKey: 'cases.13.category',
+		titleKey: 'cases.13.title',
+		descriptionKey: 'cases.13.description',
+		reviewKey: 'cases.13.review',
+		image: '/media/cases/bookmarks-conference.png',
+		section: 'design',
+	},
+
+	// Motion / Монтаж — 4 кейси
+	{
+		id: 18,
+		categoryKey: 'cases.14.category',
+		titleKey: 'cases.14.title',
+		descriptionKey: 'cases.14.description',
+		reviewKey: 'cases.14.review',
+		video: '/media/cases/dominanta-intro.mp4',
+		section: 'motion',
 	},
 	{
 		id: 11,
@@ -26,6 +98,7 @@ export const cases: Case[] = [
 		descriptionKey: 'cases.3.description',
 		reviewKey: 'cases.3.review',
 		video: '/media/cases/case_selloflow_2.mp4',
+		section: 'motion',
 	},
 	{
 		id: 4,
@@ -34,23 +107,19 @@ export const cases: Case[] = [
 		descriptionKey: 'cases.4.description',
 		reviewKey: 'cases.4.review',
 		video: '/media/cases/shermet.mp4',
+		section: 'motion',
 	},
 	{
-		id: 31,
-		categoryKey: 'cases.5.category',
-		titleKey: 'cases.5.title',
-		descriptionKey: 'cases.5.description',
-		reviewKey: 'cases.5.review',
-		image: '/media/cases/conference-banner.jpg',
+		id: 19,
+		categoryKey: 'cases.15.category',
+		titleKey: 'cases.15.title',
+		descriptionKey: 'cases.15.description',
+		reviewKey: 'cases.15.review',
+		video: '/media/cases/reels-promo.mp4',
+		section: 'motion',
 	},
-	{
-		id: 30,
-		categoryKey: 'cases.6.category',
-		titleKey: 'cases.6.title',
-		descriptionKey: 'cases.6.description',
-		reviewKey: 'cases.6.review',
-		image: '/media/cases/design-inst.webp',
-	},
+
+	// AI Відео — 2 кейси
 	{
 		id: 12,
 		categoryKey: 'cases.7.category',
@@ -58,6 +127,7 @@ export const cases: Case[] = [
 		descriptionKey: 'cases.7.description',
 		reviewKey: 'cases.7.review',
 		video: '/media/cases/ai-video-event.mp4',
+		section: 'ai_video',
 	},
 	{
 		id: 15,
@@ -66,5 +136,24 @@ export const cases: Case[] = [
 		descriptionKey: 'cases.8.description',
 		reviewKey: 'cases.8.review',
 		video: '/media/cases/ren2.mp4',
+		section: 'ai_video',
+	},
+	{
+		id: 20,
+		categoryKey: 'cases.16.category',
+		titleKey: 'cases.16.title',
+		descriptionKey: 'cases.16.description',
+		reviewKey: 'cases.16.review',
+		video: '/media/cases/ai-car-mats.mp4',
+		section: 'ai_video',
+	},
+	{
+		id: 21,
+		categoryKey: 'cases.17.category',
+		titleKey: 'cases.17.title',
+		descriptionKey: 'cases.17.description',
+		reviewKey: 'cases.17.review',
+		video: '/media/cases/ai-tire-pump.mp4',
+		section: 'ai_video',
 	},
 ]

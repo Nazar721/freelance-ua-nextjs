@@ -1,3 +1,5 @@
+export type CaseSection = "it" | "design" | "motion" | "ai_video";
+
 export interface Case {
   id: number;
   categoryKey: string;
@@ -7,6 +9,7 @@ export interface Case {
   image?: string;
   video?: string;
   link?: string;
+  section: CaseSection;
 }
 
 export interface Testimonial {
@@ -14,6 +17,7 @@ export interface Testimonial {
   textKey: string;
   author?: string;
   video?: string;
+  serviceKey?: string;
 }
 
 export interface Service {
