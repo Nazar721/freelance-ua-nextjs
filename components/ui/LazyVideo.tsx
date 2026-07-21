@@ -42,6 +42,8 @@ export function LazyVideo({ rootMargin = "200px", autoPlay, ...props }: LazyVide
       {...props}
       preload={inView ? "auto" : "none"}
       autoPlay={inView && autoPlay}
+      draggable={false}
+      onContextMenu={(e) => e.preventDefault()}
     />
   );
 }

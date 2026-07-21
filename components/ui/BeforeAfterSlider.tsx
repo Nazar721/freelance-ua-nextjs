@@ -115,6 +115,8 @@ export function BeforeAfterSlider({
             muted
             loop
             playsInline
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
             className="absolute inset-0 w-full h-full object-contain"
           />
         ) : (
@@ -126,6 +128,7 @@ export function BeforeAfterSlider({
             quality={90}
             className="object-cover"
             draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
           />
         )}
 
@@ -142,6 +145,7 @@ export function BeforeAfterSlider({
             quality={90}
             className="object-cover"
             draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
           />
         </div>
 
