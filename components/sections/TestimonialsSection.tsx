@@ -69,10 +69,10 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
 function TestimonialCard({ testimonial, t, onVideoOpen }: { testimonial: typeof testimonials[number]; t: (key: string) => string; onVideoOpen?: (src: string) => void }) {
   if (testimonial.video) {
     return (
-      <div className="shimmer flex-none w-64 md:w-87.5 min-h-56 md:min-h-64 bg-[#111118] border border-[#2A2A38] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#6366F1]/40 hover:shadow-[0_8px_40px_rgba(99,102,241,0.1)]">
+      <div className="shimmer flex-none w-64 md:w-87.5 min-h-56 md:min-h-64 bg-[#111118] border border-[#2A2A38] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#6366F1]/40 hover:shadow-[0_8px_40px_rgba(99,102,241,0.1)] flex flex-col">
         <button
           onClick={() => onVideoOpen?.(testimonial.video!)}
-          className="relative w-full h-full min-h-56 md:min-h-64 bg-[#0A0A0F] cursor-pointer group/video"
+          className="relative w-full flex-1 min-h-48 md:min-h-56 bg-[#0A0A0F] cursor-pointer group/video"
           style={{ touchAction: "manipulation" }}
         >
           <LazyVideo
@@ -89,6 +89,20 @@ function TestimonialCard({ testimonial, t, onVideoOpen }: { testimonial: typeof 
             </div>
           </div>
         </button>
+        {(testimonial.author || testimonial.serviceKey) && (
+          <div className="px-4 py-3 flex items-center justify-between gap-2 bg-[#111118]">
+            {testimonial.author && (
+              <span className="text-[#6366F1] text-xs font-semibold truncate">
+                {testimonial.author}
+              </span>
+            )}
+            {testimonial.serviceKey && (
+              <span className="text-[10px] text-[#8B8B9E] bg-[#1A1A24] px-2 py-0.5 rounded-full border border-[#2A2A38] whitespace-nowrap shrink-0">
+                {testimonial.serviceKey}
+              </span>
+            )}
+          </div>
+        )}
       </div>
     );
   }
@@ -101,11 +115,18 @@ function TestimonialCard({ testimonial, t, onVideoOpen }: { testimonial: typeof 
       <p className="text-[#F8F8FF]/90 text-sm leading-relaxed mb-4 flex-1">
         {t(testimonial.textKey)}
       </p>
-      {testimonial.author && (
-        <p className="text-[#6366F1] text-sm font-semibold">
-          — {testimonial.author}
-        </p>
-      )}
+      <div className="flex items-center justify-between gap-2 mt-auto">
+        {testimonial.author && (
+          <p className="text-[#6366F1] text-sm font-semibold truncate">
+            — {testimonial.author}
+          </p>
+        )}
+        {testimonial.serviceKey && (
+          <span className="text-[10px] text-[#8B8B9E] bg-[#1A1A24] px-2 py-0.5 rounded-full border border-[#2A2A38] whitespace-nowrap shrink-0">
+            {testimonial.serviceKey}
+          </span>
+        )}
+      </div>
     </div>
   );
 }

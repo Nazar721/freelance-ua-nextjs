@@ -54,4 +54,8 @@ export const brands: Brand[] = [
 		name: 'E.V.A.CODE',
 		logo: '/media/brands/eva-code.png',
 	},
+	{
+		name: 'New Partner',
+		logo: '/media/brands/new-logo.jpg',
+	},
 ]
