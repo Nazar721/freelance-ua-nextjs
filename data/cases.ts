@@ -8,8 +8,8 @@ export const cases: Case[] = [
 		titleKey: 'cases.1.title',
 		descriptionKey: 'cases.1.description',
 		reviewKey: 'cases.1.review',
-		image: '/media/cases/pd.png',
-		link: 'https://pivdensolar.com.ua',
+		image: '/media/cases/ruslanaviation.png',
+		link: 'http://www.ruslanaviationcomponents.com/',
 		section: 'it',
 	},
 	{
