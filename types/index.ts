@@ -17,6 +17,7 @@ export interface Testimonial {
   textKey: string;
   author?: string;
   video?: string;
+  audio?: string;
   serviceKey?: string;
 }
 
