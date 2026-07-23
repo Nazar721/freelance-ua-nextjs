@@ -13,6 +13,15 @@ export const testimonials: Testimonial[] = [
     textKey: "testimonial.2.text",
     serviceKey: "Веб-розробка",
   },
+
+{
+    id: 22,
+    textKey: "testimonial.22.text",
+    audio: "/media/testimonials/voice.ogg",
+    author: "Asandra Soul",
+    serviceKey: "Програмування • Mini App in Telegram",
+  },
+
     {
     id: 20,
     textKey: "testimonial.20.text",
@@ -113,5 +122,5 @@ export const testimonials: Testimonial[] = [
     textKey: "testimonial.19.text",
     serviceKey: "Розробка сайту",
   },
-
+  
 ];

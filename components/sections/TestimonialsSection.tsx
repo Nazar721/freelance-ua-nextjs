@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
-import { Quote, ArrowRight, Play, X, ChevronLeft, ChevronRight, MoveHorizontal } from "lucide-react";
+import { Quote, ArrowRight, Play, X, ChevronLeft, ChevronRight, MoveHorizontal, Volume2, Pause } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -66,7 +66,126 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
   );
 }
 
+function AudioTestimonialCard({ testimonial, t }: { testimonial: typeof testimonials[number]; t: (key: string) => string }) {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play().catch(() => {});
+    }
+  };
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+    const onTimeUpdate = () => {
+      if (audio.duration) setProgress(audio.currentTime / audio.duration);
+    };
+    const onLoaded = () => setDuration(audio.duration);
+    const onEnded = () => { setIsPlaying(false); setProgress(0); };
+
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("timeupdate", onTimeUpdate);
+    audio.addEventListener("loadedmetadata", onLoaded);
+    audio.addEventListener("ended", onEnded);
+    return () => {
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("timeupdate", onTimeUpdate);
+      audio.removeEventListener("loadedmetadata", onLoaded);
+      audio.removeEventListener("ended", onEnded);
+    };
+  }, []);
+
+  const formatTime = (s: number) => {
+    if (!s || !isFinite(s)) return "0:00";
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${sec.toString().padStart(2, "0")}`;
+  };
+
+  return (
+    <div className="shimmer flex-none w-64 md:w-87.5 min-h-56 md:min-h-64 bg-[#111118] border border-[#2A2A38] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#6366F1]/40 hover:shadow-[0_8px_40px_rgba(99,102,241,0.1)] flex flex-col">
+      <audio ref={audioRef} src={testimonial.audio} preload="metadata" />
+
+      {/* Audio visual area */}
+      <div className="relative flex-1 min-h-40 md:min-h-48 bg-[#0A0A0F] flex flex-col items-center justify-center px-6 gap-4">
+        {/* Waveform bars */}
+        <div className="flex items-end gap-[3px] h-12 w-full max-w-[180px]">
+          {Array.from({ length: 28 }).map((_, i) => {
+            const barProgress = i / 28;
+            const isActive = isPlaying && barProgress <= progress;
+            const baseH = Math.sin(i * 0.45) * 0.3 + 0.5;
+            const h = isPlaying
+              ? baseH + Math.sin(Date.now() * 0.003 + i * 0.6) * 0.15
+              : baseH;
+            return (
+              <div
+                key={i}
+                className="flex-1 rounded-full transition-colors duration-200"
+                style={{
+                  height: `${Math.max(12, h * 48)}px`,
+                  backgroundColor: isActive ? "#6366F1" : "#2A2A38",
+                }}
+              />
+            );
+          })}
+        </div>
+
+        {/* Play/Pause button */}
+        <button
+          onClick={togglePlay}
+          className="w-12 h-12 rounded-full bg-[#6366F1]/15 border border-[#6366F1]/30 flex items-center justify-center hover:bg-[#6366F1]/25 transition-all duration-300 cursor-pointer group/audio"
+          style={{ touchAction: "manipulation" }}
+        >
+          {isPlaying ? (
+            <Pause size={18} className="text-[#6366F1]" />
+          ) : (
+            <Play size={18} className="text-[#6366F1] ml-0.5" />
+          )}
+        </button>
+
+        {/* Time display */}
+        <div className="text-[11px] text-[#8B8B9E] font-mono">
+          {formatTime(isPlaying ? audioRef.current?.currentTime ?? 0 : 0)} / {formatTime(duration)}
+        </div>
+      </div>
+
+      {/* Author + service footer */}
+      {(testimonial.author || testimonial.serviceKey) && (
+        <div className="px-4 py-3 flex items-center justify-between gap-2 bg-[#111118]">
+          {testimonial.author && (
+            <span className="text-[#6366F1] text-xs font-semibold truncate">
+              {testimonial.author}
+            </span>
+          )}
+          {testimonial.serviceKey && (
+            <span className="text-[10px] text-[#8B8B9E] bg-[#1A1A24] px-2 py-0.5 rounded-full border border-[#2A2A38] whitespace-nowrap shrink-0">
+              {testimonial.serviceKey}
+            </span>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function TestimonialCard({ testimonial, t, onVideoOpen }: { testimonial: typeof testimonials[number]; t: (key: string) => string; onVideoOpen?: (src: string) => void }) {
+  if (testimonial.audio) {
+    return <AudioTestimonialCard testimonial={testimonial} t={t} />;
+  }
+
   if (testimonial.video) {
     return (
       <div className="shimmer flex-none w-64 md:w-87.5 min-h-56 md:min-h-64 bg-[#111118] border border-[#2A2A38] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#6366F1]/40 hover:shadow-[0_8px_40px_rgba(99,102,241,0.1)] flex flex-col">
