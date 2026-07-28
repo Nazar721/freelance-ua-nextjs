@@ -39,8 +39,8 @@ export const testimonials: Testimonial[] = [
     id: 23,
     textKey: "testimonial.23.text",
     video: "/media/testimonials/video-3.mp4",
-    author: "Alina — NORE MMedia Group UA",
-    serviceKey: "Відеовиробництво",
+    author: "Alina — Hope Media Group",
+    serviceKey: "Дизайн",
   },
   {
     id: 3,
