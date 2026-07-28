@@ -36,6 +36,13 @@ export const testimonials: Testimonial[] = [
     serviceKey: "Eva Code — Розробка та монтаж",
   },
   {
+    id: 23,
+    textKey: "testimonial.23.text",
+    video: "/media/testimonials/video-3.mp4",
+    author: "Alina — NORE MMedia Group UA",
+    serviceKey: "Відеовиробництво",
+  },
+  {
     id: 3,
     textKey: "testimonial.3.text",
     serviceKey: "Телеграм-бот",

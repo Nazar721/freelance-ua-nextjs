@@ -194,6 +194,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "testimonial.18.text": "Дякую за роботу та швидке виконання дизайну — все вийшло акуратно і саме в тому стилі, який я хотіла.",
     "testimonial.19.text": "Дуже вдячна за співпрацю! Замовила складний сайт з калькулятором, все зробили як хотіла. Швидко, зрозуміло й якісно, з поясненням кожного кроку.",
     "testimonial.22.text": "Аудіо-відгук від клієнта",
+    "testimonial.23.text": "Відео-відгук від Alina, NORE MMedia Group UA",
     "trusted.title": "Нам довіряють",
 
     "contact.title": "Зв'яжіться з нами",
@@ -414,6 +415,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "testimonial.18.text": "Thank you for the work and quick design execution.",
     "testimonial.19.text": "Very grateful for the cooperation! Ordered a complex website with a calculator, everything was done as I wanted. Fast, clear and quality.",
     "testimonial.22.text": "Audio review from a client",
+    "testimonial.23.text": "Video review from Alina, NORE MMedia Group UA",
 
     "trusted.title": "Trusted by",
 
