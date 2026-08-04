@@ -45,9 +45,9 @@ export function FadeIn({
   ...rest
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px 0px" });
   const shouldReduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
+  const isInView = useInView(ref, { once: true, margin: isMobile ? "-40px 0px" : "-80px 0px" });
 
   if (shouldReduceMotion) {
     return (

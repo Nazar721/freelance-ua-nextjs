@@ -71,7 +71,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-4"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 pb-4"
     >
       {/* Parallax background layers */}
       <motion.div
@@ -83,7 +83,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Bottom fade */}
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-[#0A0A0F] to-transparent z-[1]" />
+      <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-linear-to-t from-[#0A0A0F] to-transparent z-[1]" />
 
       {/* Floating particles — disabled on mobile for performance */}
       {!shouldReduceMotion && !isMobile && (
@@ -124,9 +124,9 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className={`inline-flex items-center gap-2.5 bg-[#1A1A24]/80 border border-[#2A2A38]/80 rounded-full px-5 py-2.5 mb-5 text-sm text-[#8B8B9E] shadow-[0_0_60px_rgba(99,102,241,0.1)] ${isMobile ? "" : "backdrop-blur-xl"} float`}>
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#6366F1]/15">
-              <Zap size={12} className="text-[#6366F1]" />
+          <div className={`inline-flex items-center gap-2 bg-[#1A1A24]/80 border border-[#2A2A38]/80 rounded-full px-4 py-2 mb-4 sm:mb-5 text-xs sm:text-sm text-[#8B8B9E] shadow-[0_0_60px_rgba(99,102,241,0.1)] ${isMobile ? "" : "backdrop-blur-xl"} float`}>
+            <span className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-[#6366F1]/15">
+              <Zap size={10} className="text-[#6366F1]" />
             </span>
             {t("hero.badge")}
           </div>
@@ -137,7 +137,7 @@ export default function HeroSection() {
           variants={stagger}
           initial="hidden"
           animate="visible"
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-4 font-[family-name:var(--font-syne)]"
+          className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-3 sm:mb-4 font-[family-name:var(--font-syne)]"
           style={isMobile ? undefined : { perspective: 800 }}
         >
           <span className="flex flex-wrap justify-center gap-x-[0.3em]" style={isMobile ? undefined : { transformStyle: "preserve-3d" }}>
@@ -155,7 +155,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: isMobile ? 16 : 30, scale: isMobile ? 1 : 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: isMobile ? 0.4 : 1, delay: isMobile ? 0.2 : 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-            className="gradient-text-motion bg-gradient-to-r from-[#6366F1] via-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent block -mt-2"
+            className="gradient-text-motion bg-gradient-to-r from-[#6366F1] via-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent block -mt-1 sm:-mt-2"
           >
             {t("hero.partner")}
           </motion.span>
@@ -166,7 +166,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-base sm:text-lg md:text-xl text-[#8B8B9E] max-w-2xl mx-auto mb-8 leading-relaxed"
+          className="text-sm sm:text-lg md:text-xl text-[#8B8B9E] max-w-xl sm:max-w-2xl mx-auto mb-5 sm:mb-8 leading-relaxed px-2"
         >
           {t("hero.desc")}
         </motion.p>
@@ -176,24 +176,24 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2"
         >
           <motion.a
             href={siteConfig.telegram.consultationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="magnetic-button inline-flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_48px_rgba(99,102,241,0.46)] text-base"
+            className="magnetic-button inline-flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_48px_rgba(99,102,241,0.46)] text-sm sm:text-base"
             whileHover={isMobile ? undefined : { scale: 1.05 }}
             whileTap={isMobile ? undefined : { scale: 0.97 }}
           >
             {t("hero.cta.start")}
-            <ArrowRight size={18} />
+            <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
           </motion.a>
           <motion.a
             href={siteConfig.telegram.channelUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={`magnetic-button inline-flex items-center justify-center gap-2 bg-[#111118]/50 border border-[#2A2A38] hover:border-[#6366F1] text-[#F8F8FF] font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(99,102,241,0.16)] text-base ${isMobile ? "" : "backdrop-blur-md"}`}
+            className={`magnetic-button inline-flex items-center justify-center gap-2 bg-[#111118]/50 border border-[#2A2A38] hover:border-[#6366F1] text-[#F8F8FF] font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(99,102,241,0.16)] text-sm sm:text-base ${isMobile ? "" : "backdrop-blur-md"}`}
             whileHover={isMobile ? undefined : { scale: 1.05 }}
             whileTap={isMobile ? undefined : { scale: 0.97 }}
           >
@@ -206,7 +206,7 @@ export default function HeroSection() {
           variants={stagger}
           initial="hidden"
           animate="visible"
-          className="mt-8 grid grid-cols-3 gap-3 sm:mt-12 max-w-lg mx-auto"
+          className="mt-5 sm:mt-8 grid grid-cols-3 gap-2 sm:gap-3 sm:mt-12 max-w-lg mx-auto px-2"
         >
           {[
             { value: 100, suffix: "+", label: t("hero.stat.projects") },
@@ -224,12 +224,12 @@ export default function HeroSection() {
                   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 1.2 + i * 0.1 },
                 },
               }}
-              className={`glass-stat rounded-xl px-2.5 py-3 sm:rounded-2xl sm:px-5 sm:py-4`}
+              className={`glass-stat rounded-lg px-2 py-2.5 sm:rounded-2xl sm:px-5 sm:py-4`}
             >
-              <div className="text-2xl font-bold text-[#6366F1] sm:text-3xl">
+              <div className="text-xl sm:text-2xl font-bold text-[#6366F1] sm:text-3xl">
                 <CountUp value={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="mt-1 text-[11px] leading-tight text-[#8B8B9E] sm:text-sm">
+              <div className="mt-0.5 sm:mt-1 text-[10px] sm:text-[11px] leading-tight text-[#8B8B9E] sm:text-sm">
                 {stat.label}
               </div>
             </motion.div>

@@ -136,11 +136,11 @@ export default function Header() {
         <div className="xl:hidden flex items-center gap-2">
           <LanguageToggle />
           <button
-            className="text-[#F8F8FF] p-2"
+            className="text-[#F8F8FF] p-2 rounded-lg hover:bg-white/10 transition-colors duration-200"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
@@ -150,44 +150,48 @@ export default function Header() {
         {menuOpen && (
           <motion.div
             key="mobile-menu"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:hidden overflow-hidden bg-[#111118] border-t border-[#2A2A38]"
+            initial={{ opacity: 0, y: -10, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.98 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="xl:hidden mt-2 mx-1 bg-[#1A1A24]/95 backdrop-blur-xl border border-[#2A2A38]/80 rounded-2xl shadow-[0_16px_48px_rgba(0,0,0,0.5)] overflow-hidden"
           >
-            <div className="px-4 py-6 flex flex-col gap-4">
+            <div className="p-3">
               {navKeys.map((key, i) => {
                 const active = isActive(navHrefs[i]);
                 return (
                   <motion.button
                     key={navHrefs[i]}
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
+                    transition={{ delay: i * 0.04, duration: 0.25 }}
                     onClick={() => handleNavClick(navHrefs[i])}
-                    className={`cursor-pointer transition-colors text-left text-base font-medium py-2 ${
-                      active ? "text-[#F8F8FF]" : "text-[#8B8B9E] hover:text-[#F8F8FF]"
+                    className={`cursor-pointer w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
+                      active
+                        ? "text-[#F8F8FF] bg-[#6366F1]/15"
+                        : "text-[#8B8B9E] hover:text-[#F8F8FF] hover:bg-white/5"
                     }`}
                   >
                     {t(key)}
                   </motion.button>
                 );
               })}
-              <motion.a
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navKeys.length * 0.05 }}
-                href={siteConfig.telegram.consultationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="magnetic-button text-center bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-4 py-3 rounded-full transition-all duration-500 hover:shadow-[0_0_30px_rgba(99,102,241,0.32)]"
-              >
-                {t("header.write")}
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.012 9.47c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 14.948l-2.937-.918c-.638-.198-.65-.638.136-.943l11.47-4.42c.532-.194.998.13.633.582z"/>
-                </svg>
-              </motion.a>
+              <div className="mt-2 px-1">
+                <motion.a
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: navKeys.length * 0.04 }}
+                  href={siteConfig.telegram.consultationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="magnetic-button flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-4 py-2.5 rounded-xl transition-all duration-300 hover:shadow-[0_0_24px_rgba(99,102,241,0.32)] text-sm"
+                >
+                  {t("header.write")}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.012 9.47c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 14.948l-2.937-.918c-.638-.198-.65-.638.136-.943l11.47-4.42c.532-.194.998.13.633.582z"/>
+                  </svg>
+                </motion.a>
+              </div>
             </div>
           </motion.div>
         )}
