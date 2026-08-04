@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef, useCallback, useState, useEffect, type MouseEvent } from "react";
 import { CheckCircle, Clock, Shield, Sparkles, Users, Zap, Award } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { useTranslation } from "@/lib/LanguageContext";
@@ -8,57 +7,14 @@ import { useTranslation } from "@/lib/LanguageContext";
 const advantageIcons = [Clock, Shield, Zap, Users, Sparkles, CheckCircle, Award];
 const advantageKeys = ["why.1", "why.2", "why.3", "why.4", "why.5", "why.6", "why.7"];
 
-function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
-    if (isMobile) return;
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    el.style.transform = `perspective(800px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg) translateY(-6px)`;
-  }, [isMobile]);
-
-  const handleMouseLeave = useCallback(() => {
-    const el = ref.current;
-    if (!el) return;
-    el.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)";
-  }, []);
-
-  if (isMobile) {
-    return <div className={className}>{children}</div>;
-  }
-
-  return (
-    <div
-      ref={ref}
-      className={className}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ transition: "transform 400ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 400ms ease", transformStyle: "preserve-3d" }}
-    >
-      {children}
-    </div>
-  );
-}
-
 export default function WhyUsSection() {
   const { t } = useTranslation();
 
   return (
     <section id="about" className="py-20 px-4 bg-[#111118]">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <FadeIn className="text-center mb-16" y={30} blur={8}>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-4 font-[family-name:var(--font-syne)]">
             {t("why.title")}
           </h2>
           <p className="text-[#8B8B9E] text-lg max-w-2xl mx-auto">
@@ -66,27 +22,34 @@ export default function WhyUsSection() {
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="flex flex-col gap-2.5">
           {advantageKeys.map((key, i) => {
             const Icon = advantageIcons[i];
             return (
               <FadeIn
                 key={key}
-                delay={0.1 + i * 0.07}
-                y={40}
+                delay={0.08 + i * 0.06}
+                y={24}
                 blur={4}
               >
-                <TiltCard className="premium-surface glow-border bg-[#1A1A24] border border-[#2A2A38] rounded-2xl p-6 cursor-default h-full">
-                  <div className="premium-icon w-12 h-12 bg-[#6366F1]/10 rounded-xl flex items-center justify-center mb-4">
-                    <Icon size={24} className="text-[#6366F1]" />
+                <div className={`table-row-card group flex items-start gap-4 p-4 md:p-5 rounded-xl border border-[#2A2A38]/60 bg-[#1A1A24]/50 cursor-default transition-all duration-300 hover:bg-[#1A1A24] hover:border-[#2A2A38] hover:translate-x-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.2)] ${i === 0 ? 'table-row-card--active' : ''}`}>
+                  <span className="text-xl md:text-2xl font-bold text-[#6366F1]/25 group-hover:text-[#6366F1]/60 transition-colors duration-300 w-8 md:w-10 text-center shrink-0 font-[family-name:var(--font-syne)] tabular-nums mt-0.5">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  <div className="w-10 h-10 md:w-11 md:h-11 rounded-lg bg-[#6366F1]/8 group-hover:bg-[#6366F1]/15 flex items-center justify-center shrink-0 transition-colors duration-300">
+                    <Icon size={20} className="text-[#6366F1]/70 group-hover:text-[#6366F1] transition-colors duration-300" />
                   </div>
-                  <h3 className="text-[#F8F8FF] font-semibold text-base mb-2">
-                    {t(`${key}.title`)}
-                  </h3>
-                  <p className="text-[#8B8B9E] text-sm leading-relaxed">
-                    {t(`${key}.desc`)}
-                  </p>
-                </TiltCard>
+
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-[#F8F8FF] text-sm md:text-base mb-1">
+                      {t(`${key}.title`)}
+                    </h3>
+                    <p className="text-[#8B8B9E] text-xs md:text-sm leading-relaxed">
+                      {t(`${key}.desc`)}
+                    </p>
+                  </div>
+                </div>
               </FadeIn>
             );
           })}

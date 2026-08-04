@@ -69,12 +69,14 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? `bg-[#0A0A0F]/88 ${isMobile ? "" : "backdrop-blur-xl"} border-b border-[#2A2A38] shadow-[0_18px_60px_rgba(0,0,0,0.24)]`
-          : "bg-transparent"
+        scrolled ? "px-4 md:px-6 pt-3" : "px-4 md:px-6 pt-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div className={`mx-auto max-w-7xl py-3 px-5 flex items-center justify-between rounded-2xl transition-all duration-300 ${
+        scrolled
+          ? "bg-[#0A0A0F]/85 backdrop-blur-xl border border-[#2A2A38] shadow-[0_8px_40px_rgba(0,0,0,0.3)]"
+          : "bg-[#111118]/60 backdrop-blur-md border border-white/5"
+      }`}>
         <div className="flex items-center gap-3">
           <Image
             src="/media/logo.jpg"
@@ -91,7 +93,7 @@ export default function Header() {
         </div>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-8">
           {navKeys.map((key, i) => {
             const active = isActive(navHrefs[i]);
             return (
@@ -113,31 +115,25 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
-          {/* Language switcher */}
-          <div className="mr-4">
+        <div className="hidden xl:flex items-center gap-3">
+          <div className="mr-2">
             <LanguageToggle />
           </div>
-          <a
-            href={siteConfig.partnerProgramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="magnetic-button flex items-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)]"
-          >
-            {t("header.partner")}
-          </a>
           <a
             href={siteConfig.telegram.consultationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="magnetic-button flex items-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)]"
+            className="magnetic-button flex items-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-500 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)]"
           >
             {t("header.write")}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.012 9.47c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 14.948l-2.937-.918c-.638-.198-.65-.638.136-.943l11.47-4.42c.532-.194.998.13.633.582z"/>
+            </svg>
           </a>
         </div>
 
         {/* Mobile burger */}
-        <div className="lg:hidden flex items-center gap-2">
+        <div className="xl:hidden flex items-center gap-2">
           <LanguageToggle />
           <button
             className="text-[#F8F8FF] p-2"
@@ -157,7 +153,7 @@ export default function Header() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="lg:hidden overflow-hidden bg-[#111118] border-t border-[#2A2A38]"
           >
             <div className="px-4 py-6 flex flex-col gap-4">
@@ -182,23 +178,15 @@ export default function Header() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navKeys.length * 0.05 }}
-                href={siteConfig.partnerProgramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="magnetic-button mt-2 text-center bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-4 py-3 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.32)]"
-              >
-                {t("header.partner")}
-              </motion.a>
-              <motion.a
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navKeys.length * 0.05 + 0.05 }}
                 href={siteConfig.telegram.consultationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="magnetic-button text-center bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-4 py-3 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.32)]"
+                className="magnetic-button text-center bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-4 py-3 rounded-full transition-all duration-500 hover:shadow-[0_0_30px_rgba(99,102,241,0.32)]"
               >
                 {t("header.write")}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.012 9.47c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 14.948l-2.937-.918c-.638-.198-.65-.638.136-.943l11.47-4.42c.532-.194.998.13.633.582z"/>
+                </svg>
               </motion.a>
             </div>
           </motion.div>

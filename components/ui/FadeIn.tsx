@@ -71,9 +71,9 @@ export function FadeIn({
             : { opacity: 0, y: y > 0 ? 16 : 0 }
         }
         transition={{
-          duration: 0.35,
+          duration: 0.55,
           delay: Math.min(delay, 0.3),
-          ease: "easeOut",
+          ease: [0.22, 1, 0.36, 1] as const,
         }}
         {...rest}
       >
@@ -115,7 +115,7 @@ export function FadeIn({
             }
       }
       transition={{
-        duration: 0.7,
+        duration: 1.1,
         delay,
         ease: [0.22, 1, 0.36, 1] as const,
       }}

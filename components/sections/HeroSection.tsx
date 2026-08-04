@@ -71,7 +71,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-8 pb-4"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-4"
     >
       {/* Parallax background layers */}
       <motion.div
@@ -137,7 +137,7 @@ export default function HeroSection() {
           variants={stagger}
           initial="hidden"
           animate="visible"
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-4"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-4 font-[family-name:var(--font-syne)]"
           style={isMobile ? undefined : { perspective: 800 }}
         >
           <span className="flex flex-wrap justify-center gap-x-[0.3em]" style={isMobile ? undefined : { transformStyle: "preserve-3d" }}>
@@ -183,8 +183,8 @@ export default function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="magnetic-button inline-flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_48px_rgba(99,102,241,0.46)] text-base"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={isMobile ? undefined : { scale: 1.05 }}
+            whileTap={isMobile ? undefined : { scale: 0.97 }}
           >
             {t("hero.cta.start")}
             <ArrowRight size={18} />
@@ -194,8 +194,8 @@ export default function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             className={`magnetic-button inline-flex items-center justify-center gap-2 bg-[#111118]/50 border border-[#2A2A38] hover:border-[#6366F1] text-[#F8F8FF] font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(99,102,241,0.16)] text-base ${isMobile ? "" : "backdrop-blur-md"}`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={isMobile ? undefined : { scale: 1.05 }}
+            whileTap={isMobile ? undefined : { scale: 0.97 }}
           >
             {t("hero.cta.portfolio")}
           </motion.a>
@@ -224,7 +224,7 @@ export default function HeroSection() {
                   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 1.2 + i * 0.1 },
                 },
               }}
-              className={`premium-surface rounded-xl border border-[#2A2A38]/70 bg-[#111118]/40 px-2.5 py-3 ${isMobile ? "" : "backdrop-blur-md"} sm:rounded-2xl sm:px-5 sm:py-4 shimmer glow-border`}
+              className={`glass-stat rounded-xl px-2.5 py-3 sm:rounded-2xl sm:px-5 sm:py-4`}
             >
               <div className="text-2xl font-bold text-[#6366F1] sm:text-3xl">
                 <CountUp value={stat.value} suffix={stat.suffix} />

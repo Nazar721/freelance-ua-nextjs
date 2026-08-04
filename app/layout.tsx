@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Syne } from "next/font/google";
+import { Space_Grotesk, Unbounded } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Providers } from "./providers";
@@ -12,8 +12,8 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
-const syne = Syne({
-  subsets: ["latin"],
+const unbounded = Unbounded({
+  subsets: ["latin", "cyrillic"],
   variable: "--font-syne",
   display: "swap",
 });
@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="uk" className={`${spaceGrotesk.variable} ${syne.variable}`}>
+    <html lang="uk" className={`${spaceGrotesk.variable} ${unbounded.variable}`}>
       <body>
         <ContentProtection />
         <LoadingScreen />

@@ -102,7 +102,7 @@ export function BeforeAfterSlider({
     <div ref={wrapperRef}>
       <div
         ref={containerRef}
-        className={`relative w-full aspect-[16/10] rounded-xl overflow-hidden select-none bg-[#0A0A0F] cursor-ew-resize ${className}`}
+        className={`relative w-full max-w-3xl mx-auto aspect-[16/10] rounded-xl overflow-hidden select-none bg-[#0A0A0F] cursor-ew-resize ${className}`}
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouchMove}
       >
@@ -125,8 +125,8 @@ export function BeforeAfterSlider({
             alt={afterAlt}
             fill
             sizes="(max-width: 768px) 100vw, 65vw"
-            quality={90}
-            className="object-cover"
+            quality={75}
+            className="object-contain"
             draggable={false}
             onContextMenu={(e) => e.preventDefault()}
           />
@@ -142,8 +142,8 @@ export function BeforeAfterSlider({
             alt={beforeAlt}
             fill
             sizes="(max-width: 768px) 100vw, 65vw"
-            quality={90}
-            className="object-cover"
+            quality={75}
+            className="object-contain"
             draggable={false}
             onContextMenu={(e) => e.preventDefault()}
           />

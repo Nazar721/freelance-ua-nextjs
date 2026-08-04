@@ -42,7 +42,7 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+      className="fixed inset-0 z-[9999] flex items-center justify-center video-modal-backdrop"
       onClick={onClose}
     >
       <button
@@ -51,17 +51,19 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
       >
         <X size={20} className="text-white" />
       </button>
-      <video
-        ref={videoRef}
-        src={src}
-        controls
-        autoPlay
-        playsInline
-        draggable={false}
-        className="max-w-[95vw] max-h-[90vh] w-auto h-auto object-contain rounded-lg"
-        onClick={(e) => e.stopPropagation()}
-        onContextMenu={(e) => e.preventDefault()}
-      />
+      <div className="video-modal-panel p-2">
+        <video
+          ref={videoRef}
+          src={src}
+          controls
+          autoPlay
+          playsInline
+          draggable={false}
+          className="max-w-[93vw] max-h-[85vh] w-auto h-auto object-contain rounded-lg"
+          onClick={(e) => e.stopPropagation()}
+          onContextMenu={(e) => e.preventDefault()}
+        />
+      </div>
     </div>
   );
 }

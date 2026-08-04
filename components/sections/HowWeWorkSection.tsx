@@ -8,7 +8,6 @@ import { useTranslation } from "@/lib/LanguageContext";
 const stepIcons = [MessageSquare, Settings, CheckCircle2];
 const stepKeys = ["process.1", "process.2", "process.3", "process.4"];
 
-// Smooth easing curve — no overshoot
 const smoothEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 export default function HowWeWorkSection() {
@@ -40,10 +39,10 @@ export default function HowWeWorkSection() {
         </motion.div>
 
         <div className="relative">
-          {/* Connecting line — desktop only */}
+          {/* Animated connecting line — flowing light */}
           <div className="hidden md:block absolute top-16 left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)] h-px overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-transparent via-[#6366F1] to-transparent"
+              className="h-full process-line"
               initial={{ scaleX: 0 }}
               animate={isInView ? { scaleX: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.3, ease: smoothEase }}
@@ -51,7 +50,8 @@ export default function HowWeWorkSection() {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8">
+          {/* Steps grid — hover dimming container */}
+          <div className="process-steps grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8">
             {stepKeys.slice(0, 3).map((key, index) => {
               const Icon = stepIcons[index];
               const d = 0.15 + index * 0.12;
@@ -59,14 +59,20 @@ export default function HowWeWorkSection() {
               return (
                 <motion.div
                   key={key}
-                  className="text-center"
+                  className="process-step text-center"
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: d, ease: smoothEase }}
                 >
                   {/* Icon container */}
                   <div className="relative inline-flex items-center justify-center mb-6">
-                    {/* Static ring 1 — no animation, just fades in */}
+                    {/* Hover glow */}
+                    <div className="step-glow" />
+
+                    {/* Pulse ripple */}
+                    <div className="step-pulse" />
+
+                    {/* Static ring 1 */}
                     <motion.div
                       className="absolute inset-[-8px] rounded-full border border-[#6366F1]/30"
                       initial={{ opacity: 0 }}
@@ -82,16 +88,12 @@ export default function HowWeWorkSection() {
                       transition={{ duration: 0.4, delay: d + 0.15 }}
                     />
 
-                    {/* Main circle — smooth scale */}
+                    {/* Main circle */}
                     <motion.div
                       className="w-20 h-20 rounded-full bg-[#1A1A24] border-2 border-[#6366F1] flex items-center justify-center relative z-10"
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                      transition={{
-                        duration: 0.4,
-                        delay: d,
-                        ease: smoothEase,
-                      }}
+                      transition={{ duration: 0.4, delay: d, ease: smoothEase }}
                     >
                       <motion.div
                         initial={{ opacity: 0 }}
@@ -102,16 +104,12 @@ export default function HowWeWorkSection() {
                       </motion.div>
                     </motion.div>
 
-                    {/* Number badge — simple fade + slight move */}
+                    {/* Number badge */}
                     <motion.span
                       className="absolute -top-1 -right-1 bg-[#6366F1] text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center z-20 shadow-[0_0_12px_rgba(99,102,241,0.4)]"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{
-                        duration: 0.3,
-                        delay: d + 0.2,
-                        ease: smoothEase,
-                      }}
+                      transition={{ duration: 0.3, delay: d + 0.2, ease: smoothEase }}
                     >
                       {index + 1}
                     </motion.span>
