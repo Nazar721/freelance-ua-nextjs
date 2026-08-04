@@ -124,7 +124,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className={`inline-flex items-center gap-2 bg-[#1A1A24]/80 border border-[#2A2A38]/80 rounded-full px-4 py-2 mb-2 sm:mb-5 text-xs sm:text-sm text-[#8B8B9E] shadow-[0_0_60px_rgba(99,102,241,0.1)] ${isMobile ? "" : "backdrop-blur-xl"} float`}>
+          <div className={`inline-flex items-center gap-2 bg-[#1A1A24]/80 border border-[#2A2A38]/80 rounded-full px-4 py-2 mb-5 sm:mb-5 text-xs sm:text-sm text-[#8B8B9E] shadow-[0_0_60px_rgba(99,102,241,0.1)] ${isMobile ? "" : "backdrop-blur-xl"} float`}>
             <span className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-[#6366F1]/15">
               <Zap size={10} className="text-[#6366F1]" />
             </span>
