@@ -71,7 +71,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-6 sm:pt-20 pb-4"
+      className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-20 pb-4"
     >
       {/* Parallax background layers */}
       <motion.div
@@ -124,7 +124,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className={`inline-flex items-center gap-2 bg-[#1A1A24]/80 border border-[#2A2A38]/80 rounded-full px-4 py-2 mb-2 sm:mb-5 text-xs sm:text-sm text-[#8B8B9E] shadow-[0_0_60px_rgba(99,102,241,0.1)] ${isMobile ? "" : "backdrop-blur-xl"} float`}>
+          <div className={`inline-flex items-center gap-2 bg-[#1A1A24]/80 border border-[#2A2A38]/80 rounded-full px-4 py-2 mb-5 sm:mb-5 text-xs sm:text-sm text-[#8B8B9E] shadow-[0_0_60px_rgba(99,102,241,0.1)] ${isMobile ? "" : "backdrop-blur-xl"} float`}>
             <span className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-[#6366F1]/15">
               <Zap size={10} className="text-[#6366F1]" />
             </span>
@@ -137,10 +137,10 @@ export default function HeroSection() {
           variants={stagger}
           initial="hidden"
           animate="visible"
-          className="text-[38px] sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-3 sm:mb-4 font-[family-name:var(--font-syne)]"
+          className="text-[32px] sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-3 sm:mb-4 font-[family-name:var(--font-syne)]"
           style={isMobile ? undefined : { perspective: 800 }}
         >
-          <span className="flex flex-wrap justify-center gap-x-[0.3em]" style={isMobile ? undefined : { transformStyle: "preserve-3d" }}>
+          <span className="flex flex-wrap sm:flex-wrap justify-center gap-x-[0.3em] whitespace-nowrap sm:whitespace-normal" style={isMobile ? undefined : { transformStyle: "preserve-3d" }}>
             {heroWords.map((key) => (
               <motion.span
                 key={key}
