@@ -1948,3 +1948,28 @@ img {
 }
 
 /* ─── Trusted by particles (canvas-based, no CSS needed) ─── */
+
+/* ─── Bolder fonts — bump all font weights up one level ─── */
+body {
+  font-weight: 500;
+}
+
+.font-normal {
+  font-weight: 500;
+}
+
+.font-medium {
+  font-weight: 600;
+}
+
+.font-semibold {
+  font-weight: 700;
+}
+
+.font-bold {
+  font-weight: 800;
+}
+
+.font-extrabold {
+  font-weight: 900;
+}
