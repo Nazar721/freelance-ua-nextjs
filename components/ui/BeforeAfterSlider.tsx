@@ -9,6 +9,7 @@ interface BeforeAfterSliderProps {
   afterVideo?: string;
   beforeAlt?: string;
   afterAlt?: string;
+  aspectClassName?: string;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export function BeforeAfterSlider({
   afterVideo,
   beforeAlt = "Code",
   afterAlt = "Website",
+  aspectClassName = "aspect-[16/10]",
   className = "",
 }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(50);
@@ -102,7 +104,7 @@ export function BeforeAfterSlider({
     <div ref={wrapperRef}>
       <div
         ref={containerRef}
-        className={`relative w-full max-w-3xl mx-auto aspect-[16/10] rounded-xl overflow-hidden select-none bg-[#0A0A0F] cursor-ew-resize ${className}`}
+        className={`relative w-full max-w-5xl mx-auto ${aspectClassName} rounded-xl overflow-hidden select-none bg-background cursor-ew-resize ${className}`}
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouchMove}
       >
@@ -124,7 +126,7 @@ export function BeforeAfterSlider({
             src={afterSrc}
             alt={afterAlt}
             fill
-            sizes="(max-width: 768px) 100vw, 65vw"
+            sizes="(max-width: 768px) 100vw, 80vw"
             quality={75}
             className="object-contain"
             draggable={false}
@@ -141,7 +143,7 @@ export function BeforeAfterSlider({
             src={beforeSrc}
             alt={beforeAlt}
             fill
-            sizes="(max-width: 768px) 100vw, 65vw"
+            sizes="(max-width: 768px) 100vw, 80vw"
             quality={75}
             className="object-contain"
             draggable={false}

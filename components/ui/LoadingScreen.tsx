@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 export default function LoadingScreen() {
-  const [show, setShow] = useState(true);
+  const shouldReduceMotion = useReducedMotion();
+  const [show, setShow] = useState(!shouldReduceMotion);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const services = [
@@ -18,7 +19,7 @@ export default function LoadingScreen() {
       setActiveIndex((prev) => (prev + 1) % services.length);
     }, 900);
 
-    const timer = setTimeout(() => setShow(false), 2800);
+    const timer = setTimeout(() => setShow(false), 1200);
     return () => {
       clearTimeout(timer);
       clearInterval(interval);
@@ -60,11 +61,11 @@ export default function LoadingScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0A0A0F]"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background"
         >
           {/* Subtle background glow */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#6366F1]/5 rounded-full blur-[120px]" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent/5 rounded-full blur-[120px]" />
           </div>
 
           {/* Services icons row */}
@@ -91,15 +92,15 @@ export default function LoadingScreen() {
                   <div
                     className={`w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center transition-all duration-300 ${
                       isActive
-                        ? "bg-[#6366F1]/20 text-[#6366F1] shadow-[0_0_20px_rgba(99,102,241,0.2)]"
-                        : "bg-[#1A1A24] text-[#8B8B9E]"
+                        ? "bg-accent/20 text-accent shadow-[0_0_20px_rgba(99,102,241,0.2)]"
+                        : "bg-surface-elevated text-muted-foreground"
                     }`}
                   >
                     <Icon />
                   </div>
                   <span
                     className={`text-[10px] md:text-xs font-medium transition-all duration-300 ${
-                      isActive ? "text-[#6366F1]" : "text-[#8B8B9E]/50"
+                      isActive ? "text-accent" : "text-muted-foreground/50"
                     }`}
                   >
                     {service.label}
@@ -116,9 +117,9 @@ export default function LoadingScreen() {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="text-center"
           >
-            <h1 className="text-lg md:text-xl font-bold text-[#F8F8FF] tracking-tight">
-              Freelance <span className="text-[#6366F1]">UA</span>
-            </h1>
+            <div className="text-lg md:text-xl font-bold text-foreground tracking-tight">
+              Freelance <span className="text-accent">UA</span>
+            </div>
           </motion.div>
 
           {/* Loading dots */}
@@ -131,7 +132,7 @@ export default function LoadingScreen() {
             {[0, 1, 2].map((i) => (
               <motion.div
                 key={i}
-                className="w-1 h-1 rounded-full bg-[#6366F1]"
+                className="w-1 h-1 rounded-full bg-accent"
                 animate={{ opacity: [0.3, 1, 0.3] }}
                 transition={{
                   duration: 1,

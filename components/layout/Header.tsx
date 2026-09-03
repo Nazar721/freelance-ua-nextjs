@@ -2,28 +2,46 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { useTranslation } from "@/lib/LanguageContext";
 import LanguageToggle from "@/components/ui/LanguageToggle";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 const navKeys = ["nav.about", "nav.services", "nav.process", "nav.cases", "nav.testimonials", "nav.contacts"];
 const navHrefs = ["#about", "#services", "#process", "#cases", "#testimonials", "#contacts"];
 const sectionIds = ["about", "services", "process", "cases", "testimonials", "contacts"];
 
+// Maps a subpage route to the homepage nav section it belongs to.
+// Returns null when a route has no matching section, so nothing gets highlighted
+// instead of falsely highlighting the first one.
+function routeToSection(pathname: string): string | null {
+  if (pathname === "/cases" || pathname.startsWith("/cases/")) return "cases";
+  return null;
+}
+
 export default function Header() {
   const { t } = useTranslation();
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [activeSection, setActiveSection] = useState("about");
+  const [scrollSection, setScrollSection] = useState("about");
+
+  const isHomePage = pathname === "/";
+
+  // On the homepage the active section follows scroll position;
+  // on subpages it is derived from the route.
+  const activeSection = isHomePage ? scrollSection : routeToSection(pathname);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
     check();
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", check);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -31,8 +49,10 @@ export default function Header() {
     };
   }, []);
 
-  // Intersection Observer for active section tracking
+  // Intersection Observer for active section tracking (homepage only)
   useEffect(() => {
+    if (!isHomePage) return;
+
     const observers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id) => {
@@ -42,7 +62,7 @@ export default function Header() {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setActiveSection(id);
+            setScrollSection(id);
           }
         },
         { rootMargin: "-20% 0px -60% 0px" }
@@ -55,13 +75,19 @@ export default function Header() {
     return () => {
       observers.forEach((o) => o.disconnect());
     };
-  }, []);
+  }, [isHomePage]);
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
-    setTimeout(() => {
-      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-    }, 320);
+    if (isHomePage) {
+      setTimeout(() => {
+        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+      }, 320);
+    } else {
+      setTimeout(() => {
+        window.location.href = "/" + href;
+      }, 320);
+    }
   };
 
   const isActive = (href: string) => activeSection === href.slice(1);
@@ -74,21 +100,21 @@ export default function Header() {
     >
       <div className={`mx-auto max-w-7xl py-3 px-5 flex items-center justify-between rounded-2xl transition-all duration-300 ${
         scrolled
-          ? "bg-[#0A0A0F]/85 backdrop-blur-xl border border-[#2A2A38] shadow-[0_8px_40px_rgba(0,0,0,0.3)]"
-          : "bg-[#111118]/60 backdrop-blur-md border border-white/5"
+          ? "bg-background/85 backdrop-blur-xl border border-border shadow-[0_8px_40px_rgba(0,0,0,0.3)]"
+          : "bg-surface/60 backdrop-blur-md border border-border/20"
       }`}>
         <div className="flex items-center gap-3">
           <Image
             src="/media/logo.jpg"
             alt="Freelance UA"
-            width={40}
-            height={40}
+            width={32}
+            height={32}
             className="rounded-lg"
             priority
           />
-          <span className="font-bold text-[#F8F8FF] text-sm md:text-base leading-tight">
+          <span className="font-bold text-foreground text-sm md:text-base leading-tight">
             Freelance UA<br />
-            <span className="text-[#6366F1]">Digital Agency</span>
+            <span className="text-accent">Digital Agency</span>
           </span>
         </div>
 
@@ -100,22 +126,36 @@ export default function Header() {
               <button
                 key={navHrefs[i]}
                 onClick={() => handleNavClick(navHrefs[i])}
-                className={`group relative cursor-pointer transition-colors duration-300 text-sm font-medium ${
-                  active ? "text-[#F8F8FF]" : "text-[#8B8B9E] hover:text-[#F8F8FF]"
+                className={`group relative cursor-pointer transition-colors duration-200 text-sm font-medium ${
+                  active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {t(key)}
                 <span
-                  className={`absolute -bottom-1 left-0 h-px bg-[#6366F1] transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-px bg-accent transition-all duration-200 ${
                     active ? "w-full" : "w-0 group-hover:w-full"
                   }`}
                 />
               </button>
             );
           })}
+          <Link
+            href="/partners"
+            className={`group relative transition-colors duration-200 text-sm font-medium ${
+              pathname === "/partners" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {t("header.partner")}
+            <span
+              className={`absolute -bottom-1 left-0 h-px bg-accent transition-all duration-200 ${
+                pathname === "/partners" ? "w-full" : "w-0 group-hover:w-full"
+              }`}
+            />
+          </Link>
         </nav>
 
         <div className="hidden xl:flex items-center gap-3">
+          <ThemeToggle />
           <div className="mr-2">
             <LanguageToggle />
           </div>
@@ -123,7 +163,7 @@ export default function Header() {
             href={siteConfig.telegram.consultationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="magnetic-button flex items-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-500 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)]"
+            className="magnetic-button flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)]"
           >
             {t("header.write")}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -134,9 +174,10 @@ export default function Header() {
 
         {/* Mobile burger */}
         <div className="xl:hidden flex items-center gap-2">
+          <ThemeToggle />
           <LanguageToggle />
           <button
-            className="text-[#F8F8FF] p-2 rounded-lg hover:bg-white/10 transition-colors duration-200"
+            className="text-foreground p-2 rounded-lg hover:bg-white/10 transition-colors duration-200"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -154,7 +195,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="xl:hidden mt-2 mx-1 bg-[#1A1A24]/95 backdrop-blur-xl border border-[#2A2A38]/80 rounded-2xl shadow-[0_16px_48px_rgba(0,0,0,0.5)] overflow-hidden"
+            className="xl:hidden mt-2 mx-1 bg-surface-elevated/95 backdrop-blur-xl border border-border/80 rounded-2xl shadow-[0_16px_48px_rgba(0,0,0,0.5)] overflow-hidden"
           >
             <div className="p-3">
               {navKeys.map((key, i) => {
@@ -168,14 +209,31 @@ export default function Header() {
                     onClick={() => handleNavClick(navHrefs[i])}
                     className={`cursor-pointer w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                       active
-                        ? "text-[#F8F8FF] bg-[#6366F1]/15"
-                        : "text-[#8B8B9E] hover:text-[#F8F8FF] hover:bg-white/5"
+                        ? "text-foreground bg-accent/15"
+                        : "text-muted-foreground hover:text-foreground hover:bg-white/5"
                     }`}
                   >
                     {t(key)}
                   </motion.button>
                 );
               })}
+              <motion.div
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navKeys.length * 0.04, duration: 0.25 }}
+              >
+                <Link
+                  href="/partners"
+                  onClick={() => setMenuOpen(false)}
+                  className={`block w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
+                    pathname === "/partners"
+                      ? "text-foreground bg-accent/15"
+                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                  }`}
+                >
+                  {t("header.partner")}
+                </Link>
+              </motion.div>
               <div className="mt-2 px-1">
                 <motion.a
                   initial={{ opacity: 0, y: 6 }}
@@ -184,7 +242,7 @@ export default function Header() {
                   href={siteConfig.telegram.consultationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="magnetic-button flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-4 py-2.5 rounded-xl transition-all duration-300 hover:shadow-[0_0_24px_rgba(99,102,241,0.32)] text-sm"
+                  className="magnetic-button flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.32)] text-sm"
                 >
                   {t("header.write")}
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">

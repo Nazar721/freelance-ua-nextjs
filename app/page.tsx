@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/sections/HeroSection";
@@ -5,14 +6,30 @@ import WhyUsSection from "@/components/sections/WhyUsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import HowWeWorkSection from "@/components/sections/HowWeWorkSection";
 import PricingSection from "@/components/sections/PricingSection";
-import CasesSection from "@/components/sections/CasesSection";
+import ItCasesSection from "@/components/sections/ItCasesSection";
+import DesignCasesSection from "@/components/sections/DesignCasesSection";
+import VideoCasesSection from "@/components/sections/VideoCasesSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import TrustedBySection from "@/components/sections/TrustedBySection";
+import BecomePartnerSection from "@/components/sections/BecomePartnerSection";
 import SiteBackdrop from "@/components/ui/SiteBackdrop";
+
+export const metadata: Metadata = {
+  title: "Freelance UA || Digital Agency",
+  description: "Digital-агенція з ІТ-розробки, дизайну та відеовиробництва. Telegram-боти, веб-сайти, брендінг, моушн-дизайн.",
+  openGraph: {
+    title: "Freelance UA || Digital Agency",
+    description: "Digital-агенція з ІТ-розробки, дизайну та відеовиробництва.",
+    images: ["/og-image.jpg"],
+  },
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (
-    <main className="relative isolate overflow-hidden">
+    <main className="relative isolate overflow-hidden pt-16">
       <SiteBackdrop />
       <Header />
       <HeroSection />
@@ -23,9 +40,12 @@ export default function Home() {
       <HowWeWorkSection />
       <PricingSection />
       <div className="section-divider" />
-      <CasesSection />
+      <ItCasesSection />
+      <DesignCasesSection />
+      <VideoCasesSection />
       <TestimonialsSection />
       <TrustedBySection />
+      <BecomePartnerSection />
       <Footer />
     </main>
   );

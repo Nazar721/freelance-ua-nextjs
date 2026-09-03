@@ -21,7 +21,7 @@ export default function HowWeWorkSection() {
   }, []);
 
   return (
-    <section id="process" className="py-20 px-4 bg-[#111118]">
+    <section id="process" className="py-20 px-4 bg-surface">
       <div className="max-w-7xl mx-auto" ref={sectionRef}>
         {/* Title */}
         <motion.div
@@ -30,10 +30,10 @@ export default function HowWeWorkSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: smoothEase }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             {t("process.title")}
           </h2>
-          <p className="text-[#8B8B9E] text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             {t("process.desc")}
           </p>
         </motion.div>
@@ -74,7 +74,7 @@ export default function HowWeWorkSection() {
 
                     {/* Static ring 1 */}
                     <motion.div
-                      className="absolute inset-[-8px] rounded-full border border-[#6366F1]/30"
+                      className="absolute inset-[-8px] rounded-full border border-accent/30"
                       initial={{ opacity: 0 }}
                       animate={isInView ? { opacity: 1 } : {}}
                       transition={{ duration: 0.4, delay: d + 0.1 }}
@@ -82,7 +82,7 @@ export default function HowWeWorkSection() {
 
                     {/* Static ring 2 */}
                     <motion.div
-                      className="absolute inset-[-16px] rounded-full border border-[#6366F1]/10"
+                      className="absolute inset-[-16px] rounded-full border border-accent/10"
                       initial={{ opacity: 0 }}
                       animate={isInView ? { opacity: 1 } : {}}
                       transition={{ duration: 0.4, delay: d + 0.15 }}
@@ -90,7 +90,7 @@ export default function HowWeWorkSection() {
 
                     {/* Main circle */}
                     <motion.div
-                      className="w-20 h-20 rounded-full bg-[#1A1A24] border-2 border-[#6366F1] flex items-center justify-center relative z-10"
+                      className="w-20 h-20 rounded-full bg-surface-elevated border-2 border-accent flex items-center justify-center relative z-10"
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={isInView ? { scale: 1, opacity: 1 } : {}}
                       transition={{ duration: 0.4, delay: d, ease: smoothEase }}
@@ -100,13 +100,13 @@ export default function HowWeWorkSection() {
                         animate={isInView ? { opacity: 1 } : {}}
                         transition={{ duration: 0.3, delay: d + 0.1 }}
                       >
-                        <Icon size={28} className="text-[#6366F1]" />
+                        <Icon size={28} className="text-accent" />
                       </motion.div>
                     </motion.div>
 
                     {/* Number badge */}
                     <motion.span
-                      className="absolute -top-1 -right-1 bg-[#6366F1] text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center z-20 shadow-[0_0_12px_rgba(99,102,241,0.4)]"
+                      className="absolute -top-1 -right-1 bg-accent text-primary-foreground text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center z-20 shadow-[0_0_12px_rgba(99,102,241,0.4)]"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ duration: 0.3, delay: d + 0.2, ease: smoothEase }}
@@ -116,8 +116,8 @@ export default function HowWeWorkSection() {
                   </div>
 
                   {/* Text */}
-                  <h3 className="text-[#F8F8FF] font-bold text-xl mb-3">{t(key + ".title")}</h3>
-                  <p className="text-[#8B8B9E] text-sm leading-relaxed max-w-xs mx-auto">
+                  <h3 className="text-foreground font-bold text-xl mb-3">{t(key + ".title")}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mx-auto">
                     {t(key + ".desc")}
                   </p>
                 </motion.div>

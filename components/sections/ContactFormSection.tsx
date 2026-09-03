@@ -109,15 +109,15 @@ export default function ContactFormSection() {
   return (
     <section id="contact-form" className="relative py-20 px-4">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {!isMobile && <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#6366F1]/[0.04] blur-[120px]" />}
+        {!isMobile && <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent/[0.04] blur-[120px]" />}
       </div>
 
       <div className="max-w-7xl mx-auto">
         <FadeIn className="text-center mb-14" y={30} blur={8}>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             {t("contact.title")}
           </h2>
-          <p className="text-[#8B8B9E] text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed">
             {t("contact.desc")}
           </p>
         </FadeIn>
@@ -132,9 +132,9 @@ export default function ContactFormSection() {
               <div>
                 <label
                   htmlFor="contact-name"
-                  className="block text-sm font-medium text-[#F8F8FF]/80 mb-2"
+                  className="block text-sm font-medium text-foreground/80 mb-2"
                 >
-                  {t("contact.name")} <span className="text-[#6366F1]">*</span>
+                  {t("contact.name")} <span className="text-accent">*</span>
                 </label>
                 <input
                   id="contact-name"
@@ -157,10 +157,10 @@ export default function ContactFormSection() {
               <div>
                 <label
                   htmlFor="contact-telegram"
-                  className="block text-sm font-medium text-[#F8F8FF]/80 mb-2"
+                  className="block text-sm font-medium text-foreground/80 mb-2"
                 >
                   {t("contact.telegram")}{" "}
-                  <span className="text-[#6366F1]">*</span>
+                  <span className="text-accent">*</span>
                 </label>
                 <input
                   id="contact-telegram"
@@ -183,9 +183,9 @@ export default function ContactFormSection() {
               <div>
                 <label
                   htmlFor="contact-message"
-                  className="block text-sm font-medium text-[#F8F8FF]/80 mb-2"
+                  className="block text-sm font-medium text-foreground/80 mb-2"
                 >
-                  {t("contact.projectDesc")} <span className="text-[#6366F1]">*</span>
+                  {t("contact.projectDesc")} <span className="text-accent">*</span>
                 </label>
                 <textarea
                   id="contact-message"
@@ -207,7 +207,7 @@ export default function ContactFormSection() {
               <button
                 type="submit"
                 disabled={sending}
-                className="magnetic-button w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] disabled:bg-[#6366F1]/50 text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_0_48px_rgba(99,102,241,0.44)] text-base cursor-pointer disabled:cursor-not-allowed"
+                className="magnetic-button w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover disabled:bg-accent/50 text-primary-foreground font-semibold px-10 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_0_48px_rgba(99,102,241,0.44)] text-base cursor-pointer disabled:cursor-not-allowed"
               >
                 {sending ? (
                   <>

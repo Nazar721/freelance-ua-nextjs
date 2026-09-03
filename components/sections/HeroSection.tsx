@@ -36,13 +36,20 @@ const wordRevealMobile = {
   },
 };
 
+function seededRandom(seed: number) {
+  const x = Math.sin(seed * 9973 + 7.13) * 10000;
+  return x - Math.floor(x);
+}
+
+const round4 = (n: number) => Math.round(n * 10000) / 10000;
+
 const particles = Array.from({ length: 20 }, (_, i) => ({
   id: i,
-  x: Math.random() * 100,
-  y: Math.random() * 100,
-  size: 2 + Math.random() * 3,
-  duration: 4 + Math.random() * 6,
-  delay: Math.random() * 4,
+  x: round4(seededRandom(i) * 100),
+  y: round4(seededRandom(i + 20) * 100),
+  size: Math.round((2 + seededRandom(i + 40) * 3) * 100) / 100,
+  duration: 4 + seededRandom(i + 60) * 6,
+  delay: seededRandom(i + 80) * 4,
 }));
 
 export default function HeroSection() {
@@ -71,7 +78,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-20 pb-4"
+      className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-0 pb-4"
     >
       {/* Parallax background layers */}
       <motion.div
@@ -83,7 +90,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Bottom fade */}
-      <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-linear-to-t from-[#0A0A0F] to-transparent z-[1]" />
+      <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-linear-to-t from-background to-transparent z-[1]" />
 
       {/* Floating particles — disabled on mobile for performance */}
       {!shouldReduceMotion && !isMobile && (
@@ -91,7 +98,7 @@ export default function HeroSection() {
           {particles.map((p) => (
             <motion.div
               key={p.id}
-              className="absolute rounded-full bg-[#6366F1]"
+              className="absolute rounded-full bg-accent"
               style={{
                 left: `${p.x}%`,
                 top: `${p.y}%`,
@@ -124,9 +131,9 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className={`inline-flex items-center gap-2 bg-[#1A1A24]/80 border border-[#2A2A38]/80 rounded-full px-4 py-2 mb-5 sm:mb-5 text-xs sm:text-sm text-[#8B8B9E] shadow-[0_0_60px_rgba(99,102,241,0.1)] ${isMobile ? "" : "backdrop-blur-xl"} float`}>
-            <span className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-[#6366F1]/15">
-              <Zap size={10} className="text-[#6366F1]" />
+          <div className={`inline-flex items-center gap-2 bg-surface-elevated/80 border border-border/80 rounded-full px-4 py-2 mb-5 sm:mb-5 text-xs sm:text-sm text-muted-foreground shadow-[0_0_60px_rgba(99,102,241,0.1)] ${isMobile ? "" : "backdrop-blur-xl"} float`}>
+            <span className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-accent/15">
+              <Zap size={10} className="text-accent" />
             </span>
             {t("hero.badge")}
           </div>
@@ -145,7 +152,7 @@ export default function HeroSection() {
               <motion.span
                 key={key}
                 variants={isMobile ? wordRevealMobile : wordReveal}
-                className="text-[#F8F8FF] inline-block"
+                className="text-foreground inline-block"
               >
                 {t(key)}
               </motion.span>
@@ -166,7 +173,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[16px] sm:text-lg md:text-xl text-[#8B8B9E] max-w-xl sm:max-w-2xl mx-auto mb-4 sm:mb-8 leading-relaxed px-1"
+          className="text-[16px] sm:text-lg md:text-xl text-muted-foreground max-w-xl sm:max-w-2xl mx-auto mb-4 sm:mb-8 leading-relaxed px-1"
         >
           {t("hero.desc")}
         </motion.p>
@@ -182,7 +189,7 @@ export default function HeroSection() {
             href={siteConfig.telegram.consultationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="magnetic-button inline-flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_48px_rgba(99,102,241,0.46)] text-sm sm:text-base"
+            className="magnetic-button inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-200 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_48px_rgba(99,102,241,0.46)] text-sm sm:text-base"
             whileHover={isMobile ? undefined : { scale: 1.05 }}
             whileTap={isMobile ? undefined : { scale: 0.97 }}
           >
@@ -190,10 +197,8 @@ export default function HeroSection() {
             <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
           </motion.a>
           <motion.a
-            href={siteConfig.telegram.channelUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`magnetic-button inline-flex items-center justify-center gap-2 bg-[#111118]/50 border border-[#2A2A38] hover:border-[#6366F1] text-[#F8F8FF] font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(99,102,241,0.16)] text-sm sm:text-base ${isMobile ? "" : "backdrop-blur-md"}`}
+            href="#cases"
+            className={`magnetic-button inline-flex items-center justify-center gap-2 bg-surface/50 border border-border hover:border-accent text-foreground font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(99,102,241,0.16)] text-sm sm:text-base ${isMobile ? "" : "backdrop-blur-md"}`}
             whileHover={isMobile ? undefined : { scale: 1.05 }}
             whileTap={isMobile ? undefined : { scale: 0.97 }}
           >
@@ -209,7 +214,7 @@ export default function HeroSection() {
           className="mt-5 sm:mt-8 grid grid-cols-3 gap-2 sm:gap-3 sm:mt-12 max-w-lg mx-auto px-2"
         >
           {[
-            { value: 100, suffix: "+", label: t("hero.stat.projects") },
+            { value: 140, suffix: "+", label: t("hero.stat.projects") },
             { value: 100, suffix: "%", label: t("hero.stat.clients") },
             { value: 3, suffix: "", label: t("hero.stat.years") },
           ].map((stat, i) => (
@@ -226,10 +231,10 @@ export default function HeroSection() {
               }}
               className={`glass-stat rounded-lg px-2 py-2.5 sm:rounded-2xl sm:px-5 sm:py-4`}
             >
-              <div className="text-xl sm:text-2xl font-bold text-[#6366F1] sm:text-3xl">
+              <div className="text-xl sm:text-2xl font-bold text-accent sm:text-3xl">
                 <CountUp value={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="mt-0.5 sm:mt-1 text-[10px] sm:text-[11px] leading-tight text-[#8B8B9E] sm:text-sm">
+              <div className="mt-0.5 sm:mt-1 text-[10px] sm:text-[11px] leading-tight text-muted-foreground sm:text-sm">
                 {stat.label}
               </div>
             </motion.div>

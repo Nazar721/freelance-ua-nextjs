@@ -11,12 +11,23 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("uk");
+export function LanguageProvider({
+  children,
+  initialLocale = "uk",
+}: {
+  children: ReactNode;
+  initialLocale?: Locale;
+}) {
+  const [locale, setLocaleState] = useState<Locale>(initialLocale);
 
-  const setLocale = useCallback((newLocale: Locale) => {
-    setLocaleState(newLocale);
-  }, []);
+  const setLocale = useCallback(
+    (newLocale: Locale) => {
+      if (newLocale === locale) return;
+      document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; samesite=lax`;
+      window.location.reload();
+    },
+    [locale],
+  );
 
   useEffect(() => {
     document.documentElement.lang = locale;

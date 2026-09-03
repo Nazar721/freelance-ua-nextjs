@@ -1,100 +1,163 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
-import { Quote, ArrowRight, Play, X, ChevronLeft, ChevronRight, MoveHorizontal, Volume2, Pause } from "lucide-react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
+import Image from "next/image";
+import { Play, Pause, X, ChevronRight, Quote, Video, MessageSquare, Maximize2 } from "lucide-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { LazyVideo } from "@/components/ui/LazyVideo";
+import ReviewAvatar from "@/components/ui/ReviewAvatar";
 import { useTranslation } from "@/lib/LanguageContext";
+import type { Testimonial } from "@/types";
 
-function useIsMobile(breakpoint = 768) {
-  const [m, setM] = useState(() => typeof window !== "undefined" && window.innerWidth <= breakpoint);
-  useEffect(() => {
-    const check = () => setM(window.innerWidth <= breakpoint);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, [breakpoint]);
-  return m;
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP);
 }
 
-function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
+/* ─── Emoji reactions (decorative, derived from id) ─── */
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = false;
-    video.play().catch(() => {});
+const REACTION_EMOJIS = ["🔥", "❤️", "👍", "✨", "🙌", "😍", "💯", "🎯"];
 
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", handleKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", handleKey);
-      document.body.style.overflow = "";
-      video.pause();
-    };
-  }, [onClose]);
+function getReactions(id: number) {
+  const count = 2 + (id % 3);
+  const start = id % REACTION_EMOJIS.length;
+  return Array.from({ length: count }, (_, k) => ({
+    emoji: REACTION_EMOJIS[(start + k * 2) % REACTION_EMOJIS.length],
+    count: 1 + ((id * 3 + k * 7) % 9),
+  }));
+}
 
+function Reactions({ id }: { id: number }) {
+  const reactions = useMemo(() => getReactions(id), [id]);
   return (
-    <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center video-modal-backdrop"
-      onClick={onClose}
-    >
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 md:top-6 md:right-6 z-10 w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer"
-      >
-        <X size={20} className="text-white" />
-      </button>
-      <div className="video-modal-panel p-2">
-        <video
-          ref={videoRef}
-          src={src}
-          controls
-          autoPlay
-          playsInline
-          draggable={false}
-          className="max-w-[93vw] max-h-[85vh] w-auto h-auto object-contain rounded-lg"
-          onClick={(e) => e.stopPropagation()}
-          onContextMenu={(e) => e.preventDefault()}
-        />
-      </div>
+    <div className="flex flex-wrap items-center gap-2">
+      {reactions.map((r) => (
+        <span
+          key={r.emoji}
+          className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface-elevated px-2.5 py-1 text-xs leading-none"
+        >
+          <span className="text-sm leading-none">{r.emoji}</span>
+          <span className="text-muted-foreground font-medium">{r.count}</span>
+        </span>
+      ))}
     </div>
   );
 }
 
-function AudioTestimonialCard({ testimonial, t }: { testimonial: typeof testimonials[number]; t: (key: string) => string }) {
+/* ─── Type badge (video / audio / telegram) ─── */
+
+function TypeBadge({ item }: { item: Testimonial }) {
+  const { t } = useTranslation();
+
+  let icon: React.ReactNode;
+  let label: string;
+  let tone: string;
+  if (item.video) {
+    icon = <Video size={11} />;
+    label = t("testimonials.videoReview");
+    tone = "border-accent/30 bg-accent/10 text-accent";
+  } else if (item.audio) {
+    icon = <Play size={11} />;
+    label = t("testimonials.audioReview");
+    tone = "border-accent/30 bg-accent/10 text-accent";
+  } else {
+    icon = <MessageSquare size={11} />;
+    label = t("testimonials.tgReview");
+    tone = "border-accent/30 bg-accent/10 text-accent";
+  }
+
+  return (
+    <span
+      className={`ml-auto inline-flex shrink-0 items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-medium leading-none ${tone}`}
+    >
+      {icon}
+      {label}
+    </span>
+  );
+}
+
+/* ─── Video poster: lazy first-frame preview (no autoplay, metadata only) ─── */
+
+function VideoPoster({ src }: { src: string }) {
+  const holderRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const el = holderRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <div ref={holderRef} className="absolute inset-0">
+      {/* fallback backdrop until the frame loads */}
+      <div className="absolute inset-0 bg-gradient-to-br from-surface-elevated via-surface to-surface-elevated">
+        <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-accent/15 blur-3xl" />
+        <div className="absolute -bottom-20 -left-10 w-48 h-48 rounded-full bg-accent/10 blur-3xl" />
+      </div>
+      {inView && (
+        <video
+          src={`${src}#t=0.2`}
+          muted
+          playsInline
+          preload="metadata"
+          tabIndex={-1}
+          draggable={false}
+          onLoadedData={() => setReady(true)}
+          onLoadedMetadata={() => setReady(true)}
+          className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+            ready ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      )}
+    </div>
+  );
+}
+
+/* ─── Audio player (voice reviews) ─── */
+
+function AudioPlayer({ src }: { src: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [bars] = useState(() => Array.from({ length: 26 }, () => Math.random() * 0.4 + 0.3));
+  const [tick, setTick] = useState(0);
 
-  const togglePlay = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      audio.play().catch(() => {});
-    }
-  };
+  useEffect(() => {
+    if (!isPlaying) return;
+    const id = setInterval(() => setTick(performance.now() * 0.004), 150);
+    return () => clearInterval(id);
+  }, [isPlaying]);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
     const onTimeUpdate = () => {
-      if (audio.duration) setProgress(audio.currentTime / audio.duration);
+      setCurrentTime(audio.currentTime);
     };
     const onLoaded = () => setDuration(audio.duration);
-    const onEnded = () => { setIsPlaying(false); setProgress(0); };
+    const onEnded = () => {
+      setIsPlaying(false);
+      setCurrentTime(0);
+    };
 
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
@@ -110,6 +173,14 @@ function AudioTestimonialCard({ testimonial, t }: { testimonial: typeof testimon
     };
   }, []);
 
+  const togglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) audio.pause();
+    else audio.play().catch(() => {});
+  };
+
   const formatTime = (s: number) => {
     if (!s || !isFinite(s)) return "0:00";
     const m = Math.floor(s / 60);
@@ -117,64 +188,189 @@ function AudioTestimonialCard({ testimonial, t }: { testimonial: typeof testimon
     return `${m}:${sec.toString().padStart(2, "0")}`;
   };
 
+  const progress = duration > 0 ? currentTime / duration : 0;
+
   return (
-    <div className="shimmer flex-none w-64 md:w-87.5 min-h-56 md:min-h-64 bg-[#111118] border border-[#2A2A38] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#6366F1]/40 hover:shadow-[0_8px_40px_rgba(99,102,241,0.1)] flex flex-col">
-      <audio ref={audioRef} src={testimonial.audio} preload="metadata" />
+    <div
+      className="flex h-full w-full flex-col items-center justify-center gap-3 py-3"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <audio ref={audioRef} src={src} preload="metadata" />
 
-      {/* Audio visual area */}
-      <div className="relative flex-1 min-h-40 md:min-h-48 bg-[#0A0A0F] flex flex-col items-center justify-center px-6 gap-4">
-        {/* Waveform bars */}
-        <div className="flex items-end gap-[3px] h-12 w-full max-w-[180px]">
-          {Array.from({ length: 28 }).map((_, i) => {
-            const barProgress = i / 28;
-            const isActive = isPlaying && barProgress <= progress;
-            const baseH = Math.sin(i * 0.45) * 0.3 + 0.5;
-            const h = isPlaying
-              ? baseH + Math.sin(Date.now() * 0.003 + i * 0.6) * 0.15
-              : baseH;
-            return (
-              <div
-                key={i}
-                className="flex-1 rounded-full transition-colors duration-200"
-                style={{
-                  height: `${Math.max(12, h * 48)}px`,
-                  backgroundColor: isActive ? "#6366F1" : "#2A2A38",
-                }}
-              />
-            );
-          })}
-        </div>
+      <div className="flex h-11 w-full max-w-[200px] items-end gap-[3px]">
+        {bars.map((baseH, i) => {
+          const barProgress = i / 26;
+          const isPast = barProgress <= progress;
+          const barH = isPlaying
+            ? baseH + Math.sin(tick + i * 0.5) * 0.15
+            : baseH;
+          const h = Math.max(0.15, Math.min(1, barH));
+          return (
+            <div
+              key={i}
+              className="flex-1 rounded-full"
+              style={{
+                height: `${Math.max(4, h * 44)}px`,
+                backgroundColor: isPast ? "var(--accent)" : "var(--border)",
+                transition: "height 0.15s ease-out, background-color 0.2s ease",
+              }}
+            />
+          );
+        })}
+      </div>
 
-        {/* Play/Pause button */}
+      <div className="flex items-center gap-3">
         <button
           onClick={togglePlay}
-          className="w-12 h-12 rounded-full bg-[#6366F1]/15 border border-[#6366F1]/30 flex items-center justify-center hover:bg-[#6366F1]/25 transition-all duration-300 cursor-pointer group/audio"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-accent/30 bg-accent/15 transition-all duration-300 hover:bg-accent/25 cursor-pointer"
           style={{ touchAction: "manipulation" }}
         >
           {isPlaying ? (
-            <Pause size={18} className="text-[#6366F1]" />
+            <Pause size={16} className="text-accent" />
           ) : (
-            <Play size={18} className="text-[#6366F1] ml-0.5" />
+            <Play size={16} className="text-accent ml-0.5" />
           )}
         </button>
+        <span className="font-mono text-[11px] text-muted-foreground">
+          {formatTime(currentTime)} / {formatTime(duration)}
+        </span>
+      </div>
+    </div>
+  );
+}
 
-        {/* Time display */}
-        <div className="text-[11px] text-[#8B8B9E] font-mono">
-          {formatTime(isPlaying ? audioRef.current?.currentTime ?? 0 : 0)} / {formatTime(duration)}
+/* ─── Modal video (mounted only when modal opens) ─── */
+
+function ModalVideo({ src }: { src: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    videoRef.current?.play().catch(() => {});
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      controls
+      playsInline
+      autoPlay
+      draggable={false}
+      className="w-full max-h-[62svh] rounded-2xl border border-border bg-black object-contain"
+      onContextMenu={(e) => e.preventDefault()}
+    />
+  );
+}
+
+/* ─── Card content (shared between deck card and modal) ─── */
+
+function CardContent({
+  item,
+  name,
+  variant,
+}: {
+  item: Testimonial;
+  name: string;
+  variant: "card" | "modal";
+}) {
+  const { t } = useTranslation();
+  const isModal = variant === "modal";
+  const text = item.textKey ? t(item.textKey) : "";
+  const isVideoOrAudio = !!(item.video || item.audio);
+
+  return (
+    <div className={isModal ? "flex flex-col gap-4" : "flex h-full min-h-0 flex-col gap-3"}>
+      {/* Author */}
+      <div className="flex shrink-0 items-center gap-3 h-11">
+        <div className="rounded-full bg-gradient-to-br from-accent to-accent p-[2px] shrink-0">
+          <ReviewAvatar name={name} size={isModal ? 52 : 44} />
         </div>
+        <div className="min-w-0 flex-1 flex items-center">
+          <div className="truncate text-foreground font-semibold text-base leading-none">
+            {name}
+          </div>
+        </div>
+        <TypeBadge item={item} />
       </div>
 
-      {/* Author + service footer */}
-      {(testimonial.author || testimonial.serviceKey) && (
-        <div className="px-4 py-3 flex items-center justify-between gap-2 bg-[#111118]">
-          {testimonial.author && (
-            <span className="text-[#6366F1] text-xs font-semibold truncate">
-              {testimonial.author}
-            </span>
-          )}
-          {testimonial.serviceKey && (
-            <span className="text-[10px] text-[#8B8B9E] bg-[#1A1A24] px-2 py-0.5 rounded-full border border-[#2A2A38] whitespace-nowrap shrink-0">
-              {testimonial.serviceKey}
+      {/* Media */}
+      {item.video &&
+        (isModal ? (
+          <ModalVideo src={item.video} />
+        ) : (
+          <div className="relative flex-1 min-h-0 cursor-pointer overflow-hidden rounded-2xl border border-border">
+            <VideoPoster src={item.video} />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors duration-300 group-hover:bg-black/25">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/25 bg-white/10 shadow-lg backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+                <Play size={20} className="text-white ml-0.5" />
+              </div>
+            </div>
+          </div>
+        ))}
+
+      {item.audio &&
+        (isModal ? (
+          <div onClick={(e) => e.stopPropagation()}>
+            <audio controls autoPlay src={item.audio} className="w-full" />
+          </div>
+        ) : (
+          <div className="flex-1 min-h-0 rounded-2xl border border-border bg-background">
+            <AudioPlayer src={item.audio} />
+          </div>
+        ))}
+
+      {item.screenshot && (
+        <div
+          className={`flex justify-center overflow-hidden rounded-2xl border border-border bg-background ${
+            isModal ? "" : "h-[210px] shrink-0 md:h-[270px]"
+          }`}
+        >
+          <Image
+            src={item.screenshot}
+            alt={`Відгук від ${name}`}
+            width={600}
+            height={1200}
+            className={
+              isModal
+                ? "h-auto w-auto max-h-[64svh] object-contain"
+                : "h-full w-full object-contain p-2"
+            }
+            loading={isModal ? "eager" : "lazy"}
+            draggable={false}
+          />
+        </div>
+      )}
+
+      {/* Text — only for screenshot/telegram reviews in card mode, always in modal */}
+      {text && !(isVideoOrAudio && !isModal) && (
+        <div
+          className={
+            isModal ? "relative" : "relative min-h-0 flex-1 overflow-y-auto pr-1 text-pretty"
+          }
+        >
+          <Quote
+            size={16}
+            className="mb-1.5 text-accent"
+            fill="currentColor"
+            fillOpacity={0.25}
+          />
+          <p className="text-[15px] leading-relaxed text-foreground">{text}</p>
+        </div>
+      )}
+
+      {/* Reactions — only for screenshot/telegram reviews in card mode, always in modal */}
+      {!(isVideoOrAudio && !isModal) && (
+        <div
+          className={`flex items-end justify-between gap-3 ${isModal ? "" : "mt-auto shrink-0"}`}
+        >
+          <Reactions id={item.id} />
+          {!isModal && (
+            <span
+              aria-hidden="true"
+              title={t("testimonials.expand")}
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-surface-elevated text-accent opacity-40 transition-all duration-300 group-hover:opacity-100 group-hover:border-accent/60 group-hover:bg-accent/15 group-hover:scale-110 group-focus-visible:opacity-100 shadow-lg"
+            >
+              <Maximize2 size={16} />
             </span>
           )}
         </div>
@@ -183,338 +379,396 @@ function AudioTestimonialCard({ testimonial, t }: { testimonial: typeof testimon
   );
 }
 
-function TestimonialCard({ testimonial, t, onVideoOpen }: { testimonial: typeof testimonials[number]; t: (key: string) => string; onVideoOpen?: (src: string) => void }) {
-  if (testimonial.audio) {
-    return <AudioTestimonialCard testimonial={testimonial} t={t} />;
-  }
+/* ─── Review card ─── */
 
-  if (testimonial.video) {
-    return (
-      <div className="shimmer flex-none w-64 md:w-87.5 min-h-56 md:min-h-64 bg-[#111118] border border-[#2A2A38] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#6366F1]/40 hover:shadow-[0_8px_40px_rgba(99,102,241,0.1)] flex flex-col">
-        <button
-          onClick={() => onVideoOpen?.(testimonial.video!)}
-          className="relative w-full flex-1 min-h-48 md:min-h-56 bg-[#0A0A0F] cursor-pointer group/video"
-          style={{ touchAction: "manipulation" }}
-        >
-          <LazyVideo
-            src={testimonial.video}
-            loop
-            playsInline
-            muted
-            autoPlay
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover/video:bg-black/40 transition-all duration-300">
-            <div className="w-12 h-12 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center shadow-[0_0_30px_rgba(0,0,0,0.3)] group-hover/video:scale-110 transition-transform duration-300">
-              <Play size={20} className="text-white ml-0.5" />
-            </div>
-          </div>
-        </button>
-        {(testimonial.author || testimonial.serviceKey) && (
-          <div className="px-4 py-3 flex items-center justify-between gap-2 bg-[#111118]">
-            {testimonial.author && (
-              <span className="text-[#6366F1] text-xs font-semibold truncate">
-                {testimonial.author}
-              </span>
-            )}
-            {testimonial.serviceKey && (
-              <span className="text-[10px] text-[#8B8B9E] bg-[#1A1A24] px-2 py-0.5 rounded-full border border-[#2A2A38] whitespace-nowrap shrink-0">
-                {testimonial.serviceKey}
-              </span>
-            )}
-          </div>
-        )}
-      </div>
-    );
-  }
+function useReviewName(item: Testimonial) {
+  const { t } = useTranslation();
+  return item.author?.trim() || t("testimonials.anonymous");
+}
+
+function ReviewCard({
+  item,
+  onOpen,
+  fixedHeight,
+}: {
+  item: Testimonial;
+  onOpen: (item: Testimonial, el: HTMLElement | null) => void;
+  fixedHeight?: boolean;
+}) {
+  const { t } = useTranslation();
+  const name = useReviewName(item);
 
   return (
-    <div className="shimmer flex-none w-64 md:w-87.5 min-h-56 md:min-h-64 bg-[#111118] border border-[#2A2A38] rounded-2xl p-5 md:p-6 flex flex-col transition-all duration-500 hover:border-[#6366F1]/40 hover:shadow-[0_8px_40px_rgba(99,102,241,0.1)]">
-      <div className="w-10 h-10 rounded-xl bg-[#6366F1]/10 border border-[#6366F1]/20 flex items-center justify-center mb-4">
-        <Quote size={18} className="text-[#6366F1]" />
+    <article
+      role="button"
+      tabIndex={0}
+      aria-label={`${name} — ${t("testimonials.tapToOpen")}`}
+      onClick={(e) => onOpen(item, e.currentTarget)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onOpen(item, e.currentTarget);
+        }
+      }}
+      className={`group cursor-pointer select-none rounded-3xl border border-border bg-surface/95 transition-colors duration-500 hover:border-accent/50 hover:shadow-[0_8px_50px_rgba(99,102,241,0.18)] ${
+        fixedHeight ? "flex h-full flex-col" : ""
+      }`}
+    >
+      <div className={`p-5 ${fixedHeight ? "flex h-full min-h-0 flex-col" : ""}`}>
+        <CardContent item={item} name={name} variant="card" />
       </div>
-      <p className="text-[#F8F8FF]/90 text-sm leading-relaxed mb-4 flex-1">
-        {t(testimonial.textKey)}
-      </p>
-      <div className="flex items-center justify-between gap-2 mt-auto">
-        {testimonial.author && (
-          <p className="text-[#6366F1] text-sm font-semibold truncate">
-            — {testimonial.author}
-          </p>
-        )}
-        {testimonial.serviceKey && (
-          <span className="text-[10px] text-[#8B8B9E] bg-[#1A1A24] px-2 py-0.5 rounded-full border border-[#2A2A38] whitespace-nowrap shrink-0">
-            {testimonial.serviceKey}
-          </span>
-        )}
-      </div>
-    </div>
+    </article>
   );
 }
 
-export default function TestimonialsSection() {
+/* ─── Fullscreen modal ─── */
+
+function TestimonialModal({
+  item,
+  originRect,
+  reduced,
+  onClose,
+}: {
+  item: Testimonial;
+  originRect: DOMRect | null;
+  reduced: boolean;
+  onClose: () => void;
+}) {
   const { t } = useTranslation();
-  const isMobile = useIsMobile();
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [videoModalSrc, setVideoModalSrc] = useState<string | null>(null);
-  const [showHint, setShowHint] = useState(true);
-  const [userInteracted, setUserInteracted] = useState(false);
+  const name = useReviewName(item);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const closingRef = useRef(false);
 
-  // Refs for animation state
-  const xRef = useRef(0);
-  const autoRef = useRef(true);
-  const pointerDownRef = useRef(false);
-  const draggingRef = useRef(false);
-  const dragStartXRef = useRef(0);
-  const dragStartPosRef = useRef(0);
-  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const singleWRef = useRef(0);
+  const close = () => {
+    if (closingRef.current) return;
+    closingRef.current = true;
 
-  const duplicated = [...testimonials, ...testimonials, ...testimonials];
+    const el = contentRef.current;
+    const wrap = wrapRef.current;
+    if (reduced || !el || !wrap) {
+      onClose();
+      return;
+    }
 
-  // Measure single-set width
-  useEffect(() => {
-    const measure = () => {
-      const track = trackRef.current;
-      if (!track) return;
-      const children = Array.from(track.children) as HTMLElement[];
-      const n = testimonials.length;
-      if (children.length < n + 1) return;
-      singleWRef.current = children[n].offsetLeft - children[0].offsetLeft;
-    };
-    let attempts = 0;
-    const tryMeasure = () => {
-      measure();
-      if (singleWRef.current === 0 && attempts < 10) {
-        attempts++;
-        requestAnimationFrame(tryMeasure);
-      }
-    };
-    requestAnimationFrame(tryMeasure);
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
+    gsap.to(wrap, { opacity: 0, duration: 0.4, ease: "power2.inOut" });
+    if (originRect) {
+      const r = el.getBoundingClientRect();
+      gsap.to(el, {
+        x: originRect.left + originRect.width / 2 - (r.left + r.width / 2),
+        y: originRect.top + originRect.height / 2 - (r.top + r.height / 2),
+        scaleX: Math.max(originRect.width / r.width, 0.05),
+        scaleY: Math.max(originRect.height / r.height, 0.05),
+        duration: 0.45,
+        ease: "power3.inOut",
+        onComplete: onClose,
+      });
+    } else {
+      gsap.to(el, {
+        opacity: 0,
+        y: 24,
+        scale: 0.94,
+        duration: 0.3,
+        ease: "power2.in",
+        onComplete: onClose,
+      });
+    }
+  };
 
-  // ── Auto-scroll loop ──
-  useEffect(() => {
-    let raf: number;
-    let last = 0;
-    // Mobile: 30px/s (gentle), Desktop: 50px/s
-    const speed = isMobile ? 0.03 : 0.05;
+  useLayoutEffect(() => {
+    const el = contentRef.current;
+    const wrap = wrapRef.current;
+    if (!el || !wrap || reduced) return;
 
-    const tick = (now: number) => {
-      if (autoRef.current && !draggingRef.current && last) {
-        const dt = Math.min(now - last, 50);
-        xRef.current -= speed * dt;
-
-        if (singleWRef.current > 0 && xRef.current <= -singleWRef.current) {
-          xRef.current += singleWRef.current;
-        }
-      }
-      last = now;
-
-      if (trackRef.current) {
-        trackRef.current.style.transform = `translateX(${xRef.current}px)`;
-      }
-
-      raf = requestAnimationFrame(tick);
-    };
-
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [isMobile]);
-
-  // ── Pause / Resume ──
-  const pause = useCallback(() => {
-    autoRef.current = false;
-    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
-  }, []);
-
-  const scheduleResume = useCallback(() => {
-    if (isMobile) return; // On mobile, never auto-resume after user interaction
-    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
-    resumeTimerRef.current = setTimeout(() => {
-      autoRef.current = true;
-    }, 3000);
-  }, [isMobile]);
-
-  // ── Drag (touch + mouse) ──
-  useEffect(() => {
-    const el = viewportRef.current;
-    if (!el) return;
-
-    const DRAG_THRESHOLD = 6;
-
-    const onDown = (e: PointerEvent) => {
-      pointerDownRef.current = true;
-      draggingRef.current = false;
-      dragStartXRef.current = e.clientX;
-      dragStartPosRef.current = xRef.current;
-    };
-
-    const onMove = (e: PointerEvent) => {
-      if (!pointerDownRef.current) return;
-      if (draggingRef.current) {
-        xRef.current = dragStartPosRef.current + (e.clientX - dragStartXRef.current);
-        return;
-      }
-      if (Math.abs(e.clientX - dragStartXRef.current) > DRAG_THRESHOLD) {
-        draggingRef.current = true;
-        pause();
-        setShowHint(false);
-        setUserInteracted(true);
-        xRef.current = dragStartPosRef.current + (e.clientX - dragStartXRef.current);
-      }
-    };
-
-    const onUp = () => {
-      pointerDownRef.current = false;
-      if (!draggingRef.current) return;
-      draggingRef.current = false;
-
-      if (singleWRef.current > 0) {
-        while (xRef.current < -singleWRef.current) xRef.current += singleWRef.current;
-        while (xRef.current > 0) xRef.current -= singleWRef.current;
-      }
-
-      scheduleResume();
-    };
-
-    const onWheel = (e: WheelEvent) => {
-      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY) || Math.abs(e.deltaX) < 3) return;
-
-      e.preventDefault();
-      xRef.current -= e.deltaX;
-      pause();
-      setShowHint(false);
-      setUserInteracted(true);
-      scheduleResume();
-    };
-
-    el.addEventListener("pointerdown", onDown);
-    el.addEventListener("pointermove", onMove);
-    el.addEventListener("pointerup", onUp);
-    el.addEventListener("pointercancel", onUp);
-    el.addEventListener("wheel", onWheel, { passive: false });
+    gsap.fromTo(wrap, { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" });
+    if (originRect) {
+      const r = el.getBoundingClientRect();
+      gsap.fromTo(
+        el,
+        {
+          x: originRect.left + originRect.width / 2 - (r.left + r.width / 2),
+          y: originRect.top + originRect.height / 2 - (r.top + r.height / 2),
+          scaleX: Math.max(originRect.width / r.width, 0.05),
+          scaleY: Math.max(originRect.height / r.height, 0.05),
+        },
+        { x: 0, y: 0, scaleX: 1, scaleY: 1, duration: 0.55, ease: "power3.out" }
+      );
+    } else {
+      gsap.from(el, { opacity: 0, y: 30, scale: 0.94, duration: 0.45, ease: "power3.out" });
+    }
 
     return () => {
-      el.removeEventListener("pointerdown", onDown);
-      el.removeEventListener("pointermove", onMove);
-      el.removeEventListener("pointerup", onUp);
-      el.removeEventListener("pointercancel", onUp);
-      el.removeEventListener("wheel", onWheel);
+      gsap.killTweensOf([el, wrap]);
     };
-  }, [pause, scheduleResume]);
-
-  // Hide hint after 5s
-  useEffect(() => {
-    const timer = setTimeout(() => setShowHint(false), 5000);
-    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Cleanup
   useEffect(() => {
-    return () => { if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current); };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const scrollTo = (dir: "left" | "right") => {
-    pause();
-    setShowHint(false);
-    setUserInteracted(true);
-    const cardW = trackRef.current?.querySelector<HTMLElement>(":scope > *")?.offsetWidth ?? 300;
-    xRef.current += dir === "left" ? cardW + 24 : -(cardW + 24);
-    scheduleResume();
+  return createPortal(
+    <div
+      ref={wrapRef}
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-3 backdrop-blur-md sm:p-6"
+      onClick={close}
+    >
+      <button
+        onClick={close}
+        aria-label={t("testimonials.close")}
+        className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 transition-colors cursor-pointer hover:bg-white/20 md:right-6 md:top-6"
+      >
+        <X size={20} className="text-white" />
+      </button>
+
+      <div
+        ref={contentRef}
+        onClick={(e) => e.stopPropagation()}
+        className="max-h-[90svh] w-[min(94vw,860px)] overflow-y-auto rounded-3xl border border-border bg-surface p-5 shadow-[0_40px_120px_rgba(0,0,0,0.6)] sm:p-8"
+      >
+        <CardContent item={item} name={name} variant="modal" />
+      </div>
+    </div>,
+    document.body
+  );
+}
+
+/* ─── Main Section ─── */
+
+export default function TestimonialsSection() {
+  const { t } = useTranslation();
+  const sectionRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const [originRect, setOriginRect] = useState<DOMRect | null>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [openItem, setOpenItem] = useState<Testimonial | null>(null);
+
+  const reducedMotion = useSyncExternalStore(
+    (subscribe) => {
+      const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+      mq.addEventListener("change", subscribe);
+      return () => mq.removeEventListener("change", subscribe);
+    },
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => false
+  );
+
+  const items = useMemo(() => testimonials, []);
+  const total = items.length;
+
+  useGSAP(
+    () => {
+      if (reducedMotion) return;
+      const stage = stageRef.current;
+      if (!stage) return;
+      const cards = cardRefs.current.filter(Boolean) as HTMLElement[];
+      if (cards.length < 2) return;
+
+      const mm = gsap.matchMedia();
+      mm.add(
+        {
+          isMobile: "(max-width: 767px)",
+          isDesktop: "(min-width: 768px)",
+        },
+        (ctx) => {
+          const isMobile = !!ctx.conditions?.isMobile;
+          const n = cards.length;
+
+          /* slot geometry — must stay in sync with card width classes:
+             mobile: card 80vw / slot 86vw, desktop: card min(480px,40vw) / slot +28px */
+          const getSlotW = () =>
+            isMobile ? window.innerWidth * 0.86 : Math.min(640, window.innerWidth * 0.48 + 28);
+
+          gsap.set(cards, { xPercent: -50, yPercent: -50 });
+
+          const driver = { p: 0 };
+
+          const render = () => {
+            const slotW = getSlotW();
+            const loopW = n * slotW;
+            const wrapX = gsap.utils.wrap(-loopW / 2, loopW / 2);
+            const offset = driver.p * loopW;
+            const fadeEnd = Math.max(isMobile ? 0.8 : 1.3, window.innerWidth / 2 / slotW - 0.05);
+            const fadeStart = isMobile ? 0.55 : 0.65;
+
+            let bestIdx = 0;
+            let bestDist = Infinity;
+
+            cards.forEach((card, i) => {
+              const x = wrapX(i * slotW - offset);
+              const d = Math.abs(x) / slotW;
+              if (d < bestDist) {
+                bestDist = d;
+                bestIdx = i;
+              }
+              const fade = Math.max(
+                0,
+                Math.min(1, (d - fadeStart) / (fadeEnd - fadeStart))
+              );
+              gsap.set(card, {
+                x,
+                scale: 1 - Math.min(d, 1.2) * 0.07,
+                opacity: 1 - fade * fade,
+                zIndex: 40 - Math.round(d * 10),
+              });
+            });
+
+            setActiveIdx((prev) => (prev === bestIdx ? prev : bestIdx));
+          };
+
+          gsap
+            .timeline({
+              defaults: { ease: "none" },
+              scrollTrigger: {
+                trigger: stage,
+                start: "top top",
+                end: () => `+=${Math.round(window.innerHeight * 6)}`,
+                pin: true,
+                scrub: 2,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+                onUpdate: (self) => {
+                  if (progressRef.current) {
+                    gsap.set(progressRef.current, { scaleX: self.progress });
+                  }
+                },
+              },
+            })
+            .to(driver, { p: 1, duration: 1, ease: "power1.inOut", onUpdate: render });
+
+          render();
+
+          if (glowRef.current) {
+            gsap.fromTo(
+              glowRef.current,
+              { yPercent: 10 },
+              {
+                yPercent: -10,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: stage,
+                  start: "top top",
+                  end: () => `+=${Math.round(window.innerHeight * 6)}`,
+                  scrub: true,
+                },
+              }
+            );
+          }
+        }
+      );
+    },
+    { scope: sectionRef, dependencies: [reducedMotion] }
+  );
+
+  const openCard = (item: Testimonial, el: HTMLElement | null) => {
+    setOriginRect(el?.getBoundingClientRect() ?? null);
+    setOpenItem(item);
   };
 
   return (
-    <section id="testimonials" className="py-20 px-4">
-      <div className="max-w-7xl mx-auto">
-        <FadeIn className="text-center mb-16" y={30} blur={8}>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-4">
+    <section id="testimonials" ref={sectionRef} className="relative px-4 pb-16 pt-20">
+      <div className="mx-auto max-w-7xl">
+        {/* Header */}
+        <FadeIn className="mb-6 text-center" y={30} blur={8}>
+          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
             {t("testimonials.title")}
           </h2>
-          <p className="text-[#8B8B9E] text-lg max-w-2xl mx-auto">
-            {t("testimonials.desc")}
-          </p>
+          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">{t("testimonials.desc")}</p>
         </FadeIn>
-
-        <FadeIn delay={0.15} y={20} blur={4}>
-          <div className="relative mb-10">
-            {/* Arrows — always visible on mobile, hover-only on desktop */}
-            <button
-              onClick={() => scrollTo("left")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 z-10 w-10 h-10 rounded-full bg-[#1A1A28] border border-[#2A2A38] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg md:opacity-0 md:group-hover/carousel:opacity-100 md:hover:bg-[#252538] md:hover:border-[#6366F1]/40"
-            >
-              <ChevronLeft size={18} className="text-[#F8F8FF]" />
-            </button>
-            <button
-              onClick={() => scrollTo("right")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 z-10 w-10 h-10 rounded-full bg-[#1A1A28] border border-[#2A2A38] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg md:opacity-0 md:group-hover/carousel:opacity-100 md:hover:bg-[#252538] md:hover:border-[#6366F1]/40"
-            >
-              <ChevronRight size={18} className="text-[#F8F8FF]" />
-            </button>
-
-            {/* Hint — always visible on mobile for first 5s, desktop hover only */}
-            {showHint && (
-              <div className={`absolute right-8 top-1/2 -translate-y-1/2 z-10 flex items-center gap-2 pointer-events-none ${isMobile ? "" : "hidden md:flex"}`}>
-                <span className="text-[#8B8B9E] text-xs">{isMobile ? "Свайпайте" : "Гортайте"}</span>
-                <MoveHorizontal size={18} className="text-[#6366F1] scroll-hint-bounce" />
-              </div>
-            )}
-
-            {/* Gradient fades */}
-            <div className="absolute left-0 top-0 bottom-4 w-12 bg-gradient-to-r from-[#07070D] to-transparent z-[1] pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-[#07070D] to-transparent z-[1] pointer-events-none" />
-
-            {/* Viewport */}
-            <div
-              ref={viewportRef}
-              className="overflow-hidden cursor-grab active:cursor-grabbing"
-              style={{ touchAction: "pan-y" }}
-            >
-              <div
-                ref={trackRef}
-                className="flex gap-6 w-max"
-                style={{ willChange: "transform" }}
-              >
-                {duplicated.map((testimonial, i) => (
-                  <TestimonialCard
-                    key={`${testimonial.id}-${i}`}
-                    testimonial={testimonial}
-                    t={t}
-                    onVideoOpen={setVideoModalSrc}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Mobile: show dot indicators for position awareness */}
-            {isMobile && (
-              <div className="flex justify-center gap-1.5 mt-4">
-                {testimonials.slice(0, Math.min(testimonials.length, 5)).map((_, i) => (
-                  <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#6366F1]/40" />
-                ))}
-              </div>
-            )}
-          </div>
-        </FadeIn>
-
-        <div className="text-center">
-          <a
-            href={siteConfig.telegram.reviewsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="magnetic-button inline-flex items-center gap-2 text-[#6366F1] hover:text-[#8B5CF6] font-semibold transition-all duration-300 hover:-translate-y-0.5 group"
-          >
-            {t("testimonials.allReviews")}
-            <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
-        </div>
       </div>
 
-      {videoModalSrc && (
-        <VideoModal src={videoModalSrc} onClose={() => setVideoModalSrc(null)} />
+      {reducedMotion ? (
+        /* ── Static fallback (prefers-reduced-motion) ── */
+        <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-2">
+          {items.map((item) => (
+            <ReviewCard key={item.id} item={item} onOpen={openCard} />
+          ))}
+        </div>
+      ) : (
+        /* ── Infinite scroll-driven carousel ── */
+        <div ref={stageRef} className="relative -mx-4 h-[100svh] overflow-hidden">
+          {/* Ambient parallax glow */}
+          <div
+            ref={glowRef}
+            className="pointer-events-none absolute -top-[15%] bottom-auto left-0 right-0 z-0 mx-auto h-[130%] w-[min(90vw,900px)]"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, rgba(99,102,241,0.14) 0%, rgba(139,92,246,0.06) 45%, transparent 70%)",
+            }}
+          />
+
+          {/* Cards */}
+          <div className="relative z-10 h-full">
+            {items.map((item, i) => (
+              <div
+                key={item.id}
+                ref={(el) => {
+                  cardRefs.current[i] = el;
+                }}
+                className="absolute left-1/2 top-1/2 w-[80vw] opacity-0 md:w-[min(560px,46vw)]"
+                  style={{
+                    willChange: "transform, opacity",
+                    height: "min(520px, 70svh)",
+                    transition: "filter 0.4s ease-out",
+                  }}
+              >
+                <ReviewCard item={item} onOpen={openCard} fixedHeight />
+              </div>
+            ))}
+          </div>
+
+          {/* Progress */}
+          <div className="absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 items-center gap-4">
+            <span className="font-mono text-[11px] tabular-nums text-muted-foreground">
+              {String(activeIdx + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+            </span>
+            <div className="relative h-[3px] w-36 overflow-hidden rounded-full bg-border sm:w-52">
+              <div
+                ref={progressRef}
+                className="absolute inset-0 rounded-full bg-accent"
+                style={{ transform: "scaleX(0)", transformOrigin: "left center" }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CTA */}
+      <FadeIn delay={0.2} y={15} blur={3} className="mx-auto mt-10 max-w-7xl text-center">
+        <a
+          href={siteConfig.telegram.reviewsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2 rounded-xl border border-accent/20 bg-accent/10 px-6 py-3 font-semibold text-accent transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:bg-accent/20"
+        >
+          {t("testimonials.allReviews")}
+          <ChevronRight
+            size={16}
+            className="transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </a>
+      </FadeIn>
+
+      {openItem && (
+        <TestimonialModal
+          item={openItem}
+          originRect={originRect}
+          reduced={reducedMotion}
+          onClose={() => setOpenItem(null)}
+        />
       )}
     </section>
   );

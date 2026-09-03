@@ -60,18 +60,18 @@ export default function PricingSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <FadeIn className="text-center mb-8 sm:mb-16" y={20} blur={4}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-3 sm:mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             {t("pricing.title")}
           </h2>
-          <p className="text-[#8B8B9E] text-sm sm:text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto">
             {t("pricing.desc")}
           </p>
         </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
           <FadeIn delay={0.15} y={24} blur={4}>
-            <div className="bg-[#111118]/80 backdrop-blur-sm border border-[#2A2A38] rounded-2xl p-5 sm:p-8 h-full">
-              <h3 className="text-[#F8F8FF] font-bold text-lg sm:text-xl mb-4 sm:mb-6">
+            <div className="bg-surface/80 backdrop-blur-sm border border-border rounded-2xl p-5 sm:p-8 h-full">
+              <h3 className="text-foreground font-bold text-lg sm:text-xl mb-4 sm:mb-6">
                 {t("pricing.factorsTitle")}
               </h3>
               <ul className="space-y-0.5 sm:space-y-1">
@@ -87,13 +87,13 @@ export default function PricingSection() {
                       onClick={() => setActiveFactor(i)}
                     >
                       <div className="flex items-center gap-2.5 sm:gap-3">
-                        <ChevronRight size={14} className="factor-icon text-[#6366F1] shrink-0 sm:w-4 sm:h-4" />
-                        <span className="text-[#8B8B9E] group-hover:text-[#F8F8FF] transition-colors duration-300 text-sm sm:text-base">
+                        <ChevronRight size={14} className="factor-icon text-accent shrink-0 sm:w-4 sm:h-4" />
+                        <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 text-sm sm:text-base">
                           {t(key)}
                         </span>
                       </div>
                       <div className="factor-bar ml-6 sm:ml-7" style={{ "--bar-width": `${factorWeights[i]}%` } as React.CSSProperties}>
-                        <div className="factor-bar-fill" style={{ "--bar-width": `${factorWeights[i]}%` } as React.CSSProperties} />
+                        <div className="factor-bar-fill" style={{ "--bar-width": `${factorWeights[i]}%`, "--bar-scale": factorWeights[i] / 100 } as React.CSSProperties} />
                       </div>
                     </li>
                   </FadeIn>
@@ -103,21 +103,21 @@ export default function PricingSection() {
           </FadeIn>
 
           <FadeIn delay={0.3} y={30} blur={4}>
-            <div className="premium-surface bg-linear-to-br from-[#6366F1]/20 to-[#8B5CF6]/10 border border-[#6366F1]/30 rounded-2xl p-6 sm:p-8 text-center h-full">
-              <div className="premium-icon mx-auto flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-[#6366F1]/10 text-3xl sm:text-4xl mb-4 float">
+            <div className="premium-surface bg-linear-to-br from-accent/20 to-accent/10 border border-accent/30 rounded-2xl p-6 sm:p-8 text-center h-full">
+              <div className="premium-icon mx-auto flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-accent/10 text-3xl sm:text-4xl mb-4 float">
                 💬
               </div>
-              <h3 className="text-[#F8F8FF] font-bold text-xl sm:text-2xl mb-3 sm:mb-4">
+              <h3 className="text-foreground font-bold text-xl sm:text-2xl mb-3 sm:mb-4">
                 {t("pricing.consultTitle")}
               </h3>
-              <p className="text-[#8B8B9E] text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed">
+              <p className="text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed">
                 {t("pricing.consultDesc")}
               </p>
               <a
                 href={siteConfig.telegram.consultationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cta-pulse magnetic-button inline-flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_44px_rgba(99,102,241,0.42)] text-sm sm:text-base"
+                className="cta-pulse magnetic-button inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_44px_rgba(99,102,241,0.42)] text-sm sm:text-base"
               >
                 {t("pricing.getEstimate")}
                 <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
@@ -137,7 +137,7 @@ export default function PricingSection() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.25 }}
-                className="fixed inset-0 z-[100] bg-[#0A0A0F]/80 backdrop-blur-sm"
+                className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-sm"
                 onClick={closeModal}
               />
               <motion.div
@@ -148,17 +148,17 @@ export default function PricingSection() {
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 className="fixed z-[101] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[88vw] max-w-md"
               >
-                <div className="pricing-modal-panel relative bg-[#1A1A24] border border-[#2A2A38] rounded-2xl p-6 shadow-[0_24px_64px_rgba(0,0,0,0.5)]" onClick={(e) => e.stopPropagation()}>
+                <div className="pricing-modal-panel relative bg-surface-elevated border border-border rounded-2xl p-6 shadow-[0_24px_64px_rgba(0,0,0,0.5)]" onClick={(e) => e.stopPropagation()}>
                   <button
                     onClick={closeModal}
                     className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer"
                   >
-                    <X size={16} className="text-[#8B8B9E]" />
+                    <X size={16} className="text-muted-foreground" />
                   </button>
-                  <h4 className="text-[#F8F8FF] font-bold text-lg sm:text-xl mb-3 pr-8">
+                  <h4 className="text-foreground font-bold text-lg sm:text-xl mb-3 pr-8">
                     {t(pricingFactorKeys[activeFactor])}
                   </h4>
-                  <p className="text-[#8B8B9E] text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {t(pricingFactorDescKeys[activeFactor])}
                   </p>
                   <div className="pricing-factor-popover-glow" />

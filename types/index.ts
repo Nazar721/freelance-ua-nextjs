@@ -7,6 +7,8 @@ export interface Case {
   descriptionKey: string;
   reviewKey: string;
   image?: string;
+  hoverImage?: string;
+  imageFit?: "cover" | "contain";
   video?: string;
   link?: string;
   section: CaseSection;
@@ -18,6 +20,7 @@ export interface Testimonial {
   author?: string;
   video?: string;
   audio?: string;
+  screenshot?: string;
   serviceKey?: string;
 }
 

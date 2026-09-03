@@ -54,6 +54,19 @@ export default function ContentProtection() {
       }
     };
 
+    // Disable picture-in-picture on all videos
+    const disablePiP = () => {
+      document.querySelectorAll("video").forEach((video) => {
+        video.disablePictureInPicture = true;
+        video.setAttribute("controlsList", "nodownload noplaybackrate");
+      });
+    };
+
+    // Observe for new video elements
+    const observer = new MutationObserver(disablePiP);
+    observer.observe(document.body, { childList: true, subtree: true });
+    disablePiP();
+
     document.addEventListener("contextmenu", onContextMenu, true);
     document.addEventListener("dragstart", onDragStart, true);
     document.addEventListener("keydown", onKeyDown);
@@ -70,6 +83,7 @@ export default function ContentProtection() {
       document.removeEventListener("touchstart", onTouchStart, true);
       document.removeEventListener("touchmove", onTouchMove, true);
       document.removeEventListener("gesturestart", onGestureStart, true);
+      observer.disconnect();
     };
   }, []);
 

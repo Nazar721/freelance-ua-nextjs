@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { brands } from "@/data/brands";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -10,7 +10,11 @@ function LogoSet() {
   return (
     <>
       {brands.map((brand, i) => (
-        <div key={`a-${i}`} className="flex items-center justify-center shrink-0" style={{ width: 220, height: 60 }}>
+        <div
+          key={`a-${i}`}
+          className="flex items-center justify-center shrink-0 logo-slot"
+          style={{ width: 220, height: 70 }}
+        >
           <Image
             src={brand.logo}
             alt={brand.name}
@@ -25,59 +29,9 @@ function LogoSet() {
   );
 }
 
-interface Particle {
-  x: number;
-  y: number;
-  baseX: number;
-  baseY: number;
-  size: number;
-  opacity: number;
-  baseOpacity: number;
-  phase: number;
-  phaseSpeed: number;
-  driftRadiusX: number;
-  driftRadiusY: number;
-  animated: boolean;
-  r: number;
-  g: number;
-  b: number;
-  glowSize: number;
-}
-
-function createParticles(count: number, animatedRatio: number): Particle[] {
-  const particles: Particle[] = [];
-  for (let i = 0; i < count; i++) {
-    const x = 0.03 + Math.random() * 0.94;
-    const y = 0.25 + Math.random() * 0.65;
-    const isPurple = i % 7 === 0;
-    const isBlue = !isPurple && i % 4 === 0;
-    const isAnimated = i < count * animatedRatio;
-    particles.push({
-      x, y, baseX: x, baseY: y,
-      size: 0.6 + Math.random() * 2.2,
-      opacity: 0.3 + Math.random() * 0.6,
-      baseOpacity: 0.3 + Math.random() * 0.6,
-      phase: Math.random() * Math.PI * 2,
-      phaseSpeed: isAnimated ? 0.002 + Math.random() * 0.004 : 0,
-      driftRadiusX: isAnimated ? 0.02 + Math.random() * 0.04 : 0,
-      driftRadiusY: isAnimated ? 0.015 + Math.random() * 0.03 : 0,
-      animated: isAnimated,
-      r: isPurple ? 139 : isBlue ? 99 : 255,
-      g: isPurple ? 92 : isBlue ? 102 : 255,
-      b: isPurple ? 246 : isBlue ? 241 : 255,
-      glowSize: isPurple ? 6 : isBlue ? 5 : 3,
-    });
-  }
-  return particles;
-}
-
 export default function TrustedBySection() {
   const { t } = useTranslation();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animRef = useRef<number>(0);
-  const particlesRef = useRef<Particle[]>([]);
-  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
@@ -86,147 +40,78 @@ export default function TrustedBySection() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const animate = useCallback(() => {
-    const canvas = canvasRef.current;
-    const section = sectionRef.current;
-    if (!canvas || !section) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const rect = section.getBoundingClientRect();
-    const w = rect.width;
-    const h = rect.height;
-
-    if (canvas.width !== w * 2 || canvas.height !== h * 2) {
-      canvas.width = w * 2;
-      canvas.height = h * 2;
-      canvas.style.width = w + "px";
-      canvas.style.height = h + "px";
-      ctx.scale(2, 2);
-    }
-
-    ctx.clearRect(0, 0, w, h);
-
-    for (const p of particlesRef.current) {
-      if (p.animated) {
-        p.phase += p.phaseSpeed;
-        p.x = p.baseX + Math.sin(p.phase) * p.driftRadiusX + Math.cos(p.phase * 0.7) * p.driftRadiusX * 0.6;
-        p.y = p.baseY + Math.cos(p.phase * 1.3) * p.driftRadiusY + Math.sin(p.phase * 0.5) * p.driftRadiusY * 0.5;
-        p.opacity = p.baseOpacity * (0.3 + 0.7 * Math.abs(Math.sin(p.phase * 2)));
-      } else {
-        p.opacity = p.baseOpacity * (0.15 + 0.15 * Math.sin(p.phase * 0.05));
-        p.phase += 0.0003;
-      }
-
-      const px = p.x * w;
-      const py = p.y * h;
-
-      const grad = ctx.createRadialGradient(px, py, 0, px, py, p.size + p.glowSize);
-      grad.addColorStop(0, `rgba(${p.r},${p.g},${p.b},${p.opacity})`);
-      grad.addColorStop(0.4, `rgba(${p.r},${p.g},${p.b},${p.opacity * 0.4})`);
-      grad.addColorStop(1, `rgba(${p.r},${p.g},${p.b},0)`);
-
-      ctx.beginPath();
-      ctx.arc(px, py, p.size + p.glowSize, 0, Math.PI * 2);
-      ctx.fillStyle = grad;
-      ctx.fill();
-    }
-
-    animRef.current = requestAnimationFrame(animate);
-  }, []);
-
-  useEffect(() => {
-    particlesRef.current = createParticles(isMobile ? 80 : 250, isMobile ? 0.3 : 0.5);
-    animRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animRef.current);
-  }, [animate, isMobile]);
-
   return (
-    <section ref={sectionRef} className="relative px-4 pt-12 overflow-hidden" style={{ background: "transparent" }}>
+    <section className="relative px-4 pt-16 pb-8 overflow-hidden" style={{ background: "transparent" }}>
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
-
-        {/* Atmospheric purple glow */}
+        {/* Central spotlight glow */}
         <div
-          className="absolute left-0 right-0"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           style={{
-            top: "20%",
-            height: "60%",
+            width: isMobile ? "70vw" : "45vw",
+            height: "200%",
             background: `
-              radial-gradient(ellipse 65% 50% at 50% 75%, rgba(99,102,241,0.5), transparent 50%),
-              radial-gradient(ellipse 50% 40% at 50% 80%, rgba(139,92,246,0.4), transparent 45%),
-              radial-gradient(ellipse 80% 35% at 50% 85%, rgba(99,102,241,0.3), transparent 40%)
+              radial-gradient(ellipse 100% 40% at 50% 50%, var(--trusted-glow-1) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 30% at 50% 50%, var(--trusted-glow-2) 0%, transparent 60%),
+              radial-gradient(ellipse 40% 20% at 50% 50%, var(--trusted-glow-3) 0%, transparent 50%)
             `,
+            animation: "center-glow-pulse 4s ease-in-out infinite",
           }}
         />
 
-        {/* HORIZON LINE */}
+        {/* Vertical light beam */}
         <div
-          className="absolute left-0 right-0"
+          className="absolute left-1/2 top-0 -translate-x-1/2"
           style={{
-            top: "58%",
-            height: "2px",
-            background: "linear-gradient(90deg, transparent 5%, rgba(99,102,241,0.2) 15%, rgba(139,92,246,0.4) 50%, rgba(99,102,241,0.2) 85%, transparent 95%)",
-            boxShadow: "0 0 15px rgba(99,102,241,0.3), 0 0 40px rgba(99,102,241,0.15)",
+            width: "2px",
+            height: "100%",
+            background: "linear-gradient(180deg, transparent 10%, var(--trusted-beam) 30%, var(--trusted-beam-core) 50%, var(--trusted-beam) 70%, transparent 90%)",
+            boxShadow: "0 0 20px var(--trusted-beam), 0 0 60px var(--trusted-beam)",
           }}
         />
 
-        {/* Canvas particles — never stops */}
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 pointer-events-none"
-          style={{ width: "100%", height: "100%" }}
-        />
-
-        {/* Left glow */}
+        {/* Horizontal light line */}
         <div
-          className="absolute rounded-full"
+          className="absolute left-0 right-0 top-1/2 -translate-y-1/2"
           style={{
-            left: isMobile ? "0%" : "3%",
-            top: "15%",
-            width: isMobile ? 60 : 120,
-            height: isMobile ? 60 : 120,
-            background: "radial-gradient(circle, rgba(255,255,255,0.6), rgba(99,102,241,0.3) 40%, transparent 70%)",
-            filter: "blur(35px)",
+            height: "1px",
+            background: "linear-gradient(90deg, transparent 5%, var(--trusted-line) 20%, var(--trusted-line-core) 45%, var(--trusted-line-core) 55%, var(--trusted-line) 80%, transparent 95%)",
+            boxShadow: "0 0 12px var(--trusted-line)",
           }}
         />
 
-        {/* Right glow */}
+        {/* Left fade */}
         <div
-          className="absolute rounded-full"
+          className="absolute left-0 top-0 bottom-0"
           style={{
-            right: isMobile ? "0%" : "3%",
-            top: "10%",
-            width: isMobile ? 50 : 100,
-            height: isMobile ? 50 : 100,
-            background: "radial-gradient(circle, rgba(255,255,255,0.5), rgba(139,92,246,0.25) 40%, transparent 70%)",
-            filter: "blur(30px)",
+            width: "25%",
+            background: "linear-gradient(90deg, var(--trusted-fade) 0%, var(--trusted-fade-mid) 40%, transparent 100%)",
+            zIndex: 2,
           }}
         />
 
-        {/* Dark curved surface */}
+        {/* Right fade */}
         <div
-          className="absolute"
+          className="absolute right-0 top-0 bottom-0"
           style={{
-            left: "-30%",
-            right: "-30%",
-            bottom: 0,
-            height: "42%",
-            background: "linear-gradient(to bottom, rgba(5,5,10,0.9), #050508)",
-            borderRadius: "50% 50% 0 0 / 22% 22% 0 0",
+            width: "25%",
+            background: "linear-gradient(270deg, var(--trusted-fade) 0%, var(--trusted-fade-mid) 40%, transparent 100%)",
+            zIndex: 2,
           }}
         />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-3xl">
+      <div className="relative z-10 mx-auto max-w-5xl">
         <FadeIn className="text-center">
-          <h2 className="text-2xl font-bold leading-tight text-[#F8F8FF] sm:text-3xl md:text-4xl">
-            <span className="text-[#6366F1]">{t("trusted.title")}</span>
+          <h2 className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl lg:text-5xl mb-3">
+            <span className="text-[var(--text-primary)]">{t("trusted.title")}</span>
           </h2>
+          <p className="text-[var(--text-secondary)] text-sm sm:text-base max-w-lg mx-auto">
+            {t("trusted.subtitle")}
+          </p>
         </FadeIn>
 
-        <FadeIn delay={0.12} className="trusted-partners mt-7">
+        <FadeIn delay={0.15} className="trusted-partners mt-10">
           <div className="trusted-partners__track-wrapper">
             <div className="trusted-partners__track">
               <LogoSet />
@@ -236,9 +121,26 @@ export default function TrustedBySection() {
             </div>
           </div>
         </FadeIn>
+
+        <FadeIn delay={0.25} className="mt-10">
+          <div className="flex justify-center gap-4 sm:gap-6 flex-wrap">
+            <div className="glass-stat-badge px-5 py-2.5 rounded-full">
+              <span className="text-[var(--text-primary)] font-bold text-lg">140+</span>
+              <span className="text-[var(--text-secondary)] text-xs ml-1.5">{t("trusted.statClients")}</span>
+            </div>
+            <div className="glass-stat-badge px-5 py-2.5 rounded-full">
+              <span className="text-[var(--text-primary)] font-bold text-lg">3</span>
+              <span className="text-[var(--text-secondary)] text-xs ml-1.5">{t("trusted.statNiches")}</span>
+            </div>
+            <div className="glass-stat-badge px-5 py-2.5 rounded-full">
+              <span className="text-[var(--text-primary)] font-bold text-lg">100%</span>
+              <span className="text-[var(--text-secondary)] text-xs ml-1.5">{t("trusted.statSatisfaction")}</span>
+            </div>
+          </div>
+        </FadeIn>
       </div>
 
-      <div className="h-28 sm:h-36" />
+      <div className="h-8 sm:h-12" />
     </section>
   );
 }

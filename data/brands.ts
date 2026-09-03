@@ -28,7 +28,7 @@ export const brands: Brand[] = [
 	},
 	{
 		name: 'Nextcup',
-		logo: '/media/brands/nextcup.png',
+		logo: '/media/brands/nextcup.webp',
 	},
 	{
 		name: 'Radici E Futuro',
@@ -48,11 +48,11 @@ export const brands: Brand[] = [
 	},
 	{
 		name: 'Ruslan Aviation',
-		logo: '/media/brands/ruslan-aviation.png',
+		logo: '/media/brands/ruslan-aviation.webp',
 	},
 	{
 		name: 'E.V.A.CODE',
-		logo: '/media/brands/eva-code.png',
+		logo: '/media/brands/eva-code.webp',
 	},
 	{
 		name: 'New Partner',

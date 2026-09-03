@@ -65,33 +65,33 @@ interface ServiceCategory {
 const serviceCategories: ServiceCategory[] = [
   {
     key: "it",
-    icon: <Code2 size={28} className="text-[#6366F1]" />,
+    icon: <Code2 size={28} className="text-accent" />,
     emoji: "💻",
     count: 7,
     sliderKey: "services.it.slider",
-    sliderBefore: "/media/services/code-before.png",
-    sliderAfter: "/media/services/website-after.png",
+    sliderBefore: "/media/services/code-before.webp",
+    sliderAfter: "/media/services/website-after.webp",
     items: [1, 2, 3, 4, 5, 6, 7],
   },
   {
     key: "design",
-    icon: <Palette size={28} className="text-[#6366F1]" />,
+    icon: <Palette size={28} className="text-accent" />,
     emoji: "🎨",
     count: 5,
     sliderKey: "services.design.slider",
-    sliderBefore: "/media/services/design-before.png",
-    sliderAfter: "/media/services/design-after.png",
+    sliderBefore: "/media/services/design-before.webp",
+    sliderAfter: "/media/services/design-after.webp",
     items: [1, 2, 3, 4, 5],
   },
   {
     key: "video",
-    icon: <Video size={28} className="text-[#6366F1]" />,
+    icon: <Video size={28} className="text-accent" />,
     emoji: "🎬",
     count: 6,
     sliderKey: "services.video.slider",
-    sliderBefore: "/media/services/video-poster.png",
-    sliderAfter: "/media/services/video-poster.png",
-    sliderAfterVideo: "/media/cases/shermet.mp4",
+    sliderBefore: "/media/services/video-poster.webp",
+    sliderAfter: "/media/services/video-poster.webp",
+    sliderAfterVideo: "/media/cases/nikita-sheremet-crypto/process-3.mp4",
     items: [1, 2, 3, 4, 5, 6],
   },
 ];
@@ -128,10 +128,10 @@ export default function ServicesSection() {
     <section id="services" className="py-12 sm:py-20 px-3 sm:px-4">
       <div className="max-w-7xl mx-auto">
         <FadeIn className="text-center mb-8 sm:mb-16" y={20} blur={4}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8F8FF] mb-3 sm:mb-4 font-[family-name:var(--font-syne)]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 font-[family-name:var(--font-syne)]">
             {t("services.title")}
           </h2>
-          <p className="text-[#8B8B9E] text-sm sm:text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto">
             {t("services.desc")}
           </p>
         </FadeIn>
@@ -142,19 +142,19 @@ export default function ServicesSection() {
             <FadeIn key={cat.key} delay={0.1 + i * 0.08} y={24} blur={2}>
               <button
                 onClick={() => setActiveModal(i)}
-                className="service-card group text-left w-full p-5 sm:p-7 rounded-2xl border border-[#2A2A38]/60 bg-[#1A1A24]/50 cursor-pointer transition-all duration-700 hover:bg-[#1A1A24] hover:border-[#2A2A38] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.3)]"
+                className="service-card group relative text-left w-full p-5 sm:p-7 rounded-2xl border border-border/60 bg-surface-elevated/50 cursor-pointer transition-all duration-700 hover:bg-surface-elevated hover:border-border hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.3)]"
               >
                 {/* Watermark number */}
-                <span className="absolute top-4 right-6 text-5xl sm:text-6xl font-black text-[#6366F1]/[0.12] font-[family-name:var(--font-syne)] select-none pointer-events-none">
+                <span className="absolute top-4 right-6 text-5xl sm:text-6xl font-black text-accent/[0.12] font-[family-name:var(--font-syne)] select-none pointer-events-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
                 <div className="relative z-10">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-[#6366F1]/10 group-hover:bg-[#6366F1]/18 flex items-center justify-center mb-4 sm:mb-5 transition-all duration-300">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-accent/10 group-hover:bg-accent/18 flex items-center justify-center mb-4 sm:mb-5 transition-all duration-300">
                     {cat.icon}
                   </div>
 
-                  <h3 className="text-[#F8F8FF] font-bold text-lg sm:text-xl mb-2 sm:mb-3 font-[family-name:var(--font-syne)]">
+                  <h3 className="text-foreground font-bold text-lg sm:text-xl mb-2 sm:mb-3 font-[family-name:var(--font-syne)]">
                     {t(`services.${cat.key}.category`)}
                   </h3>
 
@@ -162,20 +162,20 @@ export default function ServicesSection() {
                     {cat.items.slice(0, 3).map((n) => (
                       <li
                         key={n}
-                        className="flex items-center gap-2 sm:gap-2.5 text-[#8B8B9E] text-xs sm:text-sm transition-colors duration-200"
+                        className="flex items-center gap-2 sm:gap-2.5 text-muted-foreground text-xs sm:text-sm transition-colors duration-200"
                       >
-                        <span className="w-1.5 h-1.5 bg-[#6366F1]/50 rounded-full shrink-0" />
+                        <span className="w-1.5 h-1.5 bg-accent/50 rounded-full shrink-0" />
                         {t(`services.${cat.key}.${n}`)}
                       </li>
                     ))}
                     {cat.count > 3 && (
-                      <li className="text-[#6366F1]/60 text-xs sm:text-sm pl-3 sm:pl-4">
+                      <li className="text-accent/60 text-xs sm:text-sm pl-3 sm:pl-4">
                         +{cat.count - 3} послуг
                       </li>
                     )}
                   </ul>
 
-                  <span className="inline-flex items-center gap-2 text-[#6366F1] text-xs sm:text-sm font-medium group-hover:gap-3 transition-all duration-300">
+                  <span className="inline-flex items-center gap-2 text-accent text-xs sm:text-sm font-medium group-hover:gap-3 transition-all duration-300">
                     Дізнатись більше
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="transition-transform duration-300 group-hover:translate-x-1 sm:w-4 sm:h-4">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -191,29 +191,31 @@ export default function ServicesSection() {
       {/* Modal */}
       <AnimatePresence>
         {activeModal !== null && activeCategory && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed inset-0 z-50 bg-[#0A0A0F]/70 backdrop-blur-md"
-              onClick={closeModal}
-            />
-
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background/70 backdrop-blur-md"
+            onClick={closeModal}
+            onWheel={(e) => e.preventDefault()}
+            onTouchMove={(e) => e.preventDefault()}
+          >
             {/* Modal content */}
             <motion.div
               initial={{ opacity: 0, scale: 0.94, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.94, y: 24 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="service-modal fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[92vw] max-w-6xl max-h-[88vh] overflow-y-auto rounded-3xl"
+              className="service-modal relative w-[92vw] max-w-6xl max-h-[88vh] overflow-y-auto rounded-3xl"
+              onClick={(e) => e.stopPropagation()}
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
             >
               {/* Close button */}
               <button
                 onClick={closeModal}
-                className="absolute top-5 right-5 z-10 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#8B8B9E] hover:text-[#F8F8FF] hover:bg-white/10 transition-all duration-500"
+                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-white/10 transition-all duration-500 cursor-pointer"
               >
                 <X size={18} />
               </button>
@@ -222,7 +224,7 @@ export default function ServicesSection() {
               <div className="p-8 pb-6">
                 <div className="flex items-center gap-4 mb-2">
                   <FluentEmoji emoji={catEmoji(activeCategory.key)} size={48} className="fluent-header" />
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#F8F8FF] font-[family-name:var(--font-syne)]">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground font-[family-name:var(--font-syne)]">
                     {t(`services.${activeCategory.key}.category`)}
                   </h3>
                 </div>
@@ -250,7 +252,7 @@ export default function ServicesSection() {
                           className="fluent-emoji"
                         />
                       </div>
-                      <span className="text-[#F8F8FF] text-[11px] md:text-xs font-medium leading-snug block">
+                      <span className="text-foreground text-[11px] md:text-xs font-medium leading-snug block">
                         {t(`services.${activeCategory.key}.${n}`)}
                       </span>
                     </motion.div>
@@ -264,7 +266,7 @@ export default function ServicesSection() {
                   <div className="flex flex-col md:flex-row gap-6 items-stretch">
                     {/* Slider */}
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-[#6366F1] text-sm font-medium uppercase tracking-wider mb-4 text-center md:text-left">
+                      <h4 className="text-accent text-sm font-medium uppercase tracking-wider mb-4 text-center md:text-left">
                         {t(activeCategory.sliderKey)}
                       </h4>
                       <BeforeAfterSlider
@@ -274,26 +276,26 @@ export default function ServicesSection() {
                         beforeAlt="Before"
                         afterAlt="After"
                       />
-                      <p className="mt-4 text-[#8B8B9E] text-sm text-center md:text-left">
+                      <p className="mt-4 text-muted-foreground text-sm text-center md:text-left">
                         {t(`services.${activeCategory.key}.slider.desc`)}
                       </p>
                     </div>
 
                     {/* CTA block */}
                     <div className="md:w-72 lg:w-80 shrink-0 flex">
-                      <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-linear-to-br from-[#6366F1]/12 to-[#8B5CF6]/8 p-6 text-center flex flex-col justify-center w-full">
+                      <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-linear-to-br from-accent/12 to-accent/8 p-6 text-center flex flex-col justify-center w-full">
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.12),transparent_60%)] pointer-events-none" />
-                        <h4 className="relative text-[#F8F8FF] font-bold text-base md:text-lg mb-2">
+                        <h4 className="relative text-foreground font-bold text-base md:text-lg mb-2">
                           {t(`services.${activeCategory.key}.cta.title`)}
                         </h4>
-                        <p className="relative text-[#8B8B9E] text-sm mb-5">
+                        <p className="relative text-muted-foreground text-sm mb-5">
                           {t(`services.${activeCategory.key}.cta.desc`)}
                         </p>
                         <a
                           href={siteConfig.telegram.consultationUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="relative inline-flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_36px_rgba(99,102,241,0.4)]"
+                          className="relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_36px_rgba(99,102,241,0.4)]"
                         >
                           {t("header.write")}
                           <ArrowRight size={16} />
@@ -304,7 +306,7 @@ export default function ServicesSection() {
                 </div>
               </div>
             </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
     </section>
