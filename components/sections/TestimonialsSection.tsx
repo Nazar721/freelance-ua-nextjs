@@ -347,7 +347,7 @@ function CardContent({
         (isModal ? (
           <ModalVideo src={item.video} />
         ) : (
-          <div className="relative flex-1 min-h-0 cursor-pointer overflow-hidden rounded-2xl border border-border">
+          <div className="relative h-[260px] min-h-0 cursor-pointer overflow-hidden rounded-2xl border border-border md:h-auto md:flex-1">
             <VideoPoster src={item.video} />
             <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors duration-300 group-hover:bg-black/25">
               <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/25 bg-white/10 shadow-lg backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
@@ -767,7 +767,7 @@ export default function TestimonialsSection() {
                 ref={(el) => {
                   cardRefs.current[i] = el;
                 }}
-                className="absolute left-1/2 top-1/2 w-[80vw] opacity-0 md:w-[min(560px,46vw)]"
+                className="testimonial-card-slot absolute left-1/2 top-1/2 w-[80vw] opacity-0 md:w-[min(560px,46vw)]"
                   style={{
                     willChange: "transform, opacity",
                     height: "min(520px, 70svh)",
@@ -781,7 +781,7 @@ export default function TestimonialsSection() {
 
           {/* Progress */}
           <div className="absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 items-center gap-4">
-            <span className="font-mono text-[11px] tabular-nums text-muted-foreground">
+            <span className="whitespace-nowrap font-mono text-[11px] tabular-nums text-muted-foreground">
               {String(activeIdx + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
             </span>
             <div className="relative h-[3px] w-36 overflow-hidden rounded-full bg-border sm:w-52">

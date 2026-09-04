@@ -2240,6 +2240,20 @@ body {
   .featured-case-card .case-hover-content span {
     white-space: nowrap;
   }
+
+  /* ─── Testimonials: static cards on touch ───
+     Fixed card height left a large empty gap on short (telegram screenshot)
+     reviews — the card hugs its content instead. Hover affordances stay
+     desktop-only. */
+  .testimonial-card-slot {
+    height: auto !important;
+    min-height: 0;
+  }
+
+  #testimonials article:hover {
+    border-color: var(--border) !important;
+    box-shadow: none !important;
+  }
 }
 
 /* ═══════════════════════════════════════════════════
