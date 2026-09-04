@@ -70,7 +70,7 @@ export default function CasesSection() {
     ), [allCases, t]
   );
 
-  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(false)  // hydration-safe: real value applied in the effect below;
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
     check();

@@ -16,13 +16,10 @@ type FadeInProps = {
   [key: string]: unknown;
 };
 
-function getIsMobile(): boolean {
-  if (typeof window === "undefined") return false;
-  return window.innerWidth <= 768;
-}
-
 function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(getIsMobile);
+  // Start false so SSR and the first client render match (hydration-safe);
+  // the real viewport value applies right after mount.
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
     check();

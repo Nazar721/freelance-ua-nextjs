@@ -41,7 +41,7 @@ export default function ContactFormSection() {
   const [errors, setErrors] = useState<Errors>({});
   const [sending, setSending] = useState(false);
   const [toast, setToast] = useState<Toast | null>(null);
-  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(false)  // hydration-safe: real value applied in the effect below;
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
     check();

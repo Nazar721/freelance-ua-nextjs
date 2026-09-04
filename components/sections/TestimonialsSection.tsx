@@ -146,7 +146,16 @@ function AudioPlayer({ src }: { src: string }) {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [failed, setFailed] = useState(false);
-  const [bars] = useState(() => Array.from({ length: 26 }, () => Math.random() * 0.4 + 0.3));
+  // Deterministic pseudo-random bars — Math.random() here would differ between
+  // SSR and client and break hydration.
+  const [bars] = useState(() => {
+    let seed = 0;
+    for (let i = 0; i < src.length; i++) seed = (seed * 31 + src.charCodeAt(i)) >>> 0;
+    return Array.from({ length: 26 }, (_, i) => {
+      const x = Math.sin(seed * 9973 + i * 7.13) * 10000;
+      return (x - Math.floor(x)) * 0.4 + 0.3;
+    });
+  });
   const [tick, setTick] = useState(0);
 
   useEffect(() => {
