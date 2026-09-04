@@ -206,6 +206,22 @@ export const designCases: CaseEntry[] = [
     ],
   },
   {
+    slug: "barvy-interior",
+    category: "photo-retouch",
+    categoryKey: "designCases.barvyInterior.category",
+    titleKey: "designCases.barvyInterior.title",
+    descriptionKey: "designCases.barvyInterior.shortDesc",
+    href: "/cases/design/barvy-interior",
+    glowColor: "rgba(217, 164, 116, 0.12)",
+    glowColorStrong: "rgba(217, 164, 116, 0.28)",
+    image: "/media/cases/barvy-interior/preview.jpg",
+    galleryImages: [
+      "/media/cases/barvy-interior/after-9.jpg",
+      "/media/cases/barvy-interior/after-7.jpg",
+      "/media/cases/barvy-interior/after-3.jpg",
+    ],
+  },
+  {
     slug: "nastya-portrait-retouch",
     category: "photo-retouch",
     categoryKey: "designCases.nastyaPortraitRetouch.category",

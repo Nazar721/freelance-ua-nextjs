@@ -158,4 +158,11 @@ export const testimonials: Testimonial[] = [
     screenshot: "/media/testimonials/tg-screenshots/14-elizabeth.webp",
     serviceKey: "AI Відео",
   },
+  {
+    id: 58,
+    textKey: "",
+    author: "Катерина",
+    screenshot: "/media/testimonials/tg-screenshots/barvy-review.png",
+    serviceKey: "Ретуш фото",
+  },
 ];

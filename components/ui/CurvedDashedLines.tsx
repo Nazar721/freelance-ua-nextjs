@@ -153,7 +153,7 @@ const CURVED_LINES_CSS = `
   to { stroke-dashoffset: -50; }
 }
 
-@media (max-width: 1439.98px) {
+@media (max-width: 1279.98px) {
   .curved-dashed-lines { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {

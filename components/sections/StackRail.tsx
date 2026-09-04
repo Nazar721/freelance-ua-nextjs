@@ -272,7 +272,7 @@ html[data-theme="light"] .stack-icon-chip::before {
   transition-delay: 150ms;
 }
 
-@media (max-width: 1439.98px) {
+@media (max-width: 1279.98px) {
   .stack-rail { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -550,7 +550,7 @@ export default function StackRail() {
 
   // Desktop-only conditional render — no SVGs/listeners on mobile
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1440px) and (pointer: fine)");
+    const mq = window.matchMedia("(min-width: 1280px) and (pointer: fine)");
     const rm = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => {
       setEnabled(mq.matches);
