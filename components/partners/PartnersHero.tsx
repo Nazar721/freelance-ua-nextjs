@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Percent, ChevronDown } from "lucide-react";
 import { gsap, useGSAP, refreshAfterFonts } from "./scroll/gsapCore";
 import { siteConfig } from "@/config/site";
@@ -34,6 +35,21 @@ export function PartnersHero() {
   const { t } = useTranslation();
   const scopeRef = useRef<HTMLElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
+
+  const phrases = [
+    t("partners.hero.phrase.1"),
+    t("partners.hero.phrase.2"),
+    t("partners.hero.phrase.3"),
+    t("partners.hero.phrase.4"),
+  ];
+  const [phraseIdx, setPhraseIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setPhraseIdx((i) => (i + 1) % phrases.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, [phrases.length]);
 
   useGSAP(
     () => {
@@ -278,7 +294,7 @@ export function PartnersHero() {
   return (
     <section
       ref={scopeRef}
-      className="relative flex min-h-[92vh] items-center overflow-hidden px-4 pb-24 pt-4 sm:pt-8"
+      className="relative flex items-center overflow-hidden px-4 pb-24 pt-4 sm:pt-8 md:min-h-[92vh]"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-8">
         {/* ── Left column: text content (55%) ─────────────────────── */}
@@ -288,7 +304,7 @@ export function PartnersHero() {
             {t("header.partner")}
           </span>
 
-          <h1 className="mb-6 whitespace-pre-line text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="mb-6 whitespace-pre-line text-[30px] font-bold leading-[1.15] text-foreground sm:text-5xl lg:text-6xl">
             {titleLines.map((line, idx) => (
               <span key={idx} className="block">
                 {splitWords(line, idx)}
@@ -296,9 +312,28 @@ export function PartnersHero() {
             ))}
           </h1>
 
-          <p className="hero-fade-item mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:mx-0">
+          <p className="hero-fade-item mx-auto mb-4 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:mx-0">
             {t("partners.hero.desc")}
           </p>
+
+          {/* Rotating tagline — cycles every 4s, layout-stable fixed height */}
+          <div
+            className="hero-fade-item mx-auto mb-10 flex h-7 items-center lg:mx-0"
+            aria-live="polite"
+          >
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={phraseIdx}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+                className="text-sm font-medium text-primary sm:text-base"
+              >
+                {phrases[phraseIdx]}
+              </motion.span>
+            </AnimatePresence>
+          </div>
 
           <div className="hero-fade-item">
             <Link

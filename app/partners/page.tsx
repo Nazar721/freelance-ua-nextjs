@@ -8,7 +8,7 @@ import { PartnersCTA } from "@/components/partners/PartnersCTA";
 
 export default function PartnersPage() {
   return (
-    <article className="min-h-screen pt-[88px] md:pt-16">
+    <article className="min-h-screen">
       {/* Scroll-driven scenes */}
       <PartnersHero />
       <PartnersWhoCards />
