@@ -45,6 +45,7 @@ export default function Home() {
       <VideoCasesSection />
       <TestimonialsSection />
       <TrustedBySection />
+      <div className="section-divider my-6 sm:my-10" />
       <BecomePartnerSection />
       <Footer />
     </main>

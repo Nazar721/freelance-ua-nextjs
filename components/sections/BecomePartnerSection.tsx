@@ -628,8 +628,16 @@ export default function BecomePartnerSection() {
 
           <Link
             href="/partners"
-            className="bp-cta-button inline-flex items-center justify-center gap-2.5 text-white font-semibold rounded-full text-sm w-full"
-            style={{ padding: "13px 26px" }}
+            className="inline-flex w-full items-center justify-center gap-2.5 rounded-full text-[15px] font-semibold text-white"
+            style={{
+              padding: "15px 26px",
+              background: theme === "light"
+                ? "linear-gradient(135deg, #6366F1, #7C5CF6)"
+                : "linear-gradient(135deg, #6366F1, #8B5CF6)",
+              boxShadow: theme === "light"
+                ? "0 8px 24px rgba(99,102,241,0.25)"
+                : "0 8px 32px rgba(99,102,241,0.35), inset 0 1px 0 rgba(255,255,255,0.18)",
+            }}
           >
             Стати партнером →
           </Link>

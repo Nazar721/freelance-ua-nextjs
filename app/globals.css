@@ -2034,6 +2034,29 @@ body {
     translate: none !important;
   }
 
+  /* Partner calculator: no glow/tint feedback on tap — fully static on touch */
+  .bp-calc-block:hover {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: none !important;
+  }
+
+  [data-theme="light"] .bp-calc-block:hover {
+    background: rgba(0, 0, 0, 0.04) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    box-shadow: none !important;
+  }
+
+  .bp-cta-button:hover {
+    background: #7c6cf6 !important;
+    box-shadow: none !important;
+  }
+
+  [data-theme="light"] .bp-cta-button:hover {
+    background: #6366F1 !important;
+    box-shadow: none !important;
+  }
+
   /* Preserve active card accent bar — must come after universal reset */
   .table-row-card--active::before,
   .table-row-card--active:hover::before {
