@@ -28,10 +28,13 @@ const wordReveal = {
 };
 
 const wordRevealMobile = {
-  hidden: { opacity: 0, y: 24 },
+  // filter pinned to blur(0px): SSR renders the desktop variant with
+  // filter: blur(8px) and without an explicit client value it stays blurred
+  hidden: { opacity: 0, y: 24, filter: "blur(0px)" },
   visible: {
     opacity: 1,
     y: 0,
+    filter: "blur(0px)",
     transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
@@ -78,7 +81,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-0 pb-4"
+      className="relative flex items-center justify-center overflow-hidden pt-2 pb-4 md:min-h-[80vh] lg:min-h-screen"
     >
       {/* Parallax background layers */}
       <motion.div

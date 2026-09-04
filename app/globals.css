@@ -1912,19 +1912,8 @@ body {
     transform: none !important;
   }
 
-  /* ALL Tailwind hover: classes — kill transforms, shadows, scales */
-  [class*="hover\\:scale"],
-  [class*="hover\\:-translate"],
-  [class*="hover\\:shadow"],
-  [class*="hover\\:bg-"],
-  [class*="hover\\:border-"],
-  [class*="hover\\:text-"],
-  [class*="hover\\:underline"] {
-    --tw-translate-x: 0 !important;
-    --tw-translate-y: 0 !important;
-    --tw-scale-x: 1 !important;
-    --tw-scale-y: 1 !important;
-  }
+  /* Tailwind hover: utilities are media-gated upstream (@custom-variant hover)
+     and cannot fire on touch — no variable overrides needed here. */
 
   /* Kill hover transforms on buttons */
   .magnetic-button:hover {
@@ -1984,80 +1973,41 @@ body {
   }
 }
 
-/* ─── Nuclear: Kill ALL hover effects on touch devices & mobile ─── */
+/* ─── Touch devices & mobile: neutralise remaining hover effects ─── */
 @media (hover: none), (max-width: 768px) {
-  /* Reset ALL transform-based hover effects on any element */
+  /* Tailwind hover:/group-hover: utilities are already media-gated upstream
+     (@custom-variant hover), so they cannot fire here. This block only
+     neutralises the site's own custom CSS hover classes.
+     NOTE: no universal *:hover custom-property overrides — !important custom
+     props inherit into the whole tapped subtree and corrupt layout on iOS. */
   *:hover {
     transform: none !important;
-    --tw-translate-x: 0 !important;
-    --tw-translate-y: 0 !important;
-    --tw-scale-x: 1 !important;
-    --tw-scale-y: 1 !important;
-    --tw-rotate: 0 !important;
-    --tw-skew-x: 0 !important;
-    --tw-skew-y: 0 !important;
-    --tw-shadow: 0 0 #0000 !important;
-    --tw-drop-shadow: 0 0 #0000 !important;
-  }
-
-  /* Reset hover-triggered pseudo-elements */
-  *:hover::before,
-  *:hover::after {
-    opacity: 0 !important;
-    transform: none !important;
-  }
-
-  /* Kill group-hover transform/shadow/scale effects on children.
-     Tailwind v4 applies group-hover:scale/translate via NATIVE properties,
-     which the transform reset above does not cover — hence scale/translate here.
-     Scoped to elements carrying group-hover utilities so static centering
-     translates (e.g. -translate-x-1/2 modals) are never affected. */
-  .group:hover [class*="group-hover"],
-  [class*="group/"]:hover [class*="group-hover"] {
-    transform: none !important;
     scale: 1 !important;
     translate: none !important;
-    --tw-translate-x: 0 !important;
-    --tw-translate-y: 0 !important;
-    --tw-scale-x: 1 !important;
-    --tw-scale-y: 1 !important;
-    --tw-rotate: 0 !important;
-    --tw-shadow: 0 0 #0000 !important;
   }
 
-  /* Custom CSS hover classes that use native scale/translate on touch */
+  .service-card:hover,
+  .service-card:hover::before,
+  .premium-surface:hover,
+  .premium-surface:hover::before,
+  .premium-surface:hover::after,
+  .tilt-card:hover,
+  .glass-stat:hover,
+  .glass-stat:hover::before,
   .bp-cta-button:hover,
   .bp-calc-block:hover,
-  .trusted-partners__logo:hover {
+  .bp-liquid-glass:hover,
+  .magnetic-button:hover,
+  .magnetic-button:hover::before,
+  .trusted-partners__logo:hover,
+  .pricing-factor:hover,
+  .pricing-factor:hover::before {
     transform: none !important;
     scale: 1 !important;
     translate: none !important;
   }
 
-  /* Partner calculator: no glow/tint feedback on tap — fully static on touch */
-  .bp-calc-block:hover {
-    background: rgba(255, 255, 255, 0.04) !important;
-    border-color: rgba(255, 255, 255, 0.08) !important;
-    box-shadow: none !important;
-  }
-
-  [data-theme="light"] .bp-calc-block:hover {
-    background: rgba(0, 0, 0, 0.04) !important;
-    border-color: rgba(0, 0, 0, 0.08) !important;
-    box-shadow: none !important;
-  }
-
-  .bp-cta-button:hover {
-    background: #7c6cf6 !important;
-    box-shadow: none !important;
-  }
-
-  [data-theme="light"] .bp-cta-button:hover {
-    background: #6366F1 !important;
-    box-shadow: none !important;
-  }
-
-  /* Preserve active card accent bar — must come after universal reset */
+  /* Preserve active card accent bar */
   .table-row-card--active::before,
   .table-row-card--active:hover::before {
     opacity: 1 !important;
