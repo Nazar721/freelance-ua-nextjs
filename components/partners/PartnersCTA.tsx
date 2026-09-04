@@ -93,7 +93,7 @@ export function PartnersCTA() {
           />
         </div>
 
-        <div className="relative rounded-3xl border border-primary/20 bg-card/90 p-10 backdrop-blur-sm sm:p-14">
+        <div className="relative rounded-3xl border border-primary/20 bg-card/90 p-6 backdrop-blur-sm sm:p-14">
           <h2 className="cta-heading mb-4 text-2xl font-bold text-foreground sm:text-3xl">
             {t("partners.cta.title")}
           </h2>
@@ -104,7 +104,7 @@ export function PartnersCTA() {
             href={siteConfig.telegram.consultationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="cta-button magnetic-button group inline-flex items-center justify-center gap-3 rounded-full bg-primary px-10 py-5 text-base font-semibold text-primary-foreground transition-colors duration-300 hover:bg-primary/90"
+            className="cta-button magnetic-button group inline-flex w-full max-w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground transition-colors duration-300 hover:bg-primary/90 sm:w-auto sm:gap-3 sm:px-10 sm:py-5 sm:text-base"
           >
             {t("partners.cta.button")}
             <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
