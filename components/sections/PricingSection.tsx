@@ -88,7 +88,7 @@ export default function PricingSection() {
                     >
                       <div className="flex items-center gap-2.5 sm:gap-3">
                         <ChevronRight size={14} className="factor-icon text-accent shrink-0 sm:w-4 sm:h-4" />
-                        <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 text-sm sm:text-base">
+                        <span className="min-w-0 flex-1 text-muted-foreground group-hover:text-foreground transition-colors duration-300 text-sm sm:text-base">
                           {t(key)}
                         </span>
                       </div>

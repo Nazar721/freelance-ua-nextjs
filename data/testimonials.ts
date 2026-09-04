@@ -33,7 +33,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 22,
     textKey: "testimonial.22.text",
-    audio: "/media/testimonials/voice.ogg",
+    audio: "/media/testimonials/voice.m4a",
     author: "Asandra Soul",
     serviceKey: "Програмування • Mini App in Telegram",
   },

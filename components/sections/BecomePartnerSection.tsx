@@ -79,6 +79,15 @@ interface Particle {
 
 export default function BecomePartnerSection() {
   const { theme } = useTheme();
+  // Start desktop on both server and first client render (hydration-safe);
+  // the real value applies right after mount.
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
   const trackRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -132,7 +141,9 @@ export default function BecomePartnerSection() {
   );
 
   useEffect(() => {
-    const track = trackRef.current!;
+    // Mobile renders a static layout — no pin, no canvas particles, no per-frame JS
+    if (isMobile || !trackRef.current) return;
+    const track = trackRef.current;
     const stage = stageRef.current!;
     const canvasEl = canvasRef.current!;
     const bgLayer = bgLayerRef.current!;
@@ -464,11 +475,11 @@ export default function BecomePartnerSection() {
       }
       cancelAnimationFrame(animIdRef.current);
       gsap.ticker.remove(drawParticles);
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      mainST.kill();
       ctaTl.kill();
       window.removeEventListener("resize", onResize);
     };
-  }, [setDrawProgress]);
+  }, [isMobile, setDrawProgress]);
 
   useEffect(() => {
     const target = clients * RATE_PER_CLIENT;
@@ -537,6 +548,95 @@ export default function BecomePartnerSection() {
       el.removeEventListener("mouseleave", onLeave);
     };
   }, []);
+
+  // Mobile: static, lightweight layout — no 300vh scroll-jack, no canvas
+  // particles, no per-frame chart transform. Same content, theme-aware.
+  if (isMobile) {
+    return (
+      <section
+        className="relative overflow-hidden px-4 py-16"
+        style={{ background: theme === "light" ? "#EDEDF1" : "#050506" }}
+      >
+        {/* Static decorative sparkline — pure SVG, no JS per frame */}
+        <svg
+          viewBox={`0 0 ${SVG_W} ${SVG_H}`}
+          preserveAspectRatio="xMidYMid meet"
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-8 mx-auto w-[160%] max-w-none opacity-50"
+        >
+          <path
+            d={GROWTH_PATH}
+            fill="none"
+            stroke={theme === "light" ? "rgba(99,102,241,0.2)" : "rgba(74,222,128,0.22)"}
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeDasharray="12 18"
+          />
+        </svg>
+
+        <div className="relative mx-auto flex max-w-md flex-col items-center text-center">
+          <div className="bp-text-secondary text-[10px] mb-1 tracking-wider uppercase font-medium">
+            ДОХІД З РЕКОМЕНДАЦІЙ
+          </div>
+          <div
+            className="bp-text-primary font-bold tabular-nums mb-5"
+            style={{
+              fontSize: "clamp(30px, 9vw, 44px)",
+              fontVariantNumeric: "tabular-nums",
+              textShadow: theme === "light"
+                ? "0 0 30px rgba(99,102,241,0.15)"
+                : "0 0 40px rgba(74,222,128,0.3)",
+            }}
+          >
+            {fmt(clients * RATE_PER_CLIENT)}
+          </div>
+
+          <div className={`w-8 h-px mx-auto mb-4 ${theme === "light" ? "bg-gradient-to-r from-transparent via-black/15 to-transparent" : "bg-gradient-to-r from-transparent via-white/20 to-transparent"}`} />
+
+          <div className="text-[#8b7bf0] text-[11px] tracking-[0.14em] mb-2" style={{ padding: "2px 4px" }}>
+            % ПАРТНЕРКА
+          </div>
+
+          <h2 className="bp-text-primary text-[1.65rem] font-semibold mb-1.5 leading-[1.15]">
+            Заробляй з нами
+          </h2>
+          <p className="bp-text-muted text-sm mb-5">
+            Рекомендуй — отримуй % з кожного клієнта
+          </p>
+
+          <div className="bp-calc-block rounded-[14px] p-[14px_18px] mb-5 w-full">
+            <div className="flex justify-between items-baseline mb-2">
+              <span className="bp-text-secondary text-xs">Клієнтів на місяць</span>
+              <span className="text-[#c9befc] text-xs font-semibold">{clients}</span>
+            </div>
+            <input
+              type="range"
+              min={1}
+              max={25}
+              value={clients}
+              onChange={(e) => setClients(Number(e.target.value))}
+              className="bp-slider w-full"
+              aria-label="Клієнтів на місяць"
+            />
+            <div className="bp-text-primary bp-income-flash text-xl font-semibold mt-2" style={{ fontVariantNumeric: "tabular-nums" }}>
+              {fmt(clients * RATE_PER_CLIENT)}
+              <span className="bp-text-muted text-[11px] font-normal block mt-0.5">
+                орієнтовний дохід / міс
+              </span>
+            </div>
+          </div>
+
+          <Link
+            href="/partners"
+            className="bp-cta-button inline-flex items-center justify-center gap-2.5 text-white font-semibold rounded-full text-sm w-full"
+            style={{ padding: "13px 26px" }}
+          >
+            Стати партнером →
+          </Link>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <div ref={trackRef} style={{ height: "300vh", position: "relative" }}>

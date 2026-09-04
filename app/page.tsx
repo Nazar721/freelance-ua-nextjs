@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="relative isolate overflow-hidden pt-16">
+    <main className="relative isolate overflow-hidden pt-[88px] md:pt-16">
       <SiteBackdrop />
       <Header />
       <HeroSection />

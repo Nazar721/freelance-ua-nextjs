@@ -83,8 +83,10 @@ function TypeBadge({ item }: { item: Testimonial }) {
 
 function VideoPoster({ src }: { src: string }) {
   const holderRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
   const [inView, setInView] = useState(false);
   const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     const el = holderRef.current;
@@ -104,12 +106,12 @@ function VideoPoster({ src }: { src: string }) {
 
   return (
     <div ref={holderRef} className="absolute inset-0">
-      {/* fallback backdrop until the frame loads */}
+      {/* fallback backdrop — also the permanent state when the video can't load */}
       <div className="absolute inset-0 bg-gradient-to-br from-surface-elevated via-surface to-surface-elevated">
         <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-accent/15 blur-3xl" />
         <div className="absolute -bottom-20 -left-10 w-48 h-48 rounded-full bg-accent/10 blur-3xl" />
       </div>
-      {inView && (
+      {inView && !failed && (
         <video
           src={`${src}#t=0.2`}
           muted
@@ -117,12 +119,19 @@ function VideoPoster({ src }: { src: string }) {
           preload="metadata"
           tabIndex={-1}
           draggable={false}
+          onError={() => setFailed(true)}
           onLoadedData={() => setReady(true)}
           onLoadedMetadata={() => setReady(true)}
           className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
             ready ? "opacity-100" : "opacity-0"
           }`}
         />
+      )}
+      {failed && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center p-4">
+          <Video size={22} className="text-accent/60" />
+          <span className="text-xs text-muted-foreground">{t("testimonials.videoUnavailable")}</span>
+        </div>
       )}
     </div>
   );
@@ -132,11 +141,21 @@ function VideoPoster({ src }: { src: string }) {
 
 function AudioPlayer({ src }: { src: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [failed, setFailed] = useState(false);
   const [bars] = useState(() => Array.from({ length: 26 }, () => Math.random() * 0.4 + 0.3));
   const [tick, setTick] = useState(0);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onError = () => setFailed(true);
+    audio.addEventListener("error", onError);
+    return () => audio.removeEventListener("error", onError);
+  }, []);
 
   useEffect(() => {
     if (!isPlaying) return;
@@ -172,6 +191,15 @@ function AudioPlayer({ src }: { src: string }) {
       audio.removeEventListener("ended", onEnded);
     };
   }, []);
+
+  if (failed) {
+    return (
+      <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-4 text-center">
+        <MessageSquare size={18} className="text-accent/60" />
+        <span className="text-xs text-muted-foreground">{t("testimonials.audioUnavailable")}</span>
+      </div>
+    );
+  }
 
   const togglePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -243,10 +271,21 @@ function AudioPlayer({ src }: { src: string }) {
 
 function ModalVideo({ src }: { src: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { t } = useTranslation();
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     videoRef.current?.play().catch(() => {});
   }, []);
+
+  if (failed) {
+    return (
+      <div className="flex max-h-[62svh] min-h-40 w-full flex-col items-center justify-center gap-2 rounded-2xl border border-border bg-surface-elevated p-6 text-center">
+        <Video size={24} className="text-accent/60" />
+        <span className="text-sm text-muted-foreground">{t("testimonials.videoUnavailable")}</span>
+      </div>
+    );
+  }
 
   return (
     <video
@@ -256,6 +295,7 @@ function ModalVideo({ src }: { src: string }) {
       playsInline
       autoPlay
       draggable={false}
+      onError={() => setFailed(true)}
       className="w-full max-h-[62svh] rounded-2xl border border-border bg-black object-contain"
       onContextMenu={(e) => e.preventDefault()}
     />
@@ -286,7 +326,7 @@ function CardContent({
           <ReviewAvatar name={name} size={isModal ? 52 : 44} />
         </div>
         <div className="min-w-0 flex-1 flex items-center">
-          <div className="truncate text-foreground font-semibold text-base leading-none">
+          <div className={`truncate text-foreground font-semibold leading-none ${isModal ? "text-base" : "text-sm sm:text-base"}`}>
             {name}
           </div>
         </div>

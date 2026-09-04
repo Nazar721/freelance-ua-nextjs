@@ -109,12 +109,12 @@ export default function Header() {
             alt="Freelance UA"
             width={32}
             height={32}
-            className="rounded-lg"
+            className="rounded-lg shrink-0"
             priority
           />
           <span className="font-bold text-foreground text-sm md:text-base leading-tight">
-            Freelance UA<br />
-            <span className="text-accent">Digital Agency</span>
+            <span className="block whitespace-nowrap">Freelance UA</span>
+            <span className="block whitespace-nowrap text-accent">Digital Agency</span>
           </span>
         </div>
 

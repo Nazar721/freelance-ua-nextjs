@@ -127,7 +127,7 @@ export default function FeaturedCaseCard({
         {/* Preview image — right after title */}
         {galleryImages && galleryImages.length > 1 ? (
           <motion.div
-            className="relative w-full aspect-[3/2]"
+            className="relative w-full aspect-[3/2] overflow-hidden"
             style={{ y: mockupY }}
           >
             <div className={`grid gap-2 h-full ${galleryImages.length === 2 ? "grid-cols-2" : "grid-cols-3"}`}>
@@ -148,7 +148,7 @@ export default function FeaturedCaseCard({
           </motion.div>
         ) : (
           <motion.div
-            className="relative w-full flex items-center justify-center aspect-[3/2]"
+            className="relative w-full flex items-center justify-center aspect-[3/2] overflow-hidden"
             style={{ y: mockupY }}
           >
             <Image

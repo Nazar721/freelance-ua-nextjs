@@ -57,18 +57,21 @@ export function FadeIn({
     );
   }
 
-  // Mobile: simplified animation — only opacity + y, no blur/rotateX, shorter duration
+  // Mobile: simplified animation — only opacity + y, no blur/rotateX, shorter duration.
+  // filter is pinned to blur(0px) on purpose: SSR renders the desktop branch with
+  // filter: blur(Npx) inline, and without an explicit client-side value React
+  // hydration leaves that orphan style applied — content stays permanently blurred.
   if (isMobile) {
     return (
       <motion.div
         ref={ref}
         className={className}
         style={style}
-        initial={{ opacity: 0, y: y > 0 ? 16 : 0 }}
+        initial={{ opacity: 0, y: y > 0 ? 16 : 0, filter: "blur(0px)" }}
         animate={
           isInView
-            ? { opacity: 1, y: 0 }
-            : { opacity: 0, y: y > 0 ? 16 : 0 }
+            ? { opacity: 1, y: 0, filter: "blur(0px)" }
+            : { opacity: 0, y: y > 0 ? 16 : 0, filter: "blur(0px)" }
         }
         transition={{
           duration: 0.55,

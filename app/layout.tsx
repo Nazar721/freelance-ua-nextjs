@@ -54,7 +54,7 @@ export default async function RootLayout({
   const theme: Theme = cookieTheme === "light" ? "light" : "dark";
 
   return (
-    <html lang={locale} data-theme={theme} className={`${spaceGrotesk.variable} ${unbounded.variable}`} style={{ scrollPaddingTop: "96px" }}>
+    <html lang={locale} data-theme={theme} className={`${spaceGrotesk.variable} ${unbounded.variable}`} style={{ scrollPaddingTop: "120px" }}>
       <body>
         <ContentProtection />
         <LoadingScreen />

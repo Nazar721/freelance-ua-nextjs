@@ -4,6 +4,17 @@
 
 @custom-variant dark (&:is([data-theme="dark"] *));
 
+/* Apply hover: utilities only on devices that truly support hover.
+   Tailwind v4 compiles hover:* to plain :hover with native scale/translate
+   properties, which iOS Safari fires on tap (sticky :hover) — this gates them. */
+@custom-variant hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -1996,16 +2007,31 @@ body {
     transform: none !important;
   }
 
-  /* Kill group-hover transform/shadow effects on children */
+  /* Kill group-hover transform/shadow/scale effects on children.
+     Tailwind v4 applies group-hover:scale/translate via NATIVE properties,
+     which the transform reset above does not cover — hence scale/translate here.
+     Scoped to elements carrying group-hover utilities so static centering
+     translates (e.g. -translate-x-1/2 modals) are never affected. */
   .group:hover [class*="group-hover"],
   [class*="group/"]:hover [class*="group-hover"] {
     transform: none !important;
+    scale: 1 !important;
+    translate: none !important;
     --tw-translate-x: 0 !important;
     --tw-translate-y: 0 !important;
     --tw-scale-x: 1 !important;
     --tw-scale-y: 1 !important;
     --tw-rotate: 0 !important;
     --tw-shadow: 0 0 #0000 !important;
+  }
+
+  /* Custom CSS hover classes that use native scale/translate on touch */
+  .bp-cta-button:hover,
+  .bp-calc-block:hover,
+  .trusted-partners__logo:hover {
+    transform: none !important;
+    scale: 1 !important;
+    translate: none !important;
   }
 
   /* Preserve active card accent bar — must come after universal reset */
