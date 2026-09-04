@@ -175,7 +175,6 @@ export default function Header() {
         {/* Mobile burger */}
         <div className="xl:hidden flex items-center gap-2">
           <ThemeToggle />
-          <LanguageToggle />
           <button
             className="text-foreground p-2 rounded-lg hover:bg-white/10 transition-colors duration-200"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -249,6 +248,14 @@ export default function Header() {
                     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.012 9.47c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 14.948l-2.937-.918c-.638-.198-.65-.638.136-.943l11.47-4.42c.532-.194.998.13.633.582z"/>
                   </svg>
                 </motion.a>
+              </div>
+
+              {/* Language switch — lives in the burger menu on mobile to keep the bar uncluttered */}
+              <div
+                className="mt-3 pt-3 border-t border-border/60 flex justify-center"
+                onClick={() => setMenuOpen(false)}
+              >
+                <LanguageToggle />
               </div>
             </div>
           </motion.div>
