@@ -175,9 +175,9 @@ export default function ServicesSection() {
                     )}
                   </ul>
 
-                  <span className="inline-flex items-center gap-2 text-accent text-xs sm:text-sm font-medium group-hover:gap-3 transition-all duration-300">
+                  <span className="inline-flex items-center gap-2 whitespace-nowrap text-accent text-xs sm:text-sm font-medium md:group-hover:gap-3 transition-all duration-300">
                     Дізнатись більше
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="transition-transform duration-300 group-hover:translate-x-1 sm:w-4 sm:h-4">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="transition-transform duration-300 md:group-hover:translate-x-1 sm:w-4 sm:h-4">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>

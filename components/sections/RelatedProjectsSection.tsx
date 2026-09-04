@@ -547,9 +547,9 @@ export default function RelatedProjectsSection({
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
                     {t(caseItem.descriptionKey)}
                   </p>
-                  <span className="inline-flex items-center gap-1.5 text-primary text-sm font-medium group-hover:gap-2.5 transition-all duration-300">
+                  <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-primary text-sm font-medium md:group-hover:gap-2.5 transition-all duration-300">
                     {t("itCases.viewProject")}
-                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+                    <ArrowRight size={14} className="transition-transform duration-300 md:group-hover:translate-x-0.5" />
                   </span>
                 </div>
               </Link>
