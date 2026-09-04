@@ -4,10 +4,12 @@
 // a video/mp4 content type — videos render as empty players on production.
 //
 // Strategy:
-//   1. Fast path — `git lfs pull` when the git-lfs binary is available.
-//   2. Fallback — pure-Node download via the GitHub LFS Batch API (works on
-//      Vercel builds where git-lfs is not installed; no auth needed for a
-//      public repo). Set GITHUB_TOKEN for private repos.
+//   1. Scan public/ for pointer files (cheap, no git-lfs needed).
+//   2. If any, try `git lfs pull` with a hard timeout (git-lfs can hang on
+//      auth/quota problems in CI).
+//   3. Still pointers → pure-Node download via the GitHub LFS Batch API
+//      (no git-lfs binary needed; no auth for a public repo — set GITHUB_TOKEN
+//      for private repos).
 import { execSync } from "node:child_process";
 import { createWriteStream, readdirSync, readFileSync, renameSync, statSync } from "node:fs";
 import path from "node:path";
@@ -16,9 +18,13 @@ import { pipeline } from "node:stream/promises";
 
 const POINTER_PREFIX = "version https://git-lfs";
 const BATCH_CHUNK = 50;
+const GIT_LFS_TIMEOUT_MS = 180_000;
 
-function sh(cmd) {
-  return execSync(cmd, { stdio: ["ignore", "pipe", "pipe"] }).toString().trim();
+function sh(cmd, timeoutMs = 15_000) {
+  return execSync(cmd, {
+    stdio: ["ignore", "pipe", "pipe"],
+    timeout: timeoutMs,
+  }).toString().trim();
 }
 
 function isGitRepo() {
@@ -73,6 +79,15 @@ async function readPointer(file) {
   const size = Number(text.match(/size (\d+)/)?.[1] ?? 0);
   if (!oid) return null;
   return { file, oid, size };
+}
+
+async function findPointers() {
+  const pointers = [];
+  for (const file of walk("public")) {
+    const p = await readPointer(file);
+    if (p) pointers.push(p);
+  }
+  return pointers;
 }
 
 async function downloadViaBatchApi(pointers) {
@@ -132,28 +147,27 @@ async function main() {
     return;
   }
 
-  // Fast path: git-lfs handles smudge/pull itself.
-  let usedGitLfs = false;
+  let pointers = await findPointers();
+  if (pointers.length === 0) {
+    console.log("pull-lfs: all LFS files present");
+    return;
+  }
+
+  console.log(`pull-lfs: ${pointers.length} pointer file(s) found — trying git lfs pull...`);
   try {
-    sh("git lfs install");
-    sh("git lfs pull");
-    usedGitLfs = true;
+    sh("git lfs install", 10_000);
+    sh("git lfs pull", GIT_LFS_TIMEOUT_MS);
   } catch (err) {
     console.warn(`pull-lfs: git lfs unavailable or failed (${String(err.message).split("\n")[0]}) — falling back to LFS Batch API`);
   }
 
-  // Verify: any pointer files left in the tree?
-  const pointers = [];
-  for (const file of walk("public")) {
-    const p = await readPointer(file);
-    if (p) pointers.push(p);
-  }
+  pointers = await findPointers();
   if (pointers.length === 0) {
-    console.log(usedGitLfs ? "pull-lfs: all LFS files present" : "pull-lfs: no pointer files to resolve");
+    console.log("pull-lfs: git lfs pull resolved all files");
     return;
   }
 
-  console.log(`pull-lfs: resolving ${pointers.length} LFS pointer file(s) via Batch API...`);
+  console.log(`pull-lfs: resolving ${pointers.length} pointer file(s) via Batch API...`);
   const downloaded = await downloadViaBatchApi(pointers);
   console.log(`pull-lfs: downloaded ${downloaded}/${pointers.length} file(s)`);
 

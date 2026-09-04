@@ -2210,6 +2210,38 @@ body {
   }
 }
 
+/* ─── Case cards: fully static layout on touch devices ────────────────
+   The hover overlay (description + CTA) is a desktop affordance: on touch
+   it either stays hidden or permanently covers the media. Convert it to a
+   normal block below the media, drop the description, keep the CTA always
+   visible. No hover-driven movement anywhere on these cards. */
+@media (max-width: 768px), (hover: none) {
+  .featured-case-card .case-hover-content {
+    position: static;
+    inset: auto;
+    opacity: 1;
+    transform: none;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 0;
+    padding: 4px 32px 32px;
+    z-index: auto;
+    pointer-events: auto;
+  }
+
+  /* Description paragraph is hover-only content — hidden on touch */
+  .featured-case-card .case-hover-content p {
+    display: none;
+  }
+
+  /* CTA pill: always visible, never wraps into a circle */
+  .featured-case-card .case-hover-content a,
+  .featured-case-card .case-hover-content span {
+    white-space: nowrap;
+  }
+}
+
 /* ═══════════════════════════════════════════════════
    BecomePartner Section — bp-* utility classes
    ═══════════════════════════════════════════════════ */
