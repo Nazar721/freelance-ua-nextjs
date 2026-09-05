@@ -8,6 +8,14 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslation } from "@/lib/LanguageContext";
 import Badge, { type BadgeProps } from "./Badge";
 
+/* Mouse-follow glow/parallax is a desktop-only affordance. Touch taps fire
+   synthetic mouse events (iOS sticky hover), which would shift the media and
+   warp the glow on mobile — so the handlers no-op unless the device truly
+   supports hover with a fine pointer. */
+const supportsHover = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
 export interface FeaturedCaseCardProps {
   categoryKey: string;
   titleKey: string;
@@ -63,6 +71,7 @@ export default function FeaturedCaseCard({
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!supportsHover()) return;
       const rect = cardRef.current?.getBoundingClientRect();
       if (!rect) return;
       const x = (e.clientX - rect.left) / rect.width;
@@ -76,6 +85,7 @@ export default function FeaturedCaseCard({
   );
 
   const handleMouseLeave = useCallback(() => {
+    if (!supportsHover()) return;
     mouseX.set(0.5);
     mouseY.set(0.5);
     cardRef.current?.style.setProperty("--glow-x", "50%");

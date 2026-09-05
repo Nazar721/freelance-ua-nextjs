@@ -68,6 +68,15 @@ const GROWTH_PATH = generateCurvePath(
   "ltr"
 );
 
+// Green animated line sits above the dashed ghost path
+const GROWTH_PATH_UPPER = generateCurvePath(
+  60,
+  (t) => SVG_H - 80 - t * (SVG_H - 160) - 18,
+  28,
+  42,
+  "ltr"
+);
+
 
 interface Particle {
   x: number;
@@ -337,7 +346,7 @@ export default function BecomePartnerSection() {
       const metricY = chartY + pt.y * svgScale * zoom;
       if (liveMetricRef.current) {
         const lmX = Math.max(170, Math.min(stageW - 170, metricX));
-        const lmY = Math.max(170, Math.min(stageH - 140, metricY - 112));
+        const lmY = Math.max(170, Math.min(stageH - 140, metricY - 180));
         const metricVisibility = Math.min(1, p * 4);
         liveMetricRef.current.style.opacity = String(metricVisibility);
         liveMetricRef.current.style.transform = `translate(${lmX}px, ${lmY}px) translate(-50%, -50%) scale(${0.9 + metricVisibility * 0.1})`;
@@ -720,7 +729,7 @@ export default function BecomePartnerSection() {
             />
             <path
               ref={growthPathRef}
-              d={GROWTH_PATH}
+              d={GROWTH_PATH_UPPER}
               fill="none"
               stroke="url(#grad-growth)"
               strokeWidth="4"

@@ -6,6 +6,13 @@ import { ArrowRight, Play } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslation } from "@/lib/LanguageContext";
 
+/* Mouse-follow glow/parallax is a desktop-only affordance. Touch taps fire
+   synthetic mouse events (iOS sticky hover) that would shift the media — so
+   handlers no-op unless the device truly supports hover with a fine pointer. */
+const supportsHover = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
 export interface VideoCaseCardProps {
   categoryKey: string;
   titleKey: string;
@@ -54,6 +61,7 @@ export default function VideoCaseCard({
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!supportsHover()) return;
       const rect = cardRef.current?.getBoundingClientRect();
       if (!rect) return;
       const x = (e.clientX - rect.left) / rect.width;
@@ -67,6 +75,7 @@ export default function VideoCaseCard({
   );
 
   const handleMouseLeave = useCallback(() => {
+    if (!supportsHover()) return;
     mouseX.set(0.5);
     mouseY.set(0.5);
     cardRef.current?.style.setProperty("--glow-x", "50%");

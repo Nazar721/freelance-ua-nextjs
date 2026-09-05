@@ -15,6 +15,17 @@
   }
 }
 
+/* Gate group-hover: utilities to desktop only — same logic as hover: above.
+   Without this, group-hover: fires on touch tap (sticky :hover on iOS) and
+   breaks layout on mobile case cards (scale, bg-darken, opacity changes). */
+@custom-variant group-hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -1941,6 +1952,15 @@ body {
     transform: none !important;
   }
 
+  /* Video case card — no group-hover play button scale or overlay on mobile */
+  .featured-case-card .group-hover\:scale-110 {
+    transform: none !important;
+  }
+
+  .featured-case-card .group-hover\:bg-black\/40 {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+  }
+
   /* Testimonials card — no shadow */
   .group:hover {
     box-shadow: none !important;
@@ -2156,6 +2176,14 @@ body {
               filter 600ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Hover-swap image is hidden by default and revealed only on real hover
+   (see ::hover rule below). Without this base opacity it permanently covers
+   the main mockup on every device, including touch. */
+.case-mockup-hover-image {
+  opacity: 0;
+  transition: opacity 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .case-card-title {
   transition: text-shadow 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -2168,11 +2196,13 @@ body {
   pointer-events: none;
 }
 
-.group:hover .case-hover-content,
-.featured-case-card:hover .case-hover-content {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+@media (hover: hover) {
+  .group:hover .case-hover-content,
+  .featured-case-card:hover .case-hover-content {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
 }
 
 @media (hover: none) {
@@ -2198,7 +2228,7 @@ body {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-radius: 0;
-    padding: 4px 32px 32px;
+    padding: 12px 32px 30px;
     z-index: auto;
     pointer-events: auto;
   }
@@ -2208,10 +2238,17 @@ body {
     display: none;
   }
 
-  /* CTA pill: always visible, never wraps into a circle */
+  /* Hover-swap image has no meaning without hover — keep the base mockup */
+  .featured-case-card .case-mockup-hover-image {
+    opacity: 0 !important;
+  }
+
+  /* CTA pill: always visible, single line, no tap scale — never wraps */
   .featured-case-card .case-hover-content a,
   .featured-case-card .case-hover-content span {
     white-space: nowrap;
+    transform: none;
+    scale: none;
   }
 
   /* ─── Testimonials: static cards on touch ───

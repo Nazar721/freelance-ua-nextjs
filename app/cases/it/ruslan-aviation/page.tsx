@@ -255,6 +255,16 @@ export default function RuslanAviationPage() {
               <p className="text-foreground text-lg md:text-xl italic leading-relaxed mb-6">
                 &ldquo;{t("itCases.ruslan.reviewText")}&rdquo;
               </p>
+              <div className="mb-6 rounded-xl overflow-hidden border border-border">
+                <Image
+                  src="/media/cases/ruslan-review.png"
+                  alt={t("itCases.ruslan.reviewAuthor")}
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-contain"
+                  draggable={false}
+                />
+              </div>
               <div className="flex items-center justify-center gap-3">
   <ReviewAvatar name={t("itCases.ruslan.reviewAuthor")} />
   <p className="text-primary font-semibold">{t("itCases.ruslan.reviewAuthor")}</p>

@@ -237,5 +237,16 @@ export const designCases: CaseEntry[] = [
       "/media/cases/nastya-portrait-retouch/final-3.jpg",
     ],
   },
+  {
+    slug: "color-correction",
+    category: "photo-retouch",
+    categoryKey: "designCases.colorCorrection.category",
+    titleKey: "designCases.colorCorrection.title",
+    descriptionKey: "designCases.colorCorrection.shortDesc",
+    href: "/cases/design/color-correction",
+    glowColor: "rgba(168, 132, 100, 0.12)",
+    glowColorStrong: "rgba(168, 132, 100, 0.28)",
+    image: "/media/cases/color-correction/poster.jpg",
+  },
 ];
 

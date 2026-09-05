@@ -22,6 +22,25 @@ export interface VideoCaseEntry {
 
 export const videoCases: VideoCaseEntry[] = [
   {
+    slug: "maccoudi-youtube",
+    subCategory: "youtube",
+    categoryKey: "videoCases.maccoudiYoutube.category",
+    titleKey: "videoCases.maccoudiYoutube.title",
+    descriptionKey: "videoCases.maccoudiYoutube.shortDesc",
+    href: "/cases/video/maccoudi-youtube",
+    glowColor: "rgba(34, 197, 94, 0.15)",
+    glowColorStrong: "rgba(34, 197, 94, 0.3)",
+    heroVideo: "/media/cases/maccoudi-youtube/video-1.mp4",
+    poster: "/media/cases/maccoudi-youtube/youtube-banner.jpeg",
+    processVideos: [
+      "/media/cases/maccoudi-youtube/video-1.mp4",
+      "/media/cases/maccoudi-youtube/video-2.mp4",
+    ],
+    screenshot: "/media/cases/maccoudi-youtube/youtube-channel.png",
+    duration: "~1хв",
+    format: "16:9",
+  },
+  {
     slug: "nikita-sheremet",
     subCategory: "reels",
     categoryKey: "videoCases.nikitaSheremet.category",
@@ -39,20 +58,6 @@ export const videoCases: VideoCaseEntry[] = [
     ],
     screenshot: "/media/cases/nikita-sheremet-crypto/screenshot.webp",
     duration: "~60с",
-    format: "9:16",
-  },
-  {
-    slug: "eva-code-reels",
-    subCategory: "reels",
-    categoryKey: "videoCases.evaCodeReels.category",
-    titleKey: "videoCases.evaCodeReels.title",
-    descriptionKey: "videoCases.evaCodeReels.shortDesc",
-    href: "/cases/video/eva-code-reels",
-    glowColor: "rgba(236, 72, 153, 0.15)",
-    glowColorStrong: "rgba(236, 72, 153, 0.3)",
-    heroVideo: "/media/cases/eva-code-reels/hero.mp4",
-    poster: "/media/cases/eva-code-reels/hero-poster.jpg",
-    duration: "~2:45",
     format: "9:16",
   },
   {
