@@ -128,6 +128,7 @@ export default function VideoCaseCard({
                   muted
                   playsInline
                   preload="metadata"
+                  aria-label="Video preview"
                 />
                 {/* Play button overlay */}
                 <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-all duration-300">
@@ -146,6 +147,7 @@ export default function VideoCaseCard({
                   muted
                   playsInline
                   preload="metadata"
+                  aria-label="Video preview"
                 />
                 {/* Play button overlay */}
                 <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-all duration-300">

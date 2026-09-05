@@ -297,15 +297,6 @@ const allCases: RelatedCase[] = [
     section: "it",
   },
   {
-    slug: "apple-tecnologia",
-    categoryKey: "designCases.appleTecnologia.category",
-    titleKey: "designCases.appleTecnologia.title",
-    descriptionKey: "designCases.appleTecnologia.shortDesc",
-    href: "/cases/design/apple-tecnologia",
-    image: "/media/cases/apple-tecnologia/apple-tecnologia-preview.webp",
-    section: "design",
-  },
-  {
     slug: "nikita-sheremet",
     categoryKey: "videoCases.nikitaSheremet.category",
     titleKey: "videoCases.nikitaSheremet.title",

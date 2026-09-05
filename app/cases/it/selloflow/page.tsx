@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -9,6 +9,8 @@ import { ArrowRight, ArrowLeft, Quote, Check, AlertTriangle, Lightbulb } from "l
 import { FadeIn } from "@/components/ui/FadeIn";
 import CurvedDashedLines from "@/components/ui/CurvedDashedLines";
 
+import { ImageModal } from "@/components/ui/ImageModal";
+import GalleryImage from "@/components/ui/GalleryImage";
 import { useTranslation } from "@/lib/LanguageContext";
 import RelatedProjectsSection from "@/components/sections/RelatedProjectsSection";
 import ReviewAvatar from "@/components/ui/ReviewAvatar";
@@ -66,6 +68,22 @@ const cardVariants: Variants = {
 export default function SelloflowPage() {
   const { t } = useTranslation();
   const heroRef = useRef<HTMLDivElement>(null);
+  const allImages = components.filter((c) => c.image).map((c) => c.image!);
+  const [modalState, setModalState] = useState<{ isOpen: boolean; images: string[]; currentIndex: number; title: string }>({
+    isOpen: false,
+    images: [],
+    currentIndex: 0,
+    title: "",
+  });
+
+  const openModal = (images: string[], index: number, title: string) => {
+    setModalState({ isOpen: true, images, currentIndex: index, title });
+  };
+
+  const closeModal = () => setModalState((prev) => ({ ...prev, isOpen: false }));
+
+  const goToPrev = () => setModalState((prev) => ({ ...prev, currentIndex: (prev.currentIndex - 1 + prev.images.length) % prev.images.length }));
+  const goToNext = () => setModalState((prev) => ({ ...prev, currentIndex: (prev.currentIndex + 1) % prev.images.length }));
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -214,14 +232,14 @@ export default function SelloflowPage() {
                   </p>
 
                   {comp.image && (
-                    <div className="mt-6">
-                      <Image
+                    <div className="mt-6 cursor-pointer" onClick={() => openModal(allImages, allImages.indexOf(comp.image!), t(comp.titleKey))}>
+                      <GalleryImage
                         src={comp.image}
                         alt={t(comp.titleKey)}
                         width={1200}
                         height={750}
                         className="w-full h-auto rounded-xl object-contain"
-                        draggable={false}
+                        onOpen={() => openModal(allImages, allImages.indexOf(comp.image!), t(comp.titleKey))}
                       />
                     </div>
                   )}
@@ -314,6 +332,16 @@ export default function SelloflowPage() {
       </section>
 
       <RelatedProjectsSection currentSlug="selloflow" />
+
+      <ImageModal
+        images={modalState.images}
+        currentIndex={modalState.currentIndex}
+        isOpen={modalState.isOpen}
+        onClose={closeModal}
+        onPrev={goToPrev}
+        onNext={goToNext}
+        title={modalState.title}
+      />
     </article>
   );
 }

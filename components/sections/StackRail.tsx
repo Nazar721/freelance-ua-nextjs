@@ -517,7 +517,7 @@ function Rail({
                   <span className="stack-icon-chip">
                     <img
                       src={icon.svgPath}
-                      alt=""
+                      alt={icon.name}
                       width={26}
                       height={26}
                       loading="lazy"

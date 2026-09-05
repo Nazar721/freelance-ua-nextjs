@@ -8,6 +8,8 @@ import type { Variants } from "framer-motion";
 import { ArrowRight, ArrowLeft, Check, AlertTriangle, Lightbulb, Play, Pause } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import CurvedDashedLines from "@/components/ui/CurvedDashedLines";
+import { ImageModal } from "@/components/ui/ImageModal";
+import GalleryImage from "@/components/ui/GalleryImage";
 
 import { useTranslation } from "@/lib/LanguageContext";
 import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
@@ -46,6 +48,8 @@ const finalItems = [
   { src: "/media/cases/nastya-portrait-retouch/final-6.jpg", w: 4000, h: 6000 },
 ];
 
+const allImages = finalItems.map((item) => item.src);
+
 const results = [
   "designCases.nastyaPortraitRetouch.result1",
   "designCases.nastyaPortraitRetouch.result2",
@@ -67,6 +71,12 @@ export default function NastyaPortraitRetouchPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [modalState, setModalState] = useState<{ images: string[]; index: number }>({ images: [], index: 0 });
+
+  const openModal = (images: string[], index: number) => setModalState({ images, index });
+  const closeModal = () => setModalState({ images: [], index: 0 });
+  const goToPrev = () => setModalState((s) => ({ ...s, index: s.index > 0 ? s.index - 1 : s.images.length - 1 }));
+  const goToNext = () => setModalState((s) => ({ ...s, index: s.index < s.images.length - 1 ? s.index + 1 : 0 }));
 
   const toggleVideo = useCallback(() => {
     const video = videoRef.current;
@@ -324,13 +334,12 @@ export default function NastyaPortraitRetouchPage() {
               <FadeIn key={item.src} delay={0.05 + i * 0.06} y={30} blur={4}>
                 <div className="featured-case-card border border-border rounded-2xl p-3" style={{ borderRadius: "16px" }}>
                   <div className="relative overflow-hidden rounded-xl border border-border bg-background">
-                    <Image
+                    <GalleryImage
                       src={item.src}
                       alt={t("designCases.nastyaPortraitRetouch.finalsTitle")}
                       width={item.w}
                       height={item.h}
-                      className="w-full h-auto object-cover"
-                      draggable={false}
+                      onOpen={() => openModal(allImages, i)}
                     />
                   </div>
                 </div>
@@ -436,6 +445,16 @@ export default function NastyaPortraitRetouchPage() {
       </section>
 
       <RelatedProjectsSection currentSlug="nastya-portrait-retouch" section="design" />
+
+      <ImageModal
+        images={modalState.images}
+        currentIndex={modalState.index}
+        isOpen={modalState.images.length > 0}
+        onClose={closeModal}
+        onPrev={goToPrev}
+        onNext={goToNext}
+        title={t("designCases.nastyaPortraitRetouch.title")}
+      />
     </article>
   );
 }

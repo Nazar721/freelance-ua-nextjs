@@ -159,6 +159,7 @@ function CasesTabsContent() {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             {t("cases.desc")}
           </p>
+          <h2 className="text-xl md:text-2xl font-semibold text-muted-foreground mt-4">{t("cases.title")}</h2>
         </FadeIn>
 
         {/* Tabs */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -8,6 +8,8 @@ import type { Variants } from "framer-motion";
 import { ArrowRight, ArrowLeft, Check, AlertTriangle, Lightbulb, Quote } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import CurvedDashedLines from "@/components/ui/CurvedDashedLines";
+import { ImageModal } from "@/components/ui/ImageModal";
+import GalleryImage from "@/components/ui/GalleryImage";
 
 import { useTranslation } from "@/lib/LanguageContext";
 import RelatedProjectsSection from "@/components/sections/RelatedProjectsSection";
@@ -18,6 +20,8 @@ const finalItems = [
   { src: "/media/cases/pink-pr-flyers/pink-pr-flyers2.webp", w: 1240, h: 1748, titleKey: "designCases.pinkPrFlyers.item2.title", captionKey: "designCases.pinkPrFlyers.item2.caption" },
   { src: "/media/cases/pink-pr-flyers/pink-pr-flyers3.webp", w: 1240, h: 1748, titleKey: "designCases.pinkPrFlyers.item3.title", captionKey: "designCases.pinkPrFlyers.item3.caption" },
 ];
+
+const allImages = finalItems.map((item) => item.src);
 
 const results = [
   "designCases.pinkPrFlyers.result1",
@@ -38,6 +42,12 @@ const cardVariants: Variants = {
 export default function PinkPrFlyersPage() {
   const { t } = useTranslation();
   const heroRef = useRef<HTMLDivElement>(null);
+  const [modalState, setModalState] = useState<{ images: string[]; index: number }>({ images: [], index: 0 });
+
+  const openModal = (images: string[], index: number) => setModalState({ images, index });
+  const closeModal = () => setModalState({ images: [], index: 0 });
+  const goToPrev = () => setModalState((s) => ({ ...s, index: s.index > 0 ? s.index - 1 : s.images.length - 1 }));
+  const goToNext = () => setModalState((s) => ({ ...s, index: s.index < s.images.length - 1 ? s.index + 1 : 0 }));
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -173,13 +183,12 @@ export default function PinkPrFlyersPage() {
               <FadeIn key={item.src} delay={0.1 + i * 0.1} y={30} blur={4}>
                 <div className="featured-case-card border border-border rounded-2xl p-4 h-full" style={{ borderRadius: "16px" }}>
                   <div className="relative overflow-hidden rounded-xl border border-border bg-background">
-                    <Image
+                    <GalleryImage
                       src={item.src}
                       alt={t(item.titleKey)}
                       width={item.w}
                       height={item.h}
-                      className="w-full h-auto object-cover"
-                      draggable={false}
+                      onOpen={() => openModal(allImages, i)}
                     />
                   </div>
                   <p className="text-foreground text-sm font-semibold mt-4">{t(item.titleKey)}</p>
@@ -288,6 +297,16 @@ export default function PinkPrFlyersPage() {
       </section>
 
       <RelatedProjectsSection currentSlug="pink-pr-flyers" section="design" />
+
+      <ImageModal
+        images={modalState.images}
+        currentIndex={modalState.index}
+        isOpen={modalState.images.length > 0}
+        onClose={closeModal}
+        onPrev={goToPrev}
+        onNext={goToNext}
+        title={t("designCases.pinkPrFlyers.title")}
+      />
     </article>
   );
 }

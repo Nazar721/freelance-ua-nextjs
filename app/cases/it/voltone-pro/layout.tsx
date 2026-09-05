@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Voltone.pro | Freelance UA",
-  description: "Інтернет-магазин павербанків та зарядних пристроїв: каталог з фільтрами, знижки до −40%, реальні відгуки, особистий кабінет, Instagram-стрічка та швидка",
-  alternates: {
+  description: "Інтернет-магазин павербанків та зарядних пристроїв з каталогом, знижками до −40%, відгуками, кабінетом та швидкою доставкою.",
+    alternates: {
     canonical: "/cases/it/voltone-pro",
   },
   openGraph: {
     title: "Voltone.pro | Freelance UA",
-    description: "Інтернет-магазин павербанків та зарядних пристроїв: каталог з фільтрами, знижки до −40%, реальні відгуки, особистий кабінет, Instagram-стрічка та швидка",
+    description: "Інтернет-магазин павербанків та зарядних пристроїв з каталогом, знижками до −40%, відгуками, кабінетом та швидкою доставкою.",
     images: ["https://freelance-ua.agency/media/cases/voltone-mocap.webp?v=2"],
   },
 };

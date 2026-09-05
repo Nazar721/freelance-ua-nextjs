@@ -217,7 +217,7 @@ export default function HeroSection() {
           className="mt-5 sm:mt-8 grid grid-cols-3 gap-2 sm:gap-3 sm:mt-12 max-w-lg mx-auto px-2"
         >
           {[
-            { value: 140, suffix: "+", label: t("hero.stat.projects") },
+            { value: 150, suffix: "+", label: t("hero.stat.projects") },
             { value: 100, suffix: "%", label: t("hero.stat.clients") },
             { value: 3, suffix: "", label: t("hero.stat.years") },
           ].map((stat, i) => (

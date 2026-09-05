@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Code2, Palette, Video, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -142,15 +142,22 @@ export default function ServicesSection() {
             <FadeIn key={cat.key} delay={0.1 + i * 0.08} y={24} blur={2}>
               <button
                 onClick={() => setActiveModal(i)}
-                className="service-card group relative text-left w-full p-5 sm:p-7 rounded-2xl border border-border/60 bg-surface-elevated/50 cursor-pointer transition-all duration-700 hover:bg-surface-elevated hover:border-border hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.3)]"
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = ((e.clientX - rect.left) / rect.width) * 100;
+                  const y = ((e.clientY - rect.top) / rect.height) * 100;
+                  e.currentTarget.style.setProperty("--glow-x", `${x}%`);
+                  e.currentTarget.style.setProperty("--glow-y", `${y}%`);
+                }}
+                className="service-card group relative text-left w-full p-5 sm:p-7 rounded-2xl border border-border/60 bg-surface-elevated/50 cursor-pointer"
               >
                 {/* Watermark number */}
-                <span className="absolute top-4 right-6 text-5xl sm:text-6xl font-black text-accent/[0.12] font-[family-name:var(--font-syne)] select-none pointer-events-none">
+                <span className="sc-number absolute top-4 right-6 text-5xl sm:text-6xl font-black font-[family-name:var(--font-syne)] select-none pointer-events-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
                 <div className="relative z-10">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-accent/10 group-hover:bg-accent/18 flex items-center justify-center mb-4 sm:mb-5 transition-all duration-300">
+                  <div className="sc-icon w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-4 sm:mb-5">
                     {cat.icon}
                   </div>
 
@@ -162,9 +169,9 @@ export default function ServicesSection() {
                     {cat.items.slice(0, 3).map((n) => (
                       <li
                         key={n}
-                        className="flex items-center gap-2 sm:gap-2.5 text-muted-foreground text-xs sm:text-sm transition-colors duration-200"
+                        className="flex items-center gap-2 sm:gap-2.5 text-muted-foreground text-xs sm:text-sm"
                       >
-                        <span className="w-1.5 h-1.5 bg-accent/50 rounded-full shrink-0" />
+                        <span className="sc-dot w-1.5 h-1.5 bg-accent/50 rounded-full shrink-0" />
                         {t(`services.${cat.key}.${n}`)}
                       </li>
                     ))}
@@ -175,9 +182,9 @@ export default function ServicesSection() {
                     )}
                   </ul>
 
-                  <span className="inline-flex items-center gap-2 whitespace-nowrap text-accent text-xs sm:text-sm font-medium md:group-hover:gap-3 transition-all duration-300">
+                  <span className="sc-cta inline-flex items-center gap-2 whitespace-nowrap text-accent text-xs sm:text-sm font-medium">
                     Дізнатись більше
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="transition-transform duration-300 md:group-hover:translate-x-1 sm:w-4 sm:h-4">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="sc-arrow sm:w-4 sm:h-4">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
@@ -215,7 +222,7 @@ export default function ServicesSection() {
               {/* Close button */}
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-white/10 transition-all duration-500 cursor-pointer"
+                className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-white/10 transition-all duration-500 cursor-pointer"
               >
                 <X size={18} />
               </button>

@@ -18,6 +18,7 @@ export default function DesignCasesPage() {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             {t("designCases.desc")}
           </p>
+          <h2 className="text-xl md:text-2xl font-semibold text-muted-foreground mt-4">{t("designCases.title")}</h2>
         </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">

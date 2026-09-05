@@ -137,6 +137,7 @@ export default function YoutubeConversationalVideoPage() {
                     </div>
                   </div>
                   <a
+                    // TODO: replace with real YouTube link
                     href="https://www.youtube.com/watch?v=TODO"
                     target="_blank"
                     rel="noopener noreferrer"

@@ -148,6 +148,7 @@ export default function FeaturedCaseCard({
                     alt={t(titleKey)}
                     width={600}
                     height={800}
+                    sizes="(max-width: 768px) 50vw, 25vw"
                     className="w-full h-full object-cover object-center"
                     draggable={false}
                     preload={i === 0 && preload}
@@ -166,6 +167,7 @@ export default function FeaturedCaseCard({
               alt={t(titleKey)}
               width={1200}
               height={800}
+              sizes="(max-width: 768px) 100vw, 50vw"
               className={`case-mockup-image w-full h-full ${imageFit === "contain" ? "object-contain" : "object-cover"} rounded-xl ${isPlaceholder ? "opacity-40 grayscale" : ""}`}
               style={imageFit !== "contain" ? { objectPosition } : undefined}
               draggable={false}

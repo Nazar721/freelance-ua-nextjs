@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -16,6 +16,9 @@ type ImageModalProps = {
 };
 
 export function ImageModal({ images, currentIndex, isOpen, onClose, onPrev, onNext, title }: ImageModalProps) {
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -36,6 +39,22 @@ export function ImageModal({ images, currentIndex, isOpen, onClose, onPrev, onNe
     };
   }, [isOpen, handleKeyDown]);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) onNext();
+      else onPrev();
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -50,7 +69,7 @@ export function ImageModal({ images, currentIndex, isOpen, onClose, onPrev, onNe
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 transition-colors flex items-center justify-center"
           aria-label="Close"
         >
           <X size={24} className="text-white" />
@@ -63,7 +82,7 @@ export function ImageModal({ images, currentIndex, isOpen, onClose, onPrev, onNe
                 e.stopPropagation();
                 onPrev();
               }}
-              className="absolute left-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              className="absolute left-4 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 transition-colors flex items-center justify-center"
               aria-label="Previous"
             >
               <ChevronLeft size={24} className="text-white" />
@@ -73,7 +92,7 @@ export function ImageModal({ images, currentIndex, isOpen, onClose, onPrev, onNe
                 e.stopPropagation();
                 onNext();
               }}
-              className="absolute right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              className="absolute right-4 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 transition-colors flex items-center justify-center"
               aria-label="Next"
             >
               <ChevronRight size={24} className="text-white" />
@@ -88,6 +107,9 @@ export function ImageModal({ images, currentIndex, isOpen, onClose, onPrev, onNe
           transition={{ duration: 0.2 }}
           className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center"
           onClick={(e) => e.stopPropagation()}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           <div className="relative w-full h-full flex items-center justify-center">
             <Image

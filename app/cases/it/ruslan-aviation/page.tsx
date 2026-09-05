@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -9,6 +9,8 @@ import { ArrowRight, ArrowLeft, Quote, Check, AlertTriangle, Lightbulb } from "l
 import { FadeIn } from "@/components/ui/FadeIn";
 import CurvedDashedLines from "@/components/ui/CurvedDashedLines";
 
+import { ImageModal } from "@/components/ui/ImageModal";
+import GalleryImage from "@/components/ui/GalleryImage";
 import { useTranslation } from "@/lib/LanguageContext";
 import RelatedProjectsSection from "@/components/sections/RelatedProjectsSection";
 import ReviewAvatar from "@/components/ui/ReviewAvatar";
@@ -43,6 +45,22 @@ const cardVariants: Variants = {
 export default function RuslanAviationPage() {
   const { t } = useTranslation();
   const heroRef = useRef<HTMLDivElement>(null);
+  const allImages = components.flatMap((c) => c.images || (c.image ? [c.image] : []));
+  const [modalState, setModalState] = useState<{ isOpen: boolean; images: string[]; currentIndex: number; title: string }>({
+    isOpen: false,
+    images: [],
+    currentIndex: 0,
+    title: "",
+  });
+
+  const openModal = (images: string[], index: number, title: string) => {
+    setModalState({ isOpen: true, images, currentIndex: index, title });
+  };
+
+  const closeModal = () => setModalState((prev) => ({ ...prev, isOpen: false }));
+
+  const goToPrev = () => setModalState((prev) => ({ ...prev, currentIndex: (prev.currentIndex - 1 + prev.images.length) % prev.images.length }));
+  const goToNext = () => setModalState((prev) => ({ ...prev, currentIndex: (prev.currentIndex + 1) % prev.images.length }));
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -113,7 +131,7 @@ export default function RuslanAviationPage() {
 
           <div className="mt-6">
             <a
-              href="http://www.ruslanaviationcomponents.com/"
+              href="https://www.ruslanaviationcomponents.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-semibold text-purple-300 hover:text-purple-200 transition-colors duration-500"
@@ -187,28 +205,28 @@ export default function RuslanAviationPage() {
                     {t(comp.descKey)}
                   </p>
                   {comp.image && (
-                    <div className="mt-4 rounded-xl overflow-hidden border border-border">
-                      <Image
+                    <div className="mt-4 rounded-xl overflow-hidden border border-border cursor-pointer" onClick={() => openModal(allImages, allImages.indexOf(comp.image!), t(comp.titleKey))}>
+                      <GalleryImage
                         src={comp.image}
                         alt={t(comp.titleKey)}
                         width={1200}
                         height={800}
                         className="w-full h-auto object-contain"
-                        draggable={false}
+                        onOpen={() => openModal(allImages, allImages.indexOf(comp.image!), t(comp.titleKey))}
                       />
                     </div>
                   )}
                   {comp.images && (
                     <div className="mt-4 space-y-4">
                       {comp.images.map((img: string, idx: number) => (
-                        <div key={idx} className="rounded-xl overflow-hidden border border-border">
-                          <Image
+                        <div key={idx} className="rounded-xl overflow-hidden border border-border cursor-pointer" onClick={() => openModal(comp.images!, idx, t(comp.titleKey))}>
+                          <GalleryImage
                             src={img}
                             alt={`${t(comp.titleKey)} ${idx + 1}`}
                             width={1200}
                             height={800}
                             className="w-full h-auto object-contain"
-                            draggable={false}
+                            onOpen={() => openModal(comp.images!, idx, t(comp.titleKey))}
                           />
                         </div>
                       ))}
@@ -308,6 +326,16 @@ export default function RuslanAviationPage() {
       </section>
 
       <RelatedProjectsSection currentSlug="ruslan-aviation" />
+
+      <ImageModal
+        images={modalState.images}
+        currentIndex={modalState.currentIndex}
+        isOpen={modalState.isOpen}
+        onClose={closeModal}
+        onPrev={goToPrev}
+        onNext={goToNext}
+        title={modalState.title}
+      />
     </article>
   );
 }

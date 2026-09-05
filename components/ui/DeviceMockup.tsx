@@ -19,16 +19,6 @@ export default function DeviceMockup({
 }: DeviceMockupProps) {
   return (
     <div className={`relative w-full ${className}`} style={{ aspectRatio: "1/1" }}>
-      {/* Device frame as base */}
-      <Image
-        src="/media/cases/device-frame.webp"
-        alt=""
-        fill
-        className="object-contain pointer-events-none"
-        draggable={false}
-        priority
-      />
-
       {/* Laptop screen */}
       <div
         className="absolute overflow-hidden"

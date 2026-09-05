@@ -9,7 +9,7 @@ export const cases: Case[] = [
 		descriptionKey: 'cases.1.description',
 		reviewKey: 'cases.1.review',
 		image: '/media/cases/ruslanaviation.webp',
-		link: 'http://www.ruslanaviationcomponents.com/',
+		link: 'https://www.ruslanaviationcomponents.com/',
 		section: 'it',
 	},
 	{
@@ -48,7 +48,7 @@ export const cases: Case[] = [
 		titleKey: 'cases.10.title',
 		descriptionKey: 'cases.10.description',
 		reviewKey: 'cases.10.review',
-		image: '/media',
+		image: '/media/cases/asandraapp-mocap.webp',
 		link: 'https://t.me/asandrasoul_bot',
 		section: 'it',
 	},

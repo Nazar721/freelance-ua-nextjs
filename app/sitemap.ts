@@ -87,6 +87,10 @@ const casePaths = [
   "/cases/video/youtube-conversational-video",
   "/cases/video/liliya-product-business",
   "/cases/video/taranenko-trade",
+  "/cases/video/ai-video-new",
+  "/cases/video/maccoudi-youtube",
+  "/cases/design/barvy-interior",
+  "/cases/design/color-correction",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

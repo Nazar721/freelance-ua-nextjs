@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Serezha Shop | Freelance UA",
-  description: "Конверсійний лендінг-каталог для продажу оригінальних кросівок зі США з каталогом 5 моделей, соціальним доказом (4.9⭐, 100+ замовлень) та прямим Telegram",
-  alternates: {
+  description: "Конверсійний лендінг-каталог для продажу кросівок зі США з каталогом моделей, відгуками та прямим зв'язком через Telegram.",
+    alternates: {
     canonical: "/cases/it/serezha-shop",
   },
   openGraph: {
     title: "Serezha Shop | Freelance UA",
-    description: "Конверсійний лендінг-каталог для продажу оригінальних кросівок зі США з каталогом 5 моделей, соціальним доказом (4.9⭐, 100+ замовлень) та прямим Telegram",
+    description: "Конверсійний лендінг-каталог для продажу кросівок зі США з каталогом моделей, відгуками та прямим зв'язком через Telegram.",
     images: ["https://freelance-ua.agency/media/cases/serezha-mocap.webp"],
   },
 };

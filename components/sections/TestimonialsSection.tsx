@@ -379,6 +379,7 @@ function CardContent({
             alt={`Відгук від ${name}`}
             width={600}
             height={1200}
+            sizes="(max-width: 768px) 80vw, 480px"
             className={
               isModal
                 ? "h-auto w-auto max-h-[64svh] object-contain"
@@ -575,7 +576,7 @@ function TestimonialModal({
       <button
         onClick={close}
         aria-label={t("testimonials.close")}
-        className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 transition-colors cursor-pointer hover:bg-white/20 md:right-6 md:top-6"
+        className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 transition-colors cursor-pointer hover:bg-white/20 md:right-6 md:top-6"
       >
         <X size={20} className="text-white" />
       </button>

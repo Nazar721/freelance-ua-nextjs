@@ -8,6 +8,8 @@ import type { Variants } from "framer-motion";
 import { ArrowRight, ArrowLeft, Check, AlertTriangle, Lightbulb, Play, Pause } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import CurvedDashedLines from "@/components/ui/CurvedDashedLines";
+import { ImageModal } from "@/components/ui/ImageModal";
+import GalleryImage from "@/components/ui/GalleryImage";
 import { useTranslation } from "@/lib/LanguageContext";
 import RelatedProjectsSection from "@/components/sections/RelatedProjectsSection";
 
@@ -21,6 +23,8 @@ const galleryItems = [
   { src: "/media/cases/hope-media/hope-media7.webp", w: 2400, h: 1697, titleKey: "designCases.hopeMedia.item7.title", captionKey: "designCases.hopeMedia.item7.caption" },
   { src: "/media/cases/hope-media/hope-media8.webp", w: 2400, h: 851, titleKey: "designCases.hopeMedia.item8.title", captionKey: "designCases.hopeMedia.item8.caption" },
 ];
+
+const allImages = galleryItems.map((item) => item.src);
 
 const finalGroups = [
   {
@@ -97,6 +101,12 @@ export default function HopeMediaGroupPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [modalState, setModalState] = useState<{ images: string[]; index: number }>({ images: [], index: 0 });
+
+  const openModal = (images: string[], index: number) => setModalState({ images, index });
+  const closeModal = () => setModalState({ images: [], index: 0 });
+  const goToPrev = () => setModalState((s) => ({ ...s, index: s.index > 0 ? s.index - 1 : s.images.length - 1 }));
+  const goToNext = () => setModalState((s) => ({ ...s, index: s.index < s.images.length - 1 ? s.index + 1 : 0 }));
 
   const toggleVideo = useCallback(() => {
     const video = videoRef.current;
@@ -351,13 +361,12 @@ export default function HopeMediaGroupPage() {
               <FadeIn key={item.src} delay={0.05 + (i % 3) * 0.1} y={30} blur={4} className={i === 3 || i === 7 ? "md:col-span-3" : ""}>
                 <div className="featured-case-card border border-border rounded-2xl p-4" style={{ borderRadius: "16px" }}>
                   <div className={`relative overflow-hidden rounded-xl border border-border bg-background ${item.h > item.w ? "max-w-[280px] mx-auto" : ""}`}>
-                    <Image
+                    <GalleryImage
                       src={item.src}
                       alt={t(item.titleKey)}
                       width={item.w}
                       height={item.h}
-                      className="w-full h-auto object-cover"
-                      draggable={false}
+                      onOpen={() => openModal(allImages, i)}
                     />
                   </div>
                   <p className="text-foreground text-sm font-semibold mt-4">{t(item.titleKey)}</p>
@@ -404,7 +413,7 @@ export default function HopeMediaGroupPage() {
                           className="featured-case-card border border-border rounded-2xl p-4 md:p-6"
                           style={{ borderRadius: "16px" }}
                         >
-                          <WideImage src={item.src} alt={t(item.titleKey)} w={item.w} h={item.h} />
+                          <GalleryImage src={item.src} alt={t(item.titleKey)} width={item.w} height={item.h} className={item.h > item.w ? "max-w-md mx-auto" : ""} onOpen={() => openModal(allImages, allImages.indexOf(item.src))} />
                           <p className="text-foreground text-sm font-semibold mt-4">{t(item.titleKey)}</p>
                           <p className="text-muted-foreground text-xs mt-1">{t(item.captionKey)}</p>
                         </motion.div>
@@ -514,6 +523,16 @@ export default function HopeMediaGroupPage() {
       </section>
 
       <RelatedProjectsSection currentSlug="hope-media-group" section="design" />
+
+      <ImageModal
+        images={modalState.images}
+        currentIndex={modalState.index}
+        isOpen={modalState.images.length > 0}
+        onClose={closeModal}
+        onPrev={goToPrev}
+        onNext={goToNext}
+        title={t("designCases.hopeMedia.title")}
+      />
     </article>
   );
 }

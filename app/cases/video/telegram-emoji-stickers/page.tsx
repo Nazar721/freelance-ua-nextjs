@@ -4,6 +4,7 @@ import { useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import type { Variants } from "framer-motion";
+import Image from "next/image";
 import {
   ArrowRight,
   ArrowLeft,
@@ -324,9 +325,11 @@ export default function TelegramEmojiStickersPage() {
                   &ldquo;{t("videoCases.telegramEmojiStickers.reviewText")}&rdquo;
                 </p>
                 <div className="mt-6 rounded-xl overflow-hidden border border-border">
-                  <img
+                  <Image
                     src="/media/cases/telegram-emoji-stickers/review-screenshot.webp"
                     alt={t("videoCases.telegramEmojiStickers.reviewTitle")}
+                    width={1200}
+                    height={800}
                     className="w-full h-auto object-cover"
                   />
                 </div>

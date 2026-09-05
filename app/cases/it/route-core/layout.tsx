@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "RouteCore | Freelance UA",
-  description: "Рекрутинговий лендинг для найму BAS & ZennoPoster інженерів з чіткою позицією, перевагами, вимогами, умовами та 4-етапним процесом відбору. Мультимовність",
-  alternates: {
+  description: "Рекрутинговий лендинг для найму BAS & ZennoPoster інженерів з перевагами, вимогами та 4-етапним процесом відбору. Мультимовність UA/EN.",
+    alternates: {
     canonical: "/cases/it/route-core",
   },
   openGraph: {
     title: "RouteCore | Freelance UA",
-    description: "Рекрутинговий лендинг для найму BAS & ZennoPoster інженерів з чіткою позицією, перевагами, вимогами, умовами та 4-етапним процесом відбору. Мультимовність",
+    description: "Рекрутинговий лендинг для найму BAS & ZennoPoster інженерів з перевагами, вимогами та 4-етапним процесом відбору. Мультимовність UA/EN.",
     images: ["https://freelance-ua.agency/media/cases/routecore-mocap.webp"],
   },
 };

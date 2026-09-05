@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -8,6 +8,8 @@ import type { Variants } from "framer-motion";
 import { ArrowRight, ArrowLeft, Check, AlertTriangle, Lightbulb, Quote } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import CurvedDashedLines from "@/components/ui/CurvedDashedLines";
+import { ImageModal } from "@/components/ui/ImageModal";
+import GalleryImage from "@/components/ui/GalleryImage";
 
 import { useTranslation } from "@/lib/LanguageContext";
 import RelatedProjectsSection from "@/components/sections/RelatedProjectsSection";
@@ -18,6 +20,8 @@ const finalItems = [
   { src: "/media/cases/smm-case-presentation/smm-case-presentation2.webp", w: 1280, h: 749, titleKey: "designCases.smmCasePresentation.item2.title", captionKey: "designCases.smmCasePresentation.item2.caption", wide: false },
   { src: "/media/cases/smm-case-presentation/smm-case-presentation3.webp", w: 1280, h: 1112, titleKey: "designCases.smmCasePresentation.item3.title", captionKey: "designCases.smmCasePresentation.item3.caption", wide: true },
 ];
+
+const allImages = finalItems.map((item) => item.src);
 
 const results = [
   "designCases.smmCasePresentation.result1",
@@ -38,6 +42,12 @@ const cardVariants: Variants = {
 export default function SmmCasePresentationPage() {
   const { t } = useTranslation();
   const heroRef = useRef<HTMLDivElement>(null);
+  const [modalState, setModalState] = useState<{ images: string[]; index: number }>({ images: [], index: 0 });
+
+  const openModal = (images: string[], index: number) => setModalState({ images, index });
+  const closeModal = () => setModalState({ images: [], index: 0 });
+  const goToPrev = () => setModalState((s) => ({ ...s, index: s.index > 0 ? s.index - 1 : s.images.length - 1 }));
+  const goToNext = () => setModalState((s) => ({ ...s, index: s.index < s.images.length - 1 ? s.index + 1 : 0 }));
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -174,13 +184,12 @@ export default function SmmCasePresentationPage() {
               <FadeIn key={item.src} delay={0.1 + i * 0.1} y={30} blur={4} className={item.wide ? "md:col-span-2" : ""}>
                 <div className="featured-case-card border border-border rounded-2xl p-4" style={{ borderRadius: "16px" }}>
                   <div className={`relative overflow-hidden rounded-xl border border-border bg-background ${item.wide ? "max-w-3xl mx-auto" : ""}`}>
-                    <Image
+                    <GalleryImage
                       src={item.src}
                       alt={t(item.titleKey)}
                       width={item.w}
                       height={item.h}
-                      className="w-full h-auto object-cover"
-                      draggable={false}
+                      onOpen={() => openModal(allImages, i)}
                     />
                   </div>
                   <p className="text-foreground text-sm font-semibold mt-4">{t(item.titleKey)}</p>
@@ -273,6 +282,16 @@ export default function SmmCasePresentationPage() {
       </section>
 
       <RelatedProjectsSection currentSlug="smm-case-presentation" section="design" />
+
+      <ImageModal
+        images={modalState.images}
+        currentIndex={modalState.index}
+        isOpen={modalState.images.length > 0}
+        onClose={closeModal}
+        onPrev={goToPrev}
+        onNext={goToNext}
+        title={t("designCases.smmCasePresentation.title")}
+      />
     </article>
   );
 }

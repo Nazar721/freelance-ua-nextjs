@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { siteConfig } from "@/config/site";
@@ -14,6 +14,11 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 const navKeys = ["nav.about", "nav.services", "nav.process", "nav.cases", "nav.testimonials", "nav.contacts"];
 const navHrefs = ["#about", "#services", "#process", "#cases", "#testimonials", "#contacts"];
 const sectionIds = ["about", "services", "process", "cases", "testimonials", "contacts"];
+/* Maps a nav section to the real DOM id on the homepage (the contacts nav
+   points at the section whose element id is "contact-form"). */
+function sectionElementId(navId: string): string {
+  return navId === "contacts" ? "contact-form" : navId;
+}
 
 // Maps a subpage route to the homepage nav section it belongs to.
 // Returns null when a route has no matching section, so nothing gets highlighted
@@ -26,6 +31,7 @@ function routeToSection(pathname: string): string | null {
 export default function Header() {
   const { t } = useTranslation();
   const pathname = usePathname();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -79,15 +85,18 @@ export default function Header() {
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
+    // On the homepage: smooth-scroll straight to the section.
     if (isHomePage) {
+      const el = document.getElementById(sectionElementId(href.slice(1)));
+      if (!el) return;
       setTimeout(() => {
-        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+        el.scrollIntoView({ behavior: "smooth" });
       }, 320);
-    } else {
-      setTimeout(() => {
-        window.location.href = "/" + href;
-      }, 320);
+      return;
     }
+    // On a subpage: navigate home and land directly on the section (the
+    // Providers scroll handler reads the #hash and scrolls there for us).
+    router.push(`/#${sectionElementId(href.slice(1))}`);
   };
 
   const isActive = (href: string) => activeSection === href.slice(1);

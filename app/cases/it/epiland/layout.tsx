@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Epiland | Freelance UA",
-  description: "Telegram-бот і Mini App для парку розваг: бронювання дитячих днів народження у 4 кроки, прогрес-бар, FAQ, графік і структуровані заявки для менеджерів.",
-  alternates: {
+  description: "Telegram-бот і Mini App для парку розваг: бронювання днів народження у 4 кроки, графік та заявки для менеджерів.",
+    alternates: {
     canonical: "/cases/it/epiland",
   },
   openGraph: {
     title: "Epiland | Freelance UA",
-    description: "Telegram-бот і Mini App для парку розваг: бронювання дитячих днів народження у 4 кроки, прогрес-бар, FAQ, графік і структуровані заявки для менеджерів.",
+    description: "Telegram-бот і Mini App для парку розваг: бронювання днів народження у 4 кроки, графік та заявки для менеджерів.",
     images: ["https://freelance-ua.agency/media/cases/epiland-mocap.webp"],
   },
 };

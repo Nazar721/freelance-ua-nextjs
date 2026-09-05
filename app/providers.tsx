@@ -1,6 +1,7 @@
 "use client";
 
 import { type ReactNode, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -24,6 +25,13 @@ export function Providers({
 }) {
   const lenisRef = useRef<Lenis | null>(null);
   const [hideTelegramBtn, setHideTelegramBtn] = useState(false);
+  const pathname = usePathname();
+  const isPopState = useRef(false);
+  const isFirstRoute = useRef(true);
+  const prevPathname = useRef<string | null>(null);
+  /* last known scroll offset per route, used to restore position on back/forward
+     (App Router's own restoration is defeated by Lenis in this setup) */
+  const scrollPositions = useRef<Record<string, number>>({});
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -56,6 +64,69 @@ export function Providers({
       }
     };
   }, []);
+
+  /* App Router preserves the previous page's scroll offset on soft navigation
+     between routes sharing this layout — so landing on a page that used to be
+     scrolled down (e.g. the "Стати партнером" CTA at the bottom of the home
+     page) dumps you at the end of the new page. Reset to top on every route
+     change; back/forward restores the position saved for that route instead. */
+  useEffect(() => {
+    const onPop = () => {
+      isPopState.current = true;
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
+  useEffect(() => {
+    // Capture where we left the previous page before its scroll gets reset.
+    if (prevPathname.current !== null) {
+      scrollPositions.current[prevPathname.current] = window.scrollY;
+    }
+    prevPathname.current = pathname;
+
+    const timer = setTimeout(() => {
+      if (isFirstRoute.current) {
+        isFirstRoute.current = false;
+        return;
+      }
+
+      // Section target from the burger nav (one-click to a homepage section).
+      const hash = window.location.hash;
+      if (hash.length > 1) {
+        const el = document.getElementById(hash.slice(1));
+        if (el) {
+          if (lenisRef.current) {
+            lenisRef.current.scrollTo(el, { offset: -120 });
+          } else {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+          return;
+        }
+      }
+
+      // Back/forward — put the user where they were last on this route.
+      if (isPopState.current) {
+        isPopState.current = false;
+        const saved = scrollPositions.current[pathname];
+        if (typeof saved === "number") {
+          if (lenisRef.current) {
+            lenisRef.current.scrollTo(saved, { immediate: true });
+          } else {
+            window.scrollTo(0, saved);
+          }
+        }
+        return;
+      }
+
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    }, 80);
+    return () => clearTimeout(timer);
+  }, [pathname]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
