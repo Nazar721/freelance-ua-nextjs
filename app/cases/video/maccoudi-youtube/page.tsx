@@ -196,6 +196,74 @@ export default function MaccoudiYoutubePage() {
         </div>
       </section>
 
+      {/* Brief */}
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <motion.div
+              custom={0}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={cardVariants}
+              whileHover={{ scale: 1.02 }}
+              className="bg-surface-elevated/40 border border-red-500/25 rounded-2xl p-8 transition-all duration-300 hover:shadow-[0_0_40px_rgba(239,68,68,0.1)] hover:border-red-500/50"
+            >
+              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-4">
+                <AlertTriangle size={20} className="text-amber-500 shrink-0" />
+                {t("videoCases.maccoudiYoutube.challengeTitle")}
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {t("videoCases.maccoudiYoutube.challenge")}
+              </p>
+            </motion.div>
+
+            <motion.div
+              custom={1}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={cardVariants}
+              whileHover={{ scale: 1.02 }}
+              className="bg-surface-elevated/40 border border-green-500/25 rounded-2xl p-8 transition-all duration-300 hover:shadow-[0_0_40px_rgba(34,197,94,0.1)] hover:border-green-500/50"
+            >
+              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-4">
+                <Lightbulb size={20} className="text-green-500 shrink-0" />
+                {t("videoCases.maccoudiYoutube.solutionTitle")}
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {t("videoCases.maccoudiYoutube.solution")}
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Results Grid */}
+      <section className="py-16 px-4 relative">
+        <CurvedDashedLines glowColor="rgba(34, 197, 94, 0.15)" side="both" />
+        <div className="max-w-4xl mx-auto">
+          <FadeIn y={30} blur={8}>
+            <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
+              {t("itCases.results")}
+            </h2>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {resultItems.map((r, i) => (
+              <FadeIn key={i} delay={0.1 + i * 0.08} y={20} blur={4}>
+                <div className="flex items-start gap-4 p-5 rounded-xl bg-surface-elevated/50 border border-border">
+                  <div className="w-7 h-7 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center shrink-0 mt-0.5">
+                    <Check size={14} className="text-green-500" />
+                  </div>
+                  <p className="text-foreground text-sm leading-relaxed">{t(r)}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Client Profile */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
@@ -291,74 +359,6 @@ export default function MaccoudiYoutubePage() {
               </div>
             </div>
           </FadeIn>
-        </div>
-      </section>
-
-      {/* Brief */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <motion.div
-              custom={0}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={cardVariants}
-              whileHover={{ scale: 1.02 }}
-              className="bg-surface-elevated/40 border border-red-500/25 rounded-2xl p-8 transition-all duration-300 hover:shadow-[0_0_40px_rgba(239,68,68,0.1)] hover:border-red-500/50"
-            >
-              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-4">
-                <AlertTriangle size={20} className="text-amber-500 shrink-0" />
-                {t("videoCases.maccoudiYoutube.challengeTitle")}
-              </h2>
-              <p className="text-muted-foreground leading-relaxed">
-                {t("videoCases.maccoudiYoutube.challenge")}
-              </p>
-            </motion.div>
-
-            <motion.div
-              custom={1}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={cardVariants}
-              whileHover={{ scale: 1.02 }}
-              className="bg-surface-elevated/40 border border-green-500/25 rounded-2xl p-8 transition-all duration-300 hover:shadow-[0_0_40px_rgba(34,197,94,0.1)] hover:border-green-500/50"
-            >
-              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-4">
-                <Lightbulb size={20} className="text-green-500 shrink-0" />
-                {t("videoCases.maccoudiYoutube.solutionTitle")}
-              </h2>
-              <p className="text-muted-foreground leading-relaxed">
-                {t("videoCases.maccoudiYoutube.solution")}
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Results Grid */}
-      <section className="py-16 px-4 relative">
-        <CurvedDashedLines glowColor="rgba(34, 197, 94, 0.15)" side="both" />
-        <div className="max-w-4xl mx-auto">
-          <FadeIn y={30} blur={8}>
-            <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
-              {t("itCases.results")}
-            </h2>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {resultItems.map((r, i) => (
-              <FadeIn key={i} delay={0.1 + i * 0.08} y={20} blur={4}>
-                <div className="flex items-start gap-4 p-5 rounded-xl bg-surface-elevated/50 border border-border">
-                  <div className="w-7 h-7 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center shrink-0 mt-0.5">
-                    <Check size={14} className="text-green-500" />
-                  </div>
-                  <p className="text-foreground text-sm leading-relaxed">{t(r)}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
         </div>
       </section>
 

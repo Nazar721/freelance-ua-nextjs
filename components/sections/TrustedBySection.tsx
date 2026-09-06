@@ -125,7 +125,7 @@ export default function TrustedBySection() {
         <FadeIn delay={0.25} className="mt-10">
           <div className="flex justify-center gap-4 sm:gap-6 flex-wrap">
             <div className="glass-stat-badge px-5 py-2.5 rounded-full">
-              <span className="text-[var(--text-primary)] font-bold text-lg">140+</span>
+              <span className="text-[var(--text-primary)] font-bold text-lg">150+</span>
               <span className="text-[var(--text-secondary)] text-xs ml-1.5">{t("trusted.statClients")}</span>
             </div>
             <div className="glass-stat-badge px-5 py-2.5 rounded-full">

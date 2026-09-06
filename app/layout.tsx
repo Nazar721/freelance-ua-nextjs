@@ -8,6 +8,7 @@ import type { Theme } from "@/lib/ThemeContext";
 import { Providers } from "./providers";
 import LoadingScreen from "@/components/ui/LoadingScreen";
 import ContentProtection from "@/components/ui/ContentProtection";
+import { TouchHoverKiller } from "@/components/TouchHoverKiller";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} data-theme={theme} className={`${spaceGrotesk.variable} ${unbounded.variable}`} style={{ scrollPaddingTop: "120px" }}>
       <body>
+        <TouchHoverKiller />
         <ContentProtection />
         <LoadingScreen />
         <Providers initialLocale={locale} initialTheme={theme}>{children}</Providers>
