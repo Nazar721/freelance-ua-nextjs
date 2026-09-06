@@ -298,7 +298,7 @@ export default function VartoReelsPage() {
               href="https://t.me/freelance_ua"
               target="_blank"
               rel="noopener noreferrer"
-              className="magnetic-button inline-flex items-center gap-2 border border-border text-[#FACC15] hover:border-[#FACC15]/50 hover:bg-[#FACC15]/10 hover:text-[#FDE68A] font-semibold px-8 py-4 rounded-full transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(250,204,21,0.12)]"
+              className="magnetic-button inline-flex items-center gap-2 border border-border text-[#FACC15] hover:border-[#FACC15]/50 hover:bg-[#FACC15]/10 hover:text-[#FDE68A] font-semibold px-8 py-4 rounded-full transition-all duration-500-0.5 hover:shadow-[0_0_40px_rgba(250,204,21,0.12)]"
             >
               {t("itCases.nextStepCta")}
               <ArrowRight size={18} />

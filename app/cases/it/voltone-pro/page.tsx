@@ -325,7 +325,7 @@ export default function VoltoneProPage() {
               href="https://t.me/freelance_ua"
               target="_blank"
               rel="noopener noreferrer"
-              className="magnetic-button inline-flex items-center gap-2 border border-border text-[#A3E635] hover:border-[#84cc16]/50 hover:bg-[#84cc16]/10 hover:text-[#BEF264] font-semibold px-8 py-4 rounded-full transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(132,204,22,0.12)]"
+              className="magnetic-button inline-flex items-center gap-2 border border-border text-[#A3E635] hover:border-[#84cc16]/50 hover:bg-[#84cc16]/10 hover:text-[#BEF264] font-semibold px-8 py-4 rounded-full transition-all duration-500-0.5 hover:shadow-[0_0_40px_rgba(132,204,22,0.12)]"
             >
               {t("itCases.nextStepCta")}
               <ArrowRight size={18} />

@@ -104,7 +104,7 @@ export function PartnersWhoCards() {
             return (
               <div
                 key={card.titleKey}
-                className="who-card group relative h-full overflow-hidden rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-sm transition-[border-color,box-shadow,transform] duration-300 will-change-transform hover:-translate-y-1.5"
+                className="who-card group relative h-full overflow-hidden rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-sm transition-[border-color,box-shadow] duration-300"
                 style={{ transformStyle: "preserve-3d" }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = `${card.accent}66`;
@@ -125,7 +125,7 @@ export function PartnersWhoCards() {
                 />
                 <div className="relative">
                   <div
-                    className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-110"
+                    className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300"
                     style={{ backgroundColor: `${card.accent}15`, border: `1px solid ${card.accent}30` }}
                   >
                     <Icon size={20} style={{ color: card.accent }} />

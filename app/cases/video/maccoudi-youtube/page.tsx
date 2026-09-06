@@ -295,7 +295,7 @@ export default function MaccoudiYoutubePage() {
                         width={640}
                         height={360}
                         unoptimized
-                        className="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full aspect-video object-cover transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                       <div className="absolute bottom-3 left-3 right-3">
@@ -319,7 +319,7 @@ export default function MaccoudiYoutubePage() {
                         width={640}
                         height={360}
                         unoptimized
-                        className="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full aspect-video object-cover transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                       <div className="absolute bottom-3 left-3 right-3">
@@ -427,7 +427,7 @@ export default function MaccoudiYoutubePage() {
               href="https://t.me/freelance_ua"
               target="_blank"
               rel="noopener noreferrer"
-              className="magnetic-button inline-flex items-center gap-2 border border-border text-green-500 hover:border-green-500/50 hover:bg-green-500/10 hover:text-green-400 font-semibold px-8 py-4 rounded-full transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(34,197,94,0.12)]"
+              className="magnetic-button inline-flex items-center gap-2 border border-border text-green-500 hover:border-green-500/50 hover:bg-green-500/10 hover:text-green-400 font-semibold px-8 py-4 rounded-full transition-all duration-500-0.5 hover:shadow-[0_0_40px_rgba(34,197,94,0.12)]"
             >
               {t("itCases.nextStepCta")}
               <ArrowRight size={18} />

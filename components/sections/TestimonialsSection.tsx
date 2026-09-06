@@ -350,7 +350,7 @@ function CardContent({
           <div className="relative h-[260px] min-h-0 cursor-pointer overflow-hidden rounded-2xl border border-border md:h-auto md:flex-1">
             <VideoPoster src={item.video} />
             <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors duration-300 group-hover:bg-black/25">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/25 bg-white/10 shadow-lg backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/25 bg-white/10 shadow-lg backdrop-blur-sm">
                 <Play size={20} className="text-white ml-0.5" />
               </div>
             </div>
@@ -391,8 +391,8 @@ function CardContent({
         </div>
       )}
 
-      {/* Text — only for screenshot/telegram reviews in card mode, always in modal */}
-      {text && !(isVideoOrAudio && !isModal) && (
+      {/* Text — only for screenshot/telegram reviews, never for video/audio */}
+      {text && !isVideoOrAudio && (
         <div
           className={
             isModal ? "relative" : "relative min-h-0 flex-1 overflow-y-auto pr-1 text-pretty"
@@ -418,7 +418,7 @@ function CardContent({
             <span
               aria-hidden="true"
               title={t("testimonials.expand")}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-surface-elevated text-accent opacity-40 transition-all duration-300 group-hover:opacity-100 group-hover:border-accent/60 group-hover:bg-accent/15 group-hover:scale-110 group-focus-visible:opacity-100 shadow-lg"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-surface-elevated text-accent opacity-40 transition-all duration-300 group-hover:opacity-100 group-hover:border-accent/60 group-hover:bg-accent/15 group-focus-visible:opacity-100 shadow-lg"
             >
               <Maximize2 size={16} />
             </span>
@@ -802,12 +802,12 @@ export default function TestimonialsSection() {
           href={siteConfig.telegram.reviewsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2 rounded-xl border border-accent/20 bg-accent/10 px-6 py-3 font-semibold text-accent transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:bg-accent/20"
+          className="group inline-flex items-center gap-2 rounded-xl border border-accent/20 bg-accent/10 px-6 py-3 font-semibold text-accent transition-all duration-300 hover:border-accent/40 hover:bg-accent/20"
         >
           {t("testimonials.allReviews")}
           <ChevronRight
             size={16}
-            className="transition-transform duration-300 group-hover:translate-x-1"
+            className="transition-transform duration-300"
           />
         </a>
       </FadeIn>

@@ -322,7 +322,7 @@ export default function SelloflowPage() {
               href="https://t.me/freelance_ua"
               target="_blank"
               rel="noopener noreferrer"
-              className="magnetic-button inline-flex items-center gap-2 border border-border text-purple-400 hover:border-purple-500/50 hover:bg-[#8B5CF6]/10 hover:text-purple-300 font-semibold px-8 py-4 rounded-full transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(139,92,246,0.12)]"
+              className="magnetic-button inline-flex items-center gap-2 border border-border text-purple-400 hover:border-purple-500/50 hover:bg-[#8B5CF6]/10 hover:text-purple-300 font-semibold px-8 py-4 rounded-full transition-all duration-500-0.5 hover:shadow-[0_0_40px_rgba(139,92,246,0.12)]"
             >
               {t("itCases.nextStepCta")}
               <ArrowRight size={18} />

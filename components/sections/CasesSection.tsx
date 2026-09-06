@@ -133,11 +133,11 @@ export default function CasesSection() {
                             <LazyVideo
                               src={caseItem.video}
                               autoPlay muted loop playsInline
-                              className="relative w-full h-auto max-h-80 object-contain z-10 transition-transform duration-700 group-hover:scale-110"
+className="relative w-full h-auto max-h-80 object-contain z-10"
                             />
                           </>
                         ) : caseItem.image ? (
-                          <Image src={caseItem.image} alt={t(caseItem.titleKey)} width={800} height={600} sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" draggable={false} onContextMenu={(e) => e.preventDefault()} className="relative w-full h-auto max-h-80 object-contain z-10 transition-transform duration-700 group-hover:scale-110" />
+                          <Image src={caseItem.image} alt={t(caseItem.titleKey)} width={800} height={600} sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" draggable={false} onContextMenu={(e) => e.preventDefault()} className="relative w-full h-auto max-h-80 object-contain z-10" />
                         ) : null}
                         <div className="absolute inset-0 z-20 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
                           <div className={`scale-75 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 opacity-100 md:opacity-0 bg-white/10 ${isMobile ? "" : "backdrop-blur-sm"} rounded-full p-3 border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.3)]`}>
@@ -159,7 +159,7 @@ export default function CasesSection() {
                             href={caseItem.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-4 inline-flex items-center gap-1.5 text-xs text-accent hover:text-accent-hover transition-all duration-300 hover:translate-x-0.5"
+                            className="mt-4 inline-flex items-center gap-1.5 text-xs text-accent hover:text-accent-hover transition-all duration-300"
                           >
                             <ExternalLink size={12} />
                             {t("cases.visit")}
@@ -179,7 +179,7 @@ export default function CasesSection() {
             href={siteConfig.telegram.channelUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-accent text-accent hover:bg-accent hover:text-primary-foreground font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]"
+            className="inline-flex items-center gap-2 border border-accent text-accent hover:bg-accent hover:text-primary-foreground font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]"
           >
             {t("cases.allCases")}
             <ArrowRight size={18} />

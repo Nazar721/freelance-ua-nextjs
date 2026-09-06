@@ -293,7 +293,7 @@ export default function RepairCollisionPage() {
               href="https://t.me/freelance_ua"
               target="_blank"
               rel="noopener noreferrer"
-              className="magnetic-button inline-flex items-center gap-2 border border-border text-[#86EFAC] hover:border-[#4ADE80]/50 hover:bg-[#4ADE80]/10 hover:text-[#BBF7D0] font-semibold px-8 py-4 rounded-full transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(74,222,128,0.12)]"
+              className="magnetic-button inline-flex items-center gap-2 border border-border text-[#86EFAC] hover:border-[#4ADE80]/50 hover:bg-[#4ADE80]/10 hover:text-[#BBF7D0] font-semibold px-8 py-4 rounded-full transition-all duration-500-0.5 hover:shadow-[0_0_40px_rgba(74,222,128,0.12)]"
             >
               {t("itCases.nextStepCta")}
               <ArrowRight size={18} />

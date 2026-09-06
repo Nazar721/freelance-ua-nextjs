@@ -321,7 +321,7 @@ export default function MDDentalPage() {
               href="https://t.me/freelance_ua"
               target="_blank"
               rel="noopener noreferrer"
-              className="magnetic-button inline-flex items-center gap-2 border border-border text-[#A18FCD] hover:border-[#9270ca]/50 hover:bg-[#9270ca]/10 hover:text-[#C4B5E8] font-semibold px-8 py-4 rounded-full transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(146,112,202,0.12)]"
+              className="magnetic-button inline-flex items-center gap-2 border border-border text-[#A18FCD] hover:border-[#9270ca]/50 hover:bg-[#9270ca]/10 hover:text-[#C4B5E8] font-semibold px-8 py-4 rounded-full transition-all duration-500-0.5 hover:shadow-[0_0_40px_rgba(146,112,202,0.12)]"
             >
               {t("itCases.nextStepCta")}
               <ArrowRight size={18} />

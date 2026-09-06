@@ -76,14 +76,14 @@ export default function PartnershipSection() {
                   href={siteConfig.telegram.consultationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="magnetic-button inline-flex items-center justify-center gap-2.5 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_48px_rgba(99,102,241,0.46)] text-sm"
+                  className="magnetic-button inline-flex items-center justify-center gap-2.5 bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_48px_rgba(99,102,241,0.46)] text-sm"
                 >
                   {t("partnership.cta")}
                   <ArrowRight size={16} />
                 </Link>
                 <Link
                   href="/partners"
-                  className="magnetic-button inline-flex items-center justify-center gap-2 bg-transparent border border-border hover:border-accent/50 text-foreground font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 text-sm"
+                  className="magnetic-button inline-flex items-center justify-center gap-2 bg-transparent border border-border hover:border-accent/50 text-foreground font-semibold px-8 py-4 rounded-full transition-all duration-300 text-sm"
                 >
                   Детальніше
                   <ArrowRight size={14} />

@@ -3082,3 +3082,11 @@ body {
     translate: none !important;
   }
 }
+
+@media (pointer: coarse) {
+  *:hover {
+    transform: none !important;
+    scale: 1 !important;
+    translate: none !important;
+  }
+}

@@ -340,12 +340,12 @@ export function PartnersHero() {
               href={siteConfig.telegram.consultationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="magnetic-button group inline-flex items-center justify-center gap-3 rounded-full bg-primary px-10 py-5 text-base font-semibold text-primary-foreground transition-all duration-500 hover:-translate-y-1 hover:scale-105 hover:bg-primary/90 hover:shadow-[0_0_60px_rgba(99,102,241,0.5)]"
+              className="magnetic-button group inline-flex items-center justify-center gap-3 rounded-full bg-primary px-10 py-5 text-base font-semibold text-primary-foreground transition-all duration-500 hover:bg-primary/90 hover:shadow-[0_0_60px_rgba(99,102,241,0.5)]"
             >
               {t("partners.cta.button")}
               <ArrowRight
                 size={18}
-                className="transition-transform duration-300 group-hover:translate-x-1"
+                className="transition-transform duration-300"
               />
             </Link>
           </div>

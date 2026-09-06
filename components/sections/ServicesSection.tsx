@@ -302,7 +302,7 @@ export default function ServicesSection() {
                           href={siteConfig.telegram.consultationUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_36px_rgba(99,102,241,0.4)]"
+                          className="relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:shadow-[0_0_36px_rgba(99,102,241,0.4)]"
                         >
                           {t("header.write")}
                           <ArrowRight size={16} />

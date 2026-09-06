@@ -33,7 +33,7 @@ export default function CaseCTA({
             href={ctaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="magnetic-button inline-flex items-center gap-2 border border-border text-primary hover:border-primary/50 hover:bg-primary/10 font-semibold px-8 py-4 rounded-full transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(99,102,241,0.12)]"
+            className="magnetic-button inline-flex items-center gap-2 border border-border text-primary hover:border-primary/50 hover:bg-primary/10 font-semibold px-8 py-4 rounded-full transition-all duration-500 hover:shadow-[0_0_40px_rgba(99,102,241,0.12)]"
           >
             {t(ctaKey)}
             <ArrowRight size={18} />

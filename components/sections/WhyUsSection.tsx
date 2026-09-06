@@ -32,7 +32,7 @@ export default function WhyUsSection() {
                 y={16}
                 blur={2}
               >
-                <div className={`table-row-card group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 md:p-5 rounded-xl border border-border/60 bg-surface-elevated/50 cursor-default transition-all duration-300 hover:bg-surface-elevated hover:border-border hover:translate-x-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.2)] ${i === 0 ? 'table-row-card--active' : ''}`}>
+                <div className={`table-row-card group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 md:p-5 rounded-xl border border-border/60 bg-surface-elevated/50 cursor-default transition-all duration-300 hover:bg-surface-elevated hover:border-border hover:shadow-[0_4px_24px_rgba(0,0,0,0.2)] ${i === 0 ? 'table-row-card--active' : ''}`}>
                   <span className="text-base sm:text-xl md:text-2xl font-bold text-accent/25 group-hover:text-accent/60 transition-colors duration-300 min-w-[2rem] sm:min-w-[2.5rem] text-center shrink-0 font-[family-name:var(--font-syne)] tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>

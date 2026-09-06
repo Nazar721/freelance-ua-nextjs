@@ -264,7 +264,7 @@ export default function VorodiMedicalPage() {
               href="https://t.me/freelance_ua"
               target="_blank"
               rel="noopener noreferrer"
-              className="magnetic-button inline-flex items-center gap-2 border border-border text-[#C79292] hover:border-[#C79292]/50 hover:bg-[#C79292]/10 hover:text-[#D4A8A8] font-semibold px-8 py-4 rounded-full transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(199,146,146,0.12)]"
+              className="magnetic-button inline-flex items-center gap-2 border border-border text-[#C79292] hover:border-[#C79292]/50 hover:bg-[#C79292]/10 hover:text-[#D4A8A8] font-semibold px-8 py-4 rounded-full transition-all duration-500-0.5 hover:shadow-[0_0_40px_rgba(199,146,146,0.12)]"
             >
               {t("itCases.nextStepCta")}
               <ArrowRight size={18} />

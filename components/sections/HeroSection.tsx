@@ -192,7 +192,7 @@ export default function HeroSection() {
             href={siteConfig.telegram.consultationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="magnetic-button inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-200 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_48px_rgba(99,102,241,0.46)] text-sm sm:text-base"
+            className="magnetic-button inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-200 hover:shadow-[0_0_48px_rgba(99,102,241,0.46)] text-sm sm:text-base"
             whileHover={isMobile ? undefined : { scale: 1.05 }}
             whileTap={isMobile ? undefined : { scale: 0.97 }}
           >
@@ -201,7 +201,7 @@ export default function HeroSection() {
           </motion.a>
           <motion.a
             href="#cases"
-            className={`magnetic-button inline-flex items-center justify-center gap-2 bg-surface/50 border border-border hover:border-accent text-foreground font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(99,102,241,0.16)] text-sm sm:text-base ${isMobile ? "" : "backdrop-blur-md"}`}
+            className={`magnetic-button inline-flex items-center justify-center gap-2 bg-surface/50 border border-border hover:border-accent text-foreground font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-200 hover:shadow-[0_0_34px_rgba(99,102,241,0.16)] text-sm sm:text-base ${isMobile ? "" : "backdrop-blur-md"}`}
             whileHover={isMobile ? undefined : { scale: 1.05 }}
             whileTap={isMobile ? undefined : { scale: 0.97 }}
           >
