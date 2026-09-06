@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, useGSAP, ScrollTrigger, refreshAfterFonts } from "./scroll/gsapCore";
+import { gsap, useGSAP, ScrollTrigger, refreshAfterFonts, whenScrollAtTop } from "./scroll/gsapCore";
 import { useTranslation } from "@/lib/LanguageContext";
 import { ArrowRight, ArrowDown } from "lucide-react";
 
@@ -29,91 +29,100 @@ export function PartnersHowItWorks() {
         gsap.set(items, { opacity: 1, clearProps: "transform" });
       });
 
+      let gateCleanup: (() => void) | null = null;
+
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-        const cards = q<HTMLElement>(".step-item");
-        const connectors = q<HTMLElement>(".connector-line");
+        gateCleanup = whenScrollAtTop(scopeRef.current, () => {
+          const cards = q<HTMLElement>(".step-item");
+          const connectors = q<HTMLElement>(".connector-line");
 
-        cards.forEach((card, i) => {
-          gsap.fromTo(
-            card,
-            { opacity: 0, x: -30 },
-            {
-              opacity: 1,
-              x: 0,
-              duration: 0.6,
-              ease: "power2.out",
-              delay: i * 0.2,
-              scrollTrigger: { trigger: card, start: "top 80%" },
-            },
-          );
-        });
-
-        connectors.forEach((line, i) => {
-          const dashLength = 8;
-          const totalLength = 120;
-          gsap.set(line, { strokeDasharray: `${dashLength} ${dashLength}`, strokeDashoffset: totalLength });
-
-          gsap.to(line, {
-            strokeDashoffset: 0,
-            duration: 0.8,
-            ease: "power2.inOut",
-            delay: i * 0.4 + 0.3,
-            scrollTrigger: { trigger: line, start: "top 80%" },
+          cards.forEach((card, i) => {
+            gsap.fromTo(
+              card,
+              { opacity: 0, x: -30 },
+              {
+                opacity: 1,
+                x: 0,
+                duration: 0.6,
+                ease: "power2.out",
+                delay: i * 0.2,
+                scrollTrigger: { trigger: card, start: "top 80%" },
+              },
+            );
           });
-        });
 
-        const arrows = q<HTMLElement>(".connector-arrow");
-        arrows.forEach((arrow, i) => {
-          gsap.fromTo(
-            arrow,
-            { opacity: 0, scale: 0.5 },
-            {
-              opacity: 1,
-              scale: 1,
-              duration: 0.4,
-              ease: "back.out(2)",
-              delay: i * 0.4 + 0.8,
-              scrollTrigger: { trigger: arrow, start: "top 80%" },
-            },
-          );
+          connectors.forEach((line, i) => {
+            const dashLength = 8;
+            const totalLength = 120;
+            gsap.set(line, { strokeDasharray: `${dashLength} ${dashLength}`, strokeDashoffset: totalLength });
+
+            gsap.to(line, {
+              strokeDashoffset: 0,
+              duration: 0.8,
+              ease: "power2.inOut",
+              delay: i * 0.4 + 0.3,
+              scrollTrigger: { trigger: line, start: "top 80%" },
+            });
+          });
+
+          const arrows = q<HTMLElement>(".connector-arrow");
+          arrows.forEach((arrow, i) => {
+            gsap.fromTo(
+              arrow,
+              { opacity: 0, scale: 0.5 },
+              {
+                opacity: 1,
+                scale: 1,
+                duration: 0.4,
+                ease: "back.out(2)",
+                delay: i * 0.4 + 0.8,
+                scrollTrigger: { trigger: arrow, start: "top 80%" },
+              },
+            );
+          });
         });
       });
 
       mm.add("(max-width: 767px) and (prefers-reduced-motion: no-preference)", () => {
-        const cards = q<HTMLElement>(".step-item");
-        const mobileLines = q<HTMLElement>(".connector-mobile-line");
+        gateCleanup = whenScrollAtTop(scopeRef.current, () => {
+          const cards = q<HTMLElement>(".step-item");
+          const mobileLines = q<HTMLElement>(".connector-mobile-line");
 
-        cards.forEach((card, i) => {
-          gsap.fromTo(
-            card,
-            { opacity: 0, y: 30 },
-            {
-              opacity: 1,
-              y: 0,
+          cards.forEach((card, i) => {
+            gsap.fromTo(
+              card,
+              { opacity: 0, y: 30 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: "power2.out",
+                delay: i * 0.15,
+                scrollTrigger: { trigger: card, start: "top 85%" },
+              },
+            );
+          });
+
+          mobileLines.forEach((line, i) => {
+            const totalLength = 80;
+            gsap.set(line, { strokeDasharray: "6 4", strokeDashoffset: totalLength });
+
+            gsap.to(line, {
+              strokeDashoffset: 0,
               duration: 0.6,
-              ease: "power2.out",
-              delay: i * 0.15,
-              scrollTrigger: { trigger: card, start: "top 85%" },
-            },
-          );
-        });
-
-        mobileLines.forEach((line, i) => {
-          const totalLength = 80;
-          gsap.set(line, { strokeDasharray: "6 4", strokeDashoffset: totalLength });
-
-          gsap.to(line, {
-            strokeDashoffset: 0,
-            duration: 0.6,
-            ease: "power2.inOut",
-            delay: i * 0.3 + 0.3,
-            scrollTrigger: { trigger: line, start: "top 90%" },
+              ease: "power2.inOut",
+              delay: i * 0.3 + 0.3,
+              scrollTrigger: { trigger: line, start: "top 90%" },
+            });
           });
         });
       });
 
       refreshAfterFonts();
-      return () => mm.revert();
+      return () => {
+        gateCleanup?.();
+        mm.revert();
+      };
     },
     { scope: scopeRef },
   );

@@ -172,7 +172,7 @@ export default function Header() {
             href={siteConfig.telegram.consultationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="magnetic-button flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)]"
+            className="magnetic-button flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-full transition-colors duration-200 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)]"
           >
             {t("header.write")}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -250,7 +250,7 @@ export default function Header() {
                   href={siteConfig.telegram.consultationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="magnetic-button flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.32)] text-sm"
+                  className="magnetic-button flex items-center justify-center gap-2 bg-accent text-primary-foreground font-semibold px-4 py-2.5 rounded-xl text-sm active:opacity-80"
                 >
                   {t("header.write")}
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">

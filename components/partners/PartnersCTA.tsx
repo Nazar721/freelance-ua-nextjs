@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { gsap, useGSAP, refreshAfterFonts } from "./scroll/gsapCore";
+import { gsap, useGSAP, refreshAfterFonts, whenScrollAtTop } from "./scroll/gsapCore";
 import { siteConfig } from "@/config/site";
 import { useTranslation } from "@/lib/LanguageContext";
 
@@ -29,49 +29,56 @@ export function PartnersCTA() {
         gsap.set([orb, heading, desc, button], { opacity: 1, y: 0, scale: 1, clearProps: "all" });
       });
 
+      let gateCleanup: (() => void) | null = null;
+
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const st = { trigger: scopeRef.current, start: "top 70%" };
+        gateCleanup = whenScrollAtTop(scopeRef.current, () => {
+          const st = { trigger: scopeRef.current, start: "top 70%" };
 
-        /* Orb grows and brightens as it enters (no animated filter — cheap) */
-        if (orb) {
+          /* Orb grows and brightens as it enters (no animated filter — cheap) */
+          if (orb) {
+            gsap.fromTo(
+              orb,
+              { scale: 0.8, opacity: 0.35 },
+              { scale: 1.3, opacity: 0.75, duration: 1, ease: "power2.out", scrollTrigger: st },
+            );
+          }
+
+          /* Heading + description */
           gsap.fromTo(
-            orb,
-            { scale: 0.8, opacity: 0.35 },
-            { scale: 1.3, opacity: 0.75, duration: 1, ease: "power2.out", scrollTrigger: st },
+            heading,
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", scrollTrigger: st },
           );
-        }
+          if (desc) {
+            gsap.fromTo(
+              desc,
+              { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: 0.6, delay: 0.15, ease: "power2.out", scrollTrigger: st },
+            );
+          }
 
-        /* Heading + description */
-        gsap.fromTo(
-          heading,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", scrollTrigger: st },
-        );
-        if (desc) {
+          /* Button lands with a bounce */
           gsap.fromTo(
-            desc,
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, delay: 0.15, ease: "power2.out", scrollTrigger: st },
+            button,
+            { opacity: 0, scale: 0.7 },
+            { opacity: 1, scale: 1, duration: 0.6, delay: 0.3, ease: "back.out(1.7)", scrollTrigger: st },
           );
-        }
 
-        /* Button lands with a bounce */
-        gsap.fromTo(
-          button,
-          { opacity: 0, scale: 0.7 },
-          { opacity: 1, scale: 1, duration: 0.6, delay: 0.3, ease: "back.out(1.7)", scrollTrigger: st },
-        );
-
-        /* Permanent shadow pulse around the main CTA */
-        gsap.fromTo(
-          button,
-          { boxShadow: "0 0 40px rgba(99,102,241,0.3)" },
-          { boxShadow: "0 0 60px rgba(99,102,241,0.6)", duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" },
-        );
+          /* Permanent shadow pulse around the main CTA */
+          gsap.fromTo(
+            button,
+            { boxShadow: "0 0 40px rgba(99,102,241,0.3)" },
+            { boxShadow: "0 0 60px rgba(99,102,241,0.6)", duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" },
+          );
+        });
       });
 
       refreshAfterFonts();
-      return () => mm.revert();
+      return () => {
+        gateCleanup?.();
+        mm.revert();
+      };
     },
     { scope: scopeRef },
   );

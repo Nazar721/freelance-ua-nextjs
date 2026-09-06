@@ -1142,28 +1142,32 @@ body {
     transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .premium-surface:hover {
-    transform: translateY(-10px);
-    border-color: rgba(99, 102, 241, 0.8);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 0 60px rgba(99, 102, 241, 0.2);
-  }
+  @media (hover: hover) and (pointer: fine) {
+    .premium-surface:hover {
+      transform: translateY(-10px);
+      border-color: rgba(99, 102, 241, 0.8);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 0 60px rgba(99, 102, 241, 0.2);
+    }
 
-  .premium-surface:hover::before {
-    opacity: 1;
-  }
+    .premium-surface:hover::before {
+      opacity: 1;
+    }
 
-  .premium-surface:hover::after {
-    transform: translateX(38%) rotate(8deg);
+    .premium-surface:hover::after {
+      transform: translateX(38%) rotate(8deg);
+    }
   }
 
   .premium-icon {
     transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 700ms cubic-bezier(0.22, 1, 0.36, 1), background 700ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .premium-surface:hover .premium-icon {
-    transform: translateY(-8px) scale(1.12);
-    box-shadow: 0 0 60px rgba(99, 102, 241, 0.4), 0 0 120px rgba(99, 102, 241, 0.15);
-    background: rgba(99, 102, 241, 0.25);
+  @media (hover: hover) and (pointer: fine) {
+    .premium-surface:hover .premium-icon {
+      transform: translateY(-8px) scale(1.12);
+      box-shadow: 0 0 60px rgba(99, 102, 241, 0.4), 0 0 120px rgba(99, 102, 241, 0.15);
+      background: rgba(99, 102, 241, 0.25);
+    }
   }
 
   .magnetic-button {
@@ -1182,8 +1186,10 @@ body {
     transition: transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .magnetic-button:hover::before {
-    transform: translateX(115%);
+  @media (hover: hover) and (pointer: fine) {
+    .magnetic-button:hover::before {
+      transform: translateX(115%);
+    }
   }
 
   .trusted-shell {
@@ -1293,8 +1299,10 @@ body {
       opacity 900ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .trusted-partners__logo:hover {
-    transform: translateY(-2px) scale(1.05);
+  @media (hover: hover) and (pointer: fine) {
+    .trusted-partners__logo:hover {
+      transform: translateY(-2px) scale(1.05);
+    }
   }
 
   .process-line {
@@ -1336,17 +1344,19 @@ body {
   }
 
   /* ─── Process steps hover ─── */
-  .process-steps:hover .process-step {
-    opacity: 0.1;
-    filter: blur(3px) saturate(0.3);
-    transition: opacity 800ms cubic-bezier(0.23, 1, 0.32, 1), filter 800ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
+  @media (hover: hover) and (pointer: fine) {
+    .process-steps:hover .process-step {
+      opacity: 0.1;
+      filter: blur(3px) saturate(0.3);
+      transition: opacity 800ms cubic-bezier(0.23, 1, 0.32, 1), filter 800ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
 
-  .process-steps:hover .process-step:hover {
-    opacity: 1;
-    filter: none;
-    transform: translateY(-8px) scale(1.05);
-    z-index: 10;
+    .process-steps:hover .process-step:hover {
+      opacity: 1;
+      filter: none;
+      transform: translateY(-8px) scale(1.05);
+      z-index: 10;
+    }
   }
 
   .process-step {
@@ -1354,9 +1364,11 @@ body {
     cursor: default;
   }
 
-  .process-step:hover .step-glow {
-    opacity: 1;
-    transform: scale(1.3);
+  @media (hover: hover) and (pointer: fine) {
+    .process-step:hover .step-glow {
+      opacity: 1;
+      transform: scale(1.3);
+    }
   }
 
   .step-glow {
@@ -1507,34 +1519,36 @@ body {
     pointer-events: none;
   }
 
-  .pricing-factor:hover {
-    color: #F8F8FF;
-  }
-
-  @media (min-width: 640px) {
+  @media (hover: hover) and (pointer: fine) {
     .pricing-factor:hover {
-      transform: translateX(6px);
+      color: #F8F8FF;
     }
-  }
 
-  .pricing-factor:hover::before {
-    opacity: 1;
-  }
+    @media (min-width: 640px) {
+      .pricing-factor:hover {
+        transform: translateX(6px);
+      }
+    }
 
-  .pricing-factor:hover .factor-icon {
-    color: #a855f7;
-    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5));
-  }
+    .pricing-factor:hover::before {
+      opacity: 1;
+    }
 
-  @media (min-width: 640px) {
     .pricing-factor:hover .factor-icon {
-      transform: translateX(4px);
+      color: #a855f7;
+      filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5));
     }
-  }
 
-  .pricing-factor:hover .factor-bar-fill {
-    width: var(--bar-width);
-    opacity: 1;
+    @media (min-width: 640px) {
+      .pricing-factor:hover .factor-icon {
+        transform: translateX(4px);
+      }
+    }
+
+    .pricing-factor:hover .factor-bar-fill {
+      width: var(--bar-width);
+      opacity: 1;
+    }
   }
 
   .factor-icon {
@@ -1622,9 +1636,11 @@ body {
     }
   }
 
-  .pricing-factor:hover {
-    background: rgba(99, 102, 241, 0.06);
-    border-radius: 12px;
+  @media (hover: hover) and (pointer: fine) {
+    .pricing-factor:hover {
+      background: rgba(99, 102, 241, 0.06);
+      border-radius: 12px;
+    }
   }
 
   /* ─── CTA pulse glow ─── */
@@ -1655,10 +1671,12 @@ body {
     100% { background-position: 200% 50%; }
   }
 
-  .cta-pulse:hover::after {
-    opacity: 0.8;
-    animation: none;
-    filter: blur(16px);
+  @media (hover: hover) and (pointer: fine) {
+    .cta-pulse:hover::after {
+      opacity: 0.8;
+      animation: none;
+      filter: blur(16px);
+    }
   }
 
   /* Holographic grid floor — scrolls forward */
@@ -1870,6 +1888,22 @@ body {
     animation-duration: 140s;
   }
 
+  /* Trusted partners — marquee ніколи не зупиняється на мобільному */
+  .trusted-partners__logo {
+    pointer-events: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .trusted-partners__logo:hover {
+    transform: none !important;
+  }
+
+  .trusted-partners__track-wrapper,
+  .trusted-partners__track-wrapper:hover {
+    animation-play-state: running !important;
+  }
+
   /* ===== KILL ALL HOVER EFFECTS ON MOBILE ===== */
 
   /* Service card — completely static on mobile, no hover effects at all */
@@ -2047,10 +2081,11 @@ body {
   }
 
   /* Remove all backdrop-blur on mobile — causes blurriness on mobile GPUs */
-  .backdrop-blur-xl,
-  .backdrop-blur-lg,
-  .backdrop-blur-md,
-  .backdrop-blur-sm,
+  /* (header і його дочірні елементи зберігають blur — шапка не має зникати) */
+  :not(header):not(header *).backdrop-blur-xl,
+  :not(header):not(header *).backdrop-blur-lg,
+  :not(header):not(header *).backdrop-blur-md,
+  :not(header):not(header *).backdrop-blur-sm,
   .glass-stat {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -2070,49 +2105,6 @@ body {
   /* Simpler scrollbar on mobile */
   ::-webkit-scrollbar {
     width: 4px;
-  }
-}
-
-/* ─── Touch devices & mobile: neutralise remaining hover effects ─── */
-@media (hover: none), (max-width: 768px) {
-  /* Tailwind hover:/group-hover: utilities are already media-gated upstream
-     (@custom-variant hover), so they cannot fire here. This block only
-     neutralises the site's own custom CSS hover classes.
-     NOTE: no universal *:hover custom-property overrides — !important custom
-     props inherit into the whole tapped subtree and corrupt layout on iOS. */
-  *:hover {
-    transform: none !important;
-    scale: 1 !important;
-    translate: none !important;
-  }
-
-  .service-card:hover,
-  .service-card:hover::before,
-  .premium-surface:hover,
-  .premium-surface:hover::before,
-  .premium-surface:hover::after,
-  .tilt-card:hover,
-  .glass-stat:hover,
-  .glass-stat:hover::before,
-  .bp-cta-button:hover,
-  .bp-calc-block:hover,
-  .bp-liquid-glass:hover,
-  .magnetic-button:hover,
-  .magnetic-button:hover::before,
-  .trusted-partners__logo:hover,
-  .pricing-factor:hover,
-  .pricing-factor:hover::before {
-    transform: none !important;
-    scale: 1 !important;
-    translate: none !important;
-  }
-
-  /* Preserve active card accent bar */
-  .table-row-card--active::before,
-  .table-row-card--active:hover::before {
-    opacity: 1 !important;
-    transform: scaleY(1) !important;
-    display: block !important;
   }
 }
 
@@ -2844,16 +2836,18 @@ body {
   z-index: 1;
 }
 
-.bp-liquid-glass:hover {
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow:
-    0 40px 100px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(99, 102, 241, 0.15),
-    0 0 80px rgba(99, 102, 241, 0.15),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.12),
-    inset 0 -1px 0 0 rgba(255, 255, 255, 0.03),
-    0 0 0 3px rgba(124, 108, 246, 0.1),
-    0 0 0 6px rgba(168, 130, 255, 0.06);
+@media (hover: hover) and (pointer: fine) {
+  .bp-liquid-glass:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow:
+      0 40px 100px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(99, 102, 241, 0.15),
+      0 0 80px rgba(99, 102, 241, 0.15),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.12),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.03),
+      0 0 0 3px rgba(124, 108, 246, 0.1),
+      0 0 0 6px rgba(168, 130, 255, 0.06);
+  }
 }
 
 /* Theme-aware text inside panel */
@@ -2875,11 +2869,13 @@ body {
   transition: all 0.3s ease;
 }
 
-.bp-calc-block:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(124, 108, 246, 0.3);
-  box-shadow: 0 0 30px rgba(124, 108, 246, 0.1), inset 0 0 20px rgba(124, 108, 246, 0.03);
-  transform: scale(1.01);
+@media (hover: hover) and (pointer: fine) {
+  .bp-calc-block:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(124, 108, 246, 0.3);
+    box-shadow: 0 0 30px rgba(124, 108, 246, 0.1), inset 0 0 20px rgba(124, 108, 246, 0.03);
+    transform: scale(1.01);
+  }
 }
 
 [data-theme="light"] .bp-liquid-glass {
@@ -2900,16 +2896,18 @@ body {
   opacity: 0.03;
 }
 
-[data-theme="light"] .bp-liquid-glass:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow:
-    0 40px 100px rgba(0, 0, 0, 0.08),
-    0 0 0 1px rgba(99, 102, 241, 0.2),
-    0 0 60px rgba(99, 102, 241, 0.1),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
-    inset 0 -1px 0 0 rgba(255, 255, 255, 0.2),
-    0 0 0 3px rgba(99, 102, 241, 0.08),
-    0 0 0 6px rgba(99, 102, 241, 0.04);
+@media (hover: hover) and (pointer: fine) {
+  [data-theme="light"] .bp-liquid-glass:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow:
+      0 40px 100px rgba(0, 0, 0, 0.08),
+      0 0 0 1px rgba(99, 102, 241, 0.2),
+      0 0 60px rgba(99, 102, 241, 0.1),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.2),
+      0 0 0 3px rgba(99, 102, 241, 0.08),
+      0 0 0 6px rgba(99, 102, 241, 0.04);
+  }
 }
 
 [data-theme="light"] .bp-text-primary {
@@ -2930,11 +2928,13 @@ body {
   transition: all 0.3s ease;
 }
 
-[data-theme="light"] .bp-calc-block:hover {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.1), inset 0 0 20px rgba(99, 102, 241, 0.03);
-  transform: scale(1.01);
+@media (hover: hover) and (pointer: fine) {
+  [data-theme="light"] .bp-calc-block:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.1), inset 0 0 20px rgba(99, 102, 241, 0.03);
+    transform: scale(1.01);
+  }
 }
 
 /* CTA Button with shimmer */
@@ -2957,14 +2957,16 @@ body {
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.bp-cta-button:hover::before {
-  transform: translateX(100%);
-}
+@media (hover: hover) and (pointer: fine) {
+  .bp-cta-button:hover::before {
+    transform: translateX(100%);
+  }
 
-.bp-cta-button:hover {
-  background: #6360d6;
-  box-shadow: 0 0 40px rgba(124, 108, 246, 0.5), 0 0 80px rgba(124, 108, 246, 0.2);
-  transform: translateY(-2px) scale(1.02);
+  .bp-cta-button:hover {
+    background: #6360d6;
+    box-shadow: 0 0 40px rgba(124, 108, 246, 0.5), 0 0 80px rgba(124, 108, 246, 0.2);
+    transform: translateY(-2px) scale(1.02);
+  }
 }
 
 .bp-cta-button:active {
@@ -2980,9 +2982,11 @@ body {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
 }
 
-[data-theme="light"] .bp-cta-button:hover {
-  background: #4F46E5;
-  box-shadow: 0 0 40px rgba(99, 102, 241, 0.4), 0 0 80px rgba(99, 102, 241, 0.15);
+@media (hover: hover) and (pointer: fine) {
+  [data-theme="light"] .bp-cta-button:hover {
+    background: #4F46E5;
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.4), 0 0 80px rgba(99, 102, 241, 0.15);
+  }
 }
 
 /* Income flash effect */
@@ -3005,11 +3009,13 @@ body {
   cursor: pointer;
 }
 
-.network-node-group:hover .network-node-circle-1,
-.network-node-group:hover .network-node-circle-2,
-.network-node-group:hover .network-node-circle-3 {
-  filter: brightness(1.2);
-  transition: filter 0.3s ease;
+@media (hover: hover) and (pointer: fine) {
+  .network-node-group:hover .network-node-circle-1,
+  .network-node-group:hover .network-node-circle-2,
+  .network-node-group:hover .network-node-circle-3 {
+    filter: brightness(1.2);
+    transition: filter 0.3s ease;
+  }
 }
 
 /* ── Disable hover effects on touch / mobile ──────────────────────────── */
@@ -3054,5 +3060,25 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Kill all Tailwind hover transform/scale utilities on touch devices ─── */
+@media (hover: none), (pointer: coarse) {
+  [class*="hover:scale-"],
+  [class*="hover:translate-"],
+  [class*="hover:-translate-"],
+  [class*="hover:rotate-"] {
+    transform: none !important;
+    scale: none !important;
+    translate: none !important;
+  }
+
+  [class*="group-hover:scale-"],
+  [class*="group-hover:translate-"],
+  [class*="group-hover:-translate-"] {
+    transform: none !important;
+    scale: none !important;
+    translate: none !important;
   }
 }

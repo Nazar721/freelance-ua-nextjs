@@ -760,7 +760,7 @@ export default function BecomePartnerSection() {
           <span ref={liveMetricSweepRef} className="bp-live-metric__sweep" aria-hidden="true" />
           <div className="bp-live-metric__eyebrow">
             <span className="bp-live-metric__pulse" />
-            ДОХІД З ГРАФІКА
+            ДОХІД З РЕКОМЕНДАЦІЙ
           </div>
           <div ref={liveMetricValueRef} className="bp-live-metric__value">{fmt(0)}</div>
           <div className="bp-live-metric__caption">Приведи клієнта — заробляй більше</div>

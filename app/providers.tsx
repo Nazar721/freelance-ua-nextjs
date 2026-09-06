@@ -79,7 +79,15 @@ export function Providers({
   }, []);
 
   useEffect(() => {
-    // Capture where we left the previous page before its scroll gets reset.
+    /* App Router keeps the previous page's scroll offset while the new route
+       mounts. Landing on /partners from a deep position (the "Стати партнером"
+       CTA at the bottom of the home page) would otherwise dump the user at the
+       end of the new page and fire every ScrollTrigger entrance animation during
+       the swap — leaving the page pre-played & static. We force the scroll back
+       to the top on every soft route change; back/forward restores the saved
+       position for that route instead. */
+    // Remember where the previous page left off (before it gets reset below),
+    // so back/forward can restore it.
     if (prevPathname.current !== null) {
       scrollPositions.current[prevPathname.current] = window.scrollY;
     }
@@ -91,7 +99,6 @@ export function Providers({
         return;
       }
 
-      // Section target from the burger nav (one-click to a homepage section).
       const hash = window.location.hash;
       if (hash.length > 1) {
         const el = document.getElementById(hash.slice(1));
@@ -105,7 +112,6 @@ export function Providers({
         }
       }
 
-      // Back/forward — put the user where they were last on this route.
       if (isPopState.current) {
         isPopState.current = false;
         const saved = scrollPositions.current[pathname];
@@ -124,7 +130,7 @@ export function Providers({
       } else {
         window.scrollTo(0, 0);
       }
-    }, 80);
+    }, 0);
     return () => clearTimeout(timer);
   }, [pathname]);
 

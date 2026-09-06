@@ -9,7 +9,7 @@ import {
   ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
-import { gsap, useGSAP, refreshAfterFonts } from "./scroll/gsapCore";
+import { gsap, useGSAP, refreshAfterFonts, whenScrollAtTop } from "./scroll/gsapCore";
 import { useTranslation } from "@/lib/LanguageContext";
 
 const whoCards: { icon: LucideIcon; titleKey: string; descKey: string; accent: string }[] = [
@@ -46,33 +46,43 @@ export function PartnersWhoCards() {
         gsap.set(cards, { opacity: 1, clearProps: "transform" });
       });
 
+      let gateCleanup: (() => void) | null = null;
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        /* Two row triggers — each row enters when its first card hits 80% of the viewport */
-        [0, 3].forEach((offset) => {
-          const rowCards = cards.slice(offset, offset + 3);
-          const triggerEl = rowCards[0];
-          if (!triggerEl) return;
+        /* The page can be mounted mid-scroll on soft navigation (e.g. clicking
+           "Стати партнером" near the bottom of the home page). Building these
+           "top 80%" entrances at that wrong position makes every card appear
+           instantly — so wait until the scroll is reset to the top first. */
+        gateCleanup = whenScrollAtTop(scopeRef.current, () => {
+          /* Two row triggers — each row enters when its first card hits 80% of the viewport */
+          [0, 3].forEach((offset) => {
+            const rowCards = cards.slice(offset, offset + 3);
+            const triggerEl = rowCards[0];
+            if (!triggerEl) return;
 
-          rowCards.forEach((el, colIndex) => {
-            const entry = COLUMN_ENTRY[colIndex % 3];
-            gsap.fromTo(
-              el,
-              { opacity: 0, ...entry.from },
-              {
-                opacity: 1,
-                ...entry.to,
-                duration: 0.7,
-                ease: "power2.out",
-                delay: colIndex * 0.12,
-                scrollTrigger: { trigger: triggerEl, start: "top 80%" },
-              },
-            );
+            rowCards.forEach((el, colIndex) => {
+              const entry = COLUMN_ENTRY[colIndex % 3];
+              gsap.fromTo(
+                el,
+                { opacity: 0, ...entry.from },
+                {
+                  opacity: 1,
+                  ...entry.to,
+                  duration: 0.7,
+                  ease: "power2.out",
+                  delay: colIndex * 0.12,
+                  scrollTrigger: { trigger: triggerEl, start: "top 80%" },
+                },
+              );
+            });
           });
         });
       });
 
       refreshAfterFonts();
-      return () => mm.revert();
+      return () => {
+        gateCleanup?.();
+        mm.revert();
+      };
     },
     { scope: scopeRef },
   );

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Percent, Shield, Clock, type LucideIcon } from "lucide-react";
-import { gsap, useGSAP, refreshAfterFonts } from "./scroll/gsapCore";
+import { gsap, useGSAP, refreshAfterFonts, whenScrollAtTop } from "./scroll/gsapCore";
 import { useTranslation } from "@/lib/LanguageContext";
 
 type Benefit = {
@@ -58,25 +58,31 @@ export function PartnersBenefits() {
         gsap.set(cards, { opacity: 1, clearProps: "transform" });
       });
 
+      let gateCleanup: (() => void) | null = null;
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        cards.forEach((card, i) => {
-          gsap.fromTo(
-            card,
-            { opacity: 0, y: 40 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.7,
-              ease: "power2.out",
-              delay: i * 0.15,
-              scrollTrigger: { trigger: card, start: "top 80%" },
-            },
-          );
+        gateCleanup = whenScrollAtTop(scopeRef.current, () => {
+          cards.forEach((card, i) => {
+            gsap.fromTo(
+              card,
+              { opacity: 0, y: 40 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: "power2.out",
+                delay: i * 0.15,
+                scrollTrigger: { trigger: card, start: "top 80%" },
+              },
+            );
+          });
         });
       });
 
       refreshAfterFonts();
-      return () => mm.revert();
+      return () => {
+        gateCleanup?.();
+        mm.revert();
+      };
     },
     { scope: scopeRef },
   );
