@@ -1599,7 +1599,7 @@ body {
 
   .pricing-modal-panel {
     position: relative;
-    width: 90vw;
+    width: 100%;
     max-width: 420px;
     padding: 28px 32px;
     border-radius: 20px;

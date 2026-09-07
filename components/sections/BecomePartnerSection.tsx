@@ -664,7 +664,7 @@ export default function BecomePartnerSection() {
 
         <div
           className="pointer-events-none absolute"
-          style={{ top: "36%", left: "4%", zIndex: 2 }}
+          style={{ top: "25%", left: "4%", zIndex: 2 }}
         >
           <div
             style={{
