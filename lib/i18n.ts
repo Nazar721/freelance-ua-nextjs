@@ -2273,7 +2273,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "videoCases.taranenkoTrade.teamMember": "Андрій — монтаж",
 
     "videoCases.maccoudiYoutube.category": "YouTube / Контент 🎬",
-    "videoCases.maccoudiYoutube.title": "Маккоуді — YouTube ",
+    "videoCases.maccoudiYoutube.title": "Маккоуді  ",
     "videoCases.maccoudiYoutube.shortDesc": "Монтаж двох YouTube-відео для популярного блогера Маккоуді — динамічний контент про фріланс для аудиторії 800K+",
     "videoCases.maccoudiYoutube.subtitle": "Змонтували два YouTube-відео для Маккоуді — popular YouTuber та TikToker (107K підписників на YouTube, 808K+ на TikTok). Відео про фріланс з динамічною подачею, яка зачіпає аудиторію блогера.",
     "videoCases.maccoudiYoutube.clientName": "Маккоуді",
@@ -4610,7 +4610,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "videoCases.taranenkoTrade.teamMember": "Andrii — editing",
 
     "videoCases.maccoudiYoutube.category": "YouTube / Content 🎬",
-    "videoCases.maccoudiYoutube.title": "Maccoudi — YouTube ",
+    "videoCases.maccoudiYoutube.title": "Maccoudi  ",
     "videoCases.maccoudiYoutube.shortDesc": "Editing two YouTube videos for popular blogger Maccoudi — dynamic freelancing content for an audience of 800K+",
     "videoCases.maccoudiYoutube.subtitle": "Edited two YouTube videos for Maccoudi — a popular YouTuber and TikToker (107K subscribers on YouTube, 808K+ on TikTok). Videos about freelancing with a dynamic delivery that resonates with the blogger's audience.",
     "videoCases.maccoudiYoutube.clientName": "Maccoudi",

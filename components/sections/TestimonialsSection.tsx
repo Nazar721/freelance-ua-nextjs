@@ -777,7 +777,7 @@ export default function TestimonialsSection() {
                 className="testimonial-card-slot absolute left-1/2 top-1/2 w-[80vw] md:w-[min(560px,46vw)]"
                   style={{
                     willChange: "transform, opacity",
-                    height: "min(520px, 70svh)",
+                    height: "min(380px, 52svh)",
                     transition: "filter 0.4s ease-out",
                   }}
               >

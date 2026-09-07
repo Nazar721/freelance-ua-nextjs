@@ -566,24 +566,149 @@ export default function BecomePartnerSection() {
         className="relative overflow-hidden px-4 py-16"
         style={{ background: theme === "light" ? "#EDEDF1" : "#050506" }}
       >
-        {/* Static decorative sparkline — pure SVG, no JS per frame */}
-        <svg
-          viewBox={`0 0 ${SVG_W} ${SVG_H}`}
-          preserveAspectRatio="xMidYMid meet"
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-8 mx-auto w-[160%] max-w-none opacity-50"
-        >
-          <path
-            d={GROWTH_PATH}
-            fill="none"
-            stroke={theme === "light" ? "rgba(99,102,241,0.2)" : "rgba(74,222,128,0.22)"}
-            strokeWidth="4"
-            strokeLinecap="round"
-            strokeDasharray="12 18"
-          />
-        </svg>
+        {/* Green wavy chart background */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <svg
+            viewBox="0 0 800 400"
+            preserveAspectRatio="xMidYMid slice"
+            className="absolute inset-0 h-full w-full"
+          >
+            <defs>
+              <linearGradient id="green-area-m" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stopColor={theme === "light" ? "#6366F1" : "#4ade80"} stopOpacity="0.01" />
+                <stop offset="100%" stopColor={theme === "light" ? "#6366F1" : "#4ade80"} stopOpacity="0.25" />
+              </linearGradient>
+              <linearGradient id="green-line-m" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor={theme === "light" ? "#818CF8" : "#22c55e"} stopOpacity="0.4" />
+                <stop offset="40%" stopColor={theme === "light" ? "#6366F1" : "#4ade80"} stopOpacity="0.9" />
+                <stop offset="100%" stopColor={theme === "light" ? "#818CF8" : "#86efac"} stopOpacity="1" />
+              </linearGradient>
+              <filter id="gm">
+                <feGaussianBlur stdDeviation="3" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            {/* Faint grid */}
+            {[80, 160, 240, 320].map((y) => (
+              <line key={y} x1="0" y1={y} x2="800" y2={y}
+                stroke={theme === "light" ? "rgba(99,102,241,0.05)" : "rgba(74,222,128,0.05)"}
+                strokeWidth="1" />
+            ))}
+            {/* Wavy area fill */}
+            <path
+              d="M 0 350
+                 C 40 340, 60 310, 100 300
+                 C 140 290, 160 320, 200 310
+                 C 240 300, 260 260, 300 240
+                 C 340 220, 360 260, 400 250
+                 C 440 240, 460 200, 500 180
+                 C 540 160, 560 200, 600 185
+                 C 640 170, 660 140, 700 120
+                 C 740 100, 770 80, 800 60
+                 L 800 400 L 0 400 Z"
+              fill="url(#green-area-m)"
+            />
+            {/* Wavy main line */}
+            <path
+              d="M 0 350
+                 C 40 340, 60 310, 100 300
+                 C 140 290, 160 320, 200 310
+                 C 240 300, 260 260, 300 240
+                 C 340 220, 360 260, 400 250
+                 C 440 240, 460 200, 500 180
+                 C 540 160, 560 200, 600 185
+                 C 640 170, 660 140, 700 120
+                 C 740 100, 770 80, 800 60"
+              fill="none"
+              stroke="url(#green-line-m)"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+              filter="url(#gm)"
+            />
+            {/* End dot */}
+            <circle cx="800" cy="60" r="5" fill={theme === "light" ? "#6366F1" : "#4ade80"} opacity="0.9" />
+          </svg>
+        </div>
 
-        <div className="relative mx-auto flex max-w-md flex-col items-center text-center">
+        {/* Floating +profit pills — outside overflow container */}
+        <div
+          className="pointer-events-none absolute"
+          style={{ top: "18%", right: "6%", zIndex: 2 }}
+        >
+          <div
+            style={{
+              background: theme === "light"
+                ? "rgba(99,102,241,0.15)"
+                : "rgba(74,222,128,0.12)",
+              border: theme === "light"
+                ? "1px solid rgba(99,102,241,0.3)"
+                : "1px solid rgba(74,222,128,0.25)",
+              borderRadius: "9999px",
+              padding: "5px 12px",
+              backdropFilter: "blur(6px)",
+              WebkitBackdropFilter: "blur(6px)",
+            }}
+          >
+            <span
+              style={{
+                color: theme === "light" ? "#6366F1" : "#4ade80",
+                fontSize: "12px",
+                fontWeight: 600,
+                whiteSpace: "nowrap",
+              }}
+            >
+              +{fmt(clients * RATE_PER_CLIENT * 0.15).replace('₴', '')} ₴
+            </span>
+          </div>
+        </div>
+
+        <div
+          className="pointer-events-none absolute"
+          style={{ top: "36%", left: "4%", zIndex: 2 }}
+        >
+          <div
+            style={{
+              background: theme === "light"
+                ? "rgba(99,102,241,0.1)"
+                : "rgba(74,222,128,0.08)",
+              border: theme === "light"
+                ? "1px solid rgba(99,102,241,0.2)"
+                : "1px solid rgba(74,222,128,0.18)",
+              borderRadius: "9999px",
+              padding: "4px 10px",
+              backdropFilter: "blur(6px)",
+              WebkitBackdropFilter: "blur(6px)",
+            }}
+          >
+            <span
+              style={{
+                color: theme === "light" ? "#6366F1" : "#4ade80",
+                fontSize: "11px",
+                fontWeight: 600,
+                whiteSpace: "nowrap",
+              }}
+            >
+              +{fmt(clients * RATE_PER_CLIENT * 0.08).replace('₴', '')} ₴
+            </span>
+          </div>
+        </div>
+
+        <div
+          className="relative mx-auto flex max-w-md flex-col items-center text-center rounded-[20px] px-5 py-8"
+          style={{
+            background: theme === "light"
+              ? "rgba(237, 237, 241, 0.5)"
+              : "rgba(5, 5, 6, 0.45)",
+            backdropFilter: "blur(12px) saturate(1.2)",
+            WebkitBackdropFilter: "blur(12px) saturate(1.2)",
+            boxShadow: theme === "light"
+              ? "inset 0 1px 0 rgba(255,255,255,0.45), 0 8px 32px rgba(0,0,0,0.05)"
+              : "inset 0 1px 0 rgba(255,255,255,0.04), 0 8px 32px rgba(0,0,0,0.25)",
+            border: theme === "light"
+              ? "1px solid rgba(255,255,255,0.4)"
+              : "1px solid rgba(255,255,255,0.07)",
+          }}
+        >
           <div className="bp-text-secondary text-[10px] mb-1 tracking-wider uppercase font-medium">
             ДОХІД З РЕКОМЕНДАЦІЙ
           </div>
@@ -613,7 +738,20 @@ export default function BecomePartnerSection() {
             Рекомендуй — отримуй % з кожного клієнта
           </p>
 
-          <div className="bp-calc-block rounded-[14px] p-[14px_18px] mb-5 w-full">
+          <div
+            className="w-full mb-5 rounded-[14px] p-[14px_18px]"
+            style={{
+              background: theme === "light"
+                ? "rgba(255,255,255,0.4)"
+                : "rgba(255,255,255,0.03)",
+              border: theme === "light"
+                ? "1px solid rgba(255,255,255,0.5)"
+                : "1px solid rgba(255,255,255,0.05)",
+              boxShadow: theme === "light"
+                ? "inset 0 1px 2px rgba(0,0,0,0.03)"
+                : "inset 0 1px 2px rgba(0,0,0,0.15)",
+            }}
+          >
             <div className="flex justify-between items-baseline mb-2">
               <span className="bp-text-secondary text-xs">Клієнтів на місяць</span>
               <span className="text-[#c9befc] text-xs font-semibold">{clients}</span>
@@ -648,7 +786,11 @@ export default function BecomePartnerSection() {
                 : "0 8px 32px rgba(99,102,241,0.35), inset 0 1px 0 rgba(255,255,255,0.18)",
             }}
           >
-            Стати партнером →
+            Стати партнером
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 2L11 13" />
+              <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+            </svg>
           </Link>
         </div>
       </section>
@@ -886,7 +1028,7 @@ export default function BecomePartnerSection() {
 
             <Link
               href="/partners"
-              className="pointer-events-auto bp-cta-button inline-flex items-center justify-center gap-2.5 text-white font-semibold rounded-full text-sm w-full"
+              className="pointer-events-auto bp-partner-cta inline-flex items-center justify-center gap-2.5 text-white font-semibold rounded-full text-sm w-full"
               style={{ padding: "13px 26px" }}
             >
               Стати партнером →

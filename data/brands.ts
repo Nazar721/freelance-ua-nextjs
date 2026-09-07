@@ -58,4 +58,8 @@ export const brands: Brand[] = [
 		name: 'New Partner',
 		logo: '/media/brands/new-logo.jpg',
 	},
+	{
+		name: 'Маккоуді',
+		logo: '/media/cases/maccoudi-youtube/youtube-channel.png',
+	},
 ]

@@ -44,7 +44,7 @@ export default function TrustedBySection() {
     const wrapper = document.querySelector('.trusted-partners__track-wrapper') as HTMLElement | null;
     if (!wrapper) return;
 
-    const speed = 0.15;
+    const speed = 0.08;
     let offset = 0;
     let lastTime = performance.now();
     let rafId: number;
