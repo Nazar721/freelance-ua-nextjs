@@ -103,9 +103,9 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "px-4 md:px-6 pt-3" : "px-4 md:px-6 pt-4"
-      }`}
+className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+  scrolled ? "px-4 md:px-6 pt-3" : "px-4 md:px-6 pt-2"
+}`}
     >
       <div className={`mx-auto max-w-7xl py-3 px-5 flex items-center justify-between rounded-2xl transition-all duration-300 ${
         scrolled

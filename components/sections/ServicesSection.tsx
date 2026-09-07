@@ -214,7 +214,7 @@ export default function ServicesSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.94, y: 24 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="service-modal relative w-[92vw] max-w-6xl max-h-[88vh] overflow-y-auto rounded-3xl"
+              className="service-modal relative w-[92vw] max-w-6xl max-h-[88svh] overflow-y-auto rounded-3xl"
               onClick={(e) => e.stopPropagation()}
               onWheel={(e) => e.stopPropagation()}
               onTouchMove={(e) => e.stopPropagation()}

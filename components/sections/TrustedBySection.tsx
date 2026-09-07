@@ -40,6 +40,23 @@ export default function TrustedBySection() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
+  useEffect(() => {
+    const wrapper = document.querySelector('.trusted-partners__track-wrapper') as HTMLElement | null;
+    if (!wrapper) return;
+
+    const resume = () => {
+      wrapper.style.animationPlayState = 'running';
+    };
+
+    wrapper.addEventListener('touchstart', resume, { passive: true });
+    wrapper.addEventListener('touchend', resume, { passive: true });
+
+    return () => {
+      wrapper.removeEventListener('touchstart', resume);
+      wrapper.removeEventListener('touchend', resume);
+    };
+  }, []);
+
   return (
     <section className="relative px-4 pt-16 pb-8 overflow-hidden" style={{ background: "transparent" }}>
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>

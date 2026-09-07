@@ -146,7 +146,7 @@ export default function PricingSection() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92, y: 16 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="fixed z-[101] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[88vw] max-w-md"
+                className="fixed z-[101] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[88vw] max-w-md max-h-[80svh] overflow-y-auto"
               >
                 <div className="pricing-modal-panel relative bg-surface-elevated border border-border rounded-2xl p-6 shadow-[0_24px_64px_rgba(0,0,0,0.5)]" onClick={(e) => e.stopPropagation()}>
                   <button

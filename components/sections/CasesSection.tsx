@@ -139,8 +139,8 @@ className="relative w-full h-auto max-h-80 object-contain z-10"
                         ) : caseItem.image ? (
                           <Image src={caseItem.image} alt={t(caseItem.titleKey)} width={800} height={600} sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" draggable={false} onContextMenu={(e) => e.preventDefault()} className="relative w-full h-auto max-h-80 object-contain z-10" />
                         ) : null}
-                        <div className="absolute inset-0 z-20 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
-                          <div className={`scale-75 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 opacity-100 md:opacity-0 bg-white/10 ${isMobile ? "" : "backdrop-blur-sm"} rounded-full p-3 border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.3)]`}>
+                        <div className="absolute inset-0 z-20 bg-black/20 transition-all duration-500 flex items-center justify-center">
+                          <div className={`scale-75 opacity-100 transition-all duration-300 bg-white/10 ${isMobile ? "" : "backdrop-blur-sm"} rounded-full p-3 border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.3)]`}>
                             <Expand size={20} className="text-white" />
                           </div>
                         </div>
@@ -150,7 +150,7 @@ className="relative w-full h-auto max-h-80 object-contain z-10"
                         <span className="text-xs font-medium text-accent mb-2">{t(caseItem.categoryKey)}</span>
                         <h3 className="text-foreground font-bold text-base mb-3">{t(caseItem.titleKey)}</h3>
                         <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">{t(caseItem.descriptionKey)}</p>
-                        <div className="bg-background rounded-xl p-4 transition-all duration-300 hover:bg-background/70 hover:shadow-[inset_0_0_0_1px_rgba(99,102,241,0.22)]">
+                        <div className="bg-background rounded-xl p-4 transition-all duration-300">
                           <Quote size={14} className="text-accent mb-2" />
                           <p className="text-muted-foreground text-xs italic leading-relaxed">{t(caseItem.reviewKey)}</p>
                         </div>

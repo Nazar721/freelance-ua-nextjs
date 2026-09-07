@@ -1279,6 +1279,7 @@ body {
     width: max-content;
     will-change: transform;
     animation: seamless-marquee 180s linear infinite;
+    animation-play-state: running;
     transform: translate3d(0, 0, 0);
   }
 

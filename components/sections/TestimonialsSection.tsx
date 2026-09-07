@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import Image from "next/image";
 import { Play, Pause, X, ChevronRight, Quote, Video, MessageSquare, Maximize2 } from "lucide-react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/config/site";
@@ -101,7 +102,11 @@ function VideoPoster({ src }: { src: string }) {
       { rootMargin: "300px" }
     );
     io.observe(el);
-    return () => io.disconnect();
+    const fallback = setTimeout(() => setReady(true), 1500);
+    return () => {
+      io.disconnect();
+      clearTimeout(fallback);
+    };
   }, []);
 
   return (
@@ -678,6 +683,42 @@ export default function TestimonialsSection() {
 
             setActiveIdx((prev) => (prev === bestIdx ? prev : bestIdx));
           };
+
+          if (isMobile) {
+            gsap.set(cards, { clearProps: "all" });
+            ScrollTrigger.getAll().forEach(st => st.kill());
+
+            let startX = 0;
+            let isDragging = false;
+
+            const onTouchStart = (e: TouchEvent) => {
+              startX = e.touches[0].clientX;
+              isDragging = true;
+            };
+
+            const onTouchEnd = (e: TouchEvent) => {
+              if (!isDragging) return;
+              isDragging = false;
+              const diff = startX - e.changedTouches[0].clientX;
+              if (Math.abs(diff) < 50) return;
+              if (diff > 0) {
+                driver.p = Math.min(1, driver.p + 1/n);
+              } else {
+                driver.p = Math.max(0, driver.p - 1/n);
+              }
+              gsap.to(driver, { p: driver.p, duration: 0.4, ease: "power2.out", onUpdate: render });
+              render();
+            };
+
+            stage.addEventListener("touchstart", onTouchStart, { passive: true });
+            stage.addEventListener("touchend", onTouchEnd, { passive: true });
+
+            render();
+            return () => {
+              stage.removeEventListener("touchstart", onTouchStart);
+              stage.removeEventListener("touchend", onTouchEnd);
+            };
+          }
 
           gsap
             .timeline({
