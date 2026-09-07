@@ -154,6 +154,7 @@ export default function PricingSection() {
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 className="w-[88vw] max-w-md max-h-[80svh] overflow-y-auto"
                 style={{ overscrollBehavior: 'contain' }}
+                data-lenis-prevent
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="pricing-modal-panel relative bg-surface-elevated border border-border rounded-2xl p-6 shadow-[0_24px_64px_rgba(0,0,0,0.5)]" onClick={(e) => e.stopPropagation()}>

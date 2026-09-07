@@ -59,6 +59,7 @@ interface ServiceCategory {
   sliderBefore: string;
   sliderAfter: string;
   sliderAfterVideo?: string;
+  sliderAspect?: string;
   items: number[];
 }
 
@@ -89,9 +90,10 @@ const serviceCategories: ServiceCategory[] = [
     emoji: "🎬",
     count: 6,
     sliderKey: "services.video.slider",
-    sliderBefore: "/media/services/video-poster.webp",
-    sliderAfter: "/media/services/video-poster.webp",
+    sliderBefore: "/media/services/video-poster.webp?v=2",
+    sliderAfter: "/media/services/video-poster.webp?v=2",
     sliderAfterVideo: "/media/cases/nikita-sheremet-crypto/process-3.mp4",
+    sliderAspect: "aspect-video",
     items: [1, 2, 3, 4, 5, 6],
   },
 ];
@@ -228,6 +230,7 @@ export default function ServicesSection() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="service-modal relative w-[92vw] max-w-6xl overflow-y-auto rounded-3xl"
               style={{ maxHeight: 'calc(var(--vh, 1vh) * 88)', overscrollBehavior: 'contain' }}
+              data-lenis-prevent
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close button */}
@@ -291,6 +294,7 @@ export default function ServicesSection() {
                         beforeSrc={activeCategory.sliderBefore}
                         afterSrc={activeCategory.sliderAfter}
                         afterVideo={activeCategory.sliderAfterVideo}
+                        aspectClassName={activeCategory.sliderAspect}
                         beforeAlt="Before"
                         afterAlt="After"
                       />

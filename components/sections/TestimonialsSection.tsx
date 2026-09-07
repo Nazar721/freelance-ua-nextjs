@@ -402,6 +402,7 @@ function CardContent({
           className={
             isModal ? "relative" : "relative min-h-0 flex-1 overflow-y-auto pr-1 text-pretty"
           }
+          data-lenis-prevent
         >
           <Quote
             size={16}
@@ -591,6 +592,7 @@ function TestimonialModal({
         ref={contentRef}
         onClick={(e) => e.stopPropagation()}
         className="max-h-[90svh] w-[min(94vw,860px)] overflow-y-auto rounded-3xl border border-border bg-surface p-5 shadow-[0_40px_120px_rgba(0,0,0,0.6)] sm:p-8"
+        data-lenis-prevent
       >
         <CardContent item={item} name={name} variant="modal" />
       </div>
