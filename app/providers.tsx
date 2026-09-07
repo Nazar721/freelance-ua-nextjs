@@ -24,7 +24,9 @@ export function Providers({
   initialTheme?: Theme;
 }) {
   const lenisRef = useRef<Lenis | null>(null);
-  const [hideTelegramBtn, setHideTelegramBtn] = useState(false);
+  const [hideByScroll, setHideByScroll] = useState(false);
+  const [hideByLightbox, setHideByLightbox] = useState(false);
+  const hideTelegramBtn = hideByScroll || hideByLightbox;
   const pathname = usePathname();
   const isPopState = useRef(false);
   const isFirstRoute = useRef(true);
@@ -137,7 +139,7 @@ export function Providers({
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setHideTelegramBtn(entry.isIntersecting);
+        setHideByScroll(entry.isIntersecting);
       },
       { threshold: 0.15 }
     );
@@ -145,6 +147,16 @@ export function Providers({
     const servicesEl = document.getElementById("services");
     if (servicesEl) observer.observe(servicesEl);
 
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const checkLightbox = () => {
+      const lightbox = document.querySelector(".yarl__container, [role='dialog']");
+      setHideByLightbox(!!lightbox);
+    };
+    const observer = new MutationObserver(checkLightbox);
+    observer.observe(document.body, { childList: true, subtree: true });
     return () => observer.disconnect();
   }, []);
 
