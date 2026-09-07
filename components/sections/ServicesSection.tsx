@@ -109,18 +109,32 @@ export default function ServicesSection() {
   const closeModal = useCallback(() => setActiveModal(null), []);
 
   useEffect(() => {
+    const setVh = () => {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    };
+    setVh();
+    window.addEventListener('resize', setVh);
+    return () => window.removeEventListener('resize', setVh);
+  }, []);
+
+  useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeModal();
     };
     if (activeModal !== null) {
       document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden";
     }
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "";
     };
   }, [activeModal, closeModal]);
+
+  useEffect(() => {
+    if (activeModal !== null) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [activeModal]);
 
   const activeCategory = activeModal !== null ? serviceCategories[activeModal] : null;
 
@@ -205,8 +219,6 @@ export default function ServicesSection() {
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-background/70 backdrop-blur-md"
             onClick={closeModal}
-            onWheel={(e) => e.preventDefault()}
-            onTouchMove={(e) => e.preventDefault()}
           >
             {/* Modal content */}
             <motion.div
@@ -214,10 +226,9 @@ export default function ServicesSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.94, y: 24 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="service-modal relative w-[92vw] max-w-6xl max-h-[88svh] overflow-y-auto rounded-3xl"
+              className="service-modal relative w-[92vw] max-w-6xl overflow-y-auto rounded-3xl"
+              style={{ maxHeight: 'calc(var(--vh, 1vh) * 88)', overscrollBehavior: 'contain' }}
               onClick={(e) => e.stopPropagation()}
-              onWheel={(e) => e.stopPropagation()}
-              onTouchMove={(e) => e.stopPropagation()}
             >
               {/* Close button */}
               <button

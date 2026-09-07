@@ -81,7 +81,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative flex items-center justify-center overflow-hidden pt-2 pb-4 md:min-h-[80vh] lg:min-h-screen"
+      className="relative flex items-center justify-center overflow-hidden pt-20 pb-4 md:pt-24 lg:min-h-screen"
     >
       {/* Parallax background layers */}
       <motion.div

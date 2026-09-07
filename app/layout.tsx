@@ -21,6 +21,12 @@ const unbounded = Unbounded({
   display: "swap",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://freelance-ua.agency"),
   title: siteConfig.name,

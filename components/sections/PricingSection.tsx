@@ -41,16 +41,21 @@ export default function PricingSection() {
 
   useEffect(() => {
     if (activeFactor === null) return;
-    document.body.style.overflow = "hidden";
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeModal();
     };
     document.addEventListener("keydown", handleEsc);
     return () => {
-      document.body.style.overflow = "";
       document.removeEventListener("keydown", handleEsc);
     };
   }, [activeFactor, closeModal]);
+
+  useEffect(() => {
+    if (activeFactor !== null) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [activeFactor]);
 
   return (
     <section id="pricing" className="py-12 sm:py-20 px-3 sm:px-4 pricing-aurora">
@@ -137,16 +142,19 @@ export default function PricingSection() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.25 }}
-                className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-sm"
+                className="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 backdrop-blur-sm"
+                style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}
                 onClick={closeModal}
-              />
+              >
               <motion.div
                 key="pricing-modal"
-                initial={{ opacity: 0, scale: 0.92, y: 16 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.92, y: 16 }}
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.92 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="fixed z-[101] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[88vw] max-w-md max-h-[80svh] overflow-y-auto"
+                className="w-[88vw] max-w-md max-h-[80svh] overflow-y-auto"
+                style={{ overscrollBehavior: 'contain' }}
+                onClick={(e) => e.stopPropagation()}
               >
                 <div className="pricing-modal-panel relative bg-surface-elevated border border-border rounded-2xl p-6 shadow-[0_24px_64px_rgba(0,0,0,0.5)]" onClick={(e) => e.stopPropagation()}>
                   <button
@@ -161,8 +169,9 @@ export default function PricingSection() {
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     {t(pricingFactorDescKeys[activeFactor])}
                   </p>
-                  <div className="pricing-factor-popover-glow" />
+                    <div className="pricing-factor-popover-glow" />
                 </div>
+              </motion.div>
               </motion.div>
             </>
           )}

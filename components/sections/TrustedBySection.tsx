@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { brands } from "@/data/brands";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -44,17 +44,24 @@ export default function TrustedBySection() {
     const wrapper = document.querySelector('.trusted-partners__track-wrapper') as HTMLElement | null;
     if (!wrapper) return;
 
-    const resume = () => {
-      wrapper.style.animationPlayState = 'running';
+    const speed = 0.15;
+    let offset = 0;
+    let lastTime = performance.now();
+    let rafId: number;
+
+    const animate = (now: number) => {
+      const delta = now - lastTime;
+      lastTime = now;
+      offset -= speed * delta;
+      const halfWidth = wrapper.scrollWidth / 2;
+      if (Math.abs(offset) >= halfWidth) offset += halfWidth;
+      wrapper.style.transform = `translate3d(${offset}px, 0, 0)`;
+      rafId = requestAnimationFrame(animate);
     };
 
-    wrapper.addEventListener('touchstart', resume, { passive: true });
-    wrapper.addEventListener('touchend', resume, { passive: true });
+    rafId = requestAnimationFrame(animate);
 
-    return () => {
-      wrapper.removeEventListener('touchstart', resume);
-      wrapper.removeEventListener('touchend', resume);
-    };
+    return () => cancelAnimationFrame(rafId);
   }, []);
 
   return (

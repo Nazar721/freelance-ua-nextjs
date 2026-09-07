@@ -485,13 +485,18 @@ body {
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0;
-    transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
     z-index: 1;
   }
 
-  .glow-border:hover::before {
-    opacity: 1;
+  @media (hover: hover) and (pointer: fine) {
+    .glow-border::before {
+      transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .glow-border:hover::before {
+      opacity: 1;
+    }
   }
 
   /* ─── Card 3D tilt ─── */
@@ -1277,9 +1282,6 @@ body {
   .trusted-partners__track-wrapper {
     display: flex;
     width: max-content;
-    will-change: transform;
-    animation: seamless-marquee 180s linear infinite;
-    animation-play-state: running;
     transform: translate3d(0, 0, 0);
   }
 
@@ -1967,7 +1969,7 @@ body {
   /* Service modal — smaller on mobile */
   .service-modal {
     width: 96vw !important;
-    max-height: 92vh !important;
+    max-height: calc(var(--vh, 1vh) * 92) !important;
     border-radius: 20px !important;
   }
 
@@ -2057,10 +2059,10 @@ body {
     box-shadow: none !important;
   }
 
-  /* Group hover on nav links — no underline animation */
-  .group:hover span {
-    width: 0 !important;
-  }
+  /* NOTE: no `.group:hover span` kill rule here — `.group` matches every card
+     (cases, testimonials, steps), so on tap (sticky :hover) it collapsed ALL
+     nested spans to width 0. Desktop nav underlines live in `hidden xl:flex`
+     and don't exist on mobile anyway. */
 
   /* Cases card — no scale on images */
   .group\/card:hover img {
@@ -2324,18 +2326,16 @@ body {
     scale: none;
   }
 
-  /* ─── Testimonials: static cards on touch ───
-     Fixed card height left a large empty gap on short (telegram screenshot)
-     reviews — the card hugs its content instead. Hover affordances stay
-     desktop-only. */
-  .testimonial-card-slot {
-    height: auto !important;
-    min-height: 0;
-  }
-
+  /* ─── Testimonials on touch ───
+     Keep the fixed carousel height (set inline) so the GSAP carousel layout
+     stays intact. Only remove hover affordances. */
   #testimonials article:hover {
     border-color: var(--border) !important;
     box-shadow: none !important;
+  }
+
+  #testimonials article {
+    transition: none !important;
   }
 }
 
@@ -3065,6 +3065,11 @@ body {
 }
 
 /* ─── Kill all Tailwind hover transform/scale utilities on touch devices ─── */
+/* Tailwind hover: utilities are media-gated upstream (@custom-variant hover).
+   group-hover: transforms are neutralized by attribute selectors below.
+   NOTE: never add a bare `*:hover { transform: none }` fallback here — on tap
+   (sticky :hover) it also wipes the inline transforms GSAP/framer-motion set
+   on carousel cards, marquees and parallax layers, making them jump. */
 @media (hover: none), (pointer: coarse) {
   [class*="hover:scale-"],
   [class*="hover:translate-"],
@@ -3080,14 +3085,6 @@ body {
   [class*="group-hover:-translate-"] {
     transform: none !important;
     scale: none !important;
-    translate: none !important;
-  }
-}
-
-@media (pointer: coarse) {
-  *:hover {
-    transform: none !important;
-    scale: 1 !important;
     translate: none !important;
   }
 }

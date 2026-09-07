@@ -124,7 +124,8 @@ export default function CasesSection() {
                     <div className="premium-surface glow-border bg-surface-elevated border border-border rounded-2xl overflow-hidden flex flex-col h-full group/card">
                       <button
                         onClick={() => setLightboxIndex(getGlobalIndex(caseItem.id))}
-                        className="relative w-full bg-background overflow-hidden group cursor-zoom-in flex items-center justify-center"
+                        className="relative w-full bg-background group cursor-pointer flex items-center justify-center"
+                        style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}
                         aria-label={`${t("cases.openMedia")} ${t(caseItem.titleKey)}`}
                       >
                         {caseItem.video ? (
@@ -193,7 +194,7 @@ className="relative w-full h-auto max-h-80 object-contain z-10"
         index={lightboxIndex}
         slides={slides}
         plugins={[Video, Zoom]}
-        styles={{ container: { backgroundColor: "rgba(0,0,0,0.95)" } }}
+        styles={{ container: { backgroundColor: "rgba(0,0,0,0.95)", zIndex: 9999 } }}
         video={{ autoPlay: true, muted: false, controls: true, playsInline: true, loop: true }}
       />
     </section>

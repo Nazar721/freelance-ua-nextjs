@@ -32,7 +32,15 @@ export function LazyVideo({ rootMargin = "200px", autoPlay, ...props }: LazyVide
     if (!el || !inView) return;
 
     if (autoPlay) {
-      el.play().catch(() => {});
+      const onCanPlay = () => {
+        el.play().catch(() => {});
+        el.removeEventListener("canplay", onCanPlay);
+      };
+      if (el.readyState >= 3) {
+        el.play().catch(() => {});
+      } else {
+        el.addEventListener("canplay", onCanPlay);
+      }
     }
   }, [inView, autoPlay]);
 

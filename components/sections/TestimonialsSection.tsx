@@ -15,7 +15,7 @@ import { useTranslation } from "@/lib/LanguageContext";
 import type { Testimonial } from "@/types";
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(useGSAP);
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
 }
 
 /* ─── Emoji reactions (decorative, derived from id) ─── */
@@ -72,7 +72,7 @@ function TypeBadge({ item }: { item: Testimonial }) {
 
   return (
     <span
-      className={`ml-auto inline-flex shrink-0 items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-medium leading-none ${tone}`}
+      className={`ml-auto inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full border px-2 py-1 text-[10px] font-medium leading-none ${tone}`}
     >
       {icon}
       {label}
@@ -102,11 +102,7 @@ function VideoPoster({ src }: { src: string }) {
       { rootMargin: "300px" }
     );
     io.observe(el);
-    const fallback = setTimeout(() => setReady(true), 1500);
-    return () => {
-      io.disconnect();
-      clearTimeout(fallback);
-    };
+    return () => io.disconnect();
   }, []);
 
   return (
@@ -118,15 +114,18 @@ function VideoPoster({ src }: { src: string }) {
       </div>
       {inView && !failed && (
         <video
-          src={`${src}#t=0.2`}
+          src={src}
           muted
           playsInline
           preload="metadata"
           tabIndex={-1}
           draggable={false}
           onError={() => setFailed(true)}
-          onLoadedData={() => setReady(true)}
-          onLoadedMetadata={() => setReady(true)}
+          onLoadedData={(e) => {
+            const video = e.currentTarget;
+            video.currentTime = 0.2;
+            setReady(true);
+          }}
           className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
             ready ? "opacity-100" : "opacity-0"
           }`}
@@ -306,6 +305,7 @@ function ModalVideo({ src }: { src: string }) {
       ref={videoRef}
       src={src}
       controls
+      muted
       playsInline
       autoPlay
       draggable={false}
@@ -465,6 +465,7 @@ function ReviewCard({
           onOpen(item, e.currentTarget);
         }
       }}
+      style={{ touchAction: "manipulation" }}
       className={`group cursor-pointer select-none rounded-3xl border border-border bg-surface/95 transition-colors duration-500 hover:border-accent/50 hover:shadow-[0_8px_50px_rgba(99,102,241,0.18)] ${
         fixedHeight ? "flex h-full flex-col" : ""
       }`}
@@ -630,136 +631,100 @@ export default function TestimonialsSection() {
       const stage = stageRef.current;
       if (!stage) return;
       const cards = cardRefs.current.filter(Boolean) as HTMLElement[];
-      if (cards.length < 2) return;
-
-      const mm = gsap.matchMedia();
-      mm.add(
-        {
-          isMobile: "(max-width: 767px)",
-          isDesktop: "(min-width: 768px)",
-        },
-        (ctx) => {
-          const isMobile = !!ctx.conditions?.isMobile;
-          const n = cards.length;
-
-          /* slot geometry — must stay in sync with card width classes:
-             mobile: card 80vw / slot 86vw, desktop: card min(480px,40vw) / slot +28px */
-          const getSlotW = () =>
-            isMobile ? window.innerWidth * 0.86 : Math.min(640, window.innerWidth * 0.48 + 28);
-
-          gsap.set(cards, { xPercent: -50, yPercent: -50 });
-
-          const driver = { p: 0 };
-
-          const render = () => {
-            const slotW = getSlotW();
-            const loopW = n * slotW;
-            const wrapX = gsap.utils.wrap(-loopW / 2, loopW / 2);
-            const offset = driver.p * loopW;
-            const fadeEnd = Math.max(isMobile ? 0.8 : 1.3, window.innerWidth / 2 / slotW - 0.05);
-            const fadeStart = isMobile ? 0.55 : 0.65;
-
-            let bestIdx = 0;
-            let bestDist = Infinity;
-
-            cards.forEach((card, i) => {
-              const x = wrapX(i * slotW - offset);
-              const d = Math.abs(x) / slotW;
-              if (d < bestDist) {
-                bestDist = d;
-                bestIdx = i;
-              }
-              const fade = Math.max(
-                0,
-                Math.min(1, (d - fadeStart) / (fadeEnd - fadeStart))
-              );
-              gsap.set(card, {
-                x,
-                scale: 1 - Math.min(d, 1.2) * 0.07,
-                opacity: 1 - fade * fade,
-                zIndex: 40 - Math.round(d * 10),
-              });
-            });
-
-            setActiveIdx((prev) => (prev === bestIdx ? prev : bestIdx));
-          };
-
-          if (isMobile) {
-            gsap.set(cards, { clearProps: "all" });
-            ScrollTrigger.getAll().forEach(st => st.kill());
-
-            let startX = 0;
-            let isDragging = false;
-
-            const onTouchStart = (e: TouchEvent) => {
-              startX = e.touches[0].clientX;
-              isDragging = true;
-            };
-
-            const onTouchEnd = (e: TouchEvent) => {
-              if (!isDragging) return;
-              isDragging = false;
-              const diff = startX - e.changedTouches[0].clientX;
-              if (Math.abs(diff) < 50) return;
-              if (diff > 0) {
-                driver.p = Math.min(1, driver.p + 1/n);
-              } else {
-                driver.p = Math.max(0, driver.p - 1/n);
-              }
-              gsap.to(driver, { p: driver.p, duration: 0.4, ease: "power2.out", onUpdate: render });
-              render();
-            };
-
-            stage.addEventListener("touchstart", onTouchStart, { passive: true });
-            stage.addEventListener("touchend", onTouchEnd, { passive: true });
-
-            render();
-            return () => {
-              stage.removeEventListener("touchstart", onTouchStart);
-              stage.removeEventListener("touchend", onTouchEnd);
-            };
+      if (cards.length < 2) {
+        const retry = setTimeout(() => {
+          const retryCards = cardRefs.current.filter(Boolean) as HTMLElement[];
+          if (retryCards.length >= 2) {
+            gsap.set(retryCards, { xPercent: -50, yPercent: -50 });
           }
+        }, 200);
+        return () => clearTimeout(retry);
+      }
 
-          gsap
-            .timeline({
-              defaults: { ease: "none" },
-              scrollTrigger: {
-                trigger: stage,
-                start: "top top",
-                end: () => `+=${Math.round(window.innerHeight * 6)}`,
-                pin: true,
-                scrub: 2,
-                anticipatePin: 1,
-                invalidateOnRefresh: true,
-                onUpdate: (self) => {
-                  if (progressRef.current) {
-                    gsap.set(progressRef.current, { scaleX: self.progress });
-                  }
-                },
-              },
-            })
-            .to(driver, { p: 1, duration: 1, ease: "power1.inOut", onUpdate: render });
+      const n = cards.length;
+      const isMobile = window.innerWidth < 768;
 
-          render();
+      /* slot geometry — must stay in sync with card width classes:
+         mobile: card 80vw / slot 86vw, desktop: card min(560px,46vw) / slot +28px */
+      const getSlotW = () =>
+        isMobile ? window.innerWidth * 0.86 : Math.min(640, window.innerWidth * 0.48 + 28);
 
-          if (glowRef.current) {
-            gsap.fromTo(
-              glowRef.current,
-              { yPercent: 10 },
-              {
-                yPercent: -10,
-                ease: "none",
-                scrollTrigger: {
-                  trigger: stage,
-                  start: "top top",
-                  end: () => `+=${Math.round(window.innerHeight * 6)}`,
-                  scrub: true,
-                },
-              }
-            );
+      gsap.set(cards, { xPercent: -50, yPercent: -50 });
+
+      const driver = { p: 0 };
+
+      const render = () => {
+        const slotW = getSlotW();
+        const loopW = n * slotW;
+        const wrapX = gsap.utils.wrap(-loopW / 2, loopW / 2);
+        const offset = driver.p * loopW;
+        const fadeEnd = Math.max(isMobile ? 0.8 : 1.3, window.innerWidth / 2 / slotW - 0.05);
+        const fadeStart = isMobile ? 0.55 : 0.65;
+
+        let bestIdx = 0;
+        let bestDist = Infinity;
+
+        cards.forEach((card, i) => {
+          const x = wrapX(i * slotW - offset);
+          const d = Math.abs(x) / slotW;
+          if (d < bestDist) {
+            bestDist = d;
+            bestIdx = i;
           }
-        }
-      );
+          const fade = Math.max(
+            0,
+            Math.min(1, (d - fadeStart) / (fadeEnd - fadeStart))
+          );
+          gsap.set(card, {
+            x,
+            scale: 1 - Math.min(d, 1.2) * 0.07,
+            opacity: 1 - fade * fade,
+            zIndex: 40 - Math.round(d * 10),
+          });
+        });
+
+        setActiveIdx((prev) => (prev === bestIdx ? prev : bestIdx));
+      };
+
+      /* ── Same scroll-pinned animation on all devices ── */
+      gsap
+        .timeline({
+          defaults: { ease: "none" },
+          scrollTrigger: {
+            trigger: stage,
+            start: "top top",
+            end: () => `+=${Math.round(window.innerHeight * (isMobile ? 4 : 6))}`,
+            pin: true,
+            scrub: 2,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              if (progressRef.current) {
+                gsap.set(progressRef.current, { scaleX: self.progress });
+              }
+            },
+          },
+        })
+        .to(driver, { p: 1, duration: 1, ease: "power1.inOut", onUpdate: render });
+
+      render();
+
+      if (glowRef.current) {
+        gsap.fromTo(
+          glowRef.current,
+          { yPercent: 10 },
+          {
+            yPercent: -10,
+            ease: "none",
+            scrollTrigger: {
+              trigger: stage,
+              start: "top top",
+              end: () => `+=${Math.round(window.innerHeight * (isMobile ? 4 : 6))}`,
+              scrub: true,
+            },
+          }
+        );
+      }
     },
     { scope: sectionRef, dependencies: [reducedMotion] }
   );
@@ -809,7 +774,7 @@ export default function TestimonialsSection() {
                 ref={(el) => {
                   cardRefs.current[i] = el;
                 }}
-                className="testimonial-card-slot absolute left-1/2 top-1/2 w-[80vw] opacity-0 md:w-[min(560px,46vw)]"
+                className="testimonial-card-slot absolute left-1/2 top-1/2 w-[80vw] md:w-[min(560px,46vw)]"
                   style={{
                     willChange: "transform, opacity",
                     height: "min(520px, 70svh)",
