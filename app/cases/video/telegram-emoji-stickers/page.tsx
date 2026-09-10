@@ -115,7 +115,7 @@ export default function TelegramEmojiStickersPage() {
                   onClick={() => openFullscreen("/media/cases/telegram-emoji-stickers/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/telegram-emoji-stickers/hero.mp4"
+                    src="/media/cases/telegram-emoji-stickers/hero.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"
@@ -170,7 +170,7 @@ export default function TelegramEmojiStickersPage() {
                   onClick={() => openFullscreen("/media/cases/telegram-emoji-stickers/process-1.mp4")}
                 >
                   <video
-                    src="/media/cases/telegram-emoji-stickers/process-1.mp4"
+                    src="/media/cases/telegram-emoji-stickers/process-1.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"
@@ -212,7 +212,7 @@ export default function TelegramEmojiStickersPage() {
                   onClick={() => openFullscreen("/media/cases/telegram-emoji-stickers/process-2.mp4")}
                 >
                   <video
-                    src="/media/cases/telegram-emoji-stickers/process-2.mp4"
+                    src="/media/cases/telegram-emoji-stickers/process-2.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

@@ -118,7 +118,7 @@ export default function VitaliiCheverdaPage() {
                   onClick={() => openFullscreen("/media/cases/vitalii-cheverda/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/vitalii-cheverda/hero.mp4"
+                    src="/media/cases/vitalii-cheverda/hero.mp4#t=0.2"
                     poster="/media/cases/vitalii-cheverda/hero-poster.jpg"
                     className="w-full h-full object-cover"
                     muted
@@ -151,7 +151,7 @@ export default function VitaliiCheverdaPage() {
                   onClick={() => openFullscreen("/media/cases/vitalii-cheverda/hook-1.mp4")}
                 >
                   <video
-                    src="/media/cases/vitalii-cheverda/hook-1.mp4"
+                    src="/media/cases/vitalii-cheverda/hook-1.mp4#t=0.2"
                     poster="/media/cases/vitalii-cheverda/hook-1-poster.jpg"
                     className="w-full h-full object-cover"
                     muted
@@ -176,7 +176,7 @@ export default function VitaliiCheverdaPage() {
                   onClick={() => openFullscreen("/media/cases/vitalii-cheverda/hook-2.mp4")}
                 >
                   <video
-                    src="/media/cases/vitalii-cheverda/hook-2.mp4"
+                    src="/media/cases/vitalii-cheverda/hook-2.mp4#t=0.2"
                     poster="/media/cases/vitalii-cheverda/hook-2-poster.jpg"
                     className="w-full h-full object-cover"
                     muted

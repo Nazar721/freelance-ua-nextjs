@@ -115,7 +115,7 @@ export default function IncomeGraphMotionPage() {
                   onClick={() => openFullscreen("/media/cases/income-graph-motion/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/income-graph-motion/hero.mp4"
+                    src="/media/cases/income-graph-motion/hero.mp4#t=0.2"
                     poster="/media/cases/income-graph-motion/hero-poster.jpg"
                     className="w-full h-full object-cover"
                     muted

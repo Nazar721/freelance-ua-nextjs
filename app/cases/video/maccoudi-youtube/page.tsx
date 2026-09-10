@@ -122,7 +122,7 @@ export default function MaccoudiYoutubePage() {
                   onClick={() => openFullscreen("/media/cases/maccoudi-youtube/video-1.mp4")}
                 >
                   <video
-                    src="/media/cases/maccoudi-youtube/video-1.mp4"
+                    src="/media/cases/maccoudi-youtube/video-1.mp4#t=0.2"
                     poster="/media/cases/maccoudi-youtube/poster-1.jpg"
                     className="w-full h-full object-cover"
                     muted
@@ -169,7 +169,7 @@ export default function MaccoudiYoutubePage() {
                   onClick={() => openFullscreen("/media/cases/maccoudi-youtube/video-2.mp4")}
                 >
                   <video
-                    src="/media/cases/maccoudi-youtube/video-2.mp4"
+                    src="/media/cases/maccoudi-youtube/video-2.mp4#t=0.2"
                     poster="/media/cases/maccoudi-youtube/poster-2.jpg"
                     className="w-full h-full object-cover"
                     muted

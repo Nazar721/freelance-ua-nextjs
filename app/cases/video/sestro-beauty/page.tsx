@@ -122,7 +122,7 @@ export default function SestroBeautyPage() {
                   onClick={() => openFullscreen("/media/cases/sestro-beauty/video-1.mp4")}
                 >
                   <video
-                    src="/media/cases/sestro-beauty/video-1.mp4"
+                    src="/media/cases/sestro-beauty/video-1.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"
@@ -149,7 +149,7 @@ export default function SestroBeautyPage() {
                   onClick={() => openFullscreen("/media/cases/sestro-beauty/video-2.mp4")}
                 >
                   <video
-                    src="/media/cases/sestro-beauty/video-2.mp4"
+                    src="/media/cases/sestro-beauty/video-2.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

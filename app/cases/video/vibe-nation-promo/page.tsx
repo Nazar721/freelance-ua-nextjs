@@ -120,7 +120,7 @@ export default function VibeNationPromoPage() {
                   onClick={() => openFullscreen("/media/cases/vibe-nation-promo/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/vibe-nation-promo/hero.mp4"
+                    src="/media/cases/vibe-nation-promo/hero.mp4#t=0.2"
                     poster="/media/cases/vibe-nation-promo/hero-poster.jpg"
                     className="w-full h-full object-cover aspect-video"
                     muted

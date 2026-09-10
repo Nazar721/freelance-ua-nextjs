@@ -120,7 +120,7 @@ export default function AiPromoMishaPage() {
                   onClick={() => openFullscreen("/media/cases/ai-city-promo/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/ai-city-promo/hero.mp4"
+                    src="/media/cases/ai-city-promo/hero.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

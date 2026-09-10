@@ -117,7 +117,7 @@ export default function SheglamPromoPage() {
                   onClick={() => openFullscreen("/media/cases/sheglam-promo/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/sheglam-promo/hero.mp4"
+                    src="/media/cases/sheglam-promo/hero.mp4#t=0.2"
                     poster="/media/cases/sheglam-promo/hero-poster.jpg"
                     className="w-full h-full object-cover max-h-[560px]"
                     muted

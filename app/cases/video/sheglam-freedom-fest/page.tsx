@@ -116,7 +116,7 @@ export default function SheglamFreedomFestPage() {
                   onClick={() => openFullscreen("/media/cases/sheglam-freedom-fest/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/sheglam-freedom-fest/hero.mp4"
+                    src="/media/cases/sheglam-freedom-fest/hero.mp4#t=0.2"
                     poster="/media/cases/sheglam-freedom-fest/hero-poster.jpg"
                     className="w-full h-full object-cover max-h-[560px]"
                     muted

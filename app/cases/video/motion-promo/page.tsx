@@ -115,7 +115,7 @@ export default function MotionPromoPage() {
                   onClick={() => openFullscreen("/media/cases/motion-promo/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/motion-promo/hero.mp4"
+                    src="/media/cases/motion-promo/hero.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

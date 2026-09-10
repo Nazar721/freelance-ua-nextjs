@@ -121,7 +121,7 @@ export default function AlienCityAdventurePage() {
                   onClick={() => openFullscreen("/media/cases/alien-city-adventure/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/alien-city-adventure/hero.mp4"
+                    src="/media/cases/alien-city-adventure/hero.mp4#t=0.2"
                     poster="/media/cases/alien-city-adventure/hero-poster.jpg"
                     className="w-full h-full object-cover aspect-video"
                     muted

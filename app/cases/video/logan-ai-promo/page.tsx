@@ -121,7 +121,7 @@ export default function LoganAiPromoPage() {
                   onClick={() => openFullscreen("/media/cases/logan-ai-promo/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/logan-ai-promo/hero.mp4"
+                    src="/media/cases/logan-ai-promo/hero.mp4#t=0.2"
                     poster="/media/cases/logan-ai-promo/hero-poster.jpg"
                     className="w-full h-full object-cover max-h-[560px]"
                     muted

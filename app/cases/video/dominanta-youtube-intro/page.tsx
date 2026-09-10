@@ -116,7 +116,7 @@ export default function DominantaYoutubeIntroPage() {
                   onClick={() => openFullscreen("/media/cases/dominanta-youtube-intro/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/dominanta-youtube-intro/hero.mp4"
+                    src="/media/cases/dominanta-youtube-intro/hero.mp4#t=0.2"
                     poster="/media/cases/dominanta-youtube-intro/hero-poster.jpg"
                     className="w-full h-full object-cover max-h-[560px]"
                     muted

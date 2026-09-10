@@ -117,7 +117,7 @@ export default function MotionReelsPage() {
                   onClick={() => openFullscreen("/media/cases/motion-reels/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/motion-reels/hero.mp4"
+                    src="/media/cases/motion-reels/hero.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"
@@ -144,7 +144,7 @@ export default function MotionReelsPage() {
                   onClick={() => openFullscreen("/media/cases/motion-reels/video2.mp4")}
                 >
                   <video
-                    src="/media/cases/motion-reels/video2.mp4"
+                    src="/media/cases/motion-reels/video2.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

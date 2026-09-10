@@ -121,7 +121,7 @@ export default function AiIceCreamPage() {
                   onClick={() => openFullscreen("/media/cases/ai-ice-cream/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/ai-ice-cream/hero.mp4"
+                    src="/media/cases/ai-ice-cream/hero.mp4#t=0.2"
                     poster="/media/cases/ai-ice-cream/hero-poster.jpg"
                     className="w-full h-full object-cover"
                     muted

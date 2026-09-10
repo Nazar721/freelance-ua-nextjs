@@ -120,7 +120,7 @@ export default function VorodiMedicalPage() {
                   onClick={() => openFullscreen("/media/cases/vorodi-medical/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/vorodi-medical/hero.mp4"
+                    src="/media/cases/vorodi-medical/hero.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

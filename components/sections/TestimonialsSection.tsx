@@ -10,6 +10,7 @@ import { useGSAP } from "@gsap/react";
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { withPosterFrame } from "@/lib/video";
 import ReviewAvatar from "@/components/ui/ReviewAvatar";
 import { useTranslation } from "@/lib/LanguageContext";
 import type { Testimonial } from "@/types";
@@ -105,6 +106,13 @@ function VideoPoster({ src }: { src: string }) {
     return () => io.disconnect();
   }, []);
 
+  // Safety net: never leave the poster hidden if Safari skips the media events.
+  useEffect(() => {
+    if (!inView) return;
+    const id = setTimeout(() => setReady(true), 3000);
+    return () => clearTimeout(id);
+  }, [inView]);
+
   return (
     <div ref={holderRef} className="absolute inset-0">
       {/* fallback backdrop — also the permanent state when the video can't load */}
@@ -114,18 +122,15 @@ function VideoPoster({ src }: { src: string }) {
       </div>
       {inView && !failed && (
         <video
-          src={src}
+          src={withPosterFrame(src, 0.2)}
           muted
           playsInline
           preload="metadata"
           tabIndex={-1}
           draggable={false}
           onError={() => setFailed(true)}
-          onLoadedData={(e) => {
-            const video = e.currentTarget;
-            video.currentTime = 0.2;
-            setReady(true);
-          }}
+          onLoadedData={() => setReady(true)}
+          onCanPlay={() => setReady(true)}
           className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
             ready ? "opacity-100" : "opacity-0"
           }`}
@@ -779,7 +784,7 @@ export default function TestimonialsSection() {
                 className="testimonial-card-slot absolute left-1/2 top-1/2 w-[80vw] md:w-[min(560px,46vw)]"
                   style={{
                     willChange: "transform, opacity",
-                    height: "min(380px, 52svh)",
+                    height: "min(460px, 60svh)",
                     transition: "filter 0.4s ease-out",
                   }}
               >

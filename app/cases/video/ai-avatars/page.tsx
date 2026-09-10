@@ -121,7 +121,7 @@ export default function AiAvatarsPage() {
                   onClick={() => openFullscreen("/media/cases/ai-avatars/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/ai-avatars/hero.mp4"
+                    src="/media/cases/ai-avatars/hero.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"
@@ -148,7 +148,7 @@ export default function AiAvatarsPage() {
                   onClick={() => openFullscreen("/media/cases/ai-avatars/process-1.mp4")}
                 >
                   <video
-                    src="/media/cases/ai-avatars/process-1.mp4"
+                    src="/media/cases/ai-avatars/process-1.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"
@@ -175,7 +175,7 @@ export default function AiAvatarsPage() {
                   onClick={() => openFullscreen("/media/cases/ai-avatars/process-2.mp4")}
                 >
                   <video
-                    src="/media/cases/ai-avatars/process-2.mp4"
+                    src="/media/cases/ai-avatars/process-2.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

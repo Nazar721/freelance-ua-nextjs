@@ -116,7 +116,7 @@ export default function WatchHypeIntroPage() {
                   onClick={() => openFullscreen("/media/cases/watch-hype-intro/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/watch-hype-intro/hero.mp4"
+                    src="/media/cases/watch-hype-intro/hero.mp4#t=0.2"
                     poster="/media/cases/watch-hype-intro/hero-poster.jpg"
                     className="w-full h-full object-cover"
                     muted

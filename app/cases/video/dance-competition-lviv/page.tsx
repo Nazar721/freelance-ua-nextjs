@@ -117,7 +117,7 @@ export default function DanceCompetitionLvivPage() {
                   onClick={() => openFullscreen("/media/cases/dance-competition-lviv/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/dance-competition-lviv/hero.mp4"
+                    src="/media/cases/dance-competition-lviv/hero.mp4#t=0.2"
                     poster="/media/cases/dance-competition-lviv/hero-poster.jpg"
                     className="w-full h-full object-cover"
                     muted

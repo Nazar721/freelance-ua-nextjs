@@ -122,7 +122,7 @@ export default function EvaCodeReelsPage() {
                   onClick={() => openFullscreen("/media/cases/eva-code-reels/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/eva-code-reels/hero.mp4"
+                    src="/media/cases/eva-code-reels/hero.mp4#t=0.2"
                     poster="/media/cases/eva-code-reels/hero-poster.jpg"
                     className="w-full h-full object-cover"
                     muted

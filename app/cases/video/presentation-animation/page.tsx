@@ -116,7 +116,7 @@ export default function PresentationAnimationPage() {
                   onClick={() => openFullscreen("/media/cases/presentation-animation/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/presentation-animation/hero.mp4"
+                    src="/media/cases/presentation-animation/hero.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

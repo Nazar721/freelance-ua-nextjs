@@ -116,7 +116,7 @@ export default function AiSpringFashionPage() {
                   onClick={() => openFullscreen("/media/cases/ai-spring-fashion/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/ai-spring-fashion/hero.mp4"
+                    src="/media/cases/ai-spring-fashion/hero.mp4#t=0.2"
                     poster="/media/cases/ai-spring-fashion/hero-poster.jpg"
                     className="w-full h-full object-cover max-h-[560px]"
                     muted

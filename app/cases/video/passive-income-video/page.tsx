@@ -121,7 +121,7 @@ export default function PassiveIncomeVideoPage() {
                   onClick={() => openFullscreen("/media/cases/passive-income-video/video.mp4")}
                 >
                   <video
-                    src="/media/cases/passive-income-video/video.mp4"
+                    src="/media/cases/passive-income-video/video.mp4#t=0.2"
                     poster="/media/cases/passive-income-video/poster.jpg"
                     className="w-full h-full object-cover"
                     muted

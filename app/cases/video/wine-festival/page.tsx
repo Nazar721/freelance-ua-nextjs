@@ -245,7 +245,7 @@ export default function WineFestivalPage() {
                   onClick={() => openFullscreen("/media/cases/wine-festival/video-1.mp4")}
                 >
                   <video
-                    src="/media/cases/wine-festival/video-1.mp4"
+                    src="/media/cases/wine-festival/video-1.mp4#t=0.2"
                     className="w-full aspect-video object-cover"
                     preload="metadata"
                     muted
@@ -279,7 +279,7 @@ export default function WineFestivalPage() {
                   onClick={() => openFullscreen("/media/cases/wine-festival/video-2.mp4")}
                 >
                   <video
-                    src="/media/cases/wine-festival/video-2.mp4"
+                    src="/media/cases/wine-festival/video-2.mp4#t=0.2"
                     className="w-full aspect-video object-cover"
                     preload="metadata"
                     muted
@@ -327,7 +327,7 @@ export default function WineFestivalPage() {
                 >
                   <div className="absolute inset-0 overflow-hidden rounded-3xl">
                     <video
-                      src="/media/testimonials/video-5.mp4"
+                      src="/media/testimonials/video-5.mp4#t=0.2"
                       className="w-full object-cover"
                       style={{ height: "130%", objectPosition: "center top" }}
                       preload="metadata"

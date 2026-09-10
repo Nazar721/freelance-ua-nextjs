@@ -105,12 +105,12 @@ export default function Header() {
     <header
       className="fixed top-3 left-3 right-3 z-50 md:top-4 md:left-4 md:right-4"
     >
-      <div className={`mx-auto max-w-7xl py-3 px-5 flex items-center justify-between rounded-2xl transition-all duration-300 ${
+      <div className={`mx-auto max-w-[1400px] gap-6 py-3 px-5 flex items-center justify-between rounded-2xl transition-all duration-300 ${
         scrolled
           ? "bg-background/85 backdrop-blur-xl border border-border shadow-[0_8px_40px_rgba(0,0,0,0.3)]"
           : "bg-surface/60 backdrop-blur-md border border-border/20"
       }`}>
-        <div className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <Image
             src="/media/logo.jpg"
             alt="Freelance UA"
@@ -123,17 +123,17 @@ export default function Header() {
             <span className="block whitespace-nowrap">Freelance UA</span>
             <span className="block whitespace-nowrap text-accent">Digital Agency</span>
           </span>
-        </div>
+        </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden xl:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-8 lg:gap-6">
           {navKeys.map((key, i) => {
             const active = isActive(navHrefs[i]);
             return (
               <button
                 key={navHrefs[i]}
                 onClick={() => handleNavClick(navHrefs[i])}
-                className={`group relative cursor-pointer transition-colors duration-200 text-sm font-medium ${
+                className={`group relative cursor-pointer transition-colors duration-200 text-sm font-medium whitespace-nowrap ${
                   active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -148,7 +148,7 @@ export default function Header() {
           })}
           <Link
             href="/partners"
-            className={`group relative transition-colors duration-200 text-sm font-medium ${
+            className={`group relative transition-colors duration-200 text-sm font-medium whitespace-nowrap ${
               pathname === "/partners" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -161,16 +161,15 @@ export default function Header() {
           </Link>
         </nav>
 
-        <div className="hidden xl:flex items-center gap-3">
+        <div className="hidden xl:flex items-center gap-4">
           <ThemeToggle />
-          <div className="mr-2">
-            <LanguageToggle />
-          </div>
+          <LanguageToggle />
+          <div className="w-px h-6 bg-border mx-1" />
           <a
             href={siteConfig.telegram.consultationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="magnetic-button flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-full transition-colors duration-200 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)]"
+            className="magnetic-button flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground text-sm font-semibold px-4 py-2 rounded-full transition-colors duration-200 hover:shadow-[0_0_30px_rgba(99,102,241,0.36)] whitespace-nowrap"
           >
             {t("header.write")}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

@@ -121,7 +121,7 @@ export default function ValeriiaTrendReelsPage() {
                   onClick={() => openFullscreen("/media/cases/valeriia-trend-reels/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/valeriia-trend-reels/hero.mp4"
+                    src="/media/cases/valeriia-trend-reels/hero.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

@@ -122,7 +122,7 @@ export default function VtikhaPromoPage() {
                   onClick={() => openFullscreen("/media/cases/vtikha-promo/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/vtikha-promo/hero.mp4"
+                    src="/media/cases/vtikha-promo/hero.mp4#t=0.2"
                     poster="/media/cases/vtikha-promo/hero-poster.jpg"
                     className="w-full h-full object-cover"
                     muted

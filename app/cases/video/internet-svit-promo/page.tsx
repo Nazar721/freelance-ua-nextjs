@@ -116,7 +116,7 @@ export default function InternetSvitPromoPage() {
                   onClick={() => openFullscreen("/media/cases/internet-svit-promo/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/internet-svit-promo/hero.mp4"
+                    src="/media/cases/internet-svit-promo/hero.mp4#t=0.2"
                     poster="/media/cases/internet-svit-promo/hero-poster.jpg"
                     className="w-full h-full object-cover max-h-[560px]"
                     muted

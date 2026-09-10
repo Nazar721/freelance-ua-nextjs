@@ -186,11 +186,9 @@ export default function BecomePartnerSection() {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         const a = isLight ? Math.min(p.alpha, 0.25) : p.alpha;
-        ctx.fillStyle = isLight
-          ? `rgba(99,102,241,${a})`
-          : `rgba(74,222,128,${a})`;
+        ctx.fillStyle = `rgba(74,222,128,${a})`;
         ctx.shadowBlur = isLight ? 3 : 6;
-        ctx.shadowColor = isLight ? "#6366F1" : "#4ade80";
+        ctx.shadowColor = "#4ade80";
         ctx.fill();
         ctx.shadowBlur = 0;
       });
@@ -436,13 +434,10 @@ export default function BecomePartnerSection() {
                 ease: "back.out(2)",
               }
             );
-            const isLight = document.documentElement.dataset.theme === "light";
-            const glowColor = isLight ? "0 0 16px rgba(99,102,241,0.5)" : "0 0 16px rgba(74,222,128,0.6)";
-            label.style.boxShadow = `${glowColor}, 0 0 32px ${glowColor.replace("0 0 16px ", "")}`;
+            const glowColor = "0 0 16px rgba(74,222,128,0.6)";
+            label.style.boxShadow = `${glowColor}, 0 0 32px rgba(74,222,128,0.4)`;
             gsap.to(label, {
-              boxShadow: isLight
-                ? "0 0 8px rgba(99,102,241,0.15)"
-                : "0 0 8px rgba(74,222,128,0.2)",
+              boxShadow: "0 0 8px rgba(74,222,128,0.2)",
               duration: 0.3,
               delay: 0.2,
               ease: "power2.out",
@@ -575,13 +570,13 @@ export default function BecomePartnerSection() {
           >
             <defs>
               <linearGradient id="green-area-m" x1="0" y1="1" x2="0" y2="0">
-                <stop offset="0%" stopColor={theme === "light" ? "#6366F1" : "#4ade80"} stopOpacity="0.01" />
-                <stop offset="100%" stopColor={theme === "light" ? "#6366F1" : "#4ade80"} stopOpacity="0.25" />
+                <stop offset="0%" stopColor="#4ade80" stopOpacity="0.01" />
+                <stop offset="100%" stopColor="#4ade80" stopOpacity="0.25" />
               </linearGradient>
               <linearGradient id="green-line-m" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor={theme === "light" ? "#818CF8" : "#22c55e"} stopOpacity="0.4" />
-                <stop offset="40%" stopColor={theme === "light" ? "#6366F1" : "#4ade80"} stopOpacity="0.9" />
-                <stop offset="100%" stopColor={theme === "light" ? "#818CF8" : "#86efac"} stopOpacity="1" />
+                <stop offset="0%" stopColor="#22c55e" stopOpacity="0.4" />
+                <stop offset="40%" stopColor="#4ade80" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#86efac" stopOpacity="1" />
               </linearGradient>
               <filter id="gm">
                 <feGaussianBlur stdDeviation="3" result="b"/>
@@ -591,7 +586,7 @@ export default function BecomePartnerSection() {
             {/* Faint grid */}
             {[80, 160, 240, 320].map((y) => (
               <line key={y} x1="0" y1={y} x2="800" y2={y}
-                stroke={theme === "light" ? "rgba(99,102,241,0.05)" : "rgba(74,222,128,0.05)"}
+                stroke={theme === "light" ? "rgba(34,197,94,0.05)" : "rgba(74,222,128,0.05)"}
                 strokeWidth="1" />
             ))}
             {/* Wavy area fill */}
@@ -626,7 +621,7 @@ export default function BecomePartnerSection() {
               filter="url(#gm)"
             />
             {/* End dot */}
-            <circle cx="800" cy="60" r="5" fill={theme === "light" ? "#6366F1" : "#4ade80"} opacity="0.9" />
+            <circle cx="800" cy="60" r="5" fill="#4ade80" opacity="0.9" />
           </svg>
         </div>
 
@@ -637,12 +632,8 @@ export default function BecomePartnerSection() {
         >
           <div
             style={{
-              background: theme === "light"
-                ? "rgba(99,102,241,0.15)"
-                : "rgba(74,222,128,0.12)",
-              border: theme === "light"
-                ? "1px solid rgba(99,102,241,0.3)"
-                : "1px solid rgba(74,222,128,0.25)",
+              background: "rgba(74,222,128,0.12)",
+              border: "1px solid rgba(74,222,128,0.25)",
               borderRadius: "9999px",
               padding: "5px 12px",
               backdropFilter: "blur(6px)",
@@ -651,7 +642,7 @@ export default function BecomePartnerSection() {
           >
             <span
               style={{
-                color: theme === "light" ? "#6366F1" : "#4ade80",
+                color: "#4ade80",
                 fontSize: "12px",
                 fontWeight: 600,
                 whiteSpace: "nowrap",
@@ -668,12 +659,8 @@ export default function BecomePartnerSection() {
         >
           <div
             style={{
-              background: theme === "light"
-                ? "rgba(99,102,241,0.1)"
-                : "rgba(74,222,128,0.08)",
-              border: theme === "light"
-                ? "1px solid rgba(99,102,241,0.2)"
-                : "1px solid rgba(74,222,128,0.18)",
+              background: "rgba(74,222,128,0.08)",
+              border: "1px solid rgba(74,222,128,0.18)",
               borderRadius: "9999px",
               padding: "4px 10px",
               backdropFilter: "blur(6px)",
@@ -682,7 +669,7 @@ export default function BecomePartnerSection() {
           >
             <span
               style={{
-                color: theme === "light" ? "#6366F1" : "#4ade80",
+                color: "#4ade80",
                 fontSize: "11px",
                 fontWeight: 600,
                 whiteSpace: "nowrap",
@@ -717,9 +704,7 @@ export default function BecomePartnerSection() {
             style={{
               fontSize: "clamp(30px, 9vw, 44px)",
               fontVariantNumeric: "tabular-nums",
-              textShadow: theme === "light"
-                ? "0 0 30px rgba(99,102,241,0.15)"
-                : "0 0 40px rgba(74,222,128,0.3)",
+              textShadow: "0 0 40px rgba(74,222,128,0.3)",
             }}
           >
             {fmt(clients * RATE_PER_CLIENT)}
@@ -864,7 +849,7 @@ export default function BecomePartnerSection() {
               ref={ghostPathRef}
               d={GROWTH_PATH}
               fill="none"
-              stroke={theme === "light" ? "rgba(99,102,241,0.12)" : "rgba(74,222,128,0.1)"}
+              stroke="rgba(74,222,128,0.1)"
               strokeWidth="3"
               strokeLinecap="round"
               strokeDasharray="12 18"
@@ -963,9 +948,7 @@ export default function BecomePartnerSection() {
               style={{
                 fontVariantNumeric: "tabular-nums",
                 fontSize: "clamp(30px, 5vw, 44px)",
-                textShadow: theme === "light"
-                  ? "0 0 30px rgba(99,102,241,0.15)"
-                  : "0 0 40px rgba(74,222,128,0.3), 0 0 80px rgba(74,222,128,0.15)",
+                  textShadow: "0 0 40px rgba(74,222,128,0.3), 0 0 80px rgba(74,222,128,0.15)",
               }}
             >
               {fmt(clients * RATE_PER_CLIENT)}

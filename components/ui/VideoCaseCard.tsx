@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslation } from "@/lib/LanguageContext";
+import { withPosterFrame } from "@/lib/video";
 
 /* Mouse-follow glow/parallax is a desktop-only affordance. Touch taps fire
    synthetic mouse events (iOS sticky hover) that would shift the media — so
@@ -83,6 +84,9 @@ export default function VideoCaseCard({
   }, [mouseX, mouseY]);
 
   const isPlaceholder = !href;
+  // With a poster Safari shows it; without one Safari paints nothing for
+  // preload="metadata" — the media fragment forces the first frame out.
+  const previewSrc = poster ? video : withPosterFrame(video);
 
   const boostedGlow = glowColor.replace(/[\d.]+\)$/, (m) => `${Math.min(parseFloat(m) * 1.8, 0.7)} )`);
   const boostedGlowStrong = glowColorStrong.replace(/[\d.]+\)$/, (m) => `${Math.min(parseFloat(m) * 1.8, 0.8)} )`);
@@ -121,7 +125,7 @@ export default function VideoCaseCard({
             {href ? (
               <Link href={href} className="block w-full h-full">
                 <video
-                  src={video}
+                  src={previewSrc}
                   poster={poster}
                   className="w-full h-full object-cover object-top"
                   style={{ objectPosition: "center 30%" }}
@@ -140,7 +144,7 @@ export default function VideoCaseCard({
             ) : (
               <>
                 <video
-                  src={video}
+                  src={previewSrc}
                   poster={poster}
                   className="w-full h-full object-cover object-top"
                   style={{ objectPosition: "center 30%" }}

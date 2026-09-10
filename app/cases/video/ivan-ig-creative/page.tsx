@@ -122,7 +122,7 @@ export default function IvanIgCreativePage() {
                   onClick={() => openFullscreen("/media/cases/ivan-ig-creative/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/ivan-ig-creative/hero.mp4"
+                    src="/media/cases/ivan-ig-creative/hero.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"
@@ -149,7 +149,7 @@ export default function IvanIgCreativePage() {
                   onClick={() => openFullscreen("/media/cases/ivan-ig-creative/process-1.mp4")}
                 >
                   <video
-                    src="/media/cases/ivan-ig-creative/process-1.mp4"
+                    src="/media/cases/ivan-ig-creative/process-1.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

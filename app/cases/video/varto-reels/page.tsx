@@ -142,7 +142,7 @@ export default function VartoReelsPage() {
                   onClick={() => openFullscreen("/media/cases/varto-reels/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/varto-reels/hero.mp4"
+                    src="/media/cases/varto-reels/hero.mp4#t=0.2"
                     poster="/media/cases/varto-reels/hero-poster.jpg"
                     className="w-full h-full object-cover"
                     muted

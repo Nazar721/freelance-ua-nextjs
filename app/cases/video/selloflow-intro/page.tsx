@@ -117,7 +117,7 @@ export default function SelloflowIntroPage() {
                   onClick={() => openFullscreen("/media/cases/selloflow-intro/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/selloflow-intro/hero.mp4"
+                    src="/media/cases/selloflow-intro/hero.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

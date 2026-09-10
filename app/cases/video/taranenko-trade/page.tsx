@@ -120,7 +120,7 @@ export default function TaranenkoTradePage() {
                   onClick={() => openFullscreen("/media/cases/taranenko-trade/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/taranenko-trade/hero.mp4"
+                    src="/media/cases/taranenko-trade/hero.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

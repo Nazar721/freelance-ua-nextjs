@@ -121,7 +121,7 @@ export default function AiVideoNewPage() {
                   onClick={() => openFullscreen("/media/cases/ai-video-new/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/ai-video-new/hero.mp4"
+                    src="/media/cases/ai-video-new/hero.mp4#t=0.2"
                     poster="/media/cases/ai-video-new/preview.webp"
                     className="w-full h-full object-cover"
                     muted

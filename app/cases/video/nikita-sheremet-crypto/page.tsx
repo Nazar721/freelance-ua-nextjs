@@ -39,6 +39,7 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import CurvedDashedLines from "@/components/ui/CurvedDashedLines";
 import ReviewAvatar from "@/components/ui/ReviewAvatar";
 import { useTranslation } from "@/lib/LanguageContext";
+import { withPosterFrame } from "@/lib/video";
 import RelatedProjectsSection from "@/components/sections/RelatedProjectsSection";
 
 const resultItems = [
@@ -148,7 +149,7 @@ export default function NikitaSheremetPage() {
                     onClick={() => openFullscreen(src)}
                   >
                     <video
-                      src={src}
+                      src={withPosterFrame(src)}
                       className="w-full h-full object-cover"
                       muted
                       preload="metadata"

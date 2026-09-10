@@ -123,7 +123,7 @@ export default function VeronikaAiMusclesPage() {
                   onClick={() => openFullscreen("/media/cases/veronika-ai-muscles/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/veronika-ai-muscles/hero.mp4"
+                    src="/media/cases/veronika-ai-muscles/hero.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"
@@ -150,7 +150,7 @@ export default function VeronikaAiMusclesPage() {
                   onClick={() => openFullscreen("/media/cases/veronika-ai-muscles/video2.mp4")}
                 >
                   <video
-                    src="/media/cases/veronika-ai-muscles/video2.mp4"
+                    src="/media/cases/veronika-ai-muscles/video2.mp4#t=0.2"
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"

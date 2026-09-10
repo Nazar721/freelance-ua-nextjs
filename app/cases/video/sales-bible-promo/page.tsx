@@ -115,7 +115,7 @@ export default function SalesBiblePromoPage() {
                   onClick={() => openFullscreen("/media/cases/sales-bible-promo/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/sales-bible-promo/hero.mp4"
+                    src="/media/cases/sales-bible-promo/hero.mp4#t=0.2"
                     poster="/media/cases/sales-bible-promo/hero-poster.jpg"
                     className="w-full h-full object-cover"
                     muted

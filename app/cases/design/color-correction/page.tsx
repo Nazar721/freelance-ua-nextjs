@@ -121,7 +121,7 @@ export default function ColorCorrectionPage() {
                   onClick={() => openFullscreen("/media/cases/color-correction/video.mp4")}
                 >
                   <video
-                    src="/media/cases/color-correction/video.mp4"
+                    src="/media/cases/color-correction/video.mp4#t=0.2"
                     poster="/media/cases/color-correction/poster.jpg"
                     className="w-full h-full object-cover"
                     muted

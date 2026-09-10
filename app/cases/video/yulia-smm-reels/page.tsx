@@ -117,7 +117,7 @@ export default function YuliaSmmReelsPage() {
                   onClick={() => openFullscreen("/media/cases/yulia-smm-reels/hero.mp4")}
                 >
                   <video
-                    src="/media/cases/yulia-smm-reels/hero.mp4"
+                    src="/media/cases/yulia-smm-reels/hero.mp4#t=0.2"
                     poster="/media/cases/yulia-smm-reels/hero-poster.jpg"
                     className="w-full h-full object-cover"
                     muted
