@@ -708,6 +708,10 @@ function StackRailInner({
           const allSections = Array.from(document.querySelectorAll<HTMLElement>("section"));
           const resultsIdx = allSections.indexOf(resultsSection);
 
+          console.log("[StackRail] resultsIdx:", resultsIdx, "total:", allSections.length, "h2s:", allSections.map((s,i) => `${i}:${(s.querySelector("h2")?.textContent||"?").trim().slice(0,30)}`).join(" | "));
+
+
+
           // Start: section before Results (Challenge/Solution or Finals)
           let startSection: HTMLElement | null = null;
           if (resultsIdx > 0) {
@@ -720,13 +724,21 @@ function StackRailInner({
             const s = allSections[i];
             const h2s = s.querySelectorAll("h2");
             for (const h2 of h2s) {
-              if ((h2.textContent || "").trim().toLowerCase().includes("розпочати")) {
+              const txt = (h2.textContent || "").trim().toLowerCase();
+              if (txt.includes("розпочати") || txt.includes("готові")) {
                 endSection = s;
                 break;
               }
             }
+            if (!endSection) {
+              const links = s.querySelectorAll("a[href*='telegram']");
+              if (links.length > 0) {
+                endSection = s;
+              }
+            }
             if (endSection) break;
           }
+
           // Fallback: 2 sections after Results
           if (!endSection && resultsIdx + 2 < allSections.length) {
             endSection = allSections[resultsIdx + 2];

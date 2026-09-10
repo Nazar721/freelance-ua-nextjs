@@ -190,6 +190,17 @@ export const designCases: CaseEntry[] = [
     image: "/media/cases/pink-pr-flyers/pink-pr-flyers-preview.webp",
   },
   {
+    slug: "globus-billboard",
+    category: "branding",
+    categoryKey: "designCases.globusBillboard.category",
+    titleKey: "designCases.globusBillboard.title",
+    descriptionKey: "designCases.globusBillboard.shortDesc",
+    href: "/cases/design/globus-billboard",
+    glowColor: "rgba(59, 130, 246, 0.12)",
+    glowColorStrong: "rgba(37, 99, 235, 0.28)",
+    image: "/media/cases/globus-billboard/globus-preview.webp",
+  },
+  {
     slug: "photo-retouch",
     category: "photo-retouch",
     categoryKey: "designCases.photoRetouch.category",
