@@ -533,26 +533,6 @@ export default function BecomePartnerSection() {
     }
   }, [clients]);
 
-  useEffect(() => {
-    const el = ctaPanelRef.current;
-    if (!el) return;
-    function onMove(e: MouseEvent) {
-      const rect = el!.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      el!.style.transform = `perspective(600px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) scale(1.01)`;
-    }
-    function onLeave() {
-      el!.style.transform = "perspective(600px) rotateY(0deg) rotateX(0deg) scale(1)";
-    }
-    el.addEventListener("mousemove", onMove);
-    el.addEventListener("mouseleave", onLeave);
-    return () => {
-      el.removeEventListener("mousemove", onMove);
-      el.removeEventListener("mouseleave", onLeave);
-    };
-  }, []);
-
   // Mobile: static, lightweight layout — no 300vh scroll-jack, no canvas
   // particles, no per-frame chart transform. Same content, theme-aware.
   if (isMobile) {
@@ -1014,6 +994,9 @@ export default function BecomePartnerSection() {
               className="pointer-events-auto bp-partner-cta inline-flex items-center justify-center gap-2.5 text-white font-semibold rounded-full text-sm w-full"
               style={{ padding: "13px 26px" }}
             >
+              <span className="bp-cta-coin bp-cta-coin--1" aria-hidden="true">+₴</span>
+              <span className="bp-cta-coin bp-cta-coin--2" aria-hidden="true">+₴</span>
+              <span className="bp-cta-coin bp-cta-coin--3" aria-hidden="true">+₴</span>
               Стати партнером →
             </Link>
           </div>
