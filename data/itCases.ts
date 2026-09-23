@@ -236,4 +236,16 @@ export const itCases: CaseEntry[] = [
     imageFit: "contain",
     itCategory: "saas-telegram",
   },
+  {
+    slug: "stretching-ch",
+    categoryKey: "itCases.stretchingCh.category",
+    titleKey: "itCases.stretchingCh.title",
+    descriptionKey: "itCases.stretchingCh.shortDesc",
+    href: "/cases/it/stretching-ch",
+    glowColor: "rgba(168, 85, 247, 0.12)",
+    glowColorStrong: "rgba(168, 85, 247, 0.25)",
+    image: "/media/cases/stretching-ch-mocap.png?v=2",
+    imageFit: "contain",
+    itCategory: "saas-telegram",
+  },
 ];

@@ -378,6 +378,15 @@ const allCases: RelatedCase[] = [
     section: "video",
   },
   {
+    slug: "twin-a-auto",
+    categoryKey: "videoCases.twinAAuto.category",
+    titleKey: "videoCases.twinAAuto.title",
+    descriptionKey: "videoCases.twinAAuto.shortDesc",
+    href: "/cases/video/twin-a-auto",
+    image: "/media/cases/twin-a-auto/hero-poster.jpg",
+    section: "video",
+  },
+  {
     slug: "cuprus-life",
     categoryKey: "videoCases.cuprusLife.category",
     titleKey: "videoCases.cuprusLife.title",
