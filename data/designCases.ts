@@ -2,6 +2,17 @@ import type { CaseEntry } from "./types";
 
 export const designCases: CaseEntry[] = [
   {
+    slug: "moto-school-window-branding",
+    category: "branding",
+    categoryKey: "designCases.motoSchoolWindowBranding.categoryShort",
+    titleKey: "designCases.motoSchoolWindowBranding.title",
+    descriptionKey: "designCases.motoSchoolWindowBranding.shortDesc",
+    href: "/cases/design/moto-school-window-branding",
+    glowColor: "rgba(239, 68, 68, 0.12)",
+    glowColorStrong: "rgba(132, 204, 22, 0.28)",
+    image: "/media/cases/moto-school-window-branding/moto-school-artwork.webp",
+  },
+  {
     slug: "hope-media-group",
     category: "branding",
     categoryKey: "designCases.hopeMedia.category",
@@ -260,4 +271,3 @@ export const designCases: CaseEntry[] = [
     image: "/media/cases/color-correction/poster.jpg",
   },
 ];
-

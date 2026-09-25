@@ -248,4 +248,16 @@ export const itCases: CaseEntry[] = [
     imageFit: "contain",
     itCategory: "saas-telegram",
   },
+  {
+    slug: "kroscar-detailing",
+    categoryKey: "itCases.kroscarDetailing.category",
+    titleKey: "itCases.kroscarDetailing.title",
+    descriptionKey: "itCases.kroscarDetailing.shortDesc",
+    href: "/cases/it/kroscar-detailing",
+    glowColor: "rgba(6, 182, 212, 0.12)",
+    glowColorStrong: "rgba(6, 182, 212, 0.25)",
+    image: "/media/cases/kroscar-detailing-mocap.png",
+    imageFit: "contain",
+    itCategory: "landing",
+  },
 ];

@@ -18,6 +18,15 @@ interface RelatedCase {
 
 const allCases: RelatedCase[] = [
   {
+    slug: "moto-school-window-branding",
+    categoryKey: "designCases.motoSchoolWindowBranding.categoryShort",
+    titleKey: "designCases.motoSchoolWindowBranding.title",
+    descriptionKey: "designCases.motoSchoolWindowBranding.shortDesc",
+    href: "/cases/design/moto-school-window-branding",
+    image: "/media/cases/moto-school-window-branding/moto-school-artwork.webp",
+    section: "design",
+  },
+  {
     slug: "hope-media-group",
     categoryKey: "designCases.hopeMedia.category",
     titleKey: "designCases.hopeMedia.title",

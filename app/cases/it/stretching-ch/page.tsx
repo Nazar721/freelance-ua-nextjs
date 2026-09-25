@@ -180,7 +180,7 @@ export default function StretchingChPage() {
         <section className="py-8 px-4">
           <div className="max-w-4xl mx-auto">
             <p className="text-xs text-muted-foreground/60 mb-1">{t("itCases.projectTeam")}</p>
-            <p className="text-sm text-muted-foreground">{t("itCases.team.nazarDeveloper")}</p>
+            <p className="text-sm text-muted-foreground">{t("itCases.team.andriiDeveloper")}</p>
           </div>
         </section>
 
