@@ -105,10 +105,8 @@ export default function Header() {
     <header
       className="fixed top-3 left-3 right-3 z-50 md:top-4 md:left-4 md:right-4"
     >
-      <div className={`mx-auto max-w-[1400px] gap-6 py-3 px-5 flex items-center justify-between rounded-2xl transition-all duration-300 ${
-        scrolled
-          ? "bg-background/85 backdrop-blur-xl border border-border shadow-[0_8px_40px_rgba(0,0,0,0.3)]"
-          : "bg-surface/60 backdrop-blur-md border border-border/20"
+      <div className={`glass-header mx-auto max-w-[1400px] gap-6 py-3 px-5 flex items-center justify-between rounded-2xl transition-all duration-300 ${
+        scrolled ? "glass-header-scrolled" : ""
       }`}>
         <Link href="/" className="flex items-center gap-3">
           <Image
