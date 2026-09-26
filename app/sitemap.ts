@@ -43,6 +43,8 @@ const casePaths = [
   "/cases/design/photo-retouch",
   "/cases/design/nastya-portrait-retouch",
   "/cases/video/nikita-sheremet-crypto",
+  "/cases/video/serhii-yarmolenko-reels",
+  "/cases/video/serhii-yarmolenko-video-lesson",
   "/cases/video/eva-code-reels",
   "/cases/video/dominanta-youtube-intro",
   "/cases/video/vtikha-promo",
@@ -91,6 +93,7 @@ const casePaths = [
   "/cases/video/ai-video-new",
   "/cases/video/maccoudi-youtube",
   "/cases/design/barvy-interior",
+  "/cases/video/barvy-interior-ai-reels",
   "/cases/design/color-correction",
 ];
 

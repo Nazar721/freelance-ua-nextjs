@@ -11,6 +11,10 @@ export const brands: Brand[] = [
 	{ name: 'AutoAmerica', logo: '/media/brands/tiktok_banner_autoamerica.jpg' },
 	{ name: 'Sheremet ETH', logo: '/media/brands/inst_banner_sheremet_eth.jpg' },
 	{
+		name: 'Сергій Ярмоленко (yarmolenko.biz)',
+		logo: '/media/cases/serhii-yarmolenko-reels/profile.webp',
+	},
+	{
 		name: 'Repair Collision PL (kolizjaoc.pl)',
 		logo: '/media/brands/repair_collision.jpg',
 	},
