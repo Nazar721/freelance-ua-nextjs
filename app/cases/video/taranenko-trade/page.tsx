@@ -117,13 +117,14 @@ export default function TaranenkoTradePage() {
               <div className="max-w-3xl mx-auto">
                 <div
                   className="relative rounded-xl overflow-hidden bg-background aspect-video cursor-pointer group/thumb"
-                  onClick={() => openFullscreen("/media/cases/taranenko-trade/hero.mp4")}
+                  onClick={() => openFullscreen("/media/cases/taranenko-trade/hero-full.mp4")}
                 >
                   <video
                     src="/media/cases/taranenko-trade/hero.mp4#t=0.2"
+                    poster="/media/cases/taranenko-trade/hero-poster.jpg"
                     className="w-full h-full object-cover"
                     muted
-                    preload="metadata"
+                    preload="none"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/20 group-hover/thumb:from-black/70 group-hover/thumb:via-black/20 group-hover/thumb:to-black/30 transition-all duration-300" />
                   <div className="absolute top-3 right-3 flex gap-1.5">
@@ -291,10 +292,12 @@ export default function TaranenkoTradePage() {
           </button>
           <video
             src={fullscreenVideo}
+            poster="/media/cases/taranenko-trade/hero-poster.jpg"
             className="w-full h-full max-w-4xl max-h-[90vh] object-contain rounded-xl"
             controls
             autoPlay
             playsInline
+            preload="metadata"
             onClick={(e) => e.stopPropagation()}
           />
         </div>

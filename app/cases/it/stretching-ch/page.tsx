@@ -68,7 +68,7 @@ export default function StretchingChPage() {
           <div className="featured-case-card border border-border rounded-2xl relative overflow-hidden" style={{ "--case-glow": "rgba(168, 85, 247, 0.12)", "--case-glow-strong": "rgba(168, 85, 247, 0.25)" } as React.CSSProperties}>
             <div className="overflow-hidden rounded-2xl">
               <motion.div className="w-full max-w-3xl mx-auto py-8 px-4" style={{ scale: mockupScale, y: mockupY, opacity: mockupOpacity, rotateX: mockupRotateX, perspective: 1200 }}>
-                <Image src="/media/cases/stretching-ch-mocap.png?v=2" alt={t("itCases.stretchingCh.title")} width={1200} height={675} className="w-full h-auto object-contain rounded-xl" draggable={false} priority />
+                <Image src="/media/cases/stretching-ch-mocap.webp?v=2" alt={t("itCases.stretchingCh.title")} width={1200} height={675} className="w-full h-auto object-contain rounded-xl" draggable={false} priority />
               </motion.div>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function StretchingChPage() {
                 <h3 className="text-xl font-bold text-foreground mb-3">{t("itCases.stretchingCh.component1Title")}</h3>
                 <p className="text-muted-foreground leading-relaxed mb-6">{t("itCases.stretchingCh.component1Desc")}</p>
                 <div className="flex justify-center">
-                  <Image src="/media/cases/stretching-ch-mocap.png?v=2" alt={t("itCases.stretchingCh.component1Title")} width={800} height={450} className="w-full max-w-2xl h-auto object-contain rounded-xl" />
+                  <Image src="/media/cases/stretching-ch-mocap.webp?v=2" alt={t("itCases.stretchingCh.component1Title")} width={800} height={450} className="w-full max-w-2xl h-auto object-contain rounded-xl" />
                 </div>
               </div>
             </FadeIn>

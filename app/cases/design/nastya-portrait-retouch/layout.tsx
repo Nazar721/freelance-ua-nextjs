@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ретуш портретів | Freelance UA",
     description: "Обробка портретних кадрів — кольорокорекція, ретуш шкіри та світла, робота з фоном для фінальної подачі кадрів.",
-    images: ["https://freelance-ua.agency/media/cases/nastya-portrait-retouch/final-1.jpg"],
+    images: ["https://freelance-ua.agency/media/cases/nastya-portrait-retouch/og-poster.jpg"],
   },
 };
 

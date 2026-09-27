@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI-аватари | Freelance UA",
     description: "Створення AI-аватарів — генерація унікальних персонажів за допомогою штучного інтелекту",
-    images: ["https://freelance-ua.agency/media/cases/ai-avatars/screenshot.webp"],
+    images: ["https://freelance-ua.agency/media/cases/ai-avatars/og-poster.jpg"],
   },
 };
 

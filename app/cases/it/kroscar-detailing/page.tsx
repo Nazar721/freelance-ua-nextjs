@@ -19,24 +19,24 @@ const components: { titleKey: string; descKey: string; images?: string[]; link?:
   {
     titleKey: "itCases.kroscarDetailing.component1Title",
     descKey: "itCases.kroscarDetailing.component1Desc",
-    images: ["/media/cases/kroscar-hero.webp"],
+    images: ["/media/cases/kroscar-hero.jpg"],
     link: "https://deteling.vercel.app",
     linkLabelKey: "itCases.kroscarDetailing.viewSiteLabel",
   },
   {
     titleKey: "itCases.kroscarDetailing.component2Title",
     descKey: "itCases.kroscarDetailing.component2Desc",
-    images: ["/media/cases/kroscar-services.webp"],
+    images: ["/media/cases/kroscar-services.jpg"],
   },
   {
     titleKey: "itCases.kroscarDetailing.component3Title",
     descKey: "itCases.kroscarDetailing.component3Desc",
-    images: ["/media/cases/kroscar-gallery.webp", "/media/cases/kroscar-before-after.webp"],
+    images: ["/media/cases/kroscar-gallery.jpg", "/media/cases/kroscar-before-after.jpg"],
   },
   {
     titleKey: "itCases.kroscarDetailing.component4Title",
     descKey: "itCases.kroscarDetailing.component4Desc",
-    images: ["/media/cases/kroscar-process.webp", "/media/cases/kroscar-reviews.webp", "/media/cases/kroscar-booking.webp"],
+    images: ["/media/cases/kroscar-process.jpg", "/media/cases/kroscar-reviews.jpg", "/media/cases/kroscar-booking.jpg"],
   },
 ];
 
@@ -135,7 +135,7 @@ export default function KroscarDetailingPage() {
               }}
             >
                 <Image
-                  src="/media/cases/kroscar-detailing-mocap.png"
+                  src="/media/cases/kroscar-detailing-mocap.webp"
                   alt={t("itCases.kroscarDetailing.title")}
                   width={1536}
                   height={1024}

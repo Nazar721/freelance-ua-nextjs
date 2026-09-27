@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Stretching.ch | Freelance UA",
     description: "Instagram DM бот для фітнес-тренерки: автоматичні відповіді на ключові слова, лідогенерація та конверсія в клієнтів.",
-    images: ["https://freelance-ua.agency/media/cases/stretching-ch-mocap.png"],
+    images: ["https://freelance-ua.agency/media/cases/stretching-ch-og.jpg"],
   },
 };
 

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI промо-відео | Freelance UA",
     description: "AI-згенероване промо-відео — динамічний контент для соціальних мереж",
-    images: ["https://freelance-ua.agency/media/cases/ai-city-promo/hero.mp4"],
+    images: ["https://freelance-ua.agency/media/cases/ai-city-promo/og-poster.jpg"],
   },
 };
 

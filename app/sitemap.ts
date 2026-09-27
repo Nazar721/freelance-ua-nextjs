@@ -95,6 +95,13 @@ const casePaths = [
   "/cases/design/barvy-interior",
   "/cases/video/barvy-interior-ai-reels",
   "/cases/design/color-correction",
+  "/cases/design/globus-billboard",
+  "/cases/it/kroscar-detailing",
+  "/cases/it/stretching-ch",
+  "/cases/video/dr-trichologist-promo",
+  "/cases/video/sestro-anniversary",
+  "/cases/video/travel-vlog-turkey",
+  "/cases/video/twin-a-auto",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -105,6 +112,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/cases`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/cases/it`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/cases/design`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/cases/video`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/partners`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ];
 

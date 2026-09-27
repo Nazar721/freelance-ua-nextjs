@@ -509,7 +509,7 @@ const allCases: RelatedCase[] = [
     titleKey: "videoCases.youtubeConversationalVideo.title",
     descriptionKey: "videoCases.youtubeConversationalVideo.shortDesc",
     href: "/cases/video/youtube-conversational-video",
-    image: "/media/cases/youtube-conversational-video/hero-poster.jpg",
+    image: "/media/cases/youtube-conversational-video/screenshot-1.jpg",
     section: "video",
   },
   {
@@ -527,7 +527,7 @@ const allCases: RelatedCase[] = [
     titleKey: "videoCases.taranenkoTrade.title",
     descriptionKey: "videoCases.taranenkoTrade.shortDesc",
     href: "/cases/video/taranenko-trade",
-    image: "/media/cases/taranenko-trade/screen-1.jpg",
+    image: "/media/cases/taranenko-trade/screen-01.jpg",
     section: "video",
   },
 ];

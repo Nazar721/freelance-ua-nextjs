@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "KROSCAR Detailing | Freelance UA",
     description: "Лендінг для детейлінг-студії KROSCAR (Львів) з записом онлайн, галереєю робіт, слайдером «до/після» та системою відгуків Google.",
-    images: ["https://freelance-ua.agency/media/cases/kroscar-detailing-mocap.png"],
+    images: ["https://freelance-ua.agency/media/cases/kroscar-detailing-og.jpg"],
   },
 };
 
