@@ -28,8 +28,11 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  // overflow-x-clip (not overflow-hidden): clips decorative bleed without
+  // creating a scroll container — overflow-hidden would break
+  // position: sticky on the testimonials stage.
   return (
-    <main className="relative isolate overflow-hidden">
+    <main className="relative isolate overflow-x-clip">
       <SiteBackdrop />
       <Header />
       <HeroSection />

@@ -3,10 +3,8 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { Play, Pause, X, ChevronRight, Quote, Video, MessageSquare, Maximize2 } from "lucide-react";
+import { Play, Pause, X, ChevronLeft, ChevronRight, Quote, Video, MessageSquare, Maximize2 } from "lucide-react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -14,10 +12,6 @@ import { withPosterFrame } from "@/lib/video";
 import ReviewAvatar from "@/components/ui/ReviewAvatar";
 import { useTranslation } from "@/lib/LanguageContext";
 import type { Testimonial } from "@/types";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(useGSAP, ScrollTrigger);
-}
 
 /* ─── Emoji reactions (decorative, derived from id) ─── */
 
@@ -611,10 +605,18 @@ function TestimonialModal({
 export default function TestimonialsSection() {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  /* Example-style slider state: `target` is where the row wants to be (px),
+     `current` eases toward it every frame in rAF. The wheel, the drag and the
+     arrows all write into `target`, so every input stays in sync. */
+  const target = useRef(0);
+  const current = useRef(0);
+  const dragged = useRef(false); // true once a drag passed the click threshold
+  const navRef = useRef<{ goBy: (delta: number) => void } | null>(null);
   const [originRect, setOriginRect] = useState<DOMRect | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
   const [openItem, setOpenItem] = useState<Testimonial | null>(null);
@@ -632,109 +634,266 @@ export default function TestimonialsSection() {
   const items = useMemo(() => testimonials, []);
   const total = items.length;
 
-  useGSAP(
-    () => {
-      if (reducedMotion) return;
-      const stage = stageRef.current;
-      if (!stage) return;
-      const cards = cardRefs.current.filter(Boolean) as HTMLElement[];
-      if (cards.length < 2) {
-        const retry = setTimeout(() => {
-          const retryCards = cardRefs.current.filter(Boolean) as HTMLElement[];
-          if (retryCards.length >= 2) {
-            gsap.set(retryCards, { xPercent: -50, yPercent: -50 });
-          }
-        }, 200);
-        return () => clearTimeout(retry);
+  /* ── Example-style reviews slider (rAF inertia, sticky scroll-scrub + drag) ──
+     Movement math is 1:1 with the SmoothScrollSlider example: cards are
+     absolutely positioned every frame, `current` eases toward `target`, and
+     the scale/dim depends on the signed distance from the viewport centre —
+     cards on one side grow and push outward, cards on the other shrink and
+     dim. The row is FINITE (no wrap): the first review starts centred and the
+     last one ends centred.
+
+     Scroll choreography: the stage is CSS-sticky inside a tall wrapper. While
+     the wrapper scrolls through its extra height, page scroll drives the row
+     (scroll-scrub) — ALL reviews play through one by one. Only after the last
+     review is centred does the stage unstick and the page continue to the
+     next sections. The wheel is never consumed — Lenis scrolls the page
+     normally the whole time; there is no scroll trap. Drag and the arrows
+     still write `target` directly for precise control. ── */
+  useEffect(() => {
+    if (reducedMotion) return;
+    const stage = stageRef.current;
+    if (!stage) return;
+
+    const GAP = 32; // horizontal gap between cards (px)
+    const MAX_SCALE = 2.5; // grow cap on the "future" side (as in the example)
+    const MIN_SCALE = 0.1; // shrink floor on the "passed" side
+    const DIM = 0.85; // how dark the shrunk cards get
+    const SMOOTHNESS = 6; // 0..10 → ease 0.072; higher = lazier catch-up
+    const SENSITIVITY = 5; // 0..10 → drag ×1.5 (as in the example)
+    const ease = 0.15 - (SMOOTHNESS / 10) * 0.13;
+    const dragMultiplier = 0.6 + (SENSITIVITY / 10) * 1.8;
+    /* Page-scroll px consumed per review transition during the sticky phase.
+       180 ≈ a third of a wheel-flick per review — all 23 play through in
+       ~4000px of scroll, then the page continues. Lower = slower scrub. */
+    const SCROLL_PX_PER_CARD = 180;
+    /* Direction flip: with `flip` the strip glides RIGHT, the next reviews
+       enter from the LEFT and grow on that side — the mirror of the example's
+       default. Flip this one value to restore the example's direction. */
+    const flip = true;
+
+    let width = 0;
+    let cardWidth = 0;
+    let step = 0;
+    let count = 0;
+    let maxPos = 0; // px at which the LAST card sits centred
+    let scrubFactor = 1; // slider px per page-scroll px (set in measure)
+    let raf = 0;
+    let last = 0;
+    let inView = true;
+
+    const cards = () => cardRefs.current.filter(Boolean) as HTMLElement[];
+    const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
+
+    const measure = () => {
+      width = stage.getBoundingClientRect().width;
+      const first = cardRefs.current.find(Boolean) as HTMLElement | undefined;
+      cardWidth = first ? first.offsetWidth : 0;
+      step = cardWidth + GAP;
+      count = cards().length;
+      maxPos = Math.max(0, (count - 1) * step);
+      target.current = clamp(target.current, 0, maxPos);
+      current.current = clamp(current.current, 0, maxPos);
+      /* Sticky wrapper: stage height + enough scroll for every transition,
+         so scrubbing the wrapper plays the whole row before the page moves on. */
+      const stageH = stage.offsetHeight;
+      const extra = Math.max(0, count - 1) * SCROLL_PX_PER_CARD;
+      if (wrapRef.current) wrapRef.current.style.height = `${stageH + extra}px`;
+      scrubFactor = step > 0 && SCROLL_PX_PER_CARD > 0 ? step / SCROLL_PX_PER_CARD : 1;
+    };
+
+    const tick = (now: number) => {
+      raf = requestAnimationFrame(tick);
+      if (!inView) return;
+      const delta = last ? Math.min((now - last) / 1000, 0.1) : 1 / 60;
+      last = now;
+      if (!count || step <= 0 || width <= 0) return;
+
+      target.current = clamp(target.current, 0, maxPos);
+
+      /* Ease current → target exactly like the example. */
+      const k = 1 - Math.pow(1 - ease, delta * 60);
+      current.current += (target.current - current.current) * k;
+      if (Math.abs(target.current - current.current) < 0.05) {
+        current.current = target.current;
       }
 
-      const n = cards.length;
-      const isMobile = window.innerWidth < 768;
+      const pad = (width - cardWidth) / 2;
+      const half = width / 2;
+      const list = cards();
 
-      /* slot geometry — must stay in sync with card width classes:
-         mobile: card 80vw / slot 86vw, desktop: card min(560px,46vw) / slot +28px */
-      const getSlotW = () =>
-        isMobile ? window.innerWidth * 0.86 : Math.min(640, window.innerWidth * 0.48 + 28);
+      let bestIdx = 0;
+      let bestDist = Infinity;
 
-      gsap.set(cards, { xPercent: -50, yPercent: -50 });
+      for (let i = 0; i < list.length; i += 1) {
+        const node = list[i];
+        /* Finite row: no wrap — position 0 centres the first card, maxPos the
+           last one, so the strip has a real beginning and a real end. */
+        const x = i * step - current.current + pad;
+        const distance = x + cardWidth / 2 - half;
 
-      const driver = { p: 0 };
+        /* The example's asymmetric scale: grow + push on the distance>0 side,
+           shrink + dim on the distance<0 side. */
+        let scale: number;
+        let push: number;
+        if (distance > 0) {
+          scale = Math.min(MAX_SCALE, 1 + distance / width);
+          push = (scale - 1) * cardWidth * 0.75;
+        } else {
+          scale = Math.max(MIN_SCALE, 1 + distance / width);
+          push = 0;
+        }
 
-      const render = () => {
-        const slotW = getSlotW();
-        const loopW = n * slotW;
-        const wrapX = gsap.utils.wrap(-loopW / 2, loopW / 2);
-        const offset = driver.p * loopW;
-        const fadeEnd = Math.max(isMobile ? 0.8 : 1.3, window.innerWidth / 2 / slotW - 0.05);
-        const fadeStart = isMobile ? 0.55 : 0.65;
+        const left = flip ? width - cardWidth - (x + push) : x + push;
+        node.style.transform = `translate3d(${left}px, -50%, 0) scale(${scale})`;
 
-        let bestIdx = 0;
-        let bestDist = Infinity;
+        if (scale < 1) {
+          const t = (1 - scale) / Math.max(0.001, 1 - MIN_SCALE);
+          node.style.filter = `brightness(${1 - t * DIM})`;
+        } else {
+          node.style.filter = "none";
+        }
+        /* Keep the centred card on top so it stays readable and clickable. */
+        node.style.zIndex = String(Math.max(0, 500 - Math.round(Math.abs(distance) / 4)));
 
-        cards.forEach((card, i) => {
-          const x = wrapX(i * slotW - offset);
-          const d = Math.abs(x) / slotW;
-          if (d < bestDist) {
-            bestDist = d;
-            bestIdx = i;
-          }
-          const fade = Math.max(
-            0,
-            Math.min(1, (d - fadeStart) / (fadeEnd - fadeStart))
-          );
-          gsap.set(card, {
-            x,
-            scale: 1 - Math.min(d, 1.2) * 0.07,
-            opacity: 1 - fade * fade,
-            zIndex: 40 - Math.round(d * 10),
-          });
-        });
-
-        setActiveIdx((prev) => (prev === bestIdx ? prev : bestIdx));
-      };
-
-      /* ── Same scroll-pinned animation on all devices ── */
-      gsap
-        .timeline({
-          defaults: { ease: "none" },
-          scrollTrigger: {
-            trigger: stage,
-            start: "top top",
-            end: () => `+=${Math.round(window.innerHeight * (isMobile ? 4 : 6))}`,
-            pin: true,
-            scrub: 2,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onUpdate: (self) => {
-              if (progressRef.current) {
-                gsap.set(progressRef.current, { scaleX: self.progress });
-              }
-            },
-          },
-        })
-        .to(driver, { p: 1, duration: 1, ease: "power1.inOut", onUpdate: render });
-
-      render();
-
-      if (glowRef.current) {
-        gsap.fromTo(
-          glowRef.current,
-          { yPercent: 10 },
-          {
-            yPercent: -10,
-            ease: "none",
-            scrollTrigger: {
-              trigger: stage,
-              start: "top top",
-              end: () => `+=${Math.round(window.innerHeight * (isMobile ? 4 : 6))}`,
-              scrub: true,
-            },
-          }
-        );
+        const d = Math.abs(distance);
+        if (d < bestDist) {
+          bestDist = d;
+          bestIdx = i;
+        }
       }
-    },
-    { scope: sectionRef, dependencies: [reducedMotion] }
-  );
+
+      setActiveIdx((prev) => (prev === bestIdx ? prev : bestIdx));
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${maxPos > 0 ? current.current / maxPos : 0})`;
+      }
+    };
+
+    /* Scroll-scrub + settle: while the stage is stuck, page scroll drives the
+       row with delta writes (no absolute mapping, so switching between scroll
+       and drag never jumps). Entering/leaving the wrapper only moves the
+       page — the reviews don't double-advance. After the scroll goes quiet,
+       glide the last bit onto the nearest card so the hero ends up centred. */
+    let pointer: number | null = null;
+    let prevScrollY = window.scrollY;
+    let settleTimer: ReturnType<typeof setTimeout> | undefined;
+    const scheduleSettle = () => {
+      if (settleTimer) clearTimeout(settleTimer);
+      settleTimer = setTimeout(() => {
+        if (step > 0) {
+          target.current = clamp(Math.round(target.current / step) * step, 0, maxPos);
+        }
+      }, 200);
+    };
+    const onScroll = () => {
+      const y = window.scrollY;
+      const d = y - prevScrollY;
+      prevScrollY = y;
+      /* While a card drag is in progress the drag owns `target`. */
+      if (!d || pointer !== null) return;
+      const wrap = wrapRef.current;
+      if (!wrap) return;
+      /* Sticky phase only: the wrapper has reached the top of the viewport
+         and still has extra height left below the stage. */
+      const rect = wrap.getBoundingClientRect();
+      const stageH = stage.offsetHeight;
+      const stuck = rect.top <= 1 && rect.bottom >= stageH - 1;
+      if (!stuck) return;
+      target.current = clamp(target.current + d * scrubFactor, 0, maxPos);
+      scheduleSettle();
+    };
+
+    /* Pointer drag: incremental deltas accumulate into `target` (the example's
+       own pattern — safe here because `target` is a plain ref, not an absolute
+       scroll position). Dragging right advances the rightward-gliding strip. */
+    let startX = 0;
+    let lastX = 0;
+
+    const onDown = (event: PointerEvent) => {
+      if (pointer !== null) return;
+      pointer = event.pointerId;
+      startX = event.clientX;
+      lastX = event.clientX;
+      dragged.current = false;
+      stage.style.cursor = "grabbing";
+      /* Freeze the page while a card drag is in progress. */
+      stage.setAttribute("data-lenis-prevent", "");
+    };
+    const onMove = (event: PointerEvent) => {
+      if (pointer !== event.pointerId) return;
+      const dx = event.clientX - lastX;
+      lastX = event.clientX;
+      if (Math.abs(event.clientX - startX) > 6) dragged.current = true;
+      target.current = clamp(target.current + dx * dragMultiplier, 0, maxPos);
+    };
+    const onUp = (event: PointerEvent) => {
+      if (pointer !== event.pointerId) return;
+      pointer = null;
+      stage.style.cursor = "grab";
+      stage.removeAttribute("data-lenis-prevent");
+      /* Settle on the nearest review so the counter stays truthful and the
+         active card ends up perfectly centred. */
+      if (step > 0) {
+        target.current = clamp(Math.round(target.current / step) * step, 0, maxPos);
+      }
+    };
+
+    /* Arrows glide the row by one review. The base index is re-derived from
+       `target` on every call (not from React state), so rapid successive
+       clicks chain forward/backward instead of stomping each other. */
+    navRef.current = {
+      goBy: (delta: number) => {
+        if (count < 2 || step <= 0) return;
+        const base = Math.round(target.current / step);
+        target.current = clamp(base + delta, 0, count - 1) * step;
+      },
+    };
+
+    const ro = new ResizeObserver(() => {
+      measure();
+    });
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        if (inView) last = 0;
+      },
+      { threshold: 0 }
+    );
+
+    measure();
+    raf = requestAnimationFrame(tick);
+    ro.observe(stage);
+    io.observe(stage);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    stage.addEventListener("pointerdown", onDown);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
+
+    /* Card widths settle after webfonts load — re-measure so `step` is final. */
+    const onFonts = () => {
+      measure();
+    };
+    document.fonts?.ready.then(onFonts).catch(() => {});
+
+    return () => {
+      cancelAnimationFrame(raf);
+      if (settleTimer) clearTimeout(settleTimer);
+      ro.disconnect();
+      io.disconnect();
+      navRef.current = null;
+      window.removeEventListener("scroll", onScroll);
+      stage.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+      stage.style.cursor = "";
+    };
+  }, [reducedMotion]);
+
+  /* Arrow navigation: asks the slider effect to glide one review over. */
+  const goBy = (delta: number) => {
+    navRef.current?.goBy(delta);
+  };
 
   const openCard = (item: Testimonial, el: HTMLElement | null) => {
     setOriginRect(el?.getBoundingClientRect() ?? null);
@@ -761,9 +920,17 @@ export default function TestimonialsSection() {
           ))}
         </div>
       ) : (
-        /* ── Infinite scroll-driven carousel ── */
-        <div ref={stageRef} className="relative -mx-4 h-[100svh] overflow-hidden">
-          {/* Ambient parallax glow */}
+        /* ── Example-style carousel (rAF inertia, sticky scroll-scrub + drag) ──
+            The wrapper is as tall as the stage plus one scroll-step per review;
+            the stage sticks while that extra height is consumed, so the page
+            plays ALL reviews before moving on. Height is set by the effect. */
+        <div ref={wrapRef} className="relative -mx-4">
+          <div
+            ref={stageRef}
+            className="sticky top-0 h-[100svh] cursor-grab overflow-hidden"
+            style={{ touchAction: "pan-y" }}
+          >
+          {/* Ambient glow */}
           <div
             ref={glowRef}
             className="pointer-events-none absolute -top-[15%] bottom-auto left-0 right-0 z-0 mx-auto h-[130%] w-[min(90vw,900px)]"
@@ -773,38 +940,65 @@ export default function TestimonialsSection() {
             }}
           />
 
-          {/* Cards */}
-          <div className="relative z-10 h-full">
-            {items.map((item, i) => (
-              <div
-                key={item.id}
-                ref={(el) => {
-                  cardRefs.current[i] = el;
+          {/* Cards — positioned every frame by the slider effect */}
+          {items.map((item, i) => (
+            <div
+              key={item.id}
+              ref={(el) => {
+                cardRefs.current[i] = el;
+              }}
+              className="testimonial-card-slot absolute left-0 top-1/2 w-[80vw] md:w-[min(560px,46vw)]"
+              style={{
+                willChange: "transform, filter",
+                height: "min(500px, 62svh)",
+                transform: "translate3d(0, -50%, 0)",
+              }}
+            >
+              <ReviewCard
+                item={item}
+                onOpen={(it, el) => {
+                  if (dragged.current) return;
+                  openCard(it, el);
                 }}
-                className="testimonial-card-slot absolute left-1/2 top-1/2 w-[80vw] md:w-[min(560px,46vw)]"
-                  style={{
-                    willChange: "transform, opacity",
-                    height: "min(460px, 60svh)",
-                    transition: "filter 0.4s ease-out",
-                  }}
-              >
-                <ReviewCard item={item} onOpen={openCard} fixedHeight />
-              </div>
-            ))}
-          </div>
+                fixedHeight
+              />
+            </div>
+          ))}
 
-          {/* Progress */}
-          <div className="absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 items-center gap-4">
+          {/* Progress + prev/next — the arrows glide the slider to the adjacent
+              review, so they stay in lockstep with wheel and drag. */}
+          <div className="pointer-events-none absolute bottom-5 left-1/2 z-[1000] flex -translate-x-1/2 items-center gap-3 sm:gap-4">
+            <button
+              type="button"
+              onClick={() => goBy(-1)}
+              disabled={activeIdx <= 0}
+              aria-label={t("testimonials.prev")}
+              className="pointer-events-auto flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface-elevated/80 text-foreground backdrop-blur transition-all duration-200 hover:border-accent/50 hover:text-accent disabled:pointer-events-none disabled:opacity-30"
+            >
+              <ChevronLeft size={16} />
+            </button>
+
             <span className="whitespace-nowrap font-mono text-[11px] tabular-nums text-muted-foreground">
               {String(activeIdx + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
             </span>
-            <div className="relative h-[3px] w-36 overflow-hidden rounded-full bg-border sm:w-52">
+            <div className="relative h-[3px] w-28 overflow-hidden rounded-full bg-border sm:w-52">
               <div
                 ref={progressRef}
                 className="absolute inset-0 rounded-full bg-accent"
                 style={{ transform: "scaleX(0)", transformOrigin: "left center" }}
               />
             </div>
+
+            <button
+              type="button"
+              onClick={() => goBy(1)}
+              disabled={activeIdx >= total - 1}
+              aria-label={t("testimonials.next")}
+              className="pointer-events-auto flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface-elevated/80 text-foreground backdrop-blur transition-all duration-200 hover:border-accent/50 hover:text-accent disabled:pointer-events-none disabled:opacity-30"
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
           </div>
         </div>
       )}

@@ -249,6 +249,10 @@ export function PartnersHowItWorks() {
                   <Pin className="step-pin" size={28} fill="currentColor" strokeWidth={1.5} style={{ color: STEP_COLORS[i] }} />
                 </span>
 
+                {/* The card surface is intentionally always dark ("pinned note"),
+                    so its text must stay light in both themes — otherwise the
+                    theme-driven foreground/muted colors turn dark in light mode
+                    and disappear against the dark card. */}
                 <div
                   className="rounded-3xl border bg-[#0d0d10]/90 p-5"
                   style={{ borderColor: `${STEP_COLORS[i]}59` }}
@@ -256,8 +260,8 @@ export function PartnersHowItWorks() {
                   <div className="text-4xl font-bold" style={{ color: STEP_COLORS[i] }}>
                     {step.num}
                   </div>
-                  <h3 className="mt-2 text-xl font-bold text-foreground">{t(step.titleKey)}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t(step.descKey)}</p>
+                  <h3 className="mt-2 text-xl font-bold text-[#F8F8FF]">{t(step.titleKey)}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[#8B8B9E]">{t(step.descKey)}</p>
                 </div>
               </div>
             </div>
@@ -314,6 +318,7 @@ export function PartnersHowItWorks() {
                   <span aria-hidden className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                     <Pin className="step-pin" size={22} fill="currentColor" strokeWidth={1.5} style={{ color: STEP_COLORS[i] }} />
                   </span>
+                  {/* Always-dark card, so text is fixed light — see desktop note above. */}
                   <div
                     className="rounded-[20px] border bg-[#0d0d10]/90 p-5"
                     style={{ borderColor: `${STEP_COLORS[i]}59` }}
@@ -321,8 +326,8 @@ export function PartnersHowItWorks() {
                     <div className="text-4xl font-bold" style={{ color: STEP_COLORS[i] }}>
                       {step.num}
                     </div>
-                    <h3 className="mt-2 text-xl font-bold text-foreground">{t(step.titleKey)}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t(step.descKey)}</p>
+                    <h3 className="mt-2 text-xl font-bold text-[#F8F8FF]">{t(step.titleKey)}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#8B8B9E]">{t(step.descKey)}</p>
                   </div>
                 </div>
               </div>
