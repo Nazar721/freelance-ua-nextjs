@@ -23,6 +23,7 @@ const casePaths = [
   "/cases/it/darkshare",
   "/cases/it/epiland",
   "/cases/design/hope-media-group",
+  "/cases/design/snizhana-telegram-stickers",
   "/cases/design/moto-school-window-branding",
   "/cases/design/nastya-smm",
   "/cases/design/vikontse-logo",

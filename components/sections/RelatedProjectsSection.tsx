@@ -36,6 +36,15 @@ const allCases: RelatedCase[] = [
     section: "design",
   },
   {
+    slug: "snizhana-telegram-stickers",
+    categoryKey: "designCases.snizhanaStickers.categoryShort",
+    titleKey: "designCases.snizhanaStickers.title",
+    descriptionKey: "designCases.snizhanaStickers.shortDesc",
+    href: "/cases/design/snizhana-telegram-stickers",
+    image: "/media/cases/snizhana-telegram-stickers/sticker-01.png",
+    section: "design",
+  },
+  {
     slug: "nastya-smm",
     categoryKey: "designCases.nastyaSmm.category",
     titleKey: "designCases.nastyaSmm.title",
