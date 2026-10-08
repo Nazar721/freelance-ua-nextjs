@@ -40,7 +40,6 @@ export default function VideoCasesSection() {
                 poster={c.poster}
                 duration={c.duration}
                 format={c.format}
-                preload
               />
             </FadeIn>
           ))}

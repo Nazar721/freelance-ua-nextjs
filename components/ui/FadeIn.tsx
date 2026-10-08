@@ -1,7 +1,10 @@
 "use client";
 
-import { useRef, useState, useEffect, type ReactNode } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef, type ReactNode } from "react";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
+import { motion, useInView } from "framer-motion";
+
+import { useIsMobile } from "@/lib/useIsMobile";
 
 type FadeInProps = {
   children: ReactNode;
@@ -16,19 +19,6 @@ type FadeInProps = {
   [key: string]: unknown;
 };
 
-function useIsMobile() {
-  // Start false so SSR and the first client render match (hydration-safe);
-  // the real viewport value applies right after mount.
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-  return isMobile;
-}
-
 export function FadeIn({
   children,
   delay = 0,
@@ -42,7 +32,7 @@ export function FadeIn({
   ...rest
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = usePrefersReducedMotion();
   const isMobile = useIsMobile();
   const isInView = useInView(ref, { once: true, margin: isMobile ? "-40px 0px" : "-80px 0px" });
 
@@ -93,7 +83,7 @@ export function FadeIn({
         x,
         scale: scale < 1 ? scale : 1,
         rotateX,
-        filter: blur > 0 ? `blur(${blur}px)` : undefined,
+        filter: blur > 0 ? `blur(${Math.min(blur, 2)}px)` : undefined,
       }}
       animate={
         isInView
@@ -111,7 +101,7 @@ export function FadeIn({
               x,
               scale: scale < 1 ? scale : 1,
               rotateX,
-              filter: blur > 0 ? `blur(${blur}px)` : undefined,
+              filter: blur > 0 ? `blur(${Math.min(blur, 2)}px)` : undefined,
             }
       }
       transition={{

@@ -1,7 +1,7 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
-import { type Locale, translations } from "./i18n";
+import { createContext, useContext, useCallback, useEffect, type ReactNode } from "react";
+import type { Locale } from "./i18n";
 
 interface LanguageContextType {
   locale: Locale;
@@ -14,11 +14,13 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({
   children,
   initialLocale = "uk",
+  messages,
 }: {
   children: ReactNode;
   initialLocale?: Locale;
+  messages: Record<string, string>;
 }) {
-  const [locale, setLocaleState] = useState<Locale>(initialLocale);
+  const locale = initialLocale;
 
   const setLocale = useCallback(
     (newLocale: Locale) => {
@@ -35,9 +37,9 @@ export function LanguageProvider({
 
   const t = useCallback(
     (key: string): string => {
-      return translations[locale][key] || key;
+      return messages[key] || key;
     },
-    [locale],
+    [messages],
   );
 
   return (

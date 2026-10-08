@@ -29,11 +29,6 @@ const factorWeights = [85, 70, 55, 65, 45];
 export default function PricingSection() {
   const { t } = useTranslation();
   const [activeFactor, setActiveFactor] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const closeModal = useCallback(() => {
     setActiveFactor(null);
@@ -81,14 +76,9 @@ export default function PricingSection() {
               </h3>
               <ul className="space-y-0.5 sm:space-y-1">
                 {pricingFactorKeys.map((key, i) => (
-                  <FadeIn
-                    key={key}
-                    delay={0.3 + i * 0.06}
-                    x={-12}
-                    blur={0}
-                  >
-                    <li
-                      className="pricing-factor group cursor-pointer py-2 sm:py-2.5"
+                  <li key={key}>
+                    <button type="button"
+                      className="pricing-factor group w-full text-left cursor-pointer py-2 sm:py-2.5"
                       onClick={() => setActiveFactor(i)}
                     >
                       <div className="flex items-center gap-2.5 sm:gap-3">
@@ -100,8 +90,8 @@ export default function PricingSection() {
                       <div className="factor-bar ml-6 sm:ml-7" style={{ "--bar-width": `${factorWeights[i]}%` } as React.CSSProperties}>
                         <div className="factor-bar-fill" style={{ "--bar-width": `${factorWeights[i]}%`, "--bar-scale": factorWeights[i] / 100 } as React.CSSProperties} />
                       </div>
-                    </li>
-                  </FadeIn>
+                    </button>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -132,7 +122,7 @@ export default function PricingSection() {
         </div>
       </div>
 
-      {mounted && createPortal(
+      {activeFactor !== null && createPortal(
         <AnimatePresence>
           {activeFactor !== null && (
             <>
@@ -160,6 +150,7 @@ export default function PricingSection() {
                 <div className="pricing-modal-panel relative bg-surface-elevated border border-border rounded-2xl p-6 shadow-[0_24px_64px_rgba(0,0,0,0.5)]" onClick={(e) => e.stopPropagation()}>
                   <button
                     onClick={closeModal}
+                    aria-label={t("testimonials.close")}
                     className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer"
                   >
                     <X size={16} className="text-muted-foreground" />

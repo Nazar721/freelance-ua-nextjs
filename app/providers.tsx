@@ -41,10 +41,12 @@ function FloatingTelegramButton({ hidden }: { hidden: boolean }) {
 export function Providers({
   children,
   initialLocale,
+  messages,
   initialTheme,
 }: {
   children: ReactNode;
   initialLocale?: Locale;
+  messages: Record<string, string>;
   initialTheme?: Theme;
 }) {
   const lenisRef = useRef<Lenis | null>(null);
@@ -62,7 +64,7 @@ export function Providers({
   useEffect(() => {
     if (typeof window === "undefined") return;
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) return;
+    if (prefersReduced || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
     lenisRef.current = new Lenis({
       smoothWheel: true,
@@ -78,12 +80,14 @@ export function Providers({
 
     lenisRef.current.on("scroll", ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
+    const tick = (time: number) => {
       lenisRef.current?.raf(time * 1000);
-    });
+    };
+    gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      gsap.ticker.remove(tick);
       lenisRef.current?.destroy();
       if (typeof window !== "undefined") {
         delete (window as unknown as Record<string, unknown>).__lenis;
@@ -186,7 +190,7 @@ export function Providers({
 
   return (
     <ThemeProvider initialTheme={initialTheme}>
-      <LanguageProvider initialLocale={initialLocale}>
+      <LanguageProvider initialLocale={initialLocale} messages={messages}>
       {children}
       <FloatingTelegramButton hidden={hideTelegramBtn} />
     </LanguageProvider>

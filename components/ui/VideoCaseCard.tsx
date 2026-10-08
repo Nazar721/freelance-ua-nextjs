@@ -2,6 +2,8 @@
 
 import { useRef, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { LazyVideo } from "@/components/ui/LazyVideo";
 import { ArrowRight, Play } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslation } from "@/lib/LanguageContext";
@@ -40,13 +42,11 @@ export default function VideoCaseCard({
   glowColor,
   glowColorStrong,
   video,
-  thumbnail,
   poster,
   duration,
   format,
   ctaKey = "itCases.cta",
   comingSoonKey,
-  preload,
   hideCta = false,
 }: VideoCaseCardProps) {
   const { t } = useTranslation();
@@ -88,6 +88,14 @@ export default function VideoCaseCard({
   // preload="metadata" — the media fragment forces the first frame out.
   const previewSrc = poster ? video : withPosterFrame(video);
 
+  const preview = poster ? (
+    <Image src={poster} alt="" fill sizes="(max-width: 1024px) 100vw, 50vw"
+      className="object-cover object-top" style={{ objectPosition: "center 30%" }} />
+  ) : (
+    <LazyVideo src={previewSrc} className="w-full h-full object-cover object-top"
+      style={{ objectPosition: "center 30%" }} muted playsInline aria-hidden="true" />
+  );
+
   const boostedGlow = glowColor.replace(/[\d.]+\)$/, (m) => `${Math.min(parseFloat(m) * 1.8, 0.7)} )`);
   const boostedGlowStrong = glowColorStrong.replace(/[\d.]+\)$/, (m) => `${Math.min(parseFloat(m) * 1.8, 0.8)} )`);
 
@@ -123,17 +131,8 @@ export default function VideoCaseCard({
         >
           <div className="relative w-full h-full rounded-xl overflow-hidden bg-background">
             {href ? (
-              <Link href={href} className="block w-full h-full">
-                <video
-                  src={previewSrc}
-                  poster={poster}
-                  className="w-full h-full object-cover object-top"
-                  style={{ objectPosition: "center 30%" }}
-                  muted
-                  playsInline
-                  preload="metadata"
-                  aria-label="Video preview"
-                />
+              <Link href={href} aria-label={`${t(ctaKey)}: ${t(titleKey)}`} className="block w-full h-full">
+                {preview}
                 {/* Play button overlay */}
                 <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-all duration-300">
                   <div className="w-16 h-16 rounded-full bg-white/15 backdrop-blur-xl border border-white/25 flex items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300">
@@ -143,16 +142,7 @@ export default function VideoCaseCard({
               </Link>
             ) : (
               <>
-                <video
-                  src={previewSrc}
-                  poster={poster}
-                  className="w-full h-full object-cover object-top"
-                  style={{ objectPosition: "center 30%" }}
-                  muted
-                  playsInline
-                  preload="metadata"
-                  aria-label="Video preview"
-                />
+                {preview}
                 {/* Play button overlay */}
                 <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-all duration-300">
                   <div className="w-16 h-16 rounded-full bg-white/15 backdrop-blur-xl border border-white/25 flex items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300">
@@ -190,7 +180,7 @@ export default function VideoCaseCard({
             href={href}
             className="inline-flex items-center gap-3 text-foreground font-semibold text-sm group/cta w-fit border border-border rounded-full px-6 py-3 transition-all duration-300 hover:border-accent hover:bg-accent/5"
           >
-            <span>{t(ctaKey)}</span>
+            <span>{t(ctaKey)}<span className="sr-only">: {t(titleKey)}</span></span>
             <ArrowRight
               size={16}
               className="transition-transform duration-300 group-hover/cta:translate-x-1"

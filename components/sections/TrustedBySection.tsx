@@ -31,6 +31,7 @@ function LogoSet() {
 
 export default function TrustedBySection() {
   const { t } = useTranslation();
+  const sectionRef = useRef<HTMLElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -41,31 +42,46 @@ export default function TrustedBySection() {
   }, []);
 
   useEffect(() => {
-    const wrapper = document.querySelector('.trusted-partners__track-wrapper') as HTMLElement | null;
-    if (!wrapper) return;
-
-    const speed = 0.08;
+    const wrapper = sectionRef.current?.querySelector('.trusted-partners__track-wrapper') as HTMLElement | null;
+    const section = sectionRef.current;
+    if (!wrapper || !section) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let offset = 0;
-    let lastTime = performance.now();
-    let rafId: number;
-
+    let halfWidth = wrapper.scrollWidth / 2;
+    let lastTime = 0;
+    let rafId = 0;
+    let visible = false;
     const animate = (now: number) => {
-      const delta = now - lastTime;
+      const delta = lastTime ? Math.min(now - lastTime, 64) : 0;
       lastTime = now;
-      offset -= speed * delta;
-      const halfWidth = wrapper.scrollWidth / 2;
-      if (Math.abs(offset) >= halfWidth) offset += halfWidth;
+      offset -= 0.08 * delta;
+      if (halfWidth > 0 && Math.abs(offset) >= halfWidth) offset %= halfWidth;
       wrapper.style.transform = `translate3d(${offset}px, 0, 0)`;
       rafId = requestAnimationFrame(animate);
     };
-
-    rafId = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(rafId);
+    const sync = () => {
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+      lastTime = 0;
+      if (visible && !document.hidden && !reduced.matches) rafId = requestAnimationFrame(animate);
+    };
+    const resize = new ResizeObserver(() => { halfWidth = wrapper.scrollWidth / 2; });
+    resize.observe(wrapper);
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); });
+    observer.observe(section);
+    document.addEventListener("visibilitychange", sync);
+    reduced.addEventListener("change", sync);
+    return () => {
+      cancelAnimationFrame(rafId);
+      resize.disconnect();
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", sync);
+      reduced.removeEventListener("change", sync);
+    };
   }, []);
 
   return (
-    <section className="relative px-4 pt-16 pb-8 overflow-hidden" style={{ background: "transparent" }}>
+    <section ref={sectionRef} className="relative px-4 pt-16 pb-8 overflow-hidden" style={{ background: "transparent" }}>
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
         {/* Central spotlight glow */}
         <div

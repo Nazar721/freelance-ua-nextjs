@@ -197,7 +197,7 @@ export default function FeaturedCaseCard({
             href={href}
             className="inline-flex items-center gap-3 text-foreground font-semibold text-sm group/cta w-fit border border-border rounded-full px-6 py-3 transition-all duration-300 hover:border-accent hover:bg-accent/5"
           >
-            <span>{t(ctaKey)}</span>
+            <span>{t(ctaKey)}<span className="sr-only">: {t(titleKey)}</span></span>
             <ArrowRight
               size={16}
               className="transition-transform duration-300 group-hover/cta:translate-x-1"

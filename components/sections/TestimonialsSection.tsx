@@ -8,7 +8,6 @@ import gsap from "gsap";
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { withPosterFrame } from "@/lib/video";
 import ReviewAvatar from "@/components/ui/ReviewAvatar";
 import { useTranslation } from "@/lib/LanguageContext";
 import type { Testimonial } from "@/types";
@@ -78,64 +77,10 @@ function TypeBadge({ item }: { item: Testimonial }) {
 /* ─── Video poster: lazy first-frame preview (no autoplay, metadata only) ─── */
 
 function VideoPoster({ src }: { src: string }) {
-  const holderRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation();
-  const [inView, setInView] = useState(false);
-  const [ready, setReady] = useState(false);
-  const [failed, setFailed] = useState(false);
-
-  useEffect(() => {
-    const el = holderRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "300px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  // Safety net: never leave the poster hidden if Safari skips the media events.
-  useEffect(() => {
-    if (!inView) return;
-    const id = setTimeout(() => setReady(true), 3000);
-    return () => clearTimeout(id);
-  }, [inView]);
-
   return (
-    <div ref={holderRef} className="absolute inset-0">
-      {/* fallback backdrop — also the permanent state when the video can't load */}
-      <div className="absolute inset-0 bg-gradient-to-br from-surface-elevated via-surface to-surface-elevated">
-        <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-accent/15 blur-3xl" />
-        <div className="absolute -bottom-20 -left-10 w-48 h-48 rounded-full bg-accent/10 blur-3xl" />
-      </div>
-      {inView && !failed && (
-        <video
-          src={withPosterFrame(src, 0.2)}
-          muted
-          playsInline
-          preload="metadata"
-          tabIndex={-1}
-          draggable={false}
-          onError={() => setFailed(true)}
-          onLoadedData={() => setReady(true)}
-          onCanPlay={() => setReady(true)}
-          className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
-            ready ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      )}
-      {failed && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center p-4">
-          <Video size={22} className="text-accent/60" />
-          <span className="text-xs text-muted-foreground">{t("testimonials.videoUnavailable")}</span>
-        </div>
-      )}
+    <div className="absolute inset-0 bg-gradient-to-br from-surface-elevated via-surface to-surface-elevated">
+      <Image src={src.replace(/\.mp4$/, "-poster.jpg")} alt="" fill
+        sizes="(max-width: 768px) 80vw, 560px" className="object-cover" />
     </div>
   );
 }
@@ -235,7 +180,7 @@ function AudioPlayer({ src }: { src: string }) {
       className="flex h-full w-full flex-col items-center justify-center gap-3 py-3"
       onClick={(e) => e.stopPropagation()}
     >
-      <audio ref={audioRef} src={src} preload="metadata" />
+      <audio ref={audioRef} src={src} preload="none" />
 
       <div className="flex h-11 w-full max-w-[200px] items-end gap-[3px]">
         {bars.map((baseH, i) => {
@@ -262,6 +207,7 @@ function AudioPlayer({ src }: { src: string }) {
       <div className="flex items-center gap-3">
         <button
           onClick={togglePlay}
+          aria-label={isPlaying ? t("testimonials.pauseAudio") : t("testimonials.playAudio")}
           className="flex h-11 w-11 items-center justify-center rounded-full border border-accent/30 bg-accent/15 transition-all duration-300 hover:bg-accent/25 cursor-pointer"
           style={{ touchAction: "manipulation" }}
         >
@@ -455,16 +401,7 @@ function ReviewCard({
 
   return (
     <article
-      role="button"
-      tabIndex={0}
-      aria-label={`${name} — ${t("testimonials.tapToOpen")}`}
       onClick={(e) => onOpen(item, e.currentTarget)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onOpen(item, e.currentTarget);
-        }
-      }}
       style={{ touchAction: "manipulation" }}
       className={`group cursor-pointer select-none rounded-3xl border border-border bg-surface/95 transition-colors duration-500 hover:border-accent/50 hover:shadow-[0_8px_50px_rgba(99,102,241,0.18)] ${
         fixedHeight ? "flex h-full flex-col" : ""
@@ -472,6 +409,10 @@ function ReviewCard({
     >
       <div className={`p-5 ${fixedHeight ? "flex h-full min-h-0 flex-col" : ""}`}>
         <CardContent item={item} name={name} variant="card" />
+        <button type="button" className="sr-only focus:not-sr-only focus:mt-3 focus:rounded-lg focus:p-2 focus:ring-2 focus:ring-accent"
+          onClick={(e) => { e.stopPropagation(); onOpen(item, e.currentTarget.closest("article")); }}>
+          {name} — {t("testimonials.tapToOpen")}
+        </button>
       </div>
     </article>
   );
@@ -679,7 +620,7 @@ export default function TestimonialsSection() {
     let scrubFactor = 1; // slider px per page-scroll px (set in measure)
     let raf = 0;
     let last = 0;
-    let inView = true;
+    let inView = false;
 
     const cards = () => cardRefs.current.filter(Boolean) as HTMLElement[];
     const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
@@ -703,7 +644,7 @@ export default function TestimonialsSection() {
 
     const tick = (now: number) => {
       raf = requestAnimationFrame(tick);
-      if (!inView) return;
+      if (!inView || document.hidden) { cancelAnimationFrame(raf); raf = 0; return; }
       const delta = last ? Math.min((now - last) / 1000, 0.1) : 1 / 60;
       last = now;
       if (!count || step <= 0 || width <= 0) return;
@@ -851,16 +792,22 @@ export default function TestimonialsSection() {
     const ro = new ResizeObserver(() => {
       measure();
     });
+    const syncAnimation = () => {
+      cancelAnimationFrame(raf);
+      raf = 0;
+      last = 0;
+      if (inView && !document.hidden) raf = requestAnimationFrame(tick);
+    };
     const io = new IntersectionObserver(
       ([entry]) => {
         inView = entry.isIntersecting;
-        if (inView) last = 0;
+        syncAnimation();
       },
       { threshold: 0 }
     );
 
     measure();
-    raf = requestAnimationFrame(tick);
+    document.addEventListener("visibilitychange", syncAnimation);
     ro.observe(stage);
     io.observe(stage);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -880,6 +827,7 @@ export default function TestimonialsSection() {
       if (settleTimer) clearTimeout(settleTimer);
       ro.disconnect();
       io.disconnect();
+      document.removeEventListener("visibilitychange", syncAnimation);
       navRef.current = null;
       window.removeEventListener("scroll", onScroll);
       stage.removeEventListener("pointerdown", onDown);

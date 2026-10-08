@@ -3,10 +3,9 @@ import { cookies } from "next/headers";
 import { Space_Grotesk, Unbounded } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
-import type { Locale } from "@/lib/i18n";
+import { translations, type Locale } from "@/lib/i18n";
 import type { Theme } from "@/lib/ThemeContext";
 import { Providers } from "./providers";
-import LoadingScreen from "@/components/ui/LoadingScreen";
 import ContentProtection from "@/components/ui/ContentProtection";
 
 const spaceGrotesk = Space_Grotesk({
@@ -104,8 +103,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <ContentProtection />
-        <LoadingScreen />
-        <Providers initialLocale={locale} initialTheme={theme}>{children}</Providers>
+        <Providers initialLocale={locale} initialTheme={theme} messages={translations[locale]}>{children}</Providers>
       </body>
     </html>
   );

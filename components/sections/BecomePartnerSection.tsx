@@ -976,6 +976,7 @@ export default function BecomePartnerSection() {
                 value={clients}
                 onChange={(e) => setClients(Number(e.target.value))}
                 className="bp-slider w-full"
+                aria-label="Клієнтів на місяць"
               />
               <div
                 ref={calcIncomeRef}

@@ -4,8 +4,6 @@ import { useEffect } from "react";
 
 export default function ContentProtection() {
   useEffect(() => {
-    const prevent = (e: Event) => e.preventDefault();
-
     const isProtected = (target: HTMLElement | null) =>
       target?.closest("img, video, picture, figure, [data-no-download]");
 
@@ -55,17 +53,21 @@ export default function ContentProtection() {
     };
 
     // Disable picture-in-picture on all videos
-    const disablePiP = () => {
-      document.querySelectorAll("video").forEach((video) => {
-        video.disablePictureInPicture = true;
-        video.setAttribute("controlsList", "nodownload noplaybackrate");
-      });
+    const protectVideo = (video: HTMLVideoElement) => {
+      video.disablePictureInPicture = true;
+      video.setAttribute("controlsList", "nodownload noplaybackrate");
     };
-
-    // Observe for new video elements
-    const observer = new MutationObserver(disablePiP);
+    document.querySelectorAll("video").forEach(protectVideo);
+    const observer = new MutationObserver((records) => {
+      for (const record of records) {
+        for (const node of record.addedNodes) {
+          if (!(node instanceof Element)) continue;
+          if (node instanceof HTMLVideoElement) protectVideo(node);
+          node.querySelectorAll("video").forEach(protectVideo);
+        }
+      }
+    });
     observer.observe(document.body, { childList: true, subtree: true });
-    disablePiP();
 
     document.addEventListener("contextmenu", onContextMenu, true);
     document.addEventListener("dragstart", onDragStart, true);

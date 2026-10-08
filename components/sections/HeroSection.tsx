@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import CountUp from "@/components/ui/CountUp";
@@ -58,7 +59,7 @@ const particles = Array.from({ length: 20 }, (_, i) => ({
 export default function HeroSection() {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = usePrefersReducedMotion();
   const [isMobile, setIsMobile] = useState(false)  // hydration-safe: real value applied in the effect below;
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
@@ -73,9 +74,7 @@ export default function HeroSection() {
   });
 
   const yBg = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const opacityBg = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const scaleBg = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const yContent = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
     <section
@@ -124,13 +123,10 @@ export default function HeroSection() {
         </div>
       )}
 
-      <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-4 text-center"
-        style={{ y: yContent, opacity: opacityBg }}
-      >
+      <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
         {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -145,7 +141,7 @@ export default function HeroSection() {
         {/* Main headline with staggered word reveal */}
         <motion.h1
           variants={stagger}
-          initial="hidden"
+          initial={false}
           animate="visible"
           className="text-[32px] sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-3 sm:mb-4 font-[family-name:var(--font-syne)]"
           style={isMobile ? undefined : { perspective: 800 }}
@@ -162,7 +158,7 @@ export default function HeroSection() {
             ))}
           </span>
           <motion.span
-            initial={{ opacity: 0, y: isMobile ? 16 : 30, scale: isMobile ? 1 : 0.9 }}
+            initial={false}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: isMobile ? 0.4 : 1, delay: isMobile ? 0.2 : 0.6, ease: [0.22, 1, 0.36, 1] as const }}
             className="gradient-text-motion bg-gradient-to-r from-[#6366F1] via-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent block -mt-1 sm:-mt-2"
@@ -173,7 +169,7 @@ export default function HeroSection() {
 
         {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-[16px] sm:text-lg md:text-xl text-muted-foreground max-w-xl sm:max-w-2xl mx-auto mb-4 sm:mb-8 leading-relaxed px-1"
@@ -183,7 +179,7 @@ export default function HeroSection() {
 
         {/* CTA buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2"
@@ -192,7 +188,7 @@ export default function HeroSection() {
             href={siteConfig.telegram.consultationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="magnetic-button inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-primary-foreground font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-200 hover:shadow-[0_0_48px_rgba(99,102,241,0.46)] text-sm sm:text-base"
+            className="magnetic-button inline-flex items-center justify-center gap-2 bg-[#4F46E5] hover:bg-[#4338CA] text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-200 hover:shadow-[0_0_48px_rgba(99,102,241,0.46)] text-sm sm:text-base"
             whileHover={isMobile ? undefined : { scale: 1.05 }}
             whileTap={isMobile ? undefined : { scale: 0.97 }}
           >
@@ -212,7 +208,7 @@ export default function HeroSection() {
         {/* Stats */}
         <motion.div
           variants={stagger}
-          initial="hidden"
+          initial={false}
           animate="visible"
           className="mt-5 sm:mt-8 grid grid-cols-3 gap-2 sm:gap-3 sm:mt-12 max-w-lg mx-auto px-2"
         >
@@ -243,7 +239,7 @@ export default function HeroSection() {
             </motion.div>
           ))}
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

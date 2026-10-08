@@ -38,7 +38,6 @@ export default function DesignCasesSection() {
                 glowColorStrong={c.glowColorStrong}
                 image={c.image}
                 imageFit={c.imageFit}
-                preload
                 badge={c.badge}
               />
             </FadeIn>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Code2, Palette, Video, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -236,6 +236,7 @@ export default function ServicesSection() {
               {/* Close button */}
               <button
                 onClick={closeModal}
+                aria-label={t("testimonials.close")}
                 className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-white/10 transition-all duration-500 cursor-pointer"
               >
                 <X size={18} />

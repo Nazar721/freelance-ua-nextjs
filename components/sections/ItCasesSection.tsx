@@ -39,7 +39,6 @@ export default function ItCasesSection() {
                 image={c.image}
                 imageFit={c.imageFit}
                 objectPosition={c.objectPosition}
-                preload
                 badge={c.badge}
               />
             </FadeIn>
