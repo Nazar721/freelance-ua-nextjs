@@ -26,11 +26,12 @@ export function FadeIn({
   x = 0,
   scale = 1,
   rotateX = 0,
-  blur = 6,
   className,
   style,
   ...rest
 }: FadeInProps) {
+  // Keep the legacy blur prop out of the DOM; reveals use compositor-friendly properties only.
+  delete rest.blur;
   const ref = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = usePrefersReducedMotion();
   const isMobile = useIsMobile();
@@ -44,21 +45,18 @@ export function FadeIn({
     );
   }
 
-  // Mobile: simplified animation — only opacity + y, no blur/rotateX, shorter duration.
-  // filter is pinned to blur(0px) on purpose: SSR renders the desktop branch with
-  // filter: blur(Npx) inline, and without an explicit client-side value React
-  // hydration leaves that orphan style applied — content stays permanently blurred.
+  // Phones use a shorter reveal without filter or 3D rotation.
   if (isMobile) {
     return (
       <motion.div
         ref={ref}
         className={className}
         style={style}
-        initial={{ opacity: 0, y: y > 0 ? 16 : 0, filter: "blur(0px)" }}
+        initial={{ opacity: 0, y: y > 0 ? 16 : 0 }}
         animate={
           isInView
-            ? { opacity: 1, y: 0, filter: "blur(0px)" }
-            : { opacity: 0, y: y > 0 ? 16 : 0, filter: "blur(0px)" }
+            ? { opacity: 1, y: 0 }
+            : { opacity: 0, y: y > 0 ? 16 : 0 }
         }
         transition={{
           duration: 0.55,
@@ -83,7 +81,6 @@ export function FadeIn({
         x,
         scale: scale < 1 ? scale : 1,
         rotateX,
-        filter: blur > 0 ? `blur(${Math.min(blur, 2)}px)` : undefined,
       }}
       animate={
         isInView
@@ -93,7 +90,6 @@ export function FadeIn({
               x: 0,
               scale: 1,
               rotateX: 0,
-              filter: "blur(0px)",
             }
           : {
               opacity: 0,
@@ -101,7 +97,6 @@ export function FadeIn({
               x,
               scale: scale < 1 ? scale : 1,
               rotateX,
-              filter: blur > 0 ? `blur(${Math.min(blur, 2)}px)` : undefined,
             }
       }
       transition={{

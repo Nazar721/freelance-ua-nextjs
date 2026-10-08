@@ -1,15 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 import { useTheme } from "@/lib/ThemeContext";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const RATE_PER_CLIENT = 850;
 const MAX_INCOME = 26800;
@@ -88,6 +82,7 @@ interface Particle {
 
 export default function BecomePartnerSection() {
   const { theme } = useTheme();
+  const reducedMotion = usePrefersReducedMotion();
   // Start desktop on both server and first client render (hydration-safe);
   // the real value applies right after mount.
   const [isMobile, setIsMobile] = useState(false);
@@ -116,7 +111,7 @@ export default function BecomePartnerSection() {
 
   const [clients, setClients] = useState(25);
   const calcIncomeRef = useRef<HTMLDivElement>(null);
-  const prevCalcIncome = useRef(clients * RATE_PER_CLIENT);
+  const clientsRef = useRef(clients);
 
   const progressRef = useRef(0);
   const markerLabelRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -150,392 +145,385 @@ export default function BecomePartnerSection() {
   );
 
   useEffect(() => {
-    // Mobile renders a static layout — no pin, no canvas particles, no per-frame JS
-    if (isMobile || !trackRef.current) return;
-    const track = trackRef.current;
-    const stage = stageRef.current!;
-    const canvasEl = canvasRef.current!;
-    const bgLayer = bgLayerRef.current!;
-    const chartGrowth = chartGrowthRef.current!;
+    const element = trackRef.current;
+    // Read the actual viewport before starting any desktop work during hydration.
+    if (!element || window.matchMedia("(max-width: 768px), (prefers-reduced-motion: reduce)").matches) return;
+    let cancelled = false;
+    let started = false;
+    let dispose: (() => void) | undefined;
+    const start = async () => {
+      if (started) return;
+      started = true;
+      try {
+        const [{ default: gsap }, { ScrollTrigger }] = await Promise.all([import("gsap"), import("gsap/ScrollTrigger")]);
+        if (cancelled || window.matchMedia("(max-width: 768px), (prefers-reduced-motion: reduce)").matches) return;
+        gsap.registerPlugin(ScrollTrigger);
+        const initialiseScene = () => {
+          const track = trackRef.current;
+          const stage = stageRef.current!;
+          const canvasEl = canvasRef.current!;
+          const bgLayer = bgLayerRef.current!;
+          const chartGrowth = chartGrowthRef.current!;
 
-    const ctx = canvasEl.getContext("2d")!;
+          const ctx = canvasEl.getContext("2d")!;
 
-    function resizeCanvas() {
-      canvasEl.width = stage.clientWidth;
-      canvasEl.height = stage.clientHeight;
-    }
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+          function resizeCanvas() {
+            canvasEl.width = stage.clientWidth;
+            canvasEl.height = stage.clientHeight;
+          }
+          resizeCanvas();
+          window.addEventListener("resize", resizeCanvas);
 
-    const count = 80;
-    particlesRef.current = Array.from({ length: count }, () => ({
-      x: Math.random() * canvasEl.width,
-      y: Math.random() * canvasEl.height,
-      r: Math.random() * 1.8 + 0.4,
-      speed: Math.random() * 0.3 + 0.05,
-      alpha: Math.random() * 0.5 + 0.2,
-    }));
+          const count = 80;
+          particlesRef.current = Array.from({ length: count }, () => ({
+            x: Math.random() * canvasEl.width,
+            y: Math.random() * canvasEl.height,
+            r: Math.random() * 1.8 + 0.4,
+            speed: Math.random() * 0.3 + 0.05,
+            alpha: Math.random() * 0.5 + 0.2,
+          }));
 
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
-      const isLight = document.documentElement.dataset.theme === "light";
-      const particleAlpha = isLight ? 0.25 : undefined;
-      particlesRef.current.forEach((p) => {
-        p.y -= p.speed;
-        if (p.y < -10) p.y = canvasEl.height + 10;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        const a = isLight ? Math.min(p.alpha, 0.25) : p.alpha;
-        ctx.fillStyle = `rgba(74,222,128,${a})`;
-        ctx.shadowBlur = isLight ? 3 : 6;
-        ctx.shadowColor = "#4ade80";
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      });
-    }
-
-    gsap.ticker.add(drawParticles);
-
-    gsap.set(badgeRef.current, { opacity: 0, y: 28 });
-    gsap.set(titleRef.current, { opacity: 0, y: 40, rotateX: 18 });
-    gsap.set(subtitleRef.current, { opacity: 0, y: 32 });
-    gsap.set(ctaPanelRef.current, { opacity: 0, y: 30, scale: 0.95 });
-    gsap.set(liveMetricRef.current, { opacity: 0, y: 0, scale: 0.9, filter: "blur(10px)" });
-
-    gsap.fromTo(scrollHintRef.current,
-      { opacity: 0, y: -16, scale: 0.9, filter: "blur(6px)" },
-      { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.8, delay: 0.5, ease: "power3.out" }
-    );
-
-    const counterObj = { val: 0 };
-    const ctaTl = gsap.timeline({ paused: true });
-    ctaTl
-      .to(
-        badgeRef.current,
-        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
-        0
-      )
-      .to(
-        titleRef.current,
-        {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          duration: 0.35,
-          ease: "back.out(1.5)",
-        },
-        0.05
-      )
-      .to(
-        subtitleRef.current,
-        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
-        0.1
-      )
-      .to(
-        ctaPanelRef.current,
-        { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.4)" },
-        0.15
-      )
-      .fromTo(
-        counterRef.current,
-        { opacity: 0, y: 20, filter: "blur(12px)", scale: 0.92 },
-        { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 0.7, ease: "power3.out" },
-        0.1
-      )
-      .to(
-        counterObj,
-        {
-          val: clients * RATE_PER_CLIENT,
-          duration: 2.0,
-          ease: "power2.out",
-          onUpdate: () => {
-            if (counterRef.current) {
-              counterRef.current.textContent = fmt(Math.round(counterObj.val));
-            }
-          },
-        },
-        0.15
-      );
-
-    const renderProgress = (rawProgress: number) => {
-      let p = Math.min(Math.max(rawProgress, 0), 1);
-
-      // Once animation completes, freeze at final state
-      if (hasCompletedOnce.current) {
-        p = 1;
-      }
-
-      // Mark as completed when reaching the end
-      if (p >= 0.95 && !hasCompletedOnce.current) {
-        hasCompletedOnce.current = true;
-      }
-
-      visualP.current = p;
-      updateSceneGrowth(p);
-      updateCounter(p);
-      updateMarkers(p);
-
-      if (ghostPathRef.current) {
-        const ghostOpacity = Math.min(1, p * 5);
-        ghostPathRef.current.style.opacity = String(ghostOpacity);
-      }
-
-      if (scrollHintRef.current) {
-        const hintOpacity = Math.max(0, 1 - p * 6);
-        scrollHintRef.current.style.opacity = String(hintOpacity);
-        scrollHintRef.current.style.pointerEvents = hintOpacity < 0.05 ? "none" : "auto";
-      }
-
-      const ctaP = Math.max(0, Math.min(1, (p - 0.75) / 0.15));
-      ctaTl.progress(ctaP);
-    };
-
-    const mainST = ScrollTrigger.create({
-      trigger: track,
-      start: "top top",
-      end: "bottom bottom",
-      scrub: true,
-      pin: stage,
-      anticipatePin: 1,
-      onUpdate: (self) => {
-        progressRef.current = self.progress;
-        scrollDirection.current = self.direction;
-        renderProgress(self.progress);
-      },
-    });
-
-    function updateSceneGrowth(p: number) {
-      const pathEl = growthPathRef.current;
-      if (!pathEl) return;
-
-      const lineP = Math.min(p, MAX_LINE_PROGRESS);
-      setDrawProgress(growthPathRef.current, lineP);
-
-      const lenAtP = pathEl.getTotalLength() * Math.min(Math.max(lineP, 0), 1);
-      const pt = pathEl.getPointAtLength(Math.min(lenAtP, pathEl.getTotalLength() - 0.01));
-
-      const stageW = stage.clientWidth;
-      const stageH = stage.clientHeight;
-      const svgScreenW = stageW * 1.8;
-      const svgScale = svgScreenW / SVG_W;
-      const zoom = 1 + p * 0.25;
-      const svgOffsetX = -stageW * 0.35;
-
-      const ease = Math.min(1, p * 3);
-      const targetX = stageW * (0.08 + ease * 0.07);
-      const targetY = stageH * (0.82 - ease * 0.32);
-
-      const chartX = (targetX - (svgOffsetX + pt.x * svgScale) * zoom) / zoom;
-      const chartY = (targetY - pt.y * svgScale * zoom) / zoom;
-
-      const transform = `translate(${chartX}px, ${chartY}px) scale(${zoom})`;
-      chartGrowth.style.transform = transform;
-
-      const bgZoom = 1 + p * 0.08;
-      const bgX = (targetX - (svgOffsetX + pt.x * svgScale) * bgZoom) / bgZoom;
-      const bgY = (targetY - pt.y * svgScale * bgZoom) / bgZoom;
-      bgLayer.style.transform = `translate(${bgX * 0.12}px, ${bgY * 0.12}px) scale(${bgZoom})`;
-
-      const finalP = Math.max(0, Math.min(1, (p - 0.88) / 0.12));
-      chartGrowth.style.opacity = String(1 - finalP * 0.18);
-      bgLayer.style.opacity = String(1 - finalP * 0.08);
-
-      const metricX = chartX + (svgOffsetX + pt.x * svgScale) * zoom;
-      const metricY = chartY + pt.y * svgScale * zoom;
-      if (liveMetricRef.current) {
-        const lmX = Math.max(170, Math.min(stageW - 170, metricX));
-        const lmY = Math.max(170, Math.min(stageH - 140, metricY - 180));
-        const metricVisibility = Math.min(1, p * 4);
-        liveMetricRef.current.style.opacity = String(metricVisibility);
-        liveMetricRef.current.style.transform = `translate(${lmX}px, ${lmY}px) translate(-50%, -50%) scale(${0.9 + metricVisibility * 0.1})`;
-        liveMetricRef.current.style.filter = "blur(0px)";
-        liveMetricRef.current.classList.toggle("bp-live-metric--revealed", p > 0.18);
-        liveMetricRef.current.classList.toggle("bp-live-metric--moving", p <= 0.18);
-        // Hide live metric earlier to avoid overlap with CTA
-        if (p > 0.72) {
-          liveMetricRef.current.style.opacity = String(Math.max(0, 1 - (p - 0.72) / 0.1));
-        }
-      }
-
-      if (endDotRef.current) {
-        const show = p > 0.95;
-        const endPt = pathEl.getPointAtLength(pathEl.getTotalLength() * MAX_LINE_PROGRESS);
-        const endX = chartX + (svgOffsetX + endPt.x * svgScale) * zoom;
-        const endY = chartY + (stageH * 0.15 + endPt.y * svgScale) * zoom;
-        endDotRef.current.style.transform = `translate(${endX - 10}px, ${endY - 10}px)`;
-        const dotOpacity = show ? Math.min(1, (p - 0.95) / 0.03) : 0;
-        endDotRef.current.style.opacity = String(dotOpacity);
-        const pulseR = show ? 10 + Math.sin(Date.now() * 0.006) * 4 : 0;
-        endDotRef.current.style.width = `${pulseR * 2}px`;
-        endDotRef.current.style.height = `${pulseR * 2}px`;
-      }
-
-      if (glowFilterRef.current) {
-        const blurEl = glowFilterRef.current.querySelector("feGaussianBlur");
-        if (blurEl) {
-          const targetStd = 6 + Math.max(0, (p - 0.9) / 0.1) * 8;
-          blurEl.setAttribute("stdDeviation", String(targetStd));
-        }
-      }
-    }
-
-    function updateCounter(p: number) {
-      // Animate live metric based on scroll progress
-      const metricProgress = Math.min(1, p / 0.72);
-      const metricAmount = Math.round(metricProgress * MAX_INCOME);
-      const previousMetricAmount = animatedIncomeRef.current;
-      animatedIncomeRef.current += (metricAmount - previousMetricAmount) * 0.14;
-      if (liveMetricValueRef.current) {
-        liveMetricValueRef.current.textContent = fmt(animatedIncomeRef.current);
-      }
-    }
-
-    function updateMarkers(p: number) {
-      const activePath = growthPathRef.current;
-      if (!activePath) return;
-
-      const svgScreenW = stage.clientWidth * 1.8;
-      const svgScale = svgScreenW / SVG_W;
-
-      const transform = chartGrowth.style.transform;
-      const match = transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
-      const layerX = match ? parseFloat(match[1]) : 0;
-      const layerY = match ? parseFloat(match[2]) : 0;
-
-      MARKERS.forEach((m, i) => {
-        const on = p >= m.progress;
-        const label = markerLabelRefs.current[i];
-        if (label) {
-          const len = activePath.getTotalLength();
-          const pt = activePath.getPointAtLength(len * m.progress);
-
-          const zoom = 1 + p * 0.25;
-          const svgOffsetX = -stage.clientWidth * 0.1;
-          const markerX = layerX + (svgOffsetX + pt.x * svgScale) * zoom;
-          const markerY = layerY + pt.y * svgScale * zoom - 30;
-
-          label.style.transform = `translate(${markerX}px, ${markerY}px)`;
-
-          const targetOpacity = on ? 1 : 0;
-          const current = parseFloat(label.style.opacity || "0");
-          label.style.opacity = String(
-            current + (targetOpacity - current) * 0.15
-          );
-
-          if (on && !markerRevealed.current[i]) {
-            markerRevealed.current[i] = true;
-            gsap.fromTo(
-              label,
-              { scale: 0.8, y: 8 },
-              {
-                scale: 1,
-                y: 0,
-                duration: 0.4,
-                ease: "back.out(2)",
-              }
-            );
-            const glowColor = "0 0 16px rgba(74,222,128,0.6)";
-            label.style.boxShadow = `${glowColor}, 0 0 32px rgba(74,222,128,0.4)`;
-            gsap.to(label, {
-              boxShadow: "0 0 8px rgba(74,222,128,0.2)",
-              duration: 0.3,
-              delay: 0.2,
-              ease: "power2.out",
+          function drawParticles() {
+            ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+            const isLight = document.documentElement.dataset.theme === "light";
+            particlesRef.current.forEach((p) => {
+              p.y -= p.speed;
+              if (p.y < -10) p.y = canvasEl.height + 10;
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+              const a = isLight ? Math.min(p.alpha, 0.25) : p.alpha;
+              ctx.fillStyle = `rgba(74,222,128,${a})`;
+              ctx.shadowBlur = isLight ? 3 : 6;
+              ctx.shadowColor = "#4ade80";
+              ctx.fill();
+              ctx.shadowBlur = 0;
             });
           }
-        }
-      });
-    }
 
-    function onResize() {
-      resizeCanvas();
-      particlesRef.current.forEach((p) => {
-        p.x = Math.random() * canvasEl.width;
-        p.y = Math.random() * canvasEl.height;
-      });
-    }
-    window.addEventListener("resize", onResize);
+          let visible = false;
+          const syncParticles = () => {
+            gsap.ticker.remove(drawParticles);
+            if (visible && !document.hidden) gsap.ticker.add(drawParticles);
+          };
+          const visibilityObserver = new IntersectionObserver(([entry]) => {
+            visible = entry.isIntersecting;
+            syncParticles();
+          });
+          visibilityObserver.observe(stage);
+          document.addEventListener("visibilitychange", syncParticles);
 
-    return () => {
-      hasPlayedOnce.current = false;
-      hasSkippedBack.current = false;
-      hasCompletedOnce.current = false;
-      visualP.current = 0;
-      animatedIncomeRef.current = 0;
-      markerRevealed.current = [false, false, false];
-      if (liveMetricRef.current) {
-        liveMetricRef.current.classList.remove("bp-live-metric--revealed", "bp-live-metric--moving");
-        liveMetricRef.current.style.opacity = "0";
-        liveMetricRef.current.style.filter = "blur(10px)";
-      }
-      if (liveMetricSweepRef.current) {
-        liveMetricSweepRef.current.classList.remove("bp-live-metric__sweep--run");
-      }
-      if (ghostPathRef.current) {
-        ghostPathRef.current.style.opacity = "0";
-      }
-      if (scrollHintRef.current) {
-        scrollHintRef.current.style.opacity = "0";
-      }
-      cancelAnimationFrame(animIdRef.current);
-      gsap.ticker.remove(drawParticles);
-      mainST.kill();
-      ctaTl.kill();
-      window.removeEventListener("resize", onResize);
+          gsap.set(badgeRef.current, { opacity: 0, y: 28 });
+          gsap.set(titleRef.current, { opacity: 0, y: 40, rotateX: 18 });
+          gsap.set(subtitleRef.current, { opacity: 0, y: 32 });
+          gsap.set(ctaPanelRef.current, { opacity: 0, y: 30, scale: 0.95 });
+          gsap.set(liveMetricRef.current, { opacity: 0, y: 0, scale: 0.9, filter: "blur(10px)" });
+
+          gsap.fromTo(scrollHintRef.current,
+            { opacity: 0, y: -16, scale: 0.9, filter: "blur(6px)" },
+            { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.8, delay: 0.5, ease: "power3.out" }
+          );
+
+          const counterObj = { val: 0 };
+          const ctaTl = gsap.timeline({ paused: true });
+          ctaTl
+            .to(
+              badgeRef.current,
+              { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+              0
+            )
+            .to(
+              titleRef.current,
+              {
+                opacity: 1,
+                y: 0,
+                rotateX: 0,
+                duration: 0.35,
+                ease: "back.out(1.5)",
+              },
+              0.05
+            )
+            .to(
+              subtitleRef.current,
+              { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+              0.1
+            )
+            .to(
+              ctaPanelRef.current,
+              { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.4)" },
+              0.15
+            )
+            .fromTo(
+              counterRef.current,
+              { opacity: 0, y: 20, filter: "blur(12px)", scale: 0.92 },
+              { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 0.7, ease: "power3.out" },
+              0.1
+            )
+            .to(
+              counterObj,
+              {
+                val: clientsRef.current * RATE_PER_CLIENT,
+                duration: 2.0,
+                ease: "power2.out",
+                onUpdate: () => {
+                  if (counterRef.current) {
+                    counterRef.current.textContent = fmt(Math.round(counterObj.val));
+                  }
+                },
+              },
+              0.15
+            );
+
+          const renderProgress = (rawProgress: number) => {
+            let p = Math.min(Math.max(rawProgress, 0), 1);
+
+            // Once animation completes, freeze at final state
+            if (hasCompletedOnce.current) {
+              p = 1;
+            }
+
+            // Mark as completed when reaching the end
+            if (p >= 0.95 && !hasCompletedOnce.current) {
+              hasCompletedOnce.current = true;
+            }
+
+            visualP.current = p;
+            updateSceneGrowth(p);
+            updateCounter(p);
+            updateMarkers(p);
+
+            if (ghostPathRef.current) {
+              const ghostOpacity = Math.min(1, p * 5);
+              ghostPathRef.current.style.opacity = String(ghostOpacity);
+            }
+
+            if (scrollHintRef.current) {
+              const hintOpacity = Math.max(0, 1 - p * 6);
+              scrollHintRef.current.style.opacity = String(hintOpacity);
+              scrollHintRef.current.style.pointerEvents = hintOpacity < 0.05 ? "none" : "auto";
+            }
+
+            const ctaP = Math.max(0, Math.min(1, (p - 0.75) / 0.15));
+            ctaTl.progress(ctaP);
+          };
+
+          const mainST = ScrollTrigger.create({
+            trigger: track,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+            pin: stage,
+            anticipatePin: 1,
+            onUpdate: (self) => {
+              progressRef.current = self.progress;
+              scrollDirection.current = self.direction;
+              renderProgress(self.progress);
+            },
+          });
+
+          function updateSceneGrowth(p: number) {
+            const pathEl = growthPathRef.current;
+            if (!pathEl) return;
+
+            const lineP = Math.min(p, MAX_LINE_PROGRESS);
+            setDrawProgress(growthPathRef.current, lineP);
+
+            const lenAtP = pathEl.getTotalLength() * Math.min(Math.max(lineP, 0), 1);
+            const pt = pathEl.getPointAtLength(Math.min(lenAtP, pathEl.getTotalLength() - 0.01));
+
+            const stageW = stage.clientWidth;
+            const stageH = stage.clientHeight;
+            const svgScreenW = stageW * 1.8;
+            const svgScale = svgScreenW / SVG_W;
+            const zoom = 1 + p * 0.25;
+            const svgOffsetX = -stageW * 0.35;
+
+            const ease = Math.min(1, p * 3);
+            const targetX = stageW * (0.08 + ease * 0.07);
+            const targetY = stageH * (0.82 - ease * 0.32);
+
+            const chartX = (targetX - (svgOffsetX + pt.x * svgScale) * zoom) / zoom;
+            const chartY = (targetY - pt.y * svgScale * zoom) / zoom;
+
+            const transform = `translate(${chartX}px, ${chartY}px) scale(${zoom})`;
+            chartGrowth.style.transform = transform;
+
+            const bgZoom = 1 + p * 0.08;
+            const bgX = (targetX - (svgOffsetX + pt.x * svgScale) * bgZoom) / bgZoom;
+            const bgY = (targetY - pt.y * svgScale * bgZoom) / bgZoom;
+            bgLayer.style.transform = `translate(${bgX * 0.12}px, ${bgY * 0.12}px) scale(${bgZoom})`;
+
+            const finalP = Math.max(0, Math.min(1, (p - 0.88) / 0.12));
+            chartGrowth.style.opacity = String(1 - finalP * 0.18);
+            bgLayer.style.opacity = String(1 - finalP * 0.08);
+
+            const metricX = chartX + (svgOffsetX + pt.x * svgScale) * zoom;
+            const metricY = chartY + pt.y * svgScale * zoom;
+            if (liveMetricRef.current) {
+              const lmX = Math.max(170, Math.min(stageW - 170, metricX));
+              const lmY = Math.max(170, Math.min(stageH - 140, metricY - 180));
+              const metricVisibility = Math.min(1, p * 4);
+              liveMetricRef.current.style.opacity = String(metricVisibility);
+              liveMetricRef.current.style.transform = `translate(${lmX}px, ${lmY}px) translate(-50%, -50%) scale(${0.9 + metricVisibility * 0.1})`;
+              liveMetricRef.current.style.filter = "blur(0px)";
+              liveMetricRef.current.classList.toggle("bp-live-metric--revealed", p > 0.18);
+              liveMetricRef.current.classList.toggle("bp-live-metric--moving", p <= 0.18);
+              // Hide live metric earlier to avoid overlap with CTA
+              if (p > 0.72) {
+                liveMetricRef.current.style.opacity = String(Math.max(0, 1 - (p - 0.72) / 0.1));
+              }
+            }
+
+            if (endDotRef.current) {
+              const show = p > 0.95;
+              const endPt = pathEl.getPointAtLength(pathEl.getTotalLength() * MAX_LINE_PROGRESS);
+              const endX = chartX + (svgOffsetX + endPt.x * svgScale) * zoom;
+              const endY = chartY + (stageH * 0.15 + endPt.y * svgScale) * zoom;
+              endDotRef.current.style.transform = `translate(${endX - 10}px, ${endY - 10}px)`;
+              const dotOpacity = show ? Math.min(1, (p - 0.95) / 0.03) : 0;
+              endDotRef.current.style.opacity = String(dotOpacity);
+              const pulseR = show ? 10 + Math.sin(Date.now() * 0.006) * 4 : 0;
+              endDotRef.current.style.width = `${pulseR * 2}px`;
+              endDotRef.current.style.height = `${pulseR * 2}px`;
+            }
+
+            if (glowFilterRef.current) {
+              const blurEl = glowFilterRef.current.querySelector("feGaussianBlur");
+              if (blurEl) {
+                const targetStd = 6 + Math.max(0, (p - 0.9) / 0.1) * 8;
+                blurEl.setAttribute("stdDeviation", String(targetStd));
+              }
+            }
+          }
+
+          function updateCounter(p: number) {
+            // Animate live metric based on scroll progress
+            const metricProgress = Math.min(1, p / 0.72);
+            const metricAmount = Math.round(metricProgress * MAX_INCOME);
+            const previousMetricAmount = animatedIncomeRef.current;
+            animatedIncomeRef.current += (metricAmount - previousMetricAmount) * 0.14;
+            if (liveMetricValueRef.current) {
+              liveMetricValueRef.current.textContent = fmt(animatedIncomeRef.current);
+            }
+          }
+
+          function updateMarkers(p: number) {
+            const activePath = growthPathRef.current;
+            if (!activePath) return;
+
+            const svgScreenW = stage.clientWidth * 1.8;
+            const svgScale = svgScreenW / SVG_W;
+
+            const transform = chartGrowth.style.transform;
+            const match = transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+            const layerX = match ? parseFloat(match[1]) : 0;
+            const layerY = match ? parseFloat(match[2]) : 0;
+
+            MARKERS.forEach((m, i) => {
+              const on = p >= m.progress;
+              const label = markerLabelRefs.current[i];
+              if (label) {
+                const len = activePath.getTotalLength();
+                const pt = activePath.getPointAtLength(len * m.progress);
+
+                const zoom = 1 + p * 0.25;
+                const svgOffsetX = -stage.clientWidth * 0.1;
+                const markerX = layerX + (svgOffsetX + pt.x * svgScale) * zoom;
+                const markerY = layerY + pt.y * svgScale * zoom - 30;
+
+                label.style.transform = `translate(${markerX}px, ${markerY}px)`;
+
+                const targetOpacity = on ? 1 : 0;
+                const current = parseFloat(label.style.opacity || "0");
+                label.style.opacity = String(
+                  current + (targetOpacity - current) * 0.15
+                );
+
+                if (on && !markerRevealed.current[i]) {
+                  markerRevealed.current[i] = true;
+                  gsap.fromTo(
+                    label,
+                    { scale: 0.8, y: 8 },
+                    {
+                      scale: 1,
+                      y: 0,
+                      duration: 0.4,
+                      ease: "back.out(2)",
+                    }
+                  );
+                  const glowColor = "0 0 16px rgba(74,222,128,0.6)";
+                  label.style.boxShadow = `${glowColor}, 0 0 32px rgba(74,222,128,0.4)`;
+                  gsap.to(label, {
+                    boxShadow: "0 0 8px rgba(74,222,128,0.2)",
+                    duration: 0.3,
+                    delay: 0.2,
+                    ease: "power2.out",
+                  });
+                }
+              }
+            });
+          }
+
+          function onResize() {
+            resizeCanvas();
+            particlesRef.current.forEach((p) => {
+              p.x = Math.random() * canvasEl.width;
+              p.y = Math.random() * canvasEl.height;
+            });
+          }
+          window.addEventListener("resize", onResize);
+
+          return () => {
+            hasPlayedOnce.current = false;
+            hasSkippedBack.current = false;
+            hasCompletedOnce.current = false;
+            visualP.current = 0;
+            animatedIncomeRef.current = 0;
+            markerRevealed.current = [false, false, false];
+            if (liveMetricRef.current) {
+              liveMetricRef.current.classList.remove("bp-live-metric--revealed", "bp-live-metric--moving");
+              liveMetricRef.current.style.opacity = "0";
+              liveMetricRef.current.style.filter = "blur(10px)";
+            }
+            if (liveMetricSweepRef.current) {
+              liveMetricSweepRef.current.classList.remove("bp-live-metric__sweep--run");
+            }
+            if (ghostPathRef.current) {
+              ghostPathRef.current.style.opacity = "0";
+            }
+            if (scrollHintRef.current) {
+              scrollHintRef.current.style.opacity = "0";
+            }
+            cancelAnimationFrame(animIdRef.current);
+            gsap.ticker.remove(drawParticles);
+            visibilityObserver.disconnect();
+            document.removeEventListener("visibilitychange", syncParticles);
+            window.removeEventListener("resize", resizeCanvas);
+            mainST.kill();
+            ctaTl.kill();
+            window.removeEventListener("resize", onResize);
+          };
+        };
+        dispose = initialiseScene();
+      } catch { /* Keep the static markup usable if the optional animation cannot load. */ }
     };
-  }, [isMobile, setDrawProgress]);
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { observer.disconnect(); void start(); }
+    }, { rootMargin: "800px" });
+    observer.observe(element);
+    return () => { cancelled = true; observer.disconnect(); dispose?.(); };
+  }, [isMobile, reducedMotion, setDrawProgress]);
 
   useEffect(() => {
     const target = clients * RATE_PER_CLIENT;
-    if (calcIncomeRef.current) {
-      calcIncomeRef.current.classList.add("flash");
-      setTimeout(() => {
-        calcIncomeRef.current?.classList.remove("flash");
-      }, 300);
-
-      gsap.to(
-        { val: prevCalcIncome.current },
-        {
-          val: target,
-          duration: 0.5,
-          ease: "power3.out",
-          onUpdate: function () {
-            if (calcIncomeRef.current) {
-              calcIncomeRef.current.childNodes[0].textContent = fmt(
-                Math.round(this.targets()[0].val)
-              );
-            }
-          },
-        }
-      );
-      prevCalcIncome.current = target;
-    }
-
-    // Animate main counter with count-up
-    const currentVal = parseInt((counterRef.current?.textContent || "0").replace(/[^\d]/g, ""), 10) || 0;
-    gsap.to(
-      { val: currentVal },
-      {
-        val: target,
-        duration: 1.0,
-        ease: "power2.out",
-        onUpdate: function () {
-          if (counterRef.current) {
-            counterRef.current.textContent = fmt(Math.round(this.targets()[0].val));
-          }
-        },
-      }
-    );
-
+    clientsRef.current = clients;
+    if (counterRef.current) counterRef.current.textContent = fmt(target);
     animatedIncomeRef.current = target;
-    if (liveMetricValueRef.current) {
-      liveMetricValueRef.current.textContent = fmt(target);
-    }
+    if (liveMetricValueRef.current) liveMetricValueRef.current.textContent = fmt(target);
   }, [clients]);
 
   // Mobile: static, lightweight layout — no 300vh scroll-jack, no canvas
   // particles, no per-frame chart transform. Same content, theme-aware.
-  if (isMobile) {
+  if (isMobile || reducedMotion) {
     return (
       <section
         className="relative overflow-hidden px-4 py-16"

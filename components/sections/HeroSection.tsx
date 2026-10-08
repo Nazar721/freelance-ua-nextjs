@@ -1,12 +1,15 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
+import { useDesktopMotion } from "@/lib/useDesktopMotion";
+import dynamic from "next/dynamic";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import CountUp from "@/components/ui/CountUp";
 import { useTranslation } from "@/lib/LanguageContext";
+
+const HeroParticles = dynamic(() => import("./HeroParticles"), { ssr: false });
 
 const heroWords = ["hero.word1", "hero.word2"];
 
@@ -40,26 +43,10 @@ const wordRevealMobile = {
   },
 };
 
-function seededRandom(seed: number) {
-  const x = Math.sin(seed * 9973 + 7.13) * 10000;
-  return x - Math.floor(x);
-}
-
-const round4 = (n: number) => Math.round(n * 10000) / 10000;
-
-const particles = Array.from({ length: 20 }, (_, i) => ({
-  id: i,
-  x: round4(seededRandom(i) * 100),
-  y: round4(seededRandom(i + 20) * 100),
-  size: Math.round((2 + seededRandom(i + 40) * 3) * 100) / 100,
-  duration: 4 + seededRandom(i + 60) * 6,
-  delay: seededRandom(i + 80) * 4,
-}));
-
 export default function HeroSection() {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = usePrefersReducedMotion();
+  const desktopMotion = useDesktopMotion();
   const [isMobile, setIsMobile] = useState(false)  // hydration-safe: real value applied in the effect below;
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
@@ -95,33 +82,7 @@ export default function HeroSection() {
       <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-linear-to-t from-background to-transparent z-[1]" />
 
       {/* Floating particles — disabled on mobile for performance */}
-      {!shouldReduceMotion && !isMobile && (
-        <div className="absolute inset-0 pointer-events-none z-[1]">
-          {particles.map((p) => (
-            <motion.div
-              key={p.id}
-              className="absolute rounded-full bg-accent"
-              style={{
-                left: `${p.x}%`,
-                top: `${p.y}%`,
-                width: p.size,
-                height: p.size,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0, 0.5, 0],
-                scale: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: p.duration,
-                delay: p.delay,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
-      )}
+      {desktopMotion && <HeroParticles />}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
         {/* Badge */}

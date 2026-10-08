@@ -3184,3 +3184,8 @@ body {
   border-color: rgba(228, 228, 231, 0.6);
   box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.12);
 }
+
+/* Mobile backgrounds stay static: animating hue and glow repaints large areas. */
+@media (max-width: 768px) {
+  .hero-ambient, .site-backdrop__scan { animation: none !important; filter: none !important; }
+}

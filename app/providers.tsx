@@ -2,17 +2,11 @@
 
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import Lenis from "lenis";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type Lenis from "lenis";
 import { LanguageProvider, useTranslation } from "@/lib/LanguageContext";
 import { type Locale } from "@/lib/i18n";
 import { ThemeProvider, type Theme } from "@/lib/ThemeContext";
 import { siteConfig } from "@/config/site";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 function FloatingTelegramButton({ hidden }: { hidden: boolean }) {
   const { t } = useTranslation();
@@ -66,33 +60,29 @@ export function Providers({
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReduced || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
-    lenisRef.current = new Lenis({
-      smoothWheel: true,
-      syncTouch: false,
-      wheelMultiplier: 1,
-      touchMultiplier: 1,
-      lerp: 0.1,
-    });
-
-    if (typeof window !== "undefined") {
-      (window as unknown as Record<string, unknown>).__lenis = lenisRef.current;
-    }
-
-    lenisRef.current.on("scroll", ScrollTrigger.update);
-
-    const tick = (time: number) => {
-      lenisRef.current?.raf(time * 1000);
-    };
-    gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
-
-    return () => {
-      gsap.ticker.remove(tick);
-      lenisRef.current?.destroy();
-      if (typeof window !== "undefined") {
-        delete (window as unknown as Record<string, unknown>).__lenis;
+    let cancelled = false;
+    let dispose: (() => void) | undefined;
+    void Promise.all([import("lenis"), import("gsap"), import("gsap/ScrollTrigger")]).then(
+      ([{ default: Lenis }, { default: gsap }, { ScrollTrigger }]) => {
+        if (cancelled) return;
+        gsap.registerPlugin(ScrollTrigger);
+        const lenis = new Lenis({ smoothWheel: true, syncTouch: false,
+          wheelMultiplier: 1, touchMultiplier: 1, lerp: 0.1 });
+        lenisRef.current = lenis;
+        (window as unknown as Record<string, unknown>).__lenis = lenis;
+        lenis.on("scroll", ScrollTrigger.update);
+        const tick = (time: number) => lenis.raf(time * 1000);
+        gsap.ticker.add(tick);
+        gsap.ticker.lagSmoothing(0);
+        dispose = () => {
+          gsap.ticker.remove(tick);
+          lenis.destroy();
+          lenisRef.current = null;
+          delete (window as unknown as Record<string, unknown>).__lenis;
+        };
       }
-    };
+    ).catch(() => { /* Native scrolling remains available if the optional runtime fails. */ });
+    return () => { cancelled = true; dispose?.(); };
   }, []);
 
   /* App Router preserves the previous page's scroll offset on soft navigation
@@ -183,7 +173,12 @@ export function Providers({
       const lightbox = document.querySelector(".yarl__container, [role='dialog']");
       setHideByLightbox(!!lightbox);
     };
-    const observer = new MutationObserver(checkLightbox);
+    const observer = new MutationObserver((records) => {
+      if (records.some((record) => [...record.addedNodes, ...record.removedNodes].some(
+        (node) => node instanceof Element && (node.matches(".yarl__container, [role='dialog']") ||
+          node.querySelector(".yarl__container, [role='dialog']"))
+      ))) checkLightbox();
+    });
     observer.observe(document.body, { childList: true, subtree: true });
     return () => observer.disconnect();
   }, []);
