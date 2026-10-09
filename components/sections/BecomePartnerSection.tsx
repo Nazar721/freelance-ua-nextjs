@@ -10,6 +10,14 @@ const MAX_INCOME = 26800;
 const SVG_W = 2400;
 const SVG_H = 900;
 const MAX_LINE_PROGRESS = 0.82;
+/**
+ * Placement of the chart <svg> inside the stage. Single source of truth for
+ * the camera, marker, end-dot and income-plaque coordinates — must stay in
+ * sync with the inline styles on the <svg> (width / left / top).
+ */
+const SVG_SCREEN_WIDTH_VW = 1.8; // width: 180vw
+const SVG_LEFT_VW = -0.1; // left: -10vw
+const SVG_TOP_PCT = 0.15; // top: 15%
 
 const MARKERS = [
   { progress: 0.2, amount: 1200 },
@@ -100,6 +108,7 @@ export default function BecomePartnerSection() {
   const liveMetricRef = useRef<HTMLDivElement>(null);
   const liveMetricValueRef = useRef<HTMLDivElement>(null);
   const liveMetricSweepRef = useRef<HTMLSpanElement>(null);
+  /** Income shown by the chart plaque — driven by scroll progress only. */
   const animatedIncomeRef = useRef(0);
   const bgLayerRef = useRef<HTMLDivElement>(null);
   const chartGrowthRef = useRef<HTMLDivElement>(null);
@@ -114,9 +123,27 @@ export default function BecomePartnerSection() {
   const clientsRef = useRef(clients);
 
   const progressRef = useRef(0);
-  const markerLabelRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const markerWrapRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const markerPillRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const growthPathRef = useRef<SVGPathElement>(null);
+  const growthGlowNearRef = useRef<SVGPathElement>(null);
+  const growthGlowFarRef = useRef<SVGPathElement>(null);
+  /** Static path geometry — measured once, reused on every scroll update. */
+  const growthLenRef = useRef<number | null>(null);
+  const growthEndPtRef = useRef<{ x: number; y: number } | null>(null);
+  const markerPtsRef = useRef<{ x: number; y: number }[] | null>(null);
+  /** Current camera (stage coords) shared by line, markers and plaque. */
+  const cameraRef = useRef({
+    tx: 0,
+    ty: 0,
+    zoom: 1,
+    ox: 0,
+    oy: 0,
+    scale: 1,
+    svgLeft: 0,
+    svgTop: 0,
+  });
 
   const hasPlayedOnce = useRef(false);
   const hasSkippedBack = useRef(false);
@@ -126,23 +153,25 @@ export default function BecomePartnerSection() {
   const scrollHintRef = useRef<HTMLDivElement>(null);
   const ghostPathRef = useRef<SVGPathElement>(null);
   const endDotRef = useRef<HTMLDivElement>(null);
-  const glowFilterRef = useRef<SVGFilterElement>(null);
 
+  /** The plaque's blur is cleared once — never re-written on scroll frames. */
+  const metricBlurClearedRef = useRef(false);
   const markerRevealed = useRef<boolean[]>([false, false, false]);
   const particlesRef = useRef<Particle[]>([]);
   const animIdRef = useRef(0);
 
-  const setDrawProgress = useCallback(
-    (pathEl: SVGPathElement | null, p: number, reverse = false) => {
-      if (!pathEl) return;
-      const len = pathEl.getTotalLength();
-      pathEl.style.strokeDasharray = String(len);
-      pathEl.style.strokeDashoffset = reverse
-        ? String(-len * p)
-        : String(len * (1 - p));
-    },
-    []
-  );
+  const setDrawProgress = useCallback((p: number, reverse = false) => {
+    const offset = String(reverse ? -p : 1 - p);
+    for (const el of [
+      growthGlowFarRef.current,
+      growthGlowNearRef.current,
+      growthPathRef.current,
+    ]) {
+      if (el && el.style.strokeDashoffset !== offset) {
+        el.style.strokeDashoffset = offset;
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const element = trackRef.current;
@@ -172,7 +201,6 @@ export default function BecomePartnerSection() {
             canvasEl.height = stage.clientHeight;
           }
           resizeCanvas();
-          window.addEventListener("resize", resizeCanvas);
 
           const count = 80;
           particlesRef.current = Array.from({ length: count }, () => ({
@@ -261,19 +289,26 @@ export default function BecomePartnerSection() {
             .to(
               counterObj,
               {
-                val: clientsRef.current * RATE_PER_CLIENT,
+                // 0 → 1 fraction of the *current* calculator value, so moving
+                // the slider and scrubbing the scene never fight each other.
+                val: 1,
                 duration: 2.0,
                 ease: "power2.out",
                 onUpdate: () => {
                   if (counterRef.current) {
-                    counterRef.current.textContent = fmt(Math.round(counterObj.val));
+                    counterRef.current.textContent = fmt(
+                      counterObj.val * clientsRef.current * RATE_PER_CLIENT
+                    );
                   }
                 },
               },
               0.15
             );
 
-          const renderProgress = (rawProgress: number) => {
+          // `snap` = re-sync from a fresh measurement (scene start, refresh,
+          // resize): values land exactly on the current progress instead of
+          // easing in from zero.
+          const renderProgress = (rawProgress: number, snap = false) => {
             let p = Math.min(Math.max(rawProgress, 0), 1);
 
             // Once animation completes, freeze at final state
@@ -288,8 +323,8 @@ export default function BecomePartnerSection() {
 
             visualP.current = p;
             updateSceneGrowth(p);
-            updateCounter(p);
-            updateMarkers(p);
+            updateCounter(p, snap);
+            updateMarkers(p, snap);
 
             if (ghostPathRef.current) {
               const ghostOpacity = Math.min(1, p * 5);
@@ -318,147 +353,165 @@ export default function BecomePartnerSection() {
               scrollDirection.current = self.direction;
               renderProgress(self.progress);
             },
+            // Layout can change after the trigger was created (images loading,
+            // window resize, restored scroll position) — re-sync the scene so it
+            // never drifts away from the real scroll progress.
+            onRefresh: (self) => {
+              progressRef.current = self.progress;
+              scrollDirection.current = self.direction;
+              renderProgress(self.progress, true);
+            },
           });
 
-          function updateSceneGrowth(p: number) {
+          // The markup renders the chart hidden; apply the current progress
+          // immediately so the line is never shown fully drawn and a restored
+          // scroll position lands on the right frame.
+          progressRef.current = mainST.progress;
+          renderProgress(mainST.progress, true);
+
+          function ensureGeometry() {
             const pathEl = growthPathRef.current;
-            if (!pathEl) return;
+            if (!pathEl) return null;
+            if (growthLenRef.current === null) {
+              const len = pathEl.getTotalLength();
+              growthLenRef.current = len;
+              growthEndPtRef.current = pathEl.getPointAtLength(
+                len * MAX_LINE_PROGRESS
+              );
+              markerPtsRef.current = MARKERS.map((m) =>
+                pathEl.getPointAtLength(len * m.progress)
+              );
+            }
+            return pathEl;
+          }
 
-            const lineP = Math.min(p, MAX_LINE_PROGRESS);
-            setDrawProgress(growthPathRef.current, lineP);
+          /** SVG user unit → stage pixel, via the shared camera state. */
+          function svgToStage(x: number, y: number) {
+            const c = cameraRef.current;
+            const lx = c.svgLeft + x * c.scale;
+            const ly = c.svgTop + y * c.scale;
+            return {
+              x: c.tx + c.ox + c.zoom * (lx - c.ox),
+              y: c.ty + c.oy + c.zoom * (ly - c.oy),
+            };
+          }
 
-            const lenAtP = pathEl.getTotalLength() * Math.min(Math.max(lineP, 0), 1);
-            const pt = pathEl.getPointAtLength(Math.min(lenAtP, pathEl.getTotalLength() - 0.01));
+          function updateSceneGrowth(p: number) {
+            const pathEl = ensureGeometry();
+            const totalLen = growthLenRef.current;
+            if (!pathEl || totalLen === null) return;
 
+            // Reads first, style writes after — one layout pass per frame.
             const stageW = stage.clientWidth;
             const stageH = stage.clientHeight;
-            const svgScreenW = stageW * 1.8;
-            const svgScale = svgScreenW / SVG_W;
-            const zoom = 1 + p * 0.25;
-            const svgOffsetX = -stageW * 0.35;
+            const vw = window.innerWidth;
 
+            const lineP = Math.min(p, MAX_LINE_PROGRESS);
+            setDrawProgress(lineP);
+
+            const lenAtP = totalLen * Math.min(Math.max(lineP, 0), 1);
+            const pt = pathEl.getPointAtLength(
+              Math.min(lenAtP, Math.max(totalLen - 0.01, 0))
+            );
+
+            const scale = (vw * SVG_SCREEN_WIDTH_VW) / SVG_W;
+            const svgLeft = SVG_LEFT_VW * vw;
+            const svgTop = stageH * SVG_TOP_PCT;
+            const localX = svgLeft + pt.x * scale;
+            const localY = svgTop + pt.y * scale;
+
+            const zoom = 1 + p * 0.25;
             const ease = Math.min(1, p * 3);
             const targetX = stageW * (0.08 + ease * 0.07);
             const targetY = stageH * (0.82 - ease * 0.32);
+            const ox = stageW / 2;
+            const oy = stageH / 2;
 
-            const chartX = (targetX - (svgOffsetX + pt.x * svgScale) * zoom) / zoom;
-            const chartY = (targetY - pt.y * svgScale * zoom) / zoom;
+            const tx = targetX - ox - zoom * (localX - ox);
+            const ty = targetY - oy - zoom * (localY - oy);
+            cameraRef.current = { tx, ty, zoom, ox, oy, scale, svgLeft, svgTop };
 
-            const transform = `translate(${chartX}px, ${chartY}px) scale(${zoom})`;
-            chartGrowth.style.transform = transform;
+            chartGrowth.style.transform = `translate(${tx}px, ${ty}px) scale(${zoom})`;
 
             const bgZoom = 1 + p * 0.08;
-            const bgX = (targetX - (svgOffsetX + pt.x * svgScale) * bgZoom) / bgZoom;
-            const bgY = (targetY - pt.y * svgScale * bgZoom) / bgZoom;
-            bgLayer.style.transform = `translate(${bgX * 0.12}px, ${bgY * 0.12}px) scale(${bgZoom})`;
+            const bgTx = 0.12 * (targetX - ox - bgZoom * (localX - ox));
+            const bgTy = 0.12 * (targetY - oy - bgZoom * (localY - oy));
+            bgLayer.style.transform = `translate(${bgTx}px, ${bgTy}px) scale(${bgZoom})`;
 
             const finalP = Math.max(0, Math.min(1, (p - 0.88) / 0.12));
             chartGrowth.style.opacity = String(1 - finalP * 0.18);
             bgLayer.style.opacity = String(1 - finalP * 0.08);
 
-            const metricX = chartX + (svgOffsetX + pt.x * svgScale) * zoom;
-            const metricY = chartY + pt.y * svgScale * zoom;
+            const metric = svgToStage(pt.x, pt.y);
             if (liveMetricRef.current) {
-              const lmX = Math.max(170, Math.min(stageW - 170, metricX));
-              const lmY = Math.max(170, Math.min(stageH - 140, metricY - 180));
+              const lmX = Math.max(170, Math.min(stageW - 170, metric.x));
+              const lmY = Math.max(170, Math.min(stageH - 140, metric.y - 180));
               const metricVisibility = Math.min(1, p * 4);
-              liveMetricRef.current.style.opacity = String(metricVisibility);
+              liveMetricRef.current.style.opacity = String(
+                p > 0.72 ? Math.max(0, 1 - (p - 0.72) / 0.1) : metricVisibility
+              );
               liveMetricRef.current.style.transform = `translate(${lmX}px, ${lmY}px) translate(-50%, -50%) scale(${0.9 + metricVisibility * 0.1})`;
-              liveMetricRef.current.style.filter = "blur(0px)";
+              if (!metricBlurClearedRef.current) {
+                liveMetricRef.current.style.filter = "blur(0px)";
+                metricBlurClearedRef.current = true;
+              }
               liveMetricRef.current.classList.toggle("bp-live-metric--revealed", p > 0.18);
               liveMetricRef.current.classList.toggle("bp-live-metric--moving", p <= 0.18);
-              // Hide live metric earlier to avoid overlap with CTA
-              if (p > 0.72) {
-                liveMetricRef.current.style.opacity = String(Math.max(0, 1 - (p - 0.72) / 0.1));
-              }
             }
 
             if (endDotRef.current) {
               const show = p > 0.95;
-              const endPt = pathEl.getPointAtLength(pathEl.getTotalLength() * MAX_LINE_PROGRESS);
-              const endX = chartX + (svgOffsetX + endPt.x * svgScale) * zoom;
-              const endY = chartY + (stageH * 0.15 + endPt.y * svgScale) * zoom;
-              endDotRef.current.style.transform = `translate(${endX - 10}px, ${endY - 10}px)`;
+              const endPt = growthEndPtRef.current;
+              if (endPt) {
+                const e = svgToStage(endPt.x, endPt.y);
+                endDotRef.current.style.transform = `translate(${e.x}px, ${e.y}px) translate(-50%, -50%)`;
+              }
               const dotOpacity = show ? Math.min(1, (p - 0.95) / 0.03) : 0;
               endDotRef.current.style.opacity = String(dotOpacity);
               const pulseR = show ? 10 + Math.sin(Date.now() * 0.006) * 4 : 0;
-              endDotRef.current.style.width = `${pulseR * 2}px`;
-              endDotRef.current.style.height = `${pulseR * 2}px`;
-            }
-
-            if (glowFilterRef.current) {
-              const blurEl = glowFilterRef.current.querySelector("feGaussianBlur");
-              if (blurEl) {
-                const targetStd = 6 + Math.max(0, (p - 0.9) / 0.1) * 8;
-                blurEl.setAttribute("stdDeviation", String(targetStd));
-              }
+              const size = `${pulseR * 2}px`;
+              endDotRef.current.style.width = size;
+              endDotRef.current.style.height = size;
             }
           }
 
-          function updateCounter(p: number) {
-            // Animate live metric based on scroll progress
+          function updateCounter(p: number, snap = false) {
+            // Chart plaque income — starts at zero and follows scroll only.
             const metricProgress = Math.min(1, p / 0.72);
             const metricAmount = Math.round(metricProgress * MAX_INCOME);
             const previousMetricAmount = animatedIncomeRef.current;
-            animatedIncomeRef.current += (metricAmount - previousMetricAmount) * 0.14;
+            animatedIncomeRef.current = snap
+              ? metricAmount
+              : previousMetricAmount + (metricAmount - previousMetricAmount) * 0.14;
             if (liveMetricValueRef.current) {
               liveMetricValueRef.current.textContent = fmt(animatedIncomeRef.current);
             }
           }
 
-          function updateMarkers(p: number) {
-            const activePath = growthPathRef.current;
-            if (!activePath) return;
-
-            const svgScreenW = stage.clientWidth * 1.8;
-            const svgScale = svgScreenW / SVG_W;
-
-            const transform = chartGrowth.style.transform;
-            const match = transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
-            const layerX = match ? parseFloat(match[1]) : 0;
-            const layerY = match ? parseFloat(match[2]) : 0;
+          function updateMarkers(p: number, snap = false) {
+            const pts = markerPtsRef.current;
+            if (!pts) return;
 
             MARKERS.forEach((m, i) => {
+              const label = markerWrapRefs.current[i];
+              if (!label) return;
+
+              const pt = pts[i];
+              const s = svgToStage(pt.x, pt.y);
+              label.style.transform = `translate(${s.x}px, ${s.y - 12}px)`;
+
               const on = p >= m.progress;
-              const label = markerLabelRefs.current[i];
-              if (label) {
-                const len = activePath.getTotalLength();
-                const pt = activePath.getPointAtLength(len * m.progress);
+              const targetOpacity = on ? 1 : 0;
+              const current = parseFloat(label.style.opacity || "0");
+              label.style.opacity = String(
+                snap
+                  ? targetOpacity
+                  : current + (targetOpacity - current) * 0.15
+              );
 
-                const zoom = 1 + p * 0.25;
-                const svgOffsetX = -stage.clientWidth * 0.1;
-                const markerX = layerX + (svgOffsetX + pt.x * svgScale) * zoom;
-                const markerY = layerY + pt.y * svgScale * zoom - 30;
-
-                label.style.transform = `translate(${markerX}px, ${markerY}px)`;
-
-                const targetOpacity = on ? 1 : 0;
-                const current = parseFloat(label.style.opacity || "0");
-                label.style.opacity = String(
-                  current + (targetOpacity - current) * 0.15
-                );
-
-                if (on && !markerRevealed.current[i]) {
-                  markerRevealed.current[i] = true;
-                  gsap.fromTo(
-                    label,
-                    { scale: 0.8, y: 8 },
-                    {
-                      scale: 1,
-                      y: 0,
-                      duration: 0.4,
-                      ease: "back.out(2)",
-                    }
-                  );
-                  const glowColor = "0 0 16px rgba(74,222,128,0.6)";
-                  label.style.boxShadow = `${glowColor}, 0 0 32px rgba(74,222,128,0.4)`;
-                  gsap.to(label, {
-                    boxShadow: "0 0 8px rgba(74,222,128,0.2)",
-                    duration: 0.3,
-                    delay: 0.2,
-                    ease: "power2.out",
-                  });
-                }
+              if (on !== markerRevealed.current[i]) {
+                markerRevealed.current[i] = on;
+                markerPillRefs.current[i]?.classList.toggle("bp-marker-pill--in", on);
               }
             });
           }
@@ -469,6 +522,9 @@ export default function BecomePartnerSection() {
               p.x = Math.random() * canvasEl.width;
               p.y = Math.random() * canvasEl.height;
             });
+            // Stage size feeds the camera maths — re-apply the current progress
+            // so the line, markers and plaque stay aligned after a resize.
+            renderProgress(progressRef.current);
           }
           window.addEventListener("resize", onResize);
 
@@ -479,6 +535,20 @@ export default function BecomePartnerSection() {
             visualP.current = 0;
             animatedIncomeRef.current = 0;
             markerRevealed.current = [false, false, false];
+            markerPillRefs.current.forEach((pill) =>
+              pill?.classList.remove("bp-marker-pill--in")
+            );
+            // Back to the markup state: chart layer hidden, line undrawn —
+            // re-entering the scene always starts from the prepared state.
+            setDrawProgress(0);
+            if (chartGrowthRef.current) chartGrowthRef.current.style.opacity = "0";
+            if (endDotRef.current) endDotRef.current.style.opacity = "0";
+            markerWrapRefs.current.forEach((wrap) => {
+              if (wrap) {
+                wrap.style.opacity = "0";
+                wrap.style.transform = "translate(0px, 0px)";
+              }
+            });
             if (liveMetricRef.current) {
               liveMetricRef.current.classList.remove("bp-live-metric--revealed", "bp-live-metric--moving");
               liveMetricRef.current.style.opacity = "0";
@@ -497,7 +567,10 @@ export default function BecomePartnerSection() {
             gsap.ticker.remove(drawParticles);
             visibilityObserver.disconnect();
             document.removeEventListener("visibilitychange", syncParticles);
-            window.removeEventListener("resize", resizeCanvas);
+            metricBlurClearedRef.current = false;
+            growthLenRef.current = null;
+            growthEndPtRef.current = null;
+            markerPtsRef.current = null;
             mainST.kill();
             ctaTl.kill();
             window.removeEventListener("resize", onResize);
@@ -513,12 +586,13 @@ export default function BecomePartnerSection() {
     return () => { cancelled = true; observer.disconnect(); dispose?.(); };
   }, [isMobile, reducedMotion, setDrawProgress]);
 
+  // Calculator only: the CTA counter follows the slider. The chart plaque has
+  // its own state (animatedIncomeRef) driven purely by scroll progress, so it
+  // always starts at zero instead of inheriting the calculator total.
   useEffect(() => {
     const target = clients * RATE_PER_CLIENT;
     clientsRef.current = clients;
     if (counterRef.current) counterRef.current.textContent = fmt(target);
-    animatedIncomeRef.current = target;
-    if (liveMetricValueRef.current) liveMetricValueRef.current.textContent = fmt(target);
   }, [clients]);
 
   // Mobile: static, lightweight layout — no 300vh scroll-jack, no canvas
@@ -777,7 +851,9 @@ export default function BecomePartnerSection() {
           />
         </div>
 
-        {/* Growth chart layer */}
+        {/* Growth chart layer — hidden until the scene is measured and synced
+            with the current scroll progress, so the line is never painted
+            fully drawn before the scene starts. */}
         <div
           ref={chartGrowthRef}
           style={{
@@ -785,7 +861,7 @@ export default function BecomePartnerSection() {
             inset: 0,
             willChange: "transform",
             zIndex: 1,
-            opacity: 1,
+            opacity: 0,
           }}
         >
           <svg
@@ -800,13 +876,6 @@ export default function BecomePartnerSection() {
             }}
           >
             <defs>
-              <filter id="glow-growth" ref={glowFilterRef} x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="6" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
               <linearGradient id="grad-growth" x1="0" y1="0" x2="1" y2="0">
                 <stop offset="0%" stopColor="#22c55e" stopOpacity="0.4" />
                 <stop offset="50%" stopColor="#4ade80" stopOpacity="1" />
@@ -821,6 +890,33 @@ export default function BecomePartnerSection() {
               strokeWidth="3"
               strokeLinecap="round"
               strokeDasharray="12 18"
+              style={{ opacity: 0 }}
+            />
+            {/* Glow as layered translucent strokes — an SVG blur filter over a
+                180vw path made every scroll frame in WebKit very expensive. */}
+            <path
+              ref={growthGlowFarRef}
+              d={GROWTH_PATH_UPPER}
+              fill="none"
+              stroke="url(#grad-growth)"
+              strokeOpacity="0.12"
+              strokeWidth="22"
+              strokeLinecap="round"
+              pathLength={1}
+              strokeDasharray="1"
+              style={{ strokeDashoffset: 1 }}
+            />
+            <path
+              ref={growthGlowNearRef}
+              d={GROWTH_PATH_UPPER}
+              fill="none"
+              stroke="url(#grad-growth)"
+              strokeOpacity="0.3"
+              strokeWidth="9"
+              strokeLinecap="round"
+              pathLength={1}
+              strokeDasharray="1"
+              style={{ strokeDashoffset: 1 }}
             />
             <path
               ref={growthPathRef}
@@ -828,16 +924,28 @@ export default function BecomePartnerSection() {
               fill="none"
               stroke="url(#grad-growth)"
               strokeWidth="4"
-              filter="url(#glow-growth)"
               strokeLinecap="round"
+              pathLength={1}
+              strokeDasharray="1"
+              style={{ strokeDashoffset: 1 }}
             />
           </svg>
-          <div
-            ref={endDotRef}
-            className="bp-end-dot"
-            style={{ position: "absolute", opacity: 0, pointerEvents: "none" }}
-          />
         </div>
+
+        {/* End dot lives on the stage (like the markers) so one camera
+            transform drives the line, labels and plaque. */}
+        <div
+          ref={endDotRef}
+          className="bp-end-dot"
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            opacity: 0,
+            pointerEvents: "none",
+            zIndex: 12,
+          }}
+        />
 
         {/* Live chart metric */}
         <div
@@ -861,26 +969,33 @@ export default function BecomePartnerSection() {
           <div className="bp-live-metric__caption">Приведи клієнта — заробляй більше</div>
         </div>
 
-        {/* Marker labels */}
+        {/* Marker labels: the wrapper carries the JS-driven position, the pill
+            keeps the reveal animation — the two never fight over transform. */}
         {MARKERS.map((m, i) => (
           <div
             key={`ml-${i}`}
             ref={(el) => {
-              markerLabelRefs.current[i] = el;
+              markerWrapRefs.current[i] = el;
             }}
-            className={`bp-marker-pill absolute pointer-events-none ${theme === "light" ? "bp-marker-pill--light" : ""}`}
+            className="pointer-events-none absolute"
             style={{
-              transform: "translateX(-50%) scale(0.8) translateY(8px)",
+              transform: "translate(0px, 0px)",
               opacity: 0,
               zIndex: 10,
               willChange: "transform, opacity",
             }}
           >
-            <span className="bp-marker-pill__dot" />
-            <span className="bp-marker-pill__text">{fmtPlus(m.amount)}</span>
+            <div
+              ref={(el) => {
+                markerPillRefs.current[i] = el;
+              }}
+              className={`bp-marker-pill ${theme === "light" ? "bp-marker-pill--light" : ""}`}
+            >
+              <span className="bp-marker-pill__dot" />
+              <span className="bp-marker-pill__text">{fmtPlus(m.amount)}</span>
+            </div>
           </div>
         ))}
-
         {/* Scroll hint indicator — liquid glass pill at top */}
         <div
           ref={scrollHintRef}

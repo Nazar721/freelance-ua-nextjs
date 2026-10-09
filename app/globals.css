@@ -2405,7 +2405,9 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  transition: transform 120ms cubic-bezier(0.4, 0, 0.2, 1), opacity 220ms ease, filter 220ms ease;
+  /* Position is written by JS on every scroll frame — a transform transition
+     here would lag behind (and fight) the script. */
+  transition: opacity 220ms ease, filter 220ms ease;
   will-change: transform, opacity;
 }
 
@@ -2537,6 +2539,9 @@ body {
 .bp-marker-pill {
   display: flex;
   align-items: center;
+  /* Anchored to its wrapper's origin: centred above the line point. The
+     wrapper carries the JS position, this transform never changes. */
+  transform: translate(-50%, -100%);
   gap: 6px;
   padding: 5px 12px 5px 8px;
   border-radius: 999px;
@@ -2552,6 +2557,32 @@ body {
   background: rgba(255, 255, 255, 0.85);
   border-color: rgba(99, 102, 241, 0.2);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Reveal pop — CSS owns it so it can't collide with the scripted position */
+.bp-marker-pill--in {
+  animation:
+    bp-marker-pop 0.45s cubic-bezier(0.22, 1.2, 0.36, 1),
+    bp-marker-flash 0.5s ease-out 0.1s;
+}
+
+@keyframes bp-marker-pop {
+  from { transform: translate(-50%, -100%) scale(0.8); }
+  to { transform: translate(-50%, -100%) scale(1); }
+}
+
+@keyframes bp-marker-flash {
+  0% {
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.4),
+      0 0 16px rgba(74, 222, 128, 0.6),
+      0 0 32px rgba(74, 222, 128, 0.4);
+  }
+  100% {
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.4),
+      0 0 8px rgba(74, 222, 128, 0.2);
+  }
 }
 
 .bp-marker-pill__dot {
