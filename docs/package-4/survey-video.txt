@@ -1,0 +1,279 @@
+=== video/ai-avatars ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/ai-ice-cream ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/ai-promo-misha ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/ai-spring-fashion ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/ai-video-new ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/alien-city-adventure ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/artem-reels ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/auto-edits-reels ===
+  arrays: videos→videoGrid ✗, resultItems→results
+  inline JSX media arrays: 0
+  hero: unknown | review: none
+  UNSUPPORTED: array "videos" → videoGrid (video tiles: file + poster + duration/format badges → schema `videoGrid` (playable tile + fullscreen player); section mapper not written yet)
+  UNSUPPORTED: hero is unknown — the mapper writes an image, image-grid or single-video hero only
+=== video/automation-1click ===
+  arrays: resultItems→results, screenshots→gallery ✗
+  inline JSX media arrays: 0
+  hero: image | review: text/screenshot(keys)
+  UNSUPPORTED: array "screenshots" → gallery (image gallery → `gallery`)
+=== video/barvy-interior-ai-reels ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format+duration | review: video
+  → mappable by the current schema
+=== video/dance-competition-lviv ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/dominanta-youtube-intro ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format+duration | review: video
+  → mappable by the current schema
+=== video/dr-trichologist-promo ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format+duration | review: video
+  → mappable by the current schema
+=== video/eva-code-reels ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  UNSUPPORTED: 1 inline media element(s) outside hero/review (eva-web.webp) — not mapped
+=== video/income-graph-motion ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/internet-svit-promo ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/ivan-ig-creative ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/liliya-product-business ===
+  arrays: resultItems→results, screenshots→gallery ✗
+  inline JSX media arrays: 0
+  hero: image | review: text/screenshot(keys)
+  UNSUPPORTED: array "screenshots" → gallery (image gallery → `gallery`)
+=== video/logan-ai-promo ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/logo-animation ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format+duration | review: video
+  → mappable by the current schema
+=== video/maccoudi-youtube ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  UNSUPPORTED: 3 inline media element(s) outside hero/review (video-2.mp4, youtube-channel.png, tiktok-profile.png) — not mapped
+=== video/motion-promo ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/motion-reels ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format+duration | review: video
+  → mappable by the current schema
+=== video/nikita-sheremet-crypto ===
+  arrays: resultItems→results
+  inline JSX media arrays: 1
+  hero: unknown | review: text/screenshot(keys)
+  UNSUPPORTED: 1 inline media element(s) outside hero/review (avatar.jpeg) — not mapped
+  UNSUPPORTED: hero is unknown — the mapper writes an image, image-grid or single-video hero only
+  UNSUPPORTED: 1 inline JSX media array(s) (4 media) — not mapped
+=== video/passive-income-video ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/podcast-editing ===
+  arrays: resultItems→results, screenshots→gallery ✗
+  inline JSX media arrays: 0
+  hero: image | review: text/screenshot(keys)
+  UNSUPPORTED: array "screenshots" → gallery (image gallery → `gallery`)
+=== video/presentation-animation ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format+duration | review: video
+  → mappable by the current schema
+=== video/sales-bible-promo ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/selloflow-intro ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/serhii-yarmolenko-reels ===
+  arrays: resultItems→results, caseVideos→videoGrid ✗
+  inline JSX media arrays: 0
+  hero: imageGrid(caseVideos) | review: text/screenshot(keys)
+  UNSUPPORTED: 1 inline media element(s) outside hero/review (profile.webp) — not mapped
+  UNSUPPORTED: array "caseVideos" → videoGrid (video tiles: file + poster + duration/format badges → schema `videoGrid` (playable tile + fullscreen player); section mapper not written yet)
+=== video/serhii-yarmolenko-video-lesson ===
+  arrays: resultItems→results, screenshots→gallery ✗
+  inline JSX media arrays: 0
+  hero: image | review: text/screenshot(keys)
+  UNSUPPORTED: array "screenshots" → gallery (image gallery → `gallery`)
+=== video/sestro-anniversary ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format+duration | review: video
+  UNSUPPORTED: 1 inline media element(s) outside hero/review (sestro.jpg) — not mapped
+=== video/sestro-beauty ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/sheglam-freedom-fest ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/sheglam-promo ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  UNSUPPORTED: 1 inline media element(s) outside hero/review (screenshot.jpg) — not mapped
+=== video/skool-10-features ===
+  arrays: resultItems→results, screenshots→gallery ✗
+  inline JSX media arrays: 0
+  hero: image | review: text/screenshot(keys)
+  UNSUPPORTED: array "screenshots" → gallery (image gallery → `gallery`)
+=== video/taranenko-trade ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/telegram-emoji-stickers ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format+duration | review: video
+  UNSUPPORTED: 2 inline media element(s) outside hero/review (process-1.mp4, process-2.mp4) — not mapped
+=== video/travel-vlog-turkey ===
+  arrays: resultItems→results, screenshots→gallery ✗
+  inline JSX media arrays: 0
+  hero: image | review: text/screenshot(keys)
+  UNSUPPORTED: array "screenshots" → gallery (image gallery → `gallery`)
+=== video/twin-a-auto ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: unknown | review: text/screenshot(keys)
+  UNSUPPORTED: hero is unknown — the mapper writes an image, image-grid or single-video hero only
+=== video/valeriia-trend-reels ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/varto-reels ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format+duration | review: video
+  → mappable by the current schema
+=== video/veronika-ai-muscles ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/vibe-nation-promo ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player) | review: video
+  → mappable by the current schema
+=== video/vitalii-cheverda ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/vladlen-lisynko-interview ===
+  arrays: resultItems→results, screenshots→gallery ✗
+  inline JSX media arrays: 0
+  hero: image | review: text/screenshot(keys)
+  UNSUPPORTED: array "screenshots" → gallery (image gallery → `gallery`)
+=== video/vorodi-medical ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/vsehub-reels ===
+  arrays: resultItems→results
+  inline JSX media arrays: 1
+  hero: videoGrid | review: text/screenshot(keys)
+  UNSUPPORTED: 1 inline media element(s) outside hero/review (avatar.jpeg) — not mapped
+  UNSUPPORTED: 1 inline JSX media array(s) (6 media) — not mapped
+=== video/vtikha-promo ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/watch-hype-intro ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/watch-hype-motion ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+=== video/wine-festival ===
+  arrays: resultItems→results
+  inline JSX media arrays: 1
+  hero: unknown | review: video
+  UNSUPPORTED: 2 inline media element(s) outside hero/review (video-1.mp4, video-2.mp4) — not mapped
+  UNSUPPORTED: hero is unknown — the mapper writes an image, image-grid or single-video hero only
+  UNSUPPORTED: 1 inline JSX media array(s) (2 media) — not mapped
+=== video/youtube-conversational-video ===
+  arrays: resultItems→results, screenshots→gallery ✗
+  inline JSX media arrays: 0
+  hero: image | review: text/screenshot(keys)
+  UNSUPPORTED: array "screenshots" → gallery (image gallery → `gallery`)
+=== video/yulia-smm-reels ===
+  arrays: resultItems→results
+  inline JSX media arrays: 0
+  hero: video(player)+format | review: video
+  → mappable by the current schema
+
+survey: 54 page(s), 35 mappable, 19 need schema/mapper work

@@ -6,10 +6,12 @@ import { ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import FeaturedCaseCard from "@/components/ui/FeaturedCaseCard";
 import { itCases } from "@/data/itCases";
+import { featuredCardProps } from "@/lib/case-cards";
 import { useTranslation } from "@/lib/LanguageContext";
 
 export default function ItCasesSection() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const lp = locale === "en" ? "/en" : "";
   const featured = itCases.slice(0, 2);
 
   return (
@@ -29,18 +31,7 @@ export default function ItCasesSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-12">
           {featured.map((c, i) => (
             <FadeIn key={c.slug} delay={0.1 + i * 0.1} y={40} blur={4}>
-              <FeaturedCaseCard
-                categoryKey={c.categoryKey}
-                titleKey={c.titleKey}
-                descriptionKey={c.descriptionKey}
-                href={c.href}
-                glowColor={c.glowColor}
-                glowColorStrong={c.glowColorStrong}
-                image={c.image}
-                imageFit={c.imageFit}
-                objectPosition={c.objectPosition}
-                badge={c.badge}
-              />
+              <FeaturedCaseCard {...featuredCardProps(c)} />
             </FadeIn>
           ))}
         </div>
@@ -48,7 +39,7 @@ export default function ItCasesSection() {
         {/* All cases CTA */}
         <FadeIn delay={0.15} y={20} blur={4} className="text-center mt-8">
           <Link
-            href="/cases?tab=it"
+            href={`${lp}/services/it#cases`}
             className="inline-flex items-center gap-2 border border-[#6366F1] text-[#6366F1] hover:bg-[#6366F1] hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]"
           >
             {t("itCases.allCases")}

@@ -1,0 +1,7 @@
+=== design/moto-school-window-branding ===
+  arrays: results→results
+  inline JSX media arrays: 0
+  hero: image | review: text/screenshot(keys)
+  UNSUPPORTED: 2 template-literal i18n key(s) (e.g. "designCases.motoSchoolWindowBranding.detail.…") — dynamic keys cannot be mapped
+
+survey: 1 page(s), 0 mappable, 1 need schema/mapper work

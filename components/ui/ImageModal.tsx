@@ -13,9 +13,25 @@ type ImageModalProps = {
   onPrev: () => void;
   onNext: () => void;
   title: string;
+  /** Accessible names of the dialog controls. Defaults keep the legacy
+   *  English labels for pages that do not pass translations yet. */
+  closeLabel?: string;
+  prevLabel?: string;
+  nextLabel?: string;
 };
 
-export function ImageModal({ images, currentIndex, isOpen, onClose, onPrev, onNext, title }: ImageModalProps) {
+export function ImageModal({
+  images,
+  currentIndex,
+  isOpen,
+  onClose,
+  onPrev,
+  onNext,
+  title,
+  closeLabel = "Close",
+  prevLabel = "Previous",
+  nextLabel = "Next",
+}: ImageModalProps) {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -130,7 +146,7 @@ export function ImageModal({ images, currentIndex, isOpen, onClose, onPrev, onNe
           ref={closeButtonRef}
           onClick={onClose}
           className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/20 hover:bg-white/30 transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-          aria-label="Close"
+          aria-label={closeLabel}
         >
           <X size={24} className="text-white" />
         </button>
@@ -143,7 +159,7 @@ export function ImageModal({ images, currentIndex, isOpen, onClose, onPrev, onNe
                 onPrev();
               }}
               className="absolute left-4 z-10 w-11 h-11 rounded-full bg-white/20 hover:bg-white/30 transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              aria-label="Previous"
+              aria-label={prevLabel}
             >
               <ChevronLeft size={24} className="text-white" />
             </button>
@@ -153,7 +169,7 @@ export function ImageModal({ images, currentIndex, isOpen, onClose, onPrev, onNe
                 onNext();
               }}
               className="absolute right-4 z-10 w-11 h-11 rounded-full bg-white/20 hover:bg-white/30 transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              aria-label="Next"
+              aria-label={nextLabel}
             >
               <ChevronRight size={24} className="text-white" />
             </button>

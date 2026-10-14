@@ -1,0 +1,670 @@
+Package 4 case pages — browser checks
+base: http://localhost:3011
+engines: chromium, webkit (Playwright builds, not installed Chrome/Safari)
+cases: design/pink-pr-flyers, design/snizhana-telegram-stickers, design/globus-billboard
+checked: 661 · passed: 661 · failed: 0
+duration: 80s
+
+✓ [chromium desktop] /cases/design/pink-pr-flyers status 200 — 200
+✓ [chromium desktop] /cases/design/pink-pr-flyers html lang — uk
+✓ [chromium desktop] /cases/design/pink-pr-flyers exactly one h1 — ["Pink PR — комплект флаєрів для друку"]
+✓ [chromium desktop] /cases/design/pink-pr-flyers h1 localized — Pink PR — комплект флаєрів для друку
+✓ [chromium desktop] /cases/design/pink-pr-flyers hero text localized — Комплект друкованих матеріалів у єдиному фірмовому стилі бре
+✓ [chromium desktop] /cases/design/pink-pr-flyers single canonical — 1
+✓ [chromium desktop] /cases/design/pink-pr-flyers canonical path — https://freelance-ua.agency/cases/design/pink-pr-flyers
+✓ [chromium desktop] /cases/design/pink-pr-flyers hreflang en — https://freelance-ua.agency/en/cases/design/pink-pr-flyers
+✓ [chromium desktop] /cases/design/pink-pr-flyers no raw i18n keys — []
+✓ [chromium desktop] /cases/design/pink-pr-flyers breadcrumb present
+✓ [chromium desktop] /cases/design/pink-pr-flyers breadcrumb aria-label — Навігаційний ланцюжок
+✓ [chromium desktop] /cases/design/pink-pr-flyers breadcrumb has 3 items — ["Головна","Дизайн","Pink PR — комплект флаєрів для друку"]
+✓ [chromium desktop] /cases/design/pink-pr-flyers breadcrumb home label — Головна
+✓ [chromium desktop] /cases/design/pink-pr-flyers breadcrumb home href — /
+✓ [chromium desktop] /cases/design/pink-pr-flyers breadcrumb direction label — Дизайн
+✓ [chromium desktop] /cases/design/pink-pr-flyers breadcrumb direction href — /services/design
+✓ [chromium desktop] /cases/design/pink-pr-flyers breadcrumb current is H1 — Pink PR — комплект флаєрів для друку
+✓ [chromium desktop] /cases/design/pink-pr-flyers breadcrumb current has no href — null
+✓ [chromium desktop] /cases/design/pink-pr-flyers breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /cases/design/pink-pr-flyers back-to-list link — /cases?tab=design
+✓ [chromium desktop] /cases/design/pink-pr-flyers switcher → counterpart — /en/cases/design/pink-pr-flyers (expected /en/cases/design/pink-pr-flyers)
+✓ [chromium desktop] /cases/design/pink-pr-flyers related heading — Інші проєкти
+✓ [chromium desktop] /cases/design/pink-pr-flyers related has 3 cards — ["/cases/design/nastya-smm","/cases/design/mydutyfree","/cases/design/gopro-hero13"]
+✓ [chromium desktop] /cases/design/pink-pr-flyers related excludes current — ["/cases/design/nastya-smm","/cases/design/mydutyfree","/cases/design/gopro-hero13"]
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers status 200 — 200
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers html lang — en
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers exactly one h1 — ["Pink PR — print flyer set"]
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers h1 localized — Pink PR — print flyer set
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers hero text localized — A set of print materials in a single Pink PR brand style.
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers single canonical — 1
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers canonical path — https://freelance-ua.agency/en/cases/design/pink-pr-flyers
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers hreflang uk — https://freelance-ua.agency/cases/design/pink-pr-flyers
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers no raw i18n keys — []
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers breadcrumb present
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers breadcrumb aria-label — Breadcrumb
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers breadcrumb has 3 items — ["Home","Design","Pink PR — print flyer set"]
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers breadcrumb home label — Home
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers breadcrumb home href — /en
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers breadcrumb direction label — Design
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers breadcrumb direction href — /en/services/design
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers breadcrumb current is H1 — Pink PR — print flyer set
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers breadcrumb current has no href — null
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers back-to-list link — /en/cases?tab=design
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers switcher → counterpart — /cases/design/pink-pr-flyers (expected /cases/design/pink-pr-flyers)
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers related heading — Other projects
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers related has 3 cards — ["/cases/design/nastya-smm","/en/cases/design/mydutyfree","/cases/design/gopro-hero13"]
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers related excludes current — ["/cases/design/nastya-smm","/en/cases/design/mydutyfree","/cases/design/gopro-hero13"]
+✓ [chromium desktop] /cases/design/pink-pr-flyers switch → EN url — /en/cases/design/pink-pr-flyers
+✓ [chromium desktop] /cases/design/pink-pr-flyers switch → EN lang — en
+✓ [chromium desktop] /cases/design/pink-pr-flyers stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [chromium desktop] /cases/design/pink-pr-flyers UA h1 with NEXT_LOCALE=en — Pink PR — комплект флаєрів для друку
+✓ [chromium desktop] /cases/design/pink-pr-flyers breadcrumb → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/pink-pr-flyers back → case — /cases/design/pink-pr-flyers
+✓ [chromium desktop] /cases/design/pink-pr-flyers back keeps H1 — Pink PR — комплект флаєрів для друку
+✓ [chromium desktop] /cases/design/pink-pr-flyers forward → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers status 200 — 200
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers html lang — uk
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers exactly one h1 — ["Стікери для Telegram — дизайн пака емоцій"]
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers h1 localized — Стікери для Telegram — дизайн пака емоцій
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers hero text localized — Авторський пак із 52 стікерів — єдина мова емоцій для щоденн
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers single canonical — 1
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers canonical path — https://freelance-ua.agency/cases/design/snizhana-telegram-stickers
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers hreflang en — https://freelance-ua.agency/en/cases/design/snizhana-telegram-stickers
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers no raw i18n keys — []
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers breadcrumb present
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers breadcrumb aria-label — Навігаційний ланцюжок
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers breadcrumb has 3 items — ["Головна","Дизайн","Стікери для Telegram — дизайн пака емоцій"]
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers breadcrumb home label — Головна
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers breadcrumb home href — /
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers breadcrumb direction label — Дизайн
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers breadcrumb direction href — /services/design
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers breadcrumb current is H1 — Стікери для Telegram — дизайн пака емоцій
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers breadcrumb current has no href — null
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers back-to-list link — /cases?tab=design
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers switcher → counterpart — /en/cases/design/snizhana-telegram-stickers (expected /en/cases/design/snizhana-telegram-stickers)
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers related heading — Інші проєкти
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers related has 3 cards — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/vikontse-logo"]
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers related excludes current — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/vikontse-logo"]
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers status 200 — 200
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers html lang — en
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers exactly one h1 — ["Telegram stickers — emotion pack design"]
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers h1 localized — Telegram stickers — emotion pack design
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers hero text localized — An original pack of 52 stickers — one emotion language for e
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers single canonical — 1
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers canonical path — https://freelance-ua.agency/en/cases/design/snizhana-telegram-stickers
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers hreflang uk — https://freelance-ua.agency/cases/design/snizhana-telegram-stickers
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers no raw i18n keys — []
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb present
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb aria-label — Breadcrumb
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb has 3 items — ["Home","Design","Telegram stickers — emotion pack design"]
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb home label — Home
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb home href — /en
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb direction label — Design
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb direction href — /en/services/design
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb current is H1 — Telegram stickers — emotion pack design
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb current has no href — null
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers back-to-list link — /en/cases?tab=design
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers switcher → counterpart — /cases/design/snizhana-telegram-stickers (expected /cases/design/snizhana-telegram-stickers)
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers related heading — Other projects
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers related has 3 cards — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/en/cases/design/vikontse-logo"]
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers related excludes current — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/en/cases/design/vikontse-logo"]
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers switch → EN url — /en/cases/design/snizhana-telegram-stickers
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers switch → EN lang — en
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers UA h1 with NEXT_LOCALE=en — Стікери для Telegram — дизайн пака емоцій
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers breadcrumb → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers back → case — /cases/design/snizhana-telegram-stickers
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers back keeps H1 — Стікери для Telegram — дизайн пака емоцій
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers forward → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/globus-billboard status 200 — 200
+✓ [chromium desktop] /cases/design/globus-billboard html lang — uk
+✓ [chromium desktop] /cases/design/globus-billboard exactly one h1 — ["GLOBUS — дизайн білбордів"]
+✓ [chromium desktop] /cases/design/globus-billboard h1 localized — GLOBUS — дизайн білбордів
+✓ [chromium desktop] /cases/design/globus-billboard hero text localized — Макети білбордів для будівельної компанії GLOBUS — брендован
+✓ [chromium desktop] /cases/design/globus-billboard single canonical — 1
+✓ [chromium desktop] /cases/design/globus-billboard canonical path — https://freelance-ua.agency/cases/design/globus-billboard
+✓ [chromium desktop] /cases/design/globus-billboard hreflang en — https://freelance-ua.agency/en/cases/design/globus-billboard
+✓ [chromium desktop] /cases/design/globus-billboard no raw i18n keys — []
+✓ [chromium desktop] /cases/design/globus-billboard breadcrumb present
+✓ [chromium desktop] /cases/design/globus-billboard breadcrumb aria-label — Навігаційний ланцюжок
+✓ [chromium desktop] /cases/design/globus-billboard breadcrumb has 3 items — ["Головна","Дизайн","GLOBUS — дизайн білбордів"]
+✓ [chromium desktop] /cases/design/globus-billboard breadcrumb home label — Головна
+✓ [chromium desktop] /cases/design/globus-billboard breadcrumb home href — /
+✓ [chromium desktop] /cases/design/globus-billboard breadcrumb direction label — Дизайн
+✓ [chromium desktop] /cases/design/globus-billboard breadcrumb direction href — /services/design
+✓ [chromium desktop] /cases/design/globus-billboard breadcrumb current is H1 — GLOBUS — дизайн білбордів
+✓ [chromium desktop] /cases/design/globus-billboard breadcrumb current has no href — null
+✓ [chromium desktop] /cases/design/globus-billboard breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /cases/design/globus-billboard back-to-list link — /cases?tab=design
+✓ [chromium desktop] /cases/design/globus-billboard switcher → counterpart — /en/cases/design/globus-billboard (expected /en/cases/design/globus-billboard)
+✓ [chromium desktop] /cases/design/globus-billboard related heading — Інші проєкти
+✓ [chromium desktop] /cases/design/globus-billboard related has 3 cards — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/snizhana-telegram-stickers"]
+✓ [chromium desktop] /cases/design/globus-billboard related excludes current — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/snizhana-telegram-stickers"]
+✓ [chromium desktop] /en/cases/design/globus-billboard status 200 — 200
+✓ [chromium desktop] /en/cases/design/globus-billboard html lang — en
+✓ [chromium desktop] /en/cases/design/globus-billboard exactly one h1 — ["GLOBUS — billboard design"]
+✓ [chromium desktop] /en/cases/design/globus-billboard h1 localized — GLOBUS — billboard design
+✓ [chromium desktop] /en/cases/design/globus-billboard hero text localized — Billboard mockups for the GLOBUS construction company — bran
+✓ [chromium desktop] /en/cases/design/globus-billboard single canonical — 1
+✓ [chromium desktop] /en/cases/design/globus-billboard canonical path — https://freelance-ua.agency/en/cases/design/globus-billboard
+✓ [chromium desktop] /en/cases/design/globus-billboard hreflang uk — https://freelance-ua.agency/cases/design/globus-billboard
+✓ [chromium desktop] /en/cases/design/globus-billboard no raw i18n keys — []
+✓ [chromium desktop] /en/cases/design/globus-billboard breadcrumb present
+✓ [chromium desktop] /en/cases/design/globus-billboard breadcrumb aria-label — Breadcrumb
+✓ [chromium desktop] /en/cases/design/globus-billboard breadcrumb has 3 items — ["Home","Design","GLOBUS — billboard design"]
+✓ [chromium desktop] /en/cases/design/globus-billboard breadcrumb home label — Home
+✓ [chromium desktop] /en/cases/design/globus-billboard breadcrumb home href — /en
+✓ [chromium desktop] /en/cases/design/globus-billboard breadcrumb direction label — Design
+✓ [chromium desktop] /en/cases/design/globus-billboard breadcrumb direction href — /en/services/design
+✓ [chromium desktop] /en/cases/design/globus-billboard breadcrumb current is H1 — GLOBUS — billboard design
+✓ [chromium desktop] /en/cases/design/globus-billboard breadcrumb current has no href — null
+✓ [chromium desktop] /en/cases/design/globus-billboard breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /en/cases/design/globus-billboard back-to-list link — /en/cases?tab=design
+✓ [chromium desktop] /en/cases/design/globus-billboard switcher → counterpart — /cases/design/globus-billboard (expected /cases/design/globus-billboard)
+✓ [chromium desktop] /en/cases/design/globus-billboard related heading — Other projects
+✓ [chromium desktop] /en/cases/design/globus-billboard related has 3 cards — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/en/cases/design/snizhana-telegram-stickers"]
+✓ [chromium desktop] /en/cases/design/globus-billboard related excludes current — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/en/cases/design/snizhana-telegram-stickers"]
+✓ [chromium desktop] /cases/design/globus-billboard switch → EN url — /en/cases/design/globus-billboard
+✓ [chromium desktop] /cases/design/globus-billboard switch → EN lang — en
+✓ [chromium desktop] /cases/design/globus-billboard stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [chromium desktop] /cases/design/globus-billboard UA h1 with NEXT_LOCALE=en — GLOBUS — дизайн білбордів
+✓ [chromium desktop] /cases/design/globus-billboard breadcrumb → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/globus-billboard back → case — /cases/design/globus-billboard
+✓ [chromium desktop] /cases/design/globus-billboard back keeps H1 — GLOBUS — дизайн білбордів
+✓ [chromium desktop] /cases/design/globus-billboard forward → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/pink-pr-flyers review avatar present — found 1
+✓ [chromium desktop] /cases/design/pink-pr-flyers review heading localized — ["Відгук клієнта 💬"] expected="Відгук клієнта 💬"
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers review avatar present — found 1
+✓ [chromium desktop] /en/cases/design/pink-pr-flyers review heading localized — ["Client review 💬"] expected="Client review 💬"
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers review avatar present — found 1
+✓ [chromium desktop] /cases/design/snizhana-telegram-stickers review heading localized — ["Відгук клієнта 💬"] expected="Відгук клієнта 💬"
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers review avatar present — found 1
+✓ [chromium desktop] /en/cases/design/snizhana-telegram-stickers review heading localized — ["Client review 💬"] expected="Client review 💬"
+✓ [chromium desktop] /cases/design/globus-billboard review avatar present — found 1
+✓ [chromium desktop] /cases/design/globus-billboard review heading localized — ["Відгук клієнта 💬"] expected="Відгук клієнта 💬"
+✓ [chromium desktop] /en/cases/design/globus-billboard review avatar present — found 1
+✓ [chromium desktop] /en/cases/design/globus-billboard review heading localized — ["Client review 💬"] expected="Client review 💬"
+✓ [chromium mobile] /cases/design/pink-pr-flyers mobile status — 200
+✓ [chromium mobile] /cases/design/pink-pr-flyers mobile lang — uk
+✓ [chromium mobile] /cases/design/pink-pr-flyers mobile h1 visible — Pink PR — комплект флаєрів для друку
+✓ [chromium mobile] /cases/design/pink-pr-flyers mobile hero text visible
+✓ [chromium mobile] /cases/design/pink-pr-flyers mobile breadcrumb visible
+✓ [chromium mobile] /cases/design/pink-pr-flyers no horizontal overflow — 0px
+✓ [chromium mobile] /en/cases/design/pink-pr-flyers mobile status — 200
+✓ [chromium mobile] /en/cases/design/pink-pr-flyers mobile lang — en
+✓ [chromium mobile] /en/cases/design/pink-pr-flyers mobile h1 visible — Pink PR — print flyer set
+✓ [chromium mobile] /en/cases/design/pink-pr-flyers mobile hero text visible
+✓ [chromium mobile] /en/cases/design/pink-pr-flyers mobile breadcrumb visible
+✓ [chromium mobile] /en/cases/design/pink-pr-flyers no horizontal overflow — 0px
+✓ [chromium mobile] /cases/design/snizhana-telegram-stickers mobile status — 200
+✓ [chromium mobile] /cases/design/snizhana-telegram-stickers mobile lang — uk
+✓ [chromium mobile] /cases/design/snizhana-telegram-stickers mobile h1 visible — Стікери для Telegram — дизайн пака емоцій
+✓ [chromium mobile] /cases/design/snizhana-telegram-stickers mobile hero text visible
+✓ [chromium mobile] /cases/design/snizhana-telegram-stickers mobile breadcrumb visible
+✓ [chromium mobile] /cases/design/snizhana-telegram-stickers no horizontal overflow — 0px
+✓ [chromium mobile] /en/cases/design/snizhana-telegram-stickers mobile status — 200
+✓ [chromium mobile] /en/cases/design/snizhana-telegram-stickers mobile lang — en
+✓ [chromium mobile] /en/cases/design/snizhana-telegram-stickers mobile h1 visible — Telegram stickers — emotion pack design
+✓ [chromium mobile] /en/cases/design/snizhana-telegram-stickers mobile hero text visible
+✓ [chromium mobile] /en/cases/design/snizhana-telegram-stickers mobile breadcrumb visible
+✓ [chromium mobile] /en/cases/design/snizhana-telegram-stickers no horizontal overflow — 0px
+✓ [chromium mobile] /cases/design/globus-billboard mobile status — 200
+✓ [chromium mobile] /cases/design/globus-billboard mobile lang — uk
+✓ [chromium mobile] /cases/design/globus-billboard mobile h1 visible — GLOBUS — дизайн білбордів
+✓ [chromium mobile] /cases/design/globus-billboard mobile hero text visible
+✓ [chromium mobile] /cases/design/globus-billboard mobile breadcrumb visible
+✓ [chromium mobile] /cases/design/globus-billboard no horizontal overflow — 0px
+✓ [chromium mobile] /en/cases/design/globus-billboard mobile status — 200
+✓ [chromium mobile] /en/cases/design/globus-billboard mobile lang — en
+✓ [chromium mobile] /en/cases/design/globus-billboard mobile h1 visible — GLOBUS — billboard design
+✓ [chromium mobile] /en/cases/design/globus-billboard mobile hero text visible
+✓ [chromium mobile] /en/cases/design/globus-billboard mobile breadcrumb visible
+✓ [chromium mobile] /en/cases/design/globus-billboard no horizontal overflow — 0px
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers reduced-motion emulated — true
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers h1 visible without motion
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers reveal nodes static (19) — []
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers gallery block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers gallery has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers results items visible — 3/3
+✓ [chromium reduced-motion] /cases/design/pink-pr-flyers review card visible — 1
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers reduced-motion emulated — true
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers h1 visible without motion
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers reveal nodes static (19) — []
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers gallery block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers gallery has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers results items visible — 3/3
+✓ [chromium reduced-motion] /en/cases/design/pink-pr-flyers review card visible — 1
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers reduced-motion emulated — true
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers h1 visible without motion
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers reveal nodes static (27) — []
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers gallery block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers gallery has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers results items visible — 4/4
+✓ [chromium reduced-motion] /cases/design/snizhana-telegram-stickers review card visible — 1
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers reduced-motion emulated — true
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers h1 visible without motion
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers reveal nodes static (27) — []
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers gallery block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers gallery has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers results items visible — 4/4
+✓ [chromium reduced-motion] /en/cases/design/snizhana-telegram-stickers review card visible — 1
+✓ [chromium reduced-motion] /cases/design/globus-billboard reduced-motion emulated — true
+✓ [chromium reduced-motion] /cases/design/globus-billboard h1 visible without motion
+✓ [chromium reduced-motion] /cases/design/globus-billboard hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /cases/design/globus-billboard brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /cases/design/globus-billboard reveal nodes static (21) — []
+✓ [chromium reduced-motion] /cases/design/globus-billboard materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/globus-billboard materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/globus-billboard materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/globus-billboard materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/globus-billboard gallery block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/globus-billboard gallery has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/globus-billboard results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/globus-billboard results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/globus-billboard review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/globus-billboard review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/globus-billboard results items visible — 4/4
+✓ [chromium reduced-motion] /cases/design/globus-billboard review card visible — 1
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard reduced-motion emulated — true
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard h1 visible without motion
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard reveal nodes static (21) — []
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard gallery block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard gallery has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard results items visible — 4/4
+✓ [chromium reduced-motion] /en/cases/design/globus-billboard review card visible — 1
+✓ [chromium light-theme] /cases/design/pink-pr-flyers light theme applied — light
+✓ [chromium light-theme] /cases/design/pink-pr-flyers light theme h1 visible
+✓ [chromium light-theme] /cases/design/pink-pr-flyers light theme breadcrumb visible
+✓ [chromium light-theme] /cases/design/pink-pr-flyers light theme no overflow — 0px
+✓ [chromium light-theme] /cases/design/snizhana-telegram-stickers light theme applied — light
+✓ [chromium light-theme] /cases/design/snizhana-telegram-stickers light theme h1 visible
+✓ [chromium light-theme] /cases/design/snizhana-telegram-stickers light theme breadcrumb visible
+✓ [chromium light-theme] /cases/design/snizhana-telegram-stickers light theme no overflow — 0px
+✓ [chromium light-theme] /cases/design/globus-billboard light theme applied — light
+✓ [chromium light-theme] /cases/design/globus-billboard light theme h1 visible
+✓ [chromium light-theme] /cases/design/globus-billboard light theme breadcrumb visible
+✓ [chromium light-theme] /cases/design/globus-billboard light theme no overflow — 0px
+✓ [webkit desktop] /cases/design/pink-pr-flyers status 200 — 200
+✓ [webkit desktop] /cases/design/pink-pr-flyers html lang — uk
+✓ [webkit desktop] /cases/design/pink-pr-flyers exactly one h1 — ["Pink PR — комплект флаєрів для друку"]
+✓ [webkit desktop] /cases/design/pink-pr-flyers h1 localized — Pink PR — комплект флаєрів для друку
+✓ [webkit desktop] /cases/design/pink-pr-flyers hero text localized — Комплект друкованих матеріалів у єдиному фірмовому стилі бре
+✓ [webkit desktop] /cases/design/pink-pr-flyers single canonical — 1
+✓ [webkit desktop] /cases/design/pink-pr-flyers canonical path — https://freelance-ua.agency/cases/design/pink-pr-flyers
+✓ [webkit desktop] /cases/design/pink-pr-flyers hreflang en — https://freelance-ua.agency/en/cases/design/pink-pr-flyers
+✓ [webkit desktop] /cases/design/pink-pr-flyers no raw i18n keys — []
+✓ [webkit desktop] /cases/design/pink-pr-flyers breadcrumb present
+✓ [webkit desktop] /cases/design/pink-pr-flyers breadcrumb aria-label — Навігаційний ланцюжок
+✓ [webkit desktop] /cases/design/pink-pr-flyers breadcrumb has 3 items — ["Головна","Дизайн","Pink PR — комплект флаєрів для друку"]
+✓ [webkit desktop] /cases/design/pink-pr-flyers breadcrumb home label — Головна
+✓ [webkit desktop] /cases/design/pink-pr-flyers breadcrumb home href — /
+✓ [webkit desktop] /cases/design/pink-pr-flyers breadcrumb direction label — Дизайн
+✓ [webkit desktop] /cases/design/pink-pr-flyers breadcrumb direction href — /services/design
+✓ [webkit desktop] /cases/design/pink-pr-flyers breadcrumb current is H1 — Pink PR — комплект флаєрів для друку
+✓ [webkit desktop] /cases/design/pink-pr-flyers breadcrumb current has no href — null
+✓ [webkit desktop] /cases/design/pink-pr-flyers breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /cases/design/pink-pr-flyers back-to-list link — /cases?tab=design
+✓ [webkit desktop] /cases/design/pink-pr-flyers switcher → counterpart — /en/cases/design/pink-pr-flyers (expected /en/cases/design/pink-pr-flyers)
+✓ [webkit desktop] /cases/design/pink-pr-flyers related heading — Інші проєкти
+✓ [webkit desktop] /cases/design/pink-pr-flyers related has 3 cards — ["/cases/design/nastya-smm","/cases/design/mydutyfree","/cases/design/gopro-hero13"]
+✓ [webkit desktop] /cases/design/pink-pr-flyers related excludes current — ["/cases/design/nastya-smm","/cases/design/mydutyfree","/cases/design/gopro-hero13"]
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers status 200 — 200
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers html lang — en
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers exactly one h1 — ["Pink PR — print flyer set"]
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers h1 localized — Pink PR — print flyer set
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers hero text localized — A set of print materials in a single Pink PR brand style.
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers single canonical — 1
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers canonical path — https://freelance-ua.agency/en/cases/design/pink-pr-flyers
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers hreflang uk — https://freelance-ua.agency/cases/design/pink-pr-flyers
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers no raw i18n keys — []
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers breadcrumb present
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers breadcrumb aria-label — Breadcrumb
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers breadcrumb has 3 items — ["Home","Design","Pink PR — print flyer set"]
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers breadcrumb home label — Home
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers breadcrumb home href — /en
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers breadcrumb direction label — Design
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers breadcrumb direction href — /en/services/design
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers breadcrumb current is H1 — Pink PR — print flyer set
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers breadcrumb current has no href — null
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers back-to-list link — /en/cases?tab=design
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers switcher → counterpart — /cases/design/pink-pr-flyers (expected /cases/design/pink-pr-flyers)
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers related heading — Other projects
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers related has 3 cards — ["/cases/design/nastya-smm","/en/cases/design/mydutyfree","/cases/design/gopro-hero13"]
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers related excludes current — ["/cases/design/nastya-smm","/en/cases/design/mydutyfree","/cases/design/gopro-hero13"]
+✓ [webkit desktop] /cases/design/pink-pr-flyers switch → EN url — /en/cases/design/pink-pr-flyers
+✓ [webkit desktop] /cases/design/pink-pr-flyers switch → EN lang — en
+✓ [webkit desktop] /cases/design/pink-pr-flyers stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [webkit desktop] /cases/design/pink-pr-flyers UA h1 with NEXT_LOCALE=en — Pink PR — комплект флаєрів для друку
+✓ [webkit desktop] /cases/design/pink-pr-flyers breadcrumb → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/pink-pr-flyers back → case — /cases/design/pink-pr-flyers
+✓ [webkit desktop] /cases/design/pink-pr-flyers back keeps H1 — Pink PR — комплект флаєрів для друку
+✓ [webkit desktop] /cases/design/pink-pr-flyers forward → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers status 200 — 200
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers html lang — uk
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers exactly one h1 — ["Стікери для Telegram — дизайн пака емоцій"]
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers h1 localized — Стікери для Telegram — дизайн пака емоцій
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers hero text localized — Авторський пак із 52 стікерів — єдина мова емоцій для щоденн
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers single canonical — 1
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers canonical path — https://freelance-ua.agency/cases/design/snizhana-telegram-stickers
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers hreflang en — https://freelance-ua.agency/en/cases/design/snizhana-telegram-stickers
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers no raw i18n keys — []
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers breadcrumb present
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers breadcrumb aria-label — Навігаційний ланцюжок
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers breadcrumb has 3 items — ["Головна","Дизайн","Стікери для Telegram — дизайн пака емоцій"]
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers breadcrumb home label — Головна
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers breadcrumb home href — /
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers breadcrumb direction label — Дизайн
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers breadcrumb direction href — /services/design
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers breadcrumb current is H1 — Стікери для Telegram — дизайн пака емоцій
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers breadcrumb current has no href — null
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers back-to-list link — /cases?tab=design
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers switcher → counterpart — /en/cases/design/snizhana-telegram-stickers (expected /en/cases/design/snizhana-telegram-stickers)
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers related heading — Інші проєкти
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers related has 3 cards — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/vikontse-logo"]
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers related excludes current — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/vikontse-logo"]
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers status 200 — 200
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers html lang — en
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers exactly one h1 — ["Telegram stickers — emotion pack design"]
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers h1 localized — Telegram stickers — emotion pack design
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers hero text localized — An original pack of 52 stickers — one emotion language for e
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers single canonical — 1
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers canonical path — https://freelance-ua.agency/en/cases/design/snizhana-telegram-stickers
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers hreflang uk — https://freelance-ua.agency/cases/design/snizhana-telegram-stickers
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers no raw i18n keys — []
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb present
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb aria-label — Breadcrumb
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb has 3 items — ["Home","Design","Telegram stickers — emotion pack design"]
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb home label — Home
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb home href — /en
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb direction label — Design
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb direction href — /en/services/design
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb current is H1 — Telegram stickers — emotion pack design
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb current has no href — null
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers back-to-list link — /en/cases?tab=design
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers switcher → counterpart — /cases/design/snizhana-telegram-stickers (expected /cases/design/snizhana-telegram-stickers)
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers related heading — Other projects
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers related has 3 cards — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/en/cases/design/vikontse-logo"]
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers related excludes current — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/en/cases/design/vikontse-logo"]
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers switch → EN url — /en/cases/design/snizhana-telegram-stickers
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers switch → EN lang — en
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers UA h1 with NEXT_LOCALE=en — Стікери для Telegram — дизайн пака емоцій
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers breadcrumb → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers back → case — /cases/design/snizhana-telegram-stickers
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers back keeps H1 — Стікери для Telegram — дизайн пака емоцій
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers forward → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/globus-billboard status 200 — 200
+✓ [webkit desktop] /cases/design/globus-billboard html lang — uk
+✓ [webkit desktop] /cases/design/globus-billboard exactly one h1 — ["GLOBUS — дизайн білбордів"]
+✓ [webkit desktop] /cases/design/globus-billboard h1 localized — GLOBUS — дизайн білбордів
+✓ [webkit desktop] /cases/design/globus-billboard hero text localized — Макети білбордів для будівельної компанії GLOBUS — брендован
+✓ [webkit desktop] /cases/design/globus-billboard single canonical — 1
+✓ [webkit desktop] /cases/design/globus-billboard canonical path — https://freelance-ua.agency/cases/design/globus-billboard
+✓ [webkit desktop] /cases/design/globus-billboard hreflang en — https://freelance-ua.agency/en/cases/design/globus-billboard
+✓ [webkit desktop] /cases/design/globus-billboard no raw i18n keys — []
+✓ [webkit desktop] /cases/design/globus-billboard breadcrumb present
+✓ [webkit desktop] /cases/design/globus-billboard breadcrumb aria-label — Навігаційний ланцюжок
+✓ [webkit desktop] /cases/design/globus-billboard breadcrumb has 3 items — ["Головна","Дизайн","GLOBUS — дизайн білбордів"]
+✓ [webkit desktop] /cases/design/globus-billboard breadcrumb home label — Головна
+✓ [webkit desktop] /cases/design/globus-billboard breadcrumb home href — /
+✓ [webkit desktop] /cases/design/globus-billboard breadcrumb direction label — Дизайн
+✓ [webkit desktop] /cases/design/globus-billboard breadcrumb direction href — /services/design
+✓ [webkit desktop] /cases/design/globus-billboard breadcrumb current is H1 — GLOBUS — дизайн білбордів
+✓ [webkit desktop] /cases/design/globus-billboard breadcrumb current has no href — null
+✓ [webkit desktop] /cases/design/globus-billboard breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /cases/design/globus-billboard back-to-list link — /cases?tab=design
+✓ [webkit desktop] /cases/design/globus-billboard switcher → counterpart — /en/cases/design/globus-billboard (expected /en/cases/design/globus-billboard)
+✓ [webkit desktop] /cases/design/globus-billboard related heading — Інші проєкти
+✓ [webkit desktop] /cases/design/globus-billboard related has 3 cards — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/snizhana-telegram-stickers"]
+✓ [webkit desktop] /cases/design/globus-billboard related excludes current — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/snizhana-telegram-stickers"]
+✓ [webkit desktop] /en/cases/design/globus-billboard status 200 — 200
+✓ [webkit desktop] /en/cases/design/globus-billboard html lang — en
+✓ [webkit desktop] /en/cases/design/globus-billboard exactly one h1 — ["GLOBUS — billboard design"]
+✓ [webkit desktop] /en/cases/design/globus-billboard h1 localized — GLOBUS — billboard design
+✓ [webkit desktop] /en/cases/design/globus-billboard hero text localized — Billboard mockups for the GLOBUS construction company — bran
+✓ [webkit desktop] /en/cases/design/globus-billboard single canonical — 1
+✓ [webkit desktop] /en/cases/design/globus-billboard canonical path — https://freelance-ua.agency/en/cases/design/globus-billboard
+✓ [webkit desktop] /en/cases/design/globus-billboard hreflang uk — https://freelance-ua.agency/cases/design/globus-billboard
+✓ [webkit desktop] /en/cases/design/globus-billboard no raw i18n keys — []
+✓ [webkit desktop] /en/cases/design/globus-billboard breadcrumb present
+✓ [webkit desktop] /en/cases/design/globus-billboard breadcrumb aria-label — Breadcrumb
+✓ [webkit desktop] /en/cases/design/globus-billboard breadcrumb has 3 items — ["Home","Design","GLOBUS — billboard design"]
+✓ [webkit desktop] /en/cases/design/globus-billboard breadcrumb home label — Home
+✓ [webkit desktop] /en/cases/design/globus-billboard breadcrumb home href — /en
+✓ [webkit desktop] /en/cases/design/globus-billboard breadcrumb direction label — Design
+✓ [webkit desktop] /en/cases/design/globus-billboard breadcrumb direction href — /en/services/design
+✓ [webkit desktop] /en/cases/design/globus-billboard breadcrumb current is H1 — GLOBUS — billboard design
+✓ [webkit desktop] /en/cases/design/globus-billboard breadcrumb current has no href — null
+✓ [webkit desktop] /en/cases/design/globus-billboard breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /en/cases/design/globus-billboard back-to-list link — /en/cases?tab=design
+✓ [webkit desktop] /en/cases/design/globus-billboard switcher → counterpart — /cases/design/globus-billboard (expected /cases/design/globus-billboard)
+✓ [webkit desktop] /en/cases/design/globus-billboard related heading — Other projects
+✓ [webkit desktop] /en/cases/design/globus-billboard related has 3 cards — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/en/cases/design/snizhana-telegram-stickers"]
+✓ [webkit desktop] /en/cases/design/globus-billboard related excludes current — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/en/cases/design/snizhana-telegram-stickers"]
+✓ [webkit desktop] /cases/design/globus-billboard switch → EN url — /en/cases/design/globus-billboard
+✓ [webkit desktop] /cases/design/globus-billboard switch → EN lang — en
+✓ [webkit desktop] /cases/design/globus-billboard stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [webkit desktop] /cases/design/globus-billboard UA h1 with NEXT_LOCALE=en — GLOBUS — дизайн білбордів
+✓ [webkit desktop] /cases/design/globus-billboard breadcrumb → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/globus-billboard back → case — /cases/design/globus-billboard
+✓ [webkit desktop] /cases/design/globus-billboard back keeps H1 — GLOBUS — дизайн білбордів
+✓ [webkit desktop] /cases/design/globus-billboard forward → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/pink-pr-flyers review avatar present — found 1
+✓ [webkit desktop] /cases/design/pink-pr-flyers review heading localized — ["Відгук клієнта 💬"] expected="Відгук клієнта 💬"
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers review avatar present — found 1
+✓ [webkit desktop] /en/cases/design/pink-pr-flyers review heading localized — ["Client review 💬"] expected="Client review 💬"
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers review avatar present — found 1
+✓ [webkit desktop] /cases/design/snizhana-telegram-stickers review heading localized — ["Відгук клієнта 💬"] expected="Відгук клієнта 💬"
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers review avatar present — found 1
+✓ [webkit desktop] /en/cases/design/snizhana-telegram-stickers review heading localized — ["Client review 💬"] expected="Client review 💬"
+✓ [webkit desktop] /cases/design/globus-billboard review avatar present — found 1
+✓ [webkit desktop] /cases/design/globus-billboard review heading localized — ["Відгук клієнта 💬"] expected="Відгук клієнта 💬"
+✓ [webkit desktop] /en/cases/design/globus-billboard review avatar present — found 1
+✓ [webkit desktop] /en/cases/design/globus-billboard review heading localized — ["Client review 💬"] expected="Client review 💬"
+✓ [webkit mobile] /cases/design/pink-pr-flyers mobile status — 200
+✓ [webkit mobile] /cases/design/pink-pr-flyers mobile lang — uk
+✓ [webkit mobile] /cases/design/pink-pr-flyers mobile h1 visible — Pink PR — комплект флаєрів для друку
+✓ [webkit mobile] /cases/design/pink-pr-flyers mobile hero text visible
+✓ [webkit mobile] /cases/design/pink-pr-flyers mobile breadcrumb visible
+✓ [webkit mobile] /cases/design/pink-pr-flyers no horizontal overflow — 0px
+✓ [webkit mobile] /en/cases/design/pink-pr-flyers mobile status — 200
+✓ [webkit mobile] /en/cases/design/pink-pr-flyers mobile lang — en
+✓ [webkit mobile] /en/cases/design/pink-pr-flyers mobile h1 visible — Pink PR — print flyer set
+✓ [webkit mobile] /en/cases/design/pink-pr-flyers mobile hero text visible
+✓ [webkit mobile] /en/cases/design/pink-pr-flyers mobile breadcrumb visible
+✓ [webkit mobile] /en/cases/design/pink-pr-flyers no horizontal overflow — 0px
+✓ [webkit mobile] /cases/design/snizhana-telegram-stickers mobile status — 200
+✓ [webkit mobile] /cases/design/snizhana-telegram-stickers mobile lang — uk
+✓ [webkit mobile] /cases/design/snizhana-telegram-stickers mobile h1 visible — Стікери для Telegram — дизайн пака емоцій
+✓ [webkit mobile] /cases/design/snizhana-telegram-stickers mobile hero text visible
+✓ [webkit mobile] /cases/design/snizhana-telegram-stickers mobile breadcrumb visible
+✓ [webkit mobile] /cases/design/snizhana-telegram-stickers no horizontal overflow — 0px
+✓ [webkit mobile] /en/cases/design/snizhana-telegram-stickers mobile status — 200
+✓ [webkit mobile] /en/cases/design/snizhana-telegram-stickers mobile lang — en
+✓ [webkit mobile] /en/cases/design/snizhana-telegram-stickers mobile h1 visible — Telegram stickers — emotion pack design
+✓ [webkit mobile] /en/cases/design/snizhana-telegram-stickers mobile hero text visible
+✓ [webkit mobile] /en/cases/design/snizhana-telegram-stickers mobile breadcrumb visible
+✓ [webkit mobile] /en/cases/design/snizhana-telegram-stickers no horizontal overflow — 0px
+✓ [webkit mobile] /cases/design/globus-billboard mobile status — 200
+✓ [webkit mobile] /cases/design/globus-billboard mobile lang — uk
+✓ [webkit mobile] /cases/design/globus-billboard mobile h1 visible — GLOBUS — дизайн білбордів
+✓ [webkit mobile] /cases/design/globus-billboard mobile hero text visible
+✓ [webkit mobile] /cases/design/globus-billboard mobile breadcrumb visible
+✓ [webkit mobile] /cases/design/globus-billboard no horizontal overflow — 0px
+✓ [webkit mobile] /en/cases/design/globus-billboard mobile status — 200
+✓ [webkit mobile] /en/cases/design/globus-billboard mobile lang — en
+✓ [webkit mobile] /en/cases/design/globus-billboard mobile h1 visible — GLOBUS — billboard design
+✓ [webkit mobile] /en/cases/design/globus-billboard mobile hero text visible
+✓ [webkit mobile] /en/cases/design/globus-billboard mobile breadcrumb visible
+✓ [webkit mobile] /en/cases/design/globus-billboard no horizontal overflow — 0px
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers reduced-motion emulated — true
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers h1 visible without motion
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers reveal nodes static (19) — []
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers gallery block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers gallery has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers results items visible — 3/3
+✓ [webkit reduced-motion] /cases/design/pink-pr-flyers review card visible — 1
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers reduced-motion emulated — true
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers h1 visible without motion
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers reveal nodes static (19) — []
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":3,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers gallery block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers gallery has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers results items visible — 3/3
+✓ [webkit reduced-motion] /en/cases/design/pink-pr-flyers review card visible — 1
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers reduced-motion emulated — true
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers h1 visible without motion
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers reveal nodes static (27) — []
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers gallery block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers gallery has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers results items visible — 4/4
+✓ [webkit reduced-motion] /cases/design/snizhana-telegram-stickers review card visible — 1
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers reduced-motion emulated — true
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers h1 visible without motion
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers reveal nodes static (27) — []
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":10,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers gallery block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers gallery has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers results items visible — 4/4
+✓ [webkit reduced-motion] /en/cases/design/snizhana-telegram-stickers review card visible — 1
+✓ [webkit reduced-motion] /cases/design/globus-billboard reduced-motion emulated — true
+✓ [webkit reduced-motion] /cases/design/globus-billboard h1 visible without motion
+✓ [webkit reduced-motion] /cases/design/globus-billboard hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /cases/design/globus-billboard brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /cases/design/globus-billboard reveal nodes static (21) — []
+✓ [webkit reduced-motion] /cases/design/globus-billboard materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/globus-billboard materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/globus-billboard materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/globus-billboard materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/globus-billboard gallery block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/globus-billboard gallery has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/globus-billboard results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/globus-billboard results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/globus-billboard review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/globus-billboard review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/globus-billboard results items visible — 4/4
+✓ [webkit reduced-motion] /cases/design/globus-billboard review card visible — 1
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard reduced-motion emulated — true
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard h1 visible without motion
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard reveal nodes static (21) — []
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":4,"compareItem":0,"videoTile":0,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard gallery block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard gallery has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard results items visible — 4/4
+✓ [webkit reduced-motion] /en/cases/design/globus-billboard review card visible — 1
+✓ [webkit light-theme] /cases/design/pink-pr-flyers light theme applied — light
+✓ [webkit light-theme] /cases/design/pink-pr-flyers light theme h1 visible
+✓ [webkit light-theme] /cases/design/pink-pr-flyers light theme breadcrumb visible
+✓ [webkit light-theme] /cases/design/pink-pr-flyers light theme no overflow — -8px
+✓ [webkit light-theme] /cases/design/snizhana-telegram-stickers light theme applied — light
+✓ [webkit light-theme] /cases/design/snizhana-telegram-stickers light theme h1 visible
+✓ [webkit light-theme] /cases/design/snizhana-telegram-stickers light theme breadcrumb visible
+✓ [webkit light-theme] /cases/design/snizhana-telegram-stickers light theme no overflow — -8px
+✓ [webkit light-theme] /cases/design/globus-billboard light theme applied — light
+✓ [webkit light-theme] /cases/design/globus-billboard light theme h1 visible
+✓ [webkit light-theme] /cases/design/globus-billboard light theme breadcrumb visible
+✓ [webkit light-theme] /cases/design/globus-billboard light theme no overflow — -8px
+✓ [media http] all 20 record media reachable — 20/20
+
+RESULT: PASS

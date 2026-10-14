@@ -7,6 +7,7 @@ import { LazyVideo } from "@/components/ui/LazyVideo";
 import { ArrowRight, Play } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslation } from "@/lib/LanguageContext";
+import { counterpartPath } from "@/lib/i18n-routes";
 import { withPosterFrame } from "@/lib/video";
 
 /* Mouse-follow glow/parallax is a desktop-only affordance. Touch taps fire
@@ -49,7 +50,10 @@ export default function VideoCaseCard({
   comingSoonKey,
   hideCta = false,
 }: VideoCaseCardProps) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  // Point at the EN case once its page is registered as bilingual; until
+  // then an English catalog keeps linking to the (Ukrainian) case page.
+  const localizedHref = href && locale === "en" ? (counterpartPath(href, "en") ?? href) : href;
   const cardRef = useRef<HTMLDivElement>(null);
 
   const mouseX = useMotionValue(0.5);
@@ -83,7 +87,7 @@ export default function VideoCaseCard({
     cardRef.current?.style.setProperty("--glow-y", "30%");
   }, [mouseX, mouseY]);
 
-  const isPlaceholder = !href;
+  const isPlaceholder = !localizedHref;
   // With a poster Safari shows it; without one Safari paints nothing for
   // preload="metadata" — the media fragment forces the first frame out.
   const previewSrc = poster ? video : withPosterFrame(video);
@@ -130,8 +134,8 @@ export default function VideoCaseCard({
           style={{ y: mockupY }}
         >
           <div className="relative w-full h-full rounded-xl overflow-hidden bg-background">
-            {href ? (
-              <Link href={href} aria-label={`${t(ctaKey)}: ${t(titleKey)}`} className="block w-full h-full">
+            {localizedHref ? (
+              <Link href={localizedHref} aria-label={`${t(ctaKey)}: ${t(titleKey)}`} className="block w-full h-full">
                 {preview}
                 {/* Play button overlay */}
                 <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-all duration-300">
@@ -175,9 +179,9 @@ export default function VideoCaseCard({
         <p className="text-foreground/80 dark:text-muted-foreground text-sm md:text-base leading-relaxed max-w-xl mb-3">
           {t(descriptionKey)}
         </p>
-        {!hideCta && href ? (
+        {!hideCta && localizedHref ? (
           <Link
-            href={href}
+            href={localizedHref}
             className="inline-flex items-center gap-3 text-foreground font-semibold text-sm group/cta w-fit border border-border rounded-full px-6 py-3 transition-all duration-300 hover:border-accent hover:bg-accent/5"
           >
             <span>{t(ctaKey)}<span className="sr-only">: {t(titleKey)}</span></span>

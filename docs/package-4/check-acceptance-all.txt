@@ -1,0 +1,9 @@
+mode=acceptance phase=all base=http://localhost:3011
+  checked: 218
+  pages 200: 212
+  redirects OK: 6
+  check failures: 0
+  hreflang reciprocity: checked 424, skipped(not ready) 0, failed 0
+  sitemap: OK (212 urls)
+report: docs/package-4/check-acceptance-all.json
+PASS

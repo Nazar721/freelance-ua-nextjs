@@ -7,6 +7,7 @@ import { LanguageProvider, useTranslation } from "@/lib/LanguageContext";
 import { type Locale } from "@/lib/i18n";
 import { ThemeProvider, type Theme } from "@/lib/ThemeContext";
 import { siteConfig } from "@/config/site";
+import { alignAnchorWhileSettling, currentHashId, scrollToId } from "@/lib/scroll-to-hash";
 
 function FloatingTelegramButton({ hidden }: { hidden: boolean }) {
   const { t } = useTranslation();
@@ -54,6 +55,8 @@ export function Providers({
   /* last known scroll offset per route, used to restore position on back/forward
      (App Router's own restoration is defeated by Lenis in this setup) */
   const scrollPositions = useRef<Record<string, number>>({});
+  /* cancels the "#hash keeps-its-offset while the page settles" loop */
+  const cancelAnchorSettle = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -111,26 +114,26 @@ export function Providers({
     if (prevPathname.current !== null) {
       scrollPositions.current[prevPathname.current] = window.scrollY;
     }
+    const firstRoute = isFirstRoute.current;
+    isFirstRoute.current = false;
     prevPathname.current = pathname;
 
     const timer = setTimeout(() => {
-      if (isFirstRoute.current) {
-        isFirstRoute.current = false;
+      /* A `#hash` wins over everything else — including on the very first
+         route (direct open, reload, and the /cases/{direction} redirect all
+         land here with the fragment). The anchor is re-aligned while the
+         document settles so the fixed header never covers it. The element may
+         still be streaming in (Suspense), so the loop keeps retrying until it
+         is there or the settle window closes. */
+      const hashId = currentHashId();
+      if (hashId) {
+        cancelAnchorSettle.current?.();
+        cancelAnchorSettle.current = alignAnchorWhileSettling(hashId);
         return;
       }
 
-      const hash = window.location.hash;
-      if (hash.length > 1) {
-        const el = document.getElementById(hash.slice(1));
-        if (el) {
-          if (lenisRef.current) {
-            lenisRef.current.scrollTo(el, { offset: -120 });
-          } else {
-            el.scrollIntoView({ behavior: "smooth" });
-          }
-          return;
-        }
-      }
+      // First paint without a hash: leave the browser's own position alone.
+      if (firstRoute) return;
 
       if (isPopState.current) {
         isPopState.current = false;
@@ -151,8 +154,33 @@ export function Providers({
         window.scrollTo(0, 0);
       }
     }, 0);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      cancelAnchorSettle.current?.();
+      cancelAnchorSettle.current = null;
+    };
   }, [pathname]);
+
+  /* In-page anchors (`<a href="#cases">` on the direction hero, the header nav
+     on the home page). The browser applies its own jump; we re-apply it with
+     the fixed-header offset and keep it aligned while the page settles. */
+  useEffect(() => {
+    const onHashChange = () => {
+      const id = currentHashId();
+      if (!id) return;
+      cancelAnchorSettle.current?.();
+      // The browser already performed its own (unoffset) jump — correct it
+      // smoothly, then keep the target aligned if the layout shifts.
+      if (!scrollToId(id, { smooth: true })) return;
+      cancelAnchorSettle.current = alignAnchorWhileSettling(id, { immediateStart: false });
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      window.removeEventListener("hashchange", onHashChange);
+      cancelAnchorSettle.current?.();
+      cancelAnchorSettle.current = null;
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

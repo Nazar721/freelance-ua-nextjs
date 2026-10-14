@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslation } from "@/lib/LanguageContext";
+import { counterpartPath } from "@/lib/i18n-routes";
 import Badge, { type BadgeProps } from "./Badge";
 
 /* Mouse-follow glow/parallax is a desktop-only affordance. Touch taps fire
@@ -58,7 +59,11 @@ export default function FeaturedCaseCard({
   hideCta = false,
   badge,
 }: FeaturedCaseCardProps) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  // Point at the EN case once its page is registered as bilingual; until
+  // then an English catalog keeps linking to the (Ukrainian) case page,
+  // which renders Ukrainian content — correct by URL.
+  const localizedHref = href && locale === "en" ? (counterpartPath(href, "en") ?? href) : href;
   const cardRef = useRef<HTMLDivElement>(null);
 
   const mouseX = useMotionValue(0.5);
@@ -92,7 +97,7 @@ export default function FeaturedCaseCard({
     cardRef.current?.style.setProperty("--glow-y", "30%");
   }, [mouseX, mouseY]);
 
-  const isPlaceholder = !href;
+  const isPlaceholder = !localizedHref;
 
   const boostedGlow = glowColor.replace(/[\d.]+\)$/, (m) => `${Math.min(parseFloat(m) * 1.8, 0.7)} )`);
   const boostedGlowStrong = glowColorStrong.replace(/[\d.]+\)$/, (m) => `${Math.min(parseFloat(m) * 1.8, 0.8)} )`);
@@ -134,57 +139,72 @@ export default function FeaturedCaseCard({
           {t(titleKey)}
         </h3>
 
-        {/* Preview image — right after title */}
-        {galleryImages && galleryImages.length > 1 ? (
-          <motion.div
-            className="relative w-full aspect-[3/2] overflow-hidden"
-            style={{ y: mockupY }}
-          >
-            <div className={`grid gap-2 h-full ${galleryImages.length === 2 ? "grid-cols-2" : "grid-cols-3"}`}>
-              {galleryImages.slice(0, 3).map((src, i) => (
-                <div key={src} className="relative overflow-hidden rounded-xl">
-                  <Image
-                    src={src}
-                    alt={t(titleKey)}
-                    width={600}
-                    height={800}
-                    sizes="(max-width: 768px) 50vw, 25vw"
-                    className="w-full h-full object-cover object-center"
-                    draggable={false}
-                    preload={i === 0 && preload}
-                  />
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        ) : (
-          <motion.div
-            className="relative w-full flex items-center justify-center aspect-[3/2] overflow-hidden"
-            style={{ y: mockupY }}
-          >
-            <Image
-              src={image}
-              alt={t(titleKey)}
-              width={1200}
-              height={800}
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className={`case-mockup-image w-full h-full ${imageFit === "contain" ? "object-contain" : "object-cover"} rounded-xl ${isPlaceholder ? "opacity-40 grayscale" : ""}`}
-              style={imageFit !== "contain" ? { objectPosition } : undefined}
-              draggable={false}
-              preload={preload}
-            />
-            {hoverImage ? (
+        {/* Preview image — right after title; the media itself is a link
+            (same pattern as VideoCaseCard) so a plain click anywhere on the
+            preview opens the case, not only the hover CTA. */}
+        {(() => {
+          const media = galleryImages && galleryImages.length > 1 ? (
+            <motion.div
+              className="relative w-full aspect-[3/2] overflow-hidden"
+              style={{ y: mockupY }}
+            >
+              <div className={`grid gap-2 h-full ${galleryImages.length === 2 ? "grid-cols-2" : "grid-cols-3"}`}>
+                {galleryImages.slice(0, 3).map((src, i) => (
+                  <div key={src} className="relative overflow-hidden rounded-xl">
+                    <Image
+                      src={src}
+                      alt={t(titleKey)}
+                      width={600}
+                      height={800}
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className="w-full h-full object-cover object-center"
+                      draggable={false}
+                      preload={i === 0 && preload}
+                    />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              className="relative w-full flex items-center justify-center aspect-[3/2] overflow-hidden"
+              style={{ y: mockupY }}
+            >
               <Image
-                src={hoverImage}
-                alt=""
+                src={image}
+                alt={t(titleKey)}
                 width={1200}
                 height={800}
-                className={`case-mockup-hover-image absolute inset-0 w-full h-full ${imageFit === "contain" ? "object-contain object-[center_35%]" : "object-cover object-center"} rounded-xl`}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className={`case-mockup-image w-full h-full ${imageFit === "contain" ? "object-contain" : "object-cover"} rounded-xl ${isPlaceholder ? "opacity-40 grayscale" : ""}`}
+                style={imageFit !== "contain" ? { objectPosition } : undefined}
                 draggable={false}
+                preload={preload}
               />
-            ) : null}
-          </motion.div>
-        )}
+              {hoverImage ? (
+                <Image
+                  src={hoverImage}
+                  alt=""
+                  width={1200}
+                  height={800}
+                  className={`case-mockup-hover-image absolute inset-0 w-full h-full ${imageFit === "contain" ? "object-contain object-[center_35%]" : "object-cover object-center"} rounded-xl`}
+                  draggable={false}
+                />
+              ) : null}
+            </motion.div>
+          );
+          return localizedHref ? (
+            <Link
+              href={localizedHref}
+              aria-label={`${t(ctaKey)}: ${t(titleKey)}`}
+              className="block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              {media}
+            </Link>
+          ) : (
+            media
+          );
+        })()}
       </div>
 
       {/* Hover overlay — description + CTA at bottom of card */}
@@ -192,9 +212,9 @@ export default function FeaturedCaseCard({
         <p className="text-foreground/80 dark:text-muted-foreground text-sm md:text-base leading-relaxed max-w-xl mb-3">
           {t(descriptionKey)}
         </p>
-        {!hideCta && href ? (
+        {!hideCta && localizedHref ? (
           <Link
-            href={href}
+            href={localizedHref}
             className="inline-flex items-center gap-3 text-foreground font-semibold text-sm group/cta w-fit border border-border rounded-full px-6 py-3 transition-all duration-300 hover:border-accent hover:bg-accent/5"
           >
             <span>{t(ctaKey)}<span className="sr-only">: {t(titleKey)}</span></span>

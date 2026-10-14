@@ -1,0 +1,3440 @@
+{
+  "generatedAt": "2026-10-13T23:37:07.860Z",
+  "base": "https://freelance-ua.agency",
+  "entries": [
+    {
+      "path": "/",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency",
+      "title": "Freelance UA || Digital Agency",
+      "description": "Freelance UA — digital-агенція: IT, дизайн та відео під ключ. Розробка сайтів і Telegram-ботів, брендинг, відеомонтаж та motion-дизайн",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/",
+        "en": "/en"
+      }
+    },
+    {
+      "path": "/cases",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases",
+      "title": "Кейси — Freelance UA",
+      "description": "Портфоліо проєктів: ІТ-розробка (Telegram-боти, CRM, веб-сайти), дизайн (брендінг, поліграфія, ретуш) та відеовиробництво.",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases",
+        "en": "/en/cases"
+      }
+    },
+    {
+      "path": "/partners",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/partners",
+      "title": "Партнерка — Freelance UA",
+      "description": "Рекомендуй нас клієнтам та отримуй 10–15% з кожного проекту. Без ризиків — лише прибуток.",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/partners",
+        "en": "/en/partners"
+      }
+    },
+    {
+      "path": "/services/it",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/services/it",
+      "title": "ІТ-розробка — Freelance UA",
+      "description": "Telegram-боти, веб-сайти, CRM-системи, інтернет-магазини та API-інтеграції. Портфоліо ІТ-проєктів агенції Freelance UA.",
+      "h1": "ІТ-розробка",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/services/it",
+        "en": "/en/services/it"
+      }
+    },
+    {
+      "path": "/en/services/it",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/services/it",
+      "title": "IT Development — Freelance UA",
+      "description": "Telegram bots, websites, CRM systems, e-commerce stores and API integrations. Portfolio of IT projects by Freelance UA agency.",
+      "h1": "IT Development",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/services/it",
+        "en": "/en/services/it"
+      }
+    },
+    {
+      "path": "/cases/it",
+      "kind": "redirect",
+      "phase": "current",
+      "to": "/services/it#cases",
+      "status": [
+        301,
+        308
+      ]
+    },
+    {
+      "path": "/en/cases/it",
+      "kind": "redirect",
+      "phase": "current",
+      "to": "/en/services/it#cases",
+      "status": [
+        301,
+        308
+      ]
+    },
+    {
+      "path": "/services/design",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/services/design",
+      "title": "Дизайн — Freelance UA",
+      "description": "Брендинг, поліграфія, банери, ретуш фотографій та SMM-дизайн. Портфоліо дизайнерських проєктів агенції Freelance UA.",
+      "h1": "Дизайн",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/services/design",
+        "en": "/en/services/design"
+      }
+    },
+    {
+      "path": "/en/services/design",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/services/design",
+      "title": "Design — Freelance UA",
+      "description": "Branding, print design, banners, photo retouching and SMM design. Portfolio of design projects by Freelance UA agency.",
+      "h1": "Design",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/services/design",
+        "en": "/en/services/design"
+      }
+    },
+    {
+      "path": "/cases/design",
+      "kind": "redirect",
+      "phase": "current",
+      "to": "/services/design#cases",
+      "status": [
+        301,
+        308
+      ]
+    },
+    {
+      "path": "/en/cases/design",
+      "kind": "redirect",
+      "phase": "current",
+      "to": "/en/services/design#cases",
+      "status": [
+        301,
+        308
+      ]
+    },
+    {
+      "path": "/services/video",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/services/video",
+      "title": "Відео — Freelance UA",
+      "description": "Відеомонтаж, моушн-дизайн, рекламні ролики, reels та AI-відео. Портфоліо відео-проєктів агенції Freelance UA.",
+      "h1": "Відео",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/services/video",
+        "en": "/en/services/video"
+      }
+    },
+    {
+      "path": "/en/services/video",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/services/video",
+      "title": "Video — Freelance UA",
+      "description": "Video editing, motion design, promo videos, reels and AI video. Portfolio of video projects by Freelance UA agency.",
+      "h1": "Video",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/services/video",
+        "en": "/en/services/video"
+      }
+    },
+    {
+      "path": "/cases/video",
+      "kind": "redirect",
+      "phase": "current",
+      "to": "/services/video#cases",
+      "status": [
+        301,
+        308
+      ]
+    },
+    {
+      "path": "/en/cases/video",
+      "kind": "redirect",
+      "phase": "current",
+      "to": "/en/services/video#cases",
+      "status": [
+        301,
+        308
+      ]
+    },
+    {
+      "path": "/en",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en",
+      "title": "Freelance UA || Digital Agency",
+      "description": "Freelance UA is a digital agency delivering end-to-end IT, design and video services",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/",
+        "en": "/en"
+      }
+    },
+    {
+      "path": "/en/cases",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases",
+      "title": "Cases — Freelance UA",
+      "description": "Portfolio of projects: IT development (Telegram bots, CRM, websites), design (branding, print, retouching) and video production.",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases",
+        "en": "/en/cases"
+      }
+    },
+    {
+      "path": "/en/partners",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/partners",
+      "title": "Partners — Freelance UA",
+      "description": "Recommend us to clients and get 10–15% of every project. No risks — only profit.",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/partners",
+        "en": "/en/partners"
+      }
+    },
+    {
+      "path": "/cases/it/asandra-soul",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/asandra-soul",
+      "title": "Asandra Soul — Telegram Mini App і backend для автоматизації продажів | Freelance UA",
+      "description": "Telegram Mini App + Backend для автоматизації продажу курсів та практик з персоналізованим досвідом для кожного користувача.",
+      "h1": "Asandra Soul — Telegram Mini App для курсів і практик",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/asandra-soul",
+        "en": "/en/cases/it/asandra-soul"
+      }
+    },
+    {
+      "path": "/cases/it/darkshare",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/darkshare",
+      "title": "DARKSHARE — SaaS для кібербезпеки з OSINT-модулями | Freelance UA",
+      "description": "SaaS-платформа для кібербезпеки з 17 OSINT-модулями, AI-скорингом, PDF-звітами, VPN, Telegram-ботом та REST API.",
+      "h1": "DARKSHARE — SaaS-платформа для кібербезпеки",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/darkshare",
+        "en": "/en/cases/it/darkshare"
+      }
+    },
+    {
+      "path": "/cases/it/epiland",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/epiland",
+      "title": "Epiland — бронювання днів народжень у Telegram Mini App | Freelance UA",
+      "description": "Telegram-бот і Mini App для парку розваг: бронювання днів народження у 4 кроки, графік та заявки для менеджерів.",
+      "h1": "Epiland — Telegram Mini App для парку розваг",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/epiland",
+        "en": "/en/cases/it/epiland"
+      }
+    },
+    {
+      "path": "/cases/it/eva-code",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/eva-code",
+      "title": "E.V.A. CODE™ — лендинг, Telegram Mini App і CRM | Freelance UA",
+      "description": "Комплексна платформа для експертів з діагностики, що автоматизує роботу з клієнтами від заявки до консультації.",
+      "h1": "E.V.A. CODE™",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/eva-code",
+        "en": "/en/cases/it/eva-code"
+      }
+    },
+    {
+      "path": "/cases/it/importera",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/importera",
+      "title": "Імпортера — двомовний корпоративний сайт B2B-дистриб'ютора | Freelance UA",
+      "description": "Корпоративний сайт для B2B-дистриб'ютора з 250+ брендами, 50+ країнами, двомовністю та галереєю партнерів.",
+      "h1": "Імпортера — корпоративний сайт для B2B-дистриб'ютора",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/importera",
+        "en": "/en/cases/it/importera"
+      }
+    },
+    {
+      "path": "/cases/it/kroscar-detailing",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/kroscar-detailing",
+      "title": "KROSCAR Detailing — лендінг із записом онлайн і галереєю робіт | Freelance UA",
+      "description": "Лендінг для детейлінг-студії KROSCAR (Львів) з записом онлайн, галереєю робіт, слайдером «до/після» та системою відгуків Google.",
+      "h1": "KROSCAR Detailing — лендінг для детейлінг-студії",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/kroscar-detailing",
+        "en": "/en/cases/it/kroscar-detailing"
+      }
+    },
+    {
+      "path": "/cases/it/liudmyla-tsybrii",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/liudmyla-tsybrii",
+      "title": "Liudmyla Tsybrii — сайт-портфоліо з послугами та кейсами | Freelance UA",
+      "description": "Преміальний сайт-портфоліо для бізнес-коуча з 4 послугами, портфоліо 3 кейсів та мультимовністю (UA/EN). Розроблено за 2 дні.",
+      "h1": "Liudmyla Tsybrii — сайт-портфоліо для бізнес-коуча",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/liudmyla-tsybrii",
+        "en": "/en/cases/it/liudmyla-tsybrii"
+      }
+    },
+    {
+      "path": "/cases/it/md-dental",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/md-dental",
+      "title": "M+D Dental — сайт стоматології з онлайн-записом і послугами | Freelance UA",
+      "description": "Сайт для двох стоматологічних клінік у Сумах: 23 послуги, команда лікарів з фото, онлайн-запис, довіра зі страховими компаніями та FAQ.",
+      "h1": "M+D Dental — сайт двох стоматологічних клінік",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/md-dental",
+        "en": "/en/cases/it/md-dental"
+      }
+    },
+    {
+      "path": "/cases/it/mnm-detailing",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/mnm-detailing",
+      "title": "MNM Detailing — редизайн сайту зі слайдером до/після | Freelance UA",
+      "description": "Редизайн сайту детейлінг-студії з 10+ послугами, галереєю з фільтрами, акцентом на довіру та слайдером «до/після».",
+      "h1": "MNM Detailing — редизайн сайту детейлінг-студії",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/mnm-detailing",
+        "en": "/en/cases/it/mnm-detailing"
+      }
+    },
+    {
+      "path": "/cases/it/nextcup",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/nextcup",
+      "title": "NextCup — оновлення каталогу та checkout на Хорошоп | Freelance UA",
+      "description": "Оновлення інтернет-магазину на Хорошоп з новим дизайном, каталогом, банерами та швидким checkout.",
+      "h1": "NextCup — оновлення інтернет-магазину",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/nextcup",
+        "en": "/en/cases/it/nextcup"
+      }
+    },
+    {
+      "path": "/cases/it/pivden-solar",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/pivden-solar",
+      "title": "Південь Солар — лендинг СЕС із каталогом комплектів | Freelance UA",
+      "description": "Конверсійний лендинг для компанії з монтажу СЕС з каталогом комплектів, галереєю робіт та адмін-панеллю.",
+      "h1": "Південь Солар — конверсійний лендинг для монтажу СЕС",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/pivden-solar",
+        "en": "/en/cases/it/pivden-solar"
+      }
+    },
+    {
+      "path": "/cases/it/prime-auto-shipping",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/prime-auto-shipping",
+      "title": "Prime Auto Shipping — лендинг для транспортування авто в США | Freelance UA",
+      "description": "Конверсійний лендинг для американської компанії з транспортування авто з миттєвою виценкою, GPS-трекінгом та FMCSA-верифікацією.",
+      "h1": "Prime Auto Shipping — конверсійний лендинг перевезень авто",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/prime-auto-shipping",
+        "en": "/en/cases/it/prime-auto-shipping"
+      }
+    },
+    {
+      "path": "/cases/it/repair-collision",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/repair-collision",
+      "title": "Repair Collision — сайт автосервісу з CRM і портфоліо | Freelance UA",
+      "description": "Сайт для польської автосервісної компанії з CRM, SEO просуванням, портфоліо 50+ авто та мультимовністю.",
+      "h1": "Repair Collision — сайт для автосервісної компанії",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/repair-collision",
+        "en": "/en/cases/it/repair-collision"
+      }
+    },
+    {
+      "path": "/cases/it/route-core",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/route-core",
+      "title": "RouteCore — лендинг для найму інженерів з процесом відбору | Freelance UA",
+      "description": "Рекрутинговий лендинг для найму BAS & ZennoPoster інженерів з перевагами, вимогами та 4-етапним процесом відбору. Мультимовність UA/EN.",
+      "h1": "RouteCore — рекрутинговий лендинг для найму інженерів",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/route-core",
+        "en": "/en/cases/it/route-core"
+      }
+    },
+    {
+      "path": "/cases/it/ruslan-aviation",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/ruslan-aviation",
+      "title": "Ruslan Aviation — e-commerce з фільтрами та конверсійним дизайном | Freelance UA",
+      "description": "Повноцінний e-commerce магазин авіаційних компонентів з швидкою навігацією, фільтрами та конверсійним дизайном.",
+      "h1": "Ruslan Aviation — інтернет-магазин авіаційних компонентів",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/ruslan-aviation",
+        "en": "/en/cases/it/ruslan-aviation"
+      }
+    },
+    {
+      "path": "/cases/it/sdent",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/sdent",
+      "title": "S-Dent — сайт стоматології з послугами, лікарями та слайдером до/після | Freelance UA",
+      "description": "Редизайн сайту стоматологічної клініки з 14 послугами, 8 лікарями, відгуками та слайдером «до/після».",
+      "h1": "S-Dent — редизайн сайту стоматологічної клініки",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/sdent",
+        "en": "/en/cases/it/sdent"
+      }
+    },
+    {
+      "path": "/cases/it/selloflow",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/selloflow",
+      "title": "Selloflow — SaaS для магазинів: каталог, замовлення, Telegram-бот | Freelance UA",
+      "description": "Спільний проєкт — SaaS-платформа для створення магазинів за 2 хвилини: каталог, оформлення замовлень, Нова пошта, Telegram-бот, 10+ тем та 200+ магазинів.",
+      "h1": "Selloflow — платформа для створення магазинів",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/selloflow",
+        "en": "/en/cases/it/selloflow"
+      }
+    },
+    {
+      "path": "/cases/it/serezha-shop",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/serezha-shop",
+      "title": "Serezha Shop — каталог кросівок зі США з відгуками | Freelance UA",
+      "description": "Конверсійний лендінг-каталог для продажу кросівок зі США з каталогом моделей, відгуками та прямим зв'язком через Telegram.",
+      "h1": "Serezha Shop — лендінг-каталог кросівок зі США",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/serezha-shop",
+        "en": "/en/cases/it/serezha-shop"
+      }
+    },
+    {
+      "path": "/cases/it/shkiper-drop",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/shkiper-drop",
+      "title": "Shkiper Drop — лендінг дроп-магазину з каталогом і Telegram-CTA | Freelance UA",
+      "description": "Лендінг-каталог для streetwear дроп-магазину з dark-дизайном, каталогом на 5 категорій, анімаціями та Telegram-конверсією.",
+      "h1": "Shkiper Drop — лендінг streetwear дроп-магазину",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/shkiper-drop",
+        "en": "/en/cases/it/shkiper-drop"
+      }
+    },
+    {
+      "path": "/cases/it/stretching-ch",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/stretching-ch",
+      "title": "Stretching.ch — Instagram DM бот для лідогенерації у фітнесі | Freelance UA",
+      "description": "Instagram DM бот для фітнес-тренерки: автоматичні відповіді на ключові слова, лідогенерація та конверсія в клієнтів.",
+      "h1": "Stretching.ch — Instagram DM бот для фітнес-тренерки",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/stretching-ch",
+        "en": "/en/cases/it/stretching-ch"
+      }
+    },
+    {
+      "path": "/cases/it/voltone-pro",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/voltone-pro",
+      "title": "Voltone.pro — каталог, кабінет і доставка павербанків | Freelance UA",
+      "description": "Інтернет-магазин павербанків та зарядних пристроїв з каталогом, знижками до −40%, відгуками, кабінетом та швидкою доставкою.",
+      "h1": "Voltone.pro — інтернет-магазин павербанків і зарядних пристроїв",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/voltone-pro",
+        "en": "/en/cases/it/voltone-pro"
+      }
+    },
+    {
+      "path": "/cases/design/apple-tecnologia",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/apple-tecnologia",
+      "title": "Рекламний банер техніки Apple | Freelance UA",
+      "description": "Рекламний банер техніки Apple з акцентом на знижку до 40% та безкоштовну доставку.",
+      "h1": "Apple Tecnologia — рекламний банер техніки",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/apple-tecnologia",
+        "en": "/en/cases/design/apple-tecnologia"
+      }
+    },
+    {
+      "path": "/cases/design/barvy-interior",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/barvy-interior",
+      "title": "BARVY interior — до/після обробки інтер'єрної зйомки | Freelance UA",
+      "description": "Кольорокорекція та ретуш інтер'єрної зйомки для студії дизайну інтер'єрів BARVY interior: прихожа, гардеробна, спальня, санвузли. До/після.",
+      "h1": "BARVY interior — ретуш і кольорокорекція зйомки",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/barvy-interior",
+        "en": "/en/cases/design/barvy-interior"
+      }
+    },
+    {
+      "path": "/cases/design/color-correction",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/color-correction",
+      "title": "Кольорокорекція відео — робота зі світлом, кольором та настроєм кадру | Freelance UA",
+      "description": "Кольорокорекція відео — робота зі світлом, кольором та настроєм кадру",
+      "h1": "Кольорокорекція відео: світло, колір і настрій кадру",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/color-correction",
+        "en": "/en/cases/design/color-correction"
+      }
+    },
+    {
+      "path": "/cases/design/crypto-chat-manager-vacancy",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/crypto-chat-manager-vacancy",
+      "title": "Банер вакансії для крипто-офісу в Дніпрі | Freelance UA",
+      "description": "Рекламний банер вакансії для крипто-офісу в Дніпрі — яскравий персонаж, конкретна зарплата та заклик залишити заявку.",
+      "h1": "Вакансія для крипто-офісу",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/crypto-chat-manager-vacancy",
+        "en": "/en/cases/design/crypto-chat-manager-vacancy"
+      }
+    },
+    {
+      "path": "/cases/design/divorce-legal-ad",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/divorce-legal-ad",
+      "title": "Банер юридичної консультації з розлучення | Freelance UA",
+      "description": "Рекламний банер юридичної консультації з розлучення — акцент на болі клієнта, досвід та конкретну пропозицію ціни.",
+      "h1": "Юридична консультація — рекламний банер",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/divorce-legal-ad",
+        "en": "/en/cases/design/divorce-legal-ad"
+      }
+    },
+    {
+      "path": "/cases/design/f5-guitars-youtube",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/f5-guitars-youtube",
+      "title": "Кліковабельна обкладинка для відео про гітари | Freelance UA",
+      "description": "Кліковабельна обкладинка для відео каналу про гітари — «купити чи заснувати бренд?» у форматі порівняння.",
+      "h1": "F5 Guitars — обкладинка для YouTube",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/f5-guitars-youtube",
+        "en": "/en/cases/design/f5-guitars-youtube"
+      }
+    },
+    {
+      "path": "/cases/design/gel-polish",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/gel-polish",
+      "title": "Постер гель-лаку: якість, стійкість і колір | Freelance UA",
+      "description": "Рекламний постер гель-лаку для нігтів — акцент на якість, стійкість та насичений колір.",
+      "h1": "Gel Polish — рекламний постер",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/gel-polish",
+        "en": "/en/cases/design/gel-polish"
+      }
+    },
+    {
+      "path": "/cases/design/giesbrecht-pv",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/giesbrecht-pv",
+      "title": "Рекламний банер сонячних електростанцій для німецькомовного ринку | Freelance UA",
+      "description": "Рекламний банер сонячних електростанцій для німецькомовного ринку — переваги, технічні характеристики та заклик до дії.",
+      "h1": "Giesbrecht PV — банер для СЕС",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/giesbrecht-pv",
+        "en": "/en/cases/design/giesbrecht-pv"
+      }
+    },
+    {
+      "path": "/cases/design/globus-billboard",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/globus-billboard",
+      "title": "GLOBUS — білборди для будівельної компанії | Freelance UA",
+      "description": "Дизайн білбордів для будівельної компанії GLOBUS — архітектура майбутнього у форматі зовнішньої реклами.",
+      "h1": "GLOBUS — дизайн білбордів",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/globus-billboard",
+        "en": "/en/cases/design/globus-billboard"
+      }
+    },
+    {
+      "path": "/cases/design/gopro-hero13",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/gopro-hero13",
+      "title": "Постер камери GoPro Black з технічними перевагами | Freelance UA",
+      "description": "Продуктовий рекламний постер камери GoPro Black з акцентом на ключові технічні переваги.",
+      "h1": "GoPro — продуктовий постер",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/gopro-hero13",
+        "en": "/en/cases/design/gopro-hero13"
+      }
+    },
+    {
+      "path": "/cases/design/hope-media-group",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/hope-media-group",
+      "title": "Брендинг для виставки в США: листівки, банери, стікери | Freelance UA",
+      "description": "Брендинг-рішення для виставки в США: листівки, банери, закладки, стікери та значки — єдина візуальна історія Prophecy Road Map.",
+      "h1": "HOPE Media Group — брендинг для виставки",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/hope-media-group",
+        "en": "/en/cases/design/hope-media-group"
+      }
+    },
+    {
+      "path": "/cases/design/mht-clinic-billboard",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/mht-clinic-billboard",
+      "title": "Білборд MHT Clinic: дизайн зовнішньої реклами | Freelance UA",
+      "description": "Дизайн зовнішньої реклами для медичної клініки пересадки волосся — презентація послуг у преміальному фірмовому стилі.",
+      "h1": "MHT Clinic — білборд для клініки",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/mht-clinic-billboard",
+        "en": "/en/cases/design/mht-clinic-billboard"
+      }
+    },
+    {
+      "path": "/cases/design/moto-school-window-branding",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/moto-school-window-branding",
+      "title": "Мотошкола — оформлення вітрин | Freelance UA",
+      "description": "Панорамний дизайн під друк для брендування вікон мотошколи — від макета до реалізації на локації.",
+      "h1": "Мотошкола — оформлення вітрин",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/moto-school-window-branding",
+        "en": "/en/cases/design/moto-school-window-branding"
+      }
+    },
+    {
+      "path": "/cases/design/mydutyfree",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/mydutyfree",
+      "title": "Промо-банер MyDutyFree з фірмовим 3D-персонажем | Freelance UA",
+      "description": "Промо-банер із фірмовим 3D-персонажем для сервісу MyDutyFree — покупки в Duty Free на кордоні з вигодою.",
+      "h1": "MyDutyFree — промо-банер із 3D-персонажем",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/mydutyfree",
+        "en": "/en/cases/design/mydutyfree"
+      }
+    },
+    {
+      "path": "/cases/design/nastya-portrait-retouch",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/nastya-portrait-retouch",
+      "title": "Ретуш портретів і кольорокорекція | Freelance UA",
+      "description": "Обробка портретних кадрів — кольорокорекція, ретуш шкіри та світла, робота з фоном для фінальної подачі кадрів.",
+      "h1": "Ретуш портретів: кольорокорекція та обробка фото",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/nastya-portrait-retouch",
+        "en": "/en/cases/design/nastya-portrait-retouch"
+      }
+    },
+    {
+      "path": "/cases/design/nastya-smm",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/nastya-smm",
+      "title": "Брендовані обкладинки для Instagram-контенту | Freelance UA",
+      "description": "Брендовані обкладинки для Instagram-контенту SMM-спеціалістки — єдиний візуальний стиль для контент-плану та освітніх постів.",
+      "h1": "Instagram-візуали для SMM",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/nastya-smm",
+        "en": "/en/cases/design/nastya-smm"
+      }
+    },
+    {
+      "path": "/cases/design/photo-retouch",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/photo-retouch",
+      "title": "Ретуш різних типів кадрів — від авто до портретів | Freelance UA",
+      "description": "Приклади кольорокорекції та ретуші різних типів кадрів — від авто до портретної зйомки. Демонстрація підходу до обробки світла, кольору й деталей.",
+      "h1": "Ретуш і кольорокорекція фото",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/photo-retouch",
+        "en": "/en/cases/design/photo-retouch"
+      }
+    },
+    {
+      "path": "/cases/design/pink-pr-flyers",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/pink-pr-flyers",
+      "title": "Друковані флаєри для маркетинг-платформи Pink PR | Freelance UA",
+      "description": "Комплект друкованих флаєрів для маркетинг-платформи Pink PR — презентація журналу, послуг та ком'юніті-флешмобу.",
+      "h1": "Pink PR — комплект флаєрів для друку",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/pink-pr-flyers",
+        "en": "/en/cases/design/pink-pr-flyers"
+      }
+    },
+    {
+      "path": "/cases/design/prestige-school-billboard",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/prestige-school-billboard",
+      "title": "Білборд приватної початкової школи у фірмовому стилі | Freelance UA",
+      "description": "Дизайн зовнішньої реклами для приватної початкової школи — анонс набору учнів у фірмовому стилі закладу.",
+      "h1": "Престиж — білборд приватної школи",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/prestige-school-billboard",
+        "en": "/en/cases/design/prestige-school-billboard"
+      }
+    },
+    {
+      "path": "/cases/design/schonheit-gift-certificate",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/schonheit-gift-certificate",
+      "title": "Подарунковий сертифікат для б'юті-салону | Freelance UA",
+      "description": "Подарунковий сертифікат для бьюті-салону — елегантний дизайн у золотих тонах, гідний преміального бренду.",
+      "h1": "Schönheit — подарунковий сертифікат",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/schonheit-gift-certificate",
+        "en": "/en/cases/design/schonheit-gift-certificate"
+      }
+    },
+    {
+      "path": "/cases/design/sembud-repair",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/sembud-repair",
+      "title": "Банер ремонтної компанії у Львові: ціна й гарантія | Freelance UA",
+      "description": "Рекламний банер ремонтної компанії у Львові — ціна, гарантія та реальні фото робіт для довіри клієнта.",
+      "h1": "SEMBUD — рекламний банер ремонтної компанії",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/sembud-repair",
+        "en": "/en/cases/design/sembud-repair"
+      }
+    },
+    {
+      "path": "/cases/design/smm-case-presentation",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/smm-case-presentation",
+      "title": "Шаблон презентації для показу SMM-кейсів | Freelance UA",
+      "description": "Шаблон презентації для демонстрації SMM-кейсів клієнтам — від фітнес-тренера до стоматологічної клініки.",
+      "h1": "Презентація SMM-кейсів",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/smm-case-presentation",
+        "en": "/en/cases/design/smm-case-presentation"
+      }
+    },
+    {
+      "path": "/cases/design/snizhana-telegram-stickers",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/snizhana-telegram-stickers",
+      "title": "Авторські стікери для Telegram: єдина стилістика персонажа | Freelance UA",
+      "description": "Пак стікерів для Telegram: 52 авторські емоції, єдина стилістика персонажа, прозорий фон і публікація в один клік.",
+      "h1": "Стікери для Telegram — дизайн пака емоцій",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/snizhana-telegram-stickers",
+        "en": "/en/cases/design/snizhana-telegram-stickers"
+      }
+    },
+    {
+      "path": "/cases/design/vikontse-logo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/vikontse-logo",
+      "title": "Логотип для компанії «Віконце» і фірмова типографіка | Freelance UA",
+      "description": "Логотип для компанії «Віконце» — графічний символ будинку з вікном та фірмова типографіка.",
+      "h1": "Віконце — розробка логотипу",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/vikontse-logo",
+        "en": "/en/cases/design/vikontse-logo"
+      }
+    },
+    {
+      "path": "/cases/video/ai-avatars",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/ai-avatars",
+      "title": "AI-аватари | Freelance UA",
+      "description": "Створення AI-аватарів — генерація унікальних персонажів за допомогою штучного інтелекту",
+      "h1": "AI-аватари",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/ai-avatars",
+        "en": "/en/cases/video/ai-avatars"
+      }
+    },
+    {
+      "path": "/cases/video/ai-ice-cream",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/ai-ice-cream",
+      "title": "AI-відео морозива | Freelance UA",
+      "description": "AI-генерований промо-ролик морозива для маркетингу — реалістична візуалізація продукту",
+      "h1": "AI-відео морозива",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/ai-ice-cream",
+        "en": "/en/cases/video/ai-ice-cream"
+      }
+    },
+    {
+      "path": "/cases/video/ai-promo-misha",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/ai-promo-misha",
+      "title": "AI промо-відео | Freelance UA",
+      "description": "AI-згенероване промо-відео — динамічний контент для соціальних мереж",
+      "h1": "AI промо-відео",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/ai-promo-misha",
+        "en": "/en/cases/video/ai-promo-misha"
+      }
+    },
+    {
+      "path": "/cases/video/ai-spring-fashion",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/ai-spring-fashion",
+      "title": "AI-відео моди | Freelance UA",
+      "description": "AI-генероване відео весняної моди — динамічний контент для соціальних мереж",
+      "h1": "AI-відео моди",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/ai-spring-fashion",
+        "en": "/en/cases/video/ai-spring-fashion"
+      }
+    },
+    {
+      "path": "/cases/video/ai-video-new",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/ai-video-new",
+      "title": "AI-відео промо | Freelance UA",
+      "description": "AI-генерований промо-ролик — динамічна візуалізація з ефектами та атмосферною подачею",
+      "h1": "AI-відео промо",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/ai-video-new",
+        "en": "/en/cases/video/ai-video-new"
+      }
+    },
+    {
+      "path": "/cases/video/alien-city-adventure",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/alien-city-adventure",
+      "title": "AI-відео про пригоди | Freelance UA",
+      "description": "AI-згенероване відео про пригоди в інопланетному місті — креативний контент",
+      "h1": "AI-відео про пригоди",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/alien-city-adventure",
+        "en": "/en/cases/video/alien-city-adventure"
+      }
+    },
+    {
+      "path": "/cases/video/artem-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/artem-reels",
+      "title": "Reels для Артема | Freelance UA",
+      "description": "Створили Reels для блогера Артема — динамічний монтаж для соцмереж",
+      "h1": "Reels для Артема",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/artem-reels",
+        "en": "/en/cases/video/artem-reels"
+      }
+    },
+    {
+      "path": "/cases/video/auto-edits-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/auto-edits-reels",
+      "title": "Reels для автобренду | Freelance UA",
+      "description": "Динамічні Reels для автобренду — монтаж з швидкими переходами",
+      "h1": "Reels для автобренду",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/auto-edits-reels",
+        "en": "/en/cases/video/auto-edits-reels"
+      }
+    },
+    {
+      "path": "/cases/video/automation-1click",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/automation-1click",
+      "title": "Автоматизація за 1 клік | Freelance UA",
+      "description": "YouTube-відео про автоматизацію бізнесу за 1 клік — монтаж та моушн-дизайн",
+      "h1": "Автоматизація за 1 клік",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/automation-1click",
+        "en": "/en/cases/video/automation-1click"
+      }
+    },
+    {
+      "path": "/cases/video/barvy-interior-ai-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/barvy-interior-ai-reels",
+      "title": "AI-відео BARVY Interior | Freelance UA",
+      "description": "Рекламний Reels для ремонтно-будівельної компанії BARVY Interior — AI-згенероване відео з монтажем",
+      "h1": "AI-відео BARVY Interior",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/barvy-interior-ai-reels",
+        "en": "/en/cases/video/barvy-interior-ai-reels"
+      }
+    },
+    {
+      "path": "/cases/video/cuprus-life",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/cuprus-life",
+      "title": "Reels для Cuprus Life — монтаж промо-роликів | Freelance UA",
+      "description": "3 Instagram Reels для бренду Cuprus Life — динамічний монтаж",
+      "h1": "Cuprus Life — 3 промо-Reels для соціальних мереж",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/cuprus-life",
+        "en": "/en/cases/video/cuprus-life"
+      }
+    },
+    {
+      "path": "/cases/video/dance-competition-lviv",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/dance-competition-lviv",
+      "title": "Reels для танцювального конкурсу | Freelance UA",
+      "description": "Reels для танцювального конкурсу у Львові — динамічний монтаж з атмосферними кадрами",
+      "h1": "Reels для танцювального конкурсу",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/dance-competition-lviv",
+        "en": "/en/cases/video/dance-competition-lviv"
+      }
+    },
+    {
+      "path": "/cases/video/dominanta-youtube-intro",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/dominanta-youtube-intro",
+      "title": "Інтро для YouTube | Freelance UA",
+      "description": "Створили моушн-інтро для ютуб-каналу Dominanta — яскраво, динамічно, з першого кадру задає стиль каналу",
+      "h1": "Інтро для YouTube",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/dominanta-youtube-intro",
+        "en": "/en/cases/video/dominanta-youtube-intro"
+      }
+    },
+    {
+      "path": "/cases/video/dr-trichologist-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/dr-trichologist-promo",
+      "title": "AI-промо для Dr. Trichologist | Freelance UA",
+      "description": "AI-генероване промо-відео для тріхологічного бренду Dr. Trichologist — візуалізація продукту та процесу застосування",
+      "h1": "AI-промо для Dr. Trichologist",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/dr-trichologist-promo",
+        "en": "/en/cases/video/dr-trichologist-promo"
+      }
+    },
+    {
+      "path": "/cases/video/eva-code-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/eva-code-reels",
+      "title": "Reels для E.V.A. CODE | Freelance UA",
+      "description": "Монтаж Reels для проєкту E.V.A. CODE™ — серія відео для Instagram",
+      "h1": "E.V.A. CODE™",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/eva-code-reels",
+        "en": "/en/cases/video/eva-code-reels"
+      }
+    },
+    {
+      "path": "/cases/video/income-graph-motion",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/income-graph-motion",
+      "title": "Анімація графіку доходів | Freelance UA",
+      "description": "Моушн-анімація графіку доходів — динамічна візуалізація даних",
+      "h1": "Анімація графіку доходів",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/income-graph-motion",
+        "en": "/en/cases/video/income-graph-motion"
+      }
+    },
+    {
+      "path": "/cases/video/internet-svit-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/internet-svit-promo",
+      "title": "Промо для Інтернет Світ | Freelance UA",
+      "description": "Моушн-промо для Інтернет Світ — яскравий та динамічний візуал",
+      "h1": "Промо для Інтернет Світ",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/internet-svit-promo",
+        "en": "/en/cases/video/internet-svit-promo"
+      }
+    },
+    {
+      "path": "/cases/video/ivan-ig-creative",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/ivan-ig-creative",
+      "title": "AI для Instagram | Freelance UA",
+      "description": "Два рекламних креатива для Instagram — AI-згенеровані відео для просування продукту",
+      "h1": "AI для Instagram",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/ivan-ig-creative",
+        "en": "/en/cases/video/ivan-ig-creative"
+      }
+    },
+    {
+      "path": "/cases/video/liliya-product-business",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/liliya-product-business",
+      "title": "Бізнес Лілії | Freelance UA",
+      "description": "YouTube-відео для Лілії про product-бізнес — монтаж та структурування контенту",
+      "h1": "Бізнес Лілії",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/liliya-product-business",
+        "en": "/en/cases/video/liliya-product-business"
+      }
+    },
+    {
+      "path": "/cases/video/logan-ai-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/logan-ai-promo",
+      "title": "AI-промо LOGAN | Freelance UA",
+      "description": "AI-генерований промо-ролик для бренду LOGAN — преміальний масажний пристрій з креативною візуалізацією",
+      "h1": "AI-промо LOGAN",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/logan-ai-promo",
+        "en": "/en/cases/video/logan-ai-promo"
+      }
+    },
+    {
+      "path": "/cases/video/logo-animation",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/logo-animation",
+      "title": "Анімація логотипу | Freelance UA",
+      "description": "Анімація логотипу — моушн-дизайн для створення динамічного візуалу бренду",
+      "h1": "Анімація логотипу",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/logo-animation",
+        "en": "/en/cases/video/logo-animation"
+      }
+    },
+    {
+      "path": "/cases/video/maccoudi-youtube",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/maccoudi-youtube",
+      "title": "Маккоуді — YouTube про фріланс | Freelance UA",
+      "description": "Монтаж двох YouTube-відео для популярного блогера Маккоуді — динамічний контент про фріланс",
+      "h1": "Маккоуді",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/maccoudi-youtube",
+        "en": "/en/cases/video/maccoudi-youtube"
+      }
+    },
+    {
+      "path": "/cases/video/motion-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/motion-promo",
+      "title": "Промо-ролик | Freelance UA",
+      "description": "Моушн-дизайн та монтаж промо-ролика — динамічний візуал для бренду",
+      "h1": "Промо-ролик",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/motion-promo",
+        "en": "/en/cases/video/motion-promo"
+      }
+    },
+    {
+      "path": "/cases/video/motion-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/motion-reels",
+      "title": "Моушн Reels | Freelance UA",
+      "description": "Моушн-дизайн для Instagram Reels — динамічні відео з анімаціями",
+      "h1": "Моушн Reels",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/motion-reels",
+        "en": "/en/cases/video/motion-reels"
+      }
+    },
+    {
+      "path": "/cases/video/nikita-sheremet-crypto",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/nikita-sheremet-crypto",
+      "title": "Нікіта Шеремет | Freelance UA",
+      "description": "Створили серію Reels для Instagram — 4 відео з аналітикою крипто-ринку та порадами для інвесторів",
+      "h1": "Нікіта Шеремет",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/nikita-sheremet-crypto",
+        "en": "/en/cases/video/nikita-sheremet-crypto"
+      }
+    },
+    {
+      "path": "/cases/video/passive-income-video",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/passive-income-video",
+      "title": "Пасивний дохід | Freelance UA",
+      "description": "Відео про пасивний дохід — монтаж для YouTube з динамічною подачею",
+      "h1": "Пасивний дохід",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/passive-income-video",
+        "en": "/en/cases/video/passive-income-video"
+      }
+    },
+    {
+      "path": "/cases/video/podcast-editing",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/podcast-editing",
+      "title": "Монтаж подкасту | Freelance UA",
+      "description": "Монтаж подкасту — професійний монтаж тривалого аудіо/відео формату",
+      "h1": "Монтаж подкасту",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/podcast-editing",
+        "en": "/en/cases/video/podcast-editing"
+      }
+    },
+    {
+      "path": "/cases/video/presentation-animation",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/presentation-animation",
+      "title": "Анімація презентації | Freelance UA",
+      "description": "Анімація для презентації — моушн-ефекти для професійної подачі",
+      "h1": "Анімація презентації",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/presentation-animation",
+        "en": "/en/cases/video/presentation-animation"
+      }
+    },
+    {
+      "path": "/cases/video/sales-bible-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/sales-bible-promo",
+      "title": "Біблія продавця | Freelance UA",
+      "description": "Моушн-промо для курсу «Біблія продавця» — динамічний візуал для освітнього проєкту",
+      "h1": "Біблія продавця",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/sales-bible-promo",
+        "en": "/en/cases/video/sales-bible-promo"
+      }
+    },
+    {
+      "path": "/cases/video/selloflow-intro",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/selloflow-intro",
+      "title": "Вступне відео Selloflow | Freelance UA",
+      "description": "Моушн-інтро для стартапу Selloflow — динамічний візуал для презентації платформи",
+      "h1": "Вступне відео Selloflow",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/selloflow-intro",
+        "en": "/en/cases/video/selloflow-intro"
+      }
+    },
+    {
+      "path": "/cases/video/serhii-yarmolenko-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/serhii-yarmolenko-reels",
+      "title": "Сергій Ярмоленко | Freelance UA",
+      "description": "Створили серію Reels для Instagram — 3 відео для блогера у ніші товарного бізнесу з аудиторією 91,7 тис.",
+      "h1": "Сергій Ярмоленко",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/serhii-yarmolenko-reels",
+        "en": "/en/cases/video/serhii-yarmolenko-reels"
+      }
+    },
+    {
+      "path": "/cases/video/serhii-yarmolenko-video-lesson",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/serhii-yarmolenko-video-lesson",
+      "title": "Відео урок Сергія Ярмоленка | Freelance UA",
+      "description": "Змонтували відео урок на 18 хвилин для блогера у ніші товарного бізнесу — динамічний монтаж, графіка та звукове оформлення",
+      "h1": "Відео урок Сергія Ярмоленка",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/serhii-yarmolenko-video-lesson",
+        "en": "/en/cases/video/serhii-yarmolenko-video-lesson"
+      }
+    },
+    {
+      "path": "/cases/video/sestro-anniversary",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/sestro-anniversary",
+      "title": "Відео до 2-ї річниці Sestro | Freelance UA",
+      "description": "Reels-відео для 2-ї річниці салону краси Sestro — від ідеї до реалізації, повний цикл виробництва промо-контенту",
+      "h1": "2-а річниця Sestro",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/sestro-anniversary",
+        "en": "/en/cases/video/sestro-anniversary"
+      }
+    },
+    {
+      "path": "/cases/video/sestro-beauty",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/sestro-beauty",
+      "title": "AI-відео для Sestro | Freelance UA",
+      "description": "AI-генеровані промо-ролики для beauty-бренду — візуалізація атмосфери та послуг салону",
+      "h1": "AI-відео для Sestro",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/sestro-beauty",
+        "en": "/en/cases/video/sestro-beauty"
+      }
+    },
+    {
+      "path": "/cases/video/sheglam-freedom-fest",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/sheglam-freedom-fest",
+      "title": "Промо SHEGLAM Freedom Fest | Freelance UA",
+      "description": "AI-промо для SHEGLAM Freedom Fest — динамічний візуал для маркетингової кампанії",
+      "h1": "Промо SHEGLAM Freedom Fest",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/sheglam-freedom-fest",
+        "en": "/en/cases/video/sheglam-freedom-fest"
+      }
+    },
+    {
+      "path": "/cases/video/sheglam-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/sheglam-promo",
+      "title": "Промо SHEGLAM | Freelance UA",
+      "description": "Промо-ролик для косметичного бренду SHEGLAM — монтаж з motion-графікою та колабораціями",
+      "h1": "Промо SHEGLAM",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/sheglam-promo",
+        "en": "/en/cases/video/sheglam-promo"
+      }
+    },
+    {
+      "path": "/cases/video/skool-10-features",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/skool-10-features",
+      "title": "Огляд Skool 10 Features | Freelance UA",
+      "description": "YouTube-відео з оглядом 10 фіч Skool — монтаж та монтування тривалого контенту",
+      "h1": "Огляд Skool 10 Features",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/skool-10-features",
+        "en": "/en/cases/video/skool-10-features"
+      }
+    },
+    {
+      "path": "/cases/video/taranenko-trade",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/taranenko-trade",
+      "title": "Торгівля Тараненко | Freelance UA",
+      "description": "YouTube-відео про торгівлю — монтаж з динамічною подачею",
+      "h1": "Торгівля Тараненко",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/taranenko-trade",
+        "en": "/en/cases/video/taranenko-trade"
+      }
+    },
+    {
+      "path": "/cases/video/telegram-emoji-stickers",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/telegram-emoji-stickers",
+      "title": "Emoji стікери для Telegram | Freelance UA",
+      "description": "Анімація emoji стікерів для Telegram — моушн-дизайн та монтаж",
+      "h1": "Телеграм Емодзі",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/telegram-emoji-stickers",
+        "en": "/en/cases/video/telegram-emoji-stickers"
+      }
+    },
+    {
+      "path": "/cases/video/travel-vlog-turkey",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/travel-vlog-turkey",
+      "title": "Travel Vlog — Туреччина | Freelance UA",
+      "description": "YouTube travel vlog з сімейного відпочинку в Туреччині — аерозйомка, водні гірки, атмосфера курорту",
+      "h1": "Travel Vlog — Туреччина",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/travel-vlog-turkey",
+        "en": "/en/cases/video/travel-vlog-turkey"
+      }
+    },
+    {
+      "path": "/cases/video/twin-a-auto",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/twin-a-auto",
+      "title": "Reels для автосервісу Twin-A-Auto | Freelance UA",
+      "description": "Динамічний польськомовний Reels про послуги автосервісу Twin-A-Auto в Мисловіці — монтаж, адаптація під Instagram 9:16",
+      "h1": "Reels для автосервісу Twin-A-Auto",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/twin-a-auto",
+        "en": "/en/cases/video/twin-a-auto"
+      }
+    },
+    {
+      "path": "/cases/video/valeriia-trend-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/valeriia-trend-reels",
+      "title": "AI-оживлення фото | Freelance UA",
+      "description": "Оживлення статичного фото для Instagram за допомогою AI",
+      "h1": "AI-оживлення фото",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/valeriia-trend-reels",
+        "en": "/en/cases/video/valeriia-trend-reels"
+      }
+    },
+    {
+      "path": "/cases/video/varto-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/varto-reels",
+      "title": "Varto — Енергетика | Freelance UA",
+      "description": "Instagram Reel для бренду Varto про інвестування в незалежну енергетику України",
+      "h1": "Varto — Енергетика",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/varto-reels",
+        "en": "/en/cases/video/varto-reels"
+      }
+    },
+    {
+      "path": "/cases/video/veronika-ai-muscles",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/veronika-ai-muscles",
+      "title": "AI маска | Freelance UA",
+      "description": "AI-візуалізація м'язів на відео для Reels — накладення м'язових структур з переходами",
+      "h1": "AI маска",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/veronika-ai-muscles",
+        "en": "/en/cases/video/veronika-ai-muscles"
+      }
+    },
+    {
+      "path": "/cases/video/vibe-nation-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/vibe-nation-promo",
+      "title": "Промо для Vibe Nation | Freelance UA",
+      "description": "AI-промо-ролик для бренду Vibe Nation — динамічний візуал для соцмереж",
+      "h1": "Промо для Vibe Nation",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/vibe-nation-promo",
+        "en": "/en/cases/video/vibe-nation-promo"
+      }
+    },
+    {
+      "path": "/cases/video/vitalii-cheverda",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/vitalii-cheverda",
+      "title": "Reels для Віталія Чеверда | Freelance UA",
+      "description": "Reels для блогера Віталія Чеверда — динамічний монтаж для Instagram",
+      "h1": "Reels для Віталія Чеверда",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/vitalii-cheverda",
+        "en": "/en/cases/video/vitalii-cheverda"
+      }
+    },
+    {
+      "path": "/cases/video/vladlen-lisynko-interview",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/vladlen-lisynko-interview",
+      "title": "Інтерв'ю з Владленом Лисенко | Freelance UA",
+      "description": "Монтаж інтерв'ю з Владленом Лисенко — YouTube-відео з професійним монтажем",
+      "h1": "Інтерв'ю з Владленом Лисенко",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/vladlen-lisynko-interview",
+        "en": "/en/cases/video/vladlen-lisynko-interview"
+      }
+    },
+    {
+      "path": "/cases/video/vorodi-medical",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/vorodi-medical",
+      "title": "AI-відео для медицини | Freelance UA",
+      "description": "AI-промо-ролик для медичного бренду — короткий динамічний візуал",
+      "h1": "AI-відео для медицини",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/vorodi-medical",
+        "en": "/en/cases/video/vorodi-medical"
+      }
+    },
+    {
+      "path": "/cases/video/vsehub-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/vsehub-reels",
+      "title": "ВсеHub | Freelance UA",
+      "description": "Серія Instagram Reels для YouTube-каналу ВсеHub — повний цикл від монтажу до публікації у форматі 9:16",
+      "h1": "ВсеHub",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/vsehub-reels",
+        "en": "/en/cases/video/vsehub-reels"
+      }
+    },
+    {
+      "path": "/cases/video/vtikha-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/vtikha-promo",
+      "title": "AI-відео Втіха | Freelance UA",
+      "description": "Промо-ролик для проєкту Втіха — AI-згенероване відео з монтажем",
+      "h1": "AI-відео Втіха",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/vtikha-promo",
+        "en": "/en/cases/video/vtikha-promo"
+      }
+    },
+    {
+      "path": "/cases/video/watch-hype-intro",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/watch-hype-intro",
+      "title": "Інтро для Watch Hype | Freelance UA",
+      "description": "Motion-інтро для YouTube-каналу Watch Hype — анімована 3D-сцена з фінальним лого та динамічним переходом",
+      "h1": "Інтро для Watch Hype",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/watch-hype-intro",
+        "en": "/en/cases/video/watch-hype-intro"
+      }
+    },
+    {
+      "path": "/cases/video/watch-hype-motion",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/watch-hype-motion",
+      "title": "Моушн для Watch Hype | Freelance UA",
+      "description": "Моушн-промо для Watch Hype — динамічний монтаж для соцмереж",
+      "h1": "Моушн для Watch Hype",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/watch-hype-motion",
+        "en": "/en/cases/video/watch-hype-motion"
+      }
+    },
+    {
+      "path": "/cases/video/wine-festival",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/wine-festival",
+      "title": "Відео для винного фестивалю | Freelance UA",
+      "description": "YouTube-відео для винного фестивалю — монтаж з атмосферними кадрами",
+      "h1": "Фестиваль вина",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/wine-festival",
+        "en": "/en/cases/video/wine-festival"
+      }
+    },
+    {
+      "path": "/cases/video/youtube-conversational-video",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/youtube-conversational-video",
+      "title": "Розмовне відео | Freelance UA",
+      "description": "Монтаж розмовного YouTube-відео — професійна подача та монтаж",
+      "h1": "Розмовне відео",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/youtube-conversational-video",
+        "en": "/en/cases/video/youtube-conversational-video"
+      }
+    },
+    {
+      "path": "/cases/video/yulia-smm-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/yulia-smm-reels",
+      "title": "Reels для SMM | Freelance UA",
+      "description": "Монтаж Reels для SMM-спеціалістки — динамічні відео для Instagram",
+      "h1": "Reels для SMM",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/yulia-smm-reels",
+        "en": "/en/cases/video/yulia-smm-reels"
+      }
+    },
+    {
+      "path": "/en/cases/it/asandra-soul",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/asandra-soul",
+      "inRegistry": true,
+      "title": "Asandra Soul — Telegram Mini App and backend for sales automation | Freelance UA",
+      "description": "Telegram Mini App + Backend for automating course and practice sales with a personalized experience for each user.",
+      "h1": "Asandra Soul — Telegram Mini App for courses and practices",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/asandra-soul",
+        "en": "/en/cases/it/asandra-soul"
+      }
+    },
+    {
+      "path": "/en/cases/it/darkshare",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/darkshare",
+      "inRegistry": true,
+      "title": "DARKSHARE — cybersecurity SaaS with OSINT modules | Freelance UA",
+      "description": "SaaS cybersecurity platform with 17 OSINT modules, AI scoring, PDF reports, VPN, Telegram bot, and REST API.",
+      "h1": "DARKSHARE — cybersecurity SaaS platform",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/darkshare",
+        "en": "/en/cases/it/darkshare"
+      }
+    },
+    {
+      "path": "/en/cases/it/epiland",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/epiland",
+      "inRegistry": true,
+      "title": "Epiland — birthday booking in a Telegram Mini App | Freelance UA",
+      "description": "Telegram bot and Mini App for an amusement park: birthday booking in 4 steps, a schedule and requests for managers.",
+      "h1": "Epiland — Telegram Mini App for an amusement park",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/epiland",
+        "en": "/en/cases/it/epiland"
+      }
+    },
+    {
+      "path": "/en/cases/it/eva-code",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/eva-code",
+      "inRegistry": true,
+      "title": "E.V.A. CODE™ — landing, Telegram Mini App and CRM | Freelance UA",
+      "description": "A comprehensive platform for diagnostics experts that automates client workflow from application to consultation.",
+      "h1": "E.V.A. CODE™",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/eva-code",
+        "en": "/en/cases/it/eva-code"
+      }
+    },
+    {
+      "path": "/en/cases/it/importera",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/importera",
+      "inRegistry": true,
+      "title": "Importera — bilingual corporate website for a B2B distributor | Freelance UA",
+      "description": "Corporate website for a B2B distributor with 250+ brands, 50+ countries, two languages and a partners gallery.",
+      "h1": "Importera — corporate website for a B2B distributor",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/importera",
+        "en": "/en/cases/it/importera"
+      }
+    },
+    {
+      "path": "/en/cases/it/kroscar-detailing",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/kroscar-detailing",
+      "inRegistry": true,
+      "title": "KROSCAR Detailing — landing with online booking and a work gallery | Freelance UA",
+      "description": "Landing page for the KROSCAR detailing studio (Lviv) with online booking, a work gallery, a before/after slider and Google reviews.",
+      "h1": "KROSCAR Detailing — landing page for a detailing studio",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/kroscar-detailing",
+        "en": "/en/cases/it/kroscar-detailing"
+      }
+    },
+    {
+      "path": "/en/cases/it/liudmyla-tsybrii",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/liudmyla-tsybrii",
+      "inRegistry": true,
+      "title": "Liudmyla Tsybrii — portfolio site with services and cases | Freelance UA",
+      "description": "Premium portfolio website for a business coach with 4 services, portfolio of 3 cases, and multilingual support (UA/EN). Developed in 2 days.",
+      "h1": "Liudmyla Tsybrii — portfolio website for a business coach",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/liudmyla-tsybrii",
+        "en": "/en/cases/it/liudmyla-tsybrii"
+      }
+    },
+    {
+      "path": "/en/cases/it/md-dental",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/md-dental",
+      "inRegistry": true,
+      "title": "M+D Dental — dental clinic website with online booking and services | Freelance UA",
+      "description": "Website for two dental clinics in Sumy: 23 services, a team of dentists with photos, online booking, trust from insurance companies and an FAQ.",
+      "h1": "M+D Dental — website for two dental clinics",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/md-dental",
+        "en": "/en/cases/it/md-dental"
+      }
+    },
+    {
+      "path": "/en/cases/it/mnm-detailing",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/mnm-detailing",
+      "inRegistry": true,
+      "title": "MNM Detailing — website redesign with a before/after slider | Freelance UA",
+      "description": "Detailing studio website redesign with 10+ services, filtered gallery, trust emphasis and before/after slider.",
+      "h1": "MNM Detailing — redesign of a detailing studio website",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/mnm-detailing",
+        "en": "/en/cases/it/mnm-detailing"
+      }
+    },
+    {
+      "path": "/en/cases/it/nextcup",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/nextcup",
+      "inRegistry": true,
+      "title": "NextCup — catalogue and checkout update on Horoshop | Freelance UA",
+      "description": "An online store update on Horoshop with a new design, catalogue, banners and a faster checkout.",
+      "h1": "NextCup — online store update",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/nextcup",
+        "en": "/en/cases/it/nextcup"
+      }
+    },
+    {
+      "path": "/en/cases/it/pivden-solar",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/pivden-solar",
+      "inRegistry": true,
+      "title": "Pivden Solar — solar landing with a kit catalogue | Freelance UA",
+      "description": "Conversion landing for a solar installation company with a kit catalogue, a works gallery and an admin panel.",
+      "h1": "Pivden Solar — conversion landing for solar installation",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/pivden-solar",
+        "en": "/en/cases/it/pivden-solar"
+      }
+    },
+    {
+      "path": "/en/cases/it/prime-auto-shipping",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/prime-auto-shipping",
+      "inRegistry": true,
+      "title": "Prime Auto Shipping — landing for vehicle shipping in the USA | Freelance UA",
+      "description": "Conversion-focused landing page for a US auto transport company with instant quoting, GPS tracking, and FMCSA verification.",
+      "h1": "Prime Auto Shipping — conversion landing for vehicle shipping",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/prime-auto-shipping",
+        "en": "/en/cases/it/prime-auto-shipping"
+      }
+    },
+    {
+      "path": "/en/cases/it/repair-collision",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/repair-collision",
+      "inRegistry": true,
+      "title": "Repair Collision — auto repair website with CRM and portfolio | Freelance UA",
+      "description": "Website for a Polish auto repair company with CRM, SEO promotion, 50+ car portfolio, and multilingual support.",
+      "h1": "Repair Collision — website for a car service company",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/repair-collision",
+        "en": "/en/cases/it/repair-collision"
+      }
+    },
+    {
+      "path": "/en/cases/it/route-core",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/route-core",
+      "inRegistry": true,
+      "title": "RouteCore — recruitment landing page with a selection process | Freelance UA",
+      "description": "A recruitment landing page for hiring BAS and ZennoPoster engineers with benefits, requirements and a 4-step selection process. UA/EN multilingual.",
+      "h1": "RouteCore — recruitment landing page for hiring engineers",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/route-core",
+        "en": "/en/cases/it/route-core"
+      }
+    },
+    {
+      "path": "/en/cases/it/ruslan-aviation",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/ruslan-aviation",
+      "inRegistry": true,
+      "title": "Ruslan Aviation — e-commerce with filters and a conversion-focused design | Freelance UA",
+      "description": "Full-featured e-commerce store for aviation components with fast navigation, filters, and conversion-focused design.",
+      "h1": "Ruslan Aviation — online store of aviation components",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/ruslan-aviation",
+        "en": "/en/cases/it/ruslan-aviation"
+      }
+    },
+    {
+      "path": "/en/cases/it/sdent",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/sdent",
+      "inRegistry": true,
+      "title": "S-Dent — dental website with services, dentists and a before/after slider | Freelance UA",
+      "description": "Website redesign for a dental clinic with 14 services, 8 dentists, reviews and a before/after slider.",
+      "h1": "S-Dent — dental clinic website redesign",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/sdent",
+        "en": "/en/cases/it/sdent"
+      }
+    },
+    {
+      "path": "/en/cases/it/selloflow",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/selloflow",
+      "inRegistry": true,
+      "title": "Selloflow — SaaS for stores: catalogue, orders, Telegram bot | Freelance UA",
+      "description": "Joint project — SaaS platform for creating stores in 2 minutes: catalog, order processing, Nova Poshta, Telegram bot, 10+ themes and 200+ stores.",
+      "h1": "Selloflow — platform for building online stores",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/selloflow",
+        "en": "/en/cases/it/selloflow"
+      }
+    },
+    {
+      "path": "/en/cases/it/serezha-shop",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/serezha-shop",
+      "inRegistry": true,
+      "title": "Serezha Shop — catalogue of sneakers from the USA with reviews | Freelance UA",
+      "description": "Conversion catalogue landing for selling sneakers from the USA, with a model catalogue, reviews and direct contact via Telegram.",
+      "h1": "Serezha Shop — sneaker catalogue landing page",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/serezha-shop",
+        "en": "/en/cases/it/serezha-shop"
+      }
+    },
+    {
+      "path": "/en/cases/it/shkiper-drop",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/shkiper-drop",
+      "inRegistry": true,
+      "title": "Shkiper Drop — drop store landing with a catalogue and Telegram CTA | Freelance UA",
+      "description": "Landing catalog for a streetwear drop store with dark design, 5-category catalog, animations and Telegram conversion.",
+      "h1": "Shkiper Drop — streetwear drop store landing page",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/shkiper-drop",
+        "en": "/en/cases/it/shkiper-drop"
+      }
+    },
+    {
+      "path": "/en/cases/it/stretching-ch",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/stretching-ch",
+      "inRegistry": true,
+      "title": "Stretching.ch — Instagram DM bot for fitness lead generation | Freelance UA",
+      "description": "Instagram DM bot for a fitness coach: automatic keyword replies, lead generation and client conversion.",
+      "h1": "Stretching.ch — Instagram DM bot for a fitness coach",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/stretching-ch",
+        "en": "/en/cases/it/stretching-ch"
+      }
+    },
+    {
+      "path": "/en/cases/it/voltone-pro",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/voltone-pro",
+      "inRegistry": true,
+      "title": "Voltone.pro — power bank catalogue, account and delivery | Freelance UA",
+      "description": "Online store for power banks and chargers with a catalogue, discounts up to −40%, reviews, an account and fast delivery.",
+      "h1": "Voltone.pro — online store of power banks and chargers",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/voltone-pro",
+        "en": "/en/cases/it/voltone-pro"
+      }
+    },
+    {
+      "path": "/en/cases/design/apple-tecnologia",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/apple-tecnologia",
+      "inRegistry": true,
+      "title": "Apple tech advertising banner | Freelance UA",
+      "description": "An advertising banner for Apple tech emphasizing up to 40% discount and free shipping.",
+      "h1": "Apple Tecnologia — tech advertising banner",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/apple-tecnologia",
+        "en": "/en/cases/design/apple-tecnologia"
+      }
+    },
+    {
+      "path": "/en/cases/design/barvy-interior",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/barvy-interior",
+      "inRegistry": true,
+      "title": "BARVY interior — before/after editing of an interior photo shoot | Freelance UA",
+      "description": "Color grading and retouching of an interior photo shoot for the BARVY interior design studio: hallway, wardrobe, bedroom, bathroom. Before/after.",
+      "h1": "BARVY interior — retouching and color grading of the shoot",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/barvy-interior",
+        "en": "/en/cases/design/barvy-interior"
+      }
+    },
+    {
+      "path": "/en/cases/design/color-correction",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/color-correction",
+      "inRegistry": true,
+      "title": "Video color grading — working with light, color and the mood of the frame | Freelance UA",
+      "description": "Video color grading — working with light, color and the mood of the frame.",
+      "h1": "Video color grading: light, color and the mood of the frame",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/color-correction",
+        "en": "/en/cases/design/color-correction"
+      }
+    },
+    {
+      "path": "/en/cases/design/crypto-chat-manager-vacancy",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/crypto-chat-manager-vacancy",
+      "inRegistry": true,
+      "title": "Job banner for a crypto office in Dnipro | Freelance UA",
+      "description": "A vacancy ad banner for a crypto office in Dnipro — a vivid character, a concrete salary and a call to apply.",
+      "h1": "Job vacancy for a crypto office",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/crypto-chat-manager-vacancy",
+        "en": "/en/cases/design/crypto-chat-manager-vacancy"
+      }
+    },
+    {
+      "path": "/en/cases/design/divorce-legal-ad",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/divorce-legal-ad",
+      "inRegistry": true,
+      "title": "Banner for divorce legal consultation | Freelance UA",
+      "description": "An advertising banner for a divorce legal consultation — emphasizing client pain points, experience and a specific price offer.",
+      "h1": "Legal consultation — advertising banner",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/divorce-legal-ad",
+        "en": "/en/cases/design/divorce-legal-ad"
+      }
+    },
+    {
+      "path": "/en/cases/design/f5-guitars-youtube",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/f5-guitars-youtube",
+      "inRegistry": true,
+      "title": "Clickable thumbnail for a guitars video | Freelance UA",
+      "description": "A clickable thumbnail for a guitar channel video — \"buy one or start a brand?\" in a comparison format.",
+      "h1": "F5 Guitars — YouTube thumbnail",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/f5-guitars-youtube",
+        "en": "/en/cases/design/f5-guitars-youtube"
+      }
+    },
+    {
+      "path": "/en/cases/design/gel-polish",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/gel-polish",
+      "inRegistry": true,
+      "title": "Gel polish poster: quality, durability and color | Freelance UA",
+      "description": "An advertising poster for nail gel polish — emphasizing quality, durability and rich color.",
+      "h1": "Gel Polish — advertising poster",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/gel-polish",
+        "en": "/en/cases/design/gel-polish"
+      }
+    },
+    {
+      "path": "/en/cases/design/giesbrecht-pv",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/giesbrecht-pv",
+      "inRegistry": true,
+      "title": "Advertising banner for solar plants for the German-speaking market | Freelance UA",
+      "description": "An advertising banner for solar power plants targeted at the German-speaking market — benefits, technical specs and a call to action.",
+      "h1": "Giesbrecht PV — solar banner",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/giesbrecht-pv",
+        "en": "/en/cases/design/giesbrecht-pv"
+      }
+    },
+    {
+      "path": "/en/cases/design/globus-billboard",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/globus-billboard",
+      "inRegistry": true,
+      "title": "GLOBUS — billboards for a construction company | Freelance UA",
+      "description": "Billboard design for the GLOBUS construction company — architecture of the future in outdoor advertising format.",
+      "h1": "GLOBUS — billboard design",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/globus-billboard",
+        "en": "/en/cases/design/globus-billboard"
+      }
+    },
+    {
+      "path": "/en/cases/design/gopro-hero13",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/gopro-hero13",
+      "inRegistry": true,
+      "title": "GoPro Black camera poster with key technical features | Freelance UA",
+      "description": "A product advertising poster for the GoPro  Black camera highlighting the key technical advantages.",
+      "h1": "GoPro — product poster",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/gopro-hero13",
+        "en": "/en/cases/design/gopro-hero13"
+      }
+    },
+    {
+      "path": "/en/cases/design/hope-media-group",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/hope-media-group",
+      "inRegistry": true,
+      "title": "Branding for a US exhibition: postcards, banners, stickers | Freelance UA",
+      "description": "Branding solution for an exhibition in the US: printed postcards and banners, bookmarks, stickers and badges — one visual story for the Prophecy Road Map.",
+      "h1": "HOPE Media Group — branding for an exhibition",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/hope-media-group",
+        "en": "/en/cases/design/hope-media-group"
+      }
+    },
+    {
+      "path": "/en/cases/design/mht-clinic-billboard",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/mht-clinic-billboard",
+      "inRegistry": true,
+      "title": "MHT Clinic billboard: outdoor advertising design | Freelance UA",
+      "description": "Outdoor advertising design for a medical hair transplant clinic — presenting services in a premium brand style.",
+      "h1": "MHT Clinic — billboard for the clinic",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/mht-clinic-billboard",
+        "en": "/en/cases/design/mht-clinic-billboard"
+      }
+    },
+    {
+      "path": "/en/cases/design/moto-school-window-branding",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/moto-school-window-branding",
+      "inRegistry": true,
+      "title": "Motorcycle school — window branding | Freelance UA",
+      "description": "A panoramic print design for branding a motorcycle school's windows — from artwork to installation on site.",
+      "h1": "Motorcycle school — window branding",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/moto-school-window-branding",
+        "en": "/en/cases/design/moto-school-window-branding"
+      }
+    },
+    {
+      "path": "/en/cases/design/mydutyfree",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/mydutyfree",
+      "inRegistry": true,
+      "title": "MyDutyFree promo banner with a branded 3D character | Freelance UA",
+      "description": "A promo banner with a signature 3D character for the MyDutyFree service — smart Duty Free shopping on the border.",
+      "h1": "MyDutyFree — promo banner with a 3D character",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/mydutyfree",
+        "en": "/en/cases/design/mydutyfree"
+      }
+    },
+    {
+      "path": "/en/cases/design/nastya-portrait-retouch",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/nastya-portrait-retouch",
+      "inRegistry": true,
+      "title": "Portrait retouching and color grading | Freelance UA",
+      "description": "Editing portrait frames — color correction, skin and light retouching, background work for the final look of each frame.",
+      "h1": "Portrait retouching: color grading and photo editing",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/nastya-portrait-retouch",
+        "en": "/en/cases/design/nastya-portrait-retouch"
+      }
+    },
+    {
+      "path": "/en/cases/design/nastya-smm",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/nastya-smm",
+      "inRegistry": true,
+      "title": "Branded covers for Instagram content | Freelance UA",
+      "description": "Branded covers for an SMM specialist's Instagram content — one visual style for the content plan and educational posts.",
+      "h1": "Instagram visuals for SMM",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/nastya-smm",
+        "en": "/en/cases/design/nastya-smm"
+      }
+    },
+    {
+      "path": "/en/cases/design/photo-retouch",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/photo-retouch",
+      "inRegistry": true,
+      "title": "Retouching of different frame types — from cars to portraits | Freelance UA",
+      "description": "Examples of color correction and retouching across different types of shots — from cars to portrait photography. A demonstration of the approach to light, color, and detail editing.",
+      "h1": "Photo retouching and color grading",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/photo-retouch",
+        "en": "/en/cases/design/photo-retouch"
+      }
+    },
+    {
+      "path": "/en/cases/design/pink-pr-flyers",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/pink-pr-flyers",
+      "inRegistry": true,
+      "title": "Print flyers for the Pink PR marketing platform | Freelance UA",
+      "description": "A set of print flyers for the Pink PR marketing platform — a magazine launch, a services overview and a community flashmob.",
+      "h1": "Pink PR — print flyer set",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/pink-pr-flyers",
+        "en": "/en/cases/design/pink-pr-flyers"
+      }
+    },
+    {
+      "path": "/en/cases/design/prestige-school-billboard",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/prestige-school-billboard",
+      "inRegistry": true,
+      "title": "Private primary school billboard in the school's own style | Freelance UA",
+      "description": "Outdoor advertising design for a private primary school — an enrollment announcement in the school's brand style.",
+      "h1": "Prestige — private school billboard",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/prestige-school-billboard",
+        "en": "/en/cases/design/prestige-school-billboard"
+      }
+    },
+    {
+      "path": "/en/cases/design/schonheit-gift-certificate",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/schonheit-gift-certificate",
+      "inRegistry": true,
+      "title": "Gift certificate for a beauty salon | Freelance UA",
+      "description": "A gift certificate for a beauty salon — an elegant design in gold tones worthy of a premium brand.",
+      "h1": "Schönheit — gift certificate",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/schonheit-gift-certificate",
+        "en": "/en/cases/design/schonheit-gift-certificate"
+      }
+    },
+    {
+      "path": "/en/cases/design/sembud-repair",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/sembud-repair",
+      "inRegistry": true,
+      "title": "Banner for a Lviv repair company: price and warranty | Freelance UA",
+      "description": "An advertising banner for a Lviv renovation company — price, warranty and real photos of completed work to build client trust.",
+      "h1": "SEMBUD — banner for a repair company",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/sembud-repair",
+        "en": "/en/cases/design/sembud-repair"
+      }
+    },
+    {
+      "path": "/en/cases/design/smm-case-presentation",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/smm-case-presentation",
+      "inRegistry": true,
+      "title": "Presentation template for showing SMM cases | Freelance UA",
+      "description": "A presentation template for showcasing SMM cases to clients — from a fitness trainer to a dental clinic.",
+      "h1": "SMM case presentation",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/smm-case-presentation",
+        "en": "/en/cases/design/smm-case-presentation"
+      }
+    },
+    {
+      "path": "/en/cases/design/snizhana-telegram-stickers",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/snizhana-telegram-stickers",
+      "inRegistry": true,
+      "title": "Original Telegram stickers: a single character style | Freelance UA",
+      "description": "A Telegram sticker pack: 52 original emotions, one consistent character style, transparent background and one-click publishing.",
+      "h1": "Telegram stickers — emotion pack design",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/snizhana-telegram-stickers",
+        "en": "/en/cases/design/snizhana-telegram-stickers"
+      }
+    },
+    {
+      "path": "/en/cases/design/vikontse-logo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/vikontse-logo",
+      "inRegistry": true,
+      "title": "Logo and brand typography for the Vikontse company | Freelance UA",
+      "description": "A logo for the Vikontse company — a graphic symbol of a house with a window and brand typography.",
+      "h1": "Vikontse — logo design",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/vikontse-logo",
+        "en": "/en/cases/design/vikontse-logo"
+      }
+    },
+    {
+      "path": "/en/cases/video/ai-avatars",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/ai-avatars",
+      "inRegistry": true,
+      "title": "AI avatars | Freelance UA",
+      "description": "Creating AI avatars — generating unique characters using artificial intelligence",
+      "h1": "AI avatars",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/ai-avatars",
+        "en": "/en/cases/video/ai-avatars"
+      }
+    },
+    {
+      "path": "/en/cases/video/ai-ice-cream",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/ai-ice-cream",
+      "inRegistry": true,
+      "title": "AI ice cream video | Freelance UA",
+      "description": "AI-generated ice cream promo video for marketing — realistic product visualization",
+      "h1": "AI ice cream video",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/ai-ice-cream",
+        "en": "/en/cases/video/ai-ice-cream"
+      }
+    },
+    {
+      "path": "/en/cases/video/ai-promo-misha",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/ai-promo-misha",
+      "inRegistry": true,
+      "title": "AI promo video | Freelance UA",
+      "description": "AI-generated promo video — dynamic content for social media",
+      "h1": "AI promo video",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/ai-promo-misha",
+        "en": "/en/cases/video/ai-promo-misha"
+      }
+    },
+    {
+      "path": "/en/cases/video/ai-spring-fashion",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/ai-spring-fashion",
+      "inRegistry": true,
+      "title": "AI fashion video | Freelance UA",
+      "description": "AI-generated spring fashion video — dynamic content for social media",
+      "h1": "AI fashion video",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/ai-spring-fashion",
+        "en": "/en/cases/video/ai-spring-fashion"
+      }
+    },
+    {
+      "path": "/en/cases/video/ai-video-new",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/ai-video-new",
+      "inRegistry": true,
+      "title": "AI video promo | Freelance UA",
+      "description": "AI-generated promo clip — dynamic visualization with effects and atmospheric delivery",
+      "h1": "AI video promo",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/ai-video-new",
+        "en": "/en/cases/video/ai-video-new"
+      }
+    },
+    {
+      "path": "/en/cases/video/alien-city-adventure",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/alien-city-adventure",
+      "inRegistry": true,
+      "title": "AI adventure video | Freelance UA",
+      "description": "AI-generated video about adventures in an alien city — creative content",
+      "h1": "AI adventure video",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/alien-city-adventure",
+        "en": "/en/cases/video/alien-city-adventure"
+      }
+    },
+    {
+      "path": "/en/cases/video/artem-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/artem-reels",
+      "inRegistry": true,
+      "title": "Reels for Artem | Freelance UA",
+      "description": "Created Reels for blogger Artem — dynamic editing for social media",
+      "h1": "Reels for Artem",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/artem-reels",
+        "en": "/en/cases/video/artem-reels"
+      }
+    },
+    {
+      "path": "/en/cases/video/auto-edits-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/auto-edits-reels",
+      "inRegistry": true,
+      "title": "Reels for a car brand | Freelance UA",
+      "description": "Dynamic Reels for a car brand — editing with fast transitions",
+      "h1": "Reels for a car brand",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/auto-edits-reels",
+        "en": "/en/cases/video/auto-edits-reels"
+      }
+    },
+    {
+      "path": "/en/cases/video/automation-1click",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/automation-1click",
+      "inRegistry": true,
+      "title": "1-click automation | Freelance UA",
+      "description": "YouTube video about 1-click business automation — editing and motion design",
+      "h1": "1-click automation",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/automation-1click",
+        "en": "/en/cases/video/automation-1click"
+      }
+    },
+    {
+      "path": "/en/cases/video/barvy-interior-ai-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/barvy-interior-ai-reels",
+      "inRegistry": true,
+      "title": "AI video for BARVY Interior | Freelance UA",
+      "description": "Advertising Reels for the BARVY Interior renovation & construction company — AI-generated video with editing",
+      "h1": "AI video for BARVY Interior",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/barvy-interior-ai-reels",
+        "en": "/en/cases/video/barvy-interior-ai-reels"
+      }
+    },
+    {
+      "path": "/en/cases/video/cuprus-life",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/cuprus-life",
+      "inRegistry": true,
+      "title": "Reels for Cuprus Life — promo video editing | Freelance UA",
+      "description": "3 Instagram Reels for the Cuprus Life brand — dynamic video editing",
+      "h1": "Cuprus Life — 3 promo Reels for social media",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/cuprus-life",
+        "en": "/en/cases/video/cuprus-life"
+      }
+    },
+    {
+      "path": "/en/cases/video/dance-competition-lviv",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/dance-competition-lviv",
+      "inRegistry": true,
+      "title": "Reels for a dance competition | Freelance UA",
+      "description": "Reels for a dance competition in Lviv — dynamic editing with atmospheric shots",
+      "h1": "Reels for a dance competition",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/dance-competition-lviv",
+        "en": "/en/cases/video/dance-competition-lviv"
+      }
+    },
+    {
+      "path": "/en/cases/video/dominanta-youtube-intro",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/dominanta-youtube-intro",
+      "inRegistry": true,
+      "title": "YouTube intro | Freelance UA",
+      "description": "Created a motion intro for the Dominanta YouTube channel — bright, dynamic, setting the channel's style from the first frame",
+      "h1": "YouTube intro",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/dominanta-youtube-intro",
+        "en": "/en/cases/video/dominanta-youtube-intro"
+      }
+    },
+    {
+      "path": "/en/cases/video/dr-trichologist-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/dr-trichologist-promo",
+      "inRegistry": true,
+      "title": "AI promo for Dr. Trichologist | Freelance UA",
+      "description": "AI-generated promo video for trichology brand Dr. Trichologist — product visualization and application process",
+      "h1": "AI promo for Dr. Trichologist",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/dr-trichologist-promo",
+        "en": "/en/cases/video/dr-trichologist-promo"
+      }
+    },
+    {
+      "path": "/en/cases/video/eva-code-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/eva-code-reels",
+      "inRegistry": true,
+      "title": "E.V.A. CODE reels | Freelance UA",
+      "description": "Reels editing for the E.V.A. CODE™ project — a series of videos for Instagram",
+      "h1": "E.V.A. CODE™",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/eva-code-reels",
+        "en": "/en/cases/video/eva-code-reels"
+      }
+    },
+    {
+      "path": "/en/cases/video/income-graph-motion",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/income-graph-motion",
+      "inRegistry": true,
+      "title": "Income graph animation | Freelance UA",
+      "description": "Motion animation of an income graph — dynamic data visualization",
+      "h1": "Income graph animation",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/income-graph-motion",
+        "en": "/en/cases/video/income-graph-motion"
+      }
+    },
+    {
+      "path": "/en/cases/video/internet-svit-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/internet-svit-promo",
+      "inRegistry": true,
+      "title": "Promo for Internet Svit | Freelance UA",
+      "description": "Motion promo for Internet Svit — bright and dynamic visuals",
+      "h1": "Promo for Internet Svit",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/internet-svit-promo",
+        "en": "/en/cases/video/internet-svit-promo"
+      }
+    },
+    {
+      "path": "/en/cases/video/ivan-ig-creative",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/ivan-ig-creative",
+      "inRegistry": true,
+      "title": "AI for Instagram | Freelance UA",
+      "description": "Two Instagram ad creatives — AI-generated videos for product promotion",
+      "h1": "AI for Instagram",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/ivan-ig-creative",
+        "en": "/en/cases/video/ivan-ig-creative"
+      }
+    },
+    {
+      "path": "/en/cases/video/liliya-product-business",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/liliya-product-business",
+      "inRegistry": true,
+      "title": "Liliya's business | Freelance UA",
+      "description": "YouTube video for Liliya about a product business — editing and content structuring",
+      "h1": "Liliya's business",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/liliya-product-business",
+        "en": "/en/cases/video/liliya-product-business"
+      }
+    },
+    {
+      "path": "/en/cases/video/logan-ai-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/logan-ai-promo",
+      "inRegistry": true,
+      "title": "AI promo LOGAN | Freelance UA",
+      "description": "AI-generated promo video for LOGAN brand — premium massage device with creative visualization",
+      "h1": "AI promo LOGAN",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/logan-ai-promo",
+        "en": "/en/cases/video/logan-ai-promo"
+      }
+    },
+    {
+      "path": "/en/cases/video/logo-animation",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/logo-animation",
+      "inRegistry": true,
+      "title": "Logo animation | Freelance UA",
+      "description": "Logo animation — motion design to create a dynamic brand visual",
+      "h1": "Logo animation",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/logo-animation",
+        "en": "/en/cases/video/logo-animation"
+      }
+    },
+    {
+      "path": "/en/cases/video/maccoudi-youtube",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/maccoudi-youtube",
+      "inRegistry": true,
+      "title": "Maccoudi — YouTube videos about freelancing | Freelance UA",
+      "description": "Editing two YouTube videos for the popular blogger Maccoudi — dynamic freelancing content",
+      "h1": "Maccoudi",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/maccoudi-youtube",
+        "en": "/en/cases/video/maccoudi-youtube"
+      }
+    },
+    {
+      "path": "/en/cases/video/motion-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/motion-promo",
+      "inRegistry": true,
+      "title": "Promo video | Freelance UA",
+      "description": "Motion design and promo video editing — dynamic visual for brand",
+      "h1": "Promo video",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/motion-promo",
+        "en": "/en/cases/video/motion-promo"
+      }
+    },
+    {
+      "path": "/en/cases/video/motion-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/motion-reels",
+      "inRegistry": true,
+      "title": "Motion Reels | Freelance UA",
+      "description": "Motion design for Instagram Reels — dynamic videos with animations",
+      "h1": "Motion Reels",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/motion-reels",
+        "en": "/en/cases/video/motion-reels"
+      }
+    },
+    {
+      "path": "/en/cases/video/nikita-sheremet-crypto",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/nikita-sheremet-crypto",
+      "inRegistry": true,
+      "title": "Nikita Sheremet | Freelance UA",
+      "description": "Created a series of Instagram Reels — 4 videos with crypto-market analytics and tips for investors",
+      "h1": "Nikita Sheremet",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/nikita-sheremet-crypto",
+        "en": "/en/cases/video/nikita-sheremet-crypto"
+      }
+    },
+    {
+      "path": "/en/cases/video/passive-income-video",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/passive-income-video",
+      "inRegistry": true,
+      "title": "Passive income | Freelance UA",
+      "description": "Video about passive income — YouTube editing with dynamic delivery",
+      "h1": "Passive income",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/passive-income-video",
+        "en": "/en/cases/video/passive-income-video"
+      }
+    },
+    {
+      "path": "/en/cases/video/podcast-editing",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/podcast-editing",
+      "inRegistry": true,
+      "title": "Podcast editing | Freelance UA",
+      "description": "Podcast editing — professional editing of long-form audio/video",
+      "h1": "Podcast editing",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/podcast-editing",
+        "en": "/en/cases/video/podcast-editing"
+      }
+    },
+    {
+      "path": "/en/cases/video/presentation-animation",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/presentation-animation",
+      "inRegistry": true,
+      "title": "Presentation animation | Freelance UA",
+      "description": "Animation for a presentation — motion effects for a professional delivery",
+      "h1": "Presentation animation",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/presentation-animation",
+        "en": "/en/cases/video/presentation-animation"
+      }
+    },
+    {
+      "path": "/en/cases/video/sales-bible-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/sales-bible-promo",
+      "inRegistry": true,
+      "title": "Sales bible | Freelance UA",
+      "description": "Motion promo for Sales Bible course — dynamic visual for educational project",
+      "h1": "Sales bible",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/sales-bible-promo",
+        "en": "/en/cases/video/sales-bible-promo"
+      }
+    },
+    {
+      "path": "/en/cases/video/selloflow-intro",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/selloflow-intro",
+      "inRegistry": true,
+      "title": "Selloflow intro video | Freelance UA",
+      "description": "Motion intro for the Selloflow startup — dynamic visuals to present the platform",
+      "h1": "Selloflow intro video",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/selloflow-intro",
+        "en": "/en/cases/video/selloflow-intro"
+      }
+    },
+    {
+      "path": "/en/cases/video/serhii-yarmolenko-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/serhii-yarmolenko-reels",
+      "inRegistry": true,
+      "title": "Serhii Yarmolenko | Freelance UA",
+      "description": "Created a series of Instagram Reels — 3 videos for a e-commerce blogger with an audience of 91.7K",
+      "h1": "Serhii Yarmolenko",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/serhii-yarmolenko-reels",
+        "en": "/en/cases/video/serhii-yarmolenko-reels"
+      }
+    },
+    {
+      "path": "/en/cases/video/serhii-yarmolenko-video-lesson",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/serhii-yarmolenko-video-lesson",
+      "inRegistry": true,
+      "title": "Serhii Yarmolenko video lesson | Freelance UA",
+      "description": "Edited an 18-minute video lesson for a blogger in the product-business niche — dynamic editing, graphics and sound design",
+      "h1": "Serhii Yarmolenko video lesson",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/serhii-yarmolenko-video-lesson",
+        "en": "/en/cases/video/serhii-yarmolenko-video-lesson"
+      }
+    },
+    {
+      "path": "/en/cases/video/sestro-anniversary",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/sestro-anniversary",
+      "inRegistry": true,
+      "title": "Sestro 2nd anniversary video | Freelance UA",
+      "description": "Reels video for the 2nd anniversary of the Sestro beauty salon — from idea to delivery, a full production cycle",
+      "h1": "Sestro 2nd Anniversary",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/sestro-anniversary",
+        "en": "/en/cases/video/sestro-anniversary"
+      }
+    },
+    {
+      "path": "/en/cases/video/sestro-beauty",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/sestro-beauty",
+      "inRegistry": true,
+      "title": "AI video for Sestro | Freelance UA",
+      "description": "AI-generated promo videos for a beauty brand — visualizing salon atmosphere and services",
+      "h1": "AI video for Sestro",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/sestro-beauty",
+        "en": "/en/cases/video/sestro-beauty"
+      }
+    },
+    {
+      "path": "/en/cases/video/sheglam-freedom-fest",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/sheglam-freedom-fest",
+      "inRegistry": true,
+      "title": "SHEGLAM Freedom Fest promo | Freelance UA",
+      "description": "AI promo for SHEGLAM Freedom Fest — dynamic visuals for a marketing campaign",
+      "h1": "SHEGLAM Freedom Fest promo",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/sheglam-freedom-fest",
+        "en": "/en/cases/video/sheglam-freedom-fest"
+      }
+    },
+    {
+      "path": "/en/cases/video/sheglam-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/sheglam-promo",
+      "inRegistry": true,
+      "title": "SHEGLAM promo | Freelance UA",
+      "description": "Promo video for the cosmetics brand SHEGLAM — editing with motion graphics and collaborations",
+      "h1": "SHEGLAM Promo",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/sheglam-promo",
+        "en": "/en/cases/video/sheglam-promo"
+      }
+    },
+    {
+      "path": "/en/cases/video/skool-10-features",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/skool-10-features",
+      "inRegistry": true,
+      "title": "Skool 10 features review | Freelance UA",
+      "description": "YouTube review video of 10 Skool features — editing long-form content",
+      "h1": "Skool 10 features review",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/skool-10-features",
+        "en": "/en/cases/video/skool-10-features"
+      }
+    },
+    {
+      "path": "/en/cases/video/taranenko-trade",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/taranenko-trade",
+      "inRegistry": true,
+      "title": "Taranenko trading | Freelance UA",
+      "description": "YouTube video about trading — editing with dynamic delivery",
+      "h1": "Taranenko trading",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/taranenko-trade",
+        "en": "/en/cases/video/taranenko-trade"
+      }
+    },
+    {
+      "path": "/en/cases/video/telegram-emoji-stickers",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/telegram-emoji-stickers",
+      "inRegistry": true,
+      "title": "Emoji stickers for Telegram | Freelance UA",
+      "description": "Animated emoji stickers for Telegram — motion design and editing",
+      "h1": "Telegram Emoji",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/telegram-emoji-stickers",
+        "en": "/en/cases/video/telegram-emoji-stickers"
+      }
+    },
+    {
+      "path": "/en/cases/video/travel-vlog-turkey",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/travel-vlog-turkey",
+      "inRegistry": true,
+      "title": "Travel Vlog — Turkey | Freelance UA",
+      "description": "YouTube travel vlog from family vacation in Turkey — aerial shots, water slides, resort atmosphere",
+      "h1": "Travel Vlog — Turkey",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/travel-vlog-turkey",
+        "en": "/en/cases/video/travel-vlog-turkey"
+      }
+    },
+    {
+      "path": "/en/cases/video/twin-a-auto",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/twin-a-auto",
+      "inRegistry": true,
+      "title": "Reels for Twin-A-Auto auto service | Freelance UA",
+      "description": "Dynamic Polish-language Reels about the Twin-A-Auto auto service in Mysłowice — editing, adapted for Instagram 9:16",
+      "h1": "Reels for Twin-A-Auto auto service",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/twin-a-auto",
+        "en": "/en/cases/video/twin-a-auto"
+      }
+    },
+    {
+      "path": "/en/cases/video/valeriia-trend-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/valeriia-trend-reels",
+      "inRegistry": true,
+      "title": "AI photo animation | Freelance UA",
+      "description": "AI photo animation for Instagram — bringing static images to life",
+      "h1": "AI photo animation",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/valeriia-trend-reels",
+        "en": "/en/cases/video/valeriia-trend-reels"
+      }
+    },
+    {
+      "path": "/en/cases/video/varto-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/varto-reels",
+      "inRegistry": true,
+      "title": "Varto — energy drink | Freelance UA",
+      "description": "Instagram Reel for Varto brand about investing in independent energy of Ukraine",
+      "h1": "Varto — energy drink",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/varto-reels",
+        "en": "/en/cases/video/varto-reels"
+      }
+    },
+    {
+      "path": "/en/cases/video/veronika-ai-muscles",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/veronika-ai-muscles",
+      "inRegistry": true,
+      "title": "AI mask | Freelance UA",
+      "description": "AI muscle visualization on video for Reels — muscle structure overlay with transitions",
+      "h1": "AI mask",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/veronika-ai-muscles",
+        "en": "/en/cases/video/veronika-ai-muscles"
+      }
+    },
+    {
+      "path": "/en/cases/video/vibe-nation-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/vibe-nation-promo",
+      "inRegistry": true,
+      "title": "Promo for Vibe Nation | Freelance UA",
+      "description": "AI promo video for the Vibe Nation brand — dynamic visuals for social media",
+      "h1": "Promo for Vibe Nation",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/vibe-nation-promo",
+        "en": "/en/cases/video/vibe-nation-promo"
+      }
+    },
+    {
+      "path": "/en/cases/video/vitalii-cheverda",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/vitalii-cheverda",
+      "inRegistry": true,
+      "title": "Reels for Vitalii Cheverda | Freelance UA",
+      "description": "Reels for blogger Vitalii Cheverda — dynamic editing for Instagram",
+      "h1": "Reels for Vitalii Cheverda",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/vitalii-cheverda",
+        "en": "/en/cases/video/vitalii-cheverda"
+      }
+    },
+    {
+      "path": "/en/cases/video/vladlen-lisynko-interview",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/vladlen-lisynko-interview",
+      "inRegistry": true,
+      "title": "Interview with Vladlen Lysenko | Freelance UA",
+      "description": "Editing an interview with Vladlen Lysenko — YouTube video with professional editing",
+      "h1": "Interview with Vladlen Lysenko",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/vladlen-lisynko-interview",
+        "en": "/en/cases/video/vladlen-lisynko-interview"
+      }
+    },
+    {
+      "path": "/en/cases/video/vorodi-medical",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/vorodi-medical",
+      "inRegistry": true,
+      "title": "AI video for medicine | Freelance UA",
+      "description": "AI promo video for a medical brand — short dynamic visuals",
+      "h1": "AI video for medicine",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/vorodi-medical",
+        "en": "/en/cases/video/vorodi-medical"
+      }
+    },
+    {
+      "path": "/en/cases/video/vsehub-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/vsehub-reels",
+      "inRegistry": true,
+      "title": "VseHub | Freelance UA",
+      "description": "A series of Instagram Reels for the VseHub YouTube channel — full cycle from editing to publishing in 9:16",
+      "h1": "VseHub",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/vsehub-reels",
+        "en": "/en/cases/video/vsehub-reels"
+      }
+    },
+    {
+      "path": "/en/cases/video/vtikha-promo",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/vtikha-promo",
+      "inRegistry": true,
+      "title": "AI video for Vtikha | Freelance UA",
+      "description": "Promo video for Vtikha project — AI-generated video with editing",
+      "h1": "AI video for Vtikha",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/vtikha-promo",
+        "en": "/en/cases/video/vtikha-promo"
+      }
+    },
+    {
+      "path": "/en/cases/video/watch-hype-intro",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/watch-hype-intro",
+      "inRegistry": true,
+      "title": "Watch Hype intro | Freelance UA",
+      "description": "Motion intro for the Watch Hype YouTube channel — animated 3D scene with a final logo and dynamic transition",
+      "h1": "Watch Hype intro",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/watch-hype-intro",
+        "en": "/en/cases/video/watch-hype-intro"
+      }
+    },
+    {
+      "path": "/en/cases/video/watch-hype-motion",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/watch-hype-motion",
+      "inRegistry": true,
+      "title": "Watch Hype motion | Freelance UA",
+      "description": "Motion promo for Watch Hype — dynamic editing for social media",
+      "h1": "Watch Hype motion",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/watch-hype-motion",
+        "en": "/en/cases/video/watch-hype-motion"
+      }
+    },
+    {
+      "path": "/en/cases/video/wine-festival",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/wine-festival",
+      "inRegistry": true,
+      "title": "Wine festival promo videos | Freelance UA",
+      "description": "YouTube videos for a wine festival — editing with atmospheric shots",
+      "h1": "Wine Festival",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/wine-festival",
+        "en": "/en/cases/video/wine-festival"
+      }
+    },
+    {
+      "path": "/en/cases/video/youtube-conversational-video",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/youtube-conversational-video",
+      "inRegistry": true,
+      "title": "Conversational video | Freelance UA",
+      "description": "Editing a conversational YouTube video — professional delivery and editing",
+      "h1": "Conversational video",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/youtube-conversational-video",
+        "en": "/en/cases/video/youtube-conversational-video"
+      }
+    },
+    {
+      "path": "/en/cases/video/yulia-smm-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/yulia-smm-reels",
+      "inRegistry": true,
+      "title": "Reels for SMM | Freelance UA",
+      "description": "Editing Reels for an SMM specialist — dynamic videos for Instagram",
+      "h1": "Reels for SMM",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/yulia-smm-reels",
+        "en": "/en/cases/video/yulia-smm-reels"
+      }
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+  ✓ [webkit desktop] direct open /services/it#cases — {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] direct open /services/design#cases — {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] direct open /services/video#cases — {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] direct open /en/services/it#cases — {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] direct open /en/services/design#cases — {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] direct open /en/services/video#cases — {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] reload keeps /services/it#cases
+  ✓ [webkit desktop] reload keeps /services/design#cases
+  ✓ [webkit desktop] reload keeps /services/video#cases
+  ✓ [webkit desktop] reload keeps /en/services/it#cases
+  ✓ [webkit desktop] reload keeps /en/services/design#cases
+  ✓ [webkit desktop] reload keeps /en/services/video#cases
+  ✓ [webkit desktop] hero button → #cases on /services/it
+  ✓ [webkit desktop] hero button → #cases on /services/design
+  ✓ [webkit desktop] hero button → #cases on /services/video
+  ✓ [webkit desktop] hero button → #cases on /en/services/it
+  ✓ [webkit desktop] hero button → #cases on /en/services/design
+  ✓ [webkit desktop] hero button → #cases on /en/services/video
+  ✓ [webkit desktop] home «UA IT» → /services/it#cases
+  ✓ [webkit desktop] home «UA Дизайн» → /services/design#cases
+  ✓ [webkit desktop] home «UA Відео» → /services/video#cases
+  ✓ [webkit desktop] home «EN IT» → /en/services/it#cases
+  ✓ [webkit desktop] home «EN Дизайн» → /en/services/design#cases
+  ✓ [webkit desktop] home «EN Відео» → /en/services/video#cases
+  ✓ [webkit desktop] redirect /cases/it — url=http://localhost:3011/services/it#cases {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] redirect /cases/design — url=http://localhost:3011/services/design#cases {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] redirect /cases/video — url=http://localhost:3011/services/video#cases {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] redirect /en/cases/it — url=http://localhost:3011/en/services/it#cases {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] redirect /en/cases/design — url=http://localhost:3011/en/services/design#cases {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] redirect /en/cases/video — url=http://localhost:3011/en/services/video#cases {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] back/forward returns to /services/it#cases
+  ✓ [webkit desktop] back/forward returns to /services/design#cases
+  ✓ [webkit desktop] back/forward returns to /services/video#cases
+  ✓ [webkit desktop] back/forward returns to /en/services/it#cases
+  ✓ [webkit desktop] back/forward returns to /en/services/design#cases
+  ✓ [webkit desktop] back/forward returns to /en/services/video#cases
+  ✓ [webkit desktop] home nav «Контакти» → #contacts — {"ok":true,"top":460}
+  ✓ [webkit desktop] subpage nav «Контакти» → /#contacts — http://localhost:3011/#contacts {"ok":true,"top":460}
+  ✓ [webkit desktop] /services/it lists are ul>li only
+  ✓ [webkit desktop] /services/design lists are ul>li only
+  ✓ [webkit desktop] /services/video lists are ul>li only
+  ✓ [webkit desktop] /en/services/it lists are ul>li only
+  ✓ [webkit desktop] /en/services/design lists are ul>li only
+  ✓ [webkit desktop] /en/services/video lists are ul>li only
+  ✓ [webkit desktop] no raw i18n keys on /services/it
+  ✓ [webkit desktop] no raw i18n keys on /services/design
+  ✓ [webkit desktop] no raw i18n keys on /services/video
+  ✓ [webkit desktop] no raw i18n keys on /en/services/it
+  ✓ [webkit desktop] no raw i18n keys on /en/services/design
+  ✓ [webkit desktop] no raw i18n keys on /en/services/video
+  ✓ [webkit desktop] /services/it lists 21 cases — found 21
+  ✓ [webkit desktop] /services/design lists 24 cases — found 24
+  ✓ [webkit desktop] /services/video lists 55 cases — found 55
+  ✓ [webkit desktop] /en/services/it lists 21 cases — found 21
+  ✓ [webkit desktop] /en/services/design lists 24 cases — found 24
+  ✓ [webkit desktop] /en/services/video lists 55 cases — found 55
+  ✓ [webkit desktop] no uncaught page errors — 0 errors
+
+57 checks, 0 failed

@@ -10,34 +10,43 @@ import { siteConfig } from "@/config/site";
 import { useTranslation } from "@/lib/LanguageContext";
 import LanguageToggle from "@/components/ui/LanguageToggle";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import { alignAnchorWhileSettling, scrollToId } from "@/lib/scroll-to-hash";
 
 const navKeys = ["nav.about", "nav.services", "nav.process", "nav.cases", "nav.testimonials", "nav.contacts"];
 const navHrefs = ["#about", "#services", "#process", "#cases", "#testimonials", "#contacts"];
 const sectionIds = ["about", "services", "process", "cases", "testimonials", "contacts"];
-/* Maps a nav section to the real DOM id on the homepage (the contacts nav
-   points at the section whose element id is "contact-form"). */
-function sectionElementId(navId: string): string {
-  return navId === "contacts" ? "contact-form" : navId;
-}
+/* Every nav item maps 1:1 to a real DOM id on the home page (`#<id>`):
+   about → WhyUsSection, services → ServicesSection, process → HowWeWorkSection,
+   cases → ItCasesSection, testimonials → TestimonialsSection,
+   contacts → the <footer id="contacts"> that Footer renders on every page. */
 
 // Maps a subpage route to the homepage nav section it belongs to.
 // Returns null when a route has no matching section, so nothing gets highlighted
 // instead of falsely highlighting the first one.
 function routeToSection(pathname: string): string | null {
-  if (pathname === "/cases" || pathname.startsWith("/cases/")) return "cases";
+  const p = pathname === "/en" || pathname.startsWith("/en/") ? pathname.slice(3) || "/" : pathname;
+  if (p === "/cases" || p.startsWith("/cases/")) return "cases";
+  if (p === "/services" || p.startsWith("/services/")) return "services";
   return null;
 }
 
 export default function Header() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [scrollSection, setScrollSection] = useState("about");
+  /* cancels the "section stays below the fixed header while the page settles"
+     loop started by a nav click on the home page */
+  const cancelNavSettle = useRef<(() => void) | null>(null);
 
-  const isHomePage = pathname === "/";
+  useEffect(() => () => cancelNavSettle.current?.(), []);
+
+  // Language prefix for internal links: "" for Ukrainian, "/en" for English.
+  const lp = locale === "en" ? "/en" : "";
+  const isHomePage = pathname === "/" || pathname === "/en";
 
   // On the homepage the active section follows scroll position;
   // on subpages it is derived from the route.
@@ -85,18 +94,19 @@ export default function Header() {
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
-    // On the homepage: smooth-scroll straight to the section.
+    // On the homepage: scroll straight to the section, keeping it below the
+    // fixed header (the same offset rule the #hash handler uses).
     if (isHomePage) {
-      const el = document.getElementById(sectionElementId(href.slice(1)));
-      if (!el) return;
-      setTimeout(() => {
-        el.scrollIntoView({ behavior: "smooth" });
-      }, 320);
+      const id = href.slice(1);
+      if (!document.getElementById(id)) return;
+      cancelNavSettle.current?.();
+      scrollToId(id, { smooth: true });
+      cancelNavSettle.current = alignAnchorWhileSettling(id, { immediateStart: false });
       return;
     }
-    // On a subpage: navigate home and land directly on the section (the
-    // Providers scroll handler reads the #hash and scrolls there for us).
-    router.push(`/#${sectionElementId(href.slice(1))}`);
+    // On a subpage: navigate to the localized home and land directly on the
+    // section (the Providers hash handler reads the #hash for us).
+    router.push(`${lp}/#${href.slice(1)}`);
   };
 
   const isActive = (href: string) => activeSection === href.slice(1);
@@ -108,7 +118,7 @@ export default function Header() {
       <div className={`glass-header mx-auto max-w-[1400px] gap-6 py-3 px-5 flex items-center justify-between rounded-full transition-all duration-300 ${
         scrolled ? "glass-header-scrolled" : ""
       }`}>
-        <Link href="/" className="flex items-center gap-3">
+        <Link href={lp || "/"} className="flex items-center gap-3">
           <Image
             src="/media/logo.jpg"
             alt="Freelance UA"
@@ -145,15 +155,15 @@ export default function Header() {
             );
           })}
           <Link
-            href="/partners"
+            href={`${lp}/partners`}
             className={`group relative transition-colors duration-200 text-sm font-medium whitespace-nowrap ${
-              pathname === "/partners" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              pathname === `${lp}/partners` ? "text-foreground" : "text-muted-foreground hover:text-foreground"
             }`}
           >
             {t("header.partner")}
             <span
               className={`absolute -bottom-1 left-0 h-px bg-accent transition-all duration-200 ${
-                pathname === "/partners" ? "w-full" : "w-0 group-hover:w-full"
+                pathname === `${lp}/partners` ? "w-full" : "w-0 group-hover:w-full"
               }`}
             />
           </Link>
@@ -226,10 +236,10 @@ export default function Header() {
                 transition={{ delay: navKeys.length * 0.04, duration: 0.25 }}
               >
                 <Link
-                  href="/partners"
+                  href={`${lp}/partners`}
                   onClick={() => setMenuOpen(false)}
                   className={`block w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
-                    pathname === "/partners"
+                    pathname === `${lp}/partners`
                       ? "text-foreground bg-accent/15"
                       : "text-muted-foreground hover:text-foreground hover:bg-white/5"
                   }`}

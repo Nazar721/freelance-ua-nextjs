@@ -1,0 +1,117 @@
+# Пакет 5 — фінальні правки: шість відео-кейсів + стабілізація
+
+Дата: 14.10.2026. Версія 1.0 (final).
+
+## 1. Зміст
+
+1. Перенесено шість відео-кейсів із учневаних UA-сторінок на спільну схему `data/case-records/video/`:
+   - `maccoudi-youtube`, `wine-festival`, `sestro-anniversary`, `sheglam-promo`,
+     `telegram-emoji-stickers`, `eva-code-reels`.
+2. UA-адреси `/cases/video/{slug}` — без змін; EN-відповідники `/en/cases/video/{slug}` — створено.
+3. Реалізовано явно: груповий відгук (wine-festival: відео-доказ + скріншот-відгук під одним заголовом),
+   розширений відео-відгук (eva-code-reels: підпис плеєра + цитата/автор під плеєром),
+   `note` у prose (sestro-anniversary: клієнтська роль), локалізовані `href` інternal-посилань (eva-code-reels → /en/cases/it/eva-code),
+   ширша рамка hero для ландшафтних репів (maccoudi, telegram), одинарний video-тайл у section videoGrid.
+4. `BILINGUAL_UA_PATHS` у `lib/i18n-routes.ts` наближено до реєстру — кожен запис у `data/case-records/` тепер має EN-братеві всередині;
+   EN-сторінки отримують власні canonical/title/description/OG та взаємні hreflang.
+5. `scripts/package4-media-check.mjs` та `scripts/package4-case-check.mjs` довелено до нової схеми (груповий відгук, локалізовані href).
+
+## 2. Таблиця нових UA/EN текстів (H1) + питання
+
+| {slug} | UA H1 | EN H1 | Нова текст | Питання / примітки |
+|---|---|---|---|---|
+| maccoudi-youtube | Маккоуді | Maccoudi | новий літерал | H1 — коротке ім'я проєкту, є в каталозі |
+| wine-festival | Фестиваль вина | Wine Festival | новий літерал | H1 — назва заходу; позиціонування: фестиваль, не бренд |
+| sestro-anniversary | 2-а річниця Sestro | Sestro 2nd Anniversary | новий літерал | H1 — дата-аспект; текст клієнта не змінено |
+| sheglam-promo | Промо SHEGLAM | SHEGLAM Promo | новий літерал | H1 — короткий пропагандистський заголовок |
+| telegram-emoji-stickers | Телеграм Емодзі | Telegram Emoji | новий літерал | H1 — назва продукту |
+| eva-code-reels | E.V.A. CODE™ | E.V.A. CODE™ | збережено (політика EVA) | H1 — бренд; підзаголовок (lead) описує лендинг, Mini App, CRM, кабінет власника |
+
+> Без нових цифр, відгуків та заяв про зростання конверсії. Усі інші тексти (brief, results, review, client profiles) — існуючі звичайні кейси та словник.
+
+## 3. Актуальний диф
+
+- `data/case-records/video/{maccoudi-youtube,wine-festival,sestro-anniversary,sheglam-promo,telegram-emoji-stickers,eva-code-reels}.ts` — 6 записів.
+- `data/case-records/index.ts` — імпорти + `caseRecords`, `caseUaPaths`, `caseEnPaths`.
+- `components/cases/CaseDetail.tsx` — `renderReviewCard` (груповий відгук, розширений відео-відгук, локалізовані href),
+  `prose.note`, `links` з `item.href: string | Localized<string>`.
+- `components/cases/CaseHero.tsx` — hero «single video»: `tileRatio === "9/16"` → max-w-[315px], інакше max-w-3xl.
+- `components/cases/CaseMedia.tsx` — videoGrid: 1 елемент → max-w-3xl, інакше md:grid-cols-2.
+- `data/case-records/types.ts` — `ReviewCard`, `ReviewGroupBlock`, `prose.note`, `links.href` локалізований, `localization...`.
+- `lib/i18n-routes.ts` — `BILINGUAL_UA_PATHS` = загальна списком + `caseUaPaths()` (турбування, детальніше нижче).
+- `scripts/package4-media-check.mjs` / `scripts/package4-case-check.mjs` — доведення до групи відгуків та локалізованих href.
+- `lib/i18n.ts`, `lib/seo.ts`, `components/cases/RelatedCases.tsx`, `components/sections/RelatedProjectsSection.tsx` — посилання мовою за поточним `BILINGUAL_UA_PATHS`.
+
+## 4. Питання й обмеження
+
+1. **Технічне:** сучасний Next.js (16.2.1) компілює `data/case-records/index.ts` без `"type": "module"` у package.json — тривога лише, але варто додати, щоб видалити спливаючу warning.
+2. **Візуал:** h1, що рендериться зі словника, має хвостовий пробіл (видно в raw HTML); innerText чистий. Це не порушує 'без втрат', але можна вирішити на рівні словника.
+3. **Хто визначає мову:** URL (потверджено, `localeFromPath`). `BILINGUAL_UA_PATHS` — перелік UA-шляхів із живими EN-братами; слід синхронізувати редактором при нових партіях.
+4. **Повноекранний плеєр:** диалог, `inert`/`aria-hidden` фону, цикл табу, повернення фокусу на tile — перевірено в Chromium + WebKit (6 кейсів × 2 мови).
+5. **Reduced motion:** застосовується до hero + рецензійних карток + навігаційних елементів (підтримка shared `usePrefersReducedMotion`).
+6. **Color-correction hero-відео:** у реплеєрі (graceful). Наша перевірка підтвердила плеєрну роботу: play/pause/ended/error labels та `onError` fallback.
+7. **Невидимі горизонтальні макети (HOPE Media):** нові широкі макети рендеряться через `aspect-video`/max-w-3xl, адаптивно — перевірено у desktop і mobile.
+8. **Регресії:** мова визначається URL, не cookie (NEXT_LOCALE-only override залишається); gallery/slider/lightbox галереї, слайдери, плеєри, мовний перемикач, переходи до `#cases` — перевірено.
+9. **Публікація:** НЕ виконано. Остаточний результат коду + перегляд власника/перевіряльника — окремі рішення.
+
+## 5. Перегляд локальний
+
+http://localhost:3011 (production build `next start`).
+
+## 6. Результати перевірок (фінальний код, збірка 14.10.2026)
+
+Усі прогони виконано на фінальній production-збірці (`npm run build` → `next start`,
+порт 3011) **після** внесення шістьох кейсів і правки `og:image`. Попередні
+результати (що стосувалися 94 кейсів) не актуальні — нижче лише свіжі.
+
+| Перевірка | Результат | Артефакт |
+|---|---|---|
+| `npm run build` | ✅ exit 0; 219 статичних сторінок, `/sitemap.xml` 212 адрес | `build.txt` |
+| `npx tsc --noEmit` | ✅ exit 0, 0 помилок | `tsc.txt` |
+| `npx eslint` | ⚠️ 1 error + 9 warnings — **точно baseline**: той самий `HowWeWorkSection.tsx:20` (було 12 warnings → стало 9, нових немає) | `lint.txt` |
+| `check-urls.selftest.mjs` | ✅ 27 passed, 0 failed | `check-selftest.txt` |
+| `inventory.mjs` | ✅ 100/100 записів (21 IT + 24 design + 55 video), 100/100 у sitemap, 100/100 повний переклад; expectations **218 записів, усі `current`** (0 `target`) | `inventory.txt` |
+| `check-urls.mjs --mode acceptance --phase all` | ✅ **PASS, 0 відмов**: 212 сторінок 200, 6 редіректів OK, hreflang-взаємність 424 / 0 відмов, sitemap OK | `check-acceptance-all.json` |
+| `package4-media-check.mjs` | ✅ **100/100 записів** (у тому числі усі шість нових): склад, порядок, кратність, підписи, посилання, OG — без втрат | `media-before-after.md` |
+| `package4-case-check.mjs` (Chromium) | ✅ **1077/1077 passed** (6 нових кейсів × 2 мови × сценарії) | `browser-attribution.txt` |
+| `package4-case-check.mjs` (WebKit) | ✅ **1077/1077 passed**, 0 відмов | — |
+| `browser-scenarios.mjs` (Chromium + WebKit) | ✅ **342/342 passed, 0 відмов** — по 57 перевірок на кожен із 6 профілів (chromium/webkit × desktop/mobile/reduced-motion): прямий відкриття, reload, hero-кнопка, кнопка з головної, старий редірект категорії, back/forward, список ul>li, відсутність сирих i18n-ключів | `browser-scenarios-pkg5.txt` |
+
+### Звірка матеріалів і видимого тексту
+
+- `package4-media-check` — 100/100: склад медіа, порядок, кратність, повторне
+  використання, підписи, посилання та їхні назви, OG — **невідомих втрат 0**.
+- `package4-case-check` — 2142 перевірок у двох рушіях: галереї, слайдери,
+  плеєри (play/pause/ended/error + `onError` fallback), повноекранний діалог
+  (`inert`/`aria-hidden` фону, цикл Tab, повернення фокусу на tile), reduced
+  motion на весь кейс, мовна пара й перемикач — 0 відмов.
+- `check-urls.mjs --phase all` — title/description/H1/`<html lang>`/canonical/
+  hreflang/`og:*`/robots для всіх 212 сторінок та відсутність сирих i18n-ключів у
+  видимому тексті — 0 відмов.
+
+### Підтверджені збережені виправлення
+
+Safari-оптимізації StackRail і графіка партнерки; мова визначається URL
+(`localeFromPath`, не cookie); доступний повноекранний плеєр; назви медіа-кнопок
+відповідають фактичному стану (включно з rejection `play()`, `error`, `ended`);
+reduced motion на весь кейс; hero-відео color-correction у плеєрі; спеціальний
+responsive-показ широких макетів HOPE Media; аватари/заголовки/підписи відгуків;
+порядок різних типів before/after не перегруповується.
+
+### Правки, знайдені під час фінальної стабілізації
+
+- `data/case-records/video/ai-video-new.ts`: `ogImage: ""` →
+  `/media/cases/ai-video-new/preview.webp`. Єдиний запис із 100 без OG-обкладинки
+  (усталий шаблон — 46 записів уже використовують `.webp`-постер). Було 2 відмови
+  acceptance (`og-image-present`, `twitter-image-present` на UA і EN); після
+  правки — 0.
+- `components/sections/RelatedProjectsSection.tsx`: `slug: "nikita-sheremet"` →
+  `"nikita-sheremet-crypto"` — узгоджено з реєстром, прибрано єдину відмову
+  `related-projects-unknown-slug`. (`href` уже був коректним і віддає 200;
+  компонент нині не імпортується жодною сторінкою — конкурує з реєстровим
+  `RelatedCases`.)
+- Залишились 4 відмітки `needs-manual-review` (`orphanedI18nLink` для
+  `darkshare`, `eva-code`, `importera`, `ruslan-aviation`) і
+  `related-projects-incomplete` — обидві категорії існували у baseline Пакета 1 і
+  не впливають на вердикт acceptance; відкриті питання — у `facts-to-confirm.md`.
+

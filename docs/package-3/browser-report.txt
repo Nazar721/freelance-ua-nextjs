@@ -1,0 +1,344 @@
+  ✓ [chromium desktop] direct open /services/it#cases — {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [chromium desktop] direct open /services/design#cases — {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [chromium desktop] direct open /services/video#cases — {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [chromium desktop] direct open /en/services/it#cases — {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [chromium desktop] direct open /en/services/design#cases — {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [chromium desktop] direct open /en/services/video#cases — {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [chromium desktop] reload keeps /services/it#cases
+  ✓ [chromium desktop] reload keeps /services/design#cases
+  ✓ [chromium desktop] reload keeps /services/video#cases
+  ✓ [chromium desktop] reload keeps /en/services/it#cases
+  ✓ [chromium desktop] reload keeps /en/services/design#cases
+  ✓ [chromium desktop] reload keeps /en/services/video#cases
+  ✓ [chromium desktop] hero button → #cases on /services/it
+  ✓ [chromium desktop] hero button → #cases on /services/design
+  ✓ [chromium desktop] hero button → #cases on /services/video
+  ✓ [chromium desktop] hero button → #cases on /en/services/it
+  ✓ [chromium desktop] hero button → #cases on /en/services/design
+  ✓ [chromium desktop] hero button → #cases on /en/services/video
+  ✓ [chromium desktop] home «UA IT» → /services/it#cases
+  ✓ [chromium desktop] home «UA Дизайн» → /services/design#cases
+  ✓ [chromium desktop] home «UA Відео» → /services/video#cases
+  ✓ [chromium desktop] home «EN IT» → /en/services/it#cases
+  ✓ [chromium desktop] home «EN Дизайн» → /en/services/design#cases
+  ✓ [chromium desktop] home «EN Відео» → /en/services/video#cases
+  ✓ [chromium desktop] redirect /cases/it — url=http://localhost:3011/services/it#cases {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [chromium desktop] redirect /cases/design — url=http://localhost:3011/services/design#cases {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [chromium desktop] redirect /cases/video — url=http://localhost:3011/services/video#cases {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [chromium desktop] redirect /en/cases/it — url=http://localhost:3011/en/services/it#cases {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [chromium desktop] redirect /en/cases/design — url=http://localhost:3011/en/services/design#cases {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [chromium desktop] redirect /en/cases/video — url=http://localhost:3011/en/services/video#cases {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [chromium desktop] back/forward returns to /services/it#cases
+  ✓ [chromium desktop] back/forward returns to /services/design#cases
+  ✓ [chromium desktop] back/forward returns to /services/video#cases
+  ✓ [chromium desktop] back/forward returns to /en/services/it#cases
+  ✓ [chromium desktop] back/forward returns to /en/services/design#cases
+  ✓ [chromium desktop] back/forward returns to /en/services/video#cases
+  ✓ [chromium desktop] home nav «Контакти» → #contacts — {"ok":true,"top":460}
+  ✓ [chromium desktop] subpage nav «Контакти» → /#contacts — http://localhost:3011/#contacts {"ok":true,"top":460}
+  ✓ [chromium desktop] /services/it lists are ul>li only
+  ✓ [chromium desktop] /services/design lists are ul>li only
+  ✓ [chromium desktop] /services/video lists are ul>li only
+  ✓ [chromium desktop] /en/services/it lists are ul>li only
+  ✓ [chromium desktop] /en/services/design lists are ul>li only
+  ✓ [chromium desktop] /en/services/video lists are ul>li only
+  ✓ [chromium desktop] no raw i18n keys on /services/it
+  ✓ [chromium desktop] no raw i18n keys on /services/design
+  ✓ [chromium desktop] no raw i18n keys on /services/video
+  ✓ [chromium desktop] no raw i18n keys on /en/services/it
+  ✓ [chromium desktop] no raw i18n keys on /en/services/design
+  ✓ [chromium desktop] no raw i18n keys on /en/services/video
+  ✓ [chromium desktop] /services/it lists 21 cases — found 21
+  ✓ [chromium desktop] /services/design lists 24 cases — found 24
+  ✓ [chromium desktop] /services/video lists 55 cases — found 55
+  ✓ [chromium desktop] /en/services/it lists 21 cases — found 21
+  ✓ [chromium desktop] /en/services/design lists 24 cases — found 24
+  ✓ [chromium desktop] /en/services/video lists 55 cases — found 55
+  ✓ [chromium desktop] no uncaught page errors — 0 errors
+  ✓ [chromium mobile] direct open /services/it#cases — {"ok":true,"scrollY":2729,"headerBottom":76,"headingTop":148}
+  ✓ [chromium mobile] direct open /services/design#cases — {"ok":true,"scrollY":2535,"headerBottom":76,"headingTop":148}
+  ✓ [chromium mobile] direct open /services/video#cases — {"ok":true,"scrollY":2528,"headerBottom":76,"headingTop":146}
+  ✓ [chromium mobile] direct open /en/services/it#cases — {"ok":true,"scrollY":2637,"headerBottom":76,"headingTop":148}
+  ✓ [chromium mobile] direct open /en/services/design#cases — {"ok":true,"scrollY":2449,"headerBottom":76,"headingTop":148}
+  ✓ [chromium mobile] direct open /en/services/video#cases — {"ok":true,"scrollY":2468,"headerBottom":76,"headingTop":148}
+  ✓ [chromium mobile] reload keeps /services/it#cases
+  ✓ [chromium mobile] reload keeps /services/design#cases
+  ✓ [chromium mobile] reload keeps /services/video#cases
+  ✓ [chromium mobile] reload keeps /en/services/it#cases
+  ✓ [chromium mobile] reload keeps /en/services/design#cases
+  ✓ [chromium mobile] reload keeps /en/services/video#cases
+  ✓ [chromium mobile] hero button → #cases on /services/it
+  ✓ [chromium mobile] hero button → #cases on /services/design
+  ✓ [chromium mobile] hero button → #cases on /services/video
+  ✓ [chromium mobile] hero button → #cases on /en/services/it
+  ✓ [chromium mobile] hero button → #cases on /en/services/design
+  ✓ [chromium mobile] hero button → #cases on /en/services/video
+  ✓ [chromium mobile] home «UA IT» → /services/it#cases
+  ✓ [chromium mobile] home «UA Дизайн» → /services/design#cases
+  ✓ [chromium mobile] home «UA Відео» → /services/video#cases
+  ✓ [chromium mobile] home «EN IT» → /en/services/it#cases
+  ✓ [chromium mobile] home «EN Дизайн» → /en/services/design#cases
+  ✓ [chromium mobile] home «EN Відео» → /en/services/video#cases
+  ✓ [chromium mobile] redirect /cases/it — url=http://localhost:3011/services/it#cases {"ok":true,"scrollY":2729,"headerBottom":76,"headingTop":148}
+  ✓ [chromium mobile] redirect /cases/design — url=http://localhost:3011/services/design#cases {"ok":true,"scrollY":2535,"headerBottom":76,"headingTop":148}
+  ✓ [chromium mobile] redirect /cases/video — url=http://localhost:3011/services/video#cases {"ok":true,"scrollY":2528,"headerBottom":76,"headingTop":146}
+  ✓ [chromium mobile] redirect /en/cases/it — url=http://localhost:3011/en/services/it#cases {"ok":true,"scrollY":2637,"headerBottom":76,"headingTop":148}
+  ✓ [chromium mobile] redirect /en/cases/design — url=http://localhost:3011/en/services/design#cases {"ok":true,"scrollY":2449,"headerBottom":76,"headingTop":148}
+  ✓ [chromium mobile] redirect /en/cases/video — url=http://localhost:3011/en/services/video#cases {"ok":true,"scrollY":2468,"headerBottom":76,"headingTop":148}
+  ✓ [chromium mobile] back/forward returns to /services/it#cases
+  ✓ [chromium mobile] back/forward returns to /services/design#cases
+  ✓ [chromium mobile] back/forward returns to /services/video#cases
+  ✓ [chromium mobile] back/forward returns to /en/services/it#cases
+  ✓ [chromium mobile] back/forward returns to /en/services/design#cases
+  ✓ [chromium mobile] back/forward returns to /en/services/video#cases
+  ✓ [chromium mobile] home nav «Контакти» → #contacts — {"ok":true,"top":204}
+  ✓ [chromium mobile] subpage nav «Контакти» → /#contacts — http://localhost:3011/#contacts {"ok":true,"top":204}
+  ✓ [chromium mobile] /services/it lists are ul>li only
+  ✓ [chromium mobile] /services/design lists are ul>li only
+  ✓ [chromium mobile] /services/video lists are ul>li only
+  ✓ [chromium mobile] /en/services/it lists are ul>li only
+  ✓ [chromium mobile] /en/services/design lists are ul>li only
+  ✓ [chromium mobile] /en/services/video lists are ul>li only
+  ✓ [chromium mobile] no raw i18n keys on /services/it
+  ✓ [chromium mobile] no raw i18n keys on /services/design
+  ✓ [chromium mobile] no raw i18n keys on /services/video
+  ✓ [chromium mobile] no raw i18n keys on /en/services/it
+  ✓ [chromium mobile] no raw i18n keys on /en/services/design
+  ✓ [chromium mobile] no raw i18n keys on /en/services/video
+  ✓ [chromium mobile] /services/it lists 21 cases — found 21
+  ✓ [chromium mobile] /services/design lists 24 cases — found 24
+  ✓ [chromium mobile] /services/video lists 55 cases — found 55
+  ✓ [chromium mobile] /en/services/it lists 21 cases — found 21
+  ✓ [chromium mobile] /en/services/design lists 24 cases — found 24
+  ✓ [chromium mobile] /en/services/video lists 55 cases — found 55
+  ✓ [chromium mobile] no uncaught page errors — 0 errors
+  ✓ [chromium reduced-motion] direct open /services/it#cases — {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [chromium reduced-motion] direct open /services/design#cases — {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [chromium reduced-motion] direct open /services/video#cases — {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [chromium reduced-motion] direct open /en/services/it#cases — {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [chromium reduced-motion] direct open /en/services/design#cases — {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [chromium reduced-motion] direct open /en/services/video#cases — {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [chromium reduced-motion] reload keeps /services/it#cases
+  ✓ [chromium reduced-motion] reload keeps /services/design#cases
+  ✓ [chromium reduced-motion] reload keeps /services/video#cases
+  ✓ [chromium reduced-motion] reload keeps /en/services/it#cases
+  ✓ [chromium reduced-motion] reload keeps /en/services/design#cases
+  ✓ [chromium reduced-motion] reload keeps /en/services/video#cases
+  ✓ [chromium reduced-motion] hero button → #cases on /services/it
+  ✓ [chromium reduced-motion] hero button → #cases on /services/design
+  ✓ [chromium reduced-motion] hero button → #cases on /services/video
+  ✓ [chromium reduced-motion] hero button → #cases on /en/services/it
+  ✓ [chromium reduced-motion] hero button → #cases on /en/services/design
+  ✓ [chromium reduced-motion] hero button → #cases on /en/services/video
+  ✓ [chromium reduced-motion] home «UA IT» → /services/it#cases
+  ✓ [chromium reduced-motion] home «UA Дизайн» → /services/design#cases
+  ✓ [chromium reduced-motion] home «UA Відео» → /services/video#cases
+  ✓ [chromium reduced-motion] home «EN IT» → /en/services/it#cases
+  ✓ [chromium reduced-motion] home «EN Дизайн» → /en/services/design#cases
+  ✓ [chromium reduced-motion] home «EN Відео» → /en/services/video#cases
+  ✓ [chromium reduced-motion] redirect /cases/it — url=http://localhost:3011/services/it#cases {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [chromium reduced-motion] redirect /cases/design — url=http://localhost:3011/services/design#cases {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [chromium reduced-motion] redirect /cases/video — url=http://localhost:3011/services/video#cases {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [chromium reduced-motion] redirect /en/cases/it — url=http://localhost:3011/en/services/it#cases {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [chromium reduced-motion] redirect /en/cases/design — url=http://localhost:3011/en/services/design#cases {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [chromium reduced-motion] redirect /en/cases/video — url=http://localhost:3011/en/services/video#cases {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [chromium reduced-motion] back/forward returns to /services/it#cases
+  ✓ [chromium reduced-motion] back/forward returns to /services/design#cases
+  ✓ [chromium reduced-motion] back/forward returns to /services/video#cases
+  ✓ [chromium reduced-motion] back/forward returns to /en/services/it#cases
+  ✓ [chromium reduced-motion] back/forward returns to /en/services/design#cases
+  ✓ [chromium reduced-motion] back/forward returns to /en/services/video#cases
+  ✓ [chromium reduced-motion] home nav «Контакти» → #contacts — {"ok":true,"top":460}
+  ✓ [chromium reduced-motion] subpage nav «Контакти» → /#contacts — http://localhost:3011/#contacts {"ok":true,"top":460}
+  ✓ [chromium reduced-motion] /services/it lists are ul>li only
+  ✓ [chromium reduced-motion] /services/design lists are ul>li only
+  ✓ [chromium reduced-motion] /services/video lists are ul>li only
+  ✓ [chromium reduced-motion] /en/services/it lists are ul>li only
+  ✓ [chromium reduced-motion] /en/services/design lists are ul>li only
+  ✓ [chromium reduced-motion] /en/services/video lists are ul>li only
+  ✓ [chromium reduced-motion] no raw i18n keys on /services/it
+  ✓ [chromium reduced-motion] no raw i18n keys on /services/design
+  ✓ [chromium reduced-motion] no raw i18n keys on /services/video
+  ✓ [chromium reduced-motion] no raw i18n keys on /en/services/it
+  ✓ [chromium reduced-motion] no raw i18n keys on /en/services/design
+  ✓ [chromium reduced-motion] no raw i18n keys on /en/services/video
+  ✓ [chromium reduced-motion] /services/it lists 21 cases — found 21
+  ✓ [chromium reduced-motion] /services/design lists 24 cases — found 24
+  ✓ [chromium reduced-motion] /services/video lists 55 cases — found 55
+  ✓ [chromium reduced-motion] /en/services/it lists 21 cases — found 21
+  ✓ [chromium reduced-motion] /en/services/design lists 24 cases — found 24
+  ✓ [chromium reduced-motion] /en/services/video lists 55 cases — found 55
+  ✓ [chromium reduced-motion] no uncaught page errors — 0 errors
+  ✓ [webkit desktop] direct open /services/it#cases — {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] direct open /services/design#cases — {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] direct open /services/video#cases — {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] direct open /en/services/it#cases — {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] direct open /en/services/design#cases — {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] direct open /en/services/video#cases — {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] reload keeps /services/it#cases
+  ✓ [webkit desktop] reload keeps /services/design#cases
+  ✓ [webkit desktop] reload keeps /services/video#cases
+  ✓ [webkit desktop] reload keeps /en/services/it#cases
+  ✓ [webkit desktop] reload keeps /en/services/design#cases
+  ✓ [webkit desktop] reload keeps /en/services/video#cases
+  ✓ [webkit desktop] hero button → #cases on /services/it
+  ✓ [webkit desktop] hero button → #cases on /services/design
+  ✓ [webkit desktop] hero button → #cases on /services/video
+  ✓ [webkit desktop] hero button → #cases on /en/services/it
+  ✓ [webkit desktop] hero button → #cases on /en/services/design
+  ✓ [webkit desktop] hero button → #cases on /en/services/video
+  ✓ [webkit desktop] home «UA IT» → /services/it#cases
+  ✓ [webkit desktop] home «UA Дизайн» → /services/design#cases
+  ✓ [webkit desktop] home «UA Відео» → /services/video#cases
+  ✓ [webkit desktop] home «EN IT» → /en/services/it#cases
+  ✓ [webkit desktop] home «EN Дизайн» → /en/services/design#cases
+  ✓ [webkit desktop] home «EN Відео» → /en/services/video#cases
+  ✓ [webkit desktop] redirect /cases/it — url=http://localhost:3011/services/it#cases {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] redirect /cases/design — url=http://localhost:3011/services/design#cases {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] redirect /cases/video — url=http://localhost:3011/services/video#cases {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] redirect /en/cases/it — url=http://localhost:3011/en/services/it#cases {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] redirect /en/cases/design — url=http://localhost:3011/en/services/design#cases {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] redirect /en/cases/video — url=http://localhost:3011/en/services/video#cases {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [webkit desktop] back/forward returns to /services/it#cases
+  ✓ [webkit desktop] back/forward returns to /services/design#cases
+  ✓ [webkit desktop] back/forward returns to /services/video#cases
+  ✓ [webkit desktop] back/forward returns to /en/services/it#cases
+  ✓ [webkit desktop] back/forward returns to /en/services/design#cases
+  ✓ [webkit desktop] back/forward returns to /en/services/video#cases
+  ✓ [webkit desktop] home nav «Контакти» → #contacts — {"ok":true,"top":460}
+  ✓ [webkit desktop] subpage nav «Контакти» → /#contacts — http://localhost:3011/#contacts {"ok":true,"top":460}
+  ✓ [webkit desktop] /services/it lists are ul>li only
+  ✓ [webkit desktop] /services/design lists are ul>li only
+  ✓ [webkit desktop] /services/video lists are ul>li only
+  ✓ [webkit desktop] /en/services/it lists are ul>li only
+  ✓ [webkit desktop] /en/services/design lists are ul>li only
+  ✓ [webkit desktop] /en/services/video lists are ul>li only
+  ✓ [webkit desktop] no raw i18n keys on /services/it
+  ✓ [webkit desktop] no raw i18n keys on /services/design
+  ✓ [webkit desktop] no raw i18n keys on /services/video
+  ✓ [webkit desktop] no raw i18n keys on /en/services/it
+  ✓ [webkit desktop] no raw i18n keys on /en/services/design
+  ✓ [webkit desktop] no raw i18n keys on /en/services/video
+  ✓ [webkit desktop] /services/it lists 21 cases — found 21
+  ✓ [webkit desktop] /services/design lists 24 cases — found 24
+  ✓ [webkit desktop] /services/video lists 55 cases — found 55
+  ✓ [webkit desktop] /en/services/it lists 21 cases — found 21
+  ✓ [webkit desktop] /en/services/design lists 24 cases — found 24
+  ✓ [webkit desktop] /en/services/video lists 55 cases — found 55
+  ✓ [webkit desktop] no uncaught page errors — 0 errors
+  ✓ [webkit mobile] direct open /services/it#cases — {"ok":true,"scrollY":2741,"headerBottom":59,"headingTop":136}
+  ✓ [webkit mobile] direct open /services/design#cases — {"ok":true,"scrollY":2547,"headerBottom":59,"headingTop":136}
+  ✓ [webkit mobile] direct open /services/video#cases — {"ok":true,"scrollY":2538,"headerBottom":59,"headingTop":136}
+  ✓ [webkit mobile] direct open /en/services/it#cases — {"ok":true,"scrollY":2649,"headerBottom":59,"headingTop":136}
+  ✓ [webkit mobile] direct open /en/services/design#cases — {"ok":true,"scrollY":2461,"headerBottom":59,"headingTop":136}
+  ✓ [webkit mobile] direct open /en/services/video#cases — {"ok":true,"scrollY":2480,"headerBottom":59,"headingTop":136}
+  ✓ [webkit mobile] reload keeps /services/it#cases
+  ✓ [webkit mobile] reload keeps /services/design#cases
+  ✓ [webkit mobile] reload keeps /services/video#cases
+  ✓ [webkit mobile] reload keeps /en/services/it#cases
+  ✓ [webkit mobile] reload keeps /en/services/design#cases
+  ✓ [webkit mobile] reload keeps /en/services/video#cases
+  ✓ [webkit mobile] hero button → #cases on /services/it
+  ✓ [webkit mobile] hero button → #cases on /services/design
+  ✓ [webkit mobile] hero button → #cases on /services/video
+  ✓ [webkit mobile] hero button → #cases on /en/services/it
+  ✓ [webkit mobile] hero button → #cases on /en/services/design
+  ✓ [webkit mobile] hero button → #cases on /en/services/video
+  ✓ [webkit mobile] home «UA IT» → /services/it#cases
+  ✓ [webkit mobile] home «UA Дизайн» → /services/design#cases
+  ✓ [webkit mobile] home «UA Відео» → /services/video#cases
+  ✓ [webkit mobile] home «EN IT» → /en/services/it#cases
+  ✓ [webkit mobile] home «EN Дизайн» → /en/services/design#cases
+  ✓ [webkit mobile] home «EN Відео» → /en/services/video#cases
+  ✓ [webkit mobile] redirect /cases/it — url=http://localhost:3011/services/it#cases {"ok":true,"scrollY":2741,"headerBottom":59,"headingTop":136}
+  ✓ [webkit mobile] redirect /cases/design — url=http://localhost:3011/services/design#cases {"ok":true,"scrollY":2547,"headerBottom":59,"headingTop":136}
+  ✓ [webkit mobile] redirect /cases/video — url=http://localhost:3011/services/video#cases {"ok":true,"scrollY":2538,"headerBottom":59,"headingTop":136}
+  ✓ [webkit mobile] redirect /en/cases/it — url=http://localhost:3011/en/services/it#cases {"ok":true,"scrollY":2649,"headerBottom":59,"headingTop":136}
+  ✓ [webkit mobile] redirect /en/cases/design — url=http://localhost:3011/en/services/design#cases {"ok":true,"scrollY":2461,"headerBottom":59,"headingTop":136}
+  ✓ [webkit mobile] redirect /en/cases/video — url=http://localhost:3011/en/services/video#cases {"ok":true,"scrollY":2480,"headerBottom":59,"headingTop":136}
+  ✓ [webkit mobile] back/forward returns to /services/it#cases
+  ✓ [webkit mobile] back/forward returns to /services/design#cases
+  ✓ [webkit mobile] back/forward returns to /services/video#cases
+  ✓ [webkit mobile] back/forward returns to /en/services/it#cases
+  ✓ [webkit mobile] back/forward returns to /en/services/design#cases
+  ✓ [webkit mobile] back/forward returns to /en/services/video#cases
+  ✓ [webkit mobile] home nav «Контакти» → #contacts — {"ok":true,"top":502}
+  ✓ [webkit mobile] subpage nav «Контакти» → /#contacts — http://localhost:3011/#contacts {"ok":true,"top":187}
+  ✓ [webkit mobile] /services/it lists are ul>li only
+  ✓ [webkit mobile] /services/design lists are ul>li only
+  ✓ [webkit mobile] /services/video lists are ul>li only
+  ✓ [webkit mobile] /en/services/it lists are ul>li only
+  ✓ [webkit mobile] /en/services/design lists are ul>li only
+  ✓ [webkit mobile] /en/services/video lists are ul>li only
+  ✓ [webkit mobile] no raw i18n keys on /services/it
+  ✓ [webkit mobile] no raw i18n keys on /services/design
+  ✓ [webkit mobile] no raw i18n keys on /services/video
+  ✓ [webkit mobile] no raw i18n keys on /en/services/it
+  ✓ [webkit mobile] no raw i18n keys on /en/services/design
+  ✓ [webkit mobile] no raw i18n keys on /en/services/video
+  ✓ [webkit mobile] /services/it lists 21 cases — found 21
+  ✓ [webkit mobile] /services/design lists 24 cases — found 24
+  ✓ [webkit mobile] /services/video lists 55 cases — found 55
+  ✓ [webkit mobile] /en/services/it lists 21 cases — found 21
+  ✓ [webkit mobile] /en/services/design lists 24 cases — found 24
+  ✓ [webkit mobile] /en/services/video lists 55 cases — found 55
+  ✓ [webkit mobile] no uncaught page errors — 0 errors
+  ✓ [webkit reduced-motion] direct open /services/it#cases — {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [webkit reduced-motion] direct open /services/design#cases — {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [webkit reduced-motion] direct open /services/video#cases — {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [webkit reduced-motion] direct open /en/services/it#cases — {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [webkit reduced-motion] direct open /en/services/design#cases — {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [webkit reduced-motion] direct open /en/services/video#cases — {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [webkit reduced-motion] reload keeps /services/it#cases
+  ✓ [webkit reduced-motion] reload keeps /services/design#cases
+  ✓ [webkit reduced-motion] reload keeps /services/video#cases
+  ✓ [webkit reduced-motion] reload keeps /en/services/it#cases
+  ✓ [webkit reduced-motion] reload keeps /en/services/design#cases
+  ✓ [webkit reduced-motion] reload keeps /en/services/video#cases
+  ✓ [webkit reduced-motion] hero button → #cases on /services/it
+  ✓ [webkit reduced-motion] hero button → #cases on /services/design
+  ✓ [webkit reduced-motion] hero button → #cases on /services/video
+  ✓ [webkit reduced-motion] hero button → #cases on /en/services/it
+  ✓ [webkit reduced-motion] hero button → #cases on /en/services/design
+  ✓ [webkit reduced-motion] hero button → #cases on /en/services/video
+  ✓ [webkit reduced-motion] home «UA IT» → /services/it#cases
+  ✓ [webkit reduced-motion] home «UA Дизайн» → /services/design#cases
+  ✓ [webkit reduced-motion] home «UA Відео» → /services/video#cases
+  ✓ [webkit reduced-motion] home «EN IT» → /en/services/it#cases
+  ✓ [webkit reduced-motion] home «EN Дизайн» → /en/services/design#cases
+  ✓ [webkit reduced-motion] home «EN Відео» → /en/services/video#cases
+  ✓ [webkit reduced-motion] redirect /cases/it — url=http://localhost:3011/services/it#cases {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [webkit reduced-motion] redirect /cases/design — url=http://localhost:3011/services/design#cases {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [webkit reduced-motion] redirect /cases/video — url=http://localhost:3011/services/video#cases {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [webkit reduced-motion] redirect /en/cases/it — url=http://localhost:3011/en/services/it#cases {"ok":true,"scrollY":2531,"headerBottom":82,"headingTop":178}
+  ✓ [webkit reduced-motion] redirect /en/cases/design — url=http://localhost:3011/en/services/design#cases {"ok":true,"scrollY":2461,"headerBottom":82,"headingTop":178}
+  ✓ [webkit reduced-motion] redirect /en/cases/video — url=http://localhost:3011/en/services/video#cases {"ok":true,"scrollY":2405,"headerBottom":82,"headingTop":178}
+  ✓ [webkit reduced-motion] back/forward returns to /services/it#cases
+  ✓ [webkit reduced-motion] back/forward returns to /services/design#cases
+  ✓ [webkit reduced-motion] back/forward returns to /services/video#cases
+  ✓ [webkit reduced-motion] back/forward returns to /en/services/it#cases
+  ✓ [webkit reduced-motion] back/forward returns to /en/services/design#cases
+  ✓ [webkit reduced-motion] back/forward returns to /en/services/video#cases
+  ✓ [webkit reduced-motion] home nav «Контакти» → #contacts — {"ok":true,"top":460}
+  ✓ [webkit reduced-motion] subpage nav «Контакти» → /#contacts — http://localhost:3011/#contacts {"ok":true,"top":460}
+  ✓ [webkit reduced-motion] /services/it lists are ul>li only
+  ✓ [webkit reduced-motion] /services/design lists are ul>li only
+  ✓ [webkit reduced-motion] /services/video lists are ul>li only
+  ✓ [webkit reduced-motion] /en/services/it lists are ul>li only
+  ✓ [webkit reduced-motion] /en/services/design lists are ul>li only
+  ✓ [webkit reduced-motion] /en/services/video lists are ul>li only
+  ✓ [webkit reduced-motion] no raw i18n keys on /services/it
+  ✓ [webkit reduced-motion] no raw i18n keys on /services/design
+  ✓ [webkit reduced-motion] no raw i18n keys on /services/video
+  ✓ [webkit reduced-motion] no raw i18n keys on /en/services/it
+  ✓ [webkit reduced-motion] no raw i18n keys on /en/services/design
+  ✓ [webkit reduced-motion] no raw i18n keys on /en/services/video
+  ✓ [webkit reduced-motion] /services/it lists 21 cases — found 21
+  ✓ [webkit reduced-motion] /services/design lists 24 cases — found 24
+  ✓ [webkit reduced-motion] /services/video lists 55 cases — found 55
+  ✓ [webkit reduced-motion] /en/services/it lists 21 cases — found 21
+  ✓ [webkit reduced-motion] /en/services/design lists 24 cases — found 24
+  ✓ [webkit reduced-motion] /en/services/video lists 55 cases — found 55
+  ✓ [webkit reduced-motion] no uncaught page errors — 0 errors
+
+342 checks, 0 failed

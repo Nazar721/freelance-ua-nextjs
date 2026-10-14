@@ -1,0 +1,140 @@
+
+> freelance-ua@0.1.0 build
+> node scripts/pull-lfs.mjs && next build
+
+pull-lfs: all LFS files present
+▲ Next.js 16.2.1 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+(node:34321) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✓ Compiled successfully in 9.5s
+  Running TypeScript ...
+  Finished TypeScript in 8.8s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/113) ...
+  Generating static pages using 7 workers (28/113) 
+  Generating static pages using 7 workers (56/113) 
+  Generating static pages using 7 workers (84/113) 
+✓ Generating static pages using 7 workers (113/113) in 340ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /api/chat
+├ ƒ /cases
+├ ƒ /cases/design
+├ ƒ /cases/design/apple-tecnologia
+├ ƒ /cases/design/barvy-interior
+├ ƒ /cases/design/color-correction
+├ ƒ /cases/design/crypto-chat-manager-vacancy
+├ ƒ /cases/design/divorce-legal-ad
+├ ƒ /cases/design/f5-guitars-youtube
+├ ƒ /cases/design/gel-polish
+├ ƒ /cases/design/giesbrecht-pv
+├ ƒ /cases/design/globus-billboard
+├ ƒ /cases/design/gopro-hero13
+├ ƒ /cases/design/hope-media-group
+├ ƒ /cases/design/mht-clinic-billboard
+├ ƒ /cases/design/moto-school-window-branding
+├ ƒ /cases/design/mydutyfree
+├ ƒ /cases/design/nastya-portrait-retouch
+├ ƒ /cases/design/nastya-smm
+├ ƒ /cases/design/photo-retouch
+├ ƒ /cases/design/pink-pr-flyers
+├ ƒ /cases/design/prestige-school-billboard
+├ ƒ /cases/design/schonheit-gift-certificate
+├ ƒ /cases/design/sembud-repair
+├ ƒ /cases/design/smm-case-presentation
+├ ƒ /cases/design/snizhana-telegram-stickers
+├ ƒ /cases/design/vikontse-logo
+├ ƒ /cases/it
+├ ƒ /cases/it/asandra-soul
+├ ƒ /cases/it/darkshare
+├ ƒ /cases/it/epiland
+├ ƒ /cases/it/eva-code
+├ ƒ /cases/it/importera
+├ ƒ /cases/it/kroscar-detailing
+├ ƒ /cases/it/liudmyla-tsybrii
+├ ƒ /cases/it/md-dental
+├ ƒ /cases/it/mnm-detailing
+├ ƒ /cases/it/nextcup
+├ ƒ /cases/it/pivden-solar
+├ ƒ /cases/it/prime-auto-shipping
+├ ƒ /cases/it/repair-collision
+├ ƒ /cases/it/route-core
+├ ƒ /cases/it/ruslan-aviation
+├ ƒ /cases/it/sdent
+├ ƒ /cases/it/selloflow
+├ ƒ /cases/it/serezha-shop
+├ ƒ /cases/it/shkiper-drop
+├ ƒ /cases/it/stretching-ch
+├ ƒ /cases/it/voltone-pro
+├ ƒ /cases/video
+├ ƒ /cases/video/ai-avatars
+├ ƒ /cases/video/ai-ice-cream
+├ ƒ /cases/video/ai-promo-misha
+├ ƒ /cases/video/ai-spring-fashion
+├ ƒ /cases/video/ai-video-new
+├ ƒ /cases/video/alien-city-adventure
+├ ƒ /cases/video/artem-reels
+├ ƒ /cases/video/auto-edits-reels
+├ ƒ /cases/video/automation-1click
+├ ƒ /cases/video/barvy-interior-ai-reels
+├ ƒ /cases/video/cuprus-life
+├ ƒ /cases/video/dance-competition-lviv
+├ ƒ /cases/video/dominanta-youtube-intro
+├ ƒ /cases/video/dr-trichologist-promo
+├ ƒ /cases/video/eva-code-reels
+├ ƒ /cases/video/income-graph-motion
+├ ƒ /cases/video/internet-svit-promo
+├ ƒ /cases/video/ivan-ig-creative
+├ ƒ /cases/video/liliya-product-business
+├ ƒ /cases/video/logan-ai-promo
+├ ƒ /cases/video/logo-animation
+├ ƒ /cases/video/maccoudi-youtube
+├ ƒ /cases/video/motion-promo
+├ ƒ /cases/video/motion-reels
+├ ƒ /cases/video/nikita-sheremet-crypto
+├ ƒ /cases/video/passive-income-video
+├ ƒ /cases/video/podcast-editing
+├ ƒ /cases/video/presentation-animation
+├ ƒ /cases/video/sales-bible-promo
+├ ƒ /cases/video/selloflow-intro
+├ ƒ /cases/video/serhii-yarmolenko-reels
+├ ƒ /cases/video/serhii-yarmolenko-video-lesson
+├ ƒ /cases/video/sestro-anniversary
+├ ƒ /cases/video/sestro-beauty
+├ ƒ /cases/video/sheglam-freedom-fest
+├ ƒ /cases/video/sheglam-promo
+├ ƒ /cases/video/skool-10-features
+├ ƒ /cases/video/taranenko-trade
+├ ƒ /cases/video/telegram-emoji-stickers
+├ ƒ /cases/video/travel-vlog-turkey
+├ ƒ /cases/video/twin-a-auto
+├ ƒ /cases/video/valeriia-trend-reels
+├ ƒ /cases/video/varto-reels
+├ ƒ /cases/video/veronika-ai-muscles
+├ ƒ /cases/video/vibe-nation-promo
+├ ƒ /cases/video/vitalii-cheverda
+├ ƒ /cases/video/vladlen-lisynko-interview
+├ ƒ /cases/video/vorodi-medical
+├ ƒ /cases/video/vsehub-reels
+├ ƒ /cases/video/vtikha-promo
+├ ƒ /cases/video/watch-hype-intro
+├ ƒ /cases/video/watch-hype-motion
+├ ƒ /cases/video/wine-festival
+├ ƒ /cases/video/youtube-conversational-video
+├ ƒ /cases/video/yulia-smm-reels
+├ ○ /icon.jpg
+├ ƒ /partners
+├ ○ /robots.txt
+└ ○ /sitemap.xml
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+exit=0

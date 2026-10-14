@@ -1,0 +1,32 @@
+control checks: hreflang reciprocity
+  ✓ correct UA→EN pair passes
+  ✓ correct EN→UA pair passes
+  ✓ canonical on wrong domain fails
+  ✓ canonical full absolute URL passes
+  ✓ root trailing slash tolerated
+  ✓ missing reciprocal hreflang fails
+  ✓ reciprocal pointing to the wrong URL fails
+  ✓ counterpart not ready is skipped (no false pair)
+  ✓ declaration of own canonical + counterpart
+  ✓ missing self hreflang fails
+  ✓ hreflang to a foreign host fails
+control checks: redirects
+  ✓ redirect destination 404 fails
+  ✓ missing required #fragment fails
+  ✓ correct redirect with #cases passes
+  ✓ splitFragment keeps fragment
+  ✓ normalizeAbsUrl strips hash
+control checks: og:image properties
+  ✓ og-image.jpg measured as 1200x630 jpeg
+  ✓ eva cover measured as 1536x1024 webp
+  ✓ portrait cover measured as 800x1200 jpeg
+  ✓ matching og:image properties pass
+  ✓ wrong width fails
+  ✓ wrong height fails
+  ✓ wrong MIME type fails
+  ✓ omitted width/height/type is allowed
+  ✓ partial og:image properties fail
+  ✓ missing og:image fails
+  ✓ remote image: completeness checked only
+
+control checks: 27 passed, 0 failed

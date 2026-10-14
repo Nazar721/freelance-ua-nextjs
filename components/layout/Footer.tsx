@@ -7,7 +7,8 @@ import { siteConfig } from '@/config/site'
 import { useTranslation } from "@/lib/LanguageContext";
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const lp = locale === "en" ? "/en" : "";
 
 	return (
 		<footer
@@ -78,7 +79,7 @@ export default function Footer() {
 								Instagram
 							</a>
 							<Link
-								href='/partners'
+								href={`${lp}/partners`}
 								className='flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors'
 							>
 								<svg

@@ -1,0 +1,767 @@
+==============================================================================
+Виправлення партії 4 після незалежної перевірки (стан 12.10 23:28 -> зараз)
+==============================================================================
+
+==============================================================================
+--- data/case-records/types.ts
+==============================================================================
+--- a/data/case-records/types.ts (до виправлень)
++++ b/data/case-records/types.ts
+@@ -57,6 +57,22 @@
+   caption?: CaseText;
+   /** Span the full row (design galleries that mark an item as `wide`). */
+   wide?: boolean;
++  /**
++   * Display-only presentation taken from the original page. The file itself
++   * is never altered or duplicated in the data: the full image stays in the
++   * gallery list and in the lightbox.
++   */
++  presentation?: {
++    /**
++     * Original `WideImage`/`mobileSplitItems` behaviour: the whole layout on
++     * desktop, two halves of the same file side by side on mobile.
++     */
++    splitMobile?: boolean;
++    /** Localized alt suffixes of the two mobile halves (left, right). */
++    splitAlt?: { left: CaseText; right: CaseText };
++    /** Cap the rendered width so a portrait sheet does not stretch. */
++    maxWidth?: "280px" | "md";
++  };
+ }
+ 
+ export interface VideoGridItem {
+@@ -73,8 +89,25 @@
+ export type HeroBlock =
+   | { kind: "image"; src: string; w: number; h: number; alt?: CaseText; priority?: boolean }
+   | { kind: "imageGrid"; items: MediaImage[] }
+-  /** A single muted video with a poster (no controls — as on the original page). */
+-  | { kind: "video"; src: string; poster?: string; w?: number; h?: number; alt?: CaseText }
++  /**
++   * A single muted video with a poster. The tile is a real button: clicking
++   * it opens the shared fullscreen player (controls, Escape, focus return) —
++   * the same interaction the original page wired through `openFullscreen`.
++   */
++  | {
++      kind: "video";
++      src: string;
++      poster?: string;
++      w?: number;
++      h?: number;
++      alt?: CaseText;
++      /** Localized duration badge, e.g. "~10с" / "~10s". */
++      duration?: CaseText;
++      /** Ratio badge, e.g. "9:16" — the same in both languages. */
++      format?: string;
++      /** CSS aspect ratio of the thumb, defaults to "9/16". */
++      ratio?: string;
++    }
+   | { kind: "videoGrid"; items: VideoGridItem[]; ratio?: string };
+ 
+ /* ───────────────────────── sections ───────────────────────── */
+==============================================================================
+--- components/cases/CaseHero.tsx
+==============================================================================
+--- a/components/cases/CaseHero.tsx (до виправлень)
++++ b/components/cases/CaseHero.tsx
+@@ -66,20 +66,18 @@
+       </div>
+     );
+   } else if (hero.kind === "video") {
++    // One interactive tile, same contract as the video grids: a real button
++    // with a localized name, the duration/format badges from the record and
++    // the shared fullscreen player (reported defect: the old static <video>
++    // ignored every click and had no player at all).
+     media = (
+-      <div className="relative overflow-hidden rounded-xl bg-black">
+-        <video
+-          src={hero.src}
+-          poster={hero.poster}
+-          width={hero.w ?? 1280}
+-          height={hero.h ?? 720}
+-          muted
+-          preload="metadata"
+-          playsInline
+-          className="h-auto w-full"
+-          aria-label={hero.alt ? L(hero.alt) : L(record.h1)}
+-        />
+-      </div>
++      <VideoTiles
++        items={[{ src: hero.src, poster: hero.poster, duration: hero.duration, format: hero.format }]}
++        ratio={hero.ratio ?? "9/16"}
++        L={L}
++        onOpen={(src, opener) => setFullscreen({ src: src.split("#")[0], opener })}
++        className="mx-auto grid w-full max-w-[315px] grid-cols-1"
++      />
+     );
+   } else if (hero.kind === "videoGrid") {
+     media = (
+@@ -87,7 +85,7 @@
+         items={hero.items}
+         ratio={hero.ratio ?? "9/16"}
+         L={L}
+-        onOpen={(src, opener) => setFullscreen({ src, opener })}
++        onOpen={(src, opener) => setFullscreen({ src: src.split("#")[0], opener })}
+         className={
+           hero.items.length >= 3
+             ? "grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5"
+==============================================================================
+--- components/cases/CaseMedia.tsx
+==============================================================================
+--- a/components/cases/CaseMedia.tsx (до виправлень)
++++ b/components/cases/CaseMedia.tsx
+@@ -260,22 +260,72 @@
+   L: ResolveText;
+ }) {
+   const alt = item.alt ? L(item.alt) : item.title ? L(item.title) : fallbackAlt;
++  const maxWidthClass =
++    item.presentation?.maxWidth === "280px"
++      ? "mx-auto max-w-[280px]"
++      : item.presentation?.maxWidth === "md"
++        ? "mx-auto max-w-md"
++        : "";
+   return (
+     <div
+       data-case-block="gallery-item"
+       className="featured-case-card rounded-2xl border border-border p-3"
+       style={{ borderRadius: "16px" }}
+     >
+-      <div className="relative overflow-hidden rounded-xl border border-border bg-background">
+-        <GalleryImage
+-          src={item.src}
+-          alt={alt}
+-          width={item.w ?? 1200}
+-          height={item.h ?? 800}
+-          openLabel={openLabel}
+-          onOpen={onOpen}
+-        />
+-      </div>
++      {item.presentation?.splitMobile ? (
++        // Original `WideImage` for `mobileSplitItems`: the whole layout on
++        // desktop, two halves of the same file side by side on mobile. The
++        // halves are display-only — the full image stays clickable and is
++        // what the lightbox opens.
++        <>
++          <div className="relative hidden overflow-hidden rounded-xl border border-border bg-background md:block">
++            <GalleryImage
++              src={item.src}
++              alt={alt}
++              width={item.w ?? 1200}
++              height={item.h ?? 800}
++              openLabel={openLabel}
++              onOpen={onOpen}
++            />
++          </div>
++          <div className="grid grid-cols-2 gap-3 md:hidden">
++            {([0, 1] as const).map((half) => {
++              const suffix = item.presentation?.splitAlt
++                ? ` ${L(half === 0 ? item.presentation.splitAlt.left : item.presentation.splitAlt.right)}`
++                : "";
++              return (
++                <div
++                  key={half}
++                  data-case-split-part={half === 0 ? "left" : "right"}
++                  className="relative overflow-hidden rounded-xl border border-border bg-background"
++                  style={{ aspectRatio: `${(item.w ?? 2400) / 2} / ${item.h ?? 800}` }}
++                >
++                  <Image
++                    src={item.src}
++                    alt={`${alt}${suffix}`}
++                    width={(item.w ?? 2400) / 2}
++                    height={item.h ?? 800}
++                    className="absolute top-0 h-full w-auto max-w-none"
++                    style={{ left: half === 0 ? 0 : "-100%" }}
++                    draggable={false}
++                  />
++                </div>
++              );
++            })}
++          </div>
++        </>
++      ) : (
++        <div className={`relative overflow-hidden rounded-xl border border-border bg-background ${maxWidthClass}`}>
++          <GalleryImage
++            src={item.src}
++            alt={alt}
++            width={item.w ?? 1200}
++            height={item.h ?? 800}
++            openLabel={openLabel}
++            onOpen={onOpen}
++          />
++        </div>
++      )}
+       {item.title && <p className="mt-3 text-sm font-semibold text-foreground">{L(item.title)}</p>}
+       {item.caption && <p className="mt-1 text-xs text-muted-foreground">{L(item.caption)}</p>}
+     </div>
+@@ -326,7 +376,9 @@
+               delay={0.05 + index * 0.06}
+               y={30}
+               blur={4}
+-              className={item.wide ? "md:col-span-2" : undefined}
++              // Original pages: `md:col-span-2` in two-column grids,
++              // `md:col-span-3` (full row) in three-column ones.
++              className={item.wide ? (section.columns === 3 ? "md:col-span-3" : "md:col-span-2") : undefined}
+             >
+               <GalleryCard
+                 item={item}
+==============================================================================
+--- data/case-records/design/color-correction.ts
+==============================================================================
+--- a/data/case-records/design/color-correction.ts (до виправлень)
++++ b/data/case-records/design/color-correction.ts
+@@ -28,6 +28,10 @@
+     src: "/media/cases/color-correction/video.mp4#t=0.2",
+     poster: "/media/cases/color-correction/poster.jpg",
+     alt: key("designCases.colorCorrection.title"),
++    // Original badges over the clickable thumb: "~10с" and "9:16".
++    duration: text("~10с", "~10s"),
++    format: "9:16",
++    ratio: "9/16",
+   },
+ 
+   sections: [
+==============================================================================
+--- data/case-records/design/hope-media-group.ts
+==============================================================================
+--- a/data/case-records/design/hope-media-group.ts (до виправлень)
++++ b/data/case-records/design/hope-media-group.ts
+@@ -50,11 +50,36 @@
+         { src: "/media/cases/hope-media/hope-media1.webp", w: 2400, h: 1878, title: key("designCases.hopeMedia.item1.title"), caption: key("designCases.hopeMedia.item1.caption") },
+         { src: "/media/cases/hope-media/hope-media2.webp", w: 2400, h: 1440, title: key("designCases.hopeMedia.item2.title"), caption: key("designCases.hopeMedia.item2.caption") },
+         { src: "/media/cases/hope-media/hope-media3.webp", w: 1773, h: 788, title: key("designCases.hopeMedia.item3.title"), caption: key("designCases.hopeMedia.item3.caption") },
+-        { src: "/media/cases/hope-media/hope-media4.webp", w: 2400, h: 851, title: key("designCases.hopeMedia.item4.title"), caption: key("designCases.hopeMedia.item4.caption"), wide: true },
+-        { src: "/media/cases/hope-media/hope-media5.webp", w: 1443, h: 2318, title: key("designCases.hopeMedia.item5.title"), caption: key("designCases.hopeMedia.item5.caption") },
++        {
++          src: "/media/cases/hope-media/hope-media4.webp",
++          w: 2400,
++          h: 851,
++          title: key("designCases.hopeMedia.item4.title"),
++          caption: key("designCases.hopeMedia.item4.caption"),
++          wide: true,
++          // Original `WideImage`/`mobileSplitItems`: whole layout on desktop,
++          // two halves of the same file on mobile. Suffixes keep the original
++          // hardcoded alt wording ("— QR" / "— content").
++          presentation: {
++            splitMobile: true,
++            splitAlt: { left: text("— QR", "— QR"), right: text("— content", "— content") },
++          },
++        },
++        { src: "/media/cases/hope-media/hope-media5.webp", w: 1443, h: 2318, title: key("designCases.hopeMedia.item5.title"), caption: key("designCases.hopeMedia.item5.caption"), presentation: { maxWidth: "280px" } },
+         { src: "/media/cases/hope-media/hope-media6.webp", w: 2390, h: 1382, title: key("designCases.hopeMedia.item6.title"), caption: key("designCases.hopeMedia.item6.caption") },
+         { src: "/media/cases/hope-media/hope-media7.webp", w: 2400, h: 1697, title: key("designCases.hopeMedia.item7.title"), caption: key("designCases.hopeMedia.item7.caption") },
+-        { src: "/media/cases/hope-media/hope-media8.webp", w: 2400, h: 851, title: key("designCases.hopeMedia.item8.title"), caption: key("designCases.hopeMedia.item8.caption"), wide: true },
++        {
++          src: "/media/cases/hope-media/hope-media8.webp",
++          w: 2400,
++          h: 851,
++          title: key("designCases.hopeMedia.item8.title"),
++          caption: key("designCases.hopeMedia.item8.caption"),
++          wide: true,
++          presentation: {
++            splitMobile: true,
++            splitAlt: { left: text("— QR", "— QR"), right: text("— content", "— content") },
++          },
++        },
+       ],
+     },
+     {
+@@ -82,7 +107,7 @@
+           title: key("designCases.hopeMedia.group3Title"),
+           intro: key("designCases.hopeMedia.group3Intro"),
+           items: [
+-            { src: "/media/cases/hope-media/hope-media5.webp", w: 1443, h: 2318, title: key("designCases.hopeMedia.item5.title"), caption: key("designCases.hopeMedia.item5.caption") },
++            { src: "/media/cases/hope-media/hope-media5.webp", w: 1443, h: 2318, title: key("designCases.hopeMedia.item5.title"), caption: key("designCases.hopeMedia.item5.caption"), presentation: { maxWidth: "md" } },
+             { src: "/media/cases/hope-media/hope-media6.webp", w: 2390, h: 1382, title: key("designCases.hopeMedia.item6.title"), caption: key("designCases.hopeMedia.item6.caption") },
+             { src: "/media/cases/hope-media/hope-media7.webp", w: 2400, h: 1697, title: key("designCases.hopeMedia.item7.title"), caption: key("designCases.hopeMedia.item7.caption") },
+           ],
+==============================================================================
+--- scripts/migrate-case.mjs
+==============================================================================
+--- a/scripts/migrate-case.mjs (до виправлень)
++++ b/scripts/migrate-case.mjs
+@@ -84,7 +84,10 @@
+ /** Top-level `const NAME = [ … ]` arrays with their bodies. */
+ function topLevelArrays(src) {
+   const out = [];
+-  const re = /^const\s+([A-Za-z0-9_]+)(?:\s*:[^=]+)?\s*=\s*\[/gm;
++  // Plain arrays and `new Set([ … ])` constants: a Set of media paths is not
++  // a content block, but it must be recognized (the original pages use it to
++  // drive responsive presentation through `.has()`).
++  const re = /^const\s+([A-Za-z0-9_]+)(?:\s*:[^=]+)?\s*=\s*(?:new\s+Set\s*\(\s*)?\[/gm;
+   let m;
+   while ((m = re.exec(src))) {
+     const open = src.indexOf("[", m.index + m[0].length - 1);
+@@ -103,7 +106,7 @@
+       else if (ch === "]") { depth--; if (depth === 0) { end = i; break; } }
+     }
+     if (end < 0) continue;
+-    out.push({ name: m[1], body: src.slice(open + 1, end) });
++    out.push({ name: m[1], body: src.slice(open + 1, end), isSet: !!m[2] });
+   }
+   return out;
+ }
+@@ -155,9 +158,14 @@
+  * refuses to write a record for such a page instead of dropping the content
+  * silently (Package 4 rule: unclear blocks are never skipped).
+  */
+-function classifyArray(name, body) {
++function classifyArray(name, body, isSet = false) {
+   const hasMedia = /\/media\//.test(body);
+   const hasKeys = /"[a-z]+Cases\./.test(body);
++  if (isSet && hasMedia) {
++    // `const mobileSplitItems = new Set([…])` — consumed through `.has()`
++    // to drive the responsive presentation, never rendered as its own block.
++    return { kind: "mediaSet", supported: true, note: "Set of media paths consumed via .has() (responsive/presentation logic)" };
++  }
+   if (/titleKey:/.test(body) && /(images:|sliderBefore:|sliderAfter:|image:)/.test(body)) {
+     return { kind: "featureList", supported: true, note: "components with images/slider" };
+   }
+@@ -165,7 +173,15 @@
+     return { kind: "compare", supported: true, note: "before/after pairs → `compare`" };
+   }
+   if (/src:/.test(body) && /(poster:|duration:|preview:)/.test(body)) {
+-    return { kind: "videoGallery", supported: false, note: "video tiles (section kind exists, mapper not written)" };
++    // The tile is more than a file: the original pages wrap it in a play
++    // button that opens the fullscreen player and carry duration/format
++    // badges. The schema already models all of that (`VideoGridItem` +
++    // `FullscreenVideo`); only the SECTION mapper is still to be written.
++    return {
++      kind: "videoGrid",
++      supported: false,
++      note: "video tiles: file + poster + duration/format badges → schema `videoGrid` (playable tile + fullscreen player); section mapper not written yet",
++    };
+   }
+   if (/src:/.test(body) || /\bsrc\s*:/.test(body)) {
+     return { kind: "gallery", supported: /^(finalItems|galleryItems)$/.test(name), note: "image gallery → `gallery`" };
+@@ -257,7 +273,7 @@
+   const pagePath = path.join(ROOT, "app/(uk)/cases", direction, slug, "page.tsx");
+   const page = read(pagePath);
+   if (!page) return { id: `${direction}/${slug}`, error: `no page at ${pagePath}` };
+-  const arrays = topLevelArrays(page).map((a) => ({ name: a.name, ...classifyArray(a.name, a.body) }));
++  const arrays = topLevelArrays(page).map((a) => ({ name: a.name, ...classifyArray(a.name, a.body, a.isSet) }));
+   const inline = inlineJsxMedia(page);
+   const heroBlock = (() => {
+     const at = page.search(/ref=\{heroRef\}/);
+@@ -266,7 +282,15 @@
+     const seg = page.slice(at, Math.min(closeAt < 0 ? at + 12000 : closeAt, at + 12000));
+     if (/<video[\s\S]{0,400}?src="\/media\//.test(seg)) {
+       const tiles = (seg.match(/\{\s*src:\s*"\/media\/[^"]+"/g) ?? []).length;
+-      return tiles > 1 ? `videoGrid(${tiles})` : "video";
++      if (tiles > 1) return `videoGrid(${tiles})`;
++      // A single hero video is recognized together with its interaction:
++      // the play overlay / fullscreen-player opener and the badges.
++      const interactive = /openFullscreen|setFullscreen|FullscreenVideo|<Play\b/.test(seg);
++      const badges = [
++        />\s*(9:16|16:9|1:1)\s*</.test(seg) ? "format" : null,
++        />\s*~\d+\s*(?:сек|sec|secs|s|с)\s*</.test(seg) ? "duration" : null,
++      ].filter(Boolean);
++      return `video${interactive ? "(player)" : "(static)"}${badges.length ? `+${badges.join("+")}` : ""}`;
+     }
+     if (/src=\{[A-Z][A-Z0-9_]*\}/.test(seg) && /<Image[\s\S]{0,300}?src=\{/.test(seg)) return "image";
+     const literals = seg.match(/<Image[\s\S]{0,500}?src="(?:https?:\/\/[^"]+)?\/media\/[^"?#]+/g) ?? [];
+@@ -313,7 +337,7 @@
+   if (
+     heroBlock !== "image" &&
+     heroBlock !== "none" &&
+-    heroBlock !== "video" &&
++    !heroBlock.startsWith("video") &&
+     !heroBlock.startsWith("imageGrid")
+   ) {
+     blockers.push(`hero is ${heroBlock} — the mapper writes an image, image-grid or single-video hero only`);
+@@ -387,7 +411,28 @@
+     const poster = heroTag[0].match(/poster="([^"]+)"/)?.[1] ?? null;
+     const w = heroTag[0].match(/width={(\d+)}/)?.[1] ?? null;
+     const h = heroTag[0].match(/height={(\d+)}/)?.[1] ?? null;
+-    if (src) heroBlock = { kind: "video", src, poster, w: w ? Number(w) : null, h: h ? Number(h) : null };
++    // The thumb is a CLICKABLE wrapper around the <video>: the play overlay,
++    // the fullscreen-player opener and the duration/format badges sit NEXT TO
++    // the tag, so they are read from the whole hero segment — not from the
++    // <video> element alone.
++    const formatBadge = heroSeg.match(/>\s*(9:16|16:9|1:1)\s*</)?.[1] ?? null;
++    const durationBadge =
++      heroSeg.match(/>\s*(~\d+\s*(?:сек|секунд|sec|secs|s|с)|\d+\s*сек)\s*</)?.[1]?.trim() ?? null;
++    const opensPlayer =
++      /openFullscreen|setFullscreen|FullscreenVideo|role="dialog"/.test(heroSeg) ||
++      /<Play\b/.test(heroSeg);
++    if (src) {
++      heroBlock = {
++        kind: "video",
++        src,
++        poster,
++        w: w ? Number(w) : null,
++        h: h ? Number(h) : null,
++        duration: durationBadge,
++        format: formatBadge,
++        opensPlayer,
++      };
++    }
+   }
+   const heroLiterals = [...heroSeg.matchAll(/<Image[\s\S]{0,500}?src="((?:https?:\/\/[^"]+)?\/media\/[^"?#]+)(?:[?#][^"]*)?"[^>]*>/g)].map((m) => {
+     const tag = m[0];
+@@ -484,7 +529,7 @@
+   // shared schema cannot express this page yet — stop instead of dropping it.
+   for (const a of topLevelArrays(page)) {
+     if (/^(components|results)$/i.test(a.name)) continue;
+-    const classified = classifyArray(a.name, a.body);
++    const classified = classifyArray(a.name, a.body, a.isSet);
+     if (!classified.supported && (/\/media\//.test(a.body) || /"[a-z]+Cases\./.test(a.body))) {
+       blockers.push(`array "${a.name}" → ${classified.kind} (${classified.note})`);
+     }
+@@ -673,7 +718,7 @@
+   const checklistSections = [];
+   let galleryGroupsSection = null;
+   for (const a of arrays) {
+-    const kind = classifyArray(a.name, a.body).kind;
++    const kind = classifyArray(a.name, a.body, a.isSet).kind;
+     const pos = Math.max(renderPosWithHeading(page, a.name), 0);
+     if (kind === "gallery" && /^(finalItems|galleryItems)$/.test(a.name)) {
+       const items = splitItems(a.body)
+@@ -824,6 +869,15 @@
+     if (heroBlock.w) push(`    w: ${heroBlock.w},`);
+     if (heroBlock.h) push(`    h: ${heroBlock.h},`);
+     push(`    alt: ${card?.titleKey ? `key(${JSON.stringify(card.titleKey)})` : `text("", "")`},`);
++    if (heroBlock.duration) {
++      // The badge is literal copy from the original page (often Ukrainian
++      // only) — EN wording is an editorial question, not a machine answer.
++      push(`    duration: text(${JSON.stringify(heroBlock.duration)}, ${JSON.stringify(heroBlock.duration)}), // TODO(editorial): EN badge`);
++    }
++    if (heroBlock.format) push(`    format: ${JSON.stringify(heroBlock.format)},`);
++    if (heroBlock.opensPlayer === false) {
++      push(`    // NOTE: no click-to-open player detected on the original hero — verify by hand`);
++    }
+   } else if (heroBlock?.kind === "imageGrid") {
+     push(`    kind: "imageGrid",`);
+     push(`    items: [`);
+==============================================================================
+--- scripts/package4-media-check.mjs
+==============================================================================
+--- a/scripts/package4-media-check.mjs (до виправлень)
++++ b/scripts/package4-media-check.mjs
+@@ -80,11 +80,14 @@
+   return null;
+ }
+ 
+-/** Top-level `const NAME = [ … ]` arrays, with their media in array order. */
++/** Top-level `const NAME = [ … ]` / `new Set([ … ])` with their media in order. */
+ function sourceArrayGroups(src) {
+   const groups = [];
+   const masked = [];
+-  const re = /^const\s+([A-Za-z0-9_]+)(?:\s*:[^=]+)?\s*=\s*\[/gm;
++  // A `new Set([...])` of media paths (e.g. `mobileSplitItems`) is not a
++  // rendered block, but it must still be listed so the report can say
++  // whether the page CONSUMES it (`.has()`) or it really is dead data.
++  const re = /^const\s+([A-Za-z0-9_]+)(?:\s*:[^=]+)?\s*=\s*(?:new\s+Set\s*\(\s*)?\[/gm;
+   let m;
+   while ((m = re.exec(src))) {
+     const open = src.indexOf("[", m.index + m[0].length - 1);
+@@ -184,11 +187,17 @@
+   if (hero.kind === "imageGrid") hero.items.forEach((i) => push(i.src));
+   if (hero.kind === "video") { push(hero.src); push(hero.poster); }
+   if (hero.kind === "videoGrid") hero.items.forEach((i) => { push(i.src); push(i.poster); });
++  // A `splitMobile` gallery item renders the same file three times in the
++  // HTML: the whole image (desktop) plus its two mobile halves.
++  const pushGalleryItem = (item) => {
++    push(item.src);
++    if (item.presentation?.splitMobile) { push(item.src); push(item.src); }
++  };
+   for (const section of record.sections) {
+     if (section.kind === "featureList") section.items.forEach((i) => i.images?.forEach((img) => push(img.src)));
+     if (section.kind === "compare") section.items.forEach((i) => { push(i.before); push(i.after); });
+-    if (section.kind === "gallery") section.items.forEach((i) => push(i.src));
+-    if (section.kind === "galleryGroups") section.groups.forEach((g) => g.items.forEach((i) => push(i.src)));
++    if (section.kind === "gallery") section.items.forEach(pushGalleryItem);
++    if (section.kind === "galleryGroups") section.groups.forEach((g) => g.items.forEach(pushGalleryItem));
+     if (section.kind === "videoGrid") section.items.forEach((i) => { push(i.src); push(i.poster); });
+   }
+   if (record.review) {
+@@ -560,16 +569,31 @@
+   const order = matchOrder(recordBlocks(record), units);
+   // A source construct that is never a rendered block (a `Set` of media paths,
+   // a re-declared constant) only matters when the record does not carry its
+-  // files at all — that is a real loss; otherwise it is dead source data.
++  // files at all — that is a real loss. A construct that the page still
++  // CONSUMES elsewhere (e.g. `mobileSplitItems.has(src)` driving the
++  // responsive split) is live source logic, not dead code.
++  const referencedInSource = (name) => {
++    const ident = name.replace(/^const\s+/, "");
++    if (!/^[A-Za-z_$][\w$]*$/.test(ident)) return false;
++    const hits = [...pageSrc.matchAll(new RegExp(`\\b${ident}\\b`, "g"))].length;
++    return hits > 1;
++  };
+   const recordFiles = new Set(registry.collectRecordMedia(record, false).map(norm));
+   const reallyLost = order.unconsumed.filter((unit) => unit.media.some((file) => !recordFiles.has(file)));
++  const usedInLogic = order.unconsumed.filter((unit) => !reallyLost.includes(unit) && referencedInSource(unit.name));
++  const trulyUnused = order.unconsumed.filter((unit) => !reallyLost.includes(unit) && !usedInLogic.includes(unit));
+   const unmatched = order.report.filter((r) => r.kind === "unmatched");
+   if (unmatched.length) bad(`порядок не підтверджено для: ${unmatched.map((r) => r.block).join(", ")}`);
+   if (order.unconsumed.length) {
+     if (reallyLost.length) {
+       bad(`джерельні конструкції без файлів у записі: ${reallyLost.map((u) => u.name).join(", ")}`);
+     } else {
+-      note(`✓ нерендерні джерельні конструкції (${order.unconsumed.length}) — їхні файли є в записі`);
++      if (usedInLogic.length) {
++        note(`✓ джерельні конструкції, які сторінка споживає в логіці (${usedInLogic.length}): ${usedInLogic.map((u) => u.name).join(", ")} — не рендеряться самі по собі, але керують показом (напр., responsive-розбиття через .has())`);
++      }
++      if (trulyUnused.length) {
++        note(`✓ нерендерні джерельні конструкції без інших вживань (${trulyUnused.length}): ${trulyUnused.map((u) => u.name).join(", ")} — їхні файли є в записі`);
++      }
+     }
+   }
+   if (!unmatched.length && !order.unconsumed.length) {
+@@ -724,6 +748,51 @@
+     if (countMismatch.length) bad(`${pagePath}: кратність рендеру — ${countMismatch.join("; ")}`);
+     if (orderProblems.length) bad(`${pagePath}: порядок — ${orderProblems.join("; ")}`);
+ 
++    // Explicit responsive-split presentation (`presentation.splitMobile`):
++    // each rendered instance must keep the whole image (desktop) and its two
++    // mobile halves of the same file.
++    const expectSplits = [];
++    for (const section of record.sections) {
++      if (section.kind === "gallery") {
++        section.items.forEach((item) => {
++          if (item.presentation?.splitMobile) expectSplits.push(item);
++        });
++      }
++      if (section.kind === "galleryGroups") {
++        section.groups.forEach((group) =>
++          group.items.forEach((item) => {
++            if (item.presentation?.splitMobile) expectSplits.push(item);
++          }),
++        );
++      }
++    }
++    const splitParts = { left: [], right: [] };
++    for (const m of html.matchAll(/<div[^>]*\bdata-case-split-part="(left|right)"[^>]*>([\s\S]*?)<\/div>/g)) {
++      let raw = m[2].match(/src="([^"]+)"/)?.[1] ?? "";
++      const query = raw.match(/[?&]url=([^&"]+)/);
++      if (query) {
++        try {
++          raw = decodeURIComponent(query[1]);
++        } catch {
++          /* keep raw */
++        }
++      }
++      splitParts[m[1]].push(norm(raw));
++    }
++    const splitProblems = [];
++    for (const item of expectSplits) {
++      const file = norm(item.src);
++      const lefts = splitParts.left.filter((f) => f === file).length;
++      const rights = splitParts.right.filter((f) => f === file).length;
++      if (lefts !== 1 || rights !== 1) splitProblems.push(`${file}: mobile-частини ${lefts}/${rights} ≠ 1/1`);
++    }
++    const knownSplits = new Set(expectSplits.map((item) => norm(item.src)));
++    for (const file of [...splitParts.left, ...splitParts.right]) {
++      if (!knownSplits.has(file)) splitProblems.push(`split-part для файлу поза записом: ${file}`);
++    }
++    if (splitProblems.length) bad(`${pagePath}: responsive-розбиття — ${splitProblems.join("; ")}`);
++    else if (expectSplits.length) note(`✓ responsive-розбиття: кожен split-файл має рівно дві mobile-частини (${expectSplits.length} файл(и))`);
++
+     htmlRows.push({
+       pagePath,
+       found: afterMedia.length - missing.length,
+==============================================================================
+--- scripts/package4-case-check.mjs
+==============================================================================
+--- a/scripts/package4-case-check.mjs (до виправлень)
++++ b/scripts/package4-case-check.mjs
+@@ -358,7 +358,18 @@
+   check(scope, `${record.uaPath} image modal closes on button`, (await dialog.count()) === 0);
+ }
+ 
++function videoTileExpectation(record) {
++  let count = 0;
++  if (record.hero.kind === "videoGrid") count += record.hero.items.length;
++  if (record.hero.kind === "video") count += 1;
++  for (const section of record.sections) {
++    if (section.kind === "videoGrid") count += section.items.length;
++  }
++  return count;
++}
++
+ async function checkVideoModal(page, record, scope) {
++  const expectedTiles = videoTileExpectation(record);
+   for (const locale of ["uk", "en"]) {
+     const path_ = locale === "en" ? record.enPath : record.uaPath;
+     const openLabel = translations[locale]["cases.ui.openVideo"];
+@@ -369,8 +380,23 @@
+ 
+     const tiles = page.locator(`video[aria-label="${openLabel}"]`);
+     const tileCount = await tiles.count();
+-    check(scope, `${path_} hero video tiles`, tileCount === 3, String(tileCount));
++    check(scope, `${path_} hero video tiles`, tileCount === expectedTiles, `${tileCount} (expected ${expectedTiles})`);
+     if (tileCount === 0) continue;
++
++    // A single hero video keeps the original badges over its thumb: the
++    // duration is localized, the ratio is the same in both languages.
++    if (record.hero.kind === "video") {
++      const heroTile = tiles.first().locator("xpath=..");
++      if (record.hero.duration) {
++        const want = resolveText(record.hero.duration, locale, translations[locale]).trim();
++        const durationBadges = await heroTile.locator("span").filter({ hasText: want }).count();
++        check(scope, `${path_} hero duration badge localized`, durationBadges >= 1, `want "${want}"`);
++      }
++      if (record.hero.format) {
++        const formatBadges = await heroTile.locator("span").filter({ hasText: record.hero.format }).count();
++        check(scope, `${path_} hero format badge`, formatBadges >= 1, `want "${record.hero.format}"`);
++      }
++    }
+ 
+     // Click the tile wrapper: the gradient overlay sits on top of the <video>,
+     // and Playwright requires the hit target to be the located element itself
+@@ -465,10 +491,110 @@
+       !!reviewSrc && reviewSrc.includes("/media/testimonials/"),
+       String(reviewSrc),
+     );
++  }
++}
++
++/** Gallery items that carry an explicit presentation (split / max-width). */
++function presentationItems(record) {
++  const out = [];
++  for (const section of record.sections) {
++    if (section.kind === "gallery") {
++      section.items.forEach((item) => {
++        if (item.presentation) out.push({ item, section: section.kind });
++      });
++    }
++    if (section.kind === "galleryGroups") {
++      section.groups.forEach((group) =>
++        group.items.forEach((item) => {
++          if (item.presentation) out.push({ item, section: section.kind });
++        }),
++      );
++    }
+   }
++  return out;
+ }
+ 
+ /**
++ * Explicit presentation contract (hope-media-group):
++ *  - `splitMobile`: the whole layout is visible on desktop, exactly two
++ *    mobile halves of the same file on mobile (original `WideImage`);
++ *  - `maxWidth`: the media wrapper is capped so a portrait sheet does not
++ *    stretch (280px in the main gallery, `max-w-md` in the groups).
++ */
++async function checkResponsivePresentation(page, record, scope, viewport) {
++  const expected = presentationItems(record).filter(
++    ({ item }) => item.presentation.splitMobile || item.presentation.maxWidth,
++  );
++  if (!expected.length) return;
++  await page.goto(`${BASE}${record.uaPath}`, { waitUntil: "domcontentloaded" });
++  await settle(page, 1200);
++  const isMobileViewport = viewport === "mobile";
++
++  const probe = await page.evaluate(() => {
++    const grab = (root) => {
++      if (!root) return [];
++      return [...root.querySelectorAll('[data-case-block="gallery-item"]')].map((card) => {
++        const whole = card.querySelector("img");
++        const wrap = whole?.closest("div")?.parentElement ?? null;
++        const parts = [...card.querySelectorAll("[data-case-split-part]")];
++        return {
++          src: whole?.getAttribute("src") ?? "",
++          wrapMaxWidth: wrap ? getComputedStyle(wrap).maxWidth : null,
++          wholeVisible: !!whole?.getClientRects().length,
++          split: parts.map((el) => ({
++            side: el.getAttribute("data-case-split-part"),
++            visible: !!el.getClientRects().length,
++            src: el.querySelector("img")?.getAttribute("src") ?? "",
++          })),
++        };
++      });
++    };
++    return {
++      gallery: grab(document.querySelector('[data-case-block="gallery"]')),
++      groups: grab(document.querySelector('[data-case-block="galleryGroups"]')),
++    };
++  });
++
++  const fileOf = (src) => decodeURIComponent(src.split("/").pop() ?? "");
++  const problems = [];
++  for (const { item, section } of expected) {
++    const file = fileOf(item.src);
++    const cards = (section === "gallery" ? probe.gallery : probe.groups).filter((c) => fileOf(c.src) === file);
++    if (!cards.length) {
++      problems.push(`${file}: картка не знайдена в ${section}`);
++      continue;
++    }
++    const card = cards[0];
++    if (item.presentation.splitMobile) {
++      const sides = card.split.map((p) => `${p.side}:${p.visible ? "visible" : "hidden"}`).join(",");
++      const left = card.split.filter((p) => p.side === "left");
++      const right = card.split.filter((p) => p.side === "right");
++      const sameSrc = card.split.every((p) => fileOf(p.src) === file);
++      const wantVisible = isMobileViewport;
++      const halvesOk =
++        left.length === 1 &&
++        right.length === 1 &&
++        sameSrc &&
++        card.split.every((p) => p.visible === wantVisible) &&
++        card.wholeVisible !== wantVisible;
++      if (!halvesOk) problems.push(`${file}: split desktop/mobile (${sides}, whole visible=${card.wholeVisible})`);
++    }
++    if (item.presentation.maxWidth) {
++      const limit = item.presentation.maxWidth === "280px" ? 281 : 449; // max-w-md = 28rem = 448px
++      const got = card.wrapMaxWidth;
++      const px = got && got.endsWith("px") ? Number.parseFloat(got) : Number.POSITIVE_INFINITY;
++      if (!(px <= limit)) problems.push(`${file}: max-width ${got} > ${item.presentation.maxWidth}`);
++    }
++  }
++  check(
++    scope,
++    `${record.uaPath} responsive presentation (${viewport}, ${expected.length} items)`,
++    problems.length === 0,
++    problems.join("; "),
++  );
++}
++
++/**
+  * Social proof blocks.
+  *
+  * 1. Avatars: rendered exactly where the original page rendered them
+@@ -810,7 +936,8 @@
+       JSON.stringify(revealProblems.slice(0, 3)),
+     );
+ 
+-    const hasVideoGrid = record.hero.kind === "videoGrid" || expectedKinds.has("videoGrid");
++    const hasVideoGrid =
++      record.hero.kind === "videoGrid" || record.hero.kind === "video" || expectedKinds.has("videoGrid");
+     const materialCounts = [
+       [
+         "feature images/sliders",
+@@ -866,8 +993,15 @@
+   if (byId["it/eva-code"]) {
+     await safe(scopeD, "eva-code image modal", () => checkImageModal(page, byId["it/eva-code"], scopeD));
+   }
+-  if (byId["video/cuprus-life"]) {
+-    await safe(scopeD, "cuprus video modal", () => checkVideoModal(page, byId["video/cuprus-life"], scopeD));
++  for (const record of records) {
++    if (videoTileExpectation(record) > 0) {
++      await safe(scopeD, `${record.id} video modal`, () => checkVideoModal(page, record, scopeD));
++    }
++    if (presentationItems(record).length) {
++      await safe(scopeD, `${record.id} responsive presentation`, () =>
++        checkResponsivePresentation(page, record, scopeD, "desktop"),
++      );
++    }
+   }
+   for (const record of records) {
+     await safe(scopeD, `${record.id} review avatar/media button`, () => checkReviewSocialProof(page, record, scopeD));
+@@ -890,8 +1024,15 @@
+   if (byId["design/nastya-portrait-retouch"]) {
+     await safe(scopeM, "nastya image modal", () => checkImageModal(mobilePage, byId["design/nastya-portrait-retouch"], scopeM));
+   }
+-  if (byId["video/cuprus-life"]) {
+-    await safe(scopeM, "cuprus video modal", () => checkVideoModal(mobilePage, byId["video/cuprus-life"], scopeM));
++  for (const record of records) {
++    if (videoTileExpectation(record) > 0) {
++      await safe(scopeM, `${record.id} video modal`, () => checkVideoModal(mobilePage, record, scopeM));
++    }
++    if (presentationItems(record).length) {
++      await safe(scopeM, `${record.id} responsive presentation`, () =>
++        checkResponsivePresentation(mobilePage, record, scopeM, "mobile"),
++      );
++    }
+   }
+   await mobilePage.close();
+   await mobile.close();

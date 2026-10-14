@@ -1,0 +1,85 @@
+[
+  {
+    "type": "needs-manual-review",
+    "id": "it/darkshare",
+    "flags": [
+      "orphanedI18nLink:itCases.darkshare.link"
+    ]
+  },
+  {
+    "type": "needs-manual-review",
+    "id": "it/eva-code",
+    "flags": [
+      "orphanedI18nLink:itCases.evaCode.link"
+    ]
+  },
+  {
+    "type": "needs-manual-review",
+    "id": "it/importera",
+    "flags": [
+      "orphanedI18nLink:itCases.importera.link"
+    ]
+  },
+  {
+    "type": "needs-manual-review",
+    "id": "it/ruslan-aviation",
+    "flags": [
+      "orphanedI18nLink:itCases.ruslan.link"
+    ]
+  },
+  {
+    "type": "related-projects-incomplete",
+    "count": 43,
+    "missing": [
+      "it/darkshare",
+      "it/epiland",
+      "it/importera",
+      "it/kroscar-detailing",
+      "it/liudmyla-tsybrii",
+      "it/pivden-solar",
+      "it/selloflow",
+      "it/stretching-ch",
+      "design/barvy-interior",
+      "design/color-correction",
+      "design/globus-billboard",
+      "design/nastya-portrait-retouch",
+      "video/ai-avatars",
+      "video/ai-ice-cream",
+      "video/ai-promo-misha",
+      "video/ai-video-new",
+      "video/alien-city-adventure",
+      "video/automation-1click",
+      "video/dr-trichologist-promo",
+      "video/income-graph-motion",
+      "video/ivan-ig-creative",
+      "video/logo-animation",
+      "video/maccoudi-youtube",
+      "video/motion-promo",
+      "video/motion-reels",
+      "video/nikita-sheremet-crypto",
+      "video/passive-income-video",
+      "video/podcast-editing",
+      "video/presentation-animation",
+      "video/sales-bible-promo",
+      "video/selloflow-intro",
+      "video/sestro-anniversary",
+      "video/sestro-beauty",
+      "video/skool-10-features",
+      "video/travel-vlog-turkey",
+      "video/valeriia-trend-reels",
+      "video/vibe-nation-promo",
+      "video/vitalii-cheverda",
+      "video/vladlen-lisynko-interview",
+      "video/vorodi-medical",
+      "video/watch-hype-intro",
+      "video/watch-hype-motion",
+      "video/wine-festival"
+    ]
+  },
+  {
+    "type": "related-projects-unknown-slug",
+    "slugs": [
+      "nikita-sheremet"
+    ]
+  }
+]

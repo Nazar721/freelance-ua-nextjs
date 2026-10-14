@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 import { useTheme } from "@/lib/ThemeContext";
+import { useTranslation } from "@/lib/LanguageContext";
 
 const RATE_PER_CLIENT = 850;
 const MAX_INCOME = 26800;
@@ -90,6 +91,8 @@ interface Particle {
 
 export default function BecomePartnerSection() {
   const { theme } = useTheme();
+  const { locale } = useTranslation();
+  const lp = locale === "en" ? "/en" : "";
   const reducedMotion = usePrefersReducedMotion();
   // Start desktop on both server and first client render (hydration-safe);
   // the real value applies right after mount.
@@ -801,7 +804,7 @@ export default function BecomePartnerSection() {
           </div>
 
           <Link
-            href="/partners"
+            href={`${lp}/partners`}
             className="inline-flex w-full items-center justify-center gap-2.5 rounded-full text-[15px] font-semibold text-white"
             style={{
               padding: "15px 26px",
@@ -1094,7 +1097,7 @@ export default function BecomePartnerSection() {
             </div>
 
             <Link
-              href="/partners"
+              href={`${lp}/partners`}
               className="pointer-events-auto bp-partner-cta inline-flex items-center justify-center gap-2.5 text-white font-semibold rounded-full text-sm w-full"
               style={{ padding: "13px 26px" }}
             >

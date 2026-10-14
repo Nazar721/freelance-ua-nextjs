@@ -1,0 +1,243 @@
+
+> freelance-ua@0.1.0 build
+> node scripts/pull-lfs.mjs && next build
+
+pull-lfs: all LFS files present
+▲ Next.js 16.2.1 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+(node:43420) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✓ Compiled successfully in 11.5s
+  Running TypeScript ...
+  Finished TypeScript in 4.9s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/219) ...
+  Generating static pages using 7 workers (54/219) 
+  Generating static pages using 7 workers (109/219) 
+  Generating static pages using 7 workers (164/219) 
+✓ Generating static pages using 7 workers (219/219) in 811ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /[...slug]
+├ ƒ /api/chat
+├ ƒ /cases
+├ ƒ /cases/design/apple-tecnologia
+├ ƒ /cases/design/barvy-interior
+├ ƒ /cases/design/color-correction
+├ ƒ /cases/design/crypto-chat-manager-vacancy
+├ ƒ /cases/design/divorce-legal-ad
+├ ƒ /cases/design/f5-guitars-youtube
+├ ƒ /cases/design/gel-polish
+├ ƒ /cases/design/giesbrecht-pv
+├ ƒ /cases/design/globus-billboard
+├ ƒ /cases/design/gopro-hero13
+├ ƒ /cases/design/hope-media-group
+├ ƒ /cases/design/mht-clinic-billboard
+├ ƒ /cases/design/moto-school-window-branding
+├ ƒ /cases/design/mydutyfree
+├ ƒ /cases/design/nastya-portrait-retouch
+├ ƒ /cases/design/nastya-smm
+├ ƒ /cases/design/photo-retouch
+├ ƒ /cases/design/pink-pr-flyers
+├ ƒ /cases/design/prestige-school-billboard
+├ ƒ /cases/design/schonheit-gift-certificate
+├ ƒ /cases/design/sembud-repair
+├ ƒ /cases/design/smm-case-presentation
+├ ƒ /cases/design/snizhana-telegram-stickers
+├ ƒ /cases/design/vikontse-logo
+├ ƒ /cases/it/asandra-soul
+├ ƒ /cases/it/darkshare
+├ ƒ /cases/it/epiland
+├ ƒ /cases/it/eva-code
+├ ƒ /cases/it/importera
+├ ƒ /cases/it/kroscar-detailing
+├ ƒ /cases/it/liudmyla-tsybrii
+├ ƒ /cases/it/md-dental
+├ ƒ /cases/it/mnm-detailing
+├ ƒ /cases/it/nextcup
+├ ƒ /cases/it/pivden-solar
+├ ƒ /cases/it/prime-auto-shipping
+├ ƒ /cases/it/repair-collision
+├ ƒ /cases/it/route-core
+├ ƒ /cases/it/ruslan-aviation
+├ ƒ /cases/it/sdent
+├ ƒ /cases/it/selloflow
+├ ƒ /cases/it/serezha-shop
+├ ƒ /cases/it/shkiper-drop
+├ ƒ /cases/it/stretching-ch
+├ ƒ /cases/it/voltone-pro
+├ ƒ /cases/video/ai-avatars
+├ ƒ /cases/video/ai-ice-cream
+├ ƒ /cases/video/ai-promo-misha
+├ ƒ /cases/video/ai-spring-fashion
+├ ƒ /cases/video/ai-video-new
+├ ƒ /cases/video/alien-city-adventure
+├ ƒ /cases/video/artem-reels
+├ ƒ /cases/video/auto-edits-reels
+├ ƒ /cases/video/automation-1click
+├ ƒ /cases/video/barvy-interior-ai-reels
+├ ƒ /cases/video/cuprus-life
+├ ƒ /cases/video/dance-competition-lviv
+├ ƒ /cases/video/dominanta-youtube-intro
+├ ƒ /cases/video/dr-trichologist-promo
+├ ƒ /cases/video/eva-code-reels
+├ ƒ /cases/video/income-graph-motion
+├ ƒ /cases/video/internet-svit-promo
+├ ƒ /cases/video/ivan-ig-creative
+├ ƒ /cases/video/liliya-product-business
+├ ƒ /cases/video/logan-ai-promo
+├ ƒ /cases/video/logo-animation
+├ ƒ /cases/video/maccoudi-youtube
+├ ƒ /cases/video/motion-promo
+├ ƒ /cases/video/motion-reels
+├ ƒ /cases/video/nikita-sheremet-crypto
+├ ƒ /cases/video/passive-income-video
+├ ƒ /cases/video/podcast-editing
+├ ƒ /cases/video/presentation-animation
+├ ƒ /cases/video/sales-bible-promo
+├ ƒ /cases/video/selloflow-intro
+├ ƒ /cases/video/serhii-yarmolenko-reels
+├ ƒ /cases/video/serhii-yarmolenko-video-lesson
+├ ƒ /cases/video/sestro-anniversary
+├ ƒ /cases/video/sestro-beauty
+├ ƒ /cases/video/sheglam-freedom-fest
+├ ƒ /cases/video/sheglam-promo
+├ ƒ /cases/video/skool-10-features
+├ ƒ /cases/video/taranenko-trade
+├ ƒ /cases/video/telegram-emoji-stickers
+├ ƒ /cases/video/travel-vlog-turkey
+├ ƒ /cases/video/twin-a-auto
+├ ƒ /cases/video/valeriia-trend-reels
+├ ƒ /cases/video/varto-reels
+├ ƒ /cases/video/veronika-ai-muscles
+├ ƒ /cases/video/vibe-nation-promo
+├ ƒ /cases/video/vitalii-cheverda
+├ ƒ /cases/video/vladlen-lisynko-interview
+├ ƒ /cases/video/vorodi-medical
+├ ƒ /cases/video/vsehub-reels
+├ ƒ /cases/video/vtikha-promo
+├ ƒ /cases/video/watch-hype-intro
+├ ƒ /cases/video/watch-hype-motion
+├ ƒ /cases/video/wine-festival
+├ ƒ /cases/video/youtube-conversational-video
+├ ƒ /cases/video/yulia-smm-reels
+├ ƒ /en
+├ ƒ /en/[...slug]
+├ ƒ /en/cases
+├ ƒ /en/cases/design/apple-tecnologia
+├ ƒ /en/cases/design/barvy-interior
+├ ƒ /en/cases/design/color-correction
+├ ƒ /en/cases/design/crypto-chat-manager-vacancy
+├ ƒ /en/cases/design/divorce-legal-ad
+├ ƒ /en/cases/design/f5-guitars-youtube
+├ ƒ /en/cases/design/gel-polish
+├ ƒ /en/cases/design/giesbrecht-pv
+├ ƒ /en/cases/design/globus-billboard
+├ ƒ /en/cases/design/gopro-hero13
+├ ƒ /en/cases/design/hope-media-group
+├ ƒ /en/cases/design/mht-clinic-billboard
+├ ƒ /en/cases/design/moto-school-window-branding
+├ ƒ /en/cases/design/mydutyfree
+├ ƒ /en/cases/design/nastya-portrait-retouch
+├ ƒ /en/cases/design/nastya-smm
+├ ƒ /en/cases/design/photo-retouch
+├ ƒ /en/cases/design/pink-pr-flyers
+├ ƒ /en/cases/design/prestige-school-billboard
+├ ƒ /en/cases/design/schonheit-gift-certificate
+├ ƒ /en/cases/design/sembud-repair
+├ ƒ /en/cases/design/smm-case-presentation
+├ ƒ /en/cases/design/snizhana-telegram-stickers
+├ ƒ /en/cases/design/vikontse-logo
+├ ƒ /en/cases/it/asandra-soul
+├ ƒ /en/cases/it/darkshare
+├ ƒ /en/cases/it/epiland
+├ ƒ /en/cases/it/eva-code
+├ ƒ /en/cases/it/importera
+├ ƒ /en/cases/it/kroscar-detailing
+├ ƒ /en/cases/it/liudmyla-tsybrii
+├ ƒ /en/cases/it/md-dental
+├ ƒ /en/cases/it/mnm-detailing
+├ ƒ /en/cases/it/nextcup
+├ ƒ /en/cases/it/pivden-solar
+├ ƒ /en/cases/it/prime-auto-shipping
+├ ƒ /en/cases/it/repair-collision
+├ ƒ /en/cases/it/route-core
+├ ƒ /en/cases/it/ruslan-aviation
+├ ƒ /en/cases/it/sdent
+├ ƒ /en/cases/it/selloflow
+├ ƒ /en/cases/it/serezha-shop
+├ ƒ /en/cases/it/shkiper-drop
+├ ƒ /en/cases/it/stretching-ch
+├ ƒ /en/cases/it/voltone-pro
+├ ƒ /en/cases/video/ai-avatars
+├ ƒ /en/cases/video/ai-ice-cream
+├ ƒ /en/cases/video/ai-promo-misha
+├ ƒ /en/cases/video/ai-spring-fashion
+├ ƒ /en/cases/video/ai-video-new
+├ ƒ /en/cases/video/alien-city-adventure
+├ ƒ /en/cases/video/artem-reels
+├ ƒ /en/cases/video/auto-edits-reels
+├ ƒ /en/cases/video/automation-1click
+├ ƒ /en/cases/video/barvy-interior-ai-reels
+├ ƒ /en/cases/video/cuprus-life
+├ ƒ /en/cases/video/dance-competition-lviv
+├ ƒ /en/cases/video/dominanta-youtube-intro
+├ ƒ /en/cases/video/dr-trichologist-promo
+├ ƒ /en/cases/video/eva-code-reels
+├ ƒ /en/cases/video/income-graph-motion
+├ ƒ /en/cases/video/internet-svit-promo
+├ ƒ /en/cases/video/ivan-ig-creative
+├ ƒ /en/cases/video/liliya-product-business
+├ ƒ /en/cases/video/logan-ai-promo
+├ ƒ /en/cases/video/logo-animation
+├ ƒ /en/cases/video/maccoudi-youtube
+├ ƒ /en/cases/video/motion-promo
+├ ƒ /en/cases/video/motion-reels
+├ ƒ /en/cases/video/nikita-sheremet-crypto
+├ ƒ /en/cases/video/passive-income-video
+├ ƒ /en/cases/video/podcast-editing
+├ ƒ /en/cases/video/presentation-animation
+├ ƒ /en/cases/video/sales-bible-promo
+├ ƒ /en/cases/video/selloflow-intro
+├ ƒ /en/cases/video/serhii-yarmolenko-reels
+├ ƒ /en/cases/video/serhii-yarmolenko-video-lesson
+├ ƒ /en/cases/video/sestro-anniversary
+├ ƒ /en/cases/video/sestro-beauty
+├ ƒ /en/cases/video/sheglam-freedom-fest
+├ ƒ /en/cases/video/sheglam-promo
+├ ƒ /en/cases/video/skool-10-features
+├ ƒ /en/cases/video/taranenko-trade
+├ ƒ /en/cases/video/telegram-emoji-stickers
+├ ƒ /en/cases/video/travel-vlog-turkey
+├ ƒ /en/cases/video/twin-a-auto
+├ ƒ /en/cases/video/valeriia-trend-reels
+├ ƒ /en/cases/video/varto-reels
+├ ƒ /en/cases/video/veronika-ai-muscles
+├ ƒ /en/cases/video/vibe-nation-promo
+├ ƒ /en/cases/video/vitalii-cheverda
+├ ƒ /en/cases/video/vladlen-lisynko-interview
+├ ƒ /en/cases/video/vorodi-medical
+├ ƒ /en/cases/video/vsehub-reels
+├ ƒ /en/cases/video/vtikha-promo
+├ ƒ /en/cases/video/watch-hype-intro
+├ ƒ /en/cases/video/watch-hype-motion
+├ ƒ /en/cases/video/wine-festival
+├ ƒ /en/cases/video/youtube-conversational-video
+├ ƒ /en/cases/video/yulia-smm-reels
+├ ƒ /en/partners
+├ ƒ /en/services/[direction]
+├ ○ /icon.jpg
+├ ƒ /partners
+├ ○ /robots.txt
+├ ƒ /services/[direction]
+└ ○ /sitemap.xml
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

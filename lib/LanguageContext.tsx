@@ -1,16 +1,21 @@
 "use client";
 
-import { createContext, useContext, useCallback, useEffect, type ReactNode } from "react";
+import { createContext, useContext, useCallback, type ReactNode } from "react";
 import type { Locale } from "./i18n";
 
 interface LanguageContextType {
   locale: Locale;
-  setLocale: (locale: Locale) => void;
   t: (key: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+/**
+ * The language is defined by the URL (see lib/i18n-routes.ts and proxy.ts).
+ * The provider only carries the locale of the current URL and the matching
+ * dictionary — switching language is navigation to the counterpart URL, not
+ * a cookie + reload of the same address.
+ */
 export function LanguageProvider({
   children,
   initialLocale = "uk",
@@ -22,19 +27,6 @@ export function LanguageProvider({
 }) {
   const locale = initialLocale;
 
-  const setLocale = useCallback(
-    (newLocale: Locale) => {
-      if (newLocale === locale) return;
-      document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; samesite=lax`;
-      window.location.reload();
-    },
-    [locale],
-  );
-
-  useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
-
   const t = useCallback(
     (key: string): string => {
       return messages[key] || key;
@@ -43,7 +35,7 @@ export function LanguageProvider({
   );
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, t }}>
+    <LanguageContext.Provider value={{ locale, t }}>
       {children}
     </LanguageContext.Provider>
   );

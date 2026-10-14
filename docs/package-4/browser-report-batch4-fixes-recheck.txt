@@ -1,0 +1,670 @@
+Package 4 case pages — browser checks
+base: http://localhost:3011
+engines: chromium, webkit (Playwright builds, not installed Chrome/Safari)
+cases: design/schonheit-gift-certificate, design/vikontse-logo, it/mnm-detailing
+checked: 661 · passed: 661 · failed: 0
+duration: 101s
+
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate status 200 — 200
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate html lang — uk
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate exactly one h1 — ["Schönheit — подарунковий сертифікат"]
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate h1 localized — Schönheit — подарунковий сертифікат
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate hero text localized — Подарунковий сертифікат, що передає атмосферу преміального б
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate single canonical — 1
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate canonical path — https://freelance-ua.agency/cases/design/schonheit-gift-certificate
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate hreflang en — https://freelance-ua.agency/en/cases/design/schonheit-gift-certificate
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate no raw i18n keys — []
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate breadcrumb present
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate breadcrumb aria-label — Навігаційний ланцюжок
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate breadcrumb has 3 items — ["Головна","Дизайн","Schönheit — подарунковий сертифікат"]
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate breadcrumb home label — Головна
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate breadcrumb home href — /
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate breadcrumb direction label — Дизайн
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate breadcrumb direction href — /services/design
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate breadcrumb current is H1 — Schönheit — подарунковий сертифікат
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate breadcrumb current has no href — null
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate back-to-list link — /cases?tab=design
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate switcher → counterpart — /en/cases/design/schonheit-gift-certificate (expected /en/cases/design/schonheit-gift-certificate)
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate related heading — Інші проєкти
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate related has 3 cards — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/snizhana-telegram-stickers"]
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate related excludes current — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/snizhana-telegram-stickers"]
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate status 200 — 200
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate html lang — en
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate exactly one h1 — ["Schönheit — gift certificate"]
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate h1 localized — Schönheit — gift certificate
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate hero text localized — A gift certificate that conveys the atmosphere of a premium 
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate single canonical — 1
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate canonical path — https://freelance-ua.agency/en/cases/design/schonheit-gift-certificate
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate hreflang uk — https://freelance-ua.agency/cases/design/schonheit-gift-certificate
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate no raw i18n keys — []
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate breadcrumb present
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate breadcrumb aria-label — Breadcrumb
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate breadcrumb has 3 items — ["Home","Design","Schönheit — gift certificate"]
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate breadcrumb home label — Home
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate breadcrumb home href — /en
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate breadcrumb direction label — Design
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate breadcrumb direction href — /en/services/design
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate breadcrumb current is H1 — Schönheit — gift certificate
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate breadcrumb current has no href — null
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate back-to-list link — /en/cases?tab=design
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate switcher → counterpart — /cases/design/schonheit-gift-certificate (expected /cases/design/schonheit-gift-certificate)
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate related heading — Other projects
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate related has 3 cards — ["/cases/design/moto-school-window-branding","/en/cases/design/hope-media-group","/en/cases/design/snizhana-telegram-stickers"]
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate related excludes current — ["/cases/design/moto-school-window-branding","/en/cases/design/hope-media-group","/en/cases/design/snizhana-telegram-stickers"]
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate switch → EN url — /en/cases/design/schonheit-gift-certificate
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate switch → EN lang — en
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate UA h1 with NEXT_LOCALE=en — Schönheit — подарунковий сертифікат
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate breadcrumb → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate back → case — /cases/design/schonheit-gift-certificate
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate back keeps H1 — Schönheit — подарунковий сертифікат
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate forward → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/vikontse-logo status 200 — 200
+✓ [chromium desktop] /cases/design/vikontse-logo html lang — uk
+✓ [chromium desktop] /cases/design/vikontse-logo exactly one h1 — ["Віконце — розробка логотипу"]
+✓ [chromium desktop] /cases/design/vikontse-logo h1 localized — Віконце — розробка логотипу
+✓ [chromium desktop] /cases/design/vikontse-logo hero text localized — Впізнаваний знак, що поєднує форму даху будинку та вікна в о
+✓ [chromium desktop] /cases/design/vikontse-logo single canonical — 1
+✓ [chromium desktop] /cases/design/vikontse-logo canonical path — https://freelance-ua.agency/cases/design/vikontse-logo
+✓ [chromium desktop] /cases/design/vikontse-logo hreflang en — https://freelance-ua.agency/en/cases/design/vikontse-logo
+✓ [chromium desktop] /cases/design/vikontse-logo no raw i18n keys — []
+✓ [chromium desktop] /cases/design/vikontse-logo breadcrumb present
+✓ [chromium desktop] /cases/design/vikontse-logo breadcrumb aria-label — Навігаційний ланцюжок
+✓ [chromium desktop] /cases/design/vikontse-logo breadcrumb has 3 items — ["Головна","Дизайн","Віконце — розробка логотипу"]
+✓ [chromium desktop] /cases/design/vikontse-logo breadcrumb home label — Головна
+✓ [chromium desktop] /cases/design/vikontse-logo breadcrumb home href — /
+✓ [chromium desktop] /cases/design/vikontse-logo breadcrumb direction label — Дизайн
+✓ [chromium desktop] /cases/design/vikontse-logo breadcrumb direction href — /services/design
+✓ [chromium desktop] /cases/design/vikontse-logo breadcrumb current is H1 — Віконце — розробка логотипу
+✓ [chromium desktop] /cases/design/vikontse-logo breadcrumb current has no href — null
+✓ [chromium desktop] /cases/design/vikontse-logo breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /cases/design/vikontse-logo back-to-list link — /cases?tab=design
+✓ [chromium desktop] /cases/design/vikontse-logo switcher → counterpart — /en/cases/design/vikontse-logo (expected /en/cases/design/vikontse-logo)
+✓ [chromium desktop] /cases/design/vikontse-logo related heading — Інші проєкти
+✓ [chromium desktop] /cases/design/vikontse-logo related has 3 cards — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/snizhana-telegram-stickers"]
+✓ [chromium desktop] /cases/design/vikontse-logo related excludes current — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/snizhana-telegram-stickers"]
+✓ [chromium desktop] /en/cases/design/vikontse-logo status 200 — 200
+✓ [chromium desktop] /en/cases/design/vikontse-logo html lang — en
+✓ [chromium desktop] /en/cases/design/vikontse-logo exactly one h1 — ["Vikontse — logo design"]
+✓ [chromium desktop] /en/cases/design/vikontse-logo h1 localized — Vikontse — logo design
+✓ [chromium desktop] /en/cases/design/vikontse-logo hero text localized — A recognizable mark that combines the shape of a house roof 
+✓ [chromium desktop] /en/cases/design/vikontse-logo single canonical — 1
+✓ [chromium desktop] /en/cases/design/vikontse-logo canonical path — https://freelance-ua.agency/en/cases/design/vikontse-logo
+✓ [chromium desktop] /en/cases/design/vikontse-logo hreflang uk — https://freelance-ua.agency/cases/design/vikontse-logo
+✓ [chromium desktop] /en/cases/design/vikontse-logo no raw i18n keys — []
+✓ [chromium desktop] /en/cases/design/vikontse-logo breadcrumb present
+✓ [chromium desktop] /en/cases/design/vikontse-logo breadcrumb aria-label — Breadcrumb
+✓ [chromium desktop] /en/cases/design/vikontse-logo breadcrumb has 3 items — ["Home","Design","Vikontse — logo design"]
+✓ [chromium desktop] /en/cases/design/vikontse-logo breadcrumb home label — Home
+✓ [chromium desktop] /en/cases/design/vikontse-logo breadcrumb home href — /en
+✓ [chromium desktop] /en/cases/design/vikontse-logo breadcrumb direction label — Design
+✓ [chromium desktop] /en/cases/design/vikontse-logo breadcrumb direction href — /en/services/design
+✓ [chromium desktop] /en/cases/design/vikontse-logo breadcrumb current is H1 — Vikontse — logo design
+✓ [chromium desktop] /en/cases/design/vikontse-logo breadcrumb current has no href — null
+✓ [chromium desktop] /en/cases/design/vikontse-logo breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /en/cases/design/vikontse-logo back-to-list link — /en/cases?tab=design
+✓ [chromium desktop] /en/cases/design/vikontse-logo switcher → counterpart — /cases/design/vikontse-logo (expected /cases/design/vikontse-logo)
+✓ [chromium desktop] /en/cases/design/vikontse-logo related heading — Other projects
+✓ [chromium desktop] /en/cases/design/vikontse-logo related has 3 cards — ["/cases/design/moto-school-window-branding","/en/cases/design/hope-media-group","/en/cases/design/snizhana-telegram-stickers"]
+✓ [chromium desktop] /en/cases/design/vikontse-logo related excludes current — ["/cases/design/moto-school-window-branding","/en/cases/design/hope-media-group","/en/cases/design/snizhana-telegram-stickers"]
+✓ [chromium desktop] /cases/design/vikontse-logo switch → EN url — /en/cases/design/vikontse-logo
+✓ [chromium desktop] /cases/design/vikontse-logo switch → EN lang — en
+✓ [chromium desktop] /cases/design/vikontse-logo stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [chromium desktop] /cases/design/vikontse-logo UA h1 with NEXT_LOCALE=en — Віконце — розробка логотипу
+✓ [chromium desktop] /cases/design/vikontse-logo breadcrumb → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/vikontse-logo back → case — /cases/design/vikontse-logo
+✓ [chromium desktop] /cases/design/vikontse-logo back keeps H1 — Віконце — розробка логотипу
+✓ [chromium desktop] /cases/design/vikontse-logo forward → home — http://localhost:3011/
+✓ [chromium desktop] /cases/it/mnm-detailing status 200 — 200
+✓ [chromium desktop] /cases/it/mnm-detailing html lang — uk
+✓ [chromium desktop] /cases/it/mnm-detailing exactly one h1 — ["MNM Detailing — редизайн сайту детейлінг-студії"]
+✓ [chromium desktop] /cases/it/mnm-detailing h1 localized — MNM Detailing — редизайн сайту детейлінг-студії
+✓ [chromium desktop] /cases/it/mnm-detailing hero text localized — Редизайн сайту студії детейлінгу MNM Detailing (Львів) з оно
+✓ [chromium desktop] /cases/it/mnm-detailing single canonical — 1
+✓ [chromium desktop] /cases/it/mnm-detailing canonical path — https://freelance-ua.agency/cases/it/mnm-detailing
+✓ [chromium desktop] /cases/it/mnm-detailing hreflang en — https://freelance-ua.agency/en/cases/it/mnm-detailing
+✓ [chromium desktop] /cases/it/mnm-detailing no raw i18n keys — []
+✓ [chromium desktop] /cases/it/mnm-detailing breadcrumb present
+✓ [chromium desktop] /cases/it/mnm-detailing breadcrumb aria-label — Навігаційний ланцюжок
+✓ [chromium desktop] /cases/it/mnm-detailing breadcrumb has 3 items — ["Головна","ІТ-розробка","MNM Detailing — редизайн сайту детейлінг-студії"]
+✓ [chromium desktop] /cases/it/mnm-detailing breadcrumb home label — Головна
+✓ [chromium desktop] /cases/it/mnm-detailing breadcrumb home href — /
+✓ [chromium desktop] /cases/it/mnm-detailing breadcrumb direction label — ІТ-розробка
+✓ [chromium desktop] /cases/it/mnm-detailing breadcrumb direction href — /services/it
+✓ [chromium desktop] /cases/it/mnm-detailing breadcrumb current is H1 — MNM Detailing — редизайн сайту детейлінг-студії
+✓ [chromium desktop] /cases/it/mnm-detailing breadcrumb current has no href — null
+✓ [chromium desktop] /cases/it/mnm-detailing breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /cases/it/mnm-detailing back-to-list link — /cases/it
+✓ [chromium desktop] /cases/it/mnm-detailing switcher → counterpart — /en/cases/it/mnm-detailing (expected /en/cases/it/mnm-detailing)
+✓ [chromium desktop] /cases/it/mnm-detailing related heading — Інші проєкти
+✓ [chromium desktop] /cases/it/mnm-detailing related has 3 cards — ["/cases/it/repair-collision","/cases/it/prime-auto-shipping","/cases/it/liudmyla-tsybrii"]
+✓ [chromium desktop] /cases/it/mnm-detailing related excludes current — ["/cases/it/repair-collision","/cases/it/prime-auto-shipping","/cases/it/liudmyla-tsybrii"]
+✓ [chromium desktop] /en/cases/it/mnm-detailing status 200 — 200
+✓ [chromium desktop] /en/cases/it/mnm-detailing html lang — en
+✓ [chromium desktop] /en/cases/it/mnm-detailing exactly one h1 — ["MNM Detailing — redesign of a detailing studio website"]
+✓ [chromium desktop] /en/cases/it/mnm-detailing h1 localized — MNM Detailing — redesign of a detailing studio website
+✓ [chromium desktop] /en/cases/it/mnm-detailing hero text localized — Website redesign for MNM Detailing studio (Lviv) with update
+✓ [chromium desktop] /en/cases/it/mnm-detailing single canonical — 1
+✓ [chromium desktop] /en/cases/it/mnm-detailing canonical path — https://freelance-ua.agency/en/cases/it/mnm-detailing
+✓ [chromium desktop] /en/cases/it/mnm-detailing hreflang uk — https://freelance-ua.agency/cases/it/mnm-detailing
+✓ [chromium desktop] /en/cases/it/mnm-detailing no raw i18n keys — []
+✓ [chromium desktop] /en/cases/it/mnm-detailing breadcrumb present
+✓ [chromium desktop] /en/cases/it/mnm-detailing breadcrumb aria-label — Breadcrumb
+✓ [chromium desktop] /en/cases/it/mnm-detailing breadcrumb has 3 items — ["Home","IT Development","MNM Detailing — redesign of a detailing studio website"]
+✓ [chromium desktop] /en/cases/it/mnm-detailing breadcrumb home label — Home
+✓ [chromium desktop] /en/cases/it/mnm-detailing breadcrumb home href — /en
+✓ [chromium desktop] /en/cases/it/mnm-detailing breadcrumb direction label — IT Development
+✓ [chromium desktop] /en/cases/it/mnm-detailing breadcrumb direction href — /en/services/it
+✓ [chromium desktop] /en/cases/it/mnm-detailing breadcrumb current is H1 — MNM Detailing — redesign of a detailing studio website
+✓ [chromium desktop] /en/cases/it/mnm-detailing breadcrumb current has no href — null
+✓ [chromium desktop] /en/cases/it/mnm-detailing breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /en/cases/it/mnm-detailing back-to-list link — /en/cases/it
+✓ [chromium desktop] /en/cases/it/mnm-detailing switcher → counterpart — /cases/it/mnm-detailing (expected /cases/it/mnm-detailing)
+✓ [chromium desktop] /en/cases/it/mnm-detailing related heading — Other projects
+✓ [chromium desktop] /en/cases/it/mnm-detailing related has 3 cards — ["/en/cases/it/repair-collision","/en/cases/it/prime-auto-shipping","/en/cases/it/liudmyla-tsybrii"]
+✓ [chromium desktop] /en/cases/it/mnm-detailing related excludes current — ["/en/cases/it/repair-collision","/en/cases/it/prime-auto-shipping","/en/cases/it/liudmyla-tsybrii"]
+✓ [chromium desktop] /cases/it/mnm-detailing switch → EN url — /en/cases/it/mnm-detailing
+✓ [chromium desktop] /cases/it/mnm-detailing switch → EN lang — en
+✓ [chromium desktop] /cases/it/mnm-detailing stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [chromium desktop] /cases/it/mnm-detailing UA h1 with NEXT_LOCALE=en — MNM Detailing — редизайн сайту детейлінг-студії
+✓ [chromium desktop] /cases/it/mnm-detailing breadcrumb → home — http://localhost:3011/
+✓ [chromium desktop] /cases/it/mnm-detailing back → case — /cases/it/mnm-detailing
+✓ [chromium desktop] /cases/it/mnm-detailing back keeps H1 — MNM Detailing — редизайн сайту детейлінг-студії
+✓ [chromium desktop] /cases/it/mnm-detailing forward → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate review avatar present — found 1
+✓ [chromium desktop] /cases/design/schonheit-gift-certificate review heading localized — ["Відгук клієнта 💬"] expected="Відгук клієнта 💬"
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate review avatar present — found 1
+✓ [chromium desktop] /en/cases/design/schonheit-gift-certificate review heading localized — ["Client review 💬"] expected="Client review 💬"
+✓ [chromium desktop] /cases/design/vikontse-logo review avatar present — found 1
+✓ [chromium desktop] /cases/design/vikontse-logo review heading localized — ["Відгук клієнта 💬"] expected="Відгук клієнта 💬"
+✓ [chromium desktop] /en/cases/design/vikontse-logo review avatar present — found 1
+✓ [chromium desktop] /en/cases/design/vikontse-logo review heading localized — ["Client review 💬"] expected="Client review 💬"
+✓ [chromium desktop] /cases/it/mnm-detailing review avatar present — found 1
+✓ [chromium desktop] /cases/it/mnm-detailing review heading localized — ["Відгук клієнта 💬"] expected="Відгук клієнта 💬"
+✓ [chromium desktop] /en/cases/it/mnm-detailing review avatar present — found 1
+✓ [chromium desktop] /en/cases/it/mnm-detailing review heading localized — ["Client Review 💬"] expected="Client Review 💬"
+✓ [chromium mobile] /cases/design/schonheit-gift-certificate mobile status — 200
+✓ [chromium mobile] /cases/design/schonheit-gift-certificate mobile lang — uk
+✓ [chromium mobile] /cases/design/schonheit-gift-certificate mobile h1 visible — Schönheit — подарунковий сертифікат
+✓ [chromium mobile] /cases/design/schonheit-gift-certificate mobile hero text visible
+✓ [chromium mobile] /cases/design/schonheit-gift-certificate mobile breadcrumb visible
+✓ [chromium mobile] /cases/design/schonheit-gift-certificate no horizontal overflow — 0px
+✓ [chromium mobile] /en/cases/design/schonheit-gift-certificate mobile status — 200
+✓ [chromium mobile] /en/cases/design/schonheit-gift-certificate mobile lang — en
+✓ [chromium mobile] /en/cases/design/schonheit-gift-certificate mobile h1 visible — Schönheit — gift certificate
+✓ [chromium mobile] /en/cases/design/schonheit-gift-certificate mobile hero text visible
+✓ [chromium mobile] /en/cases/design/schonheit-gift-certificate mobile breadcrumb visible
+✓ [chromium mobile] /en/cases/design/schonheit-gift-certificate no horizontal overflow — 0px
+✓ [chromium mobile] /cases/design/vikontse-logo mobile status — 200
+✓ [chromium mobile] /cases/design/vikontse-logo mobile lang — uk
+✓ [chromium mobile] /cases/design/vikontse-logo mobile h1 visible — Віконце — розробка логотипу
+✓ [chromium mobile] /cases/design/vikontse-logo mobile hero text visible
+✓ [chromium mobile] /cases/design/vikontse-logo mobile breadcrumb visible
+✓ [chromium mobile] /cases/design/vikontse-logo no horizontal overflow — 0px
+✓ [chromium mobile] /en/cases/design/vikontse-logo mobile status — 200
+✓ [chromium mobile] /en/cases/design/vikontse-logo mobile lang — en
+✓ [chromium mobile] /en/cases/design/vikontse-logo mobile h1 visible — Vikontse — logo design
+✓ [chromium mobile] /en/cases/design/vikontse-logo mobile hero text visible
+✓ [chromium mobile] /en/cases/design/vikontse-logo mobile breadcrumb visible
+✓ [chromium mobile] /en/cases/design/vikontse-logo no horizontal overflow — 0px
+✓ [chromium mobile] /cases/it/mnm-detailing mobile status — 200
+✓ [chromium mobile] /cases/it/mnm-detailing mobile lang — uk
+✓ [chromium mobile] /cases/it/mnm-detailing mobile h1 visible — MNM Detailing — редизайн сайту детейлінг-студії
+✓ [chromium mobile] /cases/it/mnm-detailing mobile hero text visible
+✓ [chromium mobile] /cases/it/mnm-detailing mobile breadcrumb visible
+✓ [chromium mobile] /cases/it/mnm-detailing no horizontal overflow — 0px
+✓ [chromium mobile] /en/cases/it/mnm-detailing mobile status — 200
+✓ [chromium mobile] /en/cases/it/mnm-detailing mobile lang — en
+✓ [chromium mobile] /en/cases/it/mnm-detailing mobile h1 visible — MNM Detailing — redesign of a detailing studio website
+✓ [chromium mobile] /en/cases/it/mnm-detailing mobile hero text visible
+✓ [chromium mobile] /en/cases/it/mnm-detailing mobile breadcrumb visible
+✓ [chromium mobile] /en/cases/it/mnm-detailing no horizontal overflow — 0px
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate reduced-motion emulated — true
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate h1 visible without motion
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate reveal nodes static (17) — []
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate gallery block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate gallery has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate results items visible — 3/3
+✓ [chromium reduced-motion] /cases/design/schonheit-gift-certificate review card visible — 1
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate reduced-motion emulated — true
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate h1 visible without motion
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate reveal nodes static (17) — []
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate gallery block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate gallery has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate results items visible — 3/3
+✓ [chromium reduced-motion] /en/cases/design/schonheit-gift-certificate review card visible — 1
+✓ [chromium reduced-motion] /cases/design/vikontse-logo reduced-motion emulated — true
+✓ [chromium reduced-motion] /cases/design/vikontse-logo h1 visible without motion
+✓ [chromium reduced-motion] /cases/design/vikontse-logo hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /cases/design/vikontse-logo brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /cases/design/vikontse-logo reveal nodes static (17) — []
+✓ [chromium reduced-motion] /cases/design/vikontse-logo materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/vikontse-logo materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/vikontse-logo materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/vikontse-logo materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/vikontse-logo gallery block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/vikontse-logo gallery has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/vikontse-logo results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/vikontse-logo results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/vikontse-logo review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/vikontse-logo review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/vikontse-logo results items visible — 3/3
+✓ [chromium reduced-motion] /cases/design/vikontse-logo review card visible — 1
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo reduced-motion emulated — true
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo h1 visible without motion
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo reveal nodes static (17) — []
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo gallery block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo gallery has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo results items visible — 3/3
+✓ [chromium reduced-motion] /en/cases/design/vikontse-logo review card visible — 1
+✓ [chromium reduced-motion] /cases/it/mnm-detailing reduced-motion emulated — true
+✓ [chromium reduced-motion] /cases/it/mnm-detailing h1 visible without motion
+✓ [chromium reduced-motion] /cases/it/mnm-detailing hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /cases/it/mnm-detailing brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /cases/it/mnm-detailing reveal nodes static (25) — []
+✓ [chromium reduced-motion] /cases/it/mnm-detailing materials present: feature images/sliders — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/it/mnm-detailing materials present: gallery items — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/it/mnm-detailing materials present: compare items — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/it/mnm-detailing materials present: video tiles — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/it/mnm-detailing featureList block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/it/mnm-detailing featureList has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/it/mnm-detailing results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/it/mnm-detailing results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/it/mnm-detailing review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/it/mnm-detailing review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/it/mnm-detailing results items visible — 8/8
+✓ [chromium reduced-motion] /cases/it/mnm-detailing review card visible — 1
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing reduced-motion emulated — true
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing h1 visible without motion
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing reveal nodes static (25) — []
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing materials present: feature images/sliders — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing materials present: gallery items — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing materials present: compare items — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing materials present: video tiles — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing featureList block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing featureList has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing results items visible — 8/8
+✓ [chromium reduced-motion] /en/cases/it/mnm-detailing review card visible — 1
+✓ [chromium light-theme] /cases/design/schonheit-gift-certificate light theme applied — light
+✓ [chromium light-theme] /cases/design/schonheit-gift-certificate light theme h1 visible
+✓ [chromium light-theme] /cases/design/schonheit-gift-certificate light theme breadcrumb visible
+✓ [chromium light-theme] /cases/design/schonheit-gift-certificate light theme no overflow — 0px
+✓ [chromium light-theme] /cases/design/vikontse-logo light theme applied — light
+✓ [chromium light-theme] /cases/design/vikontse-logo light theme h1 visible
+✓ [chromium light-theme] /cases/design/vikontse-logo light theme breadcrumb visible
+✓ [chromium light-theme] /cases/design/vikontse-logo light theme no overflow — 0px
+✓ [chromium light-theme] /cases/it/mnm-detailing light theme applied — light
+✓ [chromium light-theme] /cases/it/mnm-detailing light theme h1 visible
+✓ [chromium light-theme] /cases/it/mnm-detailing light theme breadcrumb visible
+✓ [chromium light-theme] /cases/it/mnm-detailing light theme no overflow — 0px
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate status 200 — 200
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate html lang — uk
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate exactly one h1 — ["Schönheit — подарунковий сертифікат"]
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate h1 localized — Schönheit — подарунковий сертифікат
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate hero text localized — Подарунковий сертифікат, що передає атмосферу преміального б
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate single canonical — 1
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate canonical path — https://freelance-ua.agency/cases/design/schonheit-gift-certificate
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate hreflang en — https://freelance-ua.agency/en/cases/design/schonheit-gift-certificate
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate no raw i18n keys — []
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate breadcrumb present
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate breadcrumb aria-label — Навігаційний ланцюжок
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate breadcrumb has 3 items — ["Головна","Дизайн","Schönheit — подарунковий сертифікат"]
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate breadcrumb home label — Головна
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate breadcrumb home href — /
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate breadcrumb direction label — Дизайн
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate breadcrumb direction href — /services/design
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate breadcrumb current is H1 — Schönheit — подарунковий сертифікат
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate breadcrumb current has no href — null
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate back-to-list link — /cases?tab=design
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate switcher → counterpart — /en/cases/design/schonheit-gift-certificate (expected /en/cases/design/schonheit-gift-certificate)
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate related heading — Інші проєкти
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate related has 3 cards — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/snizhana-telegram-stickers"]
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate related excludes current — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/snizhana-telegram-stickers"]
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate status 200 — 200
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate html lang — en
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate exactly one h1 — ["Schönheit — gift certificate"]
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate h1 localized — Schönheit — gift certificate
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate hero text localized — A gift certificate that conveys the atmosphere of a premium 
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate single canonical — 1
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate canonical path — https://freelance-ua.agency/en/cases/design/schonheit-gift-certificate
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate hreflang uk — https://freelance-ua.agency/cases/design/schonheit-gift-certificate
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate no raw i18n keys — []
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate breadcrumb present
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate breadcrumb aria-label — Breadcrumb
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate breadcrumb has 3 items — ["Home","Design","Schönheit — gift certificate"]
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate breadcrumb home label — Home
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate breadcrumb home href — /en
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate breadcrumb direction label — Design
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate breadcrumb direction href — /en/services/design
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate breadcrumb current is H1 — Schönheit — gift certificate
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate breadcrumb current has no href — null
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate back-to-list link — /en/cases?tab=design
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate switcher → counterpart — /cases/design/schonheit-gift-certificate (expected /cases/design/schonheit-gift-certificate)
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate related heading — Other projects
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate related has 3 cards — ["/cases/design/moto-school-window-branding","/en/cases/design/hope-media-group","/en/cases/design/snizhana-telegram-stickers"]
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate related excludes current — ["/cases/design/moto-school-window-branding","/en/cases/design/hope-media-group","/en/cases/design/snizhana-telegram-stickers"]
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate switch → EN url — /en/cases/design/schonheit-gift-certificate
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate switch → EN lang — en
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate UA h1 with NEXT_LOCALE=en — Schönheit — подарунковий сертифікат
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate breadcrumb → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate back → case — /cases/design/schonheit-gift-certificate
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate back keeps H1 — Schönheit — подарунковий сертифікат
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate forward → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/vikontse-logo status 200 — 200
+✓ [webkit desktop] /cases/design/vikontse-logo html lang — uk
+✓ [webkit desktop] /cases/design/vikontse-logo exactly one h1 — ["Віконце — розробка логотипу"]
+✓ [webkit desktop] /cases/design/vikontse-logo h1 localized — Віконце — розробка логотипу
+✓ [webkit desktop] /cases/design/vikontse-logo hero text localized — Впізнаваний знак, що поєднує форму даху будинку та вікна в о
+✓ [webkit desktop] /cases/design/vikontse-logo single canonical — 1
+✓ [webkit desktop] /cases/design/vikontse-logo canonical path — https://freelance-ua.agency/cases/design/vikontse-logo
+✓ [webkit desktop] /cases/design/vikontse-logo hreflang en — https://freelance-ua.agency/en/cases/design/vikontse-logo
+✓ [webkit desktop] /cases/design/vikontse-logo no raw i18n keys — []
+✓ [webkit desktop] /cases/design/vikontse-logo breadcrumb present
+✓ [webkit desktop] /cases/design/vikontse-logo breadcrumb aria-label — Навігаційний ланцюжок
+✓ [webkit desktop] /cases/design/vikontse-logo breadcrumb has 3 items — ["Головна","Дизайн","Віконце — розробка логотипу"]
+✓ [webkit desktop] /cases/design/vikontse-logo breadcrumb home label — Головна
+✓ [webkit desktop] /cases/design/vikontse-logo breadcrumb home href — /
+✓ [webkit desktop] /cases/design/vikontse-logo breadcrumb direction label — Дизайн
+✓ [webkit desktop] /cases/design/vikontse-logo breadcrumb direction href — /services/design
+✓ [webkit desktop] /cases/design/vikontse-logo breadcrumb current is H1 — Віконце — розробка логотипу
+✓ [webkit desktop] /cases/design/vikontse-logo breadcrumb current has no href — null
+✓ [webkit desktop] /cases/design/vikontse-logo breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /cases/design/vikontse-logo back-to-list link — /cases?tab=design
+✓ [webkit desktop] /cases/design/vikontse-logo switcher → counterpart — /en/cases/design/vikontse-logo (expected /en/cases/design/vikontse-logo)
+✓ [webkit desktop] /cases/design/vikontse-logo related heading — Інші проєкти
+✓ [webkit desktop] /cases/design/vikontse-logo related has 3 cards — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/snizhana-telegram-stickers"]
+✓ [webkit desktop] /cases/design/vikontse-logo related excludes current — ["/cases/design/moto-school-window-branding","/cases/design/hope-media-group","/cases/design/snizhana-telegram-stickers"]
+✓ [webkit desktop] /en/cases/design/vikontse-logo status 200 — 200
+✓ [webkit desktop] /en/cases/design/vikontse-logo html lang — en
+✓ [webkit desktop] /en/cases/design/vikontse-logo exactly one h1 — ["Vikontse — logo design"]
+✓ [webkit desktop] /en/cases/design/vikontse-logo h1 localized — Vikontse — logo design
+✓ [webkit desktop] /en/cases/design/vikontse-logo hero text localized — A recognizable mark that combines the shape of a house roof 
+✓ [webkit desktop] /en/cases/design/vikontse-logo single canonical — 1
+✓ [webkit desktop] /en/cases/design/vikontse-logo canonical path — https://freelance-ua.agency/en/cases/design/vikontse-logo
+✓ [webkit desktop] /en/cases/design/vikontse-logo hreflang uk — https://freelance-ua.agency/cases/design/vikontse-logo
+✓ [webkit desktop] /en/cases/design/vikontse-logo no raw i18n keys — []
+✓ [webkit desktop] /en/cases/design/vikontse-logo breadcrumb present
+✓ [webkit desktop] /en/cases/design/vikontse-logo breadcrumb aria-label — Breadcrumb
+✓ [webkit desktop] /en/cases/design/vikontse-logo breadcrumb has 3 items — ["Home","Design","Vikontse — logo design"]
+✓ [webkit desktop] /en/cases/design/vikontse-logo breadcrumb home label — Home
+✓ [webkit desktop] /en/cases/design/vikontse-logo breadcrumb home href — /en
+✓ [webkit desktop] /en/cases/design/vikontse-logo breadcrumb direction label — Design
+✓ [webkit desktop] /en/cases/design/vikontse-logo breadcrumb direction href — /en/services/design
+✓ [webkit desktop] /en/cases/design/vikontse-logo breadcrumb current is H1 — Vikontse — logo design
+✓ [webkit desktop] /en/cases/design/vikontse-logo breadcrumb current has no href — null
+✓ [webkit desktop] /en/cases/design/vikontse-logo breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /en/cases/design/vikontse-logo back-to-list link — /en/cases?tab=design
+✓ [webkit desktop] /en/cases/design/vikontse-logo switcher → counterpart — /cases/design/vikontse-logo (expected /cases/design/vikontse-logo)
+✓ [webkit desktop] /en/cases/design/vikontse-logo related heading — Other projects
+✓ [webkit desktop] /en/cases/design/vikontse-logo related has 3 cards — ["/cases/design/moto-school-window-branding","/en/cases/design/hope-media-group","/en/cases/design/snizhana-telegram-stickers"]
+✓ [webkit desktop] /en/cases/design/vikontse-logo related excludes current — ["/cases/design/moto-school-window-branding","/en/cases/design/hope-media-group","/en/cases/design/snizhana-telegram-stickers"]
+✓ [webkit desktop] /cases/design/vikontse-logo switch → EN url — /en/cases/design/vikontse-logo
+✓ [webkit desktop] /cases/design/vikontse-logo switch → EN lang — en
+✓ [webkit desktop] /cases/design/vikontse-logo stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [webkit desktop] /cases/design/vikontse-logo UA h1 with NEXT_LOCALE=en — Віконце — розробка логотипу
+✓ [webkit desktop] /cases/design/vikontse-logo breadcrumb → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/vikontse-logo back → case — /cases/design/vikontse-logo
+✓ [webkit desktop] /cases/design/vikontse-logo back keeps H1 — Віконце — розробка логотипу
+✓ [webkit desktop] /cases/design/vikontse-logo forward → home — http://localhost:3011/
+✓ [webkit desktop] /cases/it/mnm-detailing status 200 — 200
+✓ [webkit desktop] /cases/it/mnm-detailing html lang — uk
+✓ [webkit desktop] /cases/it/mnm-detailing exactly one h1 — ["MNM Detailing — редизайн сайту детейлінг-студії"]
+✓ [webkit desktop] /cases/it/mnm-detailing h1 localized — MNM Detailing — редизайн сайту детейлінг-студії
+✓ [webkit desktop] /cases/it/mnm-detailing hero text localized — Редизайн сайту студії детейлінгу MNM Detailing (Львів) з оно
+✓ [webkit desktop] /cases/it/mnm-detailing single canonical — 1
+✓ [webkit desktop] /cases/it/mnm-detailing canonical path — https://freelance-ua.agency/cases/it/mnm-detailing
+✓ [webkit desktop] /cases/it/mnm-detailing hreflang en — https://freelance-ua.agency/en/cases/it/mnm-detailing
+✓ [webkit desktop] /cases/it/mnm-detailing no raw i18n keys — []
+✓ [webkit desktop] /cases/it/mnm-detailing breadcrumb present
+✓ [webkit desktop] /cases/it/mnm-detailing breadcrumb aria-label — Навігаційний ланцюжок
+✓ [webkit desktop] /cases/it/mnm-detailing breadcrumb has 3 items — ["Головна","ІТ-розробка","MNM Detailing — редизайн сайту детейлінг-студії"]
+✓ [webkit desktop] /cases/it/mnm-detailing breadcrumb home label — Головна
+✓ [webkit desktop] /cases/it/mnm-detailing breadcrumb home href — /
+✓ [webkit desktop] /cases/it/mnm-detailing breadcrumb direction label — ІТ-розробка
+✓ [webkit desktop] /cases/it/mnm-detailing breadcrumb direction href — /services/it
+✓ [webkit desktop] /cases/it/mnm-detailing breadcrumb current is H1 — MNM Detailing — редизайн сайту детейлінг-студії
+✓ [webkit desktop] /cases/it/mnm-detailing breadcrumb current has no href — null
+✓ [webkit desktop] /cases/it/mnm-detailing breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /cases/it/mnm-detailing back-to-list link — /cases/it
+✓ [webkit desktop] /cases/it/mnm-detailing switcher → counterpart — /en/cases/it/mnm-detailing (expected /en/cases/it/mnm-detailing)
+✓ [webkit desktop] /cases/it/mnm-detailing related heading — Інші проєкти
+✓ [webkit desktop] /cases/it/mnm-detailing related has 3 cards — ["/cases/it/repair-collision","/cases/it/prime-auto-shipping","/cases/it/liudmyla-tsybrii"]
+✓ [webkit desktop] /cases/it/mnm-detailing related excludes current — ["/cases/it/repair-collision","/cases/it/prime-auto-shipping","/cases/it/liudmyla-tsybrii"]
+✓ [webkit desktop] /en/cases/it/mnm-detailing status 200 — 200
+✓ [webkit desktop] /en/cases/it/mnm-detailing html lang — en
+✓ [webkit desktop] /en/cases/it/mnm-detailing exactly one h1 — ["MNM Detailing — redesign of a detailing studio website"]
+✓ [webkit desktop] /en/cases/it/mnm-detailing h1 localized — MNM Detailing — redesign of a detailing studio website
+✓ [webkit desktop] /en/cases/it/mnm-detailing hero text localized — Website redesign for MNM Detailing studio (Lviv) with update
+✓ [webkit desktop] /en/cases/it/mnm-detailing single canonical — 1
+✓ [webkit desktop] /en/cases/it/mnm-detailing canonical path — https://freelance-ua.agency/en/cases/it/mnm-detailing
+✓ [webkit desktop] /en/cases/it/mnm-detailing hreflang uk — https://freelance-ua.agency/cases/it/mnm-detailing
+✓ [webkit desktop] /en/cases/it/mnm-detailing no raw i18n keys — []
+✓ [webkit desktop] /en/cases/it/mnm-detailing breadcrumb present
+✓ [webkit desktop] /en/cases/it/mnm-detailing breadcrumb aria-label — Breadcrumb
+✓ [webkit desktop] /en/cases/it/mnm-detailing breadcrumb has 3 items — ["Home","IT Development","MNM Detailing — redesign of a detailing studio website"]
+✓ [webkit desktop] /en/cases/it/mnm-detailing breadcrumb home label — Home
+✓ [webkit desktop] /en/cases/it/mnm-detailing breadcrumb home href — /en
+✓ [webkit desktop] /en/cases/it/mnm-detailing breadcrumb direction label — IT Development
+✓ [webkit desktop] /en/cases/it/mnm-detailing breadcrumb direction href — /en/services/it
+✓ [webkit desktop] /en/cases/it/mnm-detailing breadcrumb current is H1 — MNM Detailing — redesign of a detailing studio website
+✓ [webkit desktop] /en/cases/it/mnm-detailing breadcrumb current has no href — null
+✓ [webkit desktop] /en/cases/it/mnm-detailing breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /en/cases/it/mnm-detailing back-to-list link — /en/cases/it
+✓ [webkit desktop] /en/cases/it/mnm-detailing switcher → counterpart — /cases/it/mnm-detailing (expected /cases/it/mnm-detailing)
+✓ [webkit desktop] /en/cases/it/mnm-detailing related heading — Other projects
+✓ [webkit desktop] /en/cases/it/mnm-detailing related has 3 cards — ["/en/cases/it/repair-collision","/en/cases/it/prime-auto-shipping","/en/cases/it/liudmyla-tsybrii"]
+✓ [webkit desktop] /en/cases/it/mnm-detailing related excludes current — ["/en/cases/it/repair-collision","/en/cases/it/prime-auto-shipping","/en/cases/it/liudmyla-tsybrii"]
+✓ [webkit desktop] /cases/it/mnm-detailing switch → EN url — /en/cases/it/mnm-detailing
+✓ [webkit desktop] /cases/it/mnm-detailing switch → EN lang — en
+✓ [webkit desktop] /cases/it/mnm-detailing stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [webkit desktop] /cases/it/mnm-detailing UA h1 with NEXT_LOCALE=en — MNM Detailing — редизайн сайту детейлінг-студії
+✓ [webkit desktop] /cases/it/mnm-detailing breadcrumb → home — http://localhost:3011/
+✓ [webkit desktop] /cases/it/mnm-detailing back → case — /cases/it/mnm-detailing
+✓ [webkit desktop] /cases/it/mnm-detailing back keeps H1 — MNM Detailing — редизайн сайту детейлінг-студії
+✓ [webkit desktop] /cases/it/mnm-detailing forward → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate review avatar present — found 1
+✓ [webkit desktop] /cases/design/schonheit-gift-certificate review heading localized — ["Відгук клієнта 💬"] expected="Відгук клієнта 💬"
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate review avatar present — found 1
+✓ [webkit desktop] /en/cases/design/schonheit-gift-certificate review heading localized — ["Client review 💬"] expected="Client review 💬"
+✓ [webkit desktop] /cases/design/vikontse-logo review avatar present — found 1
+✓ [webkit desktop] /cases/design/vikontse-logo review heading localized — ["Відгук клієнта 💬"] expected="Відгук клієнта 💬"
+✓ [webkit desktop] /en/cases/design/vikontse-logo review avatar present — found 1
+✓ [webkit desktop] /en/cases/design/vikontse-logo review heading localized — ["Client review 💬"] expected="Client review 💬"
+✓ [webkit desktop] /cases/it/mnm-detailing review avatar present — found 1
+✓ [webkit desktop] /cases/it/mnm-detailing review heading localized — ["Відгук клієнта 💬"] expected="Відгук клієнта 💬"
+✓ [webkit desktop] /en/cases/it/mnm-detailing review avatar present — found 1
+✓ [webkit desktop] /en/cases/it/mnm-detailing review heading localized — ["Client Review 💬"] expected="Client Review 💬"
+✓ [webkit mobile] /cases/design/schonheit-gift-certificate mobile status — 200
+✓ [webkit mobile] /cases/design/schonheit-gift-certificate mobile lang — uk
+✓ [webkit mobile] /cases/design/schonheit-gift-certificate mobile h1 visible — Schönheit — подарунковий сертифікат
+✓ [webkit mobile] /cases/design/schonheit-gift-certificate mobile hero text visible
+✓ [webkit mobile] /cases/design/schonheit-gift-certificate mobile breadcrumb visible
+✓ [webkit mobile] /cases/design/schonheit-gift-certificate no horizontal overflow — 0px
+✓ [webkit mobile] /en/cases/design/schonheit-gift-certificate mobile status — 200
+✓ [webkit mobile] /en/cases/design/schonheit-gift-certificate mobile lang — en
+✓ [webkit mobile] /en/cases/design/schonheit-gift-certificate mobile h1 visible — Schönheit — gift certificate
+✓ [webkit mobile] /en/cases/design/schonheit-gift-certificate mobile hero text visible
+✓ [webkit mobile] /en/cases/design/schonheit-gift-certificate mobile breadcrumb visible
+✓ [webkit mobile] /en/cases/design/schonheit-gift-certificate no horizontal overflow — 0px
+✓ [webkit mobile] /cases/design/vikontse-logo mobile status — 200
+✓ [webkit mobile] /cases/design/vikontse-logo mobile lang — uk
+✓ [webkit mobile] /cases/design/vikontse-logo mobile h1 visible — Віконце — розробка логотипу
+✓ [webkit mobile] /cases/design/vikontse-logo mobile hero text visible
+✓ [webkit mobile] /cases/design/vikontse-logo mobile breadcrumb visible
+✓ [webkit mobile] /cases/design/vikontse-logo no horizontal overflow — 0px
+✓ [webkit mobile] /en/cases/design/vikontse-logo mobile status — 200
+✓ [webkit mobile] /en/cases/design/vikontse-logo mobile lang — en
+✓ [webkit mobile] /en/cases/design/vikontse-logo mobile h1 visible — Vikontse — logo design
+✓ [webkit mobile] /en/cases/design/vikontse-logo mobile hero text visible
+✓ [webkit mobile] /en/cases/design/vikontse-logo mobile breadcrumb visible
+✓ [webkit mobile] /en/cases/design/vikontse-logo no horizontal overflow — 0px
+✓ [webkit mobile] /cases/it/mnm-detailing mobile status — 200
+✓ [webkit mobile] /cases/it/mnm-detailing mobile lang — uk
+✓ [webkit mobile] /cases/it/mnm-detailing mobile h1 visible — MNM Detailing — редизайн сайту детейлінг-студії
+✓ [webkit mobile] /cases/it/mnm-detailing mobile hero text visible
+✓ [webkit mobile] /cases/it/mnm-detailing mobile breadcrumb visible
+✓ [webkit mobile] /cases/it/mnm-detailing no horizontal overflow — 0px
+✓ [webkit mobile] /en/cases/it/mnm-detailing mobile status — 200
+✓ [webkit mobile] /en/cases/it/mnm-detailing mobile lang — en
+✓ [webkit mobile] /en/cases/it/mnm-detailing mobile h1 visible — MNM Detailing — redesign of a detailing studio website
+✓ [webkit mobile] /en/cases/it/mnm-detailing mobile hero text visible
+✓ [webkit mobile] /en/cases/it/mnm-detailing mobile breadcrumb visible
+✓ [webkit mobile] /en/cases/it/mnm-detailing no horizontal overflow — 0px
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate reduced-motion emulated — true
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate h1 visible without motion
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate reveal nodes static (17) — []
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate gallery block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate gallery has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate results items visible — 3/3
+✓ [webkit reduced-motion] /cases/design/schonheit-gift-certificate review card visible — 1
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate reduced-motion emulated — true
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate h1 visible without motion
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate reveal nodes static (17) — []
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate gallery block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate gallery has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate results items visible — 3/3
+✓ [webkit reduced-motion] /en/cases/design/schonheit-gift-certificate review card visible — 1
+✓ [webkit reduced-motion] /cases/design/vikontse-logo reduced-motion emulated — true
+✓ [webkit reduced-motion] /cases/design/vikontse-logo h1 visible without motion
+✓ [webkit reduced-motion] /cases/design/vikontse-logo hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /cases/design/vikontse-logo brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /cases/design/vikontse-logo reveal nodes static (17) — []
+✓ [webkit reduced-motion] /cases/design/vikontse-logo materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/vikontse-logo materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/vikontse-logo materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/vikontse-logo materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/vikontse-logo gallery block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/vikontse-logo gallery has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/vikontse-logo results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/vikontse-logo results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/vikontse-logo review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/vikontse-logo review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/vikontse-logo results items visible — 3/3
+✓ [webkit reduced-motion] /cases/design/vikontse-logo review card visible — 1
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo reduced-motion emulated — true
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo h1 visible without motion
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo reveal nodes static (17) — []
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo materials present: feature images/sliders — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo materials present: gallery items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo materials present: compare items — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo materials present: video tiles — {"featureImage":0,"featureSlider":0,"galleryItem":1,"compareItem":0,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo gallery block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo gallery has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo results items visible — 3/3
+✓ [webkit reduced-motion] /en/cases/design/vikontse-logo review card visible — 1
+✓ [webkit reduced-motion] /cases/it/mnm-detailing reduced-motion emulated — true
+✓ [webkit reduced-motion] /cases/it/mnm-detailing h1 visible without motion
+✓ [webkit reduced-motion] /cases/it/mnm-detailing hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /cases/it/mnm-detailing brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /cases/it/mnm-detailing reveal nodes static (25) — []
+✓ [webkit reduced-motion] /cases/it/mnm-detailing materials present: feature images/sliders — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/it/mnm-detailing materials present: gallery items — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/it/mnm-detailing materials present: compare items — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/it/mnm-detailing materials present: video tiles — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/it/mnm-detailing featureList block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/it/mnm-detailing featureList has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/it/mnm-detailing results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/it/mnm-detailing results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/it/mnm-detailing review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/it/mnm-detailing review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/it/mnm-detailing results items visible — 8/8
+✓ [webkit reduced-motion] /cases/it/mnm-detailing review card visible — 1
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing reduced-motion emulated — true
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing h1 visible without motion
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing reveal nodes static (25) — []
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing materials present: feature images/sliders — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing materials present: gallery items — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing materials present: compare items — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing materials present: video tiles — {"featureImage":0,"featureSlider":4,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":8,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing featureList block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing featureList has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing results items visible — 8/8
+✓ [webkit reduced-motion] /en/cases/it/mnm-detailing review card visible — 1
+✓ [webkit light-theme] /cases/design/schonheit-gift-certificate light theme applied — light
+✓ [webkit light-theme] /cases/design/schonheit-gift-certificate light theme h1 visible
+✓ [webkit light-theme] /cases/design/schonheit-gift-certificate light theme breadcrumb visible
+✓ [webkit light-theme] /cases/design/schonheit-gift-certificate light theme no overflow — -8px
+✓ [webkit light-theme] /cases/design/vikontse-logo light theme applied — light
+✓ [webkit light-theme] /cases/design/vikontse-logo light theme h1 visible
+✓ [webkit light-theme] /cases/design/vikontse-logo light theme breadcrumb visible
+✓ [webkit light-theme] /cases/design/vikontse-logo light theme no overflow — -8px
+✓ [webkit light-theme] /cases/it/mnm-detailing light theme applied — light
+✓ [webkit light-theme] /cases/it/mnm-detailing light theme h1 visible
+✓ [webkit light-theme] /cases/it/mnm-detailing light theme breadcrumb visible
+✓ [webkit light-theme] /cases/it/mnm-detailing light theme no overflow — -8px
+✓ [media http] all 11 record media reachable — 11/11
+
+RESULT: PASS

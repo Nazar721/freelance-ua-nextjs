@@ -1,0 +1,784 @@
+Package 4 case pages — browser checks
+base: http://localhost:3011
+engines: chromium, webkit (Playwright builds, not installed Chrome/Safari)
+cases: it/eva-code, design/nastya-portrait-retouch, video/cuprus-life
+checked: 775 · passed: 775 · failed: 0
+duration: 152s
+
+✓ [chromium desktop] /cases/it/eva-code status 200 — 200
+✓ [chromium desktop] /cases/it/eva-code html lang — uk
+✓ [chromium desktop] /cases/it/eva-code exactly one h1 — ["E.V.A. CODE™ — екосистема для експертів з діагностики"]
+✓ [chromium desktop] /cases/it/eva-code h1 localized — E.V.A. CODE™ — екосистема для експертів з діагностики
+✓ [chromium desktop] /cases/it/eva-code lead localized — Цифрова екосистема для діагностики біоенергетичної системи т
+✓ [chromium desktop] /cases/it/eva-code single canonical — 1
+✓ [chromium desktop] /cases/it/eva-code canonical path — https://freelance-ua.agency/cases/it/eva-code
+✓ [chromium desktop] /cases/it/eva-code hreflang en — https://freelance-ua.agency/en/cases/it/eva-code
+✓ [chromium desktop] /cases/it/eva-code no raw i18n keys — []
+✓ [chromium desktop] /cases/it/eva-code breadcrumb present
+✓ [chromium desktop] /cases/it/eva-code breadcrumb aria-label — Навігаційний ланцюжок
+✓ [chromium desktop] /cases/it/eva-code breadcrumb has 3 items — ["Головна","ІТ-розробка","E.V.A. CODE™ — екосистема для експертів з діагностики"]
+✓ [chromium desktop] /cases/it/eva-code breadcrumb home label — Головна
+✓ [chromium desktop] /cases/it/eva-code breadcrumb home href — /
+✓ [chromium desktop] /cases/it/eva-code breadcrumb direction label — ІТ-розробка
+✓ [chromium desktop] /cases/it/eva-code breadcrumb direction href — /services/it
+✓ [chromium desktop] /cases/it/eva-code breadcrumb current is H1 — E.V.A. CODE™ — екосистема для експертів з діагностики
+✓ [chromium desktop] /cases/it/eva-code breadcrumb current has no href — null
+✓ [chromium desktop] /cases/it/eva-code breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /cases/it/eva-code back-to-list link — /services/it#cases
+✓ [chromium desktop] /cases/it/eva-code switcher → counterpart — /en/cases/it/eva-code (expected /en/cases/it/eva-code)
+✓ [chromium desktop] /cases/it/eva-code related heading — Інші проєкти
+✓ [chromium desktop] /cases/it/eva-code related has 3 cards — ["/cases/it/asandra-soul","/cases/it/selloflow","/cases/it/darkshare"]
+✓ [chromium desktop] /cases/it/eva-code related excludes current — ["/cases/it/asandra-soul","/cases/it/selloflow","/cases/it/darkshare"]
+✓ [chromium desktop] /en/cases/it/eva-code status 200 — 200
+✓ [chromium desktop] /en/cases/it/eva-code html lang — en
+✓ [chromium desktop] /en/cases/it/eva-code exactly one h1 — ["E.V.A. CODE™ — an ecosystem for diagnostics experts"]
+✓ [chromium desktop] /en/cases/it/eva-code h1 localized — E.V.A. CODE™ — an ecosystem for diagnostics experts
+✓ [chromium desktop] /en/cases/it/eva-code lead localized — A digital ecosystem for bioenergy system diagnostics and wom
+✓ [chromium desktop] /en/cases/it/eva-code single canonical — 1
+✓ [chromium desktop] /en/cases/it/eva-code canonical path — https://freelance-ua.agency/en/cases/it/eva-code
+✓ [chromium desktop] /en/cases/it/eva-code hreflang uk — https://freelance-ua.agency/cases/it/eva-code
+✓ [chromium desktop] /en/cases/it/eva-code no raw i18n keys — []
+✓ [chromium desktop] /en/cases/it/eva-code breadcrumb present
+✓ [chromium desktop] /en/cases/it/eva-code breadcrumb aria-label — Breadcrumb
+✓ [chromium desktop] /en/cases/it/eva-code breadcrumb has 3 items — ["Home","IT Development","E.V.A. CODE™ — an ecosystem for diagnostics experts"]
+✓ [chromium desktop] /en/cases/it/eva-code breadcrumb home label — Home
+✓ [chromium desktop] /en/cases/it/eva-code breadcrumb home href — /en
+✓ [chromium desktop] /en/cases/it/eva-code breadcrumb direction label — IT Development
+✓ [chromium desktop] /en/cases/it/eva-code breadcrumb direction href — /en/services/it
+✓ [chromium desktop] /en/cases/it/eva-code breadcrumb current is H1 — E.V.A. CODE™ — an ecosystem for diagnostics experts
+✓ [chromium desktop] /en/cases/it/eva-code breadcrumb current has no href — null
+✓ [chromium desktop] /en/cases/it/eva-code breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /en/cases/it/eva-code back-to-list link — /en/services/it#cases
+✓ [chromium desktop] /en/cases/it/eva-code switcher → counterpart — /cases/it/eva-code (expected /cases/it/eva-code)
+✓ [chromium desktop] /en/cases/it/eva-code related heading — Other projects
+✓ [chromium desktop] /en/cases/it/eva-code related has 3 cards — ["/cases/it/asandra-soul","/cases/it/selloflow","/cases/it/darkshare"]
+✓ [chromium desktop] /en/cases/it/eva-code related excludes current — ["/cases/it/asandra-soul","/cases/it/selloflow","/cases/it/darkshare"]
+✓ [chromium desktop] /cases/it/eva-code switch → EN url — /en/cases/it/eva-code
+✓ [chromium desktop] /cases/it/eva-code switch → EN lang — en
+✓ [chromium desktop] /cases/it/eva-code stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [chromium desktop] /cases/it/eva-code UA h1 with NEXT_LOCALE=en — E.V.A. CODE™ — екосистема для експертів з діагностики
+✓ [chromium desktop] /cases/it/eva-code breadcrumb → home — http://localhost:3011/
+✓ [chromium desktop] /cases/it/eva-code back → case — /cases/it/eva-code
+✓ [chromium desktop] /cases/it/eva-code back keeps H1 — E.V.A. CODE™ — екосистема для експертів з діагностики
+✓ [chromium desktop] /cases/it/eva-code forward → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch status 200 — 200
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch html lang — uk
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch exactly one h1 — ["Ретуш портретів: кольорокорекція та обробка фото"]
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch h1 localized — Ретуш портретів: кольорокорекція та обробка фото
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch lead localized — Кольорокорекція та ретуш портретних кадрів — від студійних п
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch single canonical — 1
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch canonical path — https://freelance-ua.agency/cases/design/nastya-portrait-retouch
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch hreflang en — https://freelance-ua.agency/en/cases/design/nastya-portrait-retouch
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch no raw i18n keys — []
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch breadcrumb present
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch breadcrumb aria-label — Навігаційний ланцюжок
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch breadcrumb has 3 items — ["Головна","Дизайн","Ретуш портретів: кольорокорекція та обробка фото"]
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch breadcrumb home label — Головна
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch breadcrumb home href — /
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch breadcrumb direction label — Дизайн
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch breadcrumb direction href — /services/design
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch breadcrumb current is H1 — Ретуш портретів: кольорокорекція та обробка фото
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch breadcrumb current has no href — null
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch back-to-list link — /cases?tab=design&type=photo-retouch
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch switcher → counterpart — /en/cases/design/nastya-portrait-retouch (expected /en/cases/design/nastya-portrait-retouch)
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch related heading — Інші проєкти
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch related has 3 cards — ["/cases/design/photo-retouch","/cases/design/barvy-interior","/cases/design/color-correction"]
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch related excludes current — ["/cases/design/photo-retouch","/cases/design/barvy-interior","/cases/design/color-correction"]
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch status 200 — 200
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch html lang — en
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch exactly one h1 — ["Portrait retouching: color grading and photo editing"]
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch h1 localized — Portrait retouching: color grading and photo editing
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch lead localized — Color correction and retouching of portrait shots — from stu
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch single canonical — 1
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch canonical path — https://freelance-ua.agency/en/cases/design/nastya-portrait-retouch
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch hreflang uk — https://freelance-ua.agency/cases/design/nastya-portrait-retouch
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch no raw i18n keys — []
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch breadcrumb present
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch breadcrumb aria-label — Breadcrumb
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch breadcrumb has 3 items — ["Home","Design","Portrait retouching: color grading and photo editing"]
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch breadcrumb home label — Home
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch breadcrumb home href — /en
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch breadcrumb direction label — Design
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch breadcrumb direction href — /en/services/design
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch breadcrumb current is H1 — Portrait retouching: color grading and photo editing
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch breadcrumb current has no href — null
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch back-to-list link — /en/cases?tab=design&type=photo-retouch
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch switcher → counterpart — /cases/design/nastya-portrait-retouch (expected /cases/design/nastya-portrait-retouch)
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch related heading — Other projects
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch related has 3 cards — ["/cases/design/photo-retouch","/cases/design/barvy-interior","/cases/design/color-correction"]
+✓ [chromium desktop] /en/cases/design/nastya-portrait-retouch related excludes current — ["/cases/design/photo-retouch","/cases/design/barvy-interior","/cases/design/color-correction"]
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch switch → EN url — /en/cases/design/nastya-portrait-retouch
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch switch → EN lang — en
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch UA h1 with NEXT_LOCALE=en — Ретуш портретів: кольорокорекція та обробка фото
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch breadcrumb → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch back → case — /cases/design/nastya-portrait-retouch
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch back keeps H1 — Ретуш портретів: кольорокорекція та обробка фото
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch forward → home — http://localhost:3011/
+✓ [chromium desktop] /cases/video/cuprus-life status 200 — 200
+✓ [chromium desktop] /cases/video/cuprus-life html lang — uk
+✓ [chromium desktop] /cases/video/cuprus-life exactly one h1 — ["Cuprus Life — 3 промо-Reels для соціальних мереж"]
+✓ [chromium desktop] /cases/video/cuprus-life h1 localized — Cuprus Life — 3 промо-Reels для соціальних мереж
+✓ [chromium desktop] /cases/video/cuprus-life lead localized — Створили серію промо-роликів для польської компанії Cuprus L
+✓ [chromium desktop] /cases/video/cuprus-life single canonical — 1
+✓ [chromium desktop] /cases/video/cuprus-life canonical path — https://freelance-ua.agency/cases/video/cuprus-life
+✓ [chromium desktop] /cases/video/cuprus-life hreflang en — https://freelance-ua.agency/en/cases/video/cuprus-life
+✓ [chromium desktop] /cases/video/cuprus-life no raw i18n keys — []
+✓ [chromium desktop] /cases/video/cuprus-life breadcrumb present
+✓ [chromium desktop] /cases/video/cuprus-life breadcrumb aria-label — Навігаційний ланцюжок
+✓ [chromium desktop] /cases/video/cuprus-life breadcrumb has 3 items — ["Головна","Відео","Cuprus Life — 3 промо-Reels для соціальних мереж"]
+✓ [chromium desktop] /cases/video/cuprus-life breadcrumb home label — Головна
+✓ [chromium desktop] /cases/video/cuprus-life breadcrumb home href — /
+✓ [chromium desktop] /cases/video/cuprus-life breadcrumb direction label — Відео
+✓ [chromium desktop] /cases/video/cuprus-life breadcrumb direction href — /services/video
+✓ [chromium desktop] /cases/video/cuprus-life breadcrumb current is H1 — Cuprus Life — 3 промо-Reels для соціальних мереж
+✓ [chromium desktop] /cases/video/cuprus-life breadcrumb current has no href — null
+✓ [chromium desktop] /cases/video/cuprus-life breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /cases/video/cuprus-life back-to-list link — /cases?tab=video
+✓ [chromium desktop] /cases/video/cuprus-life switcher → counterpart — /en/cases/video/cuprus-life (expected /en/cases/video/cuprus-life)
+✓ [chromium desktop] /cases/video/cuprus-life related heading — Інші проєкти
+✓ [chromium desktop] /cases/video/cuprus-life related has 3 cards — ["/cases/video/serhii-yarmolenko-reels","/cases/video/nikita-sheremet-crypto","/cases/video/yulia-smm-reels"]
+✓ [chromium desktop] /cases/video/cuprus-life related excludes current — ["/cases/video/serhii-yarmolenko-reels","/cases/video/nikita-sheremet-crypto","/cases/video/yulia-smm-reels"]
+✓ [chromium desktop] /en/cases/video/cuprus-life status 200 — 200
+✓ [chromium desktop] /en/cases/video/cuprus-life html lang — en
+✓ [chromium desktop] /en/cases/video/cuprus-life exactly one h1 — ["Cuprus Life — 3 promo Reels for social media"]
+✓ [chromium desktop] /en/cases/video/cuprus-life h1 localized — Cuprus Life — 3 promo Reels for social media
+✓ [chromium desktop] /en/cases/video/cuprus-life lead localized — Created a series of promo reels for a Polish company Cuprus 
+✓ [chromium desktop] /en/cases/video/cuprus-life single canonical — 1
+✓ [chromium desktop] /en/cases/video/cuprus-life canonical path — https://freelance-ua.agency/en/cases/video/cuprus-life
+✓ [chromium desktop] /en/cases/video/cuprus-life hreflang uk — https://freelance-ua.agency/cases/video/cuprus-life
+✓ [chromium desktop] /en/cases/video/cuprus-life no raw i18n keys — []
+✓ [chromium desktop] /en/cases/video/cuprus-life breadcrumb present
+✓ [chromium desktop] /en/cases/video/cuprus-life breadcrumb aria-label — Breadcrumb
+✓ [chromium desktop] /en/cases/video/cuprus-life breadcrumb has 3 items — ["Home","Video","Cuprus Life — 3 promo Reels for social media"]
+✓ [chromium desktop] /en/cases/video/cuprus-life breadcrumb home label — Home
+✓ [chromium desktop] /en/cases/video/cuprus-life breadcrumb home href — /en
+✓ [chromium desktop] /en/cases/video/cuprus-life breadcrumb direction label — Video
+✓ [chromium desktop] /en/cases/video/cuprus-life breadcrumb direction href — /en/services/video
+✓ [chromium desktop] /en/cases/video/cuprus-life breadcrumb current is H1 — Cuprus Life — 3 promo Reels for social media
+✓ [chromium desktop] /en/cases/video/cuprus-life breadcrumb current has no href — null
+✓ [chromium desktop] /en/cases/video/cuprus-life breadcrumb separators hidden — ["→","→"]
+✓ [chromium desktop] /en/cases/video/cuprus-life back-to-list link — /en/cases?tab=video
+✓ [chromium desktop] /en/cases/video/cuprus-life switcher → counterpart — /cases/video/cuprus-life (expected /cases/video/cuprus-life)
+✓ [chromium desktop] /en/cases/video/cuprus-life related heading — Other projects
+✓ [chromium desktop] /en/cases/video/cuprus-life related has 3 cards — ["/cases/video/serhii-yarmolenko-reels","/cases/video/nikita-sheremet-crypto","/cases/video/yulia-smm-reels"]
+✓ [chromium desktop] /en/cases/video/cuprus-life related excludes current — ["/cases/video/serhii-yarmolenko-reels","/cases/video/nikita-sheremet-crypto","/cases/video/yulia-smm-reels"]
+✓ [chromium desktop] /cases/video/cuprus-life switch → EN url — /en/cases/video/cuprus-life
+✓ [chromium desktop] /cases/video/cuprus-life switch → EN lang — en
+✓ [chromium desktop] /cases/video/cuprus-life stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [chromium desktop] /cases/video/cuprus-life UA h1 with NEXT_LOCALE=en — Cuprus Life — 3 промо-Reels для соціальних мереж
+✓ [chromium desktop] /cases/video/cuprus-life breadcrumb → home — http://localhost:3011/
+✓ [chromium desktop] /cases/video/cuprus-life back → case — /cases/video/cuprus-life
+✓ [chromium desktop] /cases/video/cuprus-life back keeps H1 — Cuprus Life — 3 промо-Reels для соціальних мереж
+✓ [chromium desktop] /cases/video/cuprus-life forward → home — http://localhost:3011/
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch image modal opens — 1
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch image modal closes on Escape
+✓ [chromium desktop] /cases/design/nastya-portrait-retouch image modal closes on button
+✓ [chromium desktop] /cases/it/eva-code image modal opens — 1
+✓ [chromium desktop] /cases/it/eva-code image modal closes on Escape
+✓ [chromium desktop] /cases/it/eva-code image modal closes on button
+✓ [chromium desktop] /cases/video/cuprus-life hero video tiles — 3
+✓ [chromium desktop] /cases/video/cuprus-life player opens as a dialog — 1
+✓ [chromium desktop] /cases/video/cuprus-life dialog name localized — Перегляд відео (expected Перегляд відео)
+✓ [chromium desktop] /cases/video/cuprus-life fullscreen player opens — 1
+✓ [chromium desktop] /cases/video/cuprus-life background inert while open — {"headerInert":true,"footerInert":true,"bodyOverflow":"hidden","focusInside":true,"active":"BUTTON"}
+✓ [chromium desktop] /cases/video/cuprus-life page scroll locked — hidden
+✓ [chromium desktop] /cases/video/cuprus-life focus starts inside the player — BUTTON
+✓ [chromium desktop] /cases/video/cuprus-life Shift+Tab stays inside the player — VIDEO
+✓ [chromium desktop] /cases/video/cuprus-life Tab stays inside the player — BUTTON[Закрити]
+✓ [chromium desktop] /cases/video/cuprus-life Tab wraps inside the player — VIDEO
+✓ [chromium desktop] /cases/video/cuprus-life Escape closes the player — 0
+✓ [chromium desktop] /cases/video/cuprus-life background restored after close — {"headerInert":false,"footerInert":false,"bodyOverflow":"visible","focusIsTile":true}
+✓ [chromium desktop] /cases/video/cuprus-life scroll restored after close — visible
+✓ [chromium desktop] /cases/video/cuprus-life focus returns to the tile — true
+✓ [chromium desktop] /cases/video/cuprus-life player closes on the close button — 0
+✓ [chromium desktop] /en/cases/video/cuprus-life hero video tiles — 3
+✓ [chromium desktop] /en/cases/video/cuprus-life player opens as a dialog — 1
+✓ [chromium desktop] /en/cases/video/cuprus-life dialog name localized — Video player (expected Video player)
+✓ [chromium desktop] /en/cases/video/cuprus-life fullscreen player opens — 1
+✓ [chromium desktop] /en/cases/video/cuprus-life background inert while open — {"headerInert":true,"footerInert":true,"bodyOverflow":"hidden","focusInside":true,"active":"BUTTON"}
+✓ [chromium desktop] /en/cases/video/cuprus-life page scroll locked — hidden
+✓ [chromium desktop] /en/cases/video/cuprus-life focus starts inside the player — BUTTON
+✓ [chromium desktop] /en/cases/video/cuprus-life Shift+Tab stays inside the player — VIDEO
+✓ [chromium desktop] /en/cases/video/cuprus-life Tab stays inside the player — BUTTON[Close]
+✓ [chromium desktop] /en/cases/video/cuprus-life Tab wraps inside the player — VIDEO
+✓ [chromium desktop] /en/cases/video/cuprus-life Escape closes the player — 0
+✓ [chromium desktop] /en/cases/video/cuprus-life background restored after close — {"headerInert":false,"footerInert":false,"bodyOverflow":"visible","focusIsTile":true}
+✓ [chromium desktop] /en/cases/video/cuprus-life scroll restored after close — visible
+✓ [chromium desktop] /en/cases/video/cuprus-life focus returns to the tile — true
+✓ [chromium desktop] /en/cases/video/cuprus-life player closes on the close button — 0
+✓ [chromium mobile] /cases/it/eva-code mobile status — 200
+✓ [chromium mobile] /cases/it/eva-code mobile lang — uk
+✓ [chromium mobile] /cases/it/eva-code mobile h1 visible — E.V.A. CODE™ — екосистема для експертів з діагностики
+✓ [chromium mobile] /cases/it/eva-code mobile lead visible
+✓ [chromium mobile] /cases/it/eva-code mobile breadcrumb visible
+✓ [chromium mobile] /cases/it/eva-code no horizontal overflow — 0px
+✓ [chromium mobile] /en/cases/it/eva-code mobile status — 200
+✓ [chromium mobile] /en/cases/it/eva-code mobile lang — en
+✓ [chromium mobile] /en/cases/it/eva-code mobile h1 visible — E.V.A. CODE™ — an ecosystem for diagnostics experts
+✓ [chromium mobile] /en/cases/it/eva-code mobile lead visible
+✓ [chromium mobile] /en/cases/it/eva-code mobile breadcrumb visible
+✓ [chromium mobile] /en/cases/it/eva-code no horizontal overflow — 0px
+✓ [chromium mobile] /cases/design/nastya-portrait-retouch mobile status — 200
+✓ [chromium mobile] /cases/design/nastya-portrait-retouch mobile lang — uk
+✓ [chromium mobile] /cases/design/nastya-portrait-retouch mobile h1 visible — Ретуш портретів: кольорокорекція та обробка фото
+✓ [chromium mobile] /cases/design/nastya-portrait-retouch mobile lead visible
+✓ [chromium mobile] /cases/design/nastya-portrait-retouch mobile breadcrumb visible
+✓ [chromium mobile] /cases/design/nastya-portrait-retouch no horizontal overflow — 0px
+✓ [chromium mobile] /en/cases/design/nastya-portrait-retouch mobile status — 200
+✓ [chromium mobile] /en/cases/design/nastya-portrait-retouch mobile lang — en
+✓ [chromium mobile] /en/cases/design/nastya-portrait-retouch mobile h1 visible — Portrait retouching: color grading and photo editing
+✓ [chromium mobile] /en/cases/design/nastya-portrait-retouch mobile lead visible
+✓ [chromium mobile] /en/cases/design/nastya-portrait-retouch mobile breadcrumb visible
+✓ [chromium mobile] /en/cases/design/nastya-portrait-retouch no horizontal overflow — 0px
+✓ [chromium mobile] /cases/video/cuprus-life mobile status — 200
+✓ [chromium mobile] /cases/video/cuprus-life mobile lang — uk
+✓ [chromium mobile] /cases/video/cuprus-life mobile h1 visible — Cuprus Life — 3 промо-Reels для соціальних мереж
+✓ [chromium mobile] /cases/video/cuprus-life mobile lead visible
+✓ [chromium mobile] /cases/video/cuprus-life mobile breadcrumb visible
+✓ [chromium mobile] /cases/video/cuprus-life no horizontal overflow — 0px
+✓ [chromium mobile] /en/cases/video/cuprus-life mobile status — 200
+✓ [chromium mobile] /en/cases/video/cuprus-life mobile lang — en
+✓ [chromium mobile] /en/cases/video/cuprus-life mobile h1 visible — Cuprus Life — 3 promo Reels for social media
+✓ [chromium mobile] /en/cases/video/cuprus-life mobile lead visible
+✓ [chromium mobile] /en/cases/video/cuprus-life mobile breadcrumb visible
+✓ [chromium mobile] /en/cases/video/cuprus-life no horizontal overflow — 0px
+✓ [chromium mobile] /cases/design/nastya-portrait-retouch image modal opens — 1
+✓ [chromium mobile] /cases/design/nastya-portrait-retouch image modal closes on Escape
+✓ [chromium mobile] /cases/design/nastya-portrait-retouch image modal closes on button
+✓ [chromium mobile] /cases/video/cuprus-life hero video tiles — 3
+✓ [chromium mobile] /cases/video/cuprus-life player opens as a dialog — 1
+✓ [chromium mobile] /cases/video/cuprus-life dialog name localized — Перегляд відео (expected Перегляд відео)
+✓ [chromium mobile] /cases/video/cuprus-life fullscreen player opens — 1
+✓ [chromium mobile] /cases/video/cuprus-life background inert while open — {"headerInert":true,"footerInert":true,"bodyOverflow":"hidden","focusInside":true,"active":"BUTTON"}
+✓ [chromium mobile] /cases/video/cuprus-life page scroll locked — hidden
+✓ [chromium mobile] /cases/video/cuprus-life focus starts inside the player — BUTTON
+✓ [chromium mobile] /cases/video/cuprus-life Shift+Tab stays inside the player — VIDEO
+✓ [chromium mobile] /cases/video/cuprus-life Tab stays inside the player — BUTTON[Закрити]
+✓ [chromium mobile] /cases/video/cuprus-life Tab wraps inside the player — VIDEO
+✓ [chromium mobile] /cases/video/cuprus-life Escape closes the player — 0
+✓ [chromium mobile] /cases/video/cuprus-life background restored after close — {"headerInert":false,"footerInert":false,"bodyOverflow":"visible","focusIsTile":true}
+✓ [chromium mobile] /cases/video/cuprus-life scroll restored after close — visible
+✓ [chromium mobile] /cases/video/cuprus-life focus returns to the tile — true
+✓ [chromium mobile] /cases/video/cuprus-life player closes on the close button — 0
+✓ [chromium mobile] /en/cases/video/cuprus-life hero video tiles — 3
+✓ [chromium mobile] /en/cases/video/cuprus-life player opens as a dialog — 1
+✓ [chromium mobile] /en/cases/video/cuprus-life dialog name localized — Video player (expected Video player)
+✓ [chromium mobile] /en/cases/video/cuprus-life fullscreen player opens — 1
+✓ [chromium mobile] /en/cases/video/cuprus-life background inert while open — {"headerInert":true,"footerInert":true,"bodyOverflow":"hidden","focusInside":true,"active":"BUTTON"}
+✓ [chromium mobile] /en/cases/video/cuprus-life page scroll locked — hidden
+✓ [chromium mobile] /en/cases/video/cuprus-life focus starts inside the player — BUTTON
+✓ [chromium mobile] /en/cases/video/cuprus-life Shift+Tab stays inside the player — VIDEO
+✓ [chromium mobile] /en/cases/video/cuprus-life Tab stays inside the player — BUTTON[Close]
+✓ [chromium mobile] /en/cases/video/cuprus-life Tab wraps inside the player — VIDEO
+✓ [chromium mobile] /en/cases/video/cuprus-life Escape closes the player — 0
+✓ [chromium mobile] /en/cases/video/cuprus-life background restored after close — {"headerInert":false,"footerInert":false,"bodyOverflow":"visible","focusIsTile":true}
+✓ [chromium mobile] /en/cases/video/cuprus-life scroll restored after close — visible
+✓ [chromium mobile] /en/cases/video/cuprus-life focus returns to the tile — true
+✓ [chromium mobile] /en/cases/video/cuprus-life player closes on the close button — 0
+✓ [chromium reduced-motion] /cases/it/eva-code reduced-motion emulated — true
+✓ [chromium reduced-motion] /cases/it/eva-code h1 visible without motion
+✓ [chromium reduced-motion] /cases/it/eva-code hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /cases/it/eva-code brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /cases/it/eva-code reveal nodes static (47) — []
+✓ [chromium reduced-motion] /cases/it/eva-code materials present: feature images — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/it/eva-code materials present: gallery items — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/it/eva-code materials present: compare items — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/it/eva-code materials present: video tiles — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/it/eva-code featureList block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/it/eva-code featureList has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/it/eva-code results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/it/eva-code results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/it/eva-code review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/it/eva-code review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/it/eva-code results items visible — 5/5
+✓ [chromium reduced-motion] /cases/it/eva-code review card visible — 1
+✓ [chromium reduced-motion] /en/cases/it/eva-code reduced-motion emulated — true
+✓ [chromium reduced-motion] /en/cases/it/eva-code h1 visible without motion
+✓ [chromium reduced-motion] /en/cases/it/eva-code hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /en/cases/it/eva-code brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /en/cases/it/eva-code reveal nodes static (47) — []
+✓ [chromium reduced-motion] /en/cases/it/eva-code materials present: feature images — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/it/eva-code materials present: gallery items — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/it/eva-code materials present: compare items — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/it/eva-code materials present: video tiles — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/it/eva-code featureList block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/it/eva-code featureList has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/it/eva-code results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/it/eva-code results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/it/eva-code review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/it/eva-code review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/it/eva-code results items visible — 5/5
+✓ [chromium reduced-motion] /en/cases/it/eva-code review card visible — 1
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch reduced-motion emulated — true
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch h1 visible without motion
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch reveal nodes static (26) — []
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch materials present: feature images — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch materials present: gallery items — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch materials present: compare items — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch materials present: video tiles — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch compare block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch compare has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch gallery block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch gallery has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch results items visible — 3/3
+✓ [chromium reduced-motion] /cases/design/nastya-portrait-retouch review card visible — 1
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch reduced-motion emulated — true
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch h1 visible without motion
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch reveal nodes static (26) — []
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch materials present: feature images — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch materials present: gallery items — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch materials present: compare items — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch materials present: video tiles — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch compare block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch compare has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch gallery block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch gallery has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch results items visible — 3/3
+✓ [chromium reduced-motion] /en/cases/design/nastya-portrait-retouch review card visible — 1
+✓ [chromium reduced-motion] /cases/video/cuprus-life reduced-motion emulated — true
+✓ [chromium reduced-motion] /cases/video/cuprus-life h1 visible without motion
+✓ [chromium reduced-motion] /cases/video/cuprus-life hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /cases/video/cuprus-life brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /cases/video/cuprus-life reveal nodes static (16) — []
+✓ [chromium reduced-motion] /cases/video/cuprus-life materials present: feature images — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/video/cuprus-life materials present: gallery items — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/video/cuprus-life materials present: compare items — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/video/cuprus-life materials present: video tiles — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /cases/video/cuprus-life results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/video/cuprus-life results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/video/cuprus-life review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /cases/video/cuprus-life review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /cases/video/cuprus-life results items visible — 4/4
+✓ [chromium reduced-motion] /cases/video/cuprus-life review card visible — 1
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life reduced-motion emulated — true
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life h1 visible without motion
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life reveal nodes static (16) — []
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life materials present: feature images — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life materials present: gallery items — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life materials present: compare items — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life materials present: video tiles — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life results block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life results has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life review block found — {"present":true,"bad":[]}
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life review has no hidden/blurred nodes — []
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life results items visible — 4/4
+✓ [chromium reduced-motion] /en/cases/video/cuprus-life review card visible — 1
+✓ [chromium light-theme] /cases/it/eva-code light theme applied — light
+✓ [chromium light-theme] /cases/it/eva-code light theme h1 visible
+✓ [chromium light-theme] /cases/it/eva-code light theme breadcrumb visible
+✓ [chromium light-theme] /cases/it/eva-code light theme no overflow — 0px
+✓ [chromium light-theme] /cases/design/nastya-portrait-retouch light theme applied — light
+✓ [chromium light-theme] /cases/design/nastya-portrait-retouch light theme h1 visible
+✓ [chromium light-theme] /cases/design/nastya-portrait-retouch light theme breadcrumb visible
+✓ [chromium light-theme] /cases/design/nastya-portrait-retouch light theme no overflow — 0px
+✓ [chromium light-theme] /cases/video/cuprus-life light theme applied — light
+✓ [chromium light-theme] /cases/video/cuprus-life light theme h1 visible
+✓ [chromium light-theme] /cases/video/cuprus-life light theme breadcrumb visible
+✓ [chromium light-theme] /cases/video/cuprus-life light theme no overflow — 0px
+✓ [webkit desktop] /cases/it/eva-code status 200 — 200
+✓ [webkit desktop] /cases/it/eva-code html lang — uk
+✓ [webkit desktop] /cases/it/eva-code exactly one h1 — ["E.V.A. CODE™ — екосистема для експертів з діагностики"]
+✓ [webkit desktop] /cases/it/eva-code h1 localized — E.V.A. CODE™ — екосистема для експертів з діагностики
+✓ [webkit desktop] /cases/it/eva-code lead localized — Цифрова екосистема для діагностики біоенергетичної системи т
+✓ [webkit desktop] /cases/it/eva-code single canonical — 1
+✓ [webkit desktop] /cases/it/eva-code canonical path — https://freelance-ua.agency/cases/it/eva-code
+✓ [webkit desktop] /cases/it/eva-code hreflang en — https://freelance-ua.agency/en/cases/it/eva-code
+✓ [webkit desktop] /cases/it/eva-code no raw i18n keys — []
+✓ [webkit desktop] /cases/it/eva-code breadcrumb present
+✓ [webkit desktop] /cases/it/eva-code breadcrumb aria-label — Навігаційний ланцюжок
+✓ [webkit desktop] /cases/it/eva-code breadcrumb has 3 items — ["Головна","ІТ-розробка","E.V.A. CODE™ — екосистема для експертів з діагностики"]
+✓ [webkit desktop] /cases/it/eva-code breadcrumb home label — Головна
+✓ [webkit desktop] /cases/it/eva-code breadcrumb home href — /
+✓ [webkit desktop] /cases/it/eva-code breadcrumb direction label — ІТ-розробка
+✓ [webkit desktop] /cases/it/eva-code breadcrumb direction href — /services/it
+✓ [webkit desktop] /cases/it/eva-code breadcrumb current is H1 — E.V.A. CODE™ — екосистема для експертів з діагностики
+✓ [webkit desktop] /cases/it/eva-code breadcrumb current has no href — null
+✓ [webkit desktop] /cases/it/eva-code breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /cases/it/eva-code back-to-list link — /services/it#cases
+✓ [webkit desktop] /cases/it/eva-code switcher → counterpart — /en/cases/it/eva-code (expected /en/cases/it/eva-code)
+✓ [webkit desktop] /cases/it/eva-code related heading — Інші проєкти
+✓ [webkit desktop] /cases/it/eva-code related has 3 cards — ["/cases/it/asandra-soul","/cases/it/selloflow","/cases/it/darkshare"]
+✓ [webkit desktop] /cases/it/eva-code related excludes current — ["/cases/it/asandra-soul","/cases/it/selloflow","/cases/it/darkshare"]
+✓ [webkit desktop] /en/cases/it/eva-code status 200 — 200
+✓ [webkit desktop] /en/cases/it/eva-code html lang — en
+✓ [webkit desktop] /en/cases/it/eva-code exactly one h1 — ["E.V.A. CODE™ — an ecosystem for diagnostics experts"]
+✓ [webkit desktop] /en/cases/it/eva-code h1 localized — E.V.A. CODE™ — an ecosystem for diagnostics experts
+✓ [webkit desktop] /en/cases/it/eva-code lead localized — A digital ecosystem for bioenergy system diagnostics and wom
+✓ [webkit desktop] /en/cases/it/eva-code single canonical — 1
+✓ [webkit desktop] /en/cases/it/eva-code canonical path — https://freelance-ua.agency/en/cases/it/eva-code
+✓ [webkit desktop] /en/cases/it/eva-code hreflang uk — https://freelance-ua.agency/cases/it/eva-code
+✓ [webkit desktop] /en/cases/it/eva-code no raw i18n keys — []
+✓ [webkit desktop] /en/cases/it/eva-code breadcrumb present
+✓ [webkit desktop] /en/cases/it/eva-code breadcrumb aria-label — Breadcrumb
+✓ [webkit desktop] /en/cases/it/eva-code breadcrumb has 3 items — ["Home","IT Development","E.V.A. CODE™ — an ecosystem for diagnostics experts"]
+✓ [webkit desktop] /en/cases/it/eva-code breadcrumb home label — Home
+✓ [webkit desktop] /en/cases/it/eva-code breadcrumb home href — /en
+✓ [webkit desktop] /en/cases/it/eva-code breadcrumb direction label — IT Development
+✓ [webkit desktop] /en/cases/it/eva-code breadcrumb direction href — /en/services/it
+✓ [webkit desktop] /en/cases/it/eva-code breadcrumb current is H1 — E.V.A. CODE™ — an ecosystem for diagnostics experts
+✓ [webkit desktop] /en/cases/it/eva-code breadcrumb current has no href — null
+✓ [webkit desktop] /en/cases/it/eva-code breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /en/cases/it/eva-code back-to-list link — /en/services/it#cases
+✓ [webkit desktop] /en/cases/it/eva-code switcher → counterpart — /cases/it/eva-code (expected /cases/it/eva-code)
+✓ [webkit desktop] /en/cases/it/eva-code related heading — Other projects
+✓ [webkit desktop] /en/cases/it/eva-code related has 3 cards — ["/cases/it/asandra-soul","/cases/it/selloflow","/cases/it/darkshare"]
+✓ [webkit desktop] /en/cases/it/eva-code related excludes current — ["/cases/it/asandra-soul","/cases/it/selloflow","/cases/it/darkshare"]
+✓ [webkit desktop] /cases/it/eva-code switch → EN url — /en/cases/it/eva-code
+✓ [webkit desktop] /cases/it/eva-code switch → EN lang — en
+✓ [webkit desktop] /cases/it/eva-code stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [webkit desktop] /cases/it/eva-code UA h1 with NEXT_LOCALE=en — E.V.A. CODE™ — екосистема для експертів з діагностики
+✓ [webkit desktop] /cases/it/eva-code breadcrumb → home — http://localhost:3011/
+✓ [webkit desktop] /cases/it/eva-code back → case — /cases/it/eva-code
+✓ [webkit desktop] /cases/it/eva-code back keeps H1 — E.V.A. CODE™ — екосистема для експертів з діагностики
+✓ [webkit desktop] /cases/it/eva-code forward → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch status 200 — 200
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch html lang — uk
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch exactly one h1 — ["Ретуш портретів: кольорокорекція та обробка фото"]
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch h1 localized — Ретуш портретів: кольорокорекція та обробка фото
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch lead localized — Кольорокорекція та ретуш портретних кадрів — від студійних п
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch single canonical — 1
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch canonical path — https://freelance-ua.agency/cases/design/nastya-portrait-retouch
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch hreflang en — https://freelance-ua.agency/en/cases/design/nastya-portrait-retouch
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch no raw i18n keys — []
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch breadcrumb present
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch breadcrumb aria-label — Навігаційний ланцюжок
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch breadcrumb has 3 items — ["Головна","Дизайн","Ретуш портретів: кольорокорекція та обробка фото"]
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch breadcrumb home label — Головна
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch breadcrumb home href — /
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch breadcrumb direction label — Дизайн
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch breadcrumb direction href — /services/design
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch breadcrumb current is H1 — Ретуш портретів: кольорокорекція та обробка фото
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch breadcrumb current has no href — null
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch back-to-list link — /cases?tab=design&type=photo-retouch
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch switcher → counterpart — /en/cases/design/nastya-portrait-retouch (expected /en/cases/design/nastya-portrait-retouch)
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch related heading — Інші проєкти
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch related has 3 cards — ["/cases/design/photo-retouch","/cases/design/barvy-interior","/cases/design/color-correction"]
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch related excludes current — ["/cases/design/photo-retouch","/cases/design/barvy-interior","/cases/design/color-correction"]
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch status 200 — 200
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch html lang — en
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch exactly one h1 — ["Portrait retouching: color grading and photo editing"]
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch h1 localized — Portrait retouching: color grading and photo editing
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch lead localized — Color correction and retouching of portrait shots — from stu
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch single canonical — 1
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch canonical path — https://freelance-ua.agency/en/cases/design/nastya-portrait-retouch
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch hreflang uk — https://freelance-ua.agency/cases/design/nastya-portrait-retouch
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch no raw i18n keys — []
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch breadcrumb present
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch breadcrumb aria-label — Breadcrumb
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch breadcrumb has 3 items — ["Home","Design","Portrait retouching: color grading and photo editing"]
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch breadcrumb home label — Home
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch breadcrumb home href — /en
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch breadcrumb direction label — Design
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch breadcrumb direction href — /en/services/design
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch breadcrumb current is H1 — Portrait retouching: color grading and photo editing
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch breadcrumb current has no href — null
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch back-to-list link — /en/cases?tab=design&type=photo-retouch
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch switcher → counterpart — /cases/design/nastya-portrait-retouch (expected /cases/design/nastya-portrait-retouch)
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch related heading — Other projects
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch related has 3 cards — ["/cases/design/photo-retouch","/cases/design/barvy-interior","/cases/design/color-correction"]
+✓ [webkit desktop] /en/cases/design/nastya-portrait-retouch related excludes current — ["/cases/design/photo-retouch","/cases/design/barvy-interior","/cases/design/color-correction"]
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch switch → EN url — /en/cases/design/nastya-portrait-retouch
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch switch → EN lang — en
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch UA h1 with NEXT_LOCALE=en — Ретуш портретів: кольорокорекція та обробка фото
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch breadcrumb → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch back → case — /cases/design/nastya-portrait-retouch
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch back keeps H1 — Ретуш портретів: кольорокорекція та обробка фото
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch forward → home — http://localhost:3011/
+✓ [webkit desktop] /cases/video/cuprus-life status 200 — 200
+✓ [webkit desktop] /cases/video/cuprus-life html lang — uk
+✓ [webkit desktop] /cases/video/cuprus-life exactly one h1 — ["Cuprus Life — 3 промо-Reels для соціальних мереж"]
+✓ [webkit desktop] /cases/video/cuprus-life h1 localized — Cuprus Life — 3 промо-Reels для соціальних мереж
+✓ [webkit desktop] /cases/video/cuprus-life lead localized — Створили серію промо-роликів для польської компанії Cuprus L
+✓ [webkit desktop] /cases/video/cuprus-life single canonical — 1
+✓ [webkit desktop] /cases/video/cuprus-life canonical path — https://freelance-ua.agency/cases/video/cuprus-life
+✓ [webkit desktop] /cases/video/cuprus-life hreflang en — https://freelance-ua.agency/en/cases/video/cuprus-life
+✓ [webkit desktop] /cases/video/cuprus-life no raw i18n keys — []
+✓ [webkit desktop] /cases/video/cuprus-life breadcrumb present
+✓ [webkit desktop] /cases/video/cuprus-life breadcrumb aria-label — Навігаційний ланцюжок
+✓ [webkit desktop] /cases/video/cuprus-life breadcrumb has 3 items — ["Головна","Відео","Cuprus Life — 3 промо-Reels для соціальних мереж"]
+✓ [webkit desktop] /cases/video/cuprus-life breadcrumb home label — Головна
+✓ [webkit desktop] /cases/video/cuprus-life breadcrumb home href — /
+✓ [webkit desktop] /cases/video/cuprus-life breadcrumb direction label — Відео
+✓ [webkit desktop] /cases/video/cuprus-life breadcrumb direction href — /services/video
+✓ [webkit desktop] /cases/video/cuprus-life breadcrumb current is H1 — Cuprus Life — 3 промо-Reels для соціальних мереж
+✓ [webkit desktop] /cases/video/cuprus-life breadcrumb current has no href — null
+✓ [webkit desktop] /cases/video/cuprus-life breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /cases/video/cuprus-life back-to-list link — /cases?tab=video
+✓ [webkit desktop] /cases/video/cuprus-life switcher → counterpart — /en/cases/video/cuprus-life (expected /en/cases/video/cuprus-life)
+✓ [webkit desktop] /cases/video/cuprus-life related heading — Інші проєкти
+✓ [webkit desktop] /cases/video/cuprus-life related has 3 cards — ["/cases/video/serhii-yarmolenko-reels","/cases/video/nikita-sheremet-crypto","/cases/video/yulia-smm-reels"]
+✓ [webkit desktop] /cases/video/cuprus-life related excludes current — ["/cases/video/serhii-yarmolenko-reels","/cases/video/nikita-sheremet-crypto","/cases/video/yulia-smm-reels"]
+✓ [webkit desktop] /en/cases/video/cuprus-life status 200 — 200
+✓ [webkit desktop] /en/cases/video/cuprus-life html lang — en
+✓ [webkit desktop] /en/cases/video/cuprus-life exactly one h1 — ["Cuprus Life — 3 promo Reels for social media"]
+✓ [webkit desktop] /en/cases/video/cuprus-life h1 localized — Cuprus Life — 3 promo Reels for social media
+✓ [webkit desktop] /en/cases/video/cuprus-life lead localized — Created a series of promo reels for a Polish company Cuprus 
+✓ [webkit desktop] /en/cases/video/cuprus-life single canonical — 1
+✓ [webkit desktop] /en/cases/video/cuprus-life canonical path — https://freelance-ua.agency/en/cases/video/cuprus-life
+✓ [webkit desktop] /en/cases/video/cuprus-life hreflang uk — https://freelance-ua.agency/cases/video/cuprus-life
+✓ [webkit desktop] /en/cases/video/cuprus-life no raw i18n keys — []
+✓ [webkit desktop] /en/cases/video/cuprus-life breadcrumb present
+✓ [webkit desktop] /en/cases/video/cuprus-life breadcrumb aria-label — Breadcrumb
+✓ [webkit desktop] /en/cases/video/cuprus-life breadcrumb has 3 items — ["Home","Video","Cuprus Life — 3 promo Reels for social media"]
+✓ [webkit desktop] /en/cases/video/cuprus-life breadcrumb home label — Home
+✓ [webkit desktop] /en/cases/video/cuprus-life breadcrumb home href — /en
+✓ [webkit desktop] /en/cases/video/cuprus-life breadcrumb direction label — Video
+✓ [webkit desktop] /en/cases/video/cuprus-life breadcrumb direction href — /en/services/video
+✓ [webkit desktop] /en/cases/video/cuprus-life breadcrumb current is H1 — Cuprus Life — 3 promo Reels for social media
+✓ [webkit desktop] /en/cases/video/cuprus-life breadcrumb current has no href — null
+✓ [webkit desktop] /en/cases/video/cuprus-life breadcrumb separators hidden — ["→","→"]
+✓ [webkit desktop] /en/cases/video/cuprus-life back-to-list link — /en/cases?tab=video
+✓ [webkit desktop] /en/cases/video/cuprus-life switcher → counterpart — /cases/video/cuprus-life (expected /cases/video/cuprus-life)
+✓ [webkit desktop] /en/cases/video/cuprus-life related heading — Other projects
+✓ [webkit desktop] /en/cases/video/cuprus-life related has 3 cards — ["/cases/video/serhii-yarmolenko-reels","/cases/video/nikita-sheremet-crypto","/cases/video/yulia-smm-reels"]
+✓ [webkit desktop] /en/cases/video/cuprus-life related excludes current — ["/cases/video/serhii-yarmolenko-reels","/cases/video/nikita-sheremet-crypto","/cases/video/yulia-smm-reels"]
+✓ [webkit desktop] /cases/video/cuprus-life switch → EN url — /en/cases/video/cuprus-life
+✓ [webkit desktop] /cases/video/cuprus-life switch → EN lang — en
+✓ [webkit desktop] /cases/video/cuprus-life stays uk with NEXT_LOCALE=en — uk (NEXT_LOCALE=en)
+✓ [webkit desktop] /cases/video/cuprus-life UA h1 with NEXT_LOCALE=en — Cuprus Life — 3 промо-Reels для соціальних мереж
+✓ [webkit desktop] /cases/video/cuprus-life breadcrumb → home — http://localhost:3011/
+✓ [webkit desktop] /cases/video/cuprus-life back → case — /cases/video/cuprus-life
+✓ [webkit desktop] /cases/video/cuprus-life back keeps H1 — Cuprus Life — 3 промо-Reels для соціальних мереж
+✓ [webkit desktop] /cases/video/cuprus-life forward → home — http://localhost:3011/
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch image modal opens — 1
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch image modal closes on Escape
+✓ [webkit desktop] /cases/design/nastya-portrait-retouch image modal closes on button
+✓ [webkit desktop] /cases/it/eva-code image modal opens — 1
+✓ [webkit desktop] /cases/it/eva-code image modal closes on Escape
+✓ [webkit desktop] /cases/it/eva-code image modal closes on button
+✓ [webkit desktop] /cases/video/cuprus-life hero video tiles — 3
+✓ [webkit desktop] /cases/video/cuprus-life player opens as a dialog — 1
+✓ [webkit desktop] /cases/video/cuprus-life dialog name localized — Перегляд відео (expected Перегляд відео)
+✓ [webkit desktop] /cases/video/cuprus-life fullscreen player opens — 1
+✓ [webkit desktop] /cases/video/cuprus-life background inert while open — {"headerInert":true,"footerInert":true,"bodyOverflow":"hidden","focusInside":true,"active":"BUTTON"}
+✓ [webkit desktop] /cases/video/cuprus-life page scroll locked — hidden
+✓ [webkit desktop] /cases/video/cuprus-life focus starts inside the player — BUTTON
+✓ [webkit desktop] /cases/video/cuprus-life Shift+Tab stays inside the player — VIDEO
+✓ [webkit desktop] /cases/video/cuprus-life Tab stays inside the player — BUTTON[Закрити]
+✓ [webkit desktop] /cases/video/cuprus-life Tab wraps inside the player — VIDEO
+✓ [webkit desktop] /cases/video/cuprus-life Escape closes the player — 0
+✓ [webkit desktop] /cases/video/cuprus-life background restored after close — {"headerInert":false,"footerInert":false,"bodyOverflow":"visible","focusIsTile":true}
+✓ [webkit desktop] /cases/video/cuprus-life scroll restored after close — visible
+✓ [webkit desktop] /cases/video/cuprus-life focus returns to the tile — true
+✓ [webkit desktop] /cases/video/cuprus-life player closes on the close button — 0
+✓ [webkit desktop] /en/cases/video/cuprus-life hero video tiles — 3
+✓ [webkit desktop] /en/cases/video/cuprus-life player opens as a dialog — 1
+✓ [webkit desktop] /en/cases/video/cuprus-life dialog name localized — Video player (expected Video player)
+✓ [webkit desktop] /en/cases/video/cuprus-life fullscreen player opens — 1
+✓ [webkit desktop] /en/cases/video/cuprus-life background inert while open — {"headerInert":true,"footerInert":true,"bodyOverflow":"hidden","focusInside":true,"active":"BUTTON"}
+✓ [webkit desktop] /en/cases/video/cuprus-life page scroll locked — hidden
+✓ [webkit desktop] /en/cases/video/cuprus-life focus starts inside the player — BUTTON
+✓ [webkit desktop] /en/cases/video/cuprus-life Shift+Tab stays inside the player — VIDEO
+✓ [webkit desktop] /en/cases/video/cuprus-life Tab stays inside the player — BUTTON[Close]
+✓ [webkit desktop] /en/cases/video/cuprus-life Tab wraps inside the player — VIDEO
+✓ [webkit desktop] /en/cases/video/cuprus-life Escape closes the player — 0
+✓ [webkit desktop] /en/cases/video/cuprus-life background restored after close — {"headerInert":false,"footerInert":false,"bodyOverflow":"visible","focusIsTile":true}
+✓ [webkit desktop] /en/cases/video/cuprus-life scroll restored after close — visible
+✓ [webkit desktop] /en/cases/video/cuprus-life focus returns to the tile — true
+✓ [webkit desktop] /en/cases/video/cuprus-life player closes on the close button — 0
+✓ [webkit mobile] /cases/it/eva-code mobile status — 200
+✓ [webkit mobile] /cases/it/eva-code mobile lang — uk
+✓ [webkit mobile] /cases/it/eva-code mobile h1 visible — E.V.A. CODE™ — екосистема для експертів з діагностики
+✓ [webkit mobile] /cases/it/eva-code mobile lead visible
+✓ [webkit mobile] /cases/it/eva-code mobile breadcrumb visible
+✓ [webkit mobile] /cases/it/eva-code no horizontal overflow — 0px
+✓ [webkit mobile] /en/cases/it/eva-code mobile status — 200
+✓ [webkit mobile] /en/cases/it/eva-code mobile lang — en
+✓ [webkit mobile] /en/cases/it/eva-code mobile h1 visible — E.V.A. CODE™ — an ecosystem for diagnostics experts
+✓ [webkit mobile] /en/cases/it/eva-code mobile lead visible
+✓ [webkit mobile] /en/cases/it/eva-code mobile breadcrumb visible
+✓ [webkit mobile] /en/cases/it/eva-code no horizontal overflow — 0px
+✓ [webkit mobile] /cases/design/nastya-portrait-retouch mobile status — 200
+✓ [webkit mobile] /cases/design/nastya-portrait-retouch mobile lang — uk
+✓ [webkit mobile] /cases/design/nastya-portrait-retouch mobile h1 visible — Ретуш портретів: кольорокорекція та обробка фото
+✓ [webkit mobile] /cases/design/nastya-portrait-retouch mobile lead visible
+✓ [webkit mobile] /cases/design/nastya-portrait-retouch mobile breadcrumb visible
+✓ [webkit mobile] /cases/design/nastya-portrait-retouch no horizontal overflow — 0px
+✓ [webkit mobile] /en/cases/design/nastya-portrait-retouch mobile status — 200
+✓ [webkit mobile] /en/cases/design/nastya-portrait-retouch mobile lang — en
+✓ [webkit mobile] /en/cases/design/nastya-portrait-retouch mobile h1 visible — Portrait retouching: color grading and photo editing
+✓ [webkit mobile] /en/cases/design/nastya-portrait-retouch mobile lead visible
+✓ [webkit mobile] /en/cases/design/nastya-portrait-retouch mobile breadcrumb visible
+✓ [webkit mobile] /en/cases/design/nastya-portrait-retouch no horizontal overflow — 0px
+✓ [webkit mobile] /cases/video/cuprus-life mobile status — 200
+✓ [webkit mobile] /cases/video/cuprus-life mobile lang — uk
+✓ [webkit mobile] /cases/video/cuprus-life mobile h1 visible — Cuprus Life — 3 промо-Reels для соціальних мереж
+✓ [webkit mobile] /cases/video/cuprus-life mobile lead visible
+✓ [webkit mobile] /cases/video/cuprus-life mobile breadcrumb visible
+✓ [webkit mobile] /cases/video/cuprus-life no horizontal overflow — 0px
+✓ [webkit mobile] /en/cases/video/cuprus-life mobile status — 200
+✓ [webkit mobile] /en/cases/video/cuprus-life mobile lang — en
+✓ [webkit mobile] /en/cases/video/cuprus-life mobile h1 visible — Cuprus Life — 3 promo Reels for social media
+✓ [webkit mobile] /en/cases/video/cuprus-life mobile lead visible
+✓ [webkit mobile] /en/cases/video/cuprus-life mobile breadcrumb visible
+✓ [webkit mobile] /en/cases/video/cuprus-life no horizontal overflow — 0px
+✓ [webkit mobile] /cases/design/nastya-portrait-retouch image modal opens — 1
+✓ [webkit mobile] /cases/design/nastya-portrait-retouch image modal closes on Escape
+✓ [webkit mobile] /cases/design/nastya-portrait-retouch image modal closes on button
+✓ [webkit mobile] /cases/video/cuprus-life hero video tiles — 3
+✓ [webkit mobile] /cases/video/cuprus-life player opens as a dialog — 1
+✓ [webkit mobile] /cases/video/cuprus-life dialog name localized — Перегляд відео (expected Перегляд відео)
+✓ [webkit mobile] /cases/video/cuprus-life fullscreen player opens — 1
+✓ [webkit mobile] /cases/video/cuprus-life background inert while open — {"headerInert":true,"footerInert":true,"bodyOverflow":"hidden","focusInside":true,"active":"BUTTON"}
+✓ [webkit mobile] /cases/video/cuprus-life page scroll locked — hidden
+✓ [webkit mobile] /cases/video/cuprus-life focus starts inside the player — BUTTON
+✓ [webkit mobile] /cases/video/cuprus-life Shift+Tab stays inside the player — VIDEO
+✓ [webkit mobile] /cases/video/cuprus-life Tab stays inside the player — BUTTON[Закрити]
+✓ [webkit mobile] /cases/video/cuprus-life Tab wraps inside the player — VIDEO
+✓ [webkit mobile] /cases/video/cuprus-life Escape closes the player — 0
+✓ [webkit mobile] /cases/video/cuprus-life background restored after close — {"headerInert":false,"footerInert":false,"bodyOverflow":"visible","focusIsTile":true}
+✓ [webkit mobile] /cases/video/cuprus-life scroll restored after close — visible
+✓ [webkit mobile] /cases/video/cuprus-life focus returns to the tile — true
+✓ [webkit mobile] /cases/video/cuprus-life player closes on the close button — 0
+✓ [webkit mobile] /en/cases/video/cuprus-life hero video tiles — 3
+✓ [webkit mobile] /en/cases/video/cuprus-life player opens as a dialog — 1
+✓ [webkit mobile] /en/cases/video/cuprus-life dialog name localized — Video player (expected Video player)
+✓ [webkit mobile] /en/cases/video/cuprus-life fullscreen player opens — 1
+✓ [webkit mobile] /en/cases/video/cuprus-life background inert while open — {"headerInert":true,"footerInert":true,"bodyOverflow":"hidden","focusInside":true,"active":"BUTTON"}
+✓ [webkit mobile] /en/cases/video/cuprus-life page scroll locked — hidden
+✓ [webkit mobile] /en/cases/video/cuprus-life focus starts inside the player — BUTTON
+✓ [webkit mobile] /en/cases/video/cuprus-life Shift+Tab stays inside the player — VIDEO
+✓ [webkit mobile] /en/cases/video/cuprus-life Tab stays inside the player — BUTTON[Close]
+✓ [webkit mobile] /en/cases/video/cuprus-life Tab wraps inside the player — VIDEO
+✓ [webkit mobile] /en/cases/video/cuprus-life Escape closes the player — 0
+✓ [webkit mobile] /en/cases/video/cuprus-life background restored after close — {"headerInert":false,"footerInert":false,"bodyOverflow":"visible","focusIsTile":true}
+✓ [webkit mobile] /en/cases/video/cuprus-life scroll restored after close — visible
+✓ [webkit mobile] /en/cases/video/cuprus-life focus returns to the tile — true
+✓ [webkit mobile] /en/cases/video/cuprus-life player closes on the close button — 0
+✓ [webkit reduced-motion] /cases/it/eva-code reduced-motion emulated — true
+✓ [webkit reduced-motion] /cases/it/eva-code h1 visible without motion
+✓ [webkit reduced-motion] /cases/it/eva-code hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /cases/it/eva-code brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /cases/it/eva-code reveal nodes static (47) — []
+✓ [webkit reduced-motion] /cases/it/eva-code materials present: feature images — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/it/eva-code materials present: gallery items — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/it/eva-code materials present: compare items — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/it/eva-code materials present: video tiles — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/it/eva-code featureList block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/it/eva-code featureList has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/it/eva-code results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/it/eva-code results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/it/eva-code review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/it/eva-code review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/it/eva-code results items visible — 5/5
+✓ [webkit reduced-motion] /cases/it/eva-code review card visible — 1
+✓ [webkit reduced-motion] /en/cases/it/eva-code reduced-motion emulated — true
+✓ [webkit reduced-motion] /en/cases/it/eva-code h1 visible without motion
+✓ [webkit reduced-motion] /en/cases/it/eva-code hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /en/cases/it/eva-code brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /en/cases/it/eva-code reveal nodes static (47) — []
+✓ [webkit reduced-motion] /en/cases/it/eva-code materials present: feature images — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/it/eva-code materials present: gallery items — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/it/eva-code materials present: compare items — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/it/eva-code materials present: video tiles — {"featureImage":24,"galleryItem":0,"compareItem":0,"videoTile":0,"resultsItems":5,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/it/eva-code featureList block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/it/eva-code featureList has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/it/eva-code results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/it/eva-code results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/it/eva-code review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/it/eva-code review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/it/eva-code results items visible — 5/5
+✓ [webkit reduced-motion] /en/cases/it/eva-code review card visible — 1
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch reduced-motion emulated — true
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch h1 visible without motion
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch reveal nodes static (26) — []
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch materials present: feature images — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch materials present: gallery items — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch materials present: compare items — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch materials present: video tiles — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch compare block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch compare has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch gallery block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch gallery has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch results items visible — 3/3
+✓ [webkit reduced-motion] /cases/design/nastya-portrait-retouch review card visible — 1
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch reduced-motion emulated — true
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch h1 visible without motion
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch reveal nodes static (26) — []
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch materials present: feature images — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch materials present: gallery items — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch materials present: compare items — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch materials present: video tiles — {"featureImage":0,"galleryItem":6,"compareItem":3,"videoTile":0,"resultsItems":3,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch compare block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch compare has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch gallery block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch gallery has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch results items visible — 3/3
+✓ [webkit reduced-motion] /en/cases/design/nastya-portrait-retouch review card visible — 1
+✓ [webkit reduced-motion] /cases/video/cuprus-life reduced-motion emulated — true
+✓ [webkit reduced-motion] /cases/video/cuprus-life h1 visible without motion
+✓ [webkit reduced-motion] /cases/video/cuprus-life hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /cases/video/cuprus-life brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /cases/video/cuprus-life reveal nodes static (16) — []
+✓ [webkit reduced-motion] /cases/video/cuprus-life materials present: feature images — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/video/cuprus-life materials present: gallery items — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/video/cuprus-life materials present: compare items — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/video/cuprus-life materials present: video tiles — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /cases/video/cuprus-life results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/video/cuprus-life results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/video/cuprus-life review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /cases/video/cuprus-life review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /cases/video/cuprus-life results items visible — 4/4
+✓ [webkit reduced-motion] /cases/video/cuprus-life review card visible — 1
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life reduced-motion emulated — true
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life h1 visible without motion
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life hero static — {"frame":{"visible":true,"opacity":"1","filter":"none","transform":"none"},"inner":{"visible":true,"opacity":"1","filter":"none","transform":"none"}}
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life brief cards static (2) — [{"visible":true,"opacity":"1","filter":"none","transform":"none"},{"visible":true,"opacity":"1","filter":"none","transform":"none"}]
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life reveal nodes static (16) — []
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life materials present: feature images — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life materials present: gallery items — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life materials present: compare items — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life materials present: video tiles — {"featureImage":0,"galleryItem":0,"compareItem":0,"videoTile":3,"resultsItems":4,"reviewCard":1}
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life results block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life results has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life review block found — {"present":true,"bad":[]}
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life review has no hidden/blurred nodes — []
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life results items visible — 4/4
+✓ [webkit reduced-motion] /en/cases/video/cuprus-life review card visible — 1
+✓ [webkit light-theme] /cases/it/eva-code light theme applied — light
+✓ [webkit light-theme] /cases/it/eva-code light theme h1 visible
+✓ [webkit light-theme] /cases/it/eva-code light theme breadcrumb visible
+✓ [webkit light-theme] /cases/it/eva-code light theme no overflow — -8px
+✓ [webkit light-theme] /cases/design/nastya-portrait-retouch light theme applied — light
+✓ [webkit light-theme] /cases/design/nastya-portrait-retouch light theme h1 visible
+✓ [webkit light-theme] /cases/design/nastya-portrait-retouch light theme breadcrumb visible
+✓ [webkit light-theme] /cases/design/nastya-portrait-retouch light theme no overflow — -8px
+✓ [webkit light-theme] /cases/video/cuprus-life light theme applied — light
+✓ [webkit light-theme] /cases/video/cuprus-life light theme h1 visible
+✓ [webkit light-theme] /cases/video/cuprus-life light theme breadcrumb visible
+✓ [webkit light-theme] /cases/video/cuprus-life light theme no overflow — -8px
+✓ [media http] all 48 record media reachable — 48/48
+
+RESULT: PASS

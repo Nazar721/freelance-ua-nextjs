@@ -1,0 +1,40 @@
+
+── chromium desktop ──
+  ✓ chromium deep link /services/it#cases — {"ok":true,"scrollY":2531,"headingTop":178,"headerBottom":82}
+  ✓ chromium deep link /en/services/video#cases — {"ok":true,"scrollY":2405,"headingTop":178,"headerBottom":82}
+  ✓ chromium deep link /services/design#cases — {"ok":true,"scrollY":2461,"headingTop":178,"headerBottom":82}
+  ✓ chromium loop detaches after settling — scroll calls after a 400px layout shift: 0
+  ✓ chromium instrumentation can observe a live loop — scroll calls while settling: 2
+  ✓ chromium wheel interrupts the automatic scroll — scrollY=0
+  ✓ chromium touchstart + wheel interrupts — scrollY=0
+  ✓ chromium settled on the anchor first — scrollY=2439
+  ✓ chromium no leaked loop after leaving a #hash page — home scrollY=0
+  ✓ chromium scroll position is not fought after navigation — scrollY=300
+
+── chromium mobile ──
+  ✓ chromium mobile deep link /services/it#cases — {"ok":true,"scrollY":2729,"headingTop":148,"headerBottom":76}
+  ✓ chromium mobile deep link /en/services/video#cases — {"ok":true,"scrollY":2468,"headingTop":148,"headerBottom":76}
+  ✓ chromium mobile deep link /services/design#cases — {"ok":true,"scrollY":2535,"headingTop":148,"headerBottom":76}
+  ✓ chromium mobile deep link /services/video#cases — {"ok":true,"scrollY":2526,"headingTop":148,"headerBottom":76}
+  ✓ chromium mobile loop detaches after settling — scroll calls after a 400px shift: 0
+
+── webkit desktop ──
+  ✓ webkit deep link /services/it#cases — {"ok":true,"scrollY":2531,"headingTop":178,"headerBottom":82}
+  ✓ webkit deep link /en/services/video#cases — {"ok":true,"scrollY":2405,"headingTop":178,"headerBottom":82}
+  ✓ webkit deep link /services/design#cases — {"ok":true,"scrollY":2461,"headingTop":178,"headerBottom":82}
+  ✓ webkit loop detaches after settling — scroll calls after a 400px layout shift: 0
+  ✓ webkit instrumentation can observe a live loop — scroll calls while settling: 2
+  ✓ webkit wheel interrupts the automatic scroll — scrollY=0
+  ✓ webkit touchstart + wheel interrupts — scrollY=0
+  ✓ webkit settled on the anchor first — scrollY=2461
+  ✓ webkit no leaked loop after leaving a #hash page — home scrollY=0
+  ✓ webkit scroll position is not fought after navigation — scrollY=300
+
+── webkit mobile ──
+  ✓ webkit mobile deep link /services/it#cases — {"ok":true,"scrollY":2741,"headingTop":136,"headerBottom":59}
+  ✓ webkit mobile deep link /en/services/video#cases — {"ok":true,"scrollY":2480,"headingTop":136,"headerBottom":59}
+  ✓ webkit mobile deep link /services/design#cases — {"ok":true,"scrollY":2547,"headingTop":136,"headerBottom":59}
+  ✓ webkit mobile deep link /services/video#cases — {"ok":true,"scrollY":2538,"headingTop":136,"headerBottom":59}
+  ✓ webkit mobile loop detaches after settling — scroll calls after a 400px shift: 0
+
+30 passed, 0 failed

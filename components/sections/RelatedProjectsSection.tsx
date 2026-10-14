@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { useTranslation } from "@/lib/LanguageContext";
+import { counterpartPath } from "@/lib/i18n-routes";
 
 interface RelatedCase {
   slug: string;
@@ -315,7 +316,7 @@ const allCases: RelatedCase[] = [
     section: "it",
   },
   {
-    slug: "nikita-sheremet",
+    slug: "nikita-sheremet-crypto",
     categoryKey: "videoCases.nikitaSheremet.category",
     titleKey: "videoCases.nikitaSheremet.title",
     descriptionKey: "videoCases.nikitaSheremet.shortDesc",
@@ -548,7 +549,7 @@ export default function RelatedProjectsSection({
   currentSlug: string;
   section?: "it" | "design" | "video";
 }) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
 
   const others = allCases.filter((c) => c.slug !== currentSlug);
   const sameSection = others.filter((c) => c.section === section);
@@ -568,7 +569,7 @@ export default function RelatedProjectsSection({
           {relatedCases.map((caseItem, i) => (
             <FadeIn key={caseItem.slug} delay={0.1 + i * 0.1} y={30} blur={4}>
               <Link
-                href={caseItem.href}
+                href={(locale === "en" && counterpartPath(caseItem.href, "en")) || caseItem.href}
                 className="group block bg-secondary/50 border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:border-accent/50 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(99,102,241,0.15)]"
               >
                 <div className="relative aspect-[3/2] bg-background overflow-hidden">

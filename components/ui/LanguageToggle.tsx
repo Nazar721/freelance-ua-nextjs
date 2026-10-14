@@ -1,7 +1,10 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/LanguageContext";
+import { counterpartPath, type Locale } from "@/lib/i18n-routes";
 
 const LiquidPill = () => (
   <motion.span
@@ -35,14 +38,70 @@ const LiquidPill = () => (
   </motion.span>
 );
 
+/**
+ * Language switcher: a link to the counterpart URL of the current page
+ * (query string and #fragment preserved). When the counterpart does not
+ * exist yet, the other language is shown as a disabled segment — never a
+ * silent redirect to the home page.
+ */
 export default function LanguageToggle() {
-  const { locale, setLocale } = useTranslation();
+  const { locale } = useTranslation();
+  const pathname = usePathname();
   const isEn = locale === "en";
 
-  const segmentClass = (active: boolean) =>
-    `relative min-w-[44px] sm:min-w-[52px] px-2 py-1 sm:py-1.5 text-center text-[11px] sm:text-xs rounded-full cursor-pointer transition-colors duration-300 ${
-      active ? "font-bold text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+  // The counterpart of the CURRENT language is the other segment. When it is
+  // not available yet, that segment is disabled — the active (current)
+  // language segment is never disabled.
+  const otherHref = counterpartPath(pathname, isEn ? "uk" : "en");
+
+  const segmentClass = (active: boolean, disabled: boolean) =>
+    `relative min-w-[44px] sm:min-w-[52px] px-2 py-1 sm:py-1.5 text-center text-[11px] sm:text-xs rounded-full transition-colors duration-300 ${
+      disabled
+        ? "text-muted-foreground/40 cursor-not-allowed"
+        : active
+          ? "font-bold text-primary-foreground cursor-pointer"
+          : "text-muted-foreground hover:text-foreground cursor-pointer"
     }`;
+
+  const navigate = (href: string, next: Locale) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Auxiliary preference only — the URL below is what actually opens.
+    document.cookie = `NEXT_LOCALE=${next}; path=/; max-age=31536000; samesite=lax`;
+    const { search, hash } = window.location;
+    window.location.assign(`${href}${search}${hash}`);
+  };
+
+  // The segment for the CURRENT language is always an active (non-disabled)
+  // span. The other language links to its counterpart URL; when the
+  // counterpart does not exist yet it renders as a disabled segment —
+  // never a silent redirect to the home page.
+  const currentSegment = (label: "UA" | "EN") => (
+    <span aria-pressed="true" className={segmentClass(true, false)}>
+      <LiquidPill />
+      <span className="relative z-10">{label}</span>
+    </span>
+  );
+
+  const otherSegment = (label: "UA" | "EN", next: Locale) =>
+    otherHref ? (
+      <Link
+        href={otherHref}
+        onClick={navigate(otherHref, next)}
+        aria-pressed="false"
+        className={segmentClass(false, false)}
+      >
+        <span className="relative z-10">{label}</span>
+      </Link>
+    ) : (
+      <span
+        aria-disabled="true"
+        aria-pressed="false"
+        title={label === "EN" ? "English version is being prepared" : "Українська версія готується"}
+        className={segmentClass(false, true)}
+      >
+        <span className="relative z-10">{label}</span>
+      </span>
+    );
 
   return (
     <div
@@ -51,23 +110,8 @@ export default function LanguageToggle() {
       role="group"
       aria-label={isEn ? "Переключити на українську" : "Switch to English"}
     >
-      <button
-        onClick={() => setLocale("uk")}
-        aria-pressed={!isEn}
-        className={segmentClass(!isEn)}
-      >
-        {!isEn && <LiquidPill />}
-        <span className="relative z-10">UA</span>
-      </button>
-
-      <button
-        onClick={() => setLocale("en")}
-        aria-pressed={isEn}
-        className={segmentClass(isEn)}
-      >
-        {isEn && <LiquidPill />}
-        <span className="relative z-10">EN</span>
-      </button>
+      {isEn ? otherSegment("UA", "uk") : currentSegment("UA")}
+      {isEn ? currentSegment("EN") : otherSegment("EN", "en")}
     </div>
   );
 }

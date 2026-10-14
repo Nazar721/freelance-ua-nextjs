@@ -1,0 +1,87 @@
+
+> freelance-ua@0.1.0 lint
+> eslint
+
+[BABEL] Note: The code generator has deoptimised the styling of /Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/lib/i18n.ts as it exceeds the max of 500KB.
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/design/hope-media-group/page.tsx
+  66:10  warning  'WideImage' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/it/asandra-soul/page.tsx
+  8:33  warning  'Quote' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/it/eva-code/page.tsx
+  8:33  warning  'Quote' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/it/liudmyla-tsybrii/page.tsx
+  3:28  warning  'useCallback' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/it/md-dental/page.tsx
+  70:9  warning  'allImages' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/it/pivden-solar/page.tsx
+  3:28  warning  'useCallback' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/it/prime-auto-shipping/page.tsx
+  49:9  warning  'allImages' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/it/repair-collision/page.tsx
+  50:9  warning  'allImages' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/it/voltone-pro/page.tsx
+  71:9  warning  'allImages' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/video/ai-video-new/page.tsx
+  5:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/video/alien-city-adventure/page.tsx
+  5:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/video/passive-income-video/page.tsx
+  5:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/app/cases/video/veronika-ai-muscles/page.tsx
+  20:8  warning  'CurvedDashedLines' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/components/layout/Header.tsx
+   3:31  warning  'useRef' is defined but never used             @typescript-eslint/no-unused-vars
+  37:10  warning  'isMobile' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/components/partners/PartnersHero.tsx
+  77:13  warning  'pulseDot1' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  78:13  warning  'pulseDot2' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/components/sections/CasesSection.tsx
+  20:7  warning  'sectionConfig' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/components/sections/HowWeWorkSection.tsx
+  17:10  warning  'isMobile' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  20:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/components/sections/HowWeWorkSection.tsx:20:5
+  18 |
+  19 |   useEffect(() => {
+> 20 |     setIsMobile(window.innerWidth < 768);
+     |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  21 |   }, []);
+  22 |
+  23 |   return (  react-hooks/set-state-in-effect
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/components/sections/PartnershipSection.tsx
+  4:22  warning  'Percent' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/components/sections/StackRail.tsx
+  776:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/components/ui/CurvedDashedLines.tsx
+  237:6  warning  React Hook useEffect has missing dependencies: 'leftBaseRef' and 'rightBaseRef'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 23 problems (1 error, 22 warnings)
+
+exit=1
