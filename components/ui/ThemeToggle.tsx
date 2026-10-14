@@ -3,14 +3,25 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "@/lib/ThemeContext";
+import { useTranslation } from "@/lib/LanguageContext";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
+  const { locale } = useTranslation();
+
+  const label =
+    locale === "en"
+      ? theme === "dark"
+        ? "Switch to light theme"
+        : "Switch to dark theme"
+      : theme === "dark"
+        ? "Перемкнути на світлу тему"
+        : "Перемкнути на темну тему";
 
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      aria-label={theme === "dark" ? "Перемкнути на світлу тему" : "Перемкнути на темну тему"}
+      aria-label={label}
       className="theme-toggle relative flex-shrink-0 flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-border/40 bg-card/70 backdrop-blur-md cursor-pointer transition-colors duration-300 hover:border-accent/40 shadow-sm"
       style={{ WebkitTapHighlightColor: "transparent" }}
     >

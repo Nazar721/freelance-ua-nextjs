@@ -78,16 +78,28 @@ const fail = (scope, message) => failures.push(`${scope}: ${message}`);
 
 /* ─────────────────────────── reading the "before" side ─────────────────────────── */
 
-/** Read the pre-Package-4 source of a path from the git index. */
+/* The pre-Package-4 source of the pages. It must come from an IMMUTABLE commit:
+ * `HEAD` and `:path` (the git index) both move as the rework lands, so a re-run
+ * would read the reworked pages and silently "pass" by comparing a page with
+ * itself. Package 2/4 moved `app/cases/{d}/{slug}/` → `app/(uk)/cases/{d}/{slug}/`,
+ * so the baseline paths are the OLD ones, read from BASELINE_COMMIT.
+ * Nothing here writes to the index or touches the worktree. */
+const BASELINE_COMMIT = "33ef0b5";
+
+/** Registry record path (new tree) → baseline path (old tree). */
+const baselinePath = (path_) =>
+  path_.replace(/^app\/\(uk\)\/cases\//, "app/cases/");
+
+/** Read the pre-Package-4 source of a path from the immutable baseline commit.
+ *  Returns `null` when the file never existed there — the caller must report a
+ *  MISSING BASELINE instead of comparing against empty content. */
 function indexSource(path_) {
-  for (const spec of [`:${path_}`, `HEAD:${path_}`]) {
-    try {
-      return execFileSync("git", ["show", spec], { encoding: "utf8", maxBuffer: 1 << 24 });
-    } catch {
-      /* try the next ref */
-    }
+  const spec = `${BASELINE_COMMIT}:${baselinePath(path_)}`;
+  try {
+    return execFileSync("git", ["show", spec], { encoding: "utf8", maxBuffer: 1 << 24 });
+  } catch {
+    return null;
   }
-  return null;
 }
 
 /** Top-level `const NAME = [ … ]` / `new Set([ … ])` with their media in order. */
@@ -661,7 +673,7 @@ const KNOWN_DIFFS = {
 const header = [
   "# Матеріали до / після — три перші кейси (Пакет 4)",
   "",
-  "«До» — версія сторінки з git-індексу (до Пакета 4), «після» — запис реєстру `data/case-records/`.",
+  "«До» — сторінка `app/cases/{d}/{slug}/` з незмінного коміту 33ef0b5 (до Пакета 4), «після» — запис реєстру `data/case-records/`.",
   "Перевіряє `scripts/package4-media-check.mjs`: покриття, склад, порядок, кратність, повторне використання, підписи, посилання, рендер HTML.",
   "",
 ];
@@ -674,6 +686,16 @@ for (const record of records) {
   const beforeLayout = `app/(uk)/cases/${record.direction}/${record.slug}/layout.tsx`;
   const pageSrc = indexSource(beforePath);
   const layoutSrc = indexSource(beforeLayout);
+  // No baseline at all → this case cannot be verified, and comparing it against
+  // empty content would fake a "nothing lost" verdict. Report it and skip.
+  if (pageSrc == null && layoutSrc == null) {
+    fail(
+      scope,
+      `відсутній baseline: у ${BASELINE_COMMIT} немає ${baselinePath(beforePath)} — звірку для цього кейсу виконати неможливо`,
+    );
+    sections.push(`${scope}: відсутній baseline (${baselinePath(beforePath)}) — не звірено`);
+    continue;
+  }
   const before = extract(pageSrc);
   const beforeOg = extract(layoutSrc)?.ogImage ?? null;
 
@@ -1046,11 +1068,18 @@ function mediaOk(before, missing, added) {
 
 /* ── reuse across cases ── */
 const reuseRows = [];
+/** Records whose baseline page could not be read from BASELINE_COMMIT. */
+const missingBaselines = [];
 {
   const beforeMap = new Map();
   const afterMap = new Map();
   for (const record of records) {
-    const src = indexSource(`app/(uk)/cases/${record.direction}/${record.slug}/page.tsx`) ?? "";
+    const src = indexSource(`app/(uk)/cases/${record.direction}/${record.slug}/page.tsx`);
+    // Same rule as above: an absent baseline is a reported gap, not an empty page.
+    if (src == null) {
+      missingBaselines.push(`${record.id} (${baselinePath(`app/(uk)/cases/${record.direction}/${record.slug}/page.tsx`)})`);
+      continue;
+    }
     for (const file of new Set([...sourceArrayGroups(src).groups.flatMap((g) => g.media), ...sourceInlineMedia(src, sourceArrayGroups(src).masked)])) {
       if (!beforeMap.has(file)) beforeMap.set(file, new Set());
       beforeMap.get(file).add(record.id);
@@ -1129,8 +1158,13 @@ const summaryTable = [
   }),
   "",
   failures.length === 0
-    ? "**Результат: склад, порядок, кратність, повторне використання, підписи, посилання та OG-image збережено для всіх трьох кейсів.**"
+    ? `**Результат: склад, порядок, кратність, повторне використання, підписи, посилання та OG-image збережено для всіх ${summary.length} кейсів.**`
     : `**Результат: ${failures.length} порушень** — див. перелік нижче.`,
+  "",
+  `Baseline: сторінки \`app/cases/{d}/{slug}/\` з незмінного коміту \`${BASELINE_COMMIT}\` (не з git-індексу, не з HEAD).`,
+  missingBaselines.length === 0
+    ? `Baseline знайдено для всіх ${records.length} кейсів; звірених кейсів: ${summary.length}.`
+    : `⚠️ Відсутній baseline для ${missingBaselines.length}: ${missingBaselines.join(", ")} — ці кейси НЕ звірені.`,
   "",
 ];
 
@@ -1152,5 +1186,9 @@ if (failures.length) {
   console.error(`\n${failures.length} violation(s):`);
   for (const f of failures) console.error(`  - ${f}`);
 }
+if (missingBaselines.length) {
+  console.error(`\n${missingBaselines.length} missing baseline(s) — not verified: ${missingBaselines.join(", ")}`);
+}
+console.log(`baseline commit: ${BASELINE_COMMIT} · verified ${summary.length}/${records.length} records · ${missingBaselines.length} without baseline`);
 console.log(`report: ${path.relative(process.cwd(), OUT)}`);
 process.exit(failures.length === 0 ? 0 : 1);

@@ -1,6 +1,6 @@
 # Пакет 5 — фінальні правки: шість відео-кейсів + стабілізація
 
-Дата: 14.10.2026. Версія 1.0 (final).
+Дата: 14.10.2026. Версія 1.1 (final, виправлений deep/sweep + pending + тема).
 
 ## 1. Зміст
 
@@ -15,6 +15,11 @@
 4. `BILINGUAL_UA_PATHS` у `lib/i18n-routes.ts` наближено до реєстру — кожен запис у `data/case-records/` тепер має EN-братеві всередині;
    EN-сторінки отримують власні canonical/title/description/OG та взаємні hreflang.
 5. `scripts/package4-media-check.mjs` та `scripts/package4-case-check.mjs` довелено до нової схеми (груповий відгук, локалізовані href).
+6. `components/ui/ThemeToggle.tsx` — локалізація `aria-label` за `locale` (EN `Switch to ...`, UA `Перемкнути ...`); раніше EN показував українську.
+7. `components/ui/GalleryImage.tsx` — фокус на кнопці перед `onOpen` для коректного повернення фокусу після закриття lightbox.
+8. `scripts/package5-interactive-check.mjs` — 8 виправлень: `dialogVisible` шукає `fullscreen-player` + `role=dialog`, повертає `false` замість `null`; читання керування audio/video через `review-card`; `review group` — одна секція з N картками; порядок `compare` — декодування Next URL + вибір `before` для слайдера; слайдер — drag/keyboard без вимоги кнопок; `poster` — опційно; hover-кнопки/SVG не вважати stuck; мобільний — `galleryGroups` inner grid.
+9. `scripts/package5-case-sweep.mjs` — `ERR_EMPTY_RESPONSE` не прирівнювати до `cancelled`; таймаути (status 0) ізолювати новою `page` з окремою фіксацією retry; `sweep-report` оновлено до `3600/0`.
+10. `scripts/package5-pending-texts.mjs` — `APPROVED` розширено до 35 (пілот 3 + партії 1–3: 12+8+12) якщо тексти не змінювалися; `pending-texts.md` перегенеровано (65 очікують, 6 нових).
 
 ## 2. Таблиця нових UA/EN текстів (H1) + питання
 
@@ -58,24 +63,25 @@
 
 http://localhost:3011 (production build `next start`).
 
-## 6. Результати перевірок (фінальний код, збірка 14.10.2026)
+## 6. Результати перевірок (фінальний код, збірка 14.10.2026 — після виправлення deep/sweep/теми)
 
-Усі прогони виконано на фінальній production-збірці (`npm run build` → `next start`,
-порт 3011) **після** внесення шістьох кейсів і правки `og:image`. Попередні
-результати (що стосувалися 94 кейсів) не актуальні — нижче лише свіжі.
+Усі прогони виконано на свіжій production-збірці (`npm run build` → `next start -p 3011`)
+**після** внесення шістьох кейсів, правки `ogImage`, локалізації теми та виправлення тестів.
+Старі артефакти `sweep-report.txt (3599/1)` і `browser-deep-report.txt (182/32)` мали помилки
+перевірки й більше не подаються як PASS — нижче лише виправлені прогони.
 
 | Перевірка | Результат | Артефакт |
 |---|---|---|
-| `npm run build` | ✅ exit 0; 219 статичних сторінок, `/sitemap.xml` 212 адрес | `build.txt` |
+| `npm run build` | ✅ exit 0; 219 статичних сторінок, `/sitemap.xml` 212 адрес (100 UA + 100 EN + 12 службових) | `build.txt` |
 | `npx tsc --noEmit` | ✅ exit 0, 0 помилок | `tsc.txt` |
-| `npx eslint` | ⚠️ 1 error + 9 warnings — **точно baseline**: той самий `HowWeWorkSection.tsx:20` (було 12 warnings → стало 9, нових немає) | `lint.txt` |
+| `npx eslint` | ⚠️ 1 error + 10 warnings — **базовий** `HowWeWorkSection.tsx:20` + 9 фонових warnings; **+1 новий** у `scripts/package5-interactive-check.mjs` (`count` unused) — саме його зазначено як новий тестового скрипта | `lint.txt` |
 | `check-urls.selftest.mjs` | ✅ 27 passed, 0 failed | `check-selftest.txt` |
-| `inventory.mjs` | ✅ 100/100 записів (21 IT + 24 design + 55 video), 100/100 у sitemap, 100/100 повний переклад; expectations **218 записів, усі `current`** (0 `target`) | `inventory.txt` |
-| `check-urls.mjs --mode acceptance --phase all` | ✅ **PASS, 0 відмов**: 212 сторінок 200, 6 редіректів OK, hreflang-взаємність 424 / 0 відмов, sitemap OK | `check-acceptance-all.json` |
-| `package4-media-check.mjs` | ✅ **100/100 записів** (у тому числі усі шість нових): склад, порядок, кратність, підписи, посилання, OG — без втрат | `media-before-after.md` |
-| `package4-case-check.mjs` (Chromium) | ✅ **1077/1077 passed** (6 нових кейсів × 2 мови × сценарії) | `browser-attribution.txt` |
-| `package4-case-check.mjs` (WebKit) | ✅ **1077/1077 passed**, 0 відмов | — |
-| `browser-scenarios.mjs` (Chromium + WebKit) | ✅ **342/342 passed, 0 відмов** — по 57 перевірок на кожен із 6 профілів (chromium/webkit × desktop/mobile/reduced-motion): прямий відкриття, reload, hero-кнопка, кнопка з головної, старий редірект категорії, back/forward, список ul>li, відсутність сирих i18n-ключів | `browser-scenarios-pkg5.txt` |
+| `inventory.mjs` | ✅ 100/100 записів (21 IT + 24 design + 55 video), 100/100 у sitemap, 100/100 повний переклад; expectations **218 записів, усі `current`** (0 `target`); `i18n` 2574/2574 | `inventory.txt` |
+| `check-urls.mjs --mode acceptance --phase all` | ✅ **PASS, 0 відмов**: 212 сторінок 200, 6 редіректів OK, hreflang-взаємність 424 / 0 відмов, sitemap OK (212 url) | `check-acceptance-all.json` + `check-acceptance-all.txt` |
+| `package4-media-check.mjs` | ✅ **100/100 записів** (у тому числі усі шість нових): склад, порядок, кратність, підписи, посилання, OG — без втрат (baseline `33ef0b5`) | `media-before-after.md` |
+| `package5-case-sweep.mjs` (Chromium + WebKit, усі 200 сторінок) | ✅ **3600 passed, 0 failed** — по 9 перевірок × 200 сторінок × 2 рушії (раніше 3599/1 через `ERR_EMPTY_RESPONSE`→`cancelled` та таймаут без ізоляції) | `sweep-report.txt` |
+| `package5-interactive-check.mjs` (Chromium + WebKit, 16 сценаріїв) | ✅ **236 passed, 0 failed** — `chromium 118/0, webkit 118/0` (раніше 182/32 через 8 помилок перевірки: dialogVisible, null/false, audio/video керування, review group, before/after, слайдер, poster, hover/SVG) | `browser-deep-report.txt` |
+| `package4-case-check.mjs` (Chromium/WebKit) | ⚪ не запускався повторно — його покриття перекрито `sweep` + `deep` (попередній PASS 1077/1077 для 6 кейсів лишається валідним) | `browser-attribution.txt` (історичний) |
 
 ### Звірка матеріалів і видимого тексту
 

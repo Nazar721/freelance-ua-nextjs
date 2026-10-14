@@ -13,16 +13,16 @@
   "withManualReview": 4,
   "withBlocks": 100,
   "sitemapPaths": 212,
-  "i18nUkKeys": 2572,
-  "i18nEnKeys": 2572,
+  "i18nUkKeys": 2574,
+  "i18nEnKeys": 2574,
   "i18nMissingEn": [],
   "mediaRefsTracked": 356,
   "reusedMediaFiles": 1
 }
-issues: 6 {"needs-manual-review":4,"related-projects-incomplete":1,"related-projects-unknown-slug":1}
+issues: 5 {"needs-manual-review":4,"related-projects-incomplete":1}
 expectations: 218 entries (218 current, 0 target)
 manual review: 4 cases
-(node:40790) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/nazar/Documents/Freelance%20UA%20%7C%20Digital%20Agency/freelance%20ua%20(project%20IT)/freelance-ua-nextjs/data/case-records/index.ts is not specified and it doesn't parse as CommonJS.
+(node:15933) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/nazar/Documents/Freelance%20UA%20%7C%20Digital%20Agency/freelance%20ua%20(project%20IT)/freelance-ua-nextjs/data/case-records/index.ts is not specified and it doesn't parse as CommonJS.
 Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
 To eliminate this warning, add "type": "module" to /Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/package.json.
 (Use `node --trace-warnings ...` to show where the warning was created)

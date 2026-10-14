@@ -2,7 +2,12 @@
 
 import { Suspense } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { ArrowRight, Check, MessageCircle } from "lucide-react";
+import {
+  ArrowRight, Bot, Check, Clapperboard, Code2, Film, Image, LayoutDashboard,
+  Megaphone, MessageCircle, Monitor, Palette, PenTool,
+  Presentation, Rocket, ScanFace, ShoppingBag, Smartphone, Sparkles,
+  Users, WandSparkles, Workflow, ClipboardList, type LucideIcon,
+} from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
 import FeaturedCaseCard from "@/components/ui/FeaturedCaseCard";
@@ -18,6 +23,54 @@ import type { CaseEntry } from "@/data/types";
 import { siteConfig } from "@/config/site";
 
 const PROCESS_STEPS = [1, 2, 3, 4] as const;
+const PROCESS_ICONS: readonly LucideIcon[] = [MessageCircle, ClipboardList, Code2, Rocket];
+const TASK_ICONS: Record<Direction, readonly LucideIcon[]> = {
+  it: [Monitor, Users, Bot],
+  design: [PenTool, Presentation, ScanFace],
+  video: [Smartphone, WandSparkles, Megaphone],
+};
+const SERVICE_ICONS: Record<Direction, readonly LucideIcon[]> = {
+  it: [Bot, Monitor, ShoppingBag, LayoutDashboard, Workflow, Code2, Smartphone],
+  design: [Palette, PenTool, Film, Image, Presentation],
+  video: [Clapperboard, WandSparkles, Megaphone, Smartphone, Film, Sparkles],
+};
+const STICKER_TONES: Record<Direction, string> = {
+  it: "border-cyan-500/30 bg-cyan-500/15 text-cyan-600 dark:text-cyan-300 shadow-[0_4px_20px_rgba(6,182,212,0.15)]",
+  design: "border-violet-500/30 bg-violet-500/15 text-violet-600 dark:text-violet-300 shadow-[0_4px_20px_rgba(139,92,246,0.15)]",
+  video: "border-amber-500/30 bg-amber-500/15 text-amber-600 dark:text-amber-300 shadow-[0_4px_20px_rgba(245,158,11,0.15)]",
+};
+const STICKER_ROTATIONS = ["-rotate-[7deg]", "rotate-[4deg]", "-rotate-[3deg]", "rotate-[6deg]"] as const;
+
+/** Sticker — double-layer, slightly rotated, with a soft shadow. Feels like a real sticker on the surface. */
+function DirectionSticker({ icon: Icon, direction, index = 0 }: {
+  icon: LucideIcon;
+  direction: Direction;
+  index?: number;
+}) {
+  return (
+    <span aria-hidden="true" className="relative inline-flex h-[52px] w-[52px] shrink-0 items-center justify-center">
+      {/* peel shadow */}
+      <span className={`absolute inset-0 rounded-[14px] bg-background border border-border/50 shadow-[0_8px_24px_rgba(0,0,0,0.18)] ${STICKER_ROTATIONS[(index + 1) % STICKER_ROTATIONS.length]}`} />
+      {/* color layer */}
+      <span className={`absolute inset-[3px] rounded-[11px] border ${STICKER_TONES[direction]} ${STICKER_ROTATIONS[index % STICKER_ROTATIONS.length]}`} />
+      {/* icon */}
+      <span className={`relative inline-flex h-10 w-10 items-center justify-center ${STICKER_ROTATIONS[index % STICKER_ROTATIONS.length]}`}>
+        <Icon size={22} strokeWidth={1.8} />
+      </span>
+    </span>
+  );
+}
+
+/** Floating decorative stickers — purely visual, behind the content. */
+function StickerBackdrop({ direction }: { direction: Direction }) {
+  const tone = direction === "it" ? "text-cyan-500/10" : direction === "design" ? "text-violet-500/10" : "text-amber-500/10";
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      <span className={`absolute -top-6 -right-8 h-32 w-32 rounded-[20px] border border-current ${tone} rotate-12 hidden lg:block`} />
+      <span className={`absolute -bottom-10 -left-10 h-40 w-40 rounded-[24px] border border-current ${tone} -rotate-6 hidden lg:block`} />
+    </div>
+  );
+}
 
 /**
  * Shared body of a direction page (/services/{d} and /en/services/{d}).
@@ -32,7 +85,8 @@ export default function DirectionPage({ direction }: { direction: Direction }) {
       <DirectionTasks direction={direction} />
       <DirectionServices direction={direction} />
       <DirectionIncludes direction={direction} />
-      <DirectionProcess />
+      <DirectionProcess direction={direction} />
+      <DirectionShowcase direction={direction} />
       <DirectionCases direction={direction} />
       <DirectionCta direction={direction} />
     </article>
@@ -70,12 +124,14 @@ function DirectionTasks({ direction }: { direction: Direction }) {
   const items = [1, 2, 3] as const;
 
   return (
-    <section className="py-10 sm:py-14 px-4">
-      <div className="max-w-3xl mx-auto">
+    <section data-direction-section="tasks" className="relative py-10 sm:py-14 px-4 overflow-hidden">
+      <StickerBackdrop direction={direction} />
+      <div className="relative max-w-3xl mx-auto">
         <FadeIn y={20}>
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 text-center font-[family-name:var(--font-syne)]">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2 text-center font-[family-name:var(--font-syne)]">
             {t("direction.tasksTitle")}
           </h2>
+          <p className="text-muted-foreground text-sm text-center mb-6">Оберіть свій кейс — ми закриємо задачу під ключ</p>
         </FadeIn>
         <ul className="space-y-3">
           {items.map((n, i) => (
@@ -85,12 +141,10 @@ function DirectionTasks({ direction }: { direction: Direction }) {
               delay={0.05 * i}
               y={16}
               blur={2}
-              className="flex items-start gap-3 p-4 rounded-xl bg-surface-elevated/40 border border-border"
+              className="group flex items-center gap-4 p-4 sm:p-5 rounded-[16px] bg-surface-elevated/60 backdrop-blur-sm border border-border/70 shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:-translate-y-[1px] transition-all duration-300"
             >
-              <span className="w-6 h-6 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center shrink-0 mt-0.5">
-                <Check size={13} className="text-accent" />
-              </span>
-              <span className="text-foreground text-sm sm:text-base">{t(`direction.tasks.${direction}.${n}`)}</span>
+              <DirectionSticker icon={TASK_ICONS[direction][i]} direction={direction} index={i} />
+              <span className="text-foreground text-sm sm:text-[15px] leading-snug font-medium">{t(`direction.tasks.${direction}.${n}`)}</span>
             </FadeIn>
           ))}
         </ul>
@@ -105,39 +159,64 @@ function DirectionServices({ direction }: { direction: Direction }) {
   const items = Array.from({ length: cfg.serviceCount }, (_, i) => i + 1);
 
   return (
-    <section className="py-10 sm:py-14 px-4 bg-surface">
-      <div className="max-w-4xl mx-auto">
+    <section data-direction-section="services" className="relative py-10 sm:py-14 px-4 bg-surface overflow-hidden">
+      <StickerBackdrop direction={direction} />
+      <div className="relative max-w-4xl mx-auto">
         <FadeIn y={20}>
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center font-[family-name:var(--font-syne)]">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2 text-center font-[family-name:var(--font-syne)]">
             {t("services.title")}
           </h2>
+          <p className="text-muted-foreground text-sm text-center mb-8">Що саме робимо — вибирайте формат, решту беремо на себе</p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           {items.map((n, i) => (
-            <FadeIn key={n} delay={0.04 * i} y={14} blur={2}>
-              <div className="flex items-center gap-3 p-4 rounded-xl border border-border/60 bg-surface-elevated/40 h-full">
-                <span className="sc-dot w-1.5 h-1.5 bg-accent/60 rounded-full shrink-0" />
-                <span className="text-foreground text-sm sm:text-base">{t(`services.${direction}.${n}`)}</span>
-              </div>
+            <FadeIn
+              as="li"
+              key={n}
+              delay={0.04 * i}
+              y={14}
+              className="group relative flex items-center gap-4 p-4 sm:p-5 rounded-[16px] border border-border/60 bg-surface-elevated/70 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_32px_rgba(0,0,0,0.12)] hover:-translate-y-[2px] hover:rotate-[0.3deg] transition-all duration-300 h-full"
+            >
+              <DirectionSticker icon={SERVICE_ICONS[direction][i % SERVICE_ICONS[direction].length]} direction={direction} index={i} />
+              <span className="text-foreground text-sm sm:text-[15px] font-medium leading-snug">{t(`services.${direction}.${n}`)}</span>
             </FadeIn>
           ))}
-        </div>
+        </ul>
+      </div>
+    </section>
+  );
+}
 
-        {/* Before/after material moved from the old ServicesModal */}
+function DirectionShowcase({ direction }: { direction: Direction }) {
+  const { t } = useTranslation();
+  const cfg = DIRECTIONS[direction];
+
+  return (
+    <section data-direction-section="showcase" className="relative py-10 sm:py-14 px-4 overflow-hidden">
+      <StickerBackdrop direction={direction} />
+      <div className="relative max-w-4xl mx-auto">
+        <FadeIn y={20} className="text-center mb-6">
+          <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-semibold tracking-wider uppercase text-accent">
+            <Sparkles size={12} />
+            {t(`services.${direction}.slider`)}
+          </span>
+        </FadeIn>
         <FadeIn y={24} blur={4}>
-          <div className="border-t border-border/60 pt-8">
-            <h3 className="text-accent text-sm font-medium uppercase tracking-wider mb-4 text-center">
-              {t(`services.${direction}.slider`)}
-            </h3>
-            <BeforeAfterSlider
-              beforeSrc={cfg.sliderBefore}
-              afterSrc={cfg.sliderAfter}
-              afterVideo={cfg.sliderAfterVideo}
-              aspectClassName={cfg.sliderAspect}
-              beforeAlt={t(`services.${direction}.slider`)}
-              afterAlt={t(`services.${direction}.slider`)}
-            />
+          <div className="relative rounded-[20px] border border-border/60 bg-surface-elevated/60 backdrop-blur-sm p-3 sm:p-4 shadow-[0_16px_48px_rgba(0,0,0,0.12)]">
+            {/* sticker peel corners */}
+            <span aria-hidden="true" className="absolute -right-2 -top-2 h-6 w-6 rounded-bl-[10px] bg-background border-l border-b border-border/60 shadow-sm rotate-3 hidden sm:block" />
+            <span aria-hidden="true" className="absolute -left-2 -bottom-2 h-5 w-5 rounded-tr-[8px] bg-background border-r border-t border-border/60 shadow-sm -rotate-3 hidden sm:block" />
+            <div className="overflow-hidden rounded-[14px] border border-border/40">
+              <BeforeAfterSlider
+                beforeSrc={cfg.sliderBefore}
+                afterSrc={cfg.sliderAfter}
+                afterVideo={cfg.sliderAfterVideo}
+                aspectClassName={cfg.sliderAspect}
+                beforeAlt={t(`services.${direction}.slider`)}
+                afterAlt={t(`services.${direction}.slider`)}
+              />
+            </div>
             <p className="mt-4 text-muted-foreground text-sm text-center">
               {t(`services.${direction}.slider.desc`)}
             </p>
@@ -153,12 +232,14 @@ function DirectionIncludes({ direction }: { direction: Direction }) {
   const items = [1, 2, 3] as const;
 
   return (
-    <section className="py-10 sm:py-14 px-4">
-      <div className="max-w-3xl mx-auto">
+    <section data-direction-section="includes" className="relative py-10 sm:py-14 px-4 overflow-hidden">
+      <StickerBackdrop direction={direction} />
+      <div className="relative max-w-3xl mx-auto">
         <FadeIn y={20}>
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 text-center font-[family-name:var(--font-syne)]">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2 text-center font-[family-name:var(--font-syne)]">
             {t("direction.includesTitle")}
           </h2>
+          <p className="text-muted-foreground text-sm text-center mb-6">Все включено — від ідеї до готового результату</p>
         </FadeIn>
         <ul className="space-y-3">
           {items.map((n, i) => (
@@ -168,12 +249,13 @@ function DirectionIncludes({ direction }: { direction: Direction }) {
               delay={0.05 * i}
               y={16}
               blur={2}
-              className="flex items-start gap-3 p-4 rounded-xl bg-surface-elevated/40 border border-border"
+              className="group flex items-start gap-4 p-4 sm:p-5 rounded-[16px] bg-surface-elevated/60 backdrop-blur-sm border border-border/70 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.1)] hover:-translate-y-[1px] transition-all duration-300"
             >
-              <span className="w-6 h-6 rounded-full bg-green-500/15 border border-green-500/30 flex items-center justify-center shrink-0 mt-0.5">
-                <Check size={13} className="text-green-500" />
+              <span className="relative inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center mt-0.5">
+                <span className={`absolute inset-0 rounded-[12px] bg-green-500/12 border border-green-500/25 ${STICKER_ROTATIONS[i % STICKER_ROTATIONS.length]}`} />
+                <Check size={18} className="relative text-green-600 dark:text-green-400" strokeWidth={2.2} />
               </span>
-              <span className="text-foreground text-sm sm:text-base">{t(`direction.includes.${direction}.${n}`)}</span>
+              <span className="text-foreground text-sm sm:text-[15px] leading-snug font-medium pt-1.5">{t(`direction.includes.${direction}.${n}`)}</span>
             </FadeIn>
           ))}
         </ul>
@@ -182,27 +264,44 @@ function DirectionIncludes({ direction }: { direction: Direction }) {
   );
 }
 
-function DirectionProcess() {
+function DirectionProcess({ direction }: { direction: Direction }) {
   const { t } = useTranslation();
 
   return (
-    <section className="py-10 sm:py-14 px-4 bg-surface">
-      <div className="max-w-4xl mx-auto">
+    <section data-direction-section="process" className="relative py-10 sm:py-14 px-4 bg-surface overflow-hidden">
+      <StickerBackdrop direction={direction} />
+      <div className="relative max-w-5xl mx-auto">
         <FadeIn y={20}>
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center font-[family-name:var(--font-syne)]">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2 text-center font-[family-name:var(--font-syne)]">
             {t("process.title")}
           </h2>
+          <p className="text-muted-foreground text-sm text-center mb-8">Прозорий процес — 4 кроки від ідеї до релізу</p>
         </FadeIn>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
           {PROCESS_STEPS.map((n, i) => (
-            <FadeIn key={n} delay={0.05 * i} y={16} blur={2}>
-              <div className="p-5 rounded-xl border border-border/60 bg-background/40 h-full">
-                <div className="text-accent font-bold text-sm mb-2">{t(`process.${n}.title`)}</div>
-                <p className="text-muted-foreground text-sm">{t(`process.${n}.desc`)}</p>
+            <FadeIn as="li" key={n} delay={0.05 * i} y={16} className="relative h-full">
+              <div className="group relative flex gap-4 sm:block p-5 sm:p-6 rounded-[16px] border border-border/60 bg-background/80 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:rotate-[0.4deg] transition-all duration-300 h-full">
+                {/* peel corner */}
+                <span aria-hidden="true" className="absolute -right-1 -top-1 h-5 w-5 rounded-bl-[8px] bg-background border-l border-b border-border/60 shadow-sm hidden sm:block" />
+                <div className="relative h-[56px] w-[56px] shrink-0 sm:mb-5">
+                  <DirectionSticker icon={PROCESS_ICONS[i]} direction={direction} index={i} />
+                  <span aria-hidden="true" className="absolute -right-2 -top-1 rounded-full border border-border bg-background px-1.5 py-0.5 text-[10px] leading-none font-black tabular-nums text-foreground shadow-sm">
+                    {String(n).padStart(2, "0")}
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-foreground font-bold text-[15px] mb-1.5">{t(`process.${n}.title`)}</h3>
+                  <p className="text-muted-foreground text-[13px] leading-relaxed">{t(`process.${n}.desc`)}</p>
+                </div>
               </div>
+              {i < PROCESS_STEPS.length - 1 && (
+                <span aria-hidden="true" className="pointer-events-none absolute -right-3 top-10 z-10 hidden h-6 w-6 items-center justify-center rounded-full bg-accent/10 border border-accent/20 text-accent lg:flex">
+                  <ArrowRight size={14} strokeWidth={2} />
+                </span>
+              )}
             </FadeIn>
           ))}
-        </div>
+        </ol>
         <FadeIn y={16} delay={0.2}>
           <p className="text-center text-muted-foreground text-sm mt-8 max-w-xl mx-auto">
             {t("pricing.desc")}

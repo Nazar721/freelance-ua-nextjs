@@ -431,8 +431,8 @@
  app/not-found.tsx => components/NotFound.tsx       |    17 +-
  components/RootDocument.tsx                        |    58 +
  components/cases/CaseBreadcrumbs.tsx               |    42 +
- components/cases/CaseDetail.tsx                    |   760 +
- components/cases/CaseHero.tsx                      |   169 +
+ components/cases/CaseDetail.tsx                    |   763 +
+ components/cases/CaseHero.tsx                      |   200 +
  components/cases/CaseMedia.tsx                     |   864 +
  components/cases/CasePage.tsx                      |    12 +
  .../page.tsx => components/cases/CasesCatalog.tsx  |    68 +-
@@ -449,9 +449,10 @@
  components/sections/VideoCasesSection.tsx          |    19 +-
  components/ui/FadeIn.tsx                           |    29 +-
  components/ui/FeaturedCaseCard.tsx                 |   120 +-
- components/ui/GalleryImage.tsx                     |     8 +-
- components/ui/ImageModal.tsx                       |    24 +-
+ components/ui/GalleryImage.tsx                     |    10 +-
+ components/ui/ImageModal.tsx                       |    25 +-
  components/ui/LanguageToggle.tsx                   |    86 +-
+ components/ui/ThemeToggle.tsx                      |    13 +-
  components/ui/VideoCaseCard.tsx                    |    16 +-
  data/case-records/design/apple-tecnologia.ts       |    76 +
  data/case-records/design/barvy-interior.ts         |   101 +
@@ -499,7 +500,7 @@
  data/case-records/it/shkiper-drop.ts               |   104 +
  data/case-records/it/stretching-ch.ts              |   108 +
  data/case-records/it/voltone-pro.ts                |   122 +
- data/case-records/types.ts                         |   421 +
+ data/case-records/types.ts                         |   427 +
  data/case-records/video/ai-avatars.ts              |    70 +
  data/case-records/video/ai-ice-cream.ts            |    72 +
  data/case-records/video/ai-promo-misha.ts          |    67 +
@@ -530,7 +531,7 @@
  data/case-records/video/presentation-animation.ts  |    72 +
  data/case-records/video/sales-bible-promo.ts       |    68 +
  data/case-records/video/selloflow-intro.ts         |    77 +
- data/case-records/video/serhii-yarmolenko-reels.ts |    90 +
+ data/case-records/video/serhii-yarmolenko-reels.ts |    93 +
  .../video/serhii-yarmolenko-video-lesson.ts        |    89 +
  data/case-records/video/sestro-anniversary.ts      |    89 +
  data/case-records/video/sestro-beauty.ts           |    73 +
@@ -562,13 +563,13 @@
  docs/package-1/baseline/check-report.json          | 15389 ++++++
  docs/package-1/baseline/lint.txt                   |    87 +
  docs/package-1/baseline/tsc.txt                    |     1 +
- docs/package-1/check-acceptance.json               | 11665 +++++
+ docs/package-1/check-acceptance.json               | 48402 +++++++++++++++++++
  docs/package-1/data-schema.md                      |   223 +
  docs/package-1/direction-pages.md                  |    73 +
  docs/package-1/editorial-rules.md                  |    88 +
  docs/package-1/expectations.json                   |  3440 ++
  docs/package-1/facts-to-confirm.md                 |    74 +
- docs/package-1/issues.json                         |    85 +
+ docs/package-1/issues.json                         |    78 +
  docs/package-1/questions.md                        |    76 +
  docs/package-1/registry.csv                        |   101 +
  docs/package-1/registry.json                       | 12737 +++++
@@ -586,7 +587,7 @@
  docs/package-3/check-acceptance-current.json       | 12958 +++++
  docs/package-3/check-selftest.txt                  |    20 +
  docs/package-3/texts-direction-pages.md            |   171 +
- docs/package-4/BATCH-5-TEXT-FIXES.md               |    71 +
+ docs/package-4/BATCH-5-TEXT-FIXES.md               |   123 +
  docs/package-4/README.md                           |   474 +
  docs/package-4/batch-1.md                          |   280 +
  docs/package-4/batch-2.md                          |   150 +
@@ -603,17 +604,20 @@
  docs/package-4/browser-report-textfix.txt          |   670 +
  docs/package-4/browser-report.txt                  |   784 +
  docs/package-4/browser-scenarios-pkg3.txt          |   344 +
- docs/package-4/build.txt                           |   188 +
+ docs/package-4/browser-scenarios-pkg5.txt          |   344 +
+ docs/package-4/build.txt                           |    30 +
  docs/package-4/check-acceptance-all.json           | 48402 +++++++++++++++++++
  docs/package-4/check-acceptance-all.txt            |     9 +
  docs/package-4/check-acceptance-current.json       | 48373 ++++++++++++++++++
  docs/package-4/check-selftest.txt                  |    32 +
  docs/package-4/diff-batch4-fixes.patch             |   767 +
  docs/package-4/diff-package4.patch                 | 15461 ++++++
+ docs/package-4/diff-package5.stat                  |     0
  docs/package-4/inventory.txt                       |    28 +
- docs/package-4/lint.txt                            |    45 +
- docs/package-4/media-before-after.md               |  4972 ++
+ docs/package-4/lint.txt                            |    48 +
+ docs/package-4/media-before-after.md               |  4975 ++
  docs/package-4/media-before-after.md.bak           |  4966 ++
+ docs/package-4/media-check.txt                     |   105 +
  docs/package-4/survey-design.txt                   |     7 +
  docs/package-4/survey-video.txt                    |   279 +
  docs/package-4/texts.md                            |   485 +
@@ -624,7 +628,7 @@
  lib/case-page.ts                                   |    32 +
  lib/directions.ts                                  |    73 +
  lib/i18n-routes.ts                                 |   177 +
- lib/i18n.ts                                        |   147 +-
+ lib/i18n.ts                                        |   153 +-
  lib/root-fonts.ts                                  |    17 +
  lib/root-layout.ts                                 |    34 +
  lib/scroll-to-hash.ts                              |   315 +
@@ -640,5 +644,5 @@
  scripts/migrate-case.mjs                           |  1614 +
  scripts/package3-anchor-check.mjs                  |   211 +
  scripts/package4-case-check.mjs                    |  1215 +
- scripts/package4-media-check.mjs                   |  1156 +
- 643 files changed, 290500 insertions(+), 36173 deletions(-)
+ scripts/package4-media-check.mjs                   |  1194 +
+ 647 files changed, 327681 insertions(+), 36174 deletions(-)

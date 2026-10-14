@@ -29,7 +29,7 @@
   },
   {
     "type": "related-projects-incomplete",
-    "count": 43,
+    "count": 42,
     "missing": [
       "it/darkshare",
       "it/epiland",
@@ -56,7 +56,6 @@
       "video/maccoudi-youtube",
       "video/motion-promo",
       "video/motion-reels",
-      "video/nikita-sheremet-crypto",
       "video/passive-income-video",
       "video/podcast-editing",
       "video/presentation-animation",
@@ -74,12 +73,6 @@
       "video/watch-hype-intro",
       "video/watch-hype-motion",
       "video/wine-festival"
-    ]
-  },
-  {
-    "type": "related-projects-unknown-slug",
-    "slugs": [
-      "nikita-sheremet"
     ]
   }
 ]

@@ -1,0 +1,131 @@
+# Пакет 5 — браузерний обхід усіх сторінок кейсів
+
+База: http://localhost:3011 · дата: 2026-10-14T09:42:43.902Z
+Кейсів у реєстрі: 100 · сторінок: 200 (UA + EN) · рушії: chromium, webkit
+
+Кожна сторінка відкрита окремо; перевірено: статус 200, `<html lang>`, єдиний H1,
+збіг H1 із записом реєстру, відсутність сирих i18n-ключів, завантаженість усіх `<img>`,
+відсутність невдалих мережевих запитів і помилок консолі, наявність hreflang на мовну пару.
+Глибокі інтерактивні сценарії — окремим прогоном (`browser-deep-report.txt`).
+
+Зауваження щодо вимірювання (не дефекти сайту, але й не приховані):
+- запити, які браузер ПЕРЕРВАВ при переході на наступну сторінку (WebKit: `cancelled`,
+  Chromium: `net::ERR_ABORTED`) не рахуються невдалим запитом; `ERR_EMPTY_RESPONSE` —
+  потенційний транспортний збій і рахується; таймаути (status 0) ізолюються новою page
+  із повторною фіксацією результату;
+- WebKit застосовує CORS до RSC-запитів Next.js (`?_rsc=`), Chromium — ні; сторінка при
+  цьому рендериться. Такі помилки враховані окремо нижче.
+
+| Рушій | ✓ | ✗ |
+|---|---|---|
+| chromium | 1800 | 0 |
+| webkit | 1800 | 0 |
+
+**Разом: 3600 passed, 0 failed.**
+
+## Перевірені кейси (усі 100, обидві мови)
+
+| # | Кейс | UA | EN |
+|---|---|---|---|
+| 1 | `video/yulia-smm-reels` | /cases/video/yulia-smm-reels | /en/cases/video/yulia-smm-reels |
+| 2 | `video/youtube-conversational-video` | /cases/video/youtube-conversational-video | /en/cases/video/youtube-conversational-video |
+| 3 | `video/wine-festival` | /cases/video/wine-festival | /en/cases/video/wine-festival |
+| 4 | `video/watch-hype-motion` | /cases/video/watch-hype-motion | /en/cases/video/watch-hype-motion |
+| 5 | `video/watch-hype-intro` | /cases/video/watch-hype-intro | /en/cases/video/watch-hype-intro |
+| 6 | `video/vtikha-promo` | /cases/video/vtikha-promo | /en/cases/video/vtikha-promo |
+| 7 | `video/vsehub-reels` | /cases/video/vsehub-reels | /en/cases/video/vsehub-reels |
+| 8 | `video/vorodi-medical` | /cases/video/vorodi-medical | /en/cases/video/vorodi-medical |
+| 9 | `video/vladlen-lisynko-interview` | /cases/video/vladlen-lisynko-interview | /en/cases/video/vladlen-lisynko-interview |
+| 10 | `video/vitalii-cheverda` | /cases/video/vitalii-cheverda | /en/cases/video/vitalii-cheverda |
+| 11 | `video/vibe-nation-promo` | /cases/video/vibe-nation-promo | /en/cases/video/vibe-nation-promo |
+| 12 | `video/veronika-ai-muscles` | /cases/video/veronika-ai-muscles | /en/cases/video/veronika-ai-muscles |
+| 13 | `video/varto-reels` | /cases/video/varto-reels | /en/cases/video/varto-reels |
+| 14 | `video/valeriia-trend-reels` | /cases/video/valeriia-trend-reels | /en/cases/video/valeriia-trend-reels |
+| 15 | `video/twin-a-auto` | /cases/video/twin-a-auto | /en/cases/video/twin-a-auto |
+| 16 | `video/travel-vlog-turkey` | /cases/video/travel-vlog-turkey | /en/cases/video/travel-vlog-turkey |
+| 17 | `video/telegram-emoji-stickers` | /cases/video/telegram-emoji-stickers | /en/cases/video/telegram-emoji-stickers |
+| 18 | `video/taranenko-trade` | /cases/video/taranenko-trade | /en/cases/video/taranenko-trade |
+| 19 | `video/skool-10-features` | /cases/video/skool-10-features | /en/cases/video/skool-10-features |
+| 20 | `video/sheglam-promo` | /cases/video/sheglam-promo | /en/cases/video/sheglam-promo |
+| 21 | `video/sheglam-freedom-fest` | /cases/video/sheglam-freedom-fest | /en/cases/video/sheglam-freedom-fest |
+| 22 | `video/sestro-anniversary` | /cases/video/sestro-anniversary | /en/cases/video/sestro-anniversary |
+| 23 | `video/sestro-beauty` | /cases/video/sestro-beauty | /en/cases/video/sestro-beauty |
+| 24 | `video/serhii-yarmolenko-video-lesson` | /cases/video/serhii-yarmolenko-video-lesson | /en/cases/video/serhii-yarmolenko-video-lesson |
+| 25 | `video/serhii-yarmolenko-reels` | /cases/video/serhii-yarmolenko-reels | /en/cases/video/serhii-yarmolenko-reels |
+| 26 | `video/selloflow-intro` | /cases/video/selloflow-intro | /en/cases/video/selloflow-intro |
+| 27 | `video/sales-bible-promo` | /cases/video/sales-bible-promo | /en/cases/video/sales-bible-promo |
+| 28 | `video/presentation-animation` | /cases/video/presentation-animation | /en/cases/video/presentation-animation |
+| 29 | `video/podcast-editing` | /cases/video/podcast-editing | /en/cases/video/podcast-editing |
+| 30 | `video/passive-income-video` | /cases/video/passive-income-video | /en/cases/video/passive-income-video |
+| 31 | `video/nikita-sheremet-crypto` | /cases/video/nikita-sheremet-crypto | /en/cases/video/nikita-sheremet-crypto |
+| 32 | `video/motion-reels` | /cases/video/motion-reels | /en/cases/video/motion-reels |
+| 33 | `video/motion-promo` | /cases/video/motion-promo | /en/cases/video/motion-promo |
+| 34 | `video/maccoudi-youtube` | /cases/video/maccoudi-youtube | /en/cases/video/maccoudi-youtube |
+| 35 | `video/logo-animation` | /cases/video/logo-animation | /en/cases/video/logo-animation |
+| 36 | `video/logan-ai-promo` | /cases/video/logan-ai-promo | /en/cases/video/logan-ai-promo |
+| 37 | `video/liliya-product-business` | /cases/video/liliya-product-business | /en/cases/video/liliya-product-business |
+| 38 | `video/ivan-ig-creative` | /cases/video/ivan-ig-creative | /en/cases/video/ivan-ig-creative |
+| 39 | `video/internet-svit-promo` | /cases/video/internet-svit-promo | /en/cases/video/internet-svit-promo |
+| 40 | `video/income-graph-motion` | /cases/video/income-graph-motion | /en/cases/video/income-graph-motion |
+| 41 | `video/eva-code-reels` | /cases/video/eva-code-reels | /en/cases/video/eva-code-reels |
+| 42 | `video/dr-trichologist-promo` | /cases/video/dr-trichologist-promo | /en/cases/video/dr-trichologist-promo |
+| 43 | `video/dominanta-youtube-intro` | /cases/video/dominanta-youtube-intro | /en/cases/video/dominanta-youtube-intro |
+| 44 | `video/dance-competition-lviv` | /cases/video/dance-competition-lviv | /en/cases/video/dance-competition-lviv |
+| 45 | `video/barvy-interior-ai-reels` | /cases/video/barvy-interior-ai-reels | /en/cases/video/barvy-interior-ai-reels |
+| 46 | `video/automation-1click` | /cases/video/automation-1click | /en/cases/video/automation-1click |
+| 47 | `video/auto-edits-reels` | /cases/video/auto-edits-reels | /en/cases/video/auto-edits-reels |
+| 48 | `video/artem-reels` | /cases/video/artem-reels | /en/cases/video/artem-reels |
+| 49 | `video/alien-city-adventure` | /cases/video/alien-city-adventure | /en/cases/video/alien-city-adventure |
+| 50 | `video/ai-video-new` | /cases/video/ai-video-new | /en/cases/video/ai-video-new |
+| 51 | `video/ai-spring-fashion` | /cases/video/ai-spring-fashion | /en/cases/video/ai-spring-fashion |
+| 52 | `video/ai-promo-misha` | /cases/video/ai-promo-misha | /en/cases/video/ai-promo-misha |
+| 53 | `video/ai-ice-cream` | /cases/video/ai-ice-cream | /en/cases/video/ai-ice-cream |
+| 54 | `video/ai-avatars` | /cases/video/ai-avatars | /en/cases/video/ai-avatars |
+| 55 | `design/mht-clinic-billboard` | /cases/design/mht-clinic-billboard | /en/cases/design/mht-clinic-billboard |
+| 56 | `design/prestige-school-billboard` | /cases/design/prestige-school-billboard | /en/cases/design/prestige-school-billboard |
+| 57 | `design/nastya-smm` | /cases/design/nastya-smm | /en/cases/design/nastya-smm |
+| 58 | `design/hope-media-group` | /cases/design/hope-media-group | /en/cases/design/hope-media-group |
+| 59 | `design/gopro-hero13` | /cases/design/gopro-hero13 | /en/cases/design/gopro-hero13 |
+| 60 | `design/giesbrecht-pv` | /cases/design/giesbrecht-pv | /en/cases/design/giesbrecht-pv |
+| 61 | `design/f5-guitars-youtube` | /cases/design/f5-guitars-youtube | /en/cases/design/f5-guitars-youtube |
+| 62 | `design/divorce-legal-ad` | /cases/design/divorce-legal-ad | /en/cases/design/divorce-legal-ad |
+| 63 | `design/crypto-chat-manager-vacancy` | /cases/design/crypto-chat-manager-vacancy | /en/cases/design/crypto-chat-manager-vacancy |
+| 64 | `design/color-correction` | /cases/design/color-correction | /en/cases/design/color-correction |
+| 65 | `design/pink-pr-flyers` | /cases/design/pink-pr-flyers | /en/cases/design/pink-pr-flyers |
+| 66 | `design/smm-case-presentation` | /cases/design/smm-case-presentation | /en/cases/design/smm-case-presentation |
+| 67 | `design/snizhana-telegram-stickers` | /cases/design/snizhana-telegram-stickers | /en/cases/design/snizhana-telegram-stickers |
+| 68 | `design/globus-billboard` | /cases/design/globus-billboard | /en/cases/design/globus-billboard |
+| 69 | `design/apple-tecnologia` | /cases/design/apple-tecnologia | /en/cases/design/apple-tecnologia |
+| 70 | `design/sembud-repair` | /cases/design/sembud-repair | /en/cases/design/sembud-repair |
+| 71 | `design/schonheit-gift-certificate` | /cases/design/schonheit-gift-certificate | /en/cases/design/schonheit-gift-certificate |
+| 72 | `design/vikontse-logo` | /cases/design/vikontse-logo | /en/cases/design/vikontse-logo |
+| 73 | `design/mydutyfree` | /cases/design/mydutyfree | /en/cases/design/mydutyfree |
+| 74 | `design/gel-polish` | /cases/design/gel-polish | /en/cases/design/gel-polish |
+| 75 | `design/photo-retouch` | /cases/design/photo-retouch | /en/cases/design/photo-retouch |
+| 76 | `design/barvy-interior` | /cases/design/barvy-interior | /en/cases/design/barvy-interior |
+| 77 | `it/voltone-pro` | /cases/it/voltone-pro | /en/cases/it/voltone-pro |
+| 78 | `it/stretching-ch` | /cases/it/stretching-ch | /en/cases/it/stretching-ch |
+| 79 | `it/shkiper-drop` | /cases/it/shkiper-drop | /en/cases/it/shkiper-drop |
+| 80 | `it/serezha-shop` | /cases/it/serezha-shop | /en/cases/it/serezha-shop |
+| 81 | `it/selloflow` | /cases/it/selloflow | /en/cases/it/selloflow |
+| 82 | `it/sdent` | /cases/it/sdent | /en/cases/it/sdent |
+| 83 | `it/ruslan-aviation` | /cases/it/ruslan-aviation | /en/cases/it/ruslan-aviation |
+| 84 | `it/route-core` | /cases/it/route-core | /en/cases/it/route-core |
+| 85 | `it/repair-collision` | /cases/it/repair-collision | /en/cases/it/repair-collision |
+| 86 | `it/prime-auto-shipping` | /cases/it/prime-auto-shipping | /en/cases/it/prime-auto-shipping |
+| 87 | `it/pivden-solar` | /cases/it/pivden-solar | /en/cases/it/pivden-solar |
+| 88 | `it/nextcup` | /cases/it/nextcup | /en/cases/it/nextcup |
+| 89 | `it/mnm-detailing` | /cases/it/mnm-detailing | /en/cases/it/mnm-detailing |
+| 90 | `it/md-dental` | /cases/it/md-dental | /en/cases/it/md-dental |
+| 91 | `it/liudmyla-tsybrii` | /cases/it/liudmyla-tsybrii | /en/cases/it/liudmyla-tsybrii |
+| 92 | `it/kroscar-detailing` | /cases/it/kroscar-detailing | /en/cases/it/kroscar-detailing |
+| 93 | `it/importera` | /cases/it/importera | /en/cases/it/importera |
+| 94 | `it/epiland` | /cases/it/epiland | /en/cases/it/epiland |
+| 95 | `it/darkshare` | /cases/it/darkshare | /en/cases/it/darkshare |
+| 96 | `it/asandra-soul` | /cases/it/asandra-soul | /en/cases/it/asandra-soul |
+| 97 | `it/eva-code` | /cases/it/eva-code | /en/cases/it/eva-code |
+| 98 | `design/nastya-portrait-retouch` | /cases/design/nastya-portrait-retouch | /en/cases/design/nastya-portrait-retouch |
+| 99 | `video/cuprus-life` | /cases/video/cuprus-life | /en/cases/video/cuprus-life |
+| 100 | `design/moto-school-window-branding` | /cases/design/moto-school-window-branding | /en/cases/design/moto-school-window-branding |
+
+(524s)

@@ -19,6 +19,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "notFound.desc": "Вибачте, такої сторінки не існує. Можливо, посилання застаріло або ви помилились у шляху.",
     "notFound.home": "На головну",
 
+    "theme.toggle.toLight": "Перемкнути на світлу тему",
+    "theme.toggle.toDark": "Перемкнути на темну тему",
+
     "hero.badge": "Digital Agency",
     "hero.word1": "Ваш",
     "hero.word2": "цифровий",
@@ -2692,6 +2695,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "notFound.title": "Page not found",
     "notFound.desc": "Sorry, this page does not exist. The link may be outdated or the path may contain a typo.",
     "notFound.home": "Go to home page",
+
+    "theme.toggle.toLight": "Switch to light theme",
+    "theme.toggle.toDark": "Switch to dark theme",
 
     "hero.badge": "Digital Agency",
     "hero.word1": "Your",

@@ -135,6 +135,7 @@ export function ImageModal({
         role="dialog"
         aria-modal="true"
         aria-label={title}
+        data-case-block="fullscreen-player"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

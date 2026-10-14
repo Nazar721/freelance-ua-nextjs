@@ -40,6 +40,7 @@ export default function GalleryImage({
           <button
             onClick={(e) => {
               e.stopPropagation();
+              (e.currentTarget as HTMLButtonElement).focus();
               onOpen();
             }}
             className="md:hidden absolute bottom-3 right-3 z-10 w-11 h-11 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/20 active:bg-black/70 transition-colors"
@@ -51,6 +52,7 @@ export default function GalleryImage({
           <button
             onClick={(e) => {
               e.stopPropagation();
+              (e.currentTarget as HTMLButtonElement).focus();
               onOpen();
             }}
             className="hidden md:flex absolute bottom-3 right-3 z-10 w-11 h-11 rounded-full bg-black/50 backdrop-blur-sm items-center justify-center border border-white/20 opacity-0 group-hover/gallery:opacity-100 transition-opacity duration-300 hover:bg-black/70"

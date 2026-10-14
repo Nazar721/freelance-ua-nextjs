@@ -476,6 +476,7 @@ export default function CaseDetail({
     if (review.kind === "video") {
       return (
         <div
+          data-case-block="review-card"
           className="group/video featured-case-card relative overflow-hidden rounded-2xl border border-border p-4"
           style={{ borderRadius: "20px" }}
         >
@@ -540,6 +541,7 @@ export default function CaseDetail({
     if (review.kind === "audio") {
       return (
         <div
+          data-case-block="review-card"
           className="featured-case-card relative rounded-2xl border border-border p-8"
           style={{ borderRadius: "20px" }}
         >
@@ -585,6 +587,7 @@ export default function CaseDetail({
     // screenshot | text
     return (
       <div
+        data-case-block="review-card"
         className="featured-case-card overflow-hidden rounded-2xl border border-border"
         style={{ borderRadius: "20px" }}
       >

@@ -41,5 +41,8 @@ Calling setState synchronously within an effect body causes cascading renders th
 /Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/scripts/migrate-case.mjs
   331:9  warning  'constants' is assigned a value but never used  @typescript-eslint/no-unused-vars
 
-✖ 10 problems (1 error, 9 warnings)
+/Users/nazar/Documents/Freelance UA | Digital Agency/freelance ua (project IT)/freelance-ua-nextjs/scripts/package5-interactive-check.mjs
+  113:7  warning  'count' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 11 problems (1 error, 10 warnings)
 

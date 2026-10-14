@@ -5,5 +5,5 @@ mode=acceptance phase=all base=http://localhost:3011
   check failures: 0
   hreflang reciprocity: checked 424, skipped(not ready) 0, failed 0
   sitemap: OK (212 urls)
-report: docs/package-4/check-acceptance-all.json
+report: docs/package-1/check-acceptance.json
 PASS

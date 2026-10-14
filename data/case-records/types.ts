@@ -88,7 +88,13 @@ export interface VideoGridItem {
 
 export type HeroBlock =
   | { kind: "image"; src: string; w: number; h: number; alt?: CaseText; priority?: boolean }
-  | { kind: "imageGrid"; items: MediaImage[] }
+  /**
+   * A row of tiles. `items` may mix images and videos: some original heroes
+   * (serhii-yarmolenko-reels) stacked three `.mp4` clips as the hero. Video
+   * items must render as a real `<video>` tile — `next/image` cannot optimize
+   * a video and answers such requests with HTTP 400.
+   */
+  | { kind: "imageGrid"; items: Array<MediaImage | { src: string; video: true; alt?: CaseText }>; ratio?: string }
   /**
    * A single muted video with a poster. The tile is a real button: clicking
    * it opens the shared fullscreen player (controls, Escape, focus return) —

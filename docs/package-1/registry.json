@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T23:37:07.860Z",
+  "generatedAt": "2026-10-14T09:51:26.388Z",
   "counts": {
     "routes": 100,
     "byDirection": {
@@ -15,8 +15,8 @@
     "withManualReview": 4,
     "withBlocks": 100,
     "sitemapPaths": 212,
-    "i18nUkKeys": 2572,
-    "i18nEnKeys": 2572,
+    "i18nUkKeys": 2574,
+    "i18nEnKeys": 2574,
     "i18nMissingEn": [],
     "mediaRefsTracked": 356,
     "reusedMediaFiles": 1

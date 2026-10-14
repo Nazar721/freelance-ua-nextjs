@@ -52,19 +52,50 @@ export default function CaseHero({ record, L }: { record: CaseRecord; L: Resolve
             key={index}
             className="relative overflow-hidden rounded-xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
           >
-            <Image
-              src={item.src}
-              alt={item.alt ? L(item.alt) : L(record.h1)}
-              width={item.w ?? 1200}
-              height={item.h ?? 800}
-              className="h-auto w-full object-cover"
-              draggable={false}
-              priority={index === 0}
-            />
+            {"video" in item ? (
+              // A video tile: a real <video>, not next/image — the optimizer
+              // answers video sources with 400. Clicking opens the shared
+              // fullscreen player, exactly as the original page did.
+              <button
+                type="button"
+                data-case-block="hero-video-tile"
+                className="block w-full cursor-pointer"
+                onClick={(event) => setFullscreen({ src: item.src, opener: event.currentTarget })}
+                aria-label={L(record.h1)}
+              >
+                <video
+                  src={item.src}
+                  className="h-auto w-full object-cover"
+                  style={{ aspectRatio: hero.ratio ?? "9/16", maxHeight: "560px" }}
+                  muted
+                  preload="metadata"
+                  playsInline
+                />
+              </button>
+            ) : (
+              <Image
+                src={item.src}
+                alt={item.alt ? L(item.alt) : L(record.h1)}
+                width={item.w ?? 1200}
+                height={item.h ?? 800}
+                className="h-auto w-full object-cover"
+                draggable={false}
+                priority={index === 0}
+              />
+            )}
           </div>
         ))}
       </div>
     );
+    // Hero videos get the shared player, exactly like the section grids do.
+    if (fullscreen) {
+      media = (
+        <>
+          {media}
+          <FullscreenVideo src={fullscreen.src} opener={fullscreen.opener} onClose={() => setFullscreen(null)} />
+        </>
+      );
+    }
   } else if (hero.kind === "video") {
     // One interactive tile, same contract as the video grids: a real button
     // with a localized name, the duration/format badges from the record and

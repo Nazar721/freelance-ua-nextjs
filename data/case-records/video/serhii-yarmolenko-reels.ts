@@ -24,10 +24,13 @@ export const serhiiYarmolenkoReels: CaseRecord = {
 
   hero: {
     kind: "imageGrid",
+    ratio: "9/16",
     items: [
-      { src: "/media/cases/serhii-yarmolenko-reels/video-1.mp4", alt: key("videoCases.serhiiYarmolenkoReels.title") },
-      { src: "/media/cases/serhii-yarmolenko-reels/video-2.mp4", alt: key("videoCases.serhiiYarmolenkoReels.title") },
-      { src: "/media/cases/serhii-yarmolenko-reels/video-3.mp4", alt: key("videoCases.serhiiYarmolenkoReels.title") },
+      // Hero videos, not images: the original page rendered these as clickable
+      // <video> tiles that opened the fullscreen player.
+      { src: "/media/cases/serhii-yarmolenko-reels/video-1.mp4", video: true, alt: key("videoCases.serhiiYarmolenkoReels.title") },
+      { src: "/media/cases/serhii-yarmolenko-reels/video-2.mp4", video: true, alt: key("videoCases.serhiiYarmolenkoReels.title") },
+      { src: "/media/cases/serhii-yarmolenko-reels/video-3.mp4", video: true, alt: key("videoCases.serhiiYarmolenkoReels.title") },
     ],
   },
 
