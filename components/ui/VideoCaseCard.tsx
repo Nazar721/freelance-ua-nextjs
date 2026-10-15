@@ -9,6 +9,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslation } from "@/lib/LanguageContext";
 import { counterpartPath } from "@/lib/i18n-routes";
 import { withPosterFrame } from "@/lib/video";
+import type { Localized } from "@/data/case-records/types";
 
 /* Mouse-follow glow/parallax is a desktop-only affordance. Touch taps fire
    synthetic mouse events (iOS sticky hover) that would shift the media — so
@@ -27,7 +28,7 @@ export interface VideoCaseCardProps {
   video: string;
   thumbnail?: string;
   poster?: string;
-  duration?: string;
+  duration?: string | Localized<string>;
   format?: string;
   ctaKey?: string;
   comingSoonKey?: string;
@@ -51,6 +52,7 @@ export default function VideoCaseCard({
   hideCta = false,
 }: VideoCaseCardProps) {
   const { t, locale } = useTranslation();
+  const durationLabel = typeof duration === "string" ? duration : duration?.[locale] ?? "";
   // Point at the EN case once its page is registered as bilingual; until
   // then an English catalog keeps linking to the (Ukrainian) case page.
   const localizedHref = href && locale === "en" ? (counterpartPath(href, "en") ?? href) : href;
@@ -156,11 +158,11 @@ export default function VideoCaseCard({
               </>
             )}
             {/* Duration & Format badges */}
-            {(duration || format) && (
+            {(durationLabel || format) && (
               <div className="absolute top-3 right-3 flex gap-2">
-                {duration && (
+                {durationLabel && (
                   <span className="bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full border border-white/20">
-                    {duration}
+                    {durationLabel}
                   </span>
                 )}
                 {format && (

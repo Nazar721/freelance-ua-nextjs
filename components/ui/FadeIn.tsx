@@ -1,18 +1,22 @@
 "use client";
 
-import { useRef, type ElementType, type ReactNode } from "react";
+import { useRef, useState, type ElementType, type ReactNode } from "react";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 import { motion, useInView } from "framer-motion";
 
-import { useIsMobile } from "@/lib/useIsMobile";
-
 type FadeInProps = {
   children: ReactNode;
+  /** Short per-group stagger — build it with `staggerDelay(index)`. */
   delay?: number;
+  /** Vertical offset; clamped to 16px so the reveal stays subtle. */
   y?: number;
+  /** @deprecated Unused — kept so old call sites keep compiling. */
   x?: number;
+  /** @deprecated Unused — kept so old call sites keep compiling. */
   scale?: number;
+  /** @deprecated Unused — kept so old call sites keep compiling. */
   rotateX?: number;
+  /** @deprecated Unused — reveals never animate `filter`. */
   blur?: number;
   className?: string;
   style?: React.CSSProperties;
@@ -23,24 +27,49 @@ type FadeInProps = {
   [key: string]: unknown;
 };
 
+/**
+ * Short stagger inside a visible row/group. The delay cycles with the item's
+ * position in the group, so the Nth card of a long catalogue never inherits
+ * a multi-second wait from its global index.
+ */
+export function staggerDelay(index: number, step = 0.04, perGroup = 4): number {
+  return (index % perGroup) * step;
+}
+
+/** Longest wait before a reveal starts, even when a caller passes more. */
+const MAX_DELAY = 0.2;
+/** Largest vertical travel — 8–16px, per the motion guidelines. */
+const MAX_Y = 16;
+const DURATION = 0.5;
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export function FadeIn({
   children,
   delay = 0,
-  y = 28,
-  x = 0,
-  scale = 1,
-  rotateX = 0,
+  y = 12,
   className,
   style,
   as = "div",
   ...rest
 }: FadeInProps) {
-  // Keep the legacy blur prop out of the DOM; reveals use compositor-friendly properties only.
+  // Legacy props never reach the DOM; reveals animate opacity + translateY only
+  // (no filter, no 3D, no scale — those fought CSS transitions and janked
+  // low-end devices).
   delete rest.blur;
+  delete rest.x;
+  delete rest.scale;
+  delete rest.rotateX;
   const ref = useRef<HTMLElement>(null);
   const shouldReduceMotion = usePrefersReducedMotion();
-  const isMobile = useIsMobile();
-  const isInView = useInView(ref, { once: true, margin: isMobile ? "-40px 0px" : "-80px 0px" });
+  // `once: true` — scrolling back never replays a finished reveal. The old
+  // negative root margins required the element to already sit deep inside the
+  // viewport before firing, which left in-screen cards invisible; now the
+  // reveal starts as soon as the element shows at the viewport edge.
+  const isInView = useInView(ref, { once: true, amount: "some" });
+  // Keyboard focus must never land on a still-invisible node: the moment the
+  // wrapper (or anything inside it) is focused, reveal it instantly.
+  const [focusShown, setFocusShown] = useState(false);
+  const [instant, setInstant] = useState(false);
   const MotionTag: ElementType = as === "li" ? motion.li : motion.div;
 
   if (shouldReduceMotion) {
@@ -56,66 +85,25 @@ export function FadeIn({
     );
   }
 
-  // Phones use a shorter reveal without filter or 3D rotation.
-  if (isMobile) {
-    return (
-      <MotionTag
-        ref={ref}
-        className={className}
-        data-reveal="motion"
-        style={style}
-        initial={{ opacity: 0, y: y > 0 ? 16 : 0 }}
-        animate={
-          isInView
-            ? { opacity: 1, y: 0 }
-            : { opacity: 0, y: y > 0 ? 16 : 0 }
-        }
-        transition={{
-          duration: 0.55,
-          delay: Math.min(delay, 0.3),
-          ease: [0.22, 1, 0.36, 1] as const,
-        }}
-        {...rest}
-      >
-        {children}
-      </MotionTag>
-    );
-  }
+  const offset = Math.min(Math.max(y, 0), MAX_Y);
+  const shown = isInView || focusShown;
 
   return (
     <MotionTag
       ref={ref}
       className={className}
       data-reveal="motion"
-      style={{ perspective: rotateX ? 800 : undefined, ...style }}
-      initial={{
-        opacity: 0,
-        y,
-        x,
-        scale: scale < 1 ? scale : 1,
-        rotateX,
+      style={style}
+      initial={{ opacity: 0, y: offset }}
+      animate={shown ? { opacity: 1, y: 0 } : { opacity: 0, y: offset }}
+      onFocus={() => {
+        setFocusShown(true);
+        setInstant(true);
       }}
-      animate={
-        isInView
-          ? {
-              opacity: 1,
-              y: 0,
-              x: 0,
-              scale: 1,
-              rotateX: 0,
-            }
-          : {
-              opacity: 0,
-              y,
-              x,
-              scale: scale < 1 ? scale : 1,
-              rotateX,
-            }
-      }
       transition={{
-        duration: 1.1,
-        delay,
-        ease: [0.22, 1, 0.36, 1] as const,
+        duration: instant ? 0 : DURATION,
+        delay: instant ? 0 : Math.min(Math.max(delay, 0), MAX_DELAY),
+        ease: EASE,
       }}
       {...rest}
     >

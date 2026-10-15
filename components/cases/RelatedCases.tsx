@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { FadeIn, staggerDelay } from "@/components/ui/FadeIn";
 import { useTranslation } from "@/lib/LanguageContext";
 import { counterpartPath } from "@/lib/i18n-routes";
 import type { RelatedCaseCard } from "@/data/case-records";
@@ -27,7 +27,7 @@ export default function RelatedCases({ items }: { items: RelatedCaseCard[] }) {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map((item, index) => (
-            <FadeIn key={item.id} delay={0.1 + index * 0.1} y={30} blur={4}>
+            <FadeIn key={item.id} delay={staggerDelay(index)} y={30} blur={4}>
               <Link
                 href={(locale === "en" && counterpartPath(item.href, "en")) || item.href}
                 className="group block overflow-hidden rounded-2xl border border-border bg-secondary/50 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_8px_32px_rgba(99,102,241,0.15)]"

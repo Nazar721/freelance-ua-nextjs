@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import { ArrowRight } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { FadeIn, staggerDelay } from "@/components/ui/FadeIn";
 import FeaturedCaseCard from "@/components/ui/FeaturedCaseCard";
 import { designCases } from "@/data/designCases";
 import { featuredCardProps } from "@/lib/case-cards";
@@ -30,7 +30,7 @@ export default function DesignCasesSection() {
         {/* Featured cards — 2 cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-12">
           {featured.map((c, i) => (
-            <FadeIn key={c.slug} delay={0.1 + i * 0.1} y={40} blur={4}>
+            <FadeIn key={c.slug} delay={staggerDelay(i)} y={40} blur={4}>
               <FeaturedCaseCard {...featuredCardProps(c)} />
             </FadeIn>
           ))}

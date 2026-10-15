@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T09:51:26.388Z",
+  "generatedAt": "2026-10-14T22:41:01.607Z",
   "base": "https://freelance-ua.agency",
   "entries": [
     {
@@ -1117,6 +1117,22 @@
       }
     },
     {
+      "path": "/cases/video/barvy-interior-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/barvy-interior-reels",
+      "title": "BARVY interior — два Reels для студії ремонту | Freelance UA",
+      "description": "Два вертикальні Instagram Reels для BARVY interior — студії дизайну інтер’єру та ремонту під ключ у Києві.",
+      "h1": "BARVY interior — два Reels для студії ремонту",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/barvy-interior-reels",
+        "en": "/en/cases/video/barvy-interior-reels"
+      }
+    },
+    {
       "path": "/cases/video/cuprus-life",
       "kind": "page",
       "phase": "current",
@@ -1299,7 +1315,7 @@
       "lang": "uk",
       "canonical": "https://freelance-ua.agency/cases/video/maccoudi-youtube",
       "title": "Маккоуді — YouTube про фріланс | Freelance UA",
-      "description": "Монтаж двох YouTube-відео для популярного блогера Маккоуді — динамічний контент про фріланс",
+      "description": "Монтаж трьох YouTube-відео для блогера Маккоуді: два короткі ролики та довга історія про шлях у фрилансі.",
       "h1": "Маккоуді",
       "inRegistry": true,
       "bilingualPair": true,
@@ -1786,6 +1802,22 @@
       "hreflang": {
         "uk": "/cases/video/watch-hype-motion",
         "en": "/en/cases/video/watch-hype-motion"
+      }
+    },
+    {
+      "path": "/cases/video/website-message-animation",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/website-message-animation",
+      "title": "Tripanio — анімація повідомлень для сайту | Freelance UA",
+      "description": "Відео з анімованим діалогом у мобільному чаті Tripanio для корпоративного сайту.",
+      "h1": "Tripanio — анімація повідомлень для сайту",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/website-message-animation",
+        "en": "/en/cases/video/website-message-animation"
       }
     },
     {
@@ -2717,6 +2749,22 @@
       }
     },
     {
+      "path": "/en/cases/video/barvy-interior-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/barvy-interior-reels",
+      "inRegistry": true,
+      "title": "BARVY interior — Two Reels for a Renovation Studio | Freelance UA",
+      "description": "Two vertical Instagram Reels for BARVY interior, an interior design and turnkey renovation studio in Kyiv.",
+      "h1": "BARVY interior — Two Reels for a Renovation Studio",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/barvy-interior-reels",
+        "en": "/en/cases/video/barvy-interior-reels"
+      }
+    },
+    {
       "path": "/en/cases/video/cuprus-life",
       "kind": "page",
       "phase": "current",
@@ -2900,7 +2948,7 @@
       "canonical": "https://freelance-ua.agency/en/cases/video/maccoudi-youtube",
       "inRegistry": true,
       "title": "Maccoudi — YouTube videos about freelancing | Freelance UA",
-      "description": "Editing two YouTube videos for the popular blogger Maccoudi — dynamic freelancing content",
+      "description": "Editing three YouTube videos for blogger Maccoudi: two short videos and a long-form story about his path into freelancing.",
       "h1": "Maccoudi",
       "bilingualPair": true,
       "hreflang": {
@@ -3386,6 +3434,22 @@
       "hreflang": {
         "uk": "/cases/video/watch-hype-motion",
         "en": "/en/cases/video/watch-hype-motion"
+      }
+    },
+    {
+      "path": "/en/cases/video/website-message-animation",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/website-message-animation",
+      "inRegistry": true,
+      "title": "Tripanio — Website Message Animation | Freelance UA",
+      "description": "A video featuring an animated Tripanio mobile chat conversation for a corporate website.",
+      "h1": "Tripanio — Website Message Animation",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/website-message-animation",
+        "en": "/en/cases/video/website-message-animation"
       }
     },
     {

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { FadeIn, staggerDelay } from "@/components/ui/FadeIn";
 import { useTranslation } from "@/lib/LanguageContext";
 
 interface TechnicalComponent {
@@ -30,7 +30,7 @@ export default function CaseTechnicalComponents({ titleKey = "itCases.technicals
 
         <div className="space-y-6">
           {components.map((comp, i) => (
-            <FadeIn key={i} delay={0.1 + i * 0.08} y={30} blur={4}>
+            <FadeIn key={i} delay={staggerDelay(i)} y={30} blur={4}>
               <div className="featured-case-card p-6 md:p-8" style={{ borderRadius: "16px" }}>
                 <h3 className="text-xl font-bold text-foreground mb-3">
                   {t(comp.titleKey)}

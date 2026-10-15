@@ -1,24 +1,24 @@
 {
-  "generatedAt": "2026-10-14T09:51:26.388Z",
+  "generatedAt": "2026-10-14T22:41:01.607Z",
   "counts": {
-    "routes": 100,
+    "routes": 102,
     "byDirection": {
       "it": 21,
       "design": 24,
-      "video": 55
+      "video": 57
     },
-    "inSitemap": 100,
-    "inData": 100,
-    "withFullTranslation": 100,
+    "inSitemap": 102,
+    "inData": 102,
+    "withFullTranslation": 102,
     "withMissingMedia": 0,
     "withExternalLinks": 32,
     "withManualReview": 4,
-    "withBlocks": 100,
-    "sitemapPaths": 212,
-    "i18nUkKeys": 2574,
-    "i18nEnKeys": 2574,
+    "withBlocks": 102,
+    "sitemapPaths": 216,
+    "i18nUkKeys": 2594,
+    "i18nEnKeys": 2594,
     "i18nMissingEn": [],
-    "mediaRefsTracked": 356,
+    "mediaRefsTracked": 371,
     "reusedMediaFiles": 1
   },
   "staticRoutes": [
@@ -649,6 +649,41 @@
       "useCount": 1,
       "cases": [
         "video/barvy-interior-ai-reels"
+      ]
+    },
+    {
+      "path": "/media/cases/barvy-interior-reels/client-review-crop.webp",
+      "useCount": 1,
+      "cases": [
+        "video/barvy-interior-reels"
+      ]
+    },
+    {
+      "path": "/media/cases/barvy-interior-reels/reel-01-poster.webp",
+      "useCount": 1,
+      "cases": [
+        "video/barvy-interior-reels"
+      ]
+    },
+    {
+      "path": "/media/cases/barvy-interior-reels/reel-01.mp4",
+      "useCount": 1,
+      "cases": [
+        "video/barvy-interior-reels"
+      ]
+    },
+    {
+      "path": "/media/cases/barvy-interior-reels/reel-02-poster.webp",
+      "useCount": 1,
+      "cases": [
+        "video/barvy-interior-reels"
+      ]
+    },
+    {
+      "path": "/media/cases/barvy-interior-reels/reel-02.mp4",
+      "useCount": 1,
+      "cases": [
+        "video/barvy-interior-reels"
       ]
     },
     {
@@ -1380,14 +1415,77 @@
       ]
     },
     {
-      "path": "/media/cases/maccoudi-youtube/poster-2.jpg",
+      "path": "/media/cases/maccoudi-freelance-youtube/creator-overlay.webp",
       "useCount": 1,
       "cases": [
         "video/maccoudi-youtube"
       ]
     },
     {
-      "path": "/media/cases/maccoudi-youtube/review-chat.png",
+      "path": "/media/cases/maccoudi-freelance-youtube/earnings-graphic.webp",
+      "useCount": 1,
+      "cases": [
+        "video/maccoudi-youtube"
+      ]
+    },
+    {
+      "path": "/media/cases/maccoudi-freelance-youtube/freelance-income.webp",
+      "useCount": 1,
+      "cases": [
+        "video/maccoudi-youtube"
+      ]
+    },
+    {
+      "path": "/media/cases/maccoudi-freelance-youtube/graduation-graphic.webp",
+      "useCount": 1,
+      "cases": [
+        "video/maccoudi-youtube"
+      ]
+    },
+    {
+      "path": "/media/cases/maccoudi-freelance-youtube/mcdonalds-scene.webp",
+      "useCount": 1,
+      "cases": [
+        "video/maccoudi-youtube"
+      ]
+    },
+    {
+      "path": "/media/cases/maccoudi-freelance-youtube/money-title.webp",
+      "useCount": 1,
+      "cases": [
+        "video/maccoudi-youtube"
+      ]
+    },
+    {
+      "path": "/media/cases/maccoudi-freelance-youtube/phone-scene.webp",
+      "useCount": 1,
+      "cases": [
+        "video/maccoudi-youtube"
+      ]
+    },
+    {
+      "path": "/media/cases/maccoudi-freelance-youtube/platforms-graphic.webp",
+      "useCount": 1,
+      "cases": [
+        "video/maccoudi-youtube"
+      ]
+    },
+    {
+      "path": "/media/cases/maccoudi-freelance-youtube/trading-visual.webp",
+      "useCount": 1,
+      "cases": [
+        "video/maccoudi-youtube"
+      ]
+    },
+    {
+      "path": "/media/cases/maccoudi-freelance-youtube/wedding-scene.webp",
+      "useCount": 1,
+      "cases": [
+        "video/maccoudi-youtube"
+      ]
+    },
+    {
+      "path": "/media/cases/maccoudi-youtube/poster-2.jpg",
       "useCount": 1,
       "cases": [
         "video/maccoudi-youtube"
@@ -2497,6 +2595,13 @@
       "useCount": 1,
       "cases": [
         "video/vtikha-promo"
+      ]
+    },
+    {
+      "path": "/media/cases/website-message-animation/review.webp",
+      "useCount": 1,
+      "cases": [
+        "video/website-message-animation"
       ]
     },
     {
@@ -8317,6 +8422,103 @@
       "fromRecord": true
     },
     {
+      "id": "video/barvy-interior-reels",
+      "direction": "video",
+      "slug": "barvy-interior-reels",
+      "uaPath": "/cases/video/barvy-interior-reels",
+      "enPath": "/en/cases/video/barvy-interior-reels",
+      "inSitemap": true,
+      "inData": true,
+      "dataSlug": "barvy-interior-reels",
+      "subcategory": "reels",
+      "titleKey": "videoCases.barvyInteriorReels.title",
+      "descriptionKey": "videoCases.barvyInteriorReels.shortDesc",
+      "meta": {
+        "title": "BARVY interior — два Reels для студії ремонту | Freelance UA",
+        "description": "Два вертикальні Instagram Reels для BARVY interior — студії дизайну інтер’єру та ремонту під ключ у Києві.",
+        "canonical": "/cases/video/barvy-interior-reels",
+        "ogImage": "/media/cases/barvy-interior-reels/reel-01-poster.webp",
+        "fromRecord": true
+      },
+      "enMetaTitle": "BARVY interior — Two Reels for a Renovation Studio | Freelance UA",
+      "enMetaDescription": "Two vertical Instagram Reels for BARVY interior, an interior design and turnkey renovation studio in Kyiv.",
+      "h1Uk": "BARVY interior — два Reels для студії ремонту",
+      "h1En": "BARVY interior — Two Reels for a Renovation Studio",
+      "cardStyle": {
+        "glowColor": "rgba(52, 211, 153, 0.15)",
+        "glowColorStrong": "rgba(52, 211, 153, 0.3)",
+        "imageFit": null,
+        "objectPosition": null,
+        "hoverImage": null,
+        "badge": null,
+        "hideCta": false
+      },
+      "cardMedia": {
+        "image": null,
+        "galleryImages": [],
+        "heroVideo": "/media/cases/barvy-interior-reels/reel-01.mp4",
+        "previewVideo": null,
+        "poster": "/media/cases/barvy-interior-reels/reel-01-poster.webp",
+        "thumbnail": null,
+        "screenshot": "/media/cases/barvy-interior-reels/client-review-crop.webp",
+        "processVideos": [],
+        "duration": null,
+        "format": "9:16"
+      },
+      "mediaCount": 6,
+      "mediaByType": {
+        "mp4": 2,
+        "webp": 4
+      },
+      "videoCount": 2,
+      "mediaMissing": [],
+      "mediaPathIssues": [],
+      "unparsedMedia": [],
+      "unparsedMediaCount": 0,
+      "externalLinks": {
+        "fromPage": [],
+        "fromI18n": []
+      },
+      "blocks": [
+        {
+          "name": "brief@0",
+          "kind": "brief",
+          "line": null,
+          "itemCount": 2,
+          "fromRecord": true
+        },
+        {
+          "name": "results@1",
+          "kind": "textKeys",
+          "line": null,
+          "itemCount": 2,
+          "fromRecord": true
+        },
+        {
+          "name": "prose@2",
+          "kind": "textKeys",
+          "line": null,
+          "itemCount": 1,
+          "fromRecord": true
+        }
+      ],
+      "inlineMedia": [],
+      "i18nKeyPrefixes": [
+        "videoCases.barvyInteriorReels",
+        "videoCases.barvyInterior",
+        "videoCases.projectTeam",
+        "videoCases.backToList"
+      ],
+      "missingEn": [],
+      "unknownKeys": [],
+      "hasReview": true,
+      "hasTeam": true,
+      "needsManualReview": false,
+      "reviewFlags": [],
+      "hasBothTranslations": true,
+      "fromRecord": true
+    },
+    {
       "id": "video/cuprus-life",
       "direction": "video",
       "slug": "cuprus-life",
@@ -9403,13 +9605,13 @@
       "descriptionKey": "videoCases.maccoudiYoutube.shortDesc",
       "meta": {
         "title": "Маккоуді — YouTube про фріланс | Freelance UA",
-        "description": "Монтаж двох YouTube-відео для популярного блогера Маккоуді — динамічний контент про фріланс",
+        "description": "Монтаж трьох YouTube-відео для блогера Маккоуді: два короткі ролики та довга історія про шлях у фрилансі.",
         "canonical": "/cases/video/maccoudi-youtube",
         "ogImage": "https://freelance-ua.agency/media/cases/maccoudi-youtube/poster-1.jpg",
         "fromRecord": true
       },
       "enMetaTitle": "Maccoudi — YouTube videos about freelancing | Freelance UA",
-      "enMetaDescription": "Editing two YouTube videos for the popular blogger Maccoudi — dynamic freelancing content",
+      "enMetaDescription": "Editing three YouTube videos for blogger Maccoudi: two short videos and a long-form story about his path into freelancing.",
       "h1Uk": "Маккоуді",
       "h1En": "Maccoudi",
       "cardStyle": {
@@ -9436,10 +9638,11 @@
         "duration": "~1хв",
         "format": "16:9"
       },
-      "mediaCount": 7,
+      "mediaCount": 18,
       "mediaByType": {
         "mp4": 2,
         "jpg": 2,
+        "webp": 11,
         "png": 3
       },
       "videoCount": 2,
@@ -9450,16 +9653,23 @@
       "externalLinks": {
         "fromPage": [
           {
+            "url": "https://www.youtube.com/watch?v=Y0VL6XmQ-1M",
+            "sources": [
+              "record:links[1].items[0]"
+            ],
+            "lines": []
+          },
+          {
             "url": "https://www.youtube.com/@Maccoudii",
             "sources": [
-              "record:links[4].items[0]"
+              "record:links[6].items[0]"
             ],
             "lines": []
           },
           {
             "url": "https://www.tiktok.com/@maccoudi",
             "sources": [
-              "record:links[4].items[1]"
+              "record:links[6].items[1]"
             ],
             "lines": []
           }
@@ -9475,28 +9685,42 @@
           "fromRecord": true
         },
         {
-          "name": "brief@1",
+          "name": "links@1",
+          "kind": "links",
+          "line": null,
+          "itemCount": 1,
+          "fromRecord": true
+        },
+        {
+          "name": "gallery@2",
+          "kind": "gallery",
+          "line": null,
+          "itemCount": 10,
+          "fromRecord": true
+        },
+        {
+          "name": "brief@3",
           "kind": "brief",
           "line": null,
           "itemCount": 2,
           "fromRecord": true
         },
         {
-          "name": "results@2",
+          "name": "results@4",
           "kind": "textKeys",
           "line": null,
           "itemCount": 4,
           "fromRecord": true
         },
         {
-          "name": "prose@3",
+          "name": "prose@5",
           "kind": "textKeys",
           "line": null,
           "itemCount": 1,
           "fromRecord": true
         },
         {
-          "name": "links@4",
+          "name": "links@6",
           "kind": "links",
           "line": null,
           "itemCount": 2,
@@ -12411,6 +12635,95 @@
       "i18nKeyPrefixes": [
         "videoCases.watchHypeMotion",
         "itCases.results",
+        "videoCases.projectTeam",
+        "videoCases.backToList"
+      ],
+      "missingEn": [],
+      "unknownKeys": [],
+      "hasReview": true,
+      "hasTeam": true,
+      "needsManualReview": false,
+      "reviewFlags": [],
+      "hasBothTranslations": true,
+      "fromRecord": true
+    },
+    {
+      "id": "video/website-message-animation",
+      "direction": "video",
+      "slug": "website-message-animation",
+      "uaPath": "/cases/video/website-message-animation",
+      "enPath": "/en/cases/video/website-message-animation",
+      "inSitemap": true,
+      "inData": true,
+      "dataSlug": "website-message-animation",
+      "subcategory": "motion",
+      "titleKey": "videoCases.websiteMessageAnimation.title",
+      "descriptionKey": "videoCases.websiteMessageAnimation.shortDesc",
+      "meta": {
+        "title": "Tripanio — анімація повідомлень для сайту | Freelance UA",
+        "description": "Відео з анімованим діалогом у мобільному чаті Tripanio для корпоративного сайту.",
+        "canonical": "/cases/video/website-message-animation",
+        "ogImage": "/media/cases/website-message-animation/card-poster.webp",
+        "fromRecord": true
+      },
+      "enMetaTitle": "Tripanio — Website Message Animation | Freelance UA",
+      "enMetaDescription": "A video featuring an animated Tripanio mobile chat conversation for a corporate website.",
+      "h1Uk": "Tripanio — анімація повідомлень для сайту",
+      "h1En": "Tripanio — Website Message Animation",
+      "cardStyle": {
+        "glowColor": "rgba(99, 102, 241, 0.15)",
+        "glowColorStrong": "rgba(99, 102, 241, 0.3)",
+        "imageFit": null,
+        "objectPosition": null,
+        "hoverImage": null,
+        "badge": null,
+        "hideCta": false
+      },
+      "cardMedia": {
+        "image": null,
+        "galleryImages": [],
+        "heroVideo": "/media/cases/website-message-animation/hero.mp4",
+        "previewVideo": null,
+        "poster": "/media/cases/website-message-animation/card-poster.webp",
+        "thumbnail": null,
+        "screenshot": null,
+        "processVideos": [],
+        "duration": null,
+        "format": "9:16"
+      },
+      "mediaCount": 3,
+      "mediaByType": {
+        "mp4": 1,
+        "webp": 2
+      },
+      "videoCount": 1,
+      "mediaMissing": [],
+      "mediaPathIssues": [],
+      "unparsedMedia": [],
+      "unparsedMediaCount": 0,
+      "externalLinks": {
+        "fromPage": [],
+        "fromI18n": []
+      },
+      "blocks": [
+        {
+          "name": "brief@0",
+          "kind": "brief",
+          "line": null,
+          "itemCount": 2,
+          "fromRecord": true
+        },
+        {
+          "name": "results@1",
+          "kind": "textKeys",
+          "line": null,
+          "itemCount": 4,
+          "fromRecord": true
+        }
+      ],
+      "inlineMedia": [],
+      "i18nKeyPrefixes": [
+        "videoCases.websiteMessageAnimation",
         "videoCases.projectTeam",
         "videoCases.backToList"
       ],

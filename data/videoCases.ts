@@ -1,3 +1,5 @@
+import type { Localized } from "./case-records/types";
+
 export type VideoSubCategory = "reels" | "motion" | "youtube" | "ai";
 
 export interface VideoCaseEntry {
@@ -15,7 +17,7 @@ export interface VideoCaseEntry {
   poster?: string;
   processVideos?: string[];
   screenshot?: string;
-  duration?: string;
+  duration?: string | Localized<string>;
   format?: string;
   hideCta?: boolean;
 }
@@ -122,6 +124,21 @@ export const videoCases: VideoCaseEntry[] = [
     poster: "/media/cases/barvy-interior-ai-reels/poster.webp",
     screenshot: "/media/cases/barvy-interior-ai-reels/review.webp",
     duration: "~20с",
+    format: "9:16",
+  },
+  {
+    slug: "barvy-interior-reels",
+    subCategory: "reels",
+    categoryKey: "videoCases.barvyInteriorReels.category",
+    titleKey: "videoCases.barvyInteriorReels.title",
+    descriptionKey: "videoCases.barvyInteriorReels.shortDesc",
+    href: "/cases/video/barvy-interior-reels",
+    glowColor: "rgba(52, 211, 153, 0.15)",
+    glowColorStrong: "rgba(52, 211, 153, 0.3)",
+    heroVideo: "/media/cases/barvy-interior-reels/reel-01.mp4",
+    poster: "/media/cases/barvy-interior-reels/reel-01-poster.webp",
+    screenshot: "/media/cases/barvy-interior-reels/client-review-crop.webp",
+    duration: { uk: "~2 хв 15 с загалом", en: "~2 min 15 sec total" },
     format: "9:16",
   },
   {
@@ -577,6 +594,20 @@ export const videoCases: VideoCaseEntry[] = [
     heroVideo: "/media/cases/logo-animation/hero.mp4",
     poster: "/media/cases/logo-animation/hero-poster.jpg",
     duration: "~13с",
+    format: "9:16",
+  },
+  {
+    slug: "website-message-animation",
+    subCategory: "motion",
+    categoryKey: "videoCases.websiteMessageAnimation.category",
+    titleKey: "videoCases.websiteMessageAnimation.title",
+    descriptionKey: "videoCases.websiteMessageAnimation.shortDesc",
+    href: "/cases/video/website-message-animation",
+    glowColor: "rgba(99, 102, 241, 0.15)",
+    glowColorStrong: "rgba(99, 102, 241, 0.3)",
+    heroVideo: "/media/cases/website-message-animation/hero.mp4",
+    poster: "/media/cases/website-message-animation/card-poster.webp",
+    duration: { uk: "~13,5 с", en: "~13.5 s" },
     format: "9:16",
   },
   {

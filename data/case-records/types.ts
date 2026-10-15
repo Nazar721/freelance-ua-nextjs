@@ -352,6 +352,11 @@ export type ReviewCard =
       alt: CaseText;
       /** Localized line under the screenshot (when the page had one). */
       caption?: CaseText;
+      /**
+       * The words on the screenshot. Kept in the data and rendered as a
+       * collapsed "review transcript" under the image (closed by default) —
+       * never as a second permanent quote duplicating the picture.
+       */
       text?: CaseText;
       author?: CaseText;
       avatarName?: string;
@@ -406,6 +411,7 @@ export interface CaseRecord {
     title: CaseText;
     description: CaseText;
     ogImage: string;
+    ogImageAlt?: CaseText;
   };
 
   /** Category eyebrow above the H1. */

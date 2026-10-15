@@ -1800,6 +1800,15 @@ body {
       transition: none;
     }
   }
+  /* Horizontal strip (mobile testimonials): native scroll, no visible bar */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 } /* close @layer utilities */
 
 /* ─── Mobile performance optimizations (OUTSIDE layer to override Tailwind) ─── */

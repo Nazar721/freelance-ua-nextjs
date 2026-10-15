@@ -2,9 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ArrowRight, MoveRight, Play, X } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { FadeIn, staggerDelay } from "@/components/ui/FadeIn";
 import CurvedDashedLines from "@/components/ui/CurvedDashedLines";
 import GalleryImage from "@/components/ui/GalleryImage";
 import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
@@ -56,7 +55,7 @@ export function CaseFeatureList({
             const images = item.images ?? [];
             const alt = L(item.title);
             return (
-              <FadeIn key={index} delay={0.1 + index * 0.08} y={30} blur={4}>
+              <FadeIn key={index} delay={staggerDelay(index)} y={30} blur={4}>
                 <div
                   data-case-block="feature"
                   className={`featured-case-card p-6 md:p-8 ${item.link ? "pb-10 md:pb-12" : ""}`}
@@ -69,42 +68,26 @@ export function CaseFeatureList({
                     <div className="mt-6 grid grid-cols-1 gap-4">
                       {images.map((img, imageIndex) => {
                         const open = () => onOpenImages(images.map((i) => i.src), imageIndex, alt);
-                        const className =
-                          "relative cursor-pointer overflow-hidden rounded-xl border border-border bg-background";
-                        const content = (
-                          <GalleryImage
-                            src={img.src}
-                            alt={img.alt ? L(img.alt) : alt}
-                            width={img.w ?? 1200}
-                            height={img.h ?? 800}
-                            className="w-full object-cover"
-                            openLabel={t("cases.ui.openImage")}
-                            onOpen={open}
-                          />
-                        );
-                        // Reduced motion: the screenshot shows immediately, with no
-                        // reveal, no hover zoom and no motion to fail.
-                        if (reduceMotion) {
-                          return (
-                            <div key={imageIndex} data-case-block="feature-image" className={className} onClick={open}>
-                              {content}
-                            </div>
-                          );
-                        }
+                        // The enclosing FadeIn card already owns the reveal;
+                        // a nested whileInView here would animate the same
+                        // properties a second time and lag low-end devices.
                         return (
-                          <motion.div
+                          <div
                             key={imageIndex}
                             data-case-block="feature-image"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.2 + imageIndex * 0.1 }}
-                            whileHover={{ scale: 1.02 }}
-                            className={className}
+                            className={`relative cursor-pointer overflow-hidden rounded-xl border border-border bg-background transition-transform duration-300 ${reduceMotion ? "" : "hover:scale-[1.02]"}`}
                             onClick={open}
                           >
-                            {content}
-                          </motion.div>
+                            <GalleryImage
+                              src={img.src}
+                              alt={img.alt ? L(img.alt) : alt}
+                              width={img.w ?? 1200}
+                              height={img.h ?? 800}
+                              className="w-full object-cover"
+                              openLabel={t("cases.ui.openImage")}
+                              onOpen={open}
+                            />
+                          </div>
                         );
                       })}
                     </div>
@@ -175,7 +158,7 @@ export function CaseCompare({ section, L }: { section: CompareSection; L: Resolv
               return (
                 <div key={runIndex} className="grid grid-cols-1 gap-8 md:grid-cols-2">
                   {items.map(({ item, position }) => (
-                    <FadeIn key={position} delay={0.1 + position * 0.1} y={30} blur={4}>
+                    <FadeIn key={position} delay={staggerDelay(position)} y={30} blur={4}>
                       <div data-case-block="compare-item">
                         {item.title && (
                           <p className="mb-3 text-center text-sm font-semibold text-foreground">{L(item.title)}</p>
@@ -201,7 +184,7 @@ export function CaseCompare({ section, L }: { section: CompareSection; L: Resolv
                 {items.map(({ item, position }) => {
                   const alt = item.title ? L(item.title) : "";
                   return (
-                    <FadeIn key={position} delay={0.1 + position * 0.1} y={30} blur={4}>
+                    <FadeIn key={position} delay={staggerDelay(position)} y={30} blur={4}>
                       <div data-case-block="compare-item">
                         {item.title && (
                           <p className="mb-3 text-center text-sm font-semibold text-foreground">{L(item.title)}</p>
@@ -374,7 +357,7 @@ export function CaseGallery({
           {section.items.map((item, index) => (
             <FadeIn
               key={index}
-              delay={0.05 + index * 0.06}
+              delay={staggerDelay(index)}
               y={30}
               blur={4}
               // Original pages: `md:col-span-2` in two-column grids,
@@ -439,7 +422,7 @@ export function CaseGalleryGroups({
               {group.items.map((item) => {
                 const index = cursor++;
                 return (
-                  <FadeIn key={index} delay={0.05 + (index % 3) * 0.08} y={30} blur={4}>
+                  <FadeIn key={index} delay={staggerDelay(index, 0.05, 3)} y={30} blur={4}>
                     <GalleryCard
                       item={item}
                       L={L}
@@ -530,7 +513,7 @@ export function CaseScenes({
             const accent = SCENE_ACCENTS[item.accent ?? ""] ?? SCENE_DEFAULT_ACCENT;
             const alt = item.image.alt ? L(item.image.alt) : item.image.title ? L(item.image.title) : fallbackAlt;
             return (
-              <FadeIn key={index} delay={0.1 + index * 0.1} y={30} blur={4}>
+              <FadeIn key={index} delay={staggerDelay(index)} y={30} blur={4}>
                 <div
                   data-case-block="scene"
                   className={`featured-case-card rounded-2xl border p-4 shadow-[0_0_60px_rgba(132,204,22,0.07)] transition-all duration-300 md:p-6 ${accent.card}`}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Percent } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { FadeIn, staggerDelay } from "@/components/ui/FadeIn";
 import { useTranslation } from "@/lib/LanguageContext";
 
 const steps = [
@@ -101,7 +101,7 @@ export default function PartnershipSection() {
 
             <div className="relative w-full max-w-[340px]">
               {steps.map((step, i) => (
-                <FadeIn key={i} y={30} blur={5} delay={0.15 + i * 0.15}>
+                <FadeIn key={i} y={30} blur={5} delay={0.15 + staggerDelay(i, 0.02)}>
                   <motion.div
                     whileHover={{ y: -4, scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}

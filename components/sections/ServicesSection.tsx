@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Code2, Palette, Video } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { FadeIn, staggerDelay } from "@/components/ui/FadeIn";
 import { useTranslation } from "@/lib/LanguageContext";
 import { pathPrefix, type Direction } from "@/lib/i18n-routes";
 
@@ -58,7 +58,7 @@ export default function ServicesSection() {
         {/* Service cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
           {serviceCategories.map((cat, i) => (
-            <FadeIn key={cat.key} delay={0.1 + i * 0.08} y={24} blur={2}>
+            <FadeIn key={cat.key} delay={staggerDelay(i)} y={24} blur={2}>
               <Link
                 href={`${lp}/services/${cat.key}`}
                 className="service-card group relative block text-left w-full p-5 sm:p-7 rounded-2xl border border-border/60 bg-surface-elevated/50 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"

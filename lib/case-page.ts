@@ -28,5 +28,8 @@ export function caseMetadata(id: string, locale: Locale): Metadata {
     title: resolveText(record.seo.title, locale, dict),
     description: resolveText(record.seo.description, locale, dict),
     ogImage: record.seo.ogImage,
+    ogImageAlt: record.seo.ogImageAlt
+      ? resolveText(record.seo.ogImageAlt, locale, dict)
+      : undefined,
   });
 }

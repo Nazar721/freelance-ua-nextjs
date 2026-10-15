@@ -1,14 +1,17 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useRef, useState, useEffect, useLayoutEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import {
-  ArrowRight, Bot, Check, Clapperboard, Code2, Film, Image, LayoutDashboard,
+  ArrowRight, Bot, Check, ChevronRight, Clapperboard, Code2, Film, Image, LayoutDashboard,
   Megaphone, MessageCircle, Monitor, Palette, PenTool,
   Presentation, Rocket, ScanFace, ShoppingBag, Smartphone, Sparkles,
   Users, WandSparkles, Workflow, ClipboardList, type LucideIcon,
 } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { motion, useInView } from "framer-motion";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
+import { useIsMobile } from "@/lib/useIsMobile";
+import { FadeIn, staggerDelay } from "@/components/ui/FadeIn";
 import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
 import FeaturedCaseCard from "@/components/ui/FeaturedCaseCard";
 import VideoCaseCard from "@/components/ui/VideoCaseCard";
@@ -121,7 +124,9 @@ function DirectionHero({ direction }: { direction: Direction }) {
 
 function DirectionTasks({ direction }: { direction: Direction }) {
   const { t } = useTranslation();
+  const shouldReduceMotion = usePrefersReducedMotion();
   const items = [1, 2, 3] as const;
+  const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
   return (
     <section data-direction-section="tasks" className="relative py-10 sm:py-14 px-4 overflow-hidden">
@@ -134,19 +139,34 @@ function DirectionTasks({ direction }: { direction: Direction }) {
           <p className="text-muted-foreground text-sm text-center mb-6">Оберіть свій кейс — ми закриємо задачу під ключ</p>
         </FadeIn>
         <ul className="space-y-3">
-          {items.map((n, i) => (
-            <FadeIn
-              as="li"
-              key={n}
-              delay={0.05 * i}
-              y={16}
-              blur={2}
-              className="group flex items-center gap-4 p-4 sm:p-5 rounded-[16px] bg-surface-elevated/60 backdrop-blur-sm border border-border/70 shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:-translate-y-[1px] transition-all duration-300"
-            >
-              <DirectionSticker icon={TASK_ICONS[direction][i]} direction={direction} index={i} />
-              <span className="text-foreground text-sm sm:text-[15px] leading-snug font-medium">{t(`direction.tasks.${direction}.${n}`)}</span>
-            </FadeIn>
-          ))}
+          {items.map((n, i) => {
+            const delay = i * 0.12;
+            if (shouldReduceMotion) {
+              return (
+                <li key={n} className="list-none">
+                  <div className="group flex items-center gap-4 p-4 sm:p-5 rounded-[16px] bg-surface-elevated/60 backdrop-blur-sm border border-border/70 shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-[box-shadow,transform] duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:-translate-y-[1px]">
+                    <DirectionSticker icon={TASK_ICONS[direction][i]} direction={direction} index={i} />
+                    <span className="text-foreground text-sm sm:text-[15px] leading-snug font-medium">{t(`direction.tasks.${direction}.${n}`)}</span>
+                  </div>
+                </li>
+              );
+            }
+            return (
+              <motion.li
+                key={n}
+                className="list-none"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay, ease: EASE }}
+              >
+                <div className="group flex items-center gap-4 p-4 sm:p-5 rounded-[16px] bg-surface-elevated/60 backdrop-blur-sm border border-border/70 shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-[box-shadow,transform] duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:-translate-y-[1px]">
+                  <DirectionSticker icon={TASK_ICONS[direction][i]} direction={direction} index={i} />
+                  <span className="text-foreground text-sm sm:text-[15px] leading-snug font-medium">{t(`direction.tasks.${direction}.${n}`)}</span>
+                </div>
+              </motion.li>
+            );
+          })}
         </ul>
       </div>
     </section>
@@ -155,8 +175,10 @@ function DirectionTasks({ direction }: { direction: Direction }) {
 
 function DirectionServices({ direction }: { direction: Direction }) {
   const { t } = useTranslation();
+  const shouldReduceMotion = usePrefersReducedMotion();
   const cfg = DIRECTIONS[direction];
   const items = Array.from({ length: cfg.serviceCount }, (_, i) => i + 1);
+  const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
   return (
     <section data-direction-section="services" className="relative py-10 sm:py-14 px-4 bg-surface overflow-hidden">
@@ -170,18 +192,36 @@ function DirectionServices({ direction }: { direction: Direction }) {
         </FadeIn>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-          {items.map((n, i) => (
-            <FadeIn
-              as="li"
-              key={n}
-              delay={0.04 * i}
-              y={14}
-              className="group relative flex items-center gap-4 p-4 sm:p-5 rounded-[16px] border border-border/60 bg-surface-elevated/70 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_32px_rgba(0,0,0,0.12)] hover:-translate-y-[2px] hover:rotate-[0.3deg] transition-all duration-300 h-full"
-            >
-              <DirectionSticker icon={SERVICE_ICONS[direction][i % SERVICE_ICONS[direction].length]} direction={direction} index={i} />
-              <span className="text-foreground text-sm sm:text-[15px] font-medium leading-snug">{t(`services.${direction}.${n}`)}</span>
-            </FadeIn>
-          ))}
+          {items.map((n, i) => {
+            const col = i % 2;
+            const row = Math.floor(i / 2);
+            const orderDelay = row * 2 * 0.12 + col * 0.12;
+            if (shouldReduceMotion) {
+              return (
+                <li key={n} className="list-none h-full">
+                  <div className="group relative flex items-center gap-4 p-4 sm:p-5 rounded-[16px] border border-border/60 bg-surface-elevated/70 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-[box-shadow,transform] duration-300 hover:shadow-[0_10px_32px_rgba(0,0,0,0.12)] hover:-translate-y-[2px] hover:rotate-[0.3deg] h-full">
+                    <DirectionSticker icon={SERVICE_ICONS[direction][i % SERVICE_ICONS[direction].length]} direction={direction} index={i} />
+                    <span className="text-foreground text-sm sm:text-[15px] font-medium leading-snug">{t(`services.${direction}.${n}`)}</span>
+                  </div>
+                </li>
+              );
+            }
+            return (
+              <motion.li
+                key={n}
+                className="list-none h-full"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: orderDelay, ease: EASE }}
+              >
+                <div className="group relative flex items-center gap-4 p-4 sm:p-5 rounded-[16px] border border-border/60 bg-surface-elevated/70 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-[box-shadow,transform] duration-300 hover:shadow-[0_10px_32px_rgba(0,0,0,0.12)] hover:-translate-y-[2px] hover:rotate-[0.3deg] h-full">
+                  <DirectionSticker icon={SERVICE_ICONS[direction][i % SERVICE_ICONS[direction].length]} direction={direction} index={i} />
+                  <span className="text-foreground text-sm sm:text-[15px] font-medium leading-snug">{t(`services.${direction}.${n}`)}</span>
+                </div>
+              </motion.li>
+            );
+          })}
         </ul>
       </div>
     </section>
@@ -229,7 +269,9 @@ function DirectionShowcase({ direction }: { direction: Direction }) {
 
 function DirectionIncludes({ direction }: { direction: Direction }) {
   const { t } = useTranslation();
+  const shouldReduceMotion = usePrefersReducedMotion();
   const items = [1, 2, 3] as const;
+  const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
   return (
     <section data-direction-section="includes" className="relative py-10 sm:py-14 px-4 overflow-hidden">
@@ -242,22 +284,40 @@ function DirectionIncludes({ direction }: { direction: Direction }) {
           <p className="text-muted-foreground text-sm text-center mb-6">Все включено — від ідеї до готового результату</p>
         </FadeIn>
         <ul className="space-y-3">
-          {items.map((n, i) => (
-            <FadeIn
-              as="li"
-              key={n}
-              delay={0.05 * i}
-              y={16}
-              blur={2}
-              className="group flex items-start gap-4 p-4 sm:p-5 rounded-[16px] bg-surface-elevated/60 backdrop-blur-sm border border-border/70 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.1)] hover:-translate-y-[1px] transition-all duration-300"
-            >
-              <span className="relative inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center mt-0.5">
-                <span className={`absolute inset-0 rounded-[12px] bg-green-500/12 border border-green-500/25 ${STICKER_ROTATIONS[i % STICKER_ROTATIONS.length]}`} />
-                <Check size={18} className="relative text-green-600 dark:text-green-400" strokeWidth={2.2} />
-              </span>
-              <span className="text-foreground text-sm sm:text-[15px] leading-snug font-medium pt-1.5">{t(`direction.includes.${direction}.${n}`)}</span>
-            </FadeIn>
-          ))}
+          {items.map((n, i) => {
+            const delay = i * 0.12;
+            if (shouldReduceMotion) {
+              return (
+                <li key={n} className="list-none">
+                  <div className="group flex items-start gap-4 p-4 sm:p-5 rounded-[16px] bg-surface-elevated/60 backdrop-blur-sm border border-border/70 shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-[box-shadow,transform] duration-300 hover:shadow-[0_8px_28px_rgba(0,0,0,0.1)] hover:-translate-y-[1px]">
+                    <span className="relative inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center mt-0.5">
+                      <span className={`absolute inset-0 rounded-[12px] bg-green-500/12 border border-green-500/25 ${STICKER_ROTATIONS[i % STICKER_ROTATIONS.length]}`} />
+                      <Check size={18} className="relative text-green-600 dark:text-green-400" strokeWidth={2.2} />
+                    </span>
+                    <span className="text-foreground text-sm sm:text-[15px] leading-snug font-medium pt-1.5">{t(`direction.includes.${direction}.${n}`)}</span>
+                  </div>
+                </li>
+              );
+            }
+            return (
+              <motion.li
+                key={n}
+                className="list-none"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay, ease: EASE }}
+              >
+                <div className="group flex items-start gap-4 p-4 sm:p-5 rounded-[16px] bg-surface-elevated/60 backdrop-blur-sm border border-border/70 shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-[box-shadow,transform] duration-300 hover:shadow-[0_8px_28px_rgba(0,0,0,0.1)] hover:-translate-y-[1px]">
+                  <span className="relative inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center mt-0.5">
+                    <span className={`absolute inset-0 rounded-[12px] bg-green-500/12 border border-green-500/25 ${STICKER_ROTATIONS[i % STICKER_ROTATIONS.length]}`} />
+                    <Check size={18} className="relative text-green-600 dark:text-green-400" strokeWidth={2.2} />
+                  </span>
+                  <span className="text-foreground text-sm sm:text-[15px] leading-snug font-medium pt-1.5">{t(`direction.includes.${direction}.${n}`)}</span>
+                </div>
+              </motion.li>
+            );
+          })}
         </ul>
       </div>
     </section>
@@ -266,47 +326,445 @@ function DirectionIncludes({ direction }: { direction: Direction }) {
 
 function DirectionProcess({ direction }: { direction: Direction }) {
   const { t } = useTranslation();
+  const shouldReduceMotion = usePrefersReducedMotion();
+  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">("desktop");
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      if (w < 640) setBreakpoint("mobile");
+      else if (w < 1024) setBreakpoint("tablet");
+      else setBreakpoint("desktop");
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  const isMobile = breakpoint === "mobile";
+  const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLOListElement>(null);
+  const cardRefs = useRef<Array<HTMLLIElement | null>>([]);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
+  const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [paths, setPaths] = useState<string[]>(["", "", ""]);
+
+  const showAll = shouldReduceMotion;
+  const isCardVisibleDesktop = (index: number) => {
+    if (showAll) return true;
+    if (focusedIndex === index) return true;
+    return isInView;
+  };
+  const isLineVisibleDesktop = (lineIndex: number) => {
+    if (showAll) return true;
+    if (!isInView) return false;
+    if (focusedIndex !== null && focusedIndex > lineIndex) return true;
+    return isInView;
+  };
+
+  useLayoutEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const updatePaths = () => {
+      const cards = cardRefs.current.filter(Boolean) as HTMLLIElement[];
+      if (cards.length !== 4) return;
+      const gridLeft = 0;
+      const gridTop = 0;
+      const newPaths: string[] = [];
+      for (let i = 0; i < 3; i++) {
+        const a = cards[i];
+        const b = cards[i + 1];
+        const aLeft = a.offsetLeft;
+        const aTop = a.offsetTop;
+        const aW = a.offsetWidth;
+        const aH = a.offsetHeight;
+        const bLeft = b.offsetLeft;
+        const bTop = b.offsetTop;
+        const bW = b.offsetWidth;
+        const bH = b.offsetHeight;
+        const ax = aLeft + aW / 2 - gridLeft;
+        const ay = aTop + aH / 2 - gridTop;
+        const bx = bLeft + bW / 2 - gridLeft;
+        const by = bTop + bH / 2 - gridTop;
+        const sameRow = Math.abs(ay - by) < 24;
+        const sameCol = Math.abs(ax - bx) < 24;
+        let d = "";
+        if (sameRow) {
+          const y = (ay + by) / 2;
+          const x1 = aLeft + aW - gridLeft + 4;
+          const x2 = bLeft - gridLeft - 4;
+          if (x2 > x1 + 2) d = `M ${x1} ${y} L ${x2} ${y}`;
+          else d = `M ${x1} ${y} L ${x1 + 12} ${y}`;
+        } else if (sameCol) {
+          const x = (ax + bx) / 2;
+          const y1 = aTop + aH - gridTop + 4;
+          const y2 = bTop - gridTop - 4;
+          if (y2 > y1 + 2) d = `M ${x} ${y1} L ${x} ${y2}`;
+          else d = `M ${x} ${y1} L ${x} ${y1 + 12}`;
+        } else {
+          const x1 = aLeft + aW / 2 - gridLeft;
+          const y1 = aTop + aH - gridTop + 4;
+          const x2 = bLeft + bW / 2 - gridLeft;
+          const y2 = bTop - gridTop - 4;
+          const midY = (y1 + y2) / 2;
+          if (y2 > y1 + 8 && Math.abs(x1 - x2) > 8) {
+            d = `M ${x1} ${y1} L ${x1} ${midY} L ${x2} ${midY} L ${x2} ${y2}`;
+          } else if (y2 > y1) {
+            d = `M ${x1} ${y1} L ${x2} ${y2}`;
+          } else {
+            d = `M ${x1} ${y1} L ${x1 + 12} ${y1}`;
+          }
+        }
+        newPaths.push(d);
+      }
+      setPaths(newPaths);
+    };
+
+    updatePaths();
+    const ro = new ResizeObserver(updatePaths);
+    ro.observe(grid);
+    cardRefs.current.forEach((el) => el && ro.observe(el));
+    window.addEventListener("resize", updatePaths);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", updatePaths);
+    };
+  }, [showAll, isInView, isMobile]);
+
+  const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+  const cardDelays = [0, 0.55, 1.1, 1.65];
+  const lineDelays = [0.3, 0.85, 1.4];
 
   return (
-    <section data-direction-section="process" className="relative py-10 sm:py-14 px-4 bg-surface overflow-hidden">
+    <section
+      ref={sectionRef as unknown as React.RefObject<HTMLDivElement>}
+      data-direction-section="process"
+      className="relative py-10 sm:py-14 px-4 bg-surface overflow-hidden"
+    >
       <StickerBackdrop direction={direction} />
       <div className="relative max-w-5xl mx-auto">
-        <FadeIn y={20}>
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2 text-center font-[family-name:var(--font-syne)]">
+        <motion.div
+          initial={showAll ? false : { opacity: 0, y: 16 }}
+          animate={showAll || isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          transition={{ duration: showAll ? 0 : 0.5, ease: EASE }}
+          className="text-center mb-8"
+        >
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2 font-[family-name:var(--font-syne)]">
             {t("process.title")}
           </h2>
-          <p className="text-muted-foreground text-sm text-center mb-8">Прозорий процес — 4 кроки від ідеї до релізу</p>
-        </FadeIn>
-        <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
-          {PROCESS_STEPS.map((n, i) => (
-            <FadeIn as="li" key={n} delay={0.05 * i} y={16} className="relative h-full">
-              <div className="group relative flex gap-4 sm:block p-5 sm:p-6 rounded-[16px] border border-border/60 bg-background/80 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:rotate-[0.4deg] transition-all duration-300 h-full">
-                {/* peel corner */}
-                <span aria-hidden="true" className="absolute -right-1 -top-1 h-5 w-5 rounded-bl-[8px] bg-background border-l border-b border-border/60 shadow-sm hidden sm:block" />
-                <div className="relative h-[56px] w-[56px] shrink-0 sm:mb-5">
-                  <DirectionSticker icon={PROCESS_ICONS[i]} direction={direction} index={i} />
-                  <span aria-hidden="true" className="absolute -right-2 -top-1 rounded-full border border-border bg-background px-1.5 py-0.5 text-[10px] leading-none font-black tabular-nums text-foreground shadow-sm">
-                    {String(n).padStart(2, "0")}
-                  </span>
+          <p className="text-muted-foreground text-sm text-center">Прозорий процес — 4 кроки від ідеї до релізу</p>
+        </motion.div>
+
+        <div className="relative">
+          <svg
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 w-full h-full"
+            style={{ zIndex: 1 }}
+          >
+            {/* faint guides */}
+            {paths.map((d, i) => (
+              <path
+                key={`guide-${i}`}
+                d={d}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1}
+                className="text-border/30"
+                strokeDasharray="4 6"
+                opacity={showAll ? 0.5 : 0.35}
+              />
+            ))}
+            {/* active segments — prominent line */}
+            {paths.map((d, i) => {
+              const isHovered = hoveredIndex === i;
+              if (showAll) {
+                return (
+                  <path
+                    key={`active-${i}`}
+                    d={d}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.6}
+                    className="text-accent"
+                    strokeLinecap="round"
+                  />
+                );
+              }
+              if (isMobile) {
+                return (
+                  <motion.path
+                    key={`active-${i}`}
+                    d={d}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.6}
+                    className="text-accent"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 1 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{ duration: 0.45, delay: lineDelays[i], ease: EASE }}
+                  />
+                );
+              }
+              return (
+                <motion.path
+                  key={`active-${i}`}
+                  d={d}
+                  fill="none"
+                  stroke={isHovered ? "white" : "currentColor"}
+                  strokeWidth={isHovered ? 3 : 2.6}
+                  className={isHovered ? "text-white" : "text-accent"}
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={
+                    isLineVisibleDesktop(i)
+                      ? { pathLength: 1, opacity: 1 }
+                      : { pathLength: 0, opacity: 0 }
+                  }
+                  transition={{
+                    duration: 0.45,
+                    delay: lineDelays[i],
+                    ease: EASE,
+                  }}
+                  style={{ filter: isHovered ? "drop-shadow(0 0 8px rgba(255,255,255,0.8))" : "none" }}
+                />
+              );
+            })}
+            {/* light accent running on hover */}
+            {paths.map((d, i) => {
+              const isHovered = hoveredIndex === i;
+              if (!isHovered || showAll || isMobile) return null;
+              return (
+                <motion.path
+                  key={`accent-${i}`}
+                  d={d}
+                  fill="none"
+                  stroke="white"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeOpacity={0.9}
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: [0, 1], opacity: [0, 0.9, 0] }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                />
+              );
+            })}
+
+          </svg>
+
+          {/* Interactive arrows centered in gaps — bold chevron like reference */}
+          {paths.map((d, i) => {
+            if (!d) return null;
+            const tokens = d.trim().split(/[ML ]+/).filter(Boolean);
+            const x1 = parseFloat(tokens[0]);
+            const y1 = parseFloat(tokens[1]);
+            const x2 = parseFloat(tokens[tokens.length - 2]);
+            const y2 = parseFloat(tokens[tokens.length - 1]);
+            const midX = (x1 + x2) / 2;
+            const midY = (y1 + y2) / 2;
+            const isVertical = Math.abs(x1 - x2) < 1;
+            const isHovered = hoveredIndex === i;
+            if (showAll) {
+              return (
+                <div
+                  key={`arrow-box-${i}`}
+                  aria-hidden="true"
+                  className="absolute w-8 h-8 -ml-4 -mt-4 flex items-center justify-center pointer-events-none"
+                  style={{ left: midX, top: midY, zIndex: 3 }}
+                >
+                  <div className="w-8 h-8 rounded-full bg-accent/15 border border-accent/40 flex items-center justify-center">
+                    <ChevronRight size={16} strokeWidth={3} className="text-accent" style={{ transform: `rotate(${isVertical ? 90 : 0}deg)` }} />
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-foreground font-bold text-[15px] mb-1.5">{t(`process.${n}.title`)}</h3>
-                  <p className="text-muted-foreground text-[13px] leading-relaxed">{t(`process.${n}.desc`)}</p>
+              );
+            }
+            if (isMobile) {
+              return (
+                <motion.div
+                  key={`arrow-box-${i}`}
+                  aria-hidden="true"
+                  className="pointer-events-none absolute w-8 h-8 -ml-4 -mt-4 flex items-center justify-center"
+                  style={{ left: midX, top: midY, zIndex: 3 }}
+                  initial={{ opacity: 0, scale: 0.7 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.35, delay: lineDelays[i] + 0.25, ease: EASE }}
+                >
+                  <div className="w-8 h-8 rounded-full bg-accent/15 border border-accent/40 flex items-center justify-center">
+                    <motion.div
+                      animate={isVertical ? { y: [-1, 1, -1] } : { x: [-1, 1, -1] }}
+                      transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut", delay: i * 0.15 }}
+                    >
+                      <ChevronRight size={16} strokeWidth={3} className="text-accent" style={{ transform: `rotate(${isVertical ? 90 : 0}deg)` }} />
+                    </motion.div>
+                  </div>
+                </motion.div>
+              );
+            }
+            return (
+              <motion.div
+                key={`arrow-box-${i}`}
+                aria-hidden="true"
+                className="pointer-events-none absolute w-8 h-8 -ml-4 -mt-4 flex items-center justify-center"
+                style={{ left: midX, top: midY, zIndex: 3 }}
+                initial={{ opacity: 0, scale: 0.7 }}
+                animate={isLineVisibleDesktop(i) ? { opacity: 1, scale: isHovered ? 1.2 : 1 } : { opacity: 0, scale: 0.7 }}
+                transition={{ duration: 0.35, delay: lineDelays[i] + 0.25, ease: EASE }}
+              >
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm border shadow-[0_2px_10px_rgba(99,102,241,0.3)] transition-all duration-300 ${
+                    isHovered
+                      ? "bg-accent border-accent shadow-[0_4px_16px_rgba(99,102,241,0.5)]"
+                      : "bg-accent/15 border-accent/40"
+                  }`}
+                >
+                  <motion.div
+                    animate={
+                      isVertical
+                        ? { y: isHovered ? [0, 2, 0] : [-1, 1, -1] }
+                        : { x: isHovered ? [0, 3, 0] : [-1, 1, -1] }
+                    }
+                    transition={{
+                      duration: isHovered ? 0.6 : 1.8,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: i * 0.15,
+                    }}
+                  >
+                    <ChevronRight
+                      size={16}
+                      strokeWidth={3}
+                      className={isHovered ? "text-white" : "text-accent"}
+                      style={{ transform: `rotate(${isVertical ? 90 : 0}deg)` }}
+                    />
+                  </motion.div>
                 </div>
-              </div>
-              {i < PROCESS_STEPS.length - 1 && (
-                <span aria-hidden="true" className="pointer-events-none absolute -right-3 top-10 z-10 hidden h-6 w-6 items-center justify-center rounded-full bg-accent/10 border border-accent/20 text-accent lg:flex">
-                  <ArrowRight size={14} strokeWidth={2} />
-                </span>
-              )}
-            </FadeIn>
-          ))}
-        </ol>
-        <FadeIn y={16} delay={0.2}>
-          <p className="text-center text-muted-foreground text-sm mt-8 max-w-xl mx-auto">
-            {t("pricing.desc")}
-          </p>
-        </FadeIn>
+                <motion.div
+                  className="absolute inset-0 rounded-full border border-accent/20 pointer-events-none"
+                  animate={{ scale: isHovered ? [1, 1.4, 1] : [1, 1.2, 1], opacity: isHovered ? [0.6, 0, 0.6] : [0.3, 0, 0.3] }}
+                  transition={{ duration: isHovered ? 0.8 : 1.8, repeat: Infinity, ease: "easeOut", delay: i * 0.2 }}
+                />
+              </motion.div>
+            );
+          })}
+
+          <ol
+            ref={gridRef}
+            data-mobile={isMobile ? "true" : "false"}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 relative"
+            style={{ zIndex: 2 }}
+          >
+            {PROCESS_STEPS.map((n, i) => {
+              if (showAll) {
+                return (
+                  <li
+                    key={n}
+                    ref={(el) => {
+                      cardRefs.current[i] = el;
+                    }}
+                    className="relative h-full list-none"
+                  >
+                    <div className="group relative flex gap-4 sm:block p-5 sm:p-6 rounded-[16px] border border-border/60 bg-background/80 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-[box-shadow,transform] duration-300 hover:shadow-[0_12px_36px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:rotate-[0.4deg] h-full">
+                      <span aria-hidden="true" className="absolute -right-1 -top-1 h-5 w-5 rounded-bl-[8px] bg-background border-l border-b border-border/60 shadow-sm hidden sm:block" />
+                      <div className="relative h-[56px] w-[56px] shrink-0 sm:mb-5">
+                        <DirectionSticker icon={PROCESS_ICONS[i]} direction={direction} index={i} />
+                        <span aria-hidden="true" className="absolute -right-2 -top-1 rounded-full border border-border bg-background px-1.5 py-0.5 text-[10px] leading-none font-black tabular-nums text-foreground shadow-sm">
+                          {String(n).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="text-foreground font-bold text-[15px] mb-1.5">{t(`process.${n}.title`)}</h3>
+                        <p className="text-muted-foreground text-[13px] leading-relaxed">{t(`process.${n}.desc`)}</p>
+                      </div>
+                    </div>
+                  </li>
+                );
+              }
+              if (isMobile) {
+                return (
+                  <motion.li
+                    key={n}
+                    ref={(el) => {
+                      cardRefs.current[i] = el;
+                    }}
+                    className="relative h-full list-none"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5, delay: cardDelays[i], ease: EASE }}
+                    onFocus={() => setFocusedIndex(i)}
+                    onBlur={() => setFocusedIndex((prev) => (prev === i ? null : prev))}
+                  >
+                    <div className="group relative flex gap-4 sm:block p-5 sm:p-6 rounded-[16px] border border-border/60 bg-background/80 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.06)] h-full">
+                      <span aria-hidden="true" className="absolute -right-1 -top-1 h-5 w-5 rounded-bl-[8px] bg-background border-l border-b border-border/60 shadow-sm hidden sm:block" />
+                      <div className="relative h-[56px] w-[56px] shrink-0 sm:mb-5">
+                        <DirectionSticker icon={PROCESS_ICONS[i]} direction={direction} index={i} />
+                        <span aria-hidden="true" className="absolute -right-2 -top-1 rounded-full border border-border bg-background px-1.5 py-0.5 text-[10px] leading-none font-black tabular-nums text-foreground shadow-sm">
+                          {String(n).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="text-foreground font-bold text-[15px] mb-1.5">{t(`process.${n}.title`)}</h3>
+                        <p className="text-muted-foreground text-[13px] leading-relaxed">{t(`process.${n}.desc`)}</p>
+                      </div>
+                    </div>
+                  </motion.li>
+                );
+              }
+              const visible = isCardVisibleDesktop(i);
+              const isNextHighlighted = hoveredIndex === i - 1;
+              return (
+                <motion.li
+                  key={n}
+                  ref={(el) => {
+                    cardRefs.current[i] = el;
+                  }}
+                  className="relative h-full list-none"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: cardDelays[i], ease: EASE }}
+                  onFocus={() => setFocusedIndex(i)}
+                  onBlur={() => setFocusedIndex((prev) => (prev === i ? null : prev))}
+                  onHoverStart={() => setHoveredIndex(i)}
+                  onHoverEnd={() => setHoveredIndex(null)}
+                >
+                  <div
+                    className={`group relative flex gap-4 sm:block p-5 sm:p-6 rounded-[16px] border bg-background/80 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.06)] h-full transition-[box-shadow,transform,border-color] duration-300 hover:shadow-[0_12px_36px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:rotate-[0.4deg] ${
+                      isNextHighlighted
+                        ? "border-accent/50 shadow-[0_8px_24px_rgba(99,102,241,0.15)]"
+                        : "border-border/60"
+                    }`}
+                  >
+                    <span aria-hidden="true" className="absolute -right-1 -top-1 h-5 w-5 rounded-bl-[8px] bg-background border-l border-b border-border/60 shadow-sm hidden sm:block" />
+                    <div className="relative h-[56px] w-[56px] shrink-0 sm:mb-5">
+                      <DirectionSticker icon={PROCESS_ICONS[i]} direction={direction} index={i} />
+                      <span
+                        aria-hidden="true"
+                        className="absolute -right-2 -top-1 rounded-full border border-border bg-background px-1.5 py-0.5 text-[10px] leading-none font-black tabular-nums text-foreground shadow-sm"
+                      >
+                        {String(n).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <div>
+                      <h3 className="text-foreground font-bold text-[15px] mb-1.5">{t(`process.${n}.title`)}</h3>
+                      <p className="text-muted-foreground text-[13px] leading-relaxed">{t(`process.${n}.desc`)}</p>
+                    </div>
+                  </div>
+                </motion.li>
+              );
+            })}
+          </ol>
+        </div>
+
+        <motion.p
+          className="text-center text-muted-foreground text-sm mt-8 max-w-xl mx-auto"
+          initial={showAll ? false : { opacity: 0, y: 12 }}
+          animate={showAll || isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+          transition={{ duration: showAll ? 0 : 0.45, delay: showAll ? 0 : 1.95, ease: EASE }}
+        >
+          {t("pricing.desc")}
+        </motion.p>
       </div>
     </section>
   );
@@ -369,7 +827,7 @@ function DirectionCasesInner({ direction }: { direction: Direction }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           {filtered.map((c, i) => (
-            <FadeIn key={c.slug} delay={0.04 + i * 0.05} y={32} blur={4}>
+            <FadeIn key={c.slug} delay={staggerDelay(i)} y={16}>
               {direction === "video" ? (
                 <VideoCaseCard {...videoCardProps(c as VideoCaseEntry)} preload={i < 2} />
               ) : (

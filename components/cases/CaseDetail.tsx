@@ -3,25 +3,24 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, type Variants } from "framer-motion";
 import {
   AlertTriangle,
   ArrowLeft,
   ArrowRight,
   Check,
+  ChevronRight,
   Lightbulb,
   Pause,
   Play,
   Quote,
   Send,
 } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { FadeIn, staggerDelay } from "@/components/ui/FadeIn";
 import CurvedDashedLines from "@/components/ui/CurvedDashedLines";
 import GalleryImage from "@/components/ui/GalleryImage";
 import { ImageModal } from "@/components/ui/ImageModal";
 import ReviewAvatar from "@/components/ui/ReviewAvatar";
 import { useTranslation } from "@/lib/LanguageContext";
-import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 import { siteConfig } from "@/config/site";
 import { breadcrumbJsonLd, caseBreadcrumbs } from "@/lib/case-breadcrumbs";
 // Runtime import is limited to the tiny text helper: the registry index (all
@@ -49,17 +48,6 @@ import {
   type OpenImages,
 } from "./CaseMedia";
 import RelatedCases from "./RelatedCases";
-
-// Reveal without a blur pass: the blur filter is the expensive part of this
-// animation and it is the first thing to misbehave under reduced motion.
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] },
-  }),
-};
 
 interface LightboxState {
   images: string[];
@@ -89,7 +77,6 @@ export default function CaseDetail({
   related: RelatedCaseCard[];
 }) {
   const { t } = useTranslation();
-  const reduceMotion = usePrefersReducedMotion();
   const [lightbox, setLightbox] = useState<LightboxState | null>(null);
   const [reviewPlaying, setReviewPlaying] = useState(false);
   const [reviewVideo, setReviewVideo] = useState<HTMLVideoElement | null>(null);
@@ -192,7 +179,7 @@ export default function CaseDetail({
         )}
         <ul className={columns === 2 ? "grid grid-cols-1 gap-4 md:grid-cols-2" : "grid grid-cols-1 gap-4"}>
           {items.map((item, itemIndex) => (
-            <FadeIn as="li" key={itemIndex} delay={0.1 + itemIndex * 0.08} y={20} blur={4}>
+            <FadeIn as="li" key={itemIndex} delay={staggerDelay(itemIndex)} y={20} blur={4}>
               <div className="flex h-full items-start gap-4 rounded-xl border border-border bg-surface-elevated/50 p-5">
                 <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-green-500/30 bg-green-500/20">
                   <Check size={14} className="text-green-500" />
@@ -214,14 +201,14 @@ export default function CaseDetail({
             title: section.taskTitle ? L(section.taskTitle) : t("itCases.challenge"),
             body: L(section.task),
             className:
-              "bg-surface-elevated/40 border border-red-500/25 rounded-2xl p-8 transition-all duration-300 hover:shadow-[0_0_40px_rgba(239,68,68,0.1)] hover:border-red-500/50",
+              "bg-surface-elevated/40 border border-red-500/25 rounded-2xl p-8 transition-[box-shadow,border-color,transform] duration-300 hover:shadow-[0_0_40px_rgba(239,68,68,0.1)] hover:border-red-500/50 hover:scale-[1.02]",
             icon: <AlertTriangle size={20} className="shrink-0 text-red-500" />,
           },
           {
             title: section.solutionTitle ? L(section.solutionTitle) : t("itCases.solution"),
             body: L(section.solution),
             className:
-              "bg-surface-elevated/40 border border-green-500/25 rounded-2xl p-8 transition-all duration-300 hover:shadow-[0_0_40px_rgba(34,197,94,0.1)] hover:border-green-500/50",
+              "bg-surface-elevated/40 border border-green-500/25 rounded-2xl p-8 transition-[box-shadow,border-color,transform] duration-300 hover:shadow-[0_0_40px_rgba(34,197,94,0.1)] hover:border-green-500/50 hover:scale-[1.02]",
             icon: <Lightbulb size={20} className="shrink-0 text-green-500" />,
           },
         ];
@@ -229,41 +216,17 @@ export default function CaseDetail({
           <section key={index} className="py-16 px-4">
             <div className="max-w-4xl mx-auto">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                {cards.map((card, cardIndex) => {
-                  const body = (
-                    <>
+                {cards.map((card, cardIndex) => (
+                  <FadeIn key={cardIndex} delay={staggerDelay(cardIndex)} y={12}>
+                    <div data-case-block="brief" className={card.className}>
                       <h2 className="mb-4 flex items-center gap-4 text-xl font-semibold text-foreground">
                         {card.icon}
                         {card.title}
                       </h2>
                       <p className="leading-relaxed text-muted-foreground">{card.body}</p>
-                    </>
-                  );
-                  // Reduced motion: both cards are simply there — no reveal,
-                  // no hover zoom, nothing that can stay hidden.
-                  if (reduceMotion) {
-                    return (
-                      <div key={cardIndex} data-case-block="brief" className={card.className}>
-                        {body}
-                      </div>
-                    );
-                  }
-                  return (
-                    <motion.div
-                      key={cardIndex}
-                      data-case-block="brief"
-                      custom={cardIndex}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true, margin: "-60px" }}
-                      variants={cardVariants}
-                      whileHover={{ scale: 1.02 }}
-                      className={card.className}
-                    >
-                      {body}
-                    </motion.div>
-                  );
-                })}
+                    </div>
+                  </FadeIn>
+                ))}
               </div>
             </div>
           </section>
@@ -615,7 +578,28 @@ export default function CaseDetail({
         })()}
         {(review.text || author || avatarName) && (
           <div className="px-6 pb-6 text-center md:px-8 md:pb-8">
-            {review.text && (
+            {/* A screenshot review already shows its content as an image —
+                the same words are only repeated as a collapsed transcript the
+                visitor can open on demand (or with a screen reader), never as
+                a second permanent quote. */}
+            {review.kind === "screenshot" && review.text && (
+              <details
+                className="group/transcript mb-4 text-left"
+                data-case-block="review-transcript"
+              >
+                <summary className="inline-flex cursor-pointer list-none items-center gap-1.5 rounded text-xs font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent [&::-webkit-details-marker]:hidden">
+                  <ChevronRight
+                    size={14}
+                    className="transition-transform duration-200 group-open/transcript:rotate-90"
+                  />
+                  {t("cases.ui.reviewTranscript")}
+                </summary>
+                <p className="mt-3 text-sm italic leading-relaxed text-foreground">
+                  &ldquo;{L(review.text)}&rdquo;
+                </p>
+              </details>
+            )}
+            {review.kind !== "screenshot" && review.text && (
               <>
                 <Quote size={24} className="mx-auto mb-3 text-primary opacity-50" />
                 <p className="mb-4 text-base italic leading-relaxed text-foreground md:text-lg">

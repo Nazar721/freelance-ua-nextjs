@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import gsap from "gsap";
@@ -11,17 +11,20 @@ export default function TestimonialModal({
   name,
   originRect,
   reduced,
+  opener,
   onClose,
 }: {
   children: ReactNode;
   name: string;
   originRect: DOMRect | null;
   reduced: boolean;
+  opener?: HTMLElement | null;
   onClose: () => void;
 }) {
   const { t } = useTranslation();
   const wrapRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const closingRef = useRef(false);
 
   const close = () => {
@@ -59,6 +62,42 @@ export default function TestimonialModal({
     }
   };
 
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        close();
+        return;
+      }
+      if (e.key !== "Tab" || !wrapRef.current) return;
+      const focusable = Array.from(
+        wrapRef.current.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]), audio[controls], video[controls]',
+        ),
+      );
+      if (focusable.length === 0) {
+        e.preventDefault();
+        return;
+      }
+      // Fully control Tab order inside the dialog — prevents the browser from
+      // moving focus to the inert background (which is especially visible in
+      // WebKit where video[controls] shadow focus behaves differently).
+      e.preventDefault();
+      const active = document.activeElement as HTMLElement | null;
+      const idx = active ? focusable.indexOf(active) : -1;
+      let nextIdx: number;
+      if (e.shiftKey) {
+        nextIdx = idx <= 0 ? focusable.length - 1 : idx - 1;
+      } else {
+        nextIdx = idx === -1 || idx >= focusable.length - 1 ? 0 : idx + 1;
+      }
+      focusable[nextIdx]?.focus();
+    },
+    // close is stable via closingRef, onClose is stable from parent
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+
   useLayoutEffect(() => {
     const el = contentRef.current;
     const wrap = wrapRef.current;
@@ -88,18 +127,59 @@ export default function TestimonialModal({
   }, []);
 
   useEffect(() => {
-    const prevOverflow = document.body.style.overflow;
+    const dialog = wrapRef.current;
+    if (!dialog) return;
+    const previousOverflow = document.body.style.overflow;
+    const isolated: Array<{ element: HTMLElement; inert: boolean; ariaHidden: string | null }> = [];
+    let current: HTMLElement | null = dialog;
+    while (current?.parentElement) {
+      const parentEl: HTMLElement = current.parentElement as HTMLElement;
+      for (const sibling of Array.from(parentEl.children)) {
+        if (sibling === current || !(sibling instanceof HTMLElement)) continue;
+        isolated.push({
+          element: sibling,
+          inert: (sibling as HTMLElement & { inert: boolean }).inert,
+          ariaHidden: sibling.getAttribute("aria-hidden"),
+        });
+        (sibling as HTMLElement & { inert: boolean }).inert = true;
+        sibling.setAttribute("aria-hidden", "true");
+      }
+      if (parentEl === document.body) break;
+      current = parentEl;
+    }
+
+    // Prefer the explicit opener (the card's button) over document.activeElement,
+    // which is <body> for mouse clicks on the card.
+    const fallbackFocus =
+      document.activeElement instanceof HTMLElement &&
+      document.activeElement !== document.body &&
+      document.activeElement !== document.documentElement
+        ? document.activeElement
+        : null;
+    const restoreTarget = opener && opener.isConnected ? opener : fallbackFocus;
+
+    document.addEventListener("keydown", handleKeyDown);
     document.body.style.overflow = "hidden";
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
-    };
-    window.addEventListener("keydown", onKey);
+    // Move focus inside the dialog — the close button is the first focusable.
+    // Use rAF so the portal is fully attached before focusing.
+    const raf = requestAnimationFrame(() => closeButtonRef.current?.focus());
+
     return () => {
-      document.body.style.overflow = prevOverflow;
-      window.removeEventListener("keydown", onKey);
+      cancelAnimationFrame(raf);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      for (const { element, inert, ariaHidden } of isolated) {
+        (element as HTMLElement & { inert: boolean }).inert = inert;
+        if (ariaHidden === null) element.removeAttribute("aria-hidden");
+        else element.setAttribute("aria-hidden", ariaHidden);
+      }
+      // Restore focus to the opener after inert is cleared.
+      if (restoreTarget && restoreTarget.isConnected) {
+        // Defer one frame so the browser has removed inert.
+        requestAnimationFrame(() => restoreTarget.focus());
+      }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [handleKeyDown, opener]);
 
   return createPortal(
     <div
@@ -111,9 +191,10 @@ export default function TestimonialModal({
       onClick={close}
     >
       <button
+        ref={closeButtonRef}
         onClick={close}
         aria-label={t("testimonials.close")}
-        className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 transition-colors cursor-pointer hover:bg-white/20 md:right-6 md:top-6"
+        className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 transition-colors cursor-pointer hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white md:right-6 md:top-6"
       >
         <X size={20} className="text-white" />
       </button>

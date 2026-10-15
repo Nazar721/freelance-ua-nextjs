@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckCircle, Clock, Shield, Sparkles, Users, Zap, Award } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { FadeIn, staggerDelay } from "@/components/ui/FadeIn";
 import { useTranslation } from "@/lib/LanguageContext";
 
 const advantageIcons = [Clock, Shield, Zap, Users, Sparkles, CheckCircle, Award];
@@ -28,7 +28,7 @@ export default function WhyUsSection() {
             return (
               <FadeIn
                 key={key}
-                delay={0.05 + i * 0.04}
+                delay={staggerDelay(i)}
                 y={16}
                 blur={2}
               >

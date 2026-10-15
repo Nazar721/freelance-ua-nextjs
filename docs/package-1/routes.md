@@ -70,6 +70,7 @@
 | video | `/cases/video/auto-edits-reels` | `/en/cases/video/auto-edits-reels` | так | так |
 | video | `/cases/video/automation-1click` | `/en/cases/video/automation-1click` | так | так |
 | video | `/cases/video/barvy-interior-ai-reels` | `/en/cases/video/barvy-interior-ai-reels` | так | так |
+| video | `/cases/video/barvy-interior-reels` | `/en/cases/video/barvy-interior-reels` | так | так |
 | video | `/cases/video/cuprus-life` | `/en/cases/video/cuprus-life` | так | так |
 | video | `/cases/video/dance-competition-lviv` | `/en/cases/video/dance-competition-lviv` | так | так |
 | video | `/cases/video/dominanta-youtube-intro` | `/en/cases/video/dominanta-youtube-intro` | так | так |
@@ -112,6 +113,7 @@
 | video | `/cases/video/vtikha-promo` | `/en/cases/video/vtikha-promo` | так | так |
 | video | `/cases/video/watch-hype-intro` | `/en/cases/video/watch-hype-intro` | так | так |
 | video | `/cases/video/watch-hype-motion` | `/en/cases/video/watch-hype-motion` | так | так |
+| video | `/cases/video/website-message-animation` | `/en/cases/video/website-message-animation` | так | так |
 | video | `/cases/video/wine-festival` | `/en/cases/video/wine-festival` | так | так |
 | video | `/cases/video/youtube-conversational-video` | `/en/cases/video/youtube-conversational-video` | так | так |
 | video | `/cases/video/yulia-smm-reels` | `/en/cases/video/yulia-smm-reels` | так | так |

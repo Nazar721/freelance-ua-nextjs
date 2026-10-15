@@ -1,12 +1,12 @@
 # Реєстр кейсів Freelance UA (генеровано scripts/inventory.mjs v2)
 
-Згенеровано: 2026-10-14T09:51:26.388Z
+Згенеровано: 2026-10-14T22:41:01.607Z
 
 | Напрям | Кейсів | У sitemap | У data | Повний EN | З відео | З відгуком | З блоками | Потребує звірки |
 |---|---|---|---|---|---|---|---|---|
 | it | 21 | 21 | 21 | 21 | 1 | 21 | 21 | 4 |
 | design | 24 | 24 | 24 | 24 | 4 | 24 | 24 | 0 |
-| video | 55 | 55 | 55 | 55 | 47 | 54 | 55 | 0 |
+| video | 57 | 57 | 57 | 57 | 49 | 56 | 57 | 0 |
 
 ## IT
 
@@ -77,6 +77,7 @@
 | auto-edits-reels | reels | `/cases/video/auto-edits-reels` | Reels для автобренду \| Freelance UA | 10 | 5 | 0/0 | brief@0:brief×2 | — |
 | automation-1click | youtube | `/cases/video/automation-1click` | Автоматизація за 1 клік \| Freelance UA | 6 | 0 | 1/0 | links@0:links×1<br>brief@1:brief×2<br>gallery@3:gallery×6 | — |
 | barvy-interior-ai-reels | ai | `/cases/video/barvy-interior-ai-reels` | AI-відео BARVY Interior \| Freelance UA | 3 | 1 | 0/0 | brief@0:brief×2 | — |
+| barvy-interior-reels | reels | `/cases/video/barvy-interior-reels` | BARVY interior — два Reels для студії ремонту \| Freelance UA | 6 | 2 | 0/0 | brief@0:brief×2 | — |
 | cuprus-life | reels | `/cases/video/cuprus-life` | Reels для Cuprus Life — монтаж промо-роликів \| Freelance UA | 7 | 3 | 0/0 | brief@0:brief×2 | — |
 | dance-competition-lviv | reels | `/cases/video/dance-competition-lviv` | Reels для танцювального конкурсу \| Freelance UA | 3 | 1 | 0/0 | brief@0:brief×2 | — |
 | dominanta-youtube-intro | motion | `/cases/video/dominanta-youtube-intro` | Інтро для YouTube \| Freelance UA | 2 | 1 | 0/0 | brief@0:brief×2 | — |
@@ -88,7 +89,7 @@
 | liliya-product-business | youtube | `/cases/video/liliya-product-business` | Бізнес Лілії \| Freelance UA | 6 | 0 | 1/0 | links@0:links×1<br>brief@1:brief×2<br>gallery@3:gallery×6 | — |
 | logan-ai-promo | ai | `/cases/video/logan-ai-promo` | AI-промо LOGAN \| Freelance UA | 2 | 1 | 0/0 | brief@0:brief×2 | — |
 | logo-animation | motion | `/cases/video/logo-animation` | Анімація логотипу \| Freelance UA | 1 | 1 | 0/0 | brief@0:brief×2 | — |
-| maccoudi-youtube | youtube | `/cases/video/maccoudi-youtube` | Маккоуді — YouTube про фріланс \| Freelance UA | 7 | 2 | 2/0 | videoGrid@0:video-gallery×1<br>brief@1:brief×2<br>links@4:links×2 | — |
+| maccoudi-youtube | youtube | `/cases/video/maccoudi-youtube` | Маккоуді — YouTube про фріланс \| Freelance UA | 18 | 2 | 3/0 | videoGrid@0:video-gallery×1<br>links@1:links×1<br>gallery@2:gallery×10<br>brief@3:brief×2<br>links@6:links×2 | — |
 | motion-promo | motion | `/cases/video/motion-promo` | Промо-ролик \| Freelance UA | 1 | 1 | 0/0 | brief@0:brief×2 | — |
 | motion-reels | motion | `/cases/video/motion-reels` | Моушн Reels \| Freelance UA | 2 | 2 | 0/0 | brief@0:brief×2 | — |
 | nikita-sheremet-crypto | reels | `/cases/video/nikita-sheremet-crypto` | Нікіта Шеремет \| Freelance UA | 6 | 4 | 0/0 | brief@0:brief×2 | — |
@@ -119,6 +120,7 @@
 | vtikha-promo | ai | `/cases/video/vtikha-promo` | AI-відео Втіха \| Freelance UA | 4 | 1 | 0/0 | brief@0:brief×2 | — |
 | watch-hype-intro | motion | `/cases/video/watch-hype-intro` | Інтро для Watch Hype \| Freelance UA | 2 | 1 | 0/0 | brief@0:brief×2 | — |
 | watch-hype-motion | motion | `/cases/video/watch-hype-motion` | Моушн для Watch Hype \| Freelance UA | 1 | 1 | 0/0 | brief@0:brief×2 | — |
+| website-message-animation | motion | `/cases/video/website-message-animation` | Tripanio — анімація повідомлень для сайту \| Freelance UA | 3 | 1 | 0/0 | brief@0:brief×2 | — |
 | wine-festival | youtube | `/cases/video/wine-festival` | Відео для винного фестивалю \| Freelance UA | 7 | 3 | 0/0 | brief@0:brief×2 | — |
 | youtube-conversational-video | youtube | `/cases/video/youtube-conversational-video` | Розмовне відео \| Freelance UA | 3 | 0 | 1/0 | links@0:links×1<br>gallery@1:gallery×3<br>brief@2:brief×2 | — |
 | yulia-smm-reels | reels | `/cases/video/yulia-smm-reels` | Reels для SMM \| Freelance UA | 3 | 1 | 0/0 | brief@0:brief×2 | — |

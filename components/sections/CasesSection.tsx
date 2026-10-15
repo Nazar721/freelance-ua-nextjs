@@ -9,7 +9,7 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import { cases } from "@/data/cases";
 import { siteConfig } from "@/config/site";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { FadeIn, staggerDelay } from "@/components/ui/FadeIn";
 import { LazyVideo } from "@/components/ui/LazyVideo";
 import { useTranslation } from "@/lib/LanguageContext";
 import type { CaseSection } from "@/types";
@@ -117,7 +117,7 @@ export default function CasesSection() {
                 {section.items.map((caseItem, index) => (
                   <FadeIn
                     key={caseItem.id}
-                    delay={0.1 + index * 0.08}
+                    delay={staggerDelay(index)}
                     y={40}
                     blur={4}
                   >

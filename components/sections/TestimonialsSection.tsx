@@ -9,6 +9,7 @@ import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/ui/FadeIn";
 import ReviewAvatar from "@/components/ui/ReviewAvatar";
 import { useTranslation } from "@/lib/LanguageContext";
+import { useIsMobile } from "@/lib/useIsMobile";
 import type { Testimonial } from "@/types";
 
 const TestimonialModal = dynamic(() => import("./TestimonialModal"), { ssr: false });
@@ -441,6 +442,12 @@ export default function TestimonialsSection() {
   const [originRect, setOriginRect] = useState<DOMRect | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
   const [openItem, setOpenItem] = useState<Testimonial | null>(null);
+  const isMobile = useIsMobile();
+  /* Mobile strip: a plain native scroller — index follows scrollLeft, no rAF. */
+  const stripRef = useRef<HTMLUListElement>(null);
+  const [stripIdx, setStripIdx] = useState(0);
+  const stripRaf = useRef(false);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   const reducedMotion = useSyncExternalStore(
     (subscribe) => {
@@ -471,7 +478,10 @@ export default function TestimonialsSection() {
      normally the whole time; there is no scroll trap. Drag and the arrows
      still write `target` directly for precise control. ── */
   useEffect(() => {
-    if (reducedMotion) return;
+    if (reducedMotion || isMobile) return;
+    // The flag flips one render late on phones; the media query makes sure a
+    // transient desktop instance never starts its scroll loop there.
+    if (window.matchMedia("(max-width: 768px)").matches) return;
     const stage = stageRef.current;
     if (!stage) return;
 
@@ -716,17 +726,97 @@ export default function TestimonialsSection() {
       window.removeEventListener("pointercancel", onUp);
       stage.style.cursor = "";
     };
-  }, [reducedMotion]);
+  }, [reducedMotion, isMobile]);
 
   /* Arrow navigation: asks the slider effect to glide one review over. */
   const goBy = (delta: number) => {
     navRef.current?.goBy(delta);
   };
 
+  const onStripScroll = () => {
+    if (stripRaf.current) return;
+    stripRaf.current = true;
+    requestAnimationFrame(() => {
+      stripRaf.current = false;
+      const el = stripRef.current;
+      if (!el) return;
+      const box = el.getBoundingClientRect();
+      const center = box.left + el.clientWidth / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      for (let i = 0; i < el.children.length; i += 1) {
+        const r = el.children[i].getBoundingClientRect();
+        const d = Math.abs(r.left + r.width / 2 - center);
+        if (d < bestDist) {
+          bestDist = d;
+          best = i;
+        }
+      }
+      setStripIdx((prev) => {
+        if (prev === best) return prev;
+        // Pause media of the card we are leaving — a single rAF per scroll
+        // event, no permanent loop. Keeps the audible state in sync with what
+        // the user actually sees.
+        if (sectionRef.current) {
+          sectionRef.current.querySelectorAll("audio").forEach((a) => {
+            if (!a.paused) a.pause();
+          });
+          sectionRef.current.querySelectorAll("video").forEach((v) => {
+            if (!v.paused) v.pause();
+          });
+        }
+        return best;
+      });
+    });
+  };
+
   const openCard = (item: Testimonial, el: HTMLElement | null) => {
+    // Leaving one review for another (or opening the modal) must not leave a
+    // card player running behind it.
+    sectionRef.current?.querySelectorAll("audio").forEach((a) => a.pause());
+    sectionRef.current?.querySelectorAll("video").forEach((v) => v.pause());
+    let trigger: HTMLElement | null = null;
+    const active = document.activeElement;
+    if (
+      active instanceof HTMLElement &&
+      active !== document.body &&
+      active !== document.documentElement &&
+      el?.contains(active)
+    ) {
+      trigger = active;
+    } else if (el) {
+      trigger = (el.querySelector("button") as HTMLElement | null) ?? el;
+    }
+    triggerRef.current = trigger;
     setOriginRect(el?.getBoundingClientRect() ?? null);
     setOpenItem(item);
   };
+
+  const closeCard = () => {
+    triggerRef.current = null;
+    setOpenItem(null);
+  };
+
+  // Breakpoint switch must not leave a player running behind the new layout.
+  useEffect(() => {
+    sectionRef.current?.querySelectorAll("audio").forEach((a) => {
+      if (!a.paused) a.pause();
+    });
+    sectionRef.current?.querySelectorAll("video").forEach((v) => {
+      if (!v.paused) v.pause();
+    });
+  }, [isMobile]);
+
+  // Desktop carousel: keep audible state in sync when the centred card changes.
+  useEffect(() => {
+    if (isMobile || reducedMotion) return;
+    sectionRef.current?.querySelectorAll("audio").forEach((a) => {
+      if (!a.paused) a.pause();
+    });
+    sectionRef.current?.querySelectorAll("video").forEach((v) => {
+      if (!v.paused) v.pause();
+    });
+  }, [activeIdx, isMobile, reducedMotion]);
 
   return (
     <section id="testimonials" ref={sectionRef} className="relative px-4 pb-16 pt-20">
@@ -746,6 +836,31 @@ export default function TestimonialsSection() {
           {items.map((item) => (
             <ReviewCard key={item.id} item={item} onOpen={openCard} />
           ))}
+        </div>
+      ) : isMobile ? (
+        /* ── Mobile strip: one card plus a peek of the next, native
+            scroll-snap. No 3D, no scale, no scroll-scrub, no rAF loop —
+            the cards stay still and only the strip moves. ── */
+        <div className="mx-auto max-w-7xl">
+          <ul
+            ref={stripRef}
+            onScroll={onStripScroll}
+            aria-label={t("testimonials.title")}
+            className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-[7.5%] pb-1"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
+            {items.map((item) => (
+              <li key={item.id} className="w-[85%] max-w-[420px] shrink-0 snap-center">
+                <ReviewCard item={item} onOpen={openCard} fixedHeight />
+              </li>
+            ))}
+          </ul>
+          <p
+            aria-live="polite"
+            className="mt-4 text-center font-mono text-[11px] tabular-nums text-muted-foreground"
+          >
+            {String(stripIdx + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+          </p>
         </div>
       ) : (
         /* ── Example-style carousel (rAF inertia, sticky scroll-scrub + drag) ──
@@ -852,7 +967,8 @@ export default function TestimonialsSection() {
           name={openItem.author?.trim() || t("testimonials.anonymous")}
           originRect={originRect}
           reduced={reducedMotion}
-          onClose={() => setOpenItem(null)}
+          opener={triggerRef.current}
+          onClose={closeCard}
         >
           <CardContent item={openItem} name={openItem.author?.trim() || t("testimonials.anonymous")} variant="modal" />
         </TestimonialModal>

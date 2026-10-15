@@ -135,6 +135,7 @@ export function localizedMetadata({
   title,
   description,
   ogImage,
+  ogImageAlt,
   ogType = "website",
 }: {
   locale: Locale;
@@ -142,6 +143,7 @@ export function localizedMetadata({
   title: string;
   description: string;
   ogImage?: OgImage;
+  ogImageAlt?: string;
   ogType?: "website" | "article";
 }): Metadata {
   let canonicalPath: string;
@@ -190,7 +192,7 @@ export function localizedMetadata({
             images: [
               {
                 url: image,
-                alt: "Freelance UA — Digital Agency",
+                alt: ogImageAlt ?? "Freelance UA — Digital Agency",
                 ...(known ? { width, height, type } : {}),
               },
             ],
@@ -201,7 +203,19 @@ export function localizedMetadata({
       card: "summary_large_image",
       title,
       description,
-      ...(image ? { images: [image] } : {}),
+      ...(image
+        ? {
+            images: [
+              ogImageAlt
+                ? {
+                    url: image,
+                    alt: ogImageAlt,
+                    ...(known ? { width, height, type } : {}),
+                  }
+                : image,
+            ],
+          }
+        : {}),
     },
   };
 }

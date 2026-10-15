@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { FadeIn, staggerDelay } from "@/components/ui/FadeIn";
 import FeaturedCaseCard from "@/components/ui/FeaturedCaseCard";
 import VideoCaseCard from "@/components/ui/VideoCaseCard";
 import { itCases } from "@/data/itCases";
@@ -248,7 +248,7 @@ export default function CasesCatalog() {
         {activeTab === "it" && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {filteredITCases.map((c, i) => (
-              <FadeIn key={c.slug} delay={0.05 + i * 0.06} y={40} blur={4}>
+              <FadeIn key={c.slug} delay={staggerDelay(i)} y={40} blur={4}>
                 <FeaturedCaseCard {...featuredCardProps(c)} preload={i < 2} />
               </FadeIn>
             ))}
@@ -258,7 +258,7 @@ export default function CasesCatalog() {
         {activeTab === "design" && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {filteredDesignCases.map((c, i) => (
-              <FadeIn key={c.slug} delay={0.05 + i * 0.06} y={40} blur={4}>
+              <FadeIn key={c.slug} delay={staggerDelay(i)} y={40} blur={4}>
                 <FeaturedCaseCard {...featuredCardProps(c)} preload={i < 2} />
               </FadeIn>
             ))}
@@ -268,7 +268,7 @@ export default function CasesCatalog() {
         {activeTab === "video" && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {filteredVideoCases.map((c, i) => (
-              <FadeIn key={c.slug} delay={0.05 + i * 0.06} y={40} blur={4}>
+              <FadeIn key={c.slug} delay={staggerDelay(i)} y={40} blur={4}>
                 <VideoCaseCard {...videoCardProps(c)} preload={i < 2} />
               </FadeIn>
             ))}

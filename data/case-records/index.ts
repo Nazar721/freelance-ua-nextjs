@@ -113,6 +113,8 @@ import { maccoudiYoutube } from "./video/maccoudi-youtube";
 import { sestroAnniversary } from "./video/sestro-anniversary";
 import { sheglamPromo } from "./video/sheglam-promo";
 import { evaCodeReels } from "./video/eva-code-reels";
+import { barvyInteriorReels } from "./video/barvy-interior-reels";
+import { websiteMessageAnimation } from "./video/website-message-animation";
 
 export type {
   BriefSection,
@@ -146,6 +148,7 @@ export { key, text, resolveText, isKeyRef } from "./types";
 
 /** All reworked cases, in a stable order. */
 export const caseRecords: CaseRecord[] = [
+  websiteMessageAnimation,
   yuliaSmmReels,
   youtubeConversationalVideo,
   wineFestival,
@@ -191,6 +194,7 @@ export const caseRecords: CaseRecord[] = [
   dominantaYoutubeIntro,
   danceCompetitionLviv,
   barvyInteriorAiReels,
+  barvyInteriorReels,
   automation1click,
   autoEditsReels,
   artemReels,
