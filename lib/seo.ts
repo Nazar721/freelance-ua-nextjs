@@ -8,8 +8,7 @@
 //   - no x-default for now;
 //   - UA and EN pages each keep their own canonical — the EN translation is
 //     never canonicalized to the Ukrainian page.
-import fs from "node:fs";
-import path from "node:path";
+import imageMeasurements from "./generated/image-measurements.json";
 import type { Metadata } from "next";
 import { absUrl, counterpartPath, type Locale } from "./i18n-routes";
 
@@ -25,79 +24,11 @@ interface MeasuredImage {
   mime: string;
 }
 
-/** Pixel size + MIME of an image file already in memory. Returns null for
- *  formats this probe does not understand — callers then declare nothing. */
-function measureImageBuffer(buf: Buffer): MeasuredImage | null {
-  // PNG
-  if (buf.length > 24 && buf.readUInt32BE(0) === 0x89504e47 && buf.readUInt32BE(4) === 0x0d0a1a0a) {
-    return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20), mime: "image/png" };
-  }
-  // GIF
-  if (buf.length > 10 && buf.toString("ascii", 0, 3) === "GIF") {
-    return { width: buf.readUInt16LE(6), height: buf.readUInt16LE(8), mime: "image/gif" };
-  }
-  // JPEG — walk segments to the first SOFn marker
-  if (buf.length > 4 && buf[0] === 0xff && buf[1] === 0xd8) {
-    let i = 2;
-    while (i + 9 < buf.length) {
-      if (buf[i] !== 0xff) {
-        i += 1;
-        continue;
-      }
-      const marker = buf[i + 1];
-      if (marker === 0xd8 || marker === 0xd9 || (marker >= 0xd0 && marker <= 0xd7)) {
-        i += 2;
-        continue;
-      }
-      if (marker >= 0xc0 && marker <= 0xc3) {
-        return { width: buf.readUInt16BE(i + 7), height: buf.readUInt16BE(i + 5), mime: "image/jpeg" };
-      }
-      const length = buf.readUInt16BE(i + 2);
-      if (length < 2) return null;
-      i += 2 + length;
-    }
-    return null;
-  }
-  // WebP (RIFF … WEBP)
-  if (buf.length > 30 && buf.toString("ascii", 0, 4) === "RIFF" && buf.toString("ascii", 8, 12) === "WEBP") {
-    const chunk = buf.toString("ascii", 12, 16);
-    if (chunk === "VP8X") {
-      return {
-        width: buf.readUIntLE(24, 3) + 1,
-        height: buf.readUIntLE(27, 3) + 1,
-        mime: "image/webp",
-      };
-    }
-    if (chunk === "VP8 ") {
-      return { width: buf.readUInt16LE(26) & 0x3fff, height: buf.readUInt16LE(28) & 0x3fff, mime: "image/webp" };
-    }
-    if (chunk === "VP8L") {
-      const bits = buf.readUInt32LE(21);
-      return { width: (bits & 0x3fff) + 1, height: ((bits >> 14) & 0x3fff) + 1, mime: "image/webp" };
-    }
-    return null;
-  }
-  return null;
-}
-
-const measuredCache = new Map<string, MeasuredImage | null>();
-
-/** Measure a cover that lives in `public/`. Unknown/missing/remote files
- *  yield null so the caller omits the optional properties instead of
- *  inventing them. */
+/** Read build-generated image measurements; never trace public media into Functions. */
 export function measureLocalImage(src: string): MeasuredImage | null {
   const clean = src.split(/[?#]/)[0];
   if (!clean.startsWith("/")) return null;
-  if (measuredCache.has(clean)) return measuredCache.get(clean) ?? null;
-  let result: MeasuredImage | null = null;
-  try {
-    const filePath = path.join(process.cwd(), "public", clean.slice(1));
-    result = measureImageBuffer(fs.readFileSync(filePath));
-  } catch {
-    result = null;
-  }
-  measuredCache.set(clean, result);
-  return result;
+  return (imageMeasurements as Record<string, MeasuredImage>)[clean] ?? null;
 }
 
 export { absUrl, counterpartPath, localeFromPath, pathPrefix, type Locale } from "./i18n-routes";
