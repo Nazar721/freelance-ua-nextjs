@@ -11,6 +11,9 @@ interface BeforeAfterSliderProps {
   afterAlt?: string;
   aspectClassName?: string;
   className?: string;
+  /** Cover aligned showcase frames; contain preserves uncropped case material. */
+  mediaFit?: "cover" | "contain";
+  mediaBackground?: string;
 }
 
 export function BeforeAfterSlider({
@@ -21,6 +24,8 @@ export function BeforeAfterSlider({
   afterAlt = "Website",
   aspectClassName = "aspect-[16/10]",
   className = "",
+  mediaFit = "contain",
+  mediaBackground,
 }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(50);
   const [hasAutoplayed, setHasAutoplayed] = useState(false);
@@ -105,6 +110,7 @@ export function BeforeAfterSlider({
       <div
         ref={containerRef}
         className={`relative w-full max-w-5xl mx-auto ${aspectClassName} rounded-xl overflow-hidden select-none bg-background cursor-ew-resize ${className}`}
+        style={{ backgroundColor: mediaBackground }}
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouchMove}
       >
@@ -119,7 +125,8 @@ export function BeforeAfterSlider({
             playsInline
             draggable={false}
             onContextMenu={(e) => e.preventDefault()}
-            className="absolute inset-0 w-full h-full object-contain"
+            className="absolute inset-0 w-full h-full"
+            style={{ objectFit: mediaFit }}
           />
         ) : (
           <Image
@@ -128,7 +135,7 @@ export function BeforeAfterSlider({
             fill
             sizes="(max-width: 768px) 100vw, 80vw"
             quality={75}
-            className="object-contain"
+            style={{ objectFit: mediaFit }}
             draggable={false}
             onContextMenu={(e) => e.preventDefault()}
           />
@@ -137,7 +144,7 @@ export function BeforeAfterSlider({
         {/* Before image (clipped from right) - fills entire container */}
         <div
           className="absolute inset-0 overflow-hidden"
-          style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+          style={{ clipPath: `inset(0 ${100 - position}% 0 0)`, backgroundColor: "inherit" }}
         >
           <Image
             src={beforeSrc}
@@ -145,7 +152,7 @@ export function BeforeAfterSlider({
             fill
             sizes="(max-width: 768px) 100vw, 80vw"
             quality={75}
-            className="object-contain"
+            style={{ objectFit: mediaFit }}
             draggable={false}
             onContextMenu={(e) => e.preventDefault()}
           />

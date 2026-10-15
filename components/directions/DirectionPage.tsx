@@ -253,6 +253,8 @@ function DirectionShowcase({ direction }: { direction: Direction }) {
                 afterSrc={cfg.sliderAfter}
                 afterVideo={cfg.sliderAfterVideo}
                 aspectClassName={cfg.sliderAspect}
+                mediaFit={direction === "video" ? "contain" : "cover"}
+                mediaBackground={direction === "video" ? "#09090b" : undefined}
                 beforeAlt={t(`services.${direction}.slider`)}
                 afterAlt={t(`services.${direction}.slider`)}
               />
