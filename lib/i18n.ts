@@ -5339,7 +5339,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "videoCases.websiteMessageAnimation.result4": "The client praised the work's adherence to the brief and care with revisions",
     "videoCases.websiteMessageAnimation.reviewTitle": "Client Review 💬",
     "videoCases.websiteMessageAnimation.reviewText": "We contacted Freelance UA to create a video for our corporate website. The work was excellent and followed the brief. I especially want to recognize video editor Andrii Pakhar for his resourcefulness and meticulous attention to every revision. It was a pleasure working with him. I recommend them!",
-    "videoCases.websiteMessageAnimation.reviewAuthor": "Maria",
+    "v ideoCases.websiteMessageAnimation.reviewAuthor": "Maria",
     "videoCases.websiteMessageAnimation.teamMember": "Andrii — motion",
 
     "partnership.title": "Earn with us",
