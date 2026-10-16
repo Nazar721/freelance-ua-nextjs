@@ -1886,8 +1886,11 @@ body {
     animation: none;
   }
 
-  .process-line {
-    animation: none;
+  /* Connector lines exist only from 768px up — keep their flow animation there */
+  @media (max-width: 767.98px) {
+    .process-line {
+      animation: none;
+    }
   }
 
   .animate-marquee,

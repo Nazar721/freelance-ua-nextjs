@@ -79,39 +79,6 @@ export default function HowWeWorkSection() {
             )}
           </div>
 
-          {/* Mobile vertical line */}
-          <div
-            aria-hidden="true"
-            className="md:hidden absolute left-1/2 top-[40px] bottom-[40px] w-px -translate-x-1/2"
-          >
-            <div className="absolute inset-0 bg-border/30" />
-            {showAll ? (
-              <>
-                <div className="absolute left-0 top-[44px] bottom-[50%] mb-[10px] w-full bg-accent" />
-                <div className="absolute left-0 top-[50%] mt-[10px] bottom-[44px] w-full bg-accent" />
-              </>
-            ) : (
-              <>
-                <motion.div
-                  className="absolute left-0 w-full bg-accent origin-top"
-                  style={{ top: "44px", height: "calc(33.33% - 24px)" }}
-                  initial={{ scaleY: 0 }}
-                  whileInView={{ scaleY: 1 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.4, delay: 0.35, ease: EASE }}
-                />
-                <motion.div
-                  className="absolute left-0 w-full bg-accent origin-top"
-                  style={{ bottom: "44px", height: "calc(33.33% - 24px)" }}
-                  initial={{ scaleY: 0 }}
-                  whileInView={{ scaleY: 1 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.4, delay: 0.95, ease: EASE }}
-                />
-              </>
-            )}
-          </div>
-
           <div className="process-steps grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             {stepKeys.slice(0, 3).map((key, index) => {
               const Icon = stepIcons[index];
