@@ -133,11 +133,7 @@ export const itCases: CaseEntry[] = [
     glowColor: "rgba(255, 255, 255, 0.06)",
     glowColorStrong: "rgba(255, 255, 255, 0.12)",
     image: "/media/cases/shkiper-drop-mocap.webp",
-    galleryImages: [
-      "/media/cases/shkiper-drop-hero.webp",
-      "/media/cases/shkiper-drop-catalog.webp",
-      "/media/cases/shkiper-drop-advantages.webp",
-    ],
+    imageFit: "contain",
     itCategory: "landing",
   },
   {
