@@ -2698,6 +2698,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "footer.contact": "Контакти",
     "footer.telegram": "Написати в Telegram",
     "footer.desc": "Команда фрілансерів для вашого бізнесу: ІТ / дизайн / відео",
+    "footer.top": "Нагору",
   },
   en: {
     "nav.about": "About",
@@ -5398,5 +5399,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     "footer.contact": "Contacts",
     "footer.telegram": "Write on Telegram",
     "footer.desc": "Team of freelancers for your business: IT / design / video",
+    "footer.top": "Back to top",
   },
 };

@@ -1,116 +1,103 @@
 "use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { Phone, Send } from 'lucide-react'
-import { siteConfig } from '@/config/site'
+import Image from "next/image";
+import { siteConfig } from "@/config/site";
 import { useTranslation } from "@/lib/LanguageContext";
+import { useTheme } from "@/lib/ThemeContext";
+import HalftoneWordmarkFooter, {
+  type FooterColumn,
+} from "@/components/ui/halftone-wordmark-footer";
 
+/* The halftone palette follows the site theme. Both themes share the brand
+   purple (#6366F1) as the reaction colour; only the paper and ink change. */
+const FOOTER_PALETTES = {
+  dark: { background: "#111118", ink: "#F8F8FF", warm: "#6366F1" },
+  light: { background: "#FFFFFF", ink: "#18181B", warm: "#6366F1" },
+} as const;
+
+/* The project face — the same CSS variables the root layout loads through
+   next/font, resolved by the canvas against the live document. */
+const PROJECT_FACE = "var(--font-space-grotesk), sans-serif";
+
+/**
+ * The shared footer of every page (it owns the #contacts landmark the header
+ * nav scrolls to). Content is localized; the dotted wordmark below it is a
+ * single canvas element, never a nested <footer>.
+ */
 export default function Footer() {
   const { t, locale } = useTranslation();
+  const { theme } = useTheme();
+
+  // Language prefix for internal links: "" for Ukrainian, "/en" for English.
   const lp = locale === "en" ? "/en" : "";
+  const year = new Date().getFullYear();
 
-	return (
-		<footer
-			id='contacts'
-			className='bg-surface border-t border-border py-12 pb-[100px] px-4'
-		>
-			<div className='max-w-7xl mx-auto'>
-				<div className='grid grid-cols-1 md:grid-cols-2 gap-8 mb-8'>
-					<div className='premium-surface rounded-2xl border border-border/60 bg-background/20 p-5'>
-						<div className='flex items-center gap-3 mb-4'>
-							<Image
-								src='/media/logo.jpg'
-								alt='Freelance UA'
-								width={40}
-								height={40}
-								className='rounded-lg'
-							/>
-							<div>
-								<div className='font-bold text-foreground'>Freelance UA</div>
-								<div className='text-accent text-sm'>Digital Agency</div>
-							</div>
-						</div>
-						<p className='text-muted-foreground text-sm leading-relaxed'>
-							{t("footer.desc")}
-						</p>
-					</div>
+  const columns: FooterColumn[] = [
+    {
+      title: t("footer.services"),
+      links: [
+        { label: t("services.it.category"), href: `${lp}/services/it` },
+        { label: t("services.design.category"), href: `${lp}/services/design` },
+        { label: t("services.video.category"), href: `${lp}/services/video` },
+      ],
+    },
+    {
+      title: t("footer.company"),
+      links: [
+        { label: t("nav.about"), href: `${lp}/#about` },
+        { label: t("nav.process"), href: `${lp}/#process` },
+        { label: t("nav.cases"), href: `${lp}/cases` },
+        { label: t("header.partner"), href: `${lp}/partners` },
+      ],
+    },
+    {
+      title: t("footer.contact"),
+      links: [
+        { label: siteConfig.phone, href: `tel:${siteConfig.phone.replace(/\s/g, "")}` },
+        {
+          label: siteConfig.telegram.username,
+          href: siteConfig.telegram.consultationUrl,
+          external: true,
+        },
+        { label: "Instagram", href: siteConfig.instagram, external: true },
+      ],
+    },
+  ];
 
-					<div className='premium-surface rounded-2xl border border-border/60 bg-background/20 p-5'>
-						<h3 className='text-foreground font-semibold mb-4'>{t("footer.contact")}</h3>
-						<div className='flex flex-col gap-3'>
-							<a
-								href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
-								className='flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors'
-							>
-								<Phone size={16} className='text-accent' />
-								{siteConfig.phone}
-							</a>
-							<a
-								href={siteConfig.telegram.consultationUrl}
-								target='_blank'
-								rel='noopener noreferrer'
-								className='flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors'
-							>
-								<Send size={16} className='text-accent' />
-								{siteConfig.telegram.username}
-							</a>
-							<a
-								href={siteConfig.instagram}
-								target='_blank'
-								rel='noopener noreferrer'
-								className='flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors'
-							>
-								<svg
-									width='16'
-									height='16'
-									viewBox='0 0 24 24'
-									fill='none'
-									stroke='currentColor'
-									strokeWidth='2'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-									className='text-accent'
-								>
-									<rect width='20' height='20' x='2' y='2' rx='5' ry='5' />
-									<path d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z' />
-									<line x1='17.5' x2='17.51' y1='6.5' y2='6.5' />
-								</svg>
-								Instagram
-							</a>
-							<Link
-								href={`${lp}/partners`}
-								className='flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors'
-							>
-								<svg
-									width='16'
-									height='16'
-									viewBox='0 0 24 24'
-									fill='none'
-									stroke='currentColor'
-									strokeWidth='2'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-									className='text-accent'
-								>
-									<path d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2' />
-									<circle cx="9" cy="7" r="4" />
-									<path d='M22 21v-2a4 4 0 0 0-3-3.87' />
-									<path d='M16 3.13a4 4 0 0 1 0 7.75' />
-								</svg>
-								{t("header.partner")}
-							</Link>
-						</div>
-					</div>
-
-				</div>
-
-				<div className='border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-text-muted text-sm'>
-					<span>
-						© {new Date().getFullYear()} {siteConfig.name}. {t("footer.rights")}
-					</span>
-				</div>
-			</div>
-		</footer>
-	)
+  return (
+    <HalftoneWordmarkFooter
+      id="contacts"
+      wordmark="freelance ua"
+      wordmarkLabel="Freelance UA"
+      palette={FOOTER_PALETTES[theme]}
+      fontFamily={PROJECT_FACE}
+      monoFamily={PROJECT_FACE}
+      fontWeight={700}
+      columns={columns}
+      backToTopLabel={t("footer.top")}
+      meta={
+        <>
+          © {year} {siteConfig.name}. {t("footer.rights")}
+        </>
+      }
+      brand={
+        <>
+          <div className="hwf-brand-row">
+            <Image
+              src="/media/logo.jpg"
+              alt=""
+              width={44}
+              height={44}
+              className="hwf-logo"
+            />
+            <div>
+              <strong>Freelance UA</strong>
+              <span className="hwf-tag">{t("hero.badge")}</span>
+            </div>
+          </div>
+          <p>{t("footer.desc")}</p>
+        </>
+      }
+    />
+  );
 }
