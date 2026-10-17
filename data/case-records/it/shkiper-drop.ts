@@ -46,28 +46,31 @@ export const shkiperDrop: CaseRecord = {
         {
           title: key("itCases.shkiperDrop.component1Title"),
           desc: key("itCases.shkiperDrop.component1Desc"),
-          slider: { before: "/media/cases/shkiper-drop-hero.webp", after: "/media/cases/shkiper-drop-hero.webp" },
+          images: [{ src: "/media/cases/shkiper-drop-hero.webp", w: 1440, h: 900 }],
           link: { href: "https://shkiper-drop.vercel.app", label: key("itCases.shkiperDrop.viewSiteLabel") },
         },
         {
           title: key("itCases.shkiperDrop.component2Title"),
           desc: key("itCases.shkiperDrop.component2Desc"),
-          slider: { before: "/media/cases/shkiper-drop-catalog.webp", after: "/media/cases/shkiper-drop-catalog.webp" },
+          images: [{ src: "/media/cases/shkiper-drop-catalog.webp", w: 1440, h: 900 }],
         },
         {
           title: key("itCases.shkiperDrop.component3Title"),
           desc: key("itCases.shkiperDrop.component3Desc"),
-          slider: { before: "/media/cases/shkiper-drop-advantages.webp", after: "/media/cases/shkiper-drop-advantages.webp" },
+          images: [{ src: "/media/cases/shkiper-drop-advantages.webp", w: 1440, h: 900 }],
         },
         {
           title: key("itCases.shkiperDrop.component4Title"),
           desc: key("itCases.shkiperDrop.component4Desc"),
-          slider: { before: "/media/cases/shkiper-drop-reviews.webp", after: "/media/cases/shkiper-drop-reviews.webp" },
+          images: [{ src: "/media/cases/shkiper-drop-reviews.webp", w: 1440, h: 900 }],
         },
         {
           title: key("itCases.shkiperDrop.component5Title"),
           desc: key("itCases.shkiperDrop.component5Desc"),
-          slider: { before: "/media/cases/shkiper-drop-delivery.webp", after: "/media/cases/shkiper-drop-cta.webp" },
+          images: [
+            { src: "/media/cases/shkiper-drop-delivery.webp", w: 1440, h: 900 },
+            { src: "/media/cases/shkiper-drop-cta.webp", w: 1440, h: 900 },
+          ],
         },
       ],
     },
