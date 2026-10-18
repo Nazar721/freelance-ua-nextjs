@@ -57,7 +57,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "why.6.title": "Прозора комунікація",
     "why.6.desc": "Завжди на зв'язку. Регулярно звітуємо про прогрес роботи.",
     "why.7.title": "Досвід та професіоналізм",
-    "why.7.desc": "Понад 140 завершених проєктів та задоволених клієнтів.",
+    "why.7.desc": "Понад 200 завершених проєктів та задоволених клієнтів.",
 
     "services.title": "Наші послуги",
     "services.desc": "Три напрямки — один надійний партнер",
@@ -2756,7 +2756,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "why.6.title": "Transparent communication",
     "why.6.desc": "Always in touch. We update you at every stage of the work.",
     "why.7.title": "Experience & professionalism",
-    "why.7.desc": "Over 140 completed projects and satisfied clients.",
+    "why.7.desc": "Over 200 completed projects and satisfied clients.",
 
     "services.title": "Our services",
     "services.desc": "Three directions — one reliable partner",
