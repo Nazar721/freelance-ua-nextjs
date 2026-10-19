@@ -2,6 +2,23 @@ import type { CaseEntry } from "./types";
 
 export const designCases: CaseEntry[] = [
   {
+    slug: "nail-artist-story-carousel",
+    category: "banners",
+    categoryKey: "designCases.nailArtistStory.category",
+    titleKey: "designCases.nailArtistStory.title",
+    descriptionKey: "designCases.nailArtistStory.shortDesc",
+    href: "/cases/design/nail-artist-story-carousel",
+    glowColor: "rgba(136, 19, 55, 0.14)",
+    glowColorStrong: "rgba(136, 19, 55, 0.3)",
+    image: "/media/cases/nail-artist-story-carousel/nail-artist-story-carousel-preview.webp",
+    imageFit: "contain",
+    galleryImages: [
+      "/media/cases/nail-artist-story-carousel/slide-01.webp",
+      "/media/cases/nail-artist-story-carousel/slide-09.webp",
+      "/media/cases/nail-artist-story-carousel/slide-10.webp",
+    ],
+  },
+  {
     slug: "moto-school-window-branding",
     category: "branding",
     categoryKey: "designCases.motoSchoolWindowBranding.categoryShort",

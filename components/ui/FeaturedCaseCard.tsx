@@ -157,7 +157,7 @@ export default function FeaturedCaseCard({
                       width={600}
                       height={800}
                       sizes="(max-width: 768px) 50vw, 25vw"
-                      className="w-full h-full object-cover object-center"
+                      className={`w-full h-full ${imageFit === "contain" ? "object-contain" : "object-cover"} object-center`}
                       draggable={false}
                       preload={i === 0 && preload}
                     />

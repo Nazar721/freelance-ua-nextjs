@@ -16,6 +16,7 @@
 | Напрям | UA (зберігається) | EN (новий) | Sitemap | Data |
 |---|---|---|---|---|
 | it | `/cases/it/asandra-soul` | `/en/cases/it/asandra-soul` | так | так |
+| it | `/cases/it/brunetkaa-hair` | `/en/cases/it/brunetkaa-hair` | так | так |
 | it | `/cases/it/darkshare` | `/en/cases/it/darkshare` | так | так |
 | it | `/cases/it/epiland` | `/en/cases/it/epiland` | так | так |
 | it | `/cases/it/eva-code` | `/en/cases/it/eva-code` | так | так |
@@ -27,6 +28,7 @@
 | it | `/cases/it/nextcup` | `/en/cases/it/nextcup` | так | так |
 | it | `/cases/it/pivden-solar` | `/en/cases/it/pivden-solar` | так | так |
 | it | `/cases/it/prime-auto-shipping` | `/en/cases/it/prime-auto-shipping` | так | так |
+| it | `/cases/it/rateflow` | `/en/cases/it/rateflow` | так | так |
 | it | `/cases/it/repair-collision` | `/en/cases/it/repair-collision` | так | так |
 | it | `/cases/it/route-core` | `/en/cases/it/route-core` | так | так |
 | it | `/cases/it/ruslan-aviation` | `/en/cases/it/ruslan-aviation` | так | так |
@@ -50,6 +52,7 @@
 | design | `/cases/design/mht-clinic-billboard` | `/en/cases/design/mht-clinic-billboard` | так | так |
 | design | `/cases/design/moto-school-window-branding` | `/en/cases/design/moto-school-window-branding` | так | так |
 | design | `/cases/design/mydutyfree` | `/en/cases/design/mydutyfree` | так | так |
+| design | `/cases/design/nail-artist-story-carousel` | `/en/cases/design/nail-artist-story-carousel` | так | так |
 | design | `/cases/design/nastya-portrait-retouch` | `/en/cases/design/nastya-portrait-retouch` | так | так |
 | design | `/cases/design/nastya-smm` | `/en/cases/design/nastya-smm` | так | так |
 | design | `/cases/design/photo-retouch` | `/en/cases/design/photo-retouch` | так | так |

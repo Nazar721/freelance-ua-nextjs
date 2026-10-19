@@ -72,3 +72,38 @@
 | `/cases/video/auto-edits-reels` — відгуку немає; не вигадувати | `issues`/registry |
 | 17 з 23 відгуків на головній — скріншоти Telegram без тексту в i18n: потрібні підписи/alt чи залишити як є? | `data/testimonials.ts` (`textKey: ""`) |
 | 4 i18n-лінка `*.link` не використовуються в сторінках (позначені `orphanedI18nLink` у реєстрі): `evaCode` → t.me/asandrasoul_bot, `darkshare` → darkshare.store, `importera` → importera.in.ua, `ruslan` → ruslanaviationcomponents.com. Використати в нових сторінках чи видалити ключі? На EVA-сторінці вже є evacode.app + t.me/evacode_tm_bot з масиву компонентів | `registry.md` → «Потребує ручної звірки» |
+
+### D.1. Чернетка відгуку `it/rateflow` — не опубліковано
+
+Кейс `it/rateflow` (RateFlow) у реєстрі **без** блока `review`: запропонований
+текст нижче — чернетка для погодження з клієнтом (Артем), а не отримана цитата.
+До погодження він не публікується; фото автора й рейтинг не вигадував.
+
+| Мова | Текст |
+|---|---|
+| UA | «Для RateFlow нам потрібен був зручний кабінет, де можна керувати закладами та NFC/QR-картками й бачити статистику. Андрій об'єднав ці задачі в зрозумілому інтерфейсі. Особливо зручно, що керувати сервісом можна і зі смартфона.» |
+| EN | «For RateFlow, we needed a convenient dashboard to manage venues and NFC/QR cards and view statistics. Andrii brought these tasks together in a clear interface. Being able to manage the service from a smartphone is particularly useful.» |
+
+- Автор: **Артем / Artem** (клієнт).
+- Після погодження: додати `review: { kind: "text", … }` у
+  `data/case-records/it/rateflow.ts` і ключі `itCases.rateflow.review*` у
+  `lib/i18n.ts`; публікувати без змін до тексту, зміни — лише за погодженням.
+
+### D.2. Чернетка відгуку `design/nail-artist-story-carousel` — не опубліковано
+
+Кейс `design/nail-artist-story-carousel` (Історія майстрині — Instagram-карусель)
+у реєстрі **без** блока `review`: текст нижче — чернетка для погодження з
+клієнткою, а не отримана цитата. До погодження вона зберігається лише тут, у
+публічному testimonial-блокі не показується. Ім’я автора, фото, рейтинг і
+скріншот переписки не вигадували — не надані.
+
+| Мова | Текст |
+|---|---|
+| UA | «Хотіла розповісти свою історію так, щоб це було особисто й водночас легко читалося. Сніжана поєднала фотографії та текст у цілісну серію, виділила важливі моменти й передала потрібний настрій. Вийшло саме те оформлення, яке я уявляла для свого блогу.» |
+| EN | «I wanted to tell my story in a way that felt personal and was easy to read. Snizhana brought the photographs and text together into a cohesive series, highlighted the important moments and captured the right mood. The design matched what I had imagined for my blog.» |
+
+- Автор: клієнтка (ім’я не надано — не вигадувати).
+- Після погодження: додати `review: { kind: "text", … }` у
+  `data/case-records/design/nail-artist-story-carousel.ts` і ключі
+  `designCases.nailArtistStory.review*` у `lib/i18n.ts`; публікувати без змін
+  до тексту, зміни — лише за погодженням.

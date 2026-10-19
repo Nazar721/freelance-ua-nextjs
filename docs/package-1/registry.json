@@ -1,24 +1,24 @@
 {
-  "generatedAt": "2026-10-14T22:41:01.607Z",
+  "generatedAt": "2026-10-19T15:05:54.433Z",
   "counts": {
-    "routes": 102,
+    "routes": 105,
     "byDirection": {
-      "it": 21,
-      "design": 24,
+      "it": 23,
+      "design": 25,
       "video": 57
     },
-    "inSitemap": 102,
-    "inData": 102,
-    "withFullTranslation": 102,
+    "inSitemap": 105,
+    "inData": 105,
+    "withFullTranslation": 105,
     "withMissingMedia": 0,
     "withExternalLinks": 32,
     "withManualReview": 4,
-    "withBlocks": 102,
-    "sitemapPaths": 216,
-    "i18nUkKeys": 2594,
-    "i18nEnKeys": 2594,
+    "withBlocks": 105,
+    "sitemapPaths": 222,
+    "i18nUkKeys": 2636,
+    "i18nEnKeys": 2636,
     "i18nMissingEn": [],
-    "mediaRefsTracked": 371,
+    "mediaRefsTracked": 403,
     "reusedMediaFiles": 1
   },
   "staticRoutes": [
@@ -224,6 +224,13 @@
       ]
     },
     {
+      "path": "/media/cases/nail-artist-story-carousel/slide-01.webp",
+      "useCount": 2,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
       "path": "/media/cases/nastya-portrait-retouch/final-1.jpg",
       "useCount": 2,
       "cases": [
@@ -298,6 +305,13 @@
       "useCount": 2,
       "cases": [
         "design/prestige-school-billboard"
+      ]
+    },
+    {
+      "path": "/media/cases/rateflow/rateflow-mockup.webp",
+      "useCount": 2,
+      "cases": [
+        "it/rateflow"
       ]
     },
     {
@@ -810,6 +824,76 @@
       "useCount": 1,
       "cases": [
         "design/barvy-interior"
+      ]
+    },
+    {
+      "path": "/media/cases/brunetkaa-hair/about.webp",
+      "useCount": 1,
+      "cases": [
+        "it/brunetkaa-hair"
+      ]
+    },
+    {
+      "path": "/media/cases/brunetkaa-hair/booking-contacts.webp",
+      "useCount": 1,
+      "cases": [
+        "it/brunetkaa-hair"
+      ]
+    },
+    {
+      "path": "/media/cases/brunetkaa-hair/brunetkaa-hair-mockup-hero.webp",
+      "useCount": 1,
+      "cases": [
+        "it/brunetkaa-hair"
+      ]
+    },
+    {
+      "path": "/media/cases/brunetkaa-hair/client-review.webp",
+      "useCount": 1,
+      "cases": [
+        "it/brunetkaa-hair"
+      ]
+    },
+    {
+      "path": "/media/cases/brunetkaa-hair/faq.webp",
+      "useCount": 1,
+      "cases": [
+        "it/brunetkaa-hair"
+      ]
+    },
+    {
+      "path": "/media/cases/brunetkaa-hair/footer.webp",
+      "useCount": 1,
+      "cases": [
+        "it/brunetkaa-hair"
+      ]
+    },
+    {
+      "path": "/media/cases/brunetkaa-hair/hero-screen.webp",
+      "useCount": 1,
+      "cases": [
+        "it/brunetkaa-hair"
+      ]
+    },
+    {
+      "path": "/media/cases/brunetkaa-hair/results.webp",
+      "useCount": 1,
+      "cases": [
+        "it/brunetkaa-hair"
+      ]
+    },
+    {
+      "path": "/media/cases/brunetkaa-hair/reviews.webp",
+      "useCount": 1,
+      "cases": [
+        "it/brunetkaa-hair"
+      ]
+    },
+    {
+      "path": "/media/cases/brunetkaa-hair/services-prices.webp",
+      "useCount": 1,
+      "cases": [
+        "it/brunetkaa-hair"
       ]
     },
     {
@@ -1583,6 +1667,76 @@
       ]
     },
     {
+      "path": "/media/cases/nail-artist-story-carousel/slide-02.webp",
+      "useCount": 1,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
+      "path": "/media/cases/nail-artist-story-carousel/slide-03.webp",
+      "useCount": 1,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
+      "path": "/media/cases/nail-artist-story-carousel/slide-04.webp",
+      "useCount": 1,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
+      "path": "/media/cases/nail-artist-story-carousel/slide-05.webp",
+      "useCount": 1,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
+      "path": "/media/cases/nail-artist-story-carousel/slide-06.webp",
+      "useCount": 1,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
+      "path": "/media/cases/nail-artist-story-carousel/slide-07.webp",
+      "useCount": 1,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
+      "path": "/media/cases/nail-artist-story-carousel/slide-08.webp",
+      "useCount": 1,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
+      "path": "/media/cases/nail-artist-story-carousel/slide-09.webp",
+      "useCount": 1,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
+      "path": "/media/cases/nail-artist-story-carousel/slide-10.webp",
+      "useCount": 1,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
+      "path": "/media/cases/nail-artist-story-carousel/slide-11.webp",
+      "useCount": 1,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
       "path": "/media/cases/nastya-portrait-retouch/final-4.jpg",
       "useCount": 1,
       "cases": [
@@ -1905,6 +2059,34 @@
       ]
     },
     {
+      "path": "/media/cases/rateflow/dashboard.webp",
+      "useCount": 1,
+      "cases": [
+        "it/rateflow"
+      ]
+    },
+    {
+      "path": "/media/cases/rateflow/nfc-qr-cards.webp",
+      "useCount": 1,
+      "cases": [
+        "it/rateflow"
+      ]
+    },
+    {
+      "path": "/media/cases/rateflow/sync-log.webp",
+      "useCount": 1,
+      "cases": [
+        "it/rateflow"
+      ]
+    },
+    {
+      "path": "/media/cases/rateflow/venues.webp",
+      "useCount": 1,
+      "cases": [
+        "it/rateflow"
+      ]
+    },
+    {
       "path": "/media/cases/repair-collision-contacts.webp",
       "useCount": 1,
       "cases": [
@@ -2199,7 +2381,49 @@
       ]
     },
     {
+      "path": "/media/cases/shkiper-drop-advantages.webp",
+      "useCount": 1,
+      "cases": [
+        "it/shkiper-drop"
+      ]
+    },
+    {
+      "path": "/media/cases/shkiper-drop-catalog.webp",
+      "useCount": 1,
+      "cases": [
+        "it/shkiper-drop"
+      ]
+    },
+    {
+      "path": "/media/cases/shkiper-drop-cta.webp",
+      "useCount": 1,
+      "cases": [
+        "it/shkiper-drop"
+      ]
+    },
+    {
+      "path": "/media/cases/shkiper-drop-delivery.webp",
+      "useCount": 1,
+      "cases": [
+        "it/shkiper-drop"
+      ]
+    },
+    {
+      "path": "/media/cases/shkiper-drop-hero.webp",
+      "useCount": 1,
+      "cases": [
+        "it/shkiper-drop"
+      ]
+    },
+    {
       "path": "/media/cases/shkiper-drop-mocap.webp",
+      "useCount": 1,
+      "cases": [
+        "it/shkiper-drop"
+      ]
+    },
+    {
+      "path": "/media/cases/shkiper-drop-reviews.webp",
       "useCount": 1,
       "cases": [
         "it/shkiper-drop"
@@ -2793,6 +3017,102 @@
         "itCases.results",
         "itCases.projectTeam",
         "itCases.team",
+        "itCases.backToList"
+      ],
+      "missingEn": [],
+      "unknownKeys": [],
+      "hasReview": true,
+      "hasTeam": true,
+      "needsManualReview": false,
+      "reviewFlags": [],
+      "hasBothTranslations": true,
+      "fromRecord": true
+    },
+    {
+      "id": "it/brunetkaa-hair",
+      "direction": "it",
+      "slug": "brunetkaa-hair",
+      "uaPath": "/cases/it/brunetkaa-hair",
+      "enPath": "/en/cases/it/brunetkaa-hair",
+      "inSitemap": true,
+      "inData": true,
+      "dataSlug": "brunetkaa-hair",
+      "subcategory": "landing",
+      "titleKey": "itCases.brunetkaa.title",
+      "descriptionKey": "itCases.brunetkaa.shortDesc",
+      "meta": {
+        "title": "BRUNETKAA HAIR — сайт для майстрині з догляду за волоссям у Лондоні | Freelance UA",
+        "description": "Сайт знайомить із майстринею Yelyzaveta, показує послуги та ціни, галерею робіт і відгуки, відповідає на типові запитання та веде до звернення щодо запису через WhatsApp. Темна палітра з золотими акцентами, адаптивне оформлення desktop і mobile, SEO-оптимізація та підготовка сайту для пошуку Google.",
+        "canonical": "/cases/it/brunetkaa-hair",
+        "ogImage": "/media/cases/brunetkaa-hair/hero-screen.webp",
+        "fromRecord": true
+      },
+      "enMetaTitle": "BRUNETKAA HAIR — website for a London hair specialist | Freelance UA",
+      "enMetaDescription": "The website introduces the specialist Yelyzaveta, presents services and prices, a gallery of work and reviews, answers common questions and leads to a booking enquiry through WhatsApp. A dark palette with gold accents, responsive desktop and mobile layouts, SEO optimisation and preparation of the site for Google search.",
+      "h1Uk": "BRUNETKAA HAIR — сайт для майстрині з догляду за волоссям у Лондоні",
+      "h1En": "BRUNETKAA HAIR — website for a London hair specialist",
+      "cardStyle": {
+        "glowColor": "rgba(212, 175, 110, 0.12)",
+        "glowColorStrong": "rgba(212, 175, 110, 0.28)",
+        "imageFit": "contain",
+        "objectPosition": null,
+        "hoverImage": null,
+        "badge": null,
+        "hideCta": false
+      },
+      "cardMedia": {
+        "image": "/media/cases/brunetkaa-hair/brunetkaa-hair-card.webp",
+        "galleryImages": [],
+        "heroVideo": null,
+        "previewVideo": null,
+        "poster": null,
+        "thumbnail": null,
+        "screenshot": null,
+        "processVideos": [],
+        "duration": null,
+        "format": null
+      },
+      "mediaCount": 10,
+      "mediaByType": {
+        "webp": 10
+      },
+      "videoCount": 0,
+      "mediaMissing": [],
+      "mediaPathIssues": [],
+      "unparsedMedia": [],
+      "unparsedMediaCount": 0,
+      "externalLinks": {
+        "fromPage": [],
+        "fromI18n": []
+      },
+      "blocks": [
+        {
+          "name": "brief@0",
+          "kind": "brief",
+          "line": null,
+          "itemCount": 2,
+          "fromRecord": true
+        },
+        {
+          "name": "featureList@1",
+          "kind": "featureList",
+          "line": null,
+          "itemCount": 8,
+          "fromRecord": true
+        },
+        {
+          "name": "results@2",
+          "kind": "textKeys",
+          "line": null,
+          "itemCount": 9,
+          "fromRecord": true
+        }
+      ],
+      "inlineMedia": [],
+      "i18nKeyPrefixes": [
+        "itCases.brunetkaa",
+        "itCases.technicals",
+        "itCases.results",
         "itCases.backToList"
       ],
       "missingEn": [],
@@ -4046,6 +4366,110 @@
       "fromRecord": true
     },
     {
+      "id": "it/rateflow",
+      "direction": "it",
+      "slug": "rateflow",
+      "uaPath": "/cases/it/rateflow",
+      "enPath": "/en/cases/it/rateflow",
+      "inSitemap": true,
+      "inData": true,
+      "dataSlug": "rateflow",
+      "subcategory": "saas-telegram",
+      "titleKey": "itCases.rateflow.title",
+      "descriptionKey": "itCases.rateflow.shortDesc",
+      "meta": {
+        "title": "RateFlow — NFC/QR-сервіс Google-відгуків | Freelance UA",
+        "description": "Розробка RateFlow: адмін-панель для закладів, керування NFC/QR-картками, статистика переходів і Google-відгуків та генерація QR-кодів.",
+        "canonical": "/cases/it/rateflow",
+        "ogImage": "https://freelance-ua.agency/media/cases/rateflow/rateflow-mockup.webp",
+        "fromRecord": true
+      },
+      "enMetaTitle": "RateFlow — NFC/QR Google Review Platform | Freelance UA",
+      "enMetaDescription": "RateFlow case study: an admin dashboard for venues, NFC/QR card management, visit and Google review analytics, and QR code generation.",
+      "h1Uk": "RateFlow — від NFC-картки до відгуку в Google",
+      "h1En": "RateFlow — from an NFC card to a Google review",
+      "cardStyle": {
+        "glowColor": "rgba(99, 102, 241, 0.12)",
+        "glowColorStrong": "rgba(99, 102, 241, 0.25)",
+        "imageFit": "contain",
+        "objectPosition": null,
+        "hoverImage": null,
+        "badge": null,
+        "hideCta": false
+      },
+      "cardMedia": {
+        "image": "/media/cases/rateflow/rateflow-mockup.webp",
+        "galleryImages": [],
+        "heroVideo": null,
+        "previewVideo": null,
+        "poster": null,
+        "thumbnail": null,
+        "screenshot": null,
+        "processVideos": [],
+        "duration": null,
+        "format": null
+      },
+      "mediaCount": 5,
+      "mediaByType": {
+        "webp": 5
+      },
+      "videoCount": 0,
+      "mediaMissing": [],
+      "mediaPathIssues": [],
+      "unparsedMedia": [],
+      "unparsedMediaCount": 0,
+      "externalLinks": {
+        "fromPage": [],
+        "fromI18n": []
+      },
+      "blocks": [
+        {
+          "name": "brief@0",
+          "kind": "brief",
+          "line": null,
+          "itemCount": 2,
+          "fromRecord": true
+        },
+        {
+          "name": "featureList@1",
+          "kind": "featureList",
+          "line": null,
+          "itemCount": 4,
+          "fromRecord": true
+        },
+        {
+          "name": "gallery@2",
+          "kind": "gallery",
+          "line": null,
+          "itemCount": 1,
+          "fromRecord": true
+        },
+        {
+          "name": "results@3",
+          "kind": "textKeys",
+          "line": null,
+          "itemCount": 7,
+          "fromRecord": true
+        }
+      ],
+      "inlineMedia": [],
+      "i18nKeyPrefixes": [
+        "itCases.rateflow",
+        "itCases.technicals",
+        "itCases.results",
+        "itCases.projectTeam",
+        "itCases.backToList"
+      ],
+      "missingEn": [],
+      "unknownKeys": [],
+      "hasReview": false,
+      "hasTeam": true,
+      "needsManualReview": false,
+      "reviewFlags": [],
+      "hasBothTranslations": true,
+      "fromRecord": true
+    },
+    {
       "id": "it/repair-collision",
       "direction": "it",
       "slug": "repair-collision",
@@ -4773,7 +5197,7 @@
       "cardStyle": {
         "glowColor": "rgba(255, 255, 255, 0.06)",
         "glowColorStrong": "rgba(255, 255, 255, 0.12)",
-        "imageFit": null,
+        "imageFit": "contain",
         "objectPosition": null,
         "hoverImage": null,
         "badge": null,
@@ -4781,11 +5205,7 @@
       },
       "cardMedia": {
         "image": "/media/cases/shkiper-drop-mocap.webp",
-        "galleryImages": [
-          "/media/cases/shkiper-drop-hero.webp",
-          "/media/cases/shkiper-drop-catalog.webp",
-          "/media/cases/shkiper-drop-advantages.webp"
-        ],
+        "galleryImages": [],
         "heroVideo": null,
         "previewVideo": null,
         "poster": null,
@@ -6468,6 +6888,108 @@
       "missingEn": [],
       "unknownKeys": [],
       "hasReview": true,
+      "hasTeam": true,
+      "needsManualReview": false,
+      "reviewFlags": [],
+      "hasBothTranslations": true,
+      "fromRecord": true
+    },
+    {
+      "id": "design/nail-artist-story-carousel",
+      "direction": "design",
+      "slug": "nail-artist-story-carousel",
+      "uaPath": "/cases/design/nail-artist-story-carousel",
+      "enPath": "/en/cases/design/nail-artist-story-carousel",
+      "inSitemap": true,
+      "inData": true,
+      "dataSlug": "nail-artist-story-carousel",
+      "subcategory": "banners",
+      "titleKey": "designCases.nailArtistStory.title",
+      "descriptionKey": "designCases.nailArtistStory.shortDesc",
+      "meta": {
+        "title": "Дизайн Instagram-каруселі для майстрині манікюру | Freelance UA",
+        "description": "Дизайн Instagram-каруселі про шлях майстрині манікюру: 11 слайдів із фотографіями, типографікою та бордовими акцентами. Кейс Freelance UA.",
+        "canonical": "/cases/design/nail-artist-story-carousel",
+        "ogImage": "/media/cases/nail-artist-story-carousel/nail-artist-story-carousel-preview.webp",
+        "fromRecord": true
+      },
+      "enMetaTitle": "Instagram Carousel Design for a Nail Artist | Freelance UA",
+      "enMetaDescription": "Instagram carousel design telling a nail artist’s story through 11 slides, photography, typography and burgundy accents. A Freelance UA case study.",
+      "h1Uk": "Історія майстрині манікюру — дизайн Instagram-каруселі",
+      "h1En": "A nail artist’s story — Instagram carousel design",
+      "cardStyle": {
+        "glowColor": "rgba(136, 19, 55, 0.14)",
+        "glowColorStrong": "rgba(136, 19, 55, 0.3)",
+        "imageFit": null,
+        "objectPosition": null,
+        "hoverImage": null,
+        "badge": null,
+        "hideCta": false
+      },
+      "cardMedia": {
+        "image": "/media/cases/nail-artist-story-carousel/nail-artist-story-carousel-preview.webp",
+        "galleryImages": [],
+        "heroVideo": null,
+        "previewVideo": null,
+        "poster": null,
+        "thumbnail": null,
+        "screenshot": null,
+        "processVideos": [],
+        "duration": null,
+        "format": null
+      },
+      "mediaCount": 11,
+      "mediaByType": {
+        "webp": 11
+      },
+      "videoCount": 0,
+      "mediaMissing": [],
+      "mediaPathIssues": [],
+      "unparsedMedia": [],
+      "unparsedMediaCount": 0,
+      "externalLinks": {
+        "fromPage": [],
+        "fromI18n": []
+      },
+      "blocks": [
+        {
+          "name": "brief@0",
+          "kind": "brief",
+          "line": null,
+          "itemCount": 2,
+          "fromRecord": true
+        },
+        {
+          "name": "checklist@1",
+          "kind": "unknown",
+          "line": null,
+          "itemCount": 5,
+          "fromRecord": true
+        },
+        {
+          "name": "gallery@2",
+          "kind": "gallery",
+          "line": null,
+          "itemCount": 11,
+          "fromRecord": true
+        },
+        {
+          "name": "results@3",
+          "kind": "textKeys",
+          "line": null,
+          "itemCount": 3,
+          "fromRecord": true
+        }
+      ],
+      "inlineMedia": [],
+      "i18nKeyPrefixes": [
+        "designCases.nailArtistStory",
+        "itCases.results",
+        "designCases.projectTeam"
+      ],
+      "missingEn": [],
+      "unknownKeys": [],
+      "hasReview": false,
       "hasTeam": true,
       "needsManualReview": false,
       "reviewFlags": [],

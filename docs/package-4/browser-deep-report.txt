@@ -1,6 +1,6 @@
 # Пакет 5 — глибокі інтерактивні сценарії (браузер)
 
-База: http://localhost:3011 · дата: 2026-10-14T09:50:11.459Z
+База: http://localhost:3011 · дата: 2026-10-19T14:24:01.004Z
 Рушії: chromium, webkit · сценаріїв: 16 · кейсів залучено: 14
 
 Це перевірка ПОВЕДІНКИ, а не наявності: керування відкривається та закривається, фокус
@@ -24,7 +24,7 @@
 | videoTile | `video/telegram-emoji-stickers` | video | /cases/video/telegram-emoji-stickers |
 | compare | `design/photo-retouch` | design | /cases/design/photo-retouch |
 | featureList | `it/voltone-pro` | it | /cases/it/voltone-pro |
-| featureSlider | `it/shkiper-drop` | it | /cases/it/shkiper-drop |
+| featureSlider | `it/sdent` | it | /cases/it/sdent |
 | scenes | `design/moto-school-window-branding` | design | /cases/design/moto-school-window-branding |
 | reviewVideo | `video/eva-code-reels` | video | /cases/video/eva-code-reels |
 | reviewAudio | `it/asandra-soul` | it | /cases/it/asandra-soul |
@@ -34,6 +34,6 @@
 | heroLazy | `video/taranenko-trade` | video | /cases/video/taranenko-trade |
 | it | `it/voltone-pro` | it | /cases/it/voltone-pro |
 | design | `design/mht-clinic-billboard` | design | /cases/design/mht-clinic-billboard |
-| video | `video/yulia-smm-reels` | video | /cases/video/yulia-smm-reels |
+| video | `video/website-message-animation` | video | /cases/video/website-message-animation |
 
-(127s)
+(128s)

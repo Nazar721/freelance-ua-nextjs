@@ -447,7 +447,10 @@ export default function TestimonialsSection() {
   const stripRef = useRef<HTMLUListElement>(null);
   const [stripIdx, setStripIdx] = useState(0);
   const stripRaf = useRef(false);
-  const triggerRef = useRef<HTMLElement | null>(null);
+  // The card that opened the modal. State, not a ref: it is passed as a prop
+  // (`opener`) and must be read during render — a ref read there is invisible
+  // to React and fails the react-hooks/refs rule.
+  const [openerEl, setOpenerEl] = useState<HTMLElement | null>(null);
 
   const reducedMotion = useSyncExternalStore(
     (subscribe) => {
@@ -787,13 +790,13 @@ export default function TestimonialsSection() {
     } else if (el) {
       trigger = (el.querySelector("button") as HTMLElement | null) ?? el;
     }
-    triggerRef.current = trigger;
+    setOpenerEl(trigger);
     setOriginRect(el?.getBoundingClientRect() ?? null);
     setOpenItem(item);
   };
 
   const closeCard = () => {
-    triggerRef.current = null;
+    setOpenerEl(null);
     setOpenItem(null);
   };
 
@@ -967,7 +970,7 @@ export default function TestimonialsSection() {
           name={openItem.author?.trim() || t("testimonials.anonymous")}
           originRect={originRect}
           reduced={reducedMotion}
-          opener={triggerRef.current}
+          opener={openerEl}
           onClose={closeCard}
         >
           <CardContent item={openItem} name={openItem.author?.trim() || t("testimonials.anonymous")} variant="modal" />

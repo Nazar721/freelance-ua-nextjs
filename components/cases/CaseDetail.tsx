@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   AlertTriangle,
   ArrowLeft,
@@ -556,18 +555,36 @@ export default function CaseDetail({
       >
         {review.kind === "screenshot" && (() => {
           const shots = [review.src, ...(review.more ?? [])];
+          const reviewTitle = review.caption ? L(review.caption) : L(record.h1);
+          const openShots = (index: number) => openImages(shots, index, reviewTitle);
+          // Same opt-in width cap as `MediaImage.presentation.maxWidth`: a
+          // portrait phone screenshot would otherwise stretch the review
+          // column to over 1000px tall. Absent keeps the column width.
+          const maxWidthClass =
+            review.maxWidth === "280px"
+              ? "mx-auto max-w-[280px]"
+              : review.maxWidth === "md"
+                ? "mx-auto max-w-md"
+                : "";
           return (
             <div className="p-4">
-              <div className={shots.length > 1 ? "grid grid-cols-1 gap-3 sm:grid-cols-2" : ""}>
+              <div className={`${maxWidthClass} ${shots.length > 1 ? "grid grid-cols-1 gap-3 sm:grid-cols-2" : ""}`}>
                 {shots.map((src, i) => (
-                  <Image
+                  <div
                     key={i}
-                    src={src}
-                    alt={i === 0 ? L(review.alt) : L(record.h1)}
-                    width={review.w ?? 600}
-                    height={review.h ?? 800}
-                    className="h-auto w-full rounded-xl object-contain"
-                  />
+                    data-case-block="review-image"
+                    className="relative cursor-pointer overflow-hidden rounded-xl"
+                    onClick={() => openShots(i)}
+                  >
+                    <GalleryImage
+                      src={src}
+                      alt={i === 0 ? L(review.alt) : L(record.h1)}
+                      width={review.w ?? 600}
+                      height={review.h ?? 800}
+                      openLabel={t("cases.ui.openImage")}
+                      onOpen={() => openShots(i)}
+                    />
+                  </div>
                 ))}
               </div>
               {review.caption && (
@@ -592,7 +609,7 @@ export default function CaseDetail({
                     size={14}
                     className="transition-transform duration-200 group-open/transcript:rotate-90"
                   />
-                  {t("cases.ui.reviewTranscript")}
+                  {review.transcriptLabel ? L(review.transcriptLabel) : t("cases.ui.reviewTranscript")}
                 </summary>
                 <p className="mt-3 text-sm italic leading-relaxed text-foreground">
                   &ldquo;{L(review.text)}&rdquo;

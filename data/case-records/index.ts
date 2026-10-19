@@ -28,6 +28,7 @@ import { mnmDetailing } from "./it/mnm-detailing";
 import { nextcup } from "./it/nextcup";
 import { pivdenSolar } from "./it/pivden-solar";
 import { primeAutoShipping } from "./it/prime-auto-shipping";
+import { rateflow } from "./it/rateflow";
 import { repairCollision } from "./it/repair-collision";
 import { routeCore } from "./it/route-core";
 import { ruslanAviation } from "./it/ruslan-aviation";
@@ -37,6 +38,7 @@ import { serezhaShop } from "./it/serezha-shop";
 import { shkiperDrop } from "./it/shkiper-drop";
 import { stretchingCh } from "./it/stretching-ch";
 import { voltonePro } from "./it/voltone-pro";
+import { brunetkaaHair } from "./it/brunetkaa-hair";
 import { barvyInterior } from "./design/barvy-interior";
 import { photoRetouch } from "./design/photo-retouch";
 import { gelPolish } from "./design/gel-polish";
@@ -59,6 +61,7 @@ import { hopeMediaGroup } from "./design/hope-media-group";
 import { nastyaSmm } from "./design/nastya-smm";
 import { prestigeSchoolBillboard } from "./design/prestige-school-billboard";
 import { motoSchoolWindowBranding } from "./design/moto-school-window-branding";
+import { nailArtistStoryCarousel } from "./design/nail-artist-story-carousel";
 import { aiAvatars } from "./video/ai-avatars";
 import { aiIceCream } from "./video/ai-ice-cream";
 import { aiPromoMisha } from "./video/ai-promo-misha";
@@ -235,6 +238,7 @@ export const caseRecords: CaseRecord[] = [
   ruslanAviation,
   routeCore,
   repairCollision,
+  rateflow,
   primeAutoShipping,
   pivdenSolar,
   nextcup,
@@ -249,7 +253,9 @@ export const caseRecords: CaseRecord[] = [
   evaCode,
   nastyaPortraitRetouch,
   cuprusLife,
-  motoSchoolWindowBranding
+  motoSchoolWindowBranding,
+  nailArtistStoryCarousel,
+  brunetkaaHair
 ];
 
 const byId = new Map<string, CaseRecord>(caseRecords.map((r) => [r.id, r]));

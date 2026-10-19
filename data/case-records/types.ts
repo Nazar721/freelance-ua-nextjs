@@ -94,7 +94,7 @@ export type HeroBlock =
    * items must render as a real `<video>` tile — `next/image` cannot optimize
    * a video and answers such requests with HTTP 400.
    */
-  | { kind: "imageGrid"; items: Array<MediaImage | { src: string; video: true; alt?: CaseText }>; ratio?: string }
+  | { kind: "imageGrid"; items: Array<MediaImage | { src: string; video: true; alt?: CaseText }>; ratio?: string; layout?: "compact" }
   /**
    * A single muted video with a poster. The tile is a real button: clicking
    * it opens the shared fullscreen player (controls, Escape, focus return) —
@@ -358,10 +358,22 @@ export type ReviewCard =
        * never as a second permanent quote duplicating the picture.
        */
       text?: CaseText;
+      /**
+       * Accessible label of the collapsed transcript toggle. Omitted means the
+       * shared "Текст відгуку" / "Review transcript" dictionary key — every
+       * existing screenshot review keeps its current wording untouched.
+       */
+      transcriptLabel?: CaseText;
       author?: CaseText;
       avatarName?: string;
       w?: number;
       h?: number;
+      /**
+       * Cap the rendered width so a portrait phone screenshot does not fill
+       * the whole review column (the shared values from `MediaImage`, same
+       * class names). Absent = render at the column width, as before.
+       */
+      maxWidth?: "280px" | "md";
       /** Additional review screenshots shown beside the first (vtikha). */
       more?: string[];
     }

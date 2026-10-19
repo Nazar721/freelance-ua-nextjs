@@ -31,6 +31,7 @@ export const BILINGUAL_UA_PATHS: readonly string[] = [
   // (bilingual-vs-registry): every record's uaPath must be listed here.
   "/cases/it/eva-code",
   "/cases/it/asandra-soul",
+  "/cases/it/brunetkaa-hair",
   "/cases/it/darkshare",
   "/cases/it/epiland",
   "/cases/it/importera",
@@ -41,6 +42,7 @@ export const BILINGUAL_UA_PATHS: readonly string[] = [
   "/cases/it/nextcup",
   "/cases/it/pivden-solar",
   "/cases/it/prime-auto-shipping",
+  "/cases/it/rateflow",
   "/cases/it/repair-collision",
   "/cases/it/route-core",
   "/cases/it/ruslan-aviation",
@@ -74,6 +76,7 @@ export const BILINGUAL_UA_PATHS: readonly string[] = [
   "/cases/design/prestige-school-billboard",
   "/cases/design/nastya-portrait-retouch",
   "/cases/design/moto-school-window-branding",
+  "/cases/design/nail-artist-story-carousel",
   "/cases/video/ai-avatars",
   "/cases/video/ai-ice-cream",
   "/cases/video/ai-promo-misha",

@@ -38,7 +38,7 @@
 | `video/nikita-sheremet-crypto` | 6→6 ✓ | ✓ | ✓ | 1→0 | ✓ | ✓ |
 | `video/motion-reels` | 2→2 ✓ | ✓ | ✓ | 1→0 | ✓ | ✓ |
 | `video/motion-promo` | 1→1 ✓ | ✓ | ✓ | 1→0 | ✓ | ✓ |
-| `video/maccoudi-youtube` | 7→7 ✓ | ✓ | ✓ | 3→2 | ✓ | ✓ |
+| `video/maccoudi-youtube` | 7→18 ✗ | ✗ | ✓ | 3→3 | ✓ | ✗ |
 | `video/logo-animation` | 1→1 ✓ | ✓ | ✓ | 1→0 | ✓ | ✓ |
 | `video/logan-ai-promo` | 2→2 ✓ | ✓ | ✓ | 1→0 | ✓ | ✓ |
 | `video/liliya-product-business` | 6→6 ✓ | ✓ | ✓ | 2→1 | ✓ | ✓ |
@@ -106,20 +106,25 @@
 | `video/cuprus-life` | 7→7 ✓ | ✓ | ✓ | 1→0 | ✓ | ✓ |
 | `design/moto-school-window-branding` | 3→3 ✓ | ✓ | ✓ | 1→0 | ✓ | ✓ |
 
-**Результат: склад, порядок, кратність, повторне використання, підписи, посилання та OG-image збережено для всіх 100 кейсів.**
+**Результат: 10 порушень** — див. перелік нижче.
 
 Baseline: сторінки `app/cases/{d}/{slug}/` з незмінного коміту `33ef0b5` (не з git-індексу, не з HEAD).
-Baseline знайдено для всіх 100 кейсів; звірених кейсів: 100.
+⚠️ Відсутній baseline для 5: video/website-message-animation (app/cases/video/website-message-animation/page.tsx), video/barvy-interior-reels (app/cases/video/barvy-interior-reels/page.tsx), it/rateflow (app/cases/it/rateflow/page.tsx), design/nail-artist-story-carousel (app/cases/design/nail-artist-story-carousel/page.tsx), it/brunetkaa-hair (app/cases/it/brunetkaa-hair/page.tsx) — ці кейси НЕ звірені.
 
-**Повторне використання файлів** (спільні медіа не змінили власника):
+### Порушення
 
-| Файл | Кейси |
-|---|---|
-| `/media/cases/eva-web.webp` | it/eva-code, video/eva-code-reels |
-| `/media/testimonials/video-2.mp4` | design/nastya-portrait-retouch, design/nastya-smm |
+- ✗ video/website-message-animation: відсутній baseline: у 33ef0b5 немає app/cases/video/website-message-animation/page.tsx — звірку для цього кейсу виконати неможливо
+- ✗ video/maccoudi-youtube: склад медіа змінено: −0 +11
+- ✗ video/maccoudi-youtube: порядок не підтверджено для: links@1, gallery@2, review
+- ✗ video/maccoudi-youtube: /cases/video/maccoudi-youtube: порядок — links: без медіа елементи 0, 1
+- ✗ video/maccoudi-youtube: /en/cases/video/maccoudi-youtube: порядок — links: без медіа елементи 0, 1
+- ✗ video/barvy-interior-reels: відсутній baseline: у 33ef0b5 немає app/cases/video/barvy-interior-reels/page.tsx — звірку для цього кейсу виконати неможливо
+- ✗ it/rateflow: відсутній baseline: у 33ef0b5 немає app/cases/it/rateflow/page.tsx — звірку для цього кейсу виконати неможливо
+- ✗ design/nail-artist-story-carousel: відсутній baseline: у 33ef0b5 немає app/cases/design/nail-artist-story-carousel/page.tsx — звірку для цього кейсу виконати неможливо
+- ✗ it/brunetkaa-hair: відсутній baseline: у 33ef0b5 немає app/cases/it/brunetkaa-hair/page.tsx — звірку для цього кейсу виконати неможливо
+- ✗ повторне використання: змінився набір кейсів: /media/cases/website-message-animation/hero.mp4: [] → [video/website-message-animation]; /media/cases/website-message-animation/hero-poster.webp: [] → [video/website-message-animation]; /media/cases/website-message-animation/review.webp: [] → [video/website-message-animation]; /media/cases/maccoudi-freelance-youtube/money-title.webp: [] → [video/maccoudi-youtube]; /media/cases/maccoudi-freelance-youtube/mcdonalds-scene.webp: [] → [video/maccoudi-youtube]; /media/cases/maccoudi-freelance-youtube/earnings-graphic.webp: [] → [video/maccoudi-youtube]; /media/cases/maccoudi-freelance-youtube/freelance-income.webp: [] → [video/maccoudi-youtube]; /media/cases/maccoudi-freelance-youtube/graduation-graphic.webp: [] → [video/maccoudi-youtube]; /media/cases/maccoudi-freelance-youtube/platforms-graphic.webp: [] → [video/maccoudi-youtube]; /media/cases/maccoudi-freelance-youtube/phone-scene.webp: [] → [video/maccoudi-youtube]; /media/cases/maccoudi-freelance-youtube/creator-overlay.webp: [] → [video/maccoudi-youtube]; /media/cases/maccoudi-freelance-youtube/wedding-scene.webp: [] → [video/maccoudi-youtube]; /media/cases/maccoudi-freelance-youtube/trading-visual.webp: [] → [video/maccoudi-youtube]; /media/cases/maccoudi-freelance-youtube/client-review.webp: [] → [video/maccoudi-youtube]; /media/cases/barvy-interior-reels/reel-01.mp4: [] → [video/barvy-interior-reels]; /media/cases/barvy-interior-reels/reel-01-poster.webp: [] → [video/barvy-interior-reels]; /media/cases/barvy-interior-reels/reel-02.mp4: [] → [video/barvy-interior-reels]; /media/cases/barvy-interior-reels/reel-02-poster.webp: [] → [video/barvy-interior-reels]; /media/cases/barvy-interior-reels/instagram-profile.webp: [] → [video/barvy-interior-reels]; /media/cases/barvy-interior-reels/client-review-crop.webp: [] → [video/barvy-interior-reels]; /media/cases/rateflow/rateflow-mockup.webp: [] → [it/rateflow]; /media/cases/rateflow/dashboard.webp: [] → [it/rateflow]; /media/cases/rateflow/venues.webp: [] → [it/rateflow]; /media/cases/rateflow/nfc-qr-cards.webp: [] → [it/rateflow]; /media/cases/rateflow/sync-log.webp: [] → [it/rateflow]; /media/cases/nail-artist-story-carousel/slide-01.webp: [] → [design/nail-artist-story-carousel]; /media/cases/nail-artist-story-carousel/slide-02.webp: [] → [design/nail-artist-story-carousel]; /media/cases/nail-artist-story-carousel/slide-03.webp: [] → [design/nail-artist-story-carousel]; /media/cases/nail-artist-story-carousel/slide-04.webp: [] → [design/nail-artist-story-carousel]; /media/cases/nail-artist-story-carousel/slide-05.webp: [] → [design/nail-artist-story-carousel]; /media/cases/nail-artist-story-carousel/slide-06.webp: [] → [design/nail-artist-story-carousel]; /media/cases/nail-artist-story-carousel/slide-07.webp: [] → [design/nail-artist-story-carousel]; /media/cases/nail-artist-story-carousel/slide-08.webp: [] → [design/nail-artist-story-carousel]; /media/cases/nail-artist-story-carousel/slide-09.webp: [] → [design/nail-artist-story-carousel]; /media/cases/nail-artist-story-carousel/slide-10.webp: [] → [design/nail-artist-story-carousel]; /media/cases/nail-artist-story-carousel/slide-11.webp: [] → [design/nail-artist-story-carousel]; /media/cases/brunetkaa-hair/brunetkaa-hair-mockup-hero.webp: [] → [it/brunetkaa-hair]; /media/cases/brunetkaa-hair/hero-screen.webp: [] → [it/brunetkaa-hair]; /media/cases/brunetkaa-hair/about.webp: [] → [it/brunetkaa-hair]; /media/cases/brunetkaa-hair/services-prices.webp: [] → [it/brunetkaa-hair]; /media/cases/brunetkaa-hair/results.webp: [] → [it/brunetkaa-hair]; /media/cases/brunetkaa-hair/reviews.webp: [] → [it/brunetkaa-hair]; /media/cases/brunetkaa-hair/faq.webp: [] → [it/brunetkaa-hair]; /media/cases/brunetkaa-hair/booking-contacts.webp: [] → [it/brunetkaa-hair]; /media/cases/brunetkaa-hair/footer.webp: [] → [it/brunetkaa-hair]; /media/cases/brunetkaa-hair/client-review.webp: [] → [it/brunetkaa-hair]
 
-✓ набори кейсів для кожного файлу збігаються до/після.
-
+video/website-message-animation: відсутній baseline (app/cases/video/website-message-animation/page.tsx) — не звірено
 ## `video/yulia-smm-reels`
 
 | Тип | До | Після | Різниця |
@@ -1683,23 +1688,22 @@ Baseline знайдено для всіх 100 кейсів; звірених к�
 
 | Тип | До | Після | Різниця |
 |---|---|---|---|
-| Медіа (сторінка) | 7 | 7 | без змін |
-| Зовнішні лінки | 3 | 2 | див. нижче |
+| Медіа (сторінка) | 7 | 18 | −0 / +11 |
+| Зовнішні лінки | 3 | 3 | див. нижче |
 | Ключі i18n на сторінці | 26 | 23 | див. пояснення |
 | OG-image | https://freelance-ua.agency/media/cases/maccoudi-youtube/poster-1.jpg | https://freelance-ua.agency/media/cases/maccoudi-youtube/poster-1.jpg | збережено |
 
 **Що перевірено:**
 - ✓ усі /media/-значення запису потрапляють у `collectRecordMedia` (включно з poster відеовідгуку)
-- ✓ склад медіа ідентичний (7 файлів)
 - ✓ нерендерні джерельні конструкції без інших вживань (4): inline#1 (video-1.mp4), inline#4 (video-2.mp4), inline#5 (video-2.mp4), inline#6 (poster-2.jpg) — їхні файли є в записі
 - ✓ ключі запису з текстом в обох мовах: 23
-- ✓ літерали, заповнені в обох мовах: 10
+- ✓ літерали, заповнені в обох мовах: 29
 - ✓ підписи оригінальної сторінки збережені (або пояснені): 0
 - ✓ H1 переписано в записі (літерал) — картка каталогу використовує ключ videoCases.maccoudiYoutube.title
 - ✓ усі 26 ключів вихідної сторінки мають дім: запис, спільний рендерер або погоджена правка
 - ✓ зовнішні посилання збережено разом із підписами: 3
+- (+ 1 посилань з'явилося: https://www.youtube.com/watch?v=Y0VL6XmQ-1M)
 - ✓ OG-image збережено: https://freelance-ua.agency/media/cases/maccoudi-youtube/poster-1.jpg
-- ✓ обидві мови: усі файли в HTML, порядок запису збережено, кратність рендеру збігається
 
 **Порядок блоків (запис ← джерело):**
 
@@ -1707,15 +1711,18 @@ Baseline знайдено для всіх 100 кейсів; звірених к�
 |---|---|---|
 | `hero` | точний | inline#2 (video-1.mp4) + inline#3 (poster-1.jpg) |
 | `videoGrid@0` | НЕ ЗНАЙДЕНО | — |
-| `links@4` | точний | inline#7 (youtube-channel.png) + inline#8 (tiktok-profile.png) |
+| `links@6` | точний | inline#7 (youtube-channel.png) + inline#8 (tiktok-profile.png) |
 | `review` | точний | inline#9 (review-chat.png) |
+| `links@1` | НЕ ЗНАЙДЕНО | — |
+| `gallery@2` | НЕ ЗНАЙДЕНО | — |
+| `review` | НЕ ЗНАЙДЕНО | — |
 
 **Рендер HTML (обидві мови):**
 
 | Сторінка | Медіа в HTML | Порядок | Кратність |
 |---|---|---|---|
-| `/cases/video/maccoudi-youtube` | 7/7 | ✓ | ✓ |
-| `/en/cases/video/maccoudi-youtube` | 7/7 | ✓ | ✓ |
+| `/cases/video/maccoudi-youtube` | 18/18 | ✗ | ✓ |
+| `/en/cases/video/maccoudi-youtube` | 18/18 | ✗ | ✓ |
 
 **Лінки:**
 - https://t.me/freelance_ua — CTA переїхав на siteConfig.telegram.consultationUrl (п.9 правил редактури: Telegram з siteConfig, не стороння адреса)
@@ -2247,6 +2254,7 @@ Baseline знайдено для всіх 100 кейсів; звірених к�
 | `itCases.nextStepCta` | так | ні | спільний підпис секції — викликається з components/cases/CaseDetail.tsx тим самим значенням |
 | `videoCases.barvyInterior.shortDesc` | ні | так | новий або перенесений у запис ключ |
 
+video/barvy-interior-reels: відсутній baseline (app/cases/video/barvy-interior-reels/page.tsx) — не звірено
 ## `video/automation-1click`
 
 | Тип | До | Після | Різниця |
@@ -3901,7 +3909,7 @@ Baseline знайдено для всіх 100 кейсів; звірених к�
 | Блок запису | Збіг | Джерельні конструкції |
 |---|---|---|
 | `hero` | точний | inline#1 (shkiper-drop-mocap.webp) |
-| `featureList@1` | точний | const components |
+| `featureList@1` | підпослідовність | const components |
 
 **Рендер HTML (обидві мови):**
 
@@ -4222,6 +4230,7 @@ Baseline знайдено для всіх 100 кейсів; звірених к�
 | `itCases.nextStepCta` | так | ні | спільний підпис секції — викликається з components/cases/CaseDetail.tsx тим самим значенням |
 | `itCases.repairCollision.shortDesc` | ні | так | новий або перенесений у запис ключ |
 
+it/rateflow: відсутній baseline (app/cases/it/rateflow/page.tsx) — не звірено
 ## `it/prime-auto-shipping`
 
 | Тип | До | Після | Різниця |
@@ -4973,3 +4982,6 @@ Baseline знайдено для всіх 100 кейсів; звірених к�
 | `designCases.motoSchoolWindowBranding.detail.benefits` | ні | так | новий або перенесений у запис ключ |
 | `designCases.motoSchoolWindowBranding.detail.rider` | ні | так | новий або перенесений у запис ключ |
 | `designCases.motoSchoolWindowBranding.detail.cta` | ні | так | новий або перенесений у запис ключ |
+
+design/nail-artist-story-carousel: відсутній baseline (app/cases/design/nail-artist-story-carousel/page.tsx) — не звірено
+it/brunetkaa-hair: відсутній baseline (app/cases/it/brunetkaa-hair/page.tsx) — не звірено

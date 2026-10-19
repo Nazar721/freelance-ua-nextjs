@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T22:41:01.607Z",
+  "generatedAt": "2026-10-19T15:05:54.433Z",
   "base": "https://freelance-ua.agency",
   "entries": [
     {
@@ -253,6 +253,22 @@
       }
     },
     {
+      "path": "/cases/it/brunetkaa-hair",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/brunetkaa-hair",
+      "title": "BRUNETKAA HAIR — сайт для майстрині з догляду за волоссям у Лондоні | Freelance UA",
+      "description": "Сайт знайомить із майстринею Yelyzaveta, показує послуги та ціни, галерею робіт і відгуки, відповідає на типові запитання та веде до звернення щодо запису через WhatsApp. Темна палітра з золотими акцентами, адаптивне оформлення desktop і mobile, SEO-оптимізація та підготовка сайту для пошуку Google.",
+      "h1": "BRUNETKAA HAIR — сайт для майстрині з догляду за волоссям у Лондоні",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/brunetkaa-hair",
+        "en": "/en/cases/it/brunetkaa-hair"
+      }
+    },
+    {
       "path": "/cases/it/darkshare",
       "kind": "page",
       "phase": "current",
@@ -426,6 +442,22 @@
       "hreflang": {
         "uk": "/cases/it/prime-auto-shipping",
         "en": "/en/cases/it/prime-auto-shipping"
+      }
+    },
+    {
+      "path": "/cases/it/rateflow",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/rateflow",
+      "title": "RateFlow — NFC/QR-сервіс Google-відгуків | Freelance UA",
+      "description": "Розробка RateFlow: адмін-панель для закладів, керування NFC/QR-картками, статистика переходів і Google-відгуків та генерація QR-кодів.",
+      "h1": "RateFlow — від NFC-картки до відгуку в Google",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/rateflow",
+        "en": "/en/cases/it/rateflow"
       }
     },
     {
@@ -794,6 +826,22 @@
       "hreflang": {
         "uk": "/cases/design/mydutyfree",
         "en": "/en/cases/design/mydutyfree"
+      }
+    },
+    {
+      "path": "/cases/design/nail-artist-story-carousel",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/nail-artist-story-carousel",
+      "title": "Дизайн Instagram-каруселі для майстрині манікюру | Freelance UA",
+      "description": "Дизайн Instagram-каруселі про шлях майстрині манікюру: 11 слайдів із фотографіями, типографікою та бордовими акцентами. Кейс Freelance UA.",
+      "h1": "Історія майстрині манікюру — дизайн Instagram-каруселі",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/nail-artist-story-carousel",
+        "en": "/en/cases/design/nail-artist-story-carousel"
       }
     },
     {
@@ -1885,6 +1933,22 @@
       }
     },
     {
+      "path": "/en/cases/it/brunetkaa-hair",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/brunetkaa-hair",
+      "inRegistry": true,
+      "title": "BRUNETKAA HAIR — website for a London hair specialist | Freelance UA",
+      "description": "The website introduces the specialist Yelyzaveta, presents services and prices, a gallery of work and reviews, answers common questions and leads to a booking enquiry through WhatsApp. A dark palette with gold accents, responsive desktop and mobile layouts, SEO optimisation and preparation of the site for Google search.",
+      "h1": "BRUNETKAA HAIR — website for a London hair specialist",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/brunetkaa-hair",
+        "en": "/en/cases/it/brunetkaa-hair"
+      }
+    },
+    {
       "path": "/en/cases/it/darkshare",
       "kind": "page",
       "phase": "current",
@@ -2058,6 +2122,22 @@
       "hreflang": {
         "uk": "/cases/it/prime-auto-shipping",
         "en": "/en/cases/it/prime-auto-shipping"
+      }
+    },
+    {
+      "path": "/en/cases/it/rateflow",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/rateflow",
+      "inRegistry": true,
+      "title": "RateFlow — NFC/QR Google Review Platform | Freelance UA",
+      "description": "RateFlow case study: an admin dashboard for venues, NFC/QR card management, visit and Google review analytics, and QR code generation.",
+      "h1": "RateFlow — from an NFC card to a Google review",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/rateflow",
+        "en": "/en/cases/it/rateflow"
       }
     },
     {
@@ -2426,6 +2506,22 @@
       "hreflang": {
         "uk": "/cases/design/mydutyfree",
         "en": "/en/cases/design/mydutyfree"
+      }
+    },
+    {
+      "path": "/en/cases/design/nail-artist-story-carousel",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/nail-artist-story-carousel",
+      "inRegistry": true,
+      "title": "Instagram Carousel Design for a Nail Artist | Freelance UA",
+      "description": "Instagram carousel design telling a nail artist’s story through 11 slides, photography, typography and burgundy accents. A Freelance UA case study.",
+      "h1": "A nail artist’s story — Instagram carousel design",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/nail-artist-story-carousel",
+        "en": "/en/cases/design/nail-artist-story-carousel"
       }
     },
     {

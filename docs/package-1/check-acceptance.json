@@ -1,15 +1,15 @@
 {
   "mode": "acceptance",
-  "phase": "all",
-  "base": "http://localhost:3011",
-  "checkedAt": "2026-10-14T09:51:35.993Z",
-  "total": 218,
+  "phase": "current",
+  "base": "http://localhost:3111",
+  "checkedAt": "2026-10-19T13:50:44.480Z",
+  "total": 226,
   "fatal": [],
   "summary": {
-    "pages200": 212,
+    "pages200": 220,
     "redirectsOk": 6,
     "failures": 0,
-    "reciprocityChecked": 424,
+    "reciprocityChecked": 440,
     "reciprocitySkippedNotReady": 0,
     "reciprocityFailures": 0,
     "sitemapOk": true
@@ -19,7 +19,7 @@
   "sitemap": {
     "status": 200,
     "contentType": "application/xml",
-    "urlCount": 212,
+    "urlCount": 220,
     "hasLastmod": false,
     "foreignOrInvalid": [],
     "unknownLocs": [],
@@ -365,6 +365,20 @@
       "viaLang": "en"
     },
     {
+      "from": "/cases/it/rateflow",
+      "lang": "uk",
+      "to": "/cases/it/rateflow",
+      "ok": true,
+      "viaLang": "uk"
+    },
+    {
+      "from": "/cases/it/rateflow",
+      "lang": "en",
+      "to": "/en/cases/it/rateflow",
+      "ok": true,
+      "viaLang": "en"
+    },
+    {
       "from": "/cases/it/repair-collision",
       "lang": "uk",
       "to": "/cases/it/repair-collision",
@@ -687,6 +701,20 @@
       "viaLang": "en"
     },
     {
+      "from": "/cases/design/nail-artist-story-carousel",
+      "lang": "uk",
+      "to": "/cases/design/nail-artist-story-carousel",
+      "ok": true,
+      "viaLang": "uk"
+    },
+    {
+      "from": "/cases/design/nail-artist-story-carousel",
+      "lang": "en",
+      "to": "/en/cases/design/nail-artist-story-carousel",
+      "ok": true,
+      "viaLang": "en"
+    },
+    {
       "from": "/cases/design/nastya-portrait-retouch",
       "lang": "uk",
       "to": "/cases/design/nastya-portrait-retouch",
@@ -963,6 +991,20 @@
       "from": "/cases/video/barvy-interior-ai-reels",
       "lang": "en",
       "to": "/en/cases/video/barvy-interior-ai-reels",
+      "ok": true,
+      "viaLang": "en"
+    },
+    {
+      "from": "/cases/video/barvy-interior-reels",
+      "lang": "uk",
+      "to": "/cases/video/barvy-interior-reels",
+      "ok": true,
+      "viaLang": "uk"
+    },
+    {
+      "from": "/cases/video/barvy-interior-reels",
+      "lang": "en",
+      "to": "/en/cases/video/barvy-interior-reels",
       "ok": true,
       "viaLang": "en"
     },
@@ -1551,6 +1593,20 @@
       "from": "/cases/video/watch-hype-motion",
       "lang": "en",
       "to": "/en/cases/video/watch-hype-motion",
+      "ok": true,
+      "viaLang": "en"
+    },
+    {
+      "from": "/cases/video/website-message-animation",
+      "lang": "uk",
+      "to": "/cases/video/website-message-animation",
+      "ok": true,
+      "viaLang": "uk"
+    },
+    {
+      "from": "/cases/video/website-message-animation",
+      "lang": "en",
+      "to": "/en/cases/video/website-message-animation",
       "ok": true,
       "viaLang": "en"
     },
@@ -1765,6 +1821,20 @@
       "viaLang": "en"
     },
     {
+      "from": "/en/cases/it/rateflow",
+      "lang": "uk",
+      "to": "/cases/it/rateflow",
+      "ok": true,
+      "viaLang": "uk"
+    },
+    {
+      "from": "/en/cases/it/rateflow",
+      "lang": "en",
+      "to": "/en/cases/it/rateflow",
+      "ok": true,
+      "viaLang": "en"
+    },
+    {
       "from": "/en/cases/it/repair-collision",
       "lang": "uk",
       "to": "/cases/it/repair-collision",
@@ -2087,6 +2157,20 @@
       "viaLang": "en"
     },
     {
+      "from": "/en/cases/design/nail-artist-story-carousel",
+      "lang": "uk",
+      "to": "/cases/design/nail-artist-story-carousel",
+      "ok": true,
+      "viaLang": "uk"
+    },
+    {
+      "from": "/en/cases/design/nail-artist-story-carousel",
+      "lang": "en",
+      "to": "/en/cases/design/nail-artist-story-carousel",
+      "ok": true,
+      "viaLang": "en"
+    },
+    {
       "from": "/en/cases/design/nastya-portrait-retouch",
       "lang": "uk",
       "to": "/cases/design/nastya-portrait-retouch",
@@ -2363,6 +2447,20 @@
       "from": "/en/cases/video/barvy-interior-ai-reels",
       "lang": "en",
       "to": "/en/cases/video/barvy-interior-ai-reels",
+      "ok": true,
+      "viaLang": "en"
+    },
+    {
+      "from": "/en/cases/video/barvy-interior-reels",
+      "lang": "uk",
+      "to": "/cases/video/barvy-interior-reels",
+      "ok": true,
+      "viaLang": "uk"
+    },
+    {
+      "from": "/en/cases/video/barvy-interior-reels",
+      "lang": "en",
+      "to": "/en/cases/video/barvy-interior-reels",
       "ok": true,
       "viaLang": "en"
     },
@@ -2951,6 +3049,20 @@
       "from": "/en/cases/video/watch-hype-motion",
       "lang": "en",
       "to": "/en/cases/video/watch-hype-motion",
+      "ok": true,
+      "viaLang": "en"
+    },
+    {
+      "from": "/en/cases/video/website-message-animation",
+      "lang": "uk",
+      "to": "/cases/video/website-message-animation",
+      "ok": true,
+      "viaLang": "uk"
+    },
+    {
+      "from": "/en/cases/video/website-message-animation",
+      "lang": "en",
+      "to": "/en/cases/video/website-message-animation",
       "ok": true,
       "viaLang": "en"
     },
@@ -8459,6 +8571,218 @@
       }
     },
     {
+      "path": "/cases/it/rateflow",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/rateflow",
+      "title": "RateFlow — NFC/QR-сервіс Google-відгуків | Freelance UA",
+      "description": "Розробка RateFlow: адмін-панель для закладів, керування NFC/QR-картками, статистика переходів і Google-відгуків та генерація QR-кодів.",
+      "h1": "RateFlow — від NFC-картки до відгуку в Google",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/rateflow",
+        "en": "/en/cases/it/rateflow"
+      },
+      "actual": {
+        "status": 200,
+        "location": null,
+        "xRobotsTag": null
+      },
+      "checks": [
+        {
+          "name": "status",
+          "ok": true,
+          "expected": 200,
+          "actual": 200
+        },
+        {
+          "name": "canonical-count",
+          "ok": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "canonical",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/it/rateflow",
+          "actual": "https://freelance-ua.agency/cases/it/rateflow"
+        },
+        {
+          "name": "lang",
+          "ok": true,
+          "expected": "uk",
+          "actual": "uk"
+        },
+        {
+          "name": "title-present",
+          "ok": true,
+          "actual": "RateFlow — NFC/QR-сервіс Google-відгуків | Freelance UA"
+        },
+        {
+          "name": "title-match",
+          "ok": true,
+          "expected": "RateFlow — NFC/QR-сервіс Google-відгуків | Freelance UA",
+          "actual": "RateFlow — NFC/QR-сервіс Google-відгуків | Freelance UA"
+        },
+        {
+          "name": "description-present",
+          "ok": true,
+          "actual": "Розробка RateFlow: адмін-панель для закладів, керування NFC/…"
+        },
+        {
+          "name": "description-match",
+          "ok": true,
+          "expected": "Розробка RateFlow: адмін-панель для закладів, керування NFC/QR-картками, статистика переходів і Google-відгуків та генерація QR-кодів.",
+          "actual": "Розробка RateFlow: адмін-панель для закладів, керування NFC/QR-картками, статистика переходів і Google-відгуків та генерація QR-кодів."
+        },
+        {
+          "name": "h1-single",
+          "ok": true,
+          "expected": 1,
+          "actual": 1,
+          "text": "RateFlow — від NFC-картки до відгуку в Google"
+        },
+        {
+          "name": "h1-match",
+          "ok": true,
+          "expected": "RateFlow — від NFC-картки до відгуку в Google",
+          "actual": "RateFlow — від NFC-картки до відгуку в Google"
+        },
+        {
+          "name": "robots-meta",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "x-robots-tag",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "no-raw-i18n-keys",
+          "ok": true,
+          "actual": []
+        },
+        {
+          "name": "og-url",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/it/rateflow",
+          "actual": "https://freelance-ua.agency/cases/it/rateflow"
+        },
+        {
+          "name": "og-title-present",
+          "ok": true,
+          "actual": "RateFlow — NFC/QR-сервіс Google-відгуків | Freelance UA"
+        },
+        {
+          "name": "og-title-match",
+          "ok": true,
+          "expected": "RateFlow — NFC/QR-сервіс Google-відгуків | Freelance UA",
+          "actual": "RateFlow — NFC/QR-сервіс Google-відгуків | Freelance UA"
+        },
+        {
+          "name": "og-description-present",
+          "ok": true,
+          "actual": "Розробка RateFlow: адмін-панель для закладів, керування NFC/…"
+        },
+        {
+          "name": "og-description-match",
+          "ok": true,
+          "expected": "Розробка RateFlow: адмін-панель для закладів, керування NFC/QR-картками, статистика переходів і Google-відгуків та генерація QR-кодів.",
+          "actual": "Розробка RateFlow: адмін-панель для закладів, керування NFC/QR-картками, статистика переходів і Google-відгуків та генерація QR-кодів."
+        },
+        {
+          "name": "og-locale",
+          "ok": true,
+          "expected": "uk_UA",
+          "actual": "uk_UA"
+        },
+        {
+          "name": "og-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/rateflow/rateflow-mockup.webp"
+        },
+        {
+          "name": "twitter-card",
+          "ok": true,
+          "expected": "summary_large_image",
+          "actual": "summary_large_image"
+        },
+        {
+          "name": "twitter-title-present",
+          "ok": true,
+          "actual": "RateFlow — NFC/QR-сервіс Google-відгуків | Freelance UA"
+        },
+        {
+          "name": "twitter-title-match",
+          "ok": true,
+          "expected": "RateFlow — NFC/QR-сервіс Google-відгуків | Freelance UA",
+          "actual": "RateFlow — NFC/QR-сервіс Google-відгуків | Freelance UA"
+        },
+        {
+          "name": "twitter-description-present",
+          "ok": true,
+          "actual": "Розробка RateFlow: адмін-панель для закладів, керування NFC/…"
+        },
+        {
+          "name": "twitter-description-match",
+          "ok": true,
+          "expected": "Розробка RateFlow: адмін-панель для закладів, керування NFC/QR-картками, статистика переходів і Google-відгуків та генерація QR-кодів.",
+          "actual": "Розробка RateFlow: адмін-панель для закладів, керування NFC/QR-картками, статистика переходів і Google-відгуків та генерація QR-кодів."
+        },
+        {
+          "name": "twitter-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/rateflow/rateflow-mockup.webp"
+        },
+        {
+          "name": "og-image-props",
+          "ok": true,
+          "actual": "omitted",
+          "note": "width/height/type are optional and unknown here"
+        },
+        {
+          "name": "hreflang-uk",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/it/rateflow",
+          "actual": "https://freelance-ua.agency/cases/it/rateflow"
+        },
+        {
+          "name": "hreflang-en",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/it/rateflow",
+          "actual": "https://freelance-ua.agency/en/cases/it/rateflow"
+        }
+      ],
+      "ogImage": {
+        "url": "https://freelance-ua.agency/media/cases/rateflow/rateflow-mockup.webp",
+        "width": null,
+        "height": null,
+        "type": null
+      },
+      "ogImageActual": {
+        "width": 1088,
+        "height": 642,
+        "mime": "image/webp"
+      },
+      "hreflangActual": [
+        {
+          "lang": "uk",
+          "href": "https://freelance-ua.agency/cases/it/rateflow"
+        },
+        {
+          "lang": "en",
+          "href": "https://freelance-ua.agency/en/cases/it/rateflow"
+        }
+      ],
+      "counterpartStatus": {
+        "uk": 200,
+        "en": 200
+      }
+    },
+    {
       "path": "/cases/it/repair-collision",
       "kind": "page",
       "phase": "current",
@@ -13335,6 +13659,218 @@
       }
     },
     {
+      "path": "/cases/design/nail-artist-story-carousel",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/design/nail-artist-story-carousel",
+      "title": "Дизайн Instagram-каруселі для майстрині манікюру | Freelance UA",
+      "description": "Дизайн Instagram-каруселі про шлях майстрині манікюру: 11 слайдів із фотографіями, типографікою та бордовими акцентами. Кейс Freelance UA.",
+      "h1": "Історія майстрині манікюру — дизайн Instagram-каруселі",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/nail-artist-story-carousel",
+        "en": "/en/cases/design/nail-artist-story-carousel"
+      },
+      "actual": {
+        "status": 200,
+        "location": null,
+        "xRobotsTag": null
+      },
+      "checks": [
+        {
+          "name": "status",
+          "ok": true,
+          "expected": 200,
+          "actual": 200
+        },
+        {
+          "name": "canonical-count",
+          "ok": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "canonical",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/design/nail-artist-story-carousel",
+          "actual": "https://freelance-ua.agency/cases/design/nail-artist-story-carousel"
+        },
+        {
+          "name": "lang",
+          "ok": true,
+          "expected": "uk",
+          "actual": "uk"
+        },
+        {
+          "name": "title-present",
+          "ok": true,
+          "actual": "Дизайн Instagram-каруселі для майстрині манікюру | Freelance UA"
+        },
+        {
+          "name": "title-match",
+          "ok": true,
+          "expected": "Дизайн Instagram-каруселі для майстрині манікюру | Freelance UA",
+          "actual": "Дизайн Instagram-каруселі для майстрині манікюру | Freelance UA"
+        },
+        {
+          "name": "description-present",
+          "ok": true,
+          "actual": "Дизайн Instagram-каруселі про шлях майстрині манікюру: 11 сл…"
+        },
+        {
+          "name": "description-match",
+          "ok": true,
+          "expected": "Дизайн Instagram-каруселі про шлях майстрині манікюру: 11 слайдів із фотографіями, типографікою та бордовими акцентами. Кейс Freelance UA.",
+          "actual": "Дизайн Instagram-каруселі про шлях майстрині манікюру: 11 слайдів із фотографіями, типографікою та бордовими акцентами. Кейс Freelance UA."
+        },
+        {
+          "name": "h1-single",
+          "ok": true,
+          "expected": 1,
+          "actual": 1,
+          "text": "Історія майстрині манікюру — дизайн Instagram-каруселі"
+        },
+        {
+          "name": "h1-match",
+          "ok": true,
+          "expected": "Історія майстрині манікюру — дизайн Instagram-каруселі",
+          "actual": "Історія майстрині манікюру — дизайн Instagram-каруселі"
+        },
+        {
+          "name": "robots-meta",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "x-robots-tag",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "no-raw-i18n-keys",
+          "ok": true,
+          "actual": []
+        },
+        {
+          "name": "og-url",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/design/nail-artist-story-carousel",
+          "actual": "https://freelance-ua.agency/cases/design/nail-artist-story-carousel"
+        },
+        {
+          "name": "og-title-present",
+          "ok": true,
+          "actual": "Дизайн Instagram-каруселі для майстрині манікюру | Freelance UA"
+        },
+        {
+          "name": "og-title-match",
+          "ok": true,
+          "expected": "Дизайн Instagram-каруселі для майстрині манікюру | Freelance UA",
+          "actual": "Дизайн Instagram-каруселі для майстрині манікюру | Freelance UA"
+        },
+        {
+          "name": "og-description-present",
+          "ok": true,
+          "actual": "Дизайн Instagram-каруселі про шлях майстрині манікюру: 11 сл…"
+        },
+        {
+          "name": "og-description-match",
+          "ok": true,
+          "expected": "Дизайн Instagram-каруселі про шлях майстрині манікюру: 11 слайдів із фотографіями, типографікою та бордовими акцентами. Кейс Freelance UA.",
+          "actual": "Дизайн Instagram-каруселі про шлях майстрині манікюру: 11 слайдів із фотографіями, типографікою та бордовими акцентами. Кейс Freelance UA."
+        },
+        {
+          "name": "og-locale",
+          "ok": true,
+          "expected": "uk_UA",
+          "actual": "uk_UA"
+        },
+        {
+          "name": "og-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/nail-artist-story-carousel/nail-artist-story-carousel-preview.webp"
+        },
+        {
+          "name": "twitter-card",
+          "ok": true,
+          "expected": "summary_large_image",
+          "actual": "summary_large_image"
+        },
+        {
+          "name": "twitter-title-present",
+          "ok": true,
+          "actual": "Дизайн Instagram-каруселі для майстрині манікюру | Freelance UA"
+        },
+        {
+          "name": "twitter-title-match",
+          "ok": true,
+          "expected": "Дизайн Instagram-каруселі для майстрині манікюру | Freelance UA",
+          "actual": "Дизайн Instagram-каруселі для майстрині манікюру | Freelance UA"
+        },
+        {
+          "name": "twitter-description-present",
+          "ok": true,
+          "actual": "Дизайн Instagram-каруселі про шлях майстрині манікюру: 11 сл…"
+        },
+        {
+          "name": "twitter-description-match",
+          "ok": true,
+          "expected": "Дизайн Instagram-каруселі про шлях майстрині манікюру: 11 слайдів із фотографіями, типографікою та бордовими акцентами. Кейс Freelance UA.",
+          "actual": "Дизайн Instagram-каруселі про шлях майстрині манікюру: 11 слайдів із фотографіями, типографікою та бордовими акцентами. Кейс Freelance UA."
+        },
+        {
+          "name": "twitter-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/nail-artist-story-carousel/nail-artist-story-carousel-preview.webp"
+        },
+        {
+          "name": "og-image-props",
+          "ok": true,
+          "actual": "omitted",
+          "note": "width/height/type are optional and unknown here"
+        },
+        {
+          "name": "hreflang-uk",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/design/nail-artist-story-carousel",
+          "actual": "https://freelance-ua.agency/cases/design/nail-artist-story-carousel"
+        },
+        {
+          "name": "hreflang-en",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/design/nail-artist-story-carousel",
+          "actual": "https://freelance-ua.agency/en/cases/design/nail-artist-story-carousel"
+        }
+      ],
+      "ogImage": {
+        "url": "https://freelance-ua.agency/media/cases/nail-artist-story-carousel/nail-artist-story-carousel-preview.webp",
+        "width": null,
+        "height": null,
+        "type": null
+      },
+      "ogImageActual": {
+        "width": 1080,
+        "height": 1350,
+        "mime": "image/webp"
+      },
+      "hreflangActual": [
+        {
+          "lang": "uk",
+          "href": "https://freelance-ua.agency/cases/design/nail-artist-story-carousel"
+        },
+        {
+          "lang": "en",
+          "href": "https://freelance-ua.agency/en/cases/design/nail-artist-story-carousel"
+        }
+      ],
+      "counterpartStatus": {
+        "uk": 200,
+        "en": 200
+      }
+    },
+    {
       "path": "/cases/design/nastya-portrait-retouch",
       "kind": "page",
       "phase": "current",
@@ -17599,6 +18135,230 @@
       }
     },
     {
+      "path": "/cases/video/barvy-interior-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/barvy-interior-reels",
+      "title": "BARVY interior — два Reels для студії ремонту | Freelance UA",
+      "description": "Два вертикальні Instagram Reels для BARVY interior — студії дизайну інтер’єру та ремонту під ключ у Києві.",
+      "h1": "BARVY interior — два Reels для студії ремонту",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/barvy-interior-reels",
+        "en": "/en/cases/video/barvy-interior-reels"
+      },
+      "actual": {
+        "status": 200,
+        "location": null,
+        "xRobotsTag": null
+      },
+      "checks": [
+        {
+          "name": "status",
+          "ok": true,
+          "expected": 200,
+          "actual": 200
+        },
+        {
+          "name": "canonical-count",
+          "ok": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "canonical",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/video/barvy-interior-reels",
+          "actual": "https://freelance-ua.agency/cases/video/barvy-interior-reels"
+        },
+        {
+          "name": "lang",
+          "ok": true,
+          "expected": "uk",
+          "actual": "uk"
+        },
+        {
+          "name": "title-present",
+          "ok": true,
+          "actual": "BARVY interior — два Reels для студії ремонту | Freelance UA"
+        },
+        {
+          "name": "title-match",
+          "ok": true,
+          "expected": "BARVY interior — два Reels для студії ремонту | Freelance UA",
+          "actual": "BARVY interior — два Reels для студії ремонту | Freelance UA"
+        },
+        {
+          "name": "description-present",
+          "ok": true,
+          "actual": "Два вертикальні Instagram Reels для BARVY interior — студії …"
+        },
+        {
+          "name": "description-match",
+          "ok": true,
+          "expected": "Два вертикальні Instagram Reels для BARVY interior — студії дизайну інтер’єру та ремонту під ключ у Києві.",
+          "actual": "Два вертикальні Instagram Reels для BARVY interior — студії дизайну інтер’єру та ремонту під ключ у Києві."
+        },
+        {
+          "name": "h1-single",
+          "ok": true,
+          "expected": 1,
+          "actual": 1,
+          "text": "BARVY interior — два Reels для студії ремонту"
+        },
+        {
+          "name": "h1-match",
+          "ok": true,
+          "expected": "BARVY interior — два Reels для студії ремонту",
+          "actual": "BARVY interior — два Reels для студії ремонту"
+        },
+        {
+          "name": "robots-meta",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "x-robots-tag",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "no-raw-i18n-keys",
+          "ok": true,
+          "actual": []
+        },
+        {
+          "name": "og-url",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/video/barvy-interior-reels",
+          "actual": "https://freelance-ua.agency/cases/video/barvy-interior-reels"
+        },
+        {
+          "name": "og-title-present",
+          "ok": true,
+          "actual": "BARVY interior — два Reels для студії ремонту | Freelance UA"
+        },
+        {
+          "name": "og-title-match",
+          "ok": true,
+          "expected": "BARVY interior — два Reels для студії ремонту | Freelance UA",
+          "actual": "BARVY interior — два Reels для студії ремонту | Freelance UA"
+        },
+        {
+          "name": "og-description-present",
+          "ok": true,
+          "actual": "Два вертикальні Instagram Reels для BARVY interior — студії …"
+        },
+        {
+          "name": "og-description-match",
+          "ok": true,
+          "expected": "Два вертикальні Instagram Reels для BARVY interior — студії дизайну інтер’єру та ремонту під ключ у Києві.",
+          "actual": "Два вертикальні Instagram Reels для BARVY interior — студії дизайну інтер’єру та ремонту під ключ у Києві."
+        },
+        {
+          "name": "og-locale",
+          "ok": true,
+          "expected": "uk_UA",
+          "actual": "uk_UA"
+        },
+        {
+          "name": "og-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/barvy-interior-reels/reel-01-poster.webp"
+        },
+        {
+          "name": "twitter-card",
+          "ok": true,
+          "expected": "summary_large_image",
+          "actual": "summary_large_image"
+        },
+        {
+          "name": "twitter-title-present",
+          "ok": true,
+          "actual": "BARVY interior — два Reels для студії ремонту | Freelance UA"
+        },
+        {
+          "name": "twitter-title-match",
+          "ok": true,
+          "expected": "BARVY interior — два Reels для студії ремонту | Freelance UA",
+          "actual": "BARVY interior — два Reels для студії ремонту | Freelance UA"
+        },
+        {
+          "name": "twitter-description-present",
+          "ok": true,
+          "actual": "Два вертикальні Instagram Reels для BARVY interior — студії …"
+        },
+        {
+          "name": "twitter-description-match",
+          "ok": true,
+          "expected": "Два вертикальні Instagram Reels для BARVY interior — студії дизайну інтер’єру та ремонту під ключ у Києві.",
+          "actual": "Два вертикальні Instagram Reels для BARVY interior — студії дизайну інтер’єру та ремонту під ключ у Києві."
+        },
+        {
+          "name": "twitter-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/barvy-interior-reels/reel-01-poster.webp"
+        },
+        {
+          "name": "og-image-width",
+          "ok": true,
+          "expected": 720,
+          "actual": 720
+        },
+        {
+          "name": "og-image-height",
+          "ok": true,
+          "expected": 1280,
+          "actual": 1280
+        },
+        {
+          "name": "og-image-type",
+          "ok": true,
+          "expected": "image/webp",
+          "actual": "image/webp"
+        },
+        {
+          "name": "hreflang-uk",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/video/barvy-interior-reels",
+          "actual": "https://freelance-ua.agency/cases/video/barvy-interior-reels"
+        },
+        {
+          "name": "hreflang-en",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/video/barvy-interior-reels",
+          "actual": "https://freelance-ua.agency/en/cases/video/barvy-interior-reels"
+        }
+      ],
+      "ogImage": {
+        "url": "https://freelance-ua.agency/media/cases/barvy-interior-reels/reel-01-poster.webp",
+        "width": "720",
+        "height": "1280",
+        "type": "image/webp"
+      },
+      "ogImageActual": {
+        "width": 720,
+        "height": 1280,
+        "mime": "image/webp"
+      },
+      "hreflangActual": [
+        {
+          "lang": "uk",
+          "href": "https://freelance-ua.agency/cases/video/barvy-interior-reels"
+        },
+        {
+          "lang": "en",
+          "href": "https://freelance-ua.agency/en/cases/video/barvy-interior-reels"
+        }
+      ],
+      "counterpartStatus": {
+        "uk": 200,
+        "en": 200
+      }
+    },
+    {
       "path": "/cases/video/cuprus-life",
       "kind": "page",
       "phase": "current",
@@ -19949,7 +20709,7 @@
       "lang": "uk",
       "canonical": "https://freelance-ua.agency/cases/video/maccoudi-youtube",
       "title": "Маккоуді — YouTube про фріланс | Freelance UA",
-      "description": "Монтаж двох YouTube-відео для популярного блогера Маккоуді — динамічний контент про фріланс",
+      "description": "Монтаж трьох YouTube-відео для блогера Маккоуді: два короткі ролики та довга історія про шлях у фрилансі.",
       "h1": "Маккоуді",
       "inRegistry": true,
       "bilingualPair": true,
@@ -20001,13 +20761,13 @@
         {
           "name": "description-present",
           "ok": true,
-          "actual": "Монтаж двох YouTube-відео для популярного блогера Маккоуді —…"
+          "actual": "Монтаж трьох YouTube-відео для блогера Маккоуді: два короткі…"
         },
         {
           "name": "description-match",
           "ok": true,
-          "expected": "Монтаж двох YouTube-відео для популярного блогера Маккоуді — динамічний контент про фріланс",
-          "actual": "Монтаж двох YouTube-відео для популярного блогера Маккоуді — динамічний контент про фріланс"
+          "expected": "Монтаж трьох YouTube-відео для блогера Маккоуді: два короткі ролики та довга історія про шлях у фрилансі.",
+          "actual": "Монтаж трьох YouTube-відео для блогера Маккоуді: два короткі ролики та довга історія про шлях у фрилансі."
         },
         {
           "name": "h1-single",
@@ -20057,13 +20817,13 @@
         {
           "name": "og-description-present",
           "ok": true,
-          "actual": "Монтаж двох YouTube-відео для популярного блогера Маккоуді —…"
+          "actual": "Монтаж трьох YouTube-відео для блогера Маккоуді: два короткі…"
         },
         {
           "name": "og-description-match",
           "ok": true,
-          "expected": "Монтаж двох YouTube-відео для популярного блогера Маккоуді — динамічний контент про фріланс",
-          "actual": "Монтаж двох YouTube-відео для популярного блогера Маккоуді — динамічний контент про фріланс"
+          "expected": "Монтаж трьох YouTube-відео для блогера Маккоуді: два короткі ролики та довга історія про шлях у фрилансі.",
+          "actual": "Монтаж трьох YouTube-відео для блогера Маккоуді: два короткі ролики та довга історія про шлях у фрилансі."
         },
         {
           "name": "og-locale",
@@ -20096,13 +20856,13 @@
         {
           "name": "twitter-description-present",
           "ok": true,
-          "actual": "Монтаж двох YouTube-відео для популярного блогера Маккоуді —…"
+          "actual": "Монтаж трьох YouTube-відео для блогера Маккоуді: два короткі…"
         },
         {
           "name": "twitter-description-match",
           "ok": true,
-          "expected": "Монтаж двох YouTube-відео для популярного блогера Маккоуді — динамічний контент про фріланс",
-          "actual": "Монтаж двох YouTube-відео для популярного блогера Маккоуді — динамічний контент про фріланс"
+          "expected": "Монтаж трьох YouTube-відео для блогера Маккоуді: два короткі ролики та довга історія про шлях у фрилансі.",
+          "actual": "Монтаж трьох YouTube-відео для блогера Маккоуді: два короткі ролики та довга історія про шлях у фрилансі."
         },
         {
           "name": "twitter-image-present",
@@ -26515,6 +27275,230 @@
       }
     },
     {
+      "path": "/cases/video/website-message-animation",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/website-message-animation",
+      "title": "Tripanio — анімація повідомлень для сайту | Freelance UA",
+      "description": "Відео з анімованим діалогом у мобільному чаті Tripanio для корпоративного сайту.",
+      "h1": "Tripanio — анімація повідомлень для сайту",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/website-message-animation",
+        "en": "/en/cases/video/website-message-animation"
+      },
+      "actual": {
+        "status": 200,
+        "location": null,
+        "xRobotsTag": null
+      },
+      "checks": [
+        {
+          "name": "status",
+          "ok": true,
+          "expected": 200,
+          "actual": 200
+        },
+        {
+          "name": "canonical-count",
+          "ok": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "canonical",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/video/website-message-animation",
+          "actual": "https://freelance-ua.agency/cases/video/website-message-animation"
+        },
+        {
+          "name": "lang",
+          "ok": true,
+          "expected": "uk",
+          "actual": "uk"
+        },
+        {
+          "name": "title-present",
+          "ok": true,
+          "actual": "Tripanio — анімація повідомлень для сайту | Freelance UA"
+        },
+        {
+          "name": "title-match",
+          "ok": true,
+          "expected": "Tripanio — анімація повідомлень для сайту | Freelance UA",
+          "actual": "Tripanio — анімація повідомлень для сайту | Freelance UA"
+        },
+        {
+          "name": "description-present",
+          "ok": true,
+          "actual": "Відео з анімованим діалогом у мобільному чаті Tripanio для к…"
+        },
+        {
+          "name": "description-match",
+          "ok": true,
+          "expected": "Відео з анімованим діалогом у мобільному чаті Tripanio для корпоративного сайту.",
+          "actual": "Відео з анімованим діалогом у мобільному чаті Tripanio для корпоративного сайту."
+        },
+        {
+          "name": "h1-single",
+          "ok": true,
+          "expected": 1,
+          "actual": 1,
+          "text": "Tripanio — анімація повідомлень для сайту"
+        },
+        {
+          "name": "h1-match",
+          "ok": true,
+          "expected": "Tripanio — анімація повідомлень для сайту",
+          "actual": "Tripanio — анімація повідомлень для сайту"
+        },
+        {
+          "name": "robots-meta",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "x-robots-tag",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "no-raw-i18n-keys",
+          "ok": true,
+          "actual": []
+        },
+        {
+          "name": "og-url",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/video/website-message-animation",
+          "actual": "https://freelance-ua.agency/cases/video/website-message-animation"
+        },
+        {
+          "name": "og-title-present",
+          "ok": true,
+          "actual": "Tripanio — анімація повідомлень для сайту | Freelance UA"
+        },
+        {
+          "name": "og-title-match",
+          "ok": true,
+          "expected": "Tripanio — анімація повідомлень для сайту | Freelance UA",
+          "actual": "Tripanio — анімація повідомлень для сайту | Freelance UA"
+        },
+        {
+          "name": "og-description-present",
+          "ok": true,
+          "actual": "Відео з анімованим діалогом у мобільному чаті Tripanio для к…"
+        },
+        {
+          "name": "og-description-match",
+          "ok": true,
+          "expected": "Відео з анімованим діалогом у мобільному чаті Tripanio для корпоративного сайту.",
+          "actual": "Відео з анімованим діалогом у мобільному чаті Tripanio для корпоративного сайту."
+        },
+        {
+          "name": "og-locale",
+          "ok": true,
+          "expected": "uk_UA",
+          "actual": "uk_UA"
+        },
+        {
+          "name": "og-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/website-message-animation/card-poster.webp"
+        },
+        {
+          "name": "twitter-card",
+          "ok": true,
+          "expected": "summary_large_image",
+          "actual": "summary_large_image"
+        },
+        {
+          "name": "twitter-title-present",
+          "ok": true,
+          "actual": "Tripanio — анімація повідомлень для сайту | Freelance UA"
+        },
+        {
+          "name": "twitter-title-match",
+          "ok": true,
+          "expected": "Tripanio — анімація повідомлень для сайту | Freelance UA",
+          "actual": "Tripanio — анімація повідомлень для сайту | Freelance UA"
+        },
+        {
+          "name": "twitter-description-present",
+          "ok": true,
+          "actual": "Відео з анімованим діалогом у мобільному чаті Tripanio для к…"
+        },
+        {
+          "name": "twitter-description-match",
+          "ok": true,
+          "expected": "Відео з анімованим діалогом у мобільному чаті Tripanio для корпоративного сайту.",
+          "actual": "Відео з анімованим діалогом у мобільному чаті Tripanio для корпоративного сайту."
+        },
+        {
+          "name": "twitter-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/website-message-animation/card-poster.webp"
+        },
+        {
+          "name": "og-image-width",
+          "ok": true,
+          "expected": 720,
+          "actual": 720
+        },
+        {
+          "name": "og-image-height",
+          "ok": true,
+          "expected": 480,
+          "actual": 480
+        },
+        {
+          "name": "og-image-type",
+          "ok": true,
+          "expected": "image/webp",
+          "actual": "image/webp"
+        },
+        {
+          "name": "hreflang-uk",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/video/website-message-animation",
+          "actual": "https://freelance-ua.agency/cases/video/website-message-animation"
+        },
+        {
+          "name": "hreflang-en",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/video/website-message-animation",
+          "actual": "https://freelance-ua.agency/en/cases/video/website-message-animation"
+        }
+      ],
+      "ogImage": {
+        "url": "https://freelance-ua.agency/media/cases/website-message-animation/card-poster.webp",
+        "width": "720",
+        "height": "480",
+        "type": "image/webp"
+      },
+      "ogImageActual": {
+        "width": 720,
+        "height": 480,
+        "mime": "image/webp"
+      },
+      "hreflangActual": [
+        {
+          "lang": "uk",
+          "href": "https://freelance-ua.agency/cases/video/website-message-animation"
+        },
+        {
+          "lang": "en",
+          "href": "https://freelance-ua.agency/en/cases/video/website-message-animation"
+        }
+      ],
+      "counterpartStatus": {
+        "uk": 200,
+        "en": 200
+      }
+    },
+    {
       "path": "/cases/video/wine-festival",
       "kind": "page",
       "phase": "current",
@@ -29699,6 +30683,218 @@
         {
           "lang": "en",
           "href": "https://freelance-ua.agency/en/cases/it/prime-auto-shipping"
+        }
+      ],
+      "counterpartStatus": {
+        "uk": 200,
+        "en": 200
+      }
+    },
+    {
+      "path": "/en/cases/it/rateflow",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/rateflow",
+      "inRegistry": true,
+      "title": "RateFlow — NFC/QR Google Review Platform | Freelance UA",
+      "description": "RateFlow case study: an admin dashboard for venues, NFC/QR card management, visit and Google review analytics, and QR code generation.",
+      "h1": "RateFlow — from an NFC card to a Google review",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/rateflow",
+        "en": "/en/cases/it/rateflow"
+      },
+      "actual": {
+        "status": 200,
+        "location": null,
+        "xRobotsTag": null
+      },
+      "checks": [
+        {
+          "name": "status",
+          "ok": true,
+          "expected": 200,
+          "actual": 200
+        },
+        {
+          "name": "canonical-count",
+          "ok": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "canonical",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/it/rateflow",
+          "actual": "https://freelance-ua.agency/en/cases/it/rateflow"
+        },
+        {
+          "name": "lang",
+          "ok": true,
+          "expected": "en",
+          "actual": "en"
+        },
+        {
+          "name": "title-present",
+          "ok": true,
+          "actual": "RateFlow — NFC/QR Google Review Platform | Freelance UA"
+        },
+        {
+          "name": "title-match",
+          "ok": true,
+          "expected": "RateFlow — NFC/QR Google Review Platform | Freelance UA",
+          "actual": "RateFlow — NFC/QR Google Review Platform | Freelance UA"
+        },
+        {
+          "name": "description-present",
+          "ok": true,
+          "actual": "RateFlow case study: an admin dashboard for venues, NFC/QR c…"
+        },
+        {
+          "name": "description-match",
+          "ok": true,
+          "expected": "RateFlow case study: an admin dashboard for venues, NFC/QR card management, visit and Google review analytics, and QR code generation.",
+          "actual": "RateFlow case study: an admin dashboard for venues, NFC/QR card management, visit and Google review analytics, and QR code generation."
+        },
+        {
+          "name": "h1-single",
+          "ok": true,
+          "expected": 1,
+          "actual": 1,
+          "text": "RateFlow — from an NFC card to a Google review"
+        },
+        {
+          "name": "h1-match",
+          "ok": true,
+          "expected": "RateFlow — from an NFC card to a Google review",
+          "actual": "RateFlow — from an NFC card to a Google review"
+        },
+        {
+          "name": "robots-meta",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "x-robots-tag",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "no-raw-i18n-keys",
+          "ok": true,
+          "actual": []
+        },
+        {
+          "name": "og-url",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/it/rateflow",
+          "actual": "https://freelance-ua.agency/en/cases/it/rateflow"
+        },
+        {
+          "name": "og-title-present",
+          "ok": true,
+          "actual": "RateFlow — NFC/QR Google Review Platform | Freelance UA"
+        },
+        {
+          "name": "og-title-match",
+          "ok": true,
+          "expected": "RateFlow — NFC/QR Google Review Platform | Freelance UA",
+          "actual": "RateFlow — NFC/QR Google Review Platform | Freelance UA"
+        },
+        {
+          "name": "og-description-present",
+          "ok": true,
+          "actual": "RateFlow case study: an admin dashboard for venues, NFC/QR c…"
+        },
+        {
+          "name": "og-description-match",
+          "ok": true,
+          "expected": "RateFlow case study: an admin dashboard for venues, NFC/QR card management, visit and Google review analytics, and QR code generation.",
+          "actual": "RateFlow case study: an admin dashboard for venues, NFC/QR card management, visit and Google review analytics, and QR code generation."
+        },
+        {
+          "name": "og-locale",
+          "ok": true,
+          "expected": "en_US",
+          "actual": "en_US"
+        },
+        {
+          "name": "og-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/rateflow/rateflow-mockup.webp"
+        },
+        {
+          "name": "twitter-card",
+          "ok": true,
+          "expected": "summary_large_image",
+          "actual": "summary_large_image"
+        },
+        {
+          "name": "twitter-title-present",
+          "ok": true,
+          "actual": "RateFlow — NFC/QR Google Review Platform | Freelance UA"
+        },
+        {
+          "name": "twitter-title-match",
+          "ok": true,
+          "expected": "RateFlow — NFC/QR Google Review Platform | Freelance UA",
+          "actual": "RateFlow — NFC/QR Google Review Platform | Freelance UA"
+        },
+        {
+          "name": "twitter-description-present",
+          "ok": true,
+          "actual": "RateFlow case study: an admin dashboard for venues, NFC/QR c…"
+        },
+        {
+          "name": "twitter-description-match",
+          "ok": true,
+          "expected": "RateFlow case study: an admin dashboard for venues, NFC/QR card management, visit and Google review analytics, and QR code generation.",
+          "actual": "RateFlow case study: an admin dashboard for venues, NFC/QR card management, visit and Google review analytics, and QR code generation."
+        },
+        {
+          "name": "twitter-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/rateflow/rateflow-mockup.webp"
+        },
+        {
+          "name": "og-image-props",
+          "ok": true,
+          "actual": "omitted",
+          "note": "width/height/type are optional and unknown here"
+        },
+        {
+          "name": "hreflang-uk",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/it/rateflow",
+          "actual": "https://freelance-ua.agency/cases/it/rateflow"
+        },
+        {
+          "name": "hreflang-en",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/it/rateflow",
+          "actual": "https://freelance-ua.agency/en/cases/it/rateflow"
+        }
+      ],
+      "ogImage": {
+        "url": "https://freelance-ua.agency/media/cases/rateflow/rateflow-mockup.webp",
+        "width": null,
+        "height": null,
+        "type": null
+      },
+      "ogImageActual": {
+        "width": 1088,
+        "height": 642,
+        "mime": "image/webp"
+      },
+      "hreflangActual": [
+        {
+          "lang": "uk",
+          "href": "https://freelance-ua.agency/cases/it/rateflow"
+        },
+        {
+          "lang": "en",
+          "href": "https://freelance-ua.agency/en/cases/it/rateflow"
         }
       ],
       "counterpartStatus": {
@@ -34583,6 +35779,218 @@
       }
     },
     {
+      "path": "/en/cases/design/nail-artist-story-carousel",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/design/nail-artist-story-carousel",
+      "inRegistry": true,
+      "title": "Instagram Carousel Design for a Nail Artist | Freelance UA",
+      "description": "Instagram carousel design telling a nail artist’s story through 11 slides, photography, typography and burgundy accents. A Freelance UA case study.",
+      "h1": "A nail artist’s story — Instagram carousel design",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/design/nail-artist-story-carousel",
+        "en": "/en/cases/design/nail-artist-story-carousel"
+      },
+      "actual": {
+        "status": 200,
+        "location": null,
+        "xRobotsTag": null
+      },
+      "checks": [
+        {
+          "name": "status",
+          "ok": true,
+          "expected": 200,
+          "actual": 200
+        },
+        {
+          "name": "canonical-count",
+          "ok": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "canonical",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/design/nail-artist-story-carousel",
+          "actual": "https://freelance-ua.agency/en/cases/design/nail-artist-story-carousel"
+        },
+        {
+          "name": "lang",
+          "ok": true,
+          "expected": "en",
+          "actual": "en"
+        },
+        {
+          "name": "title-present",
+          "ok": true,
+          "actual": "Instagram Carousel Design for a Nail Artist | Freelance UA"
+        },
+        {
+          "name": "title-match",
+          "ok": true,
+          "expected": "Instagram Carousel Design for a Nail Artist | Freelance UA",
+          "actual": "Instagram Carousel Design for a Nail Artist | Freelance UA"
+        },
+        {
+          "name": "description-present",
+          "ok": true,
+          "actual": "Instagram carousel design telling a nail artist’s story thro…"
+        },
+        {
+          "name": "description-match",
+          "ok": true,
+          "expected": "Instagram carousel design telling a nail artist’s story through 11 slides, photography, typography and burgundy accents. A Freelance UA case study.",
+          "actual": "Instagram carousel design telling a nail artist’s story through 11 slides, photography, typography and burgundy accents. A Freelance UA case study."
+        },
+        {
+          "name": "h1-single",
+          "ok": true,
+          "expected": 1,
+          "actual": 1,
+          "text": "A nail artist’s story — Instagram carousel design"
+        },
+        {
+          "name": "h1-match",
+          "ok": true,
+          "expected": "A nail artist’s story — Instagram carousel design",
+          "actual": "A nail artist’s story — Instagram carousel design"
+        },
+        {
+          "name": "robots-meta",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "x-robots-tag",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "no-raw-i18n-keys",
+          "ok": true,
+          "actual": []
+        },
+        {
+          "name": "og-url",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/design/nail-artist-story-carousel",
+          "actual": "https://freelance-ua.agency/en/cases/design/nail-artist-story-carousel"
+        },
+        {
+          "name": "og-title-present",
+          "ok": true,
+          "actual": "Instagram Carousel Design for a Nail Artist | Freelance UA"
+        },
+        {
+          "name": "og-title-match",
+          "ok": true,
+          "expected": "Instagram Carousel Design for a Nail Artist | Freelance UA",
+          "actual": "Instagram Carousel Design for a Nail Artist | Freelance UA"
+        },
+        {
+          "name": "og-description-present",
+          "ok": true,
+          "actual": "Instagram carousel design telling a nail artist’s story thro…"
+        },
+        {
+          "name": "og-description-match",
+          "ok": true,
+          "expected": "Instagram carousel design telling a nail artist’s story through 11 slides, photography, typography and burgundy accents. A Freelance UA case study.",
+          "actual": "Instagram carousel design telling a nail artist’s story through 11 slides, photography, typography and burgundy accents. A Freelance UA case study."
+        },
+        {
+          "name": "og-locale",
+          "ok": true,
+          "expected": "en_US",
+          "actual": "en_US"
+        },
+        {
+          "name": "og-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/nail-artist-story-carousel/nail-artist-story-carousel-preview.webp"
+        },
+        {
+          "name": "twitter-card",
+          "ok": true,
+          "expected": "summary_large_image",
+          "actual": "summary_large_image"
+        },
+        {
+          "name": "twitter-title-present",
+          "ok": true,
+          "actual": "Instagram Carousel Design for a Nail Artist | Freelance UA"
+        },
+        {
+          "name": "twitter-title-match",
+          "ok": true,
+          "expected": "Instagram Carousel Design for a Nail Artist | Freelance UA",
+          "actual": "Instagram Carousel Design for a Nail Artist | Freelance UA"
+        },
+        {
+          "name": "twitter-description-present",
+          "ok": true,
+          "actual": "Instagram carousel design telling a nail artist’s story thro…"
+        },
+        {
+          "name": "twitter-description-match",
+          "ok": true,
+          "expected": "Instagram carousel design telling a nail artist’s story through 11 slides, photography, typography and burgundy accents. A Freelance UA case study.",
+          "actual": "Instagram carousel design telling a nail artist’s story through 11 slides, photography, typography and burgundy accents. A Freelance UA case study."
+        },
+        {
+          "name": "twitter-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/nail-artist-story-carousel/nail-artist-story-carousel-preview.webp"
+        },
+        {
+          "name": "og-image-props",
+          "ok": true,
+          "actual": "omitted",
+          "note": "width/height/type are optional and unknown here"
+        },
+        {
+          "name": "hreflang-uk",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/design/nail-artist-story-carousel",
+          "actual": "https://freelance-ua.agency/cases/design/nail-artist-story-carousel"
+        },
+        {
+          "name": "hreflang-en",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/design/nail-artist-story-carousel",
+          "actual": "https://freelance-ua.agency/en/cases/design/nail-artist-story-carousel"
+        }
+      ],
+      "ogImage": {
+        "url": "https://freelance-ua.agency/media/cases/nail-artist-story-carousel/nail-artist-story-carousel-preview.webp",
+        "width": null,
+        "height": null,
+        "type": null
+      },
+      "ogImageActual": {
+        "width": 1080,
+        "height": 1350,
+        "mime": "image/webp"
+      },
+      "hreflangActual": [
+        {
+          "lang": "uk",
+          "href": "https://freelance-ua.agency/cases/design/nail-artist-story-carousel"
+        },
+        {
+          "lang": "en",
+          "href": "https://freelance-ua.agency/en/cases/design/nail-artist-story-carousel"
+        }
+      ],
+      "counterpartStatus": {
+        "uk": 200,
+        "en": 200
+      }
+    },
+    {
       "path": "/en/cases/design/nastya-portrait-retouch",
       "kind": "page",
       "phase": "current",
@@ -38847,6 +40255,230 @@
       }
     },
     {
+      "path": "/en/cases/video/barvy-interior-reels",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/barvy-interior-reels",
+      "inRegistry": true,
+      "title": "BARVY interior — Two Reels for a Renovation Studio | Freelance UA",
+      "description": "Two vertical Instagram Reels for BARVY interior, an interior design and turnkey renovation studio in Kyiv.",
+      "h1": "BARVY interior — Two Reels for a Renovation Studio",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/barvy-interior-reels",
+        "en": "/en/cases/video/barvy-interior-reels"
+      },
+      "actual": {
+        "status": 200,
+        "location": null,
+        "xRobotsTag": null
+      },
+      "checks": [
+        {
+          "name": "status",
+          "ok": true,
+          "expected": 200,
+          "actual": 200
+        },
+        {
+          "name": "canonical-count",
+          "ok": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "canonical",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/video/barvy-interior-reels",
+          "actual": "https://freelance-ua.agency/en/cases/video/barvy-interior-reels"
+        },
+        {
+          "name": "lang",
+          "ok": true,
+          "expected": "en",
+          "actual": "en"
+        },
+        {
+          "name": "title-present",
+          "ok": true,
+          "actual": "BARVY interior — Two Reels for a Renovation Studio | Freelance UA"
+        },
+        {
+          "name": "title-match",
+          "ok": true,
+          "expected": "BARVY interior — Two Reels for a Renovation Studio | Freelance UA",
+          "actual": "BARVY interior — Two Reels for a Renovation Studio | Freelance UA"
+        },
+        {
+          "name": "description-present",
+          "ok": true,
+          "actual": "Two vertical Instagram Reels for BARVY interior, an interior…"
+        },
+        {
+          "name": "description-match",
+          "ok": true,
+          "expected": "Two vertical Instagram Reels for BARVY interior, an interior design and turnkey renovation studio in Kyiv.",
+          "actual": "Two vertical Instagram Reels for BARVY interior, an interior design and turnkey renovation studio in Kyiv."
+        },
+        {
+          "name": "h1-single",
+          "ok": true,
+          "expected": 1,
+          "actual": 1,
+          "text": "BARVY interior — Two Reels for a Renovation Studio"
+        },
+        {
+          "name": "h1-match",
+          "ok": true,
+          "expected": "BARVY interior — Two Reels for a Renovation Studio",
+          "actual": "BARVY interior — Two Reels for a Renovation Studio"
+        },
+        {
+          "name": "robots-meta",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "x-robots-tag",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "no-raw-i18n-keys",
+          "ok": true,
+          "actual": []
+        },
+        {
+          "name": "og-url",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/video/barvy-interior-reels",
+          "actual": "https://freelance-ua.agency/en/cases/video/barvy-interior-reels"
+        },
+        {
+          "name": "og-title-present",
+          "ok": true,
+          "actual": "BARVY interior — Two Reels for a Renovation Studio | Freelance UA"
+        },
+        {
+          "name": "og-title-match",
+          "ok": true,
+          "expected": "BARVY interior — Two Reels for a Renovation Studio | Freelance UA",
+          "actual": "BARVY interior — Two Reels for a Renovation Studio | Freelance UA"
+        },
+        {
+          "name": "og-description-present",
+          "ok": true,
+          "actual": "Two vertical Instagram Reels for BARVY interior, an interior…"
+        },
+        {
+          "name": "og-description-match",
+          "ok": true,
+          "expected": "Two vertical Instagram Reels for BARVY interior, an interior design and turnkey renovation studio in Kyiv.",
+          "actual": "Two vertical Instagram Reels for BARVY interior, an interior design and turnkey renovation studio in Kyiv."
+        },
+        {
+          "name": "og-locale",
+          "ok": true,
+          "expected": "en_US",
+          "actual": "en_US"
+        },
+        {
+          "name": "og-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/barvy-interior-reels/reel-01-poster.webp"
+        },
+        {
+          "name": "twitter-card",
+          "ok": true,
+          "expected": "summary_large_image",
+          "actual": "summary_large_image"
+        },
+        {
+          "name": "twitter-title-present",
+          "ok": true,
+          "actual": "BARVY interior — Two Reels for a Renovation Studio | Freelance UA"
+        },
+        {
+          "name": "twitter-title-match",
+          "ok": true,
+          "expected": "BARVY interior — Two Reels for a Renovation Studio | Freelance UA",
+          "actual": "BARVY interior — Two Reels for a Renovation Studio | Freelance UA"
+        },
+        {
+          "name": "twitter-description-present",
+          "ok": true,
+          "actual": "Two vertical Instagram Reels for BARVY interior, an interior…"
+        },
+        {
+          "name": "twitter-description-match",
+          "ok": true,
+          "expected": "Two vertical Instagram Reels for BARVY interior, an interior design and turnkey renovation studio in Kyiv.",
+          "actual": "Two vertical Instagram Reels for BARVY interior, an interior design and turnkey renovation studio in Kyiv."
+        },
+        {
+          "name": "twitter-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/barvy-interior-reels/reel-01-poster.webp"
+        },
+        {
+          "name": "og-image-width",
+          "ok": true,
+          "expected": 720,
+          "actual": 720
+        },
+        {
+          "name": "og-image-height",
+          "ok": true,
+          "expected": 1280,
+          "actual": 1280
+        },
+        {
+          "name": "og-image-type",
+          "ok": true,
+          "expected": "image/webp",
+          "actual": "image/webp"
+        },
+        {
+          "name": "hreflang-uk",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/video/barvy-interior-reels",
+          "actual": "https://freelance-ua.agency/cases/video/barvy-interior-reels"
+        },
+        {
+          "name": "hreflang-en",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/video/barvy-interior-reels",
+          "actual": "https://freelance-ua.agency/en/cases/video/barvy-interior-reels"
+        }
+      ],
+      "ogImage": {
+        "url": "https://freelance-ua.agency/media/cases/barvy-interior-reels/reel-01-poster.webp",
+        "width": "720",
+        "height": "1280",
+        "type": "image/webp"
+      },
+      "ogImageActual": {
+        "width": 720,
+        "height": 1280,
+        "mime": "image/webp"
+      },
+      "hreflangActual": [
+        {
+          "lang": "uk",
+          "href": "https://freelance-ua.agency/cases/video/barvy-interior-reels"
+        },
+        {
+          "lang": "en",
+          "href": "https://freelance-ua.agency/en/cases/video/barvy-interior-reels"
+        }
+      ],
+      "counterpartStatus": {
+        "uk": 200,
+        "en": 200
+      }
+    },
+    {
       "path": "/en/cases/video/cuprus-life",
       "kind": "page",
       "phase": "current",
@@ -41198,7 +42830,7 @@
       "canonical": "https://freelance-ua.agency/en/cases/video/maccoudi-youtube",
       "inRegistry": true,
       "title": "Maccoudi — YouTube videos about freelancing | Freelance UA",
-      "description": "Editing two YouTube videos for the popular blogger Maccoudi — dynamic freelancing content",
+      "description": "Editing three YouTube videos for blogger Maccoudi: two short videos and a long-form story about his path into freelancing.",
       "h1": "Maccoudi",
       "bilingualPair": true,
       "hreflang": {
@@ -41249,13 +42881,13 @@
         {
           "name": "description-present",
           "ok": true,
-          "actual": "Editing two YouTube videos for the popular blogger Maccoudi …"
+          "actual": "Editing three YouTube videos for blogger Maccoudi: two short…"
         },
         {
           "name": "description-match",
           "ok": true,
-          "expected": "Editing two YouTube videos for the popular blogger Maccoudi — dynamic freelancing content",
-          "actual": "Editing two YouTube videos for the popular blogger Maccoudi — dynamic freelancing content"
+          "expected": "Editing three YouTube videos for blogger Maccoudi: two short videos and a long-form story about his path into freelancing.",
+          "actual": "Editing three YouTube videos for blogger Maccoudi: two short videos and a long-form story about his path into freelancing."
         },
         {
           "name": "h1-single",
@@ -41305,13 +42937,13 @@
         {
           "name": "og-description-present",
           "ok": true,
-          "actual": "Editing two YouTube videos for the popular blogger Maccoudi …"
+          "actual": "Editing three YouTube videos for blogger Maccoudi: two short…"
         },
         {
           "name": "og-description-match",
           "ok": true,
-          "expected": "Editing two YouTube videos for the popular blogger Maccoudi — dynamic freelancing content",
-          "actual": "Editing two YouTube videos for the popular blogger Maccoudi — dynamic freelancing content"
+          "expected": "Editing three YouTube videos for blogger Maccoudi: two short videos and a long-form story about his path into freelancing.",
+          "actual": "Editing three YouTube videos for blogger Maccoudi: two short videos and a long-form story about his path into freelancing."
         },
         {
           "name": "og-locale",
@@ -41344,13 +42976,13 @@
         {
           "name": "twitter-description-present",
           "ok": true,
-          "actual": "Editing two YouTube videos for the popular blogger Maccoudi …"
+          "actual": "Editing three YouTube videos for blogger Maccoudi: two short…"
         },
         {
           "name": "twitter-description-match",
           "ok": true,
-          "expected": "Editing two YouTube videos for the popular blogger Maccoudi — dynamic freelancing content",
-          "actual": "Editing two YouTube videos for the popular blogger Maccoudi — dynamic freelancing content"
+          "expected": "Editing three YouTube videos for blogger Maccoudi: two short videos and a long-form story about his path into freelancing.",
+          "actual": "Editing three YouTube videos for blogger Maccoudi: two short videos and a long-form story about his path into freelancing."
         },
         {
           "name": "twitter-image-present",
@@ -47755,6 +49387,230 @@
         {
           "lang": "en",
           "href": "https://freelance-ua.agency/en/cases/video/watch-hype-motion"
+        }
+      ],
+      "counterpartStatus": {
+        "uk": 200,
+        "en": 200
+      }
+    },
+    {
+      "path": "/en/cases/video/website-message-animation",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/website-message-animation",
+      "inRegistry": true,
+      "title": "Tripanio — Website Message Animation | Freelance UA",
+      "description": "A video featuring an animated Tripanio mobile chat conversation for a corporate website.",
+      "h1": "Tripanio — Website Message Animation",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/website-message-animation",
+        "en": "/en/cases/video/website-message-animation"
+      },
+      "actual": {
+        "status": 200,
+        "location": null,
+        "xRobotsTag": null
+      },
+      "checks": [
+        {
+          "name": "status",
+          "ok": true,
+          "expected": 200,
+          "actual": 200
+        },
+        {
+          "name": "canonical-count",
+          "ok": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "canonical",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/video/website-message-animation",
+          "actual": "https://freelance-ua.agency/en/cases/video/website-message-animation"
+        },
+        {
+          "name": "lang",
+          "ok": true,
+          "expected": "en",
+          "actual": "en"
+        },
+        {
+          "name": "title-present",
+          "ok": true,
+          "actual": "Tripanio — Website Message Animation | Freelance UA"
+        },
+        {
+          "name": "title-match",
+          "ok": true,
+          "expected": "Tripanio — Website Message Animation | Freelance UA",
+          "actual": "Tripanio — Website Message Animation | Freelance UA"
+        },
+        {
+          "name": "description-present",
+          "ok": true,
+          "actual": "A video featuring an animated Tripanio mobile chat conversat…"
+        },
+        {
+          "name": "description-match",
+          "ok": true,
+          "expected": "A video featuring an animated Tripanio mobile chat conversation for a corporate website.",
+          "actual": "A video featuring an animated Tripanio mobile chat conversation for a corporate website."
+        },
+        {
+          "name": "h1-single",
+          "ok": true,
+          "expected": 1,
+          "actual": 1,
+          "text": "Tripanio — Website Message Animation"
+        },
+        {
+          "name": "h1-match",
+          "ok": true,
+          "expected": "Tripanio — Website Message Animation",
+          "actual": "Tripanio — Website Message Animation"
+        },
+        {
+          "name": "robots-meta",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "x-robots-tag",
+          "ok": true,
+          "actual": null
+        },
+        {
+          "name": "no-raw-i18n-keys",
+          "ok": true,
+          "actual": []
+        },
+        {
+          "name": "og-url",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/video/website-message-animation",
+          "actual": "https://freelance-ua.agency/en/cases/video/website-message-animation"
+        },
+        {
+          "name": "og-title-present",
+          "ok": true,
+          "actual": "Tripanio — Website Message Animation | Freelance UA"
+        },
+        {
+          "name": "og-title-match",
+          "ok": true,
+          "expected": "Tripanio — Website Message Animation | Freelance UA",
+          "actual": "Tripanio — Website Message Animation | Freelance UA"
+        },
+        {
+          "name": "og-description-present",
+          "ok": true,
+          "actual": "A video featuring an animated Tripanio mobile chat conversat…"
+        },
+        {
+          "name": "og-description-match",
+          "ok": true,
+          "expected": "A video featuring an animated Tripanio mobile chat conversation for a corporate website.",
+          "actual": "A video featuring an animated Tripanio mobile chat conversation for a corporate website."
+        },
+        {
+          "name": "og-locale",
+          "ok": true,
+          "expected": "en_US",
+          "actual": "en_US"
+        },
+        {
+          "name": "og-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/website-message-animation/card-poster.webp"
+        },
+        {
+          "name": "twitter-card",
+          "ok": true,
+          "expected": "summary_large_image",
+          "actual": "summary_large_image"
+        },
+        {
+          "name": "twitter-title-present",
+          "ok": true,
+          "actual": "Tripanio — Website Message Animation | Freelance UA"
+        },
+        {
+          "name": "twitter-title-match",
+          "ok": true,
+          "expected": "Tripanio — Website Message Animation | Freelance UA",
+          "actual": "Tripanio — Website Message Animation | Freelance UA"
+        },
+        {
+          "name": "twitter-description-present",
+          "ok": true,
+          "actual": "A video featuring an animated Tripanio mobile chat conversat…"
+        },
+        {
+          "name": "twitter-description-match",
+          "ok": true,
+          "expected": "A video featuring an animated Tripanio mobile chat conversation for a corporate website.",
+          "actual": "A video featuring an animated Tripanio mobile chat conversation for a corporate website."
+        },
+        {
+          "name": "twitter-image-present",
+          "ok": true,
+          "actual": "https://freelance-ua.agency/media/cases/website-message-animation/card-poster.webp"
+        },
+        {
+          "name": "og-image-width",
+          "ok": true,
+          "expected": 720,
+          "actual": 720
+        },
+        {
+          "name": "og-image-height",
+          "ok": true,
+          "expected": 480,
+          "actual": 480
+        },
+        {
+          "name": "og-image-type",
+          "ok": true,
+          "expected": "image/webp",
+          "actual": "image/webp"
+        },
+        {
+          "name": "hreflang-uk",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/cases/video/website-message-animation",
+          "actual": "https://freelance-ua.agency/cases/video/website-message-animation"
+        },
+        {
+          "name": "hreflang-en",
+          "ok": true,
+          "expected": "https://freelance-ua.agency/en/cases/video/website-message-animation",
+          "actual": "https://freelance-ua.agency/en/cases/video/website-message-animation"
+        }
+      ],
+      "ogImage": {
+        "url": "https://freelance-ua.agency/media/cases/website-message-animation/card-poster.webp",
+        "width": "720",
+        "height": "480",
+        "type": "image/webp"
+      },
+      "ogImageActual": {
+        "width": 720,
+        "height": 480,
+        "mime": "image/webp"
+      },
+      "hreflangActual": [
+        {
+          "lang": "uk",
+          "href": "https://freelance-ua.agency/cases/video/website-message-animation"
+        },
+        {
+          "lang": "en",
+          "href": "https://freelance-ua.agency/en/cases/video/website-message-animation"
         }
       ],
       "counterpartStatus": {

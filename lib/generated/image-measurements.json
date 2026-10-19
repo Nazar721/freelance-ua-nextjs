@@ -484,6 +484,61 @@
     "height": 528,
     "mime": "image/png"
   },
+  "/media/cases/brunetkaa-hair/about.webp": {
+    "width": 2806,
+    "height": 1568,
+    "mime": "image/webp"
+  },
+  "/media/cases/brunetkaa-hair/booking-contacts.webp": {
+    "width": 2846,
+    "height": 1530,
+    "mime": "image/webp"
+  },
+  "/media/cases/brunetkaa-hair/brunetkaa-hair-card.webp": {
+    "width": 1102,
+    "height": 639,
+    "mime": "image/webp"
+  },
+  "/media/cases/brunetkaa-hair/brunetkaa-hair-mockup-hero.webp": {
+    "width": 1178,
+    "height": 715,
+    "mime": "image/webp"
+  },
+  "/media/cases/brunetkaa-hair/client-review.webp": {
+    "width": 590,
+    "height": 1280,
+    "mime": "image/webp"
+  },
+  "/media/cases/brunetkaa-hair/faq.webp": {
+    "width": 2834,
+    "height": 1574,
+    "mime": "image/webp"
+  },
+  "/media/cases/brunetkaa-hair/footer.webp": {
+    "width": 2836,
+    "height": 1554,
+    "mime": "image/webp"
+  },
+  "/media/cases/brunetkaa-hair/hero-screen.webp": {
+    "width": 2842,
+    "height": 1562,
+    "mime": "image/webp"
+  },
+  "/media/cases/brunetkaa-hair/results.webp": {
+    "width": 2832,
+    "height": 1570,
+    "mime": "image/webp"
+  },
+  "/media/cases/brunetkaa-hair/reviews.webp": {
+    "width": 2838,
+    "height": 1568,
+    "mime": "image/webp"
+  },
+  "/media/cases/brunetkaa-hair/services-prices.webp": {
+    "width": 2824,
+    "height": 1410,
+    "mime": "image/webp"
+  },
   "/media/cases/color-correction/poster.jpg": {
     "width": 1080,
     "height": 1920,
@@ -1374,6 +1429,66 @@
     "height": 1280,
     "mime": "image/webp"
   },
+  "/media/cases/nail-artist-story-carousel/nail-artist-story-carousel-preview.webp": {
+    "width": 1080,
+    "height": 1350,
+    "mime": "image/webp"
+  },
+  "/media/cases/nail-artist-story-carousel/slide-01.webp": {
+    "width": 1080,
+    "height": 1350,
+    "mime": "image/webp"
+  },
+  "/media/cases/nail-artist-story-carousel/slide-02.webp": {
+    "width": 1080,
+    "height": 1350,
+    "mime": "image/webp"
+  },
+  "/media/cases/nail-artist-story-carousel/slide-03.webp": {
+    "width": 1080,
+    "height": 1350,
+    "mime": "image/webp"
+  },
+  "/media/cases/nail-artist-story-carousel/slide-04.webp": {
+    "width": 1080,
+    "height": 1350,
+    "mime": "image/webp"
+  },
+  "/media/cases/nail-artist-story-carousel/slide-05.webp": {
+    "width": 1080,
+    "height": 1350,
+    "mime": "image/webp"
+  },
+  "/media/cases/nail-artist-story-carousel/slide-06.webp": {
+    "width": 1080,
+    "height": 1350,
+    "mime": "image/webp"
+  },
+  "/media/cases/nail-artist-story-carousel/slide-07.webp": {
+    "width": 1080,
+    "height": 1350,
+    "mime": "image/webp"
+  },
+  "/media/cases/nail-artist-story-carousel/slide-08.webp": {
+    "width": 1080,
+    "height": 1350,
+    "mime": "image/webp"
+  },
+  "/media/cases/nail-artist-story-carousel/slide-09.webp": {
+    "width": 1080,
+    "height": 1350,
+    "mime": "image/webp"
+  },
+  "/media/cases/nail-artist-story-carousel/slide-10.webp": {
+    "width": 1080,
+    "height": 1350,
+    "mime": "image/webp"
+  },
+  "/media/cases/nail-artist-story-carousel/slide-11.webp": {
+    "width": 1080,
+    "height": 1350,
+    "mime": "image/webp"
+  },
   "/media/cases/nastya-portrait-retouch/final-1.jpg": {
     "width": 1280,
     "height": 1920,
@@ -1692,6 +1807,31 @@
   "/media/cases/prime-autoshipping-mockup.webp": {
     "width": 1536,
     "height": 1024,
+    "mime": "image/webp"
+  },
+  "/media/cases/rateflow/dashboard.webp": {
+    "width": 2822,
+    "height": 1558,
+    "mime": "image/webp"
+  },
+  "/media/cases/rateflow/nfc-qr-cards.webp": {
+    "width": 2820,
+    "height": 1558,
+    "mime": "image/webp"
+  },
+  "/media/cases/rateflow/rateflow-mockup.webp": {
+    "width": 1088,
+    "height": 642,
+    "mime": "image/webp"
+  },
+  "/media/cases/rateflow/sync-log.webp": {
+    "width": 2818,
+    "height": 1556,
+    "mime": "image/webp"
+  },
+  "/media/cases/rateflow/venues.webp": {
+    "width": 2838,
+    "height": 1566,
     "mime": "image/webp"
   },
   "/media/cases/repair-collision-contacts.webp": {

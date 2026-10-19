@@ -46,7 +46,9 @@ export default function CaseHero({ record, L }: { record: CaseRecord; L: Resolve
     );
   } else if (hero.kind === "imageGrid") {
     media = (
-      <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-3 md:gap-6 md:p-10">
+      <div className={hero.layout === "compact"
+        ? "mx-auto grid max-w-3xl grid-cols-3 items-center gap-2 p-4 sm:gap-4 sm:p-8"
+        : "grid grid-cols-1 gap-4 p-4 md:grid-cols-3 md:gap-6 md:p-10"}>
         {hero.items.map((item, index) => (
           <div
             key={index}
@@ -78,9 +80,10 @@ export default function CaseHero({ record, L }: { record: CaseRecord; L: Resolve
                 alt={item.alt ? L(item.alt) : L(record.h1)}
                 width={item.w ?? 1200}
                 height={item.h ?? 800}
-                className="h-auto w-full object-cover"
+                className="h-auto w-full object-contain"
+                sizes={hero.layout === "compact" ? "(max-width: 768px) 28vw, 230px" : "(max-width: 768px) 100vw, 33vw"}
                 draggable={false}
-                priority={index === 0}
+                preload={index === 0}
               />
             )}
           </div>

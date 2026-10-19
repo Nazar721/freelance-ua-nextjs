@@ -1,11 +1,11 @@
 # Реєстр кейсів Freelance UA (генеровано scripts/inventory.mjs v2)
 
-Згенеровано: 2026-10-14T22:41:01.607Z
+Згенеровано: 2026-10-19T15:05:54.433Z
 
 | Напрям | Кейсів | У sitemap | У data | Повний EN | З відео | З відгуком | З блоками | Потребує звірки |
 |---|---|---|---|---|---|---|---|---|
-| it | 21 | 21 | 21 | 21 | 1 | 21 | 21 | 4 |
-| design | 24 | 24 | 24 | 24 | 4 | 24 | 24 | 0 |
+| it | 23 | 23 | 23 | 23 | 1 | 22 | 23 | 4 |
+| design | 25 | 25 | 25 | 25 | 4 | 24 | 25 | 0 |
 | video | 57 | 57 | 57 | 57 | 49 | 56 | 57 | 0 |
 
 ## IT
@@ -13,6 +13,7 @@
 | ID | Підкатегорія | UA URL | Title | Медіа | Відео | Лінки (page/i18n) | Блоки | Звірка |
 |---|---|---|---|---|---|---|---|---|
 | asandra-soul | saas-telegram | `/cases/it/asandra-soul` | Asandra Soul — Telegram Mini App і backend для автоматизації продажів \| Freelance UA | 18 | 0 | 1/1 | brief@0:brief×2<br>featureList@1:feature-list×5 | — |
+| brunetkaa-hair | landing | `/cases/it/brunetkaa-hair` | BRUNETKAA HAIR — сайт для майстрині з догляду за волоссям у Лондоні \| Freelance UA | 10 | 0 | 0/0 | brief@0:brief×2<br>featureList@1:feature-list×8 | — |
 | darkshare | saas-telegram | `/cases/it/darkshare` | DARKSHARE — SaaS для кібербезпеки з OSINT-модулями \| Freelance UA | 8 | 0 | 0/1 | brief@0:brief×2<br>featureList@1:feature-list×6 | ⚠ 1 |
 | epiland | saas-telegram | `/cases/it/epiland` | Epiland — бронювання днів народжень у Telegram Mini App \| Freelance UA | 7 | 0 | 1/1 | brief@0:brief×2<br>featureList@1:feature-list×6 | — |
 | eva-code | saas-telegram | `/cases/it/eva-code` | E.V.A. CODE™ — лендинг, Telegram Mini App і CRM \| Freelance UA | 26 | 1 | 2/1 | brief@0:brief×2<br>featureList@1:feature-list×5 | ⚠ 1 |
@@ -24,6 +25,7 @@
 | nextcup | ecommerce | `/cases/it/nextcup` | NextCup — оновлення каталогу та checkout на Хорошоп \| Freelance UA | 5 | 0 | 1/0 | brief@0:brief×2<br>featureList@1:feature-list×4 | — |
 | pivden-solar | landing | `/cases/it/pivden-solar` | Південь Солар — лендинг СЕС із каталогом комплектів \| Freelance UA | 5 | 0 | 1/0 | brief@0:brief×2<br>featureList@1:feature-list×4 | — |
 | prime-auto-shipping | landing | `/cases/it/prime-auto-shipping` | Prime Auto Shipping — лендинг для транспортування авто в США \| Freelance UA | 5 | 0 | 1/1 | brief@0:brief×2<br>featureList@1:feature-list×4<br>links@3:links×1 | — |
+| rateflow | saas-telegram | `/cases/it/rateflow` | RateFlow — NFC/QR-сервіс Google-відгуків \| Freelance UA | 5 | 0 | 0/0 | brief@0:brief×2<br>featureList@1:feature-list×4<br>gallery@2:gallery×1 | — |
 | repair-collision | landing | `/cases/it/repair-collision` | Repair Collision — сайт автосервісу з CRM і портфоліо \| Freelance UA | 5 | 0 | 1/1 | brief@0:brief×2<br>featureList@1:feature-list×5<br>links@3:links×1 | — |
 | route-core | landing | `/cases/it/route-core` | RouteCore — лендинг для найму інженерів з процесом відбору \| Freelance UA | 5 | 0 | 1/0 | brief@0:brief×2<br>featureList@1:feature-list×4 | — |
 | ruslan-aviation | ecommerce | `/cases/it/ruslan-aviation` | Ruslan Aviation — e-commerce з фільтрами та конверсійним дизайном \| Freelance UA | 9 | 0 | 1/1 | brief@0:brief×2<br>featureList@1:feature-list×6<br>links@3:links×1 | ⚠ 1 |
@@ -52,6 +54,7 @@
 | mht-clinic-billboard | branding | `/cases/design/mht-clinic-billboard` | Білборд MHT Clinic: дизайн зовнішньої реклами \| Freelance UA | 1 | 0 | 0/0 | brief@0:brief×2<br>gallery@1:gallery×1 | — |
 | moto-school-window-branding | branding | `/cases/design/moto-school-window-branding` | Мотошкола — оформлення вітрин \| Freelance UA | 3 | 0 | 0/0 | brief@0:brief×2<br>scenes@1:unknown×2 | — |
 | mydutyfree | banners | `/cases/design/mydutyfree` | Промо-банер MyDutyFree з фірмовим 3D-персонажем \| Freelance UA | 1 | 0 | 0/0 | brief@0:brief×2<br>gallery@1:gallery×1 | — |
+| nail-artist-story-carousel | banners | `/cases/design/nail-artist-story-carousel` | Дизайн Instagram-каруселі для майстрині манікюру \| Freelance UA | 11 | 0 | 0/0 | brief@0:brief×2<br>checklist@1:unknown×5<br>gallery@2:gallery×11 | — |
 | nastya-portrait-retouch | photo-retouch | `/cases/design/nastya-portrait-retouch` | Ретуш портретів і кольорокорекція \| Freelance UA | 13 | 1 | 0/0 | brief@0:brief×2<br>compare@1:before-after×3<br>gallery@2:gallery×6 | — |
 | nastya-smm | banners | `/cases/design/nastya-smm` | Брендовані обкладинки для Instagram-контенту \| Freelance UA | 3 | 1 | 0/0 | gallery@0:gallery×2<br>brief@1:brief×2 | — |
 | photo-retouch | photo-retouch | `/cases/design/photo-retouch` | Ретуш різних типів кадрів — від авто до портретів \| Freelance UA | 10 | 0 | 0/0 | brief@0:brief×2<br>checklist@1:unknown×4<br>compare@2:before-after×5 | — |

@@ -2,8 +2,8 @@
 
 Статус: **на погодження власником.** Нічого не опубліковано.
 
-Кейсів у реєстрі: 100. Погоджених раніше (пілот + партії 1–3): 35.
-Очікує погодження: 65 — з них 6 нових відеокейсів Пакета 5, решта 59 — партії 4+ (дизайн/відео), що мігрували
+Кейсів у реєстрі: 105. Погоджених раніше (пілот + партії 1–3): 35.
+Очікує погодження: 70 — з них 6 нових відеокейсів Пакета 5, решта 59 — партії 4+ (дизайн/відео), що мігрували
 без фінального погодження власника. Якщо тексти погоджених 35 не змінювалися відтоді, повторне погодження не потрібне —
 нижче лише нові або змінені формулювання.
 
@@ -43,69 +43,74 @@
 
 | # | Кейс | H1 UA | H1 EN | Підзаголовок UA | Підзаголовок EN |
 |---|---|---|---|---|---|
-| 1 | `video/yulia-smm-reels` | Reels для SMM | Reels for SMM | — | — |
-| 2 | `video/youtube-conversational-video` | Розмовне відео | Conversational video | — | — |
-| 3 | `video/watch-hype-motion` | Моушн для Watch Hype | Watch Hype motion | — | — |
-| 4 | `video/watch-hype-intro` | Інтро для Watch Hype | Watch Hype intro | — | — |
-| 5 | `video/vtikha-promo` | AI-відео Втіха | AI video for Vtikha | — | — |
-| 6 | `video/vsehub-reels` | ВсеHub | VseHub | — | — |
-| 7 | `video/vorodi-medical` | AI-відео для медицини | AI video for medicine | — | — |
-| 8 | `video/vladlen-lisynko-interview` | Інтерв'ю з Владленом Лисенко | Interview with Vladlen Lysenko | — | — |
-| 9 | `video/vitalii-cheverda` | Reels для Віталія Чеверда | Reels for Vitalii Cheverda | — | — |
-| 10 | `video/vibe-nation-promo` | Промо для Vibe Nation | Promo for Vibe Nation | — | — |
-| 11 | `video/veronika-ai-muscles` | AI маска | AI mask | — | — |
-| 12 | `video/varto-reels` | Varto — Енергетика | Varto — energy drink | — | — |
-| 13 | `video/valeriia-trend-reels` | AI-оживлення фото | AI photo animation | — | — |
-| 14 | `video/twin-a-auto` | Reels для автосервісу Twin-A-Auto | Reels for Twin-A-Auto auto service | — | — |
-| 15 | `video/travel-vlog-turkey` | Travel Vlog — Туреччина | Travel Vlog — Turkey | — | — |
-| 16 | `video/taranenko-trade` | Торгівля Тараненко | Taranenko trading | — | — |
-| 17 | `video/skool-10-features` | Огляд Skool 10 Features | Skool 10 features review | — | — |
-| 18 | `video/sheglam-freedom-fest` | Промо SHEGLAM Freedom Fest | SHEGLAM Freedom Fest promo | — | — |
-| 19 | `video/sestro-beauty` | AI-відео для Sestro | AI video for Sestro | — | — |
-| 20 | `video/serhii-yarmolenko-video-lesson` | Відео урок Сергія Ярмоленка | Serhii Yarmolenko video lesson | — | — |
-| 21 | `video/serhii-yarmolenko-reels` | Сергій Ярмоленко | Serhii Yarmolenko | — | — |
-| 22 | `video/selloflow-intro` | Вступне відео Selloflow | Selloflow intro video | — | — |
-| 23 | `video/sales-bible-promo` | Біблія продавця | Sales bible | — | — |
-| 24 | `video/presentation-animation` | Анімація презентації | Presentation animation | — | — |
-| 25 | `video/podcast-editing` | Монтаж подкасту | Podcast editing | — | — |
-| 26 | `video/passive-income-video` | Пасивний дохід | Passive income | — | — |
-| 27 | `video/nikita-sheremet-crypto` | Нікіта Шеремет | Nikita Sheremet | — | — |
-| 28 | `video/motion-reels` | Моушн Reels | Motion Reels | — | — |
-| 29 | `video/motion-promo` | Промо-ролик | Promo video | — | — |
-| 30 | `video/logo-animation` | Анімація логотипу | Logo animation | — | — |
-| 31 | `video/logan-ai-promo` | AI-промо LOGAN | AI promo LOGAN | — | — |
-| 32 | `video/liliya-product-business` | Бізнес Лілії | Liliya's business | — | — |
-| 33 | `video/ivan-ig-creative` | AI для Instagram | AI for Instagram | — | — |
-| 34 | `video/internet-svit-promo` | Промо для Інтернет Світ | Promo for Internet Svit | — | — |
-| 35 | `video/income-graph-motion` | Анімація графіку доходів | Income graph animation | — | — |
-| 36 | `video/dr-trichologist-promo` | AI-промо для Dr. Trichologist | AI promo for Dr. Trichologist | — | — |
-| 37 | `video/dominanta-youtube-intro` | Інтро для YouTube | YouTube intro | — | — |
-| 38 | `video/dance-competition-lviv` | Reels для танцювального конкурсу | Reels for a dance competition | — | — |
-| 39 | `video/barvy-interior-ai-reels` | AI-відео BARVY Interior | AI video for BARVY Interior | — | — |
-| 40 | `video/automation-1click` | Автоматизація за 1 клік | 1-click automation | — | — |
-| 41 | `video/auto-edits-reels` | Reels для автобренду | Reels for a car brand | — | — |
-| 42 | `video/artem-reels` | Reels для Артема | Reels for Artem | — | — |
-| 43 | `video/alien-city-adventure` | AI-відео про пригоди | AI adventure video | — | — |
-| 44 | `video/ai-video-new` | AI-відео промо | AI video promo | — | — |
-| 45 | `video/ai-spring-fashion` | AI-відео моди | AI fashion video | — | — |
-| 46 | `video/ai-promo-misha` | AI промо-відео | AI promo video | — | — |
-| 47 | `video/ai-ice-cream` | AI-відео морозива | AI ice cream video | — | — |
-| 48 | `video/ai-avatars` | AI-аватари | AI avatars | — | — |
-| 49 | `design/mht-clinic-billboard` | MHT Clinic — білборд для клініки | MHT Clinic — billboard for the clinic | — | — |
-| 50 | `design/prestige-school-billboard` | Престиж — білборд приватної школи | Prestige — private school billboard | — | — |
-| 51 | `design/nastya-smm` | Instagram-візуали для SMM | Instagram visuals for SMM | — | — |
-| 52 | `design/hope-media-group` | HOPE Media Group — брендинг для виставки | HOPE Media Group — branding for an exhibition | — | — |
-| 53 | `design/gopro-hero13` | GoPro — продуктовий постер | GoPro — product poster | — | — |
-| 54 | `design/giesbrecht-pv` | Giesbrecht PV — банер для СЕС | Giesbrecht PV — solar banner | — | — |
-| 55 | `design/f5-guitars-youtube` | F5 Guitars — обкладинка для YouTube | F5 Guitars — YouTube thumbnail | — | — |
-| 56 | `design/divorce-legal-ad` | Юридична консультація — рекламний банер | Legal consultation — advertising banner | — | — |
-| 57 | `design/crypto-chat-manager-vacancy` | Вакансія для крипто-офісу | Job vacancy for a crypto office | — | — |
-| 58 | `design/color-correction` | Кольорокорекція відео: світло, колір і настрій кадру | Video color grading: light, color and the mood of the frame | — | — |
-| 59 | `design/moto-school-window-branding` | Мотошкола — оформлення вітрин | Motorcycle school — window branding | — | — |
+| 1 | `video/website-message-animation` | Tripanio — анімація повідомлень для сайту | Tripanio — Website Message Animation | — | — |
+| 2 | `video/yulia-smm-reels` | Reels для SMM | Reels for SMM | — | — |
+| 3 | `video/youtube-conversational-video` | Розмовне відео | Conversational video | — | — |
+| 4 | `video/watch-hype-motion` | Моушн для Watch Hype | Watch Hype motion | — | — |
+| 5 | `video/watch-hype-intro` | Інтро для Watch Hype | Watch Hype intro | — | — |
+| 6 | `video/vtikha-promo` | AI-відео Втіха | AI video for Vtikha | — | — |
+| 7 | `video/vsehub-reels` | ВсеHub | VseHub | — | — |
+| 8 | `video/vorodi-medical` | AI-відео для медицини | AI video for medicine | — | — |
+| 9 | `video/vladlen-lisynko-interview` | Інтерв'ю з Владленом Лисенко | Interview with Vladlen Lysenko | — | — |
+| 10 | `video/vitalii-cheverda` | Reels для Віталія Чеверда | Reels for Vitalii Cheverda | — | — |
+| 11 | `video/vibe-nation-promo` | Промо для Vibe Nation | Promo for Vibe Nation | — | — |
+| 12 | `video/veronika-ai-muscles` | AI маска | AI mask | — | — |
+| 13 | `video/varto-reels` | Varto — Енергетика | Varto — energy drink | — | — |
+| 14 | `video/valeriia-trend-reels` | AI-оживлення фото | AI photo animation | — | — |
+| 15 | `video/twin-a-auto` | Reels для автосервісу Twin-A-Auto | Reels for Twin-A-Auto auto service | — | — |
+| 16 | `video/travel-vlog-turkey` | Travel Vlog — Туреччина | Travel Vlog — Turkey | — | — |
+| 17 | `video/taranenko-trade` | Торгівля Тараненко | Taranenko trading | — | — |
+| 18 | `video/skool-10-features` | Огляд Skool 10 Features | Skool 10 features review | — | — |
+| 19 | `video/sheglam-freedom-fest` | Промо SHEGLAM Freedom Fest | SHEGLAM Freedom Fest promo | — | — |
+| 20 | `video/sestro-beauty` | AI-відео для Sestro | AI video for Sestro | — | — |
+| 21 | `video/serhii-yarmolenko-video-lesson` | Відео урок Сергія Ярмоленка | Serhii Yarmolenko video lesson | — | — |
+| 22 | `video/serhii-yarmolenko-reels` | Сергій Ярмоленко | Serhii Yarmolenko | — | — |
+| 23 | `video/selloflow-intro` | Вступне відео Selloflow | Selloflow intro video | — | — |
+| 24 | `video/sales-bible-promo` | Біблія продавця | Sales bible | — | — |
+| 25 | `video/presentation-animation` | Анімація презентації | Presentation animation | — | — |
+| 26 | `video/podcast-editing` | Монтаж подкасту | Podcast editing | — | — |
+| 27 | `video/passive-income-video` | Пасивний дохід | Passive income | — | — |
+| 28 | `video/nikita-sheremet-crypto` | Нікіта Шеремет | Nikita Sheremet | — | — |
+| 29 | `video/motion-reels` | Моушн Reels | Motion Reels | — | — |
+| 30 | `video/motion-promo` | Промо-ролик | Promo video | — | — |
+| 31 | `video/logo-animation` | Анімація логотипу | Logo animation | — | — |
+| 32 | `video/logan-ai-promo` | AI-промо LOGAN | AI promo LOGAN | — | — |
+| 33 | `video/liliya-product-business` | Бізнес Лілії | Liliya's business | — | — |
+| 34 | `video/ivan-ig-creative` | AI для Instagram | AI for Instagram | — | — |
+| 35 | `video/internet-svit-promo` | Промо для Інтернет Світ | Promo for Internet Svit | — | — |
+| 36 | `video/income-graph-motion` | Анімація графіку доходів | Income graph animation | — | — |
+| 37 | `video/dr-trichologist-promo` | AI-промо для Dr. Trichologist | AI promo for Dr. Trichologist | — | — |
+| 38 | `video/dominanta-youtube-intro` | Інтро для YouTube | YouTube intro | — | — |
+| 39 | `video/dance-competition-lviv` | Reels для танцювального конкурсу | Reels for a dance competition | — | — |
+| 40 | `video/barvy-interior-ai-reels` | AI-відео BARVY Interior | AI video for BARVY Interior | — | — |
+| 41 | `video/barvy-interior-reels` | BARVY interior — два Reels для студії ремонту | BARVY interior — Two Reels for a Renovation Studio | — | — |
+| 42 | `video/automation-1click` | Автоматизація за 1 клік | 1-click automation | — | — |
+| 43 | `video/auto-edits-reels` | Reels для автобренду | Reels for a car brand | — | — |
+| 44 | `video/artem-reels` | Reels для Артема | Reels for Artem | — | — |
+| 45 | `video/alien-city-adventure` | AI-відео про пригоди | AI adventure video | — | — |
+| 46 | `video/ai-video-new` | AI-відео промо | AI video promo | — | — |
+| 47 | `video/ai-spring-fashion` | AI-відео моди | AI fashion video | — | — |
+| 48 | `video/ai-promo-misha` | AI промо-відео | AI promo video | — | — |
+| 49 | `video/ai-ice-cream` | AI-відео морозива | AI ice cream video | — | — |
+| 50 | `video/ai-avatars` | AI-аватари | AI avatars | — | — |
+| 51 | `design/mht-clinic-billboard` | MHT Clinic — білборд для клініки | MHT Clinic — billboard for the clinic | — | — |
+| 52 | `design/prestige-school-billboard` | Престиж — білборд приватної школи | Prestige — private school billboard | — | — |
+| 53 | `design/nastya-smm` | Instagram-візуали для SMM | Instagram visuals for SMM | — | — |
+| 54 | `design/hope-media-group` | HOPE Media Group — брендинг для виставки | HOPE Media Group — branding for an exhibition | — | — |
+| 55 | `design/gopro-hero13` | GoPro — продуктовий постер | GoPro — product poster | — | — |
+| 56 | `design/giesbrecht-pv` | Giesbrecht PV — банер для СЕС | Giesbrecht PV — solar banner | — | — |
+| 57 | `design/f5-guitars-youtube` | F5 Guitars — обкладинка для YouTube | F5 Guitars — YouTube thumbnail | — | — |
+| 58 | `design/divorce-legal-ad` | Юридична консультація — рекламний банер | Legal consultation — advertising banner | — | — |
+| 59 | `design/crypto-chat-manager-vacancy` | Вакансія для крипто-офісу | Job vacancy for a crypto office | — | — |
+| 60 | `design/color-correction` | Кольорокорекція відео: світло, колір і настрій кадру | Video color grading: light, color and the mood of the frame | — | — |
+| 61 | `it/rateflow` | RateFlow — від NFC-картки до відгуку в Google | RateFlow — from an NFC card to a Google review | — | — |
+| 62 | `design/moto-school-window-branding` | Мотошкола — оформлення вітрин | Motorcycle school — window branding | — | — |
+| 63 | `design/nail-artist-story-carousel` | Історія майстрині манікюру — дизайн Instagram-каруселі | A nail artist’s story — Instagram carousel design | — | — |
+| 64 | `it/brunetkaa-hair` | BRUNETKAA HAIR — сайт для майстрині з догляду за волоссям у Лондоні | BRUNETKAA HAIR — website for a London hair specialist | — | — |
 
 ## 3. Відкриті фактичні питання
 
-Джерело: `docs/package-1/facts-to-confirm.md` (75 рядків, виписка нижче).
+Джерело: `docs/package-1/facts-to-confirm.md` (110 рядків, виписка нижче).
 
 | Твердження | Де | Питання |
 | `150+` завершених проєктів | `HeroSection.tsx:177` (зашите в коді) | Підтвердити або замінити |
@@ -150,3 +155,13 @@
 | `/cases/video/auto-edits-reels` — відгуку немає; не вигадувати | `issues`/registry |
 | 17 з 23 відгуків на головній — скріншоти Telegram без тексту в i18n: потрібні підписи/alt чи залишити як є? | `data/testimonials.ts` (`textKey: ""`) |
 | 4 i18n-лінка `*.link` не використовуються в сторінках (позначені `orphanedI18nLink` у реєстрі): `evaCode` → t.me/asandrasoul_bot, `darkshare` → darkshare.store, `importera` → importera.in.ua, `ruslan` → ruslanaviationcomponents.com. Використати в нових сторінках чи видалити ключі? На EVA-сторінці вже є evacode.app + t.me/evacode_tm_bot з масиву компонентів | `registry.md` → «Потребує ручної звірки» |
+| Мова | Текст |
+| UA | «Для RateFlow нам потрібен був зручний кабінет, де можна керувати закладами та NFC/QR-картками й бачити статистику. Андрій об'єднав ці задачі в зрозумілому інтерфейсі. Особливо зручно, що керувати сервісом можна і зі смартфона.» |
+| EN | «For RateFlow, we needed a convenient dashboard to manage venues and NFC/QR cards and view statistics. Andrii brought these tasks together in a clear interface. Being able to manage the service from a smartphone is particularly useful.» |
+- Автор: **Артем / Artem** (клієнт).
+- Після погодження: додати `review: { kind: "text", … }` у
+| Мова | Текст |
+| UA | «Хотіла розповісти свою історію так, щоб це було особисто й водночас легко читалося. Сніжана поєднала фотографії та текст у цілісну серію, виділила важливі моменти й передала потрібний настрій. Вийшло саме те оформлення, яке я уявляла для свого блогу.» |
+| EN | «I wanted to tell my story in a way that felt personal and was easy to read. Snizhana brought the photographs and text together into a cohesive series, highlighted the important moments and captured the right mood. The design matched what I had imagined for my blog.» |
+- Автор: клієнтка (ім’я не надано — не вигадувати).
+- Після погодження: додати `review: { kind: "text", … }` у
