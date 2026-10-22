@@ -3,10 +3,11 @@
 import { useRef, useState, useEffect } from "react";
 import { useDesktopMotion } from "@/lib/useDesktopMotion";
 import dynamic from "next/dynamic";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import CountUp from "@/components/ui/CountUp";
+import ShaderMetal from "@/components/ui/shader-metal";
 import { useTranslation } from "@/lib/LanguageContext";
 
 const HeroParticles = dynamic(() => import("./HeroParticles"), { ssr: false });
@@ -55,31 +56,26 @@ export default function HeroSection() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-
-  const yBg = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const scaleBg = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-
   return (
     <section
       ref={sectionRef}
       id="hero"
       className="relative flex items-center justify-center overflow-hidden pt-20 pb-4 md:pt-24 lg:min-h-screen"
     >
-      {/* Parallax background layers */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        style={{ y: yBg, scale: scaleBg }}
-      >
-        <div className="hero-ambient absolute inset-0 opacity-80" />
-        <div className="luxury-grid absolute inset-0 opacity-70" />
-      </motion.div>
+      {/* Static background layers — the hero wash blends into the shared
+          wave backdrop. No scroll parallax: the hero must look identical at
+          every scroll position. */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="hero-ambient absolute inset-0" />
+      </div>
 
-      {/* Bottom fade */}
-      <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-linear-to-t from-background to-transparent z-[1]" />
+      {/* Liquid-metal ribbons — the brand-purple backdrop of the hero,
+          spanning the first screen behind the content. */}
+      <div className="hero-shader absolute inset-y-0 right-0 z-0 pointer-events-none">
+        <ShaderMetal className="h-full w-full" />
+      </div>
+
+      {/* The shader mask fades into the shared backdrop without an opaque seam. */}
 
       {/* Floating particles — disabled on mobile for performance */}
       {desktopMotion && <HeroParticles />}

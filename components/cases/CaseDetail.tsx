@@ -17,6 +17,7 @@ import {
 import { FadeIn, staggerDelay } from "@/components/ui/FadeIn";
 import CurvedDashedLines from "@/components/ui/CurvedDashedLines";
 import GalleryImage from "@/components/ui/GalleryImage";
+import KineticGrid from "@/components/ui/kinetic-grid";
 import { ImageModal } from "@/components/ui/ImageModal";
 import ReviewAvatar from "@/components/ui/ReviewAvatar";
 import { useTranslation } from "@/lib/LanguageContext";
@@ -641,7 +642,13 @@ export default function CaseDetail({
   };
 
   return (
-    <article className="min-h-screen">
+    <article className="case-detail-page min-h-screen">
+      <KineticGrid
+        accent={record.glow?.base}
+        accentStrong={record.glow?.strong}
+        paused={lightbox !== null}
+        subtle
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}

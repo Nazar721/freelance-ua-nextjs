@@ -12,7 +12,11 @@ import { useTranslation } from "@/lib/LanguageContext";
 export default function DesignCasesSection() {
   const { t, locale } = useTranslation();
   const lp = locale === "en" ? "/en" : "";
-  const featured = designCases.slice(0, 2);
+  // Keep home highlights stable when new entries are added to the catalog.
+  const featured = ["hope-media-group", "moto-school-window-branding"].flatMap((slug) => {
+    const entry = designCases.find((item) => item.slug === slug);
+    return entry ? [entry] : [];
+  });
 
   return (
     <section className="py-20 px-4">

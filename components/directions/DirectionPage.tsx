@@ -83,7 +83,7 @@ function StickerBackdrop({ direction }: { direction: Direction }) {
  */
 export default function DirectionPage({ direction }: { direction: Direction }) {
   return (
-    <article className="min-h-screen">
+    <article className="direction-page min-h-screen">
       <DirectionHero direction={direction} />
       <DirectionTasks direction={direction} />
       <DirectionServices direction={direction} />

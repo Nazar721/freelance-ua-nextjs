@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import SiteBackdrop from "@/components/ui/SiteBackdrop";
+import CasesBackdrop from "@/components/ui/CasesBackdrop";
 import { localizedMetadata } from "@/lib/seo";
 import { translations } from "@/lib/i18n";
 
@@ -16,7 +16,7 @@ export const metadata: Metadata = localizedMetadata({
 export default function EnCasesLayout({ children }: { children: React.ReactNode }) {
   return (
     <main className="relative isolate overflow-hidden min-h-screen pt-24">
-      <SiteBackdrop />
+      <CasesBackdrop />
       <Header />
       {children}
       <Footer />
