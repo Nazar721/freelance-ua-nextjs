@@ -11,7 +11,7 @@ const DEFAULT_ACCENT: Rgba = { r: 139, g: 92, b: 246, a: 0.6 };
 const CELL = 46;
 /** Radius of the pointer influence field. */
 const POINTER_RADIUS = 190;
-/** How far the points closest to the pointer are pushed away. */
+/** Maximum attraction of points towards the pointer. */
 const MAX_DISPLACEMENT = 20;
 /** Spring constant pulling every point towards its target position. */
 const SPRING_STIFFNESS = 0.12;
@@ -145,211 +145,204 @@ export default function KineticGrid({
     const color = parseRgba(accent) ?? DEFAULT_ACCENT;
     const lineColor = parseRgba(accentStrong) ?? color;
     const dark = theme === "dark";
+    const strength = subtle ? 0.45 : 1;
     let width = 0;
     let height = 0;
-    let dpr = 1;
+    let cols = 0;
+    let rows = 0;
     let points: Point[] = [];
     let pointer: { x: number; y: number; active: boolean } | null = null;
+    let ripples: { x: number; y: number; born: number }[] = [];
+    let elapsed = 0;
+    let previous = 0;
     let raf = 0;
-    let running = false;
     let disposed = false;
-
-    const gridRows = () => Math.ceil(height / CELL) + 1;
-    const gridCols = () => Math.ceil(width / CELL) + 1;
-
-    const buildPoints = () => {
-      const next: Point[] = [];
-      for (let row = 0; row < gridRows(); row += 1) {
-        for (let col = 0; col < gridCols(); col += 1) {
-          next.push({ x: col * CELL, y: row * CELL, dx: 0, dy: 0, vx: 0, vy: 0 });
-        }
-      }
-      points = next;
-    };
-
-    const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = canvas.clientWidth;
-      height = canvas.clientHeight;
-      canvas.width = Math.max(1, Math.floor(width * dpr));
-      canvas.height = Math.max(1, Math.floor(height * dpr));
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      buildPoints();
-      draw();
+    let modalOpen = false;
+    const rippleDuration = 1.8;
+    const rippleSpeed = 350;
+    const blocked = () => disposed || pausedRef.current || modalOpen || document.hidden;
+    const stop = () => {
+      cancelAnimationFrame(raf);
+      raf = 0;
+      previous = 0;
+      canvas.dataset.running = "false";
     };
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
-      const baseAlpha = (dark ? 0.16 : 0.12) * (subtle ? 0.45 : 1);
-      const lineAlpha = (dark ? 0.22 : 0.16) * (subtle ? 0.45 : 1);
-      const cols = gridCols();
-
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = withAlpha(lineColor, lineAlpha);
+      if (pointer?.active) {
+        const glow = ctx.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, POINTER_RADIUS);
+        glow.addColorStop(0, withAlpha(color, (dark ? 0.11 : 0.07) * strength));
+        glow.addColorStop(1, withAlpha(color, 0));
+        ctx.fillStyle = glow;
+        ctx.fillRect(pointer.x - POINTER_RADIUS, pointer.y - POINTER_RADIUS, POINTER_RADIUS * 2, POINTER_RADIUS * 2);
+      }
+      ctx.lineWidth = 0.8;
+      ctx.strokeStyle = withAlpha(lineColor, (dark ? 0.2 : 0.14) * strength);
       ctx.beginPath();
-      for (let row = 0; row < gridRows(); row += 1) {
-        for (let col = 0; col < cols; col += 1) {
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
           const point = points[row * cols + col];
-          const x = Math.round(point.x + point.dx) + 0.5;
-          const y = Math.round(point.y + point.dy) + 0.5;
-          if (col < cols - 1) {
-            ctx.moveTo(x, y);
-            ctx.lineTo(x + CELL, y);
-          }
-          if (row < gridRows() - 1) {
-            ctx.moveTo(x, y);
-            ctx.lineTo(x, y + CELL);
+          // Share real displaced endpoints so every cell remains connected.
+          for (const neighbor of [
+            col + 1 < cols ? points[row * cols + col + 1] : null,
+            row + 1 < rows ? points[(row + 1) * cols + col] : null,
+          ]) {
+            if (!neighbor) continue;
+            ctx.moveTo(point.x + point.dx, point.y + point.dy);
+            ctx.lineTo(neighbor.x + neighbor.dx, neighbor.y + neighbor.dy);
           }
         }
       }
       ctx.stroke();
-
-      ctx.fillStyle = withAlpha(color, baseAlpha);
       for (const point of points) {
-        /* Points close to an active pointer are drawn slightly larger. */
-        let radius = 1.1;
-        if (pointer?.active) {
-          const distance = Math.hypot(point.x - pointer.x, point.y - pointer.y);
-          if (distance < POINTER_RADIUS) radius = 1.9;
-        }
+        const influence = pointer?.active ? Math.max(0, 1 - Math.hypot(point.x - pointer.x, point.y - pointer.y) / POINTER_RADIUS) : 0;
+        ctx.fillStyle = withAlpha(color, ((dark ? 0.24 : 0.19) + influence * 0.5) * strength);
         ctx.beginPath();
-        ctx.arc(point.x + point.dx, point.y + point.dy, radius, 0, Math.PI * 2);
+        ctx.arc(point.x + point.dx, point.y + point.dy, 1.05 + influence * 1.2, 0, Math.PI * 2);
         ctx.fill();
       }
+      for (const ripple of ripples) {
+        const age = elapsed - ripple.born;
+        const opacity = Math.pow(1 - age / rippleDuration, 2) * strength;
+        ctx.beginPath();
+        ctx.arc(ripple.x, ripple.y, Math.max(1, age * rippleSpeed), 0, Math.PI * 2);
+        ctx.strokeStyle = withAlpha(color, opacity * (dark ? 0.65 : 0.45));
+        ctx.lineWidth = 1.6;
+        ctx.shadowColor = withAlpha(color, opacity * 0.5);
+        ctx.shadowBlur = 9;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+      }
+      canvas.dataset.ripples = String(ripples.length);
     };
 
-    /**
-     * Integrates one animation frame.
-     *
-     * Every point is a damped spring towards a *target* position. With the
-     * pointer nearby the target is pushed away from it, otherwise the target
-     * is the resting position. Because the target is bounded and the spring
-     * converges, the grid settles exactly and the loop can go idle.
-     */
-    const step = () => {
-      if (pausedRef.current) {
-        raf = 0;
-        running = false;
-        return;
-      }
-      let moving = false;
+    const step = (now: number) => {
+      raf = 0;
+      if (blocked()) { stop(); return; }
+      const dt = previous ? Math.min((now - previous) / 1000, 0.05) : 1 / 60;
+      previous = now;
+      elapsed += dt;
+      ripples = ripples.filter((ripple) => elapsed - ripple.born < rippleDuration);
+      let moving = ripples.length > 0;
+      const frameScale = dt * 60;
       for (const point of points) {
-        /* Where this point wants to be right now. */
         let targetX = 0;
         let targetY = 0;
         if (pointer?.active) {
           const px = pointer.x - point.x;
           const py = pointer.y - point.y;
           const distance = Math.hypot(px, py);
-          if (distance < POINTER_RADIUS && distance > 0.001) {
-            const falloff = 1 - distance / POINTER_RADIUS;
-            const push = falloff * falloff * MAX_DISPLACEMENT;
-            targetX = (px / distance) * push;
-            targetY = (py / distance) * push;
+          if (distance > 0.001 && distance < POINTER_RADIUS) {
+            const pull = Math.pow(1 - distance / POINTER_RADIUS, 2) * MAX_DISPLACEMENT;
+            targetX = px / distance * pull;
+            targetY = py / distance * pull;
           }
         }
-
-        const ax = (targetX - point.dx) * SPRING_STIFFNESS;
-        const ay = (targetY - point.dy) * SPRING_STIFFNESS;
-
-        point.vx = (point.vx + ax) * DAMPING;
-        point.vy = (point.vy + ay) * DAMPING;
-        point.dx += point.vx;
-        point.dy += point.vy;
-
-        const errorX = targetX - point.dx;
-        const errorY = targetY - point.dy;
-        if (
-          Math.abs(errorX) > SETTLE_EPSILON ||
-          Math.abs(errorY) > SETTLE_EPSILON ||
-          Math.abs(point.vx) > SETTLE_EPSILON ||
-          Math.abs(point.vy) > SETTLE_EPSILON
-        ) {
+        for (const ripple of ripples) {
+          const x = point.x - ripple.x;
+          const y = point.y - ripple.y;
+          const distance = Math.hypot(x, y);
+          const age = elapsed - ripple.born;
+          const offset = distance - age * rippleSpeed;
+          if (distance > 0.001 && Math.abs(offset) < 90) {
+            const wave = Math.sin(offset / 90 * Math.PI) * Math.pow(1 - Math.abs(offset) / 90, 2) * 25 * (1 - age / rippleDuration);
+            targetX += x / distance * wave;
+            targetY += y / distance * wave;
+          }
+        }
+        point.vx = (point.vx + (targetX - point.dx) * SPRING_STIFFNESS * frameScale) * Math.pow(DAMPING, frameScale);
+        point.vy = (point.vy + (targetY - point.dy) * SPRING_STIFFNESS * frameScale) * Math.pow(DAMPING, frameScale);
+        point.dx += point.vx * frameScale;
+        point.dy += point.vy * frameScale;
+        if (Math.max(Math.abs(targetX - point.dx), Math.abs(targetY - point.dy), Math.abs(point.vx), Math.abs(point.vy)) > SETTLE_EPSILON) {
           moving = true;
         } else {
           point.dx = targetX;
           point.dy = targetY;
-          point.vx = 0;
-          point.vy = 0;
+          point.vx = point.vy = 0;
         }
       }
       draw();
-      if (!moving) {
-        running = false;
-        raf = 0;
-        return;
-      }
-      raf = requestAnimationFrame(step);
+      if (moving) raf = requestAnimationFrame(step);
+      else stop();
     };
-
     const start = () => {
-      if (running || disposed || pausedRef.current) return;
-      running = true;
+      if (raf || blocked()) return;
+      previous = 0;
+      canvas.dataset.running = "true";
       raf = requestAnimationFrame(step);
     };
     startRef.current = start;
-    stopRef.current = () => {
-      if (raf) cancelAnimationFrame(raf);
-      raf = 0;
-      running = false;
-    };
+    stopRef.current = stop;
 
-    /**
-     * Releases the pointer and wakes the loop up so the displaced points can
-     * spring back to their resting position.
-     */
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+      canvas.width = Math.max(1, Math.floor(width * dpr));
+      canvas.height = Math.max(1, Math.floor(height * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cols = Math.ceil(width / CELL) + 1;
+      rows = Math.ceil(height / CELL) + 1;
+      points = Array.from({ length: rows * cols }, (_, i) => ({ x: i % cols * CELL, y: Math.floor(i / cols) * CELL, dx: 0, dy: 0, vx: 0, vy: 0 }));
+      draw();
+      if (pointer?.active || ripples.length) start();
+    };
     const releasePointer = () => {
-      if (!pointer || !pointer.active) return;
-      pointer.active = false;
+      if (pointer) pointer.active = false;
       start();
     };
-
     const onPointerMove = (event: PointerEvent) => {
+      if (event.pointerType === "touch" || blocked()) return;
       const rect = canvas.getBoundingClientRect();
       pointer = { x: event.clientX - rect.left, y: event.clientY - rect.top, active: true };
       start();
     };
-
-    /**
-     * The pointer left the window: the grid springs back to its resting shape.
-     * The loop may already be idle at this point, so it has to be restarted.
-     */
     const onPointerOut = (event: PointerEvent) => {
-      if (event.relatedTarget !== null) return;
-      releasePointer();
+      if (event.relatedTarget === null) releasePointer();
     };
-
-    /** The window lost focus (alt-tab, click outside): release the pointer. */
-    const onWindowBlur = () => {
-      releasePointer();
+    const onClick = (event: MouseEvent) => {
+      if (blocked() || event.button !== 0 || event.detail === 0) return;
+      const target = event.target;
+      if (!(target instanceof Element) || target.closest("a,button,input,select,textarea,label,img,video,iframe,canvas,[role='button'],[role='dialog'],[contenteditable],.yarl__container,p,h1,h2,h3,h4,h5,h6,li,figcaption")) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      if (x < 0 || y < 0 || x > width || y > height) return;
+      ripples = [...ripples.slice(-3), { x, y, born: elapsed }];
+      start();
     };
-
-    const onVisibilityChange = () => {
-      if (document.hidden) {
-        if (raf) cancelAnimationFrame(raf);
-        raf = 0;
-        running = false;
-      } else {
-        start();
-      }
+    const syncPause = () => {
+      modalOpen = !!document.querySelector(".yarl__container, [role='dialog'], dialog[open]");
+      canvas.dataset.modalPaused = String(modalOpen);
+      if (blocked()) { stop(); if (pointer) pointer.active = false; }
+      else start();
     };
-
+    const dialogSelector = ".yarl__container, [role='dialog'], dialog";
+    const observer = new MutationObserver((records) => {
+      if (records.some((record) => record.type === "attributes" || [...record.addedNodes, ...record.removedNodes].some((node) => node instanceof Element && (node.matches(dialogSelector) || node.querySelector(dialogSelector))))) syncPause();
+    });
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["role", "open"] });
     resize();
-    draw();
+    syncPause();
     window.addEventListener("resize", resize);
     window.addEventListener("pointermove", onPointerMove, { passive: true });
     window.addEventListener("pointerout", onPointerOut, { passive: true });
-    window.addEventListener("blur", onWindowBlur);
-    document.addEventListener("visibilitychange", onVisibilityChange);
-
+    window.addEventListener("click", onClick, { passive: true });
+    window.addEventListener("blur", releasePointer);
+    document.addEventListener("visibilitychange", syncPause);
     return () => {
       disposed = true;
-      if (raf) cancelAnimationFrame(raf);
+      stop();
+      startRef.current = stopRef.current = null;
+      observer.disconnect();
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerout", onPointerOut);
-      window.removeEventListener("blur", onWindowBlur);
-      document.removeEventListener("visibilitychange", onVisibilityChange);
+      window.removeEventListener("click", onClick);
+      window.removeEventListener("blur", releasePointer);
+      document.removeEventListener("visibilitychange", syncPause);
     };
   }, [accent, accentStrong, theme, useStatic, subtle]);
 

@@ -644,10 +644,7 @@ export default function CaseDetail({
   return (
     <article className="case-detail-page min-h-screen">
       <KineticGrid
-        accent={record.glow?.base}
-        accentStrong={record.glow?.strong}
         paused={lightbox !== null}
-        subtle
       />
       <script
         type="application/ld+json"

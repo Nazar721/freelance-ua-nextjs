@@ -15,7 +15,7 @@ export const metadata: Metadata = localizedMetadata({
 
 export default function EnCasesLayout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="relative isolate overflow-hidden min-h-screen pt-24">
+    <main className="grid-page relative isolate overflow-hidden min-h-screen pt-24">
       <CasesBackdrop />
       <Header />
       {children}

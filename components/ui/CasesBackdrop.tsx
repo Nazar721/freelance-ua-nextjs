@@ -1,6 +1,11 @@
-import SiteBackdrop from "@/components/ui/SiteBackdrop";
+"use client";
 
-/** Case details mount their own transparent KineticGrid; the catalogue does not. */
+import { usePathname } from "next/navigation";
+import KineticGrid from "@/components/ui/kinetic-grid";
+
+/** Details own a grid with their lightbox pause state; the catalogue owns one here. */
 export default function CasesBackdrop() {
-  return <SiteBackdrop />;
+  const pathname = usePathname() ?? "";
+  const catalogue = pathname === "/cases" || pathname === "/en/cases";
+  return catalogue ? <KineticGrid /> : null;
 }

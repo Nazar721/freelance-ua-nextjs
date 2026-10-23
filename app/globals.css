@@ -3117,6 +3117,15 @@ body {
 
 /* The shared backdrop is static everywhere — nothing to disable on mobile. */
 
+/* Standalone kinetic routes use a quiet theme base, not the fabric shader. */
+.grid-page { background: var(--background); }
+.grid-page .direction-page > section:nth-of-type(even),
+.grid-page .case-detail-page > section:nth-of-type(even) {
+  background: linear-gradient(to bottom, transparent,
+    color-mix(in srgb, var(--background) 70%, transparent) 15%,
+    color-mix(in srgb, var(--background) 70%, transparent) 85%, transparent);
+}
+
 /* ─── Kinetic grid (individual case pages) ───────────────────────────────
    A fixed, decorative canvas behind the case content. It never receives
    pointer events and never sits above the page content. */

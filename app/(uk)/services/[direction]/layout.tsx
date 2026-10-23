@@ -1,6 +1,6 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import SiteBackdrop from "@/components/ui/SiteBackdrop";
+import KineticGrid from "@/components/ui/kinetic-grid";
 
 // Chrome for /services/{direction}. Metadata is NOT set here — each dynamic
 // page provides its own via generateMetadata(). The main wrapper does not add
@@ -8,8 +8,8 @@ import SiteBackdrop from "@/components/ui/SiteBackdrop";
 // header never overlaps the H1.
 export default function ServicesLayout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="relative isolate overflow-hidden min-h-screen">
-      <SiteBackdrop />
+    <main className="grid-page relative isolate overflow-hidden min-h-screen">
+      <KineticGrid />
       <Header />
       {children}
       <Footer />
