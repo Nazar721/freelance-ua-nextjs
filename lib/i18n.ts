@@ -1538,7 +1538,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "testimonial.30.text": "Відео вийшло саме таким, як ми хотіли — динамічне, з акуратним монтажем і звуком. Дякую за швидкість та професійний підхід!",
     "testimonial.31.text": "AI-відео виглядає неймовірно креативно. Команда запропонувала круті ідеї та втілила їх дуже швидко. Рекомендую всім!",
     "trusted.title": "Нам довіряють",
-    "trusted.subtitle": "140+ клієнтів обрали нас як надійного digital-партнера",
+    "trusted.subtitle": "150+ клієнтів обрали нас як надійного digital-партнера",
     "trusted.statClients": "клієнтів",
     "trusted.statNiches": "сфери",
     "trusted.statSatisfaction": "задоволеність",
@@ -4282,7 +4282,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "testimonial.31.text": "The AI video looks incredibly creative. The team suggested great ideas and delivered them very fast. Highly recommend!",
 
     "trusted.title": "Trusted by",
-    "trusted.subtitle": "140+ clients chose us as their trusted digital partner",
+    "trusted.subtitle": "150+ clients chose us as their trusted digital partner",
     "trusted.statClients": "clients",
     "trusted.statNiches": "spheres",
     "trusted.statSatisfaction": "satisfaction",
