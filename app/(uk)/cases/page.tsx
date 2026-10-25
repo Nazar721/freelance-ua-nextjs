@@ -9,7 +9,7 @@ export const metadata: Metadata = localizedMetadata({
   uaPath: "/cases",
   title: translations.uk["meta.cases.title"],
   description: translations.uk["meta.cases.description"],
-  ogImage: "/og-image.jpg",
+  ogImage: "/og-freelance-ua-18d31c182c.jpg",
 });
 
 export default function CasesPage() {

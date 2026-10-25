@@ -21,7 +21,7 @@ export async function generateMetadata({
     uaPath: `/services/${direction}`,
     title: translations.en[`meta.services.${direction}.title`],
     description: translations.en[`meta.services.${direction}.description`],
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-freelance-ua-18d31c182c.jpg",
   });
 }
 

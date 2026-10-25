@@ -10,7 +10,7 @@ export const metadata: Metadata = localizedMetadata({
   uaPath: "/partners",
   title: translations.en["meta.partners.title"],
   description: translations.en["meta.partners.description"],
-  ogImage: "/og-image.jpg",
+  ogImage: "/og-freelance-ua-18d31c182c.jpg",
 });
 
 export default function EnPartnersLayout({ children }: { children: React.ReactNode }) {

@@ -21,7 +21,7 @@ export const metadata: Metadata = localizedMetadata({
   uaPath: "/",
   title: "Freelance UA || Digital Agency",
   description: translations.uk["meta.home.description"],
-  ogImage: "/og-image.jpg",
+  ogImage: "/og-freelance-ua-18d31c182c.jpg",
 });
 
 export default function Home() {

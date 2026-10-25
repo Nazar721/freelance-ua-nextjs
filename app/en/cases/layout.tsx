@@ -10,7 +10,7 @@ export const metadata: Metadata = localizedMetadata({
   uaPath: "/cases",
   title: translations.en["meta.cases.title"],
   description: translations.en["meta.cases.description"],
-  ogImage: "/og-image.jpg",
+  ogImage: "/og-freelance-ua-18d31c182c.jpg",
 });
 
 export default function EnCasesLayout({ children }: { children: React.ReactNode }) {
