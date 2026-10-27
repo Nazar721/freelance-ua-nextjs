@@ -5,6 +5,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 54,
     textKey: "",
+    author: "Alex | SEO",
     audio: "/media/testimonials/voice-2026-10-27.m4a",
   },
   {
