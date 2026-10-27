@@ -3,6 +3,11 @@ import { Testimonial } from "@/types";
 export const testimonials: Testimonial[] = [
   // ── Video & Audio testimonials ──
   {
+    id: 54,
+    textKey: "",
+    audio: "/media/testimonials/voice-2026-10-27.m4a",
+  },
+  {
     id: 30,
     textKey: "testimonial.30.text",
     video: "/media/testimonials/video-4.mp4",
