@@ -66,14 +66,14 @@ export default function HowWeWorkSection() {
                   style={{ width: "calc(50% - 44px)" }}
                   initial={{ scaleX: 0 }}
                   animate={isInView || focusedStep === 1 ? { scaleX: 1 } : { scaleX: 0 }}
-                  transition={{ duration: 0.4, delay: 0.35, ease: EASE }}
+                  transition={{ duration: 0.45, delay: 0.2, ease: EASE }}
                 />
                 <motion.div
                   className="absolute right-0 top-0 h-full bg-accent process-line origin-left"
                   style={{ width: "calc(50% - 44px)" }}
                   initial={{ scaleX: 0 }}
                   animate={isInView || focusedStep === 2 ? { scaleX: 1 } : { scaleX: 0 }}
-                  transition={{ duration: 0.4, delay: 0.95, ease: EASE }}
+                  transition={{ duration: 0.45, delay: 0.45, ease: EASE }}
                 />
               </>
             )}
@@ -116,7 +116,7 @@ export default function HowWeWorkSection() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.5, delay: index * 0.6, ease: EASE }}
+                    transition={{ duration: 0.5, delay: index * 0.15, ease: EASE }}
                     onFocus={() => setFocusedStep(index)}
                     onBlur={() => setFocusedStep(null)}
                   >
@@ -143,7 +143,7 @@ export default function HowWeWorkSection() {
                 );
               }
 
-              const delay = index === 0 ? 0 : index === 1 ? 0.6 : 1.2;
+              const delay = index * 0.15;
               const visible = isInView || focusedStep === index;
               return (
                 <motion.div

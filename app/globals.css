@@ -1286,7 +1286,7 @@ body {
   }
 
   @keyframes step-ripple {
-    0% { transform: scale(1); opacity: 0.6; }
+    0% { transform: scale(1); opacity: 0.35; }
     100% { transform: scale(2.8); opacity: 0; }
   }
 
@@ -1307,7 +1307,9 @@ body {
   }
 
   .process-step {
-    transition: opacity 800ms cubic-bezier(0.23, 1, 0.32, 1), filter 800ms cubic-bezier(0.23, 1, 0.32, 1), transform 800ms cubic-bezier(0.23, 1, 0.32, 1);
+    /* opacity/transform are owned by framer-motion here — a CSS transition on
+       them fights the reveal animation; only the hover-spotlight filter is CSS-driven */
+    transition: filter 800ms cubic-bezier(0.23, 1, 0.32, 1);
     cursor: default;
   }
 
