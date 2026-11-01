@@ -41,7 +41,7 @@ export const storkStickerPack: CaseRecord = {
       "Композиція з чотирьох анімованих стікерів із персонажем-лелекою",
       "A composition of four animated stickers with the stork character",
     ),
-    duration: text("~1с", "~1s"),
+    duration: text("~3с", "~3s"),
     format: "16:9",
     ratio: "16/9",
   },

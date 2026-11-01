@@ -695,7 +695,7 @@ export const videoCases: VideoCaseEntry[] = [
     glowColorStrong: "rgba(42, 171, 238, 0.3)",
     heroVideo: "/media/cases/stork-sticker-pack/card.mp4",
     poster: "/media/cases/stork-sticker-pack/card-poster.webp",
-    duration: { uk: "~1с", en: "~1s" },
+    duration: { uk: "~3с", en: "~3s" },
     format: "16:9",
   },
   {
