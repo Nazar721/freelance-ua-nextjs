@@ -1,24 +1,24 @@
 {
-  "generatedAt": "2026-10-19T15:05:54.433Z",
+  "generatedAt": "2026-11-01T21:07:53.611Z",
   "counts": {
-    "routes": 105,
+    "routes": 107,
     "byDirection": {
-      "it": 23,
+      "it": 24,
       "design": 25,
-      "video": 57
+      "video": 58
     },
-    "inSitemap": 105,
-    "inData": 105,
-    "withFullTranslation": 105,
+    "inSitemap": 107,
+    "inData": 107,
+    "withFullTranslation": 107,
     "withMissingMedia": 0,
-    "withExternalLinks": 32,
+    "withExternalLinks": 33,
     "withManualReview": 4,
-    "withBlocks": 105,
-    "sitemapPaths": 222,
-    "i18nUkKeys": 2636,
-    "i18nEnKeys": 2636,
+    "withBlocks": 107,
+    "sitemapPaths": 226,
+    "i18nUkKeys": 2654,
+    "i18nEnKeys": 2654,
     "i18nMissingEn": [],
-    "mediaRefsTracked": 403,
+    "mediaRefsTracked": 418,
     "reusedMediaFiles": 1
   },
   "staticRoutes": [
@@ -225,6 +225,20 @@
     },
     {
       "path": "/media/cases/nail-artist-story-carousel/slide-01.webp",
+      "useCount": 2,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
+      "path": "/media/cases/nail-artist-story-carousel/slide-09.webp",
+      "useCount": 2,
+      "cases": [
+        "design/nail-artist-story-carousel"
+      ]
+    },
+    {
+      "path": "/media/cases/nail-artist-story-carousel/slide-10.webp",
       "useCount": 2,
       "cases": [
         "design/nail-artist-story-carousel"
@@ -1716,20 +1730,6 @@
       ]
     },
     {
-      "path": "/media/cases/nail-artist-story-carousel/slide-09.webp",
-      "useCount": 1,
-      "cases": [
-        "design/nail-artist-story-carousel"
-      ]
-    },
-    {
-      "path": "/media/cases/nail-artist-story-carousel/slide-10.webp",
-      "useCount": 1,
-      "cases": [
-        "design/nail-artist-story-carousel"
-      ]
-    },
-    {
       "path": "/media/cases/nail-artist-story-carousel/slide-11.webp",
       "useCount": 1,
       "cases": [
@@ -2563,6 +2563,104 @@
       ]
     },
     {
+      "path": "/media/cases/soul-retreats-bali/faq.webp",
+      "useCount": 1,
+      "cases": [
+        "it/soul-retreats-bali"
+      ]
+    },
+    {
+      "path": "/media/cases/soul-retreats-bali/form.webp",
+      "useCount": 1,
+      "cases": [
+        "it/soul-retreats-bali"
+      ]
+    },
+    {
+      "path": "/media/cases/soul-retreats-bali/hero-screen.webp",
+      "useCount": 1,
+      "cases": [
+        "it/soul-retreats-bali"
+      ]
+    },
+    {
+      "path": "/media/cases/soul-retreats-bali/mentor.webp",
+      "useCount": 1,
+      "cases": [
+        "it/soul-retreats-bali"
+      ]
+    },
+    {
+      "path": "/media/cases/soul-retreats-bali/program.webp",
+      "useCount": 1,
+      "cases": [
+        "it/soul-retreats-bali"
+      ]
+    },
+    {
+      "path": "/media/cases/soul-retreats-bali/soul-retreats-mockup.webp",
+      "useCount": 1,
+      "cases": [
+        "it/soul-retreats-bali"
+      ]
+    },
+    {
+      "path": "/media/cases/stork-sticker-pack/poster-love.jpg",
+      "useCount": 1,
+      "cases": [
+        "video/stork-sticker-pack"
+      ]
+    },
+    {
+      "path": "/media/cases/stork-sticker-pack/poster-reading.jpg",
+      "useCount": 1,
+      "cases": [
+        "video/stork-sticker-pack"
+      ]
+    },
+    {
+      "path": "/media/cases/stork-sticker-pack/poster-warning.jpg",
+      "useCount": 1,
+      "cases": [
+        "video/stork-sticker-pack"
+      ]
+    },
+    {
+      "path": "/media/cases/stork-sticker-pack/poster-wave.jpg",
+      "useCount": 1,
+      "cases": [
+        "video/stork-sticker-pack"
+      ]
+    },
+    {
+      "path": "/media/cases/stork-sticker-pack/sticker-love.mp4",
+      "useCount": 1,
+      "cases": [
+        "video/stork-sticker-pack"
+      ]
+    },
+    {
+      "path": "/media/cases/stork-sticker-pack/sticker-reading.mp4",
+      "useCount": 1,
+      "cases": [
+        "video/stork-sticker-pack"
+      ]
+    },
+    {
+      "path": "/media/cases/stork-sticker-pack/sticker-warning.mp4",
+      "useCount": 1,
+      "cases": [
+        "video/stork-sticker-pack"
+      ]
+    },
+    {
+      "path": "/media/cases/stork-sticker-pack/sticker-wave.mp4",
+      "useCount": 1,
+      "cases": [
+        "video/stork-sticker-pack"
+      ]
+    },
+    {
       "path": "/media/cases/stretching-ch-profile.png",
       "useCount": 1,
       "cases": [
@@ -2875,6 +2973,13 @@
       "useCount": 1,
       "cases": [
         "video/yulia-smm-reels"
+      ]
+    },
+    {
+      "path": "/media/testimonials/asandra-bali-retreat.m4a",
+      "useCount": 1,
+      "cases": [
+        "it/soul-retreats-bali"
       ]
     },
     {
@@ -4457,7 +4562,6 @@
         "itCases.rateflow",
         "itCases.technicals",
         "itCases.results",
-        "itCases.projectTeam",
         "itCases.backToList"
       ],
       "missingEn": [],
@@ -5268,6 +5372,130 @@
       "inlineMedia": [],
       "i18nKeyPrefixes": [
         "itCases.shkiperDrop",
+        "itCases.technicals",
+        "itCases.results",
+        "itCases.projectTeam",
+        "itCases.team",
+        "itCases.backToList"
+      ],
+      "missingEn": [],
+      "unknownKeys": [],
+      "hasReview": true,
+      "hasTeam": true,
+      "needsManualReview": false,
+      "reviewFlags": [],
+      "hasBothTranslations": true,
+      "fromRecord": true
+    },
+    {
+      "id": "it/soul-retreats-bali",
+      "direction": "it",
+      "slug": "soul-retreats-bali",
+      "uaPath": "/cases/it/soul-retreats-bali",
+      "enPath": "/en/cases/it/soul-retreats-bali",
+      "inSitemap": true,
+      "inData": true,
+      "dataSlug": "soul-retreats-bali",
+      "subcategory": "landing",
+      "titleKey": "itCases.soulRetreats.title",
+      "descriptionKey": "itCases.soulRetreats.shortDesc",
+      "meta": {
+        "title": "SOUL RETREATS — лендінг ретриту на Балі | Freelance UA",
+        "description": "Кейс розробки лендінгу жіночого ретриту на Балі: програма, відгуки, форма заявки, WhatsApp та інтеграція CRM.",
+        "canonical": "/cases/it/soul-retreats-bali",
+        "ogImage": "/media/cases/soul-retreats-bali/hero-screen.webp",
+        "fromRecord": true
+      },
+      "enMetaTitle": "SOUL RETREATS — Bali Retreat Landing Page | Freelance UA",
+      "enMetaDescription": "A Bali women's retreat landing page with a programme, testimonials, enquiry form, WhatsApp and CRM integration.",
+      "h1Uk": "SOUL RETREATS — лендінг жіночого ретриту на Балі з формою заявки",
+      "h1En": "SOUL RETREATS — a Bali women's retreat landing page with an enquiry form",
+      "cardStyle": {
+        "glowColor": "rgba(20, 184, 166, 0.12)",
+        "glowColorStrong": "rgba(20, 184, 166, 0.28)",
+        "imageFit": "contain",
+        "objectPosition": null,
+        "hoverImage": null,
+        "badge": null,
+        "hideCta": false
+      },
+      "cardMedia": {
+        "image": "/media/cases/soul-retreats-bali/soul-retreats-mockup.webp",
+        "galleryImages": [],
+        "heroVideo": null,
+        "previewVideo": null,
+        "poster": null,
+        "thumbnail": null,
+        "screenshot": null,
+        "processVideos": [],
+        "duration": null,
+        "format": null
+      },
+      "mediaCount": 8,
+      "mediaByType": {
+        "webp": 7,
+        "m4a": 1
+      },
+      "videoCount": 0,
+      "mediaMissing": [],
+      "mediaPathIssues": [],
+      "unparsedMedia": [],
+      "unparsedMediaCount": 0,
+      "externalLinks": {
+        "fromPage": [
+          {
+            "url": "https://bali.soulsretreats.org/",
+            "sources": [
+              "record:featureList[1].items[0].link"
+            ],
+            "lines": []
+          },
+          {
+            "url": {
+              "uk": "/cases/it/asandra-soul",
+              "en": "/en/cases/it/asandra-soul"
+            },
+            "sources": [
+              "record:links[3].items[0]"
+            ],
+            "lines": []
+          }
+        ],
+        "fromI18n": []
+      },
+      "blocks": [
+        {
+          "name": "brief@0",
+          "kind": "brief",
+          "line": null,
+          "itemCount": 2,
+          "fromRecord": true
+        },
+        {
+          "name": "featureList@1",
+          "kind": "featureList",
+          "line": null,
+          "itemCount": 7,
+          "fromRecord": true
+        },
+        {
+          "name": "results@2",
+          "kind": "textKeys",
+          "line": null,
+          "itemCount": 4,
+          "fromRecord": true
+        },
+        {
+          "name": "links@3",
+          "kind": "links",
+          "line": null,
+          "itemCount": 1,
+          "fromRecord": true
+        }
+      ],
+      "inlineMedia": [],
+      "i18nKeyPrefixes": [
+        "itCases.soulRetreats",
         "itCases.technicals",
         "itCases.results",
         "itCases.projectTeam",
@@ -6920,7 +7148,7 @@
       "cardStyle": {
         "glowColor": "rgba(136, 19, 55, 0.14)",
         "glowColorStrong": "rgba(136, 19, 55, 0.3)",
-        "imageFit": null,
+        "imageFit": "contain",
         "objectPosition": null,
         "hoverImage": null,
         "badge": null,
@@ -6928,7 +7156,11 @@
       },
       "cardMedia": {
         "image": "/media/cases/nail-artist-story-carousel/nail-artist-story-carousel-preview.webp",
-        "galleryImages": [],
+        "galleryImages": [
+          "/media/cases/nail-artist-story-carousel/slide-01.webp",
+          "/media/cases/nail-artist-story-carousel/slide-09.webp",
+          "/media/cases/nail-artist-story-carousel/slide-10.webp"
+        ],
         "heroVideo": null,
         "previewVideo": null,
         "poster": null,
@@ -11733,6 +11965,104 @@
       "missingEn": [],
       "unknownKeys": [],
       "hasReview": true,
+      "hasTeam": true,
+      "needsManualReview": false,
+      "reviewFlags": [],
+      "hasBothTranslations": true,
+      "fromRecord": true
+    },
+    {
+      "id": "video/stork-sticker-pack",
+      "direction": "video",
+      "slug": "stork-sticker-pack",
+      "uaPath": "/cases/video/stork-sticker-pack",
+      "enPath": "/en/cases/video/stork-sticker-pack",
+      "inSitemap": true,
+      "inData": true,
+      "dataSlug": "stork-sticker-pack",
+      "subcategory": "motion",
+      "titleKey": "videoCases.storkStickerPack.title",
+      "descriptionKey": "videoCases.storkStickerPack.shortDesc",
+      "meta": {
+        "title": "Анімований стікерпак «Лелека» для Telegram | Freelance UA",
+        "description": "Анімований стікерпак для Telegram із персонажем-лелекою: моушн-дизайн, плавні циклічні анімації та оптимізація під месенджер",
+        "canonical": "/cases/video/stork-sticker-pack",
+        "ogImage": "https://freelance-ua.agency/media/cases/stork-sticker-pack/og.jpg",
+        "fromRecord": true
+      },
+      "enMetaTitle": "Animated Stork sticker pack for Telegram | Freelance UA",
+      "enMetaDescription": "Animated Telegram sticker pack with a stork character: motion design, smooth looping animations and messenger-ready optimization",
+      "h1Uk": "Анімований стікерпак «Лелека»",
+      "h1En": "Animated Stork sticker pack",
+      "cardStyle": {
+        "glowColor": "rgba(42, 171, 238, 0.15)",
+        "glowColorStrong": "rgba(42, 171, 238, 0.3)",
+        "imageFit": null,
+        "objectPosition": null,
+        "hoverImage": null,
+        "badge": null,
+        "hideCta": false
+      },
+      "cardMedia": {
+        "image": null,
+        "galleryImages": [],
+        "heroVideo": "/media/cases/stork-sticker-pack/card.mp4",
+        "previewVideo": null,
+        "poster": "/media/cases/stork-sticker-pack/card-poster.webp",
+        "thumbnail": null,
+        "screenshot": null,
+        "processVideos": [],
+        "duration": null,
+        "format": "16:9"
+      },
+      "mediaCount": 10,
+      "mediaByType": {
+        "mp4": 5,
+        "jpg": 5
+      },
+      "videoCount": 5,
+      "mediaMissing": [],
+      "mediaPathIssues": [],
+      "unparsedMedia": [],
+      "unparsedMediaCount": 0,
+      "externalLinks": {
+        "fromPage": [],
+        "fromI18n": []
+      },
+      "blocks": [
+        {
+          "name": "videoGrid@0",
+          "kind": "videoGallery",
+          "line": null,
+          "itemCount": 4,
+          "fromRecord": true
+        },
+        {
+          "name": "brief@1",
+          "kind": "brief",
+          "line": null,
+          "itemCount": 2,
+          "fromRecord": true
+        },
+        {
+          "name": "results@2",
+          "kind": "textKeys",
+          "line": null,
+          "itemCount": 4,
+          "fromRecord": true
+        }
+      ],
+      "inlineMedia": [],
+      "i18nKeyPrefixes": [
+        "videoCases.telegramEmojiStickers",
+        "videoCases.storkStickerPack",
+        "itCases.results",
+        "videoCases.projectTeam",
+        "videoCases.backToList"
+      ],
+      "missingEn": [],
+      "unknownKeys": [],
+      "hasReview": false,
       "hasTeam": true,
       "needsManualReview": false,
       "reviewFlags": [],

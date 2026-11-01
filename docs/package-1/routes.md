@@ -36,6 +36,7 @@
 | it | `/cases/it/selloflow` | `/en/cases/it/selloflow` | так | так |
 | it | `/cases/it/serezha-shop` | `/en/cases/it/serezha-shop` | так | так |
 | it | `/cases/it/shkiper-drop` | `/en/cases/it/shkiper-drop` | так | так |
+| it | `/cases/it/soul-retreats-bali` | `/en/cases/it/soul-retreats-bali` | так | так |
 | it | `/cases/it/stretching-ch` | `/en/cases/it/stretching-ch` | так | так |
 | it | `/cases/it/voltone-pro` | `/en/cases/it/voltone-pro` | так | так |
 | design | `/cases/design/apple-tecnologia` | `/en/cases/design/apple-tecnologia` | так | так |
@@ -101,6 +102,7 @@
 | video | `/cases/video/sheglam-freedom-fest` | `/en/cases/video/sheglam-freedom-fest` | так | так |
 | video | `/cases/video/sheglam-promo` | `/en/cases/video/sheglam-promo` | так | так |
 | video | `/cases/video/skool-10-features` | `/en/cases/video/skool-10-features` | так | так |
+| video | `/cases/video/stork-sticker-pack` | `/en/cases/video/stork-sticker-pack` | так | так |
 | video | `/cases/video/taranenko-trade` | `/en/cases/video/taranenko-trade` | так | так |
 | video | `/cases/video/telegram-emoji-stickers` | `/en/cases/video/telegram-emoji-stickers` | так | так |
 | video | `/cases/video/travel-vlog-turkey` | `/en/cases/video/travel-vlog-turkey` | так | так |

@@ -39,6 +39,7 @@ import { shkiperDrop } from "./it/shkiper-drop";
 import { stretchingCh } from "./it/stretching-ch";
 import { voltonePro } from "./it/voltone-pro";
 import { brunetkaaHair } from "./it/brunetkaa-hair";
+import { soulRetreatsBali } from "./it/soul-retreats-bali";
 import { barvyInterior } from "./design/barvy-interior";
 import { photoRetouch } from "./design/photo-retouch";
 import { gelPolish } from "./design/gel-polish";
@@ -118,6 +119,7 @@ import { sheglamPromo } from "./video/sheglam-promo";
 import { evaCodeReels } from "./video/eva-code-reels";
 import { barvyInteriorReels } from "./video/barvy-interior-reels";
 import { websiteMessageAnimation } from "./video/website-message-animation";
+import { storkStickerPack } from "./video/stork-sticker-pack";
 
 export type {
   BriefSection,
@@ -255,7 +257,9 @@ export const caseRecords: CaseRecord[] = [
   cuprusLife,
   motoSchoolWindowBranding,
   nailArtistStoryCarousel,
-  brunetkaaHair
+  brunetkaaHair,
+  soulRetreatsBali,
+  storkStickerPack
 ];
 
 const byId = new Map<string, CaseRecord>(caseRecords.map((r) => [r.id, r]));

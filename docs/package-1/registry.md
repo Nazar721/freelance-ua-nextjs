@@ -1,12 +1,12 @@
 # Реєстр кейсів Freelance UA (генеровано scripts/inventory.mjs v2)
 
-Згенеровано: 2026-10-19T15:05:54.433Z
+Згенеровано: 2026-11-01T21:07:53.611Z
 
 | Напрям | Кейсів | У sitemap | У data | Повний EN | З відео | З відгуком | З блоками | Потребує звірки |
 |---|---|---|---|---|---|---|---|---|
-| it | 23 | 23 | 23 | 23 | 1 | 22 | 23 | 4 |
+| it | 24 | 24 | 24 | 24 | 1 | 23 | 24 | 4 |
 | design | 25 | 25 | 25 | 25 | 4 | 24 | 25 | 0 |
-| video | 57 | 57 | 57 | 57 | 49 | 56 | 57 | 0 |
+| video | 58 | 58 | 58 | 58 | 50 | 56 | 58 | 0 |
 
 ## IT
 
@@ -33,6 +33,7 @@
 | selloflow | saas-telegram | `/cases/it/selloflow` | Selloflow — SaaS для магазинів: каталог, замовлення, Telegram-бот \| Freelance UA | 6 | 0 | 1/1 | brief@0:brief×2<br>featureList@1:feature-list×5<br>links@3:links×1 | — |
 | serezha-shop | landing | `/cases/it/serezha-shop` | Serezha Shop — каталог кросівок зі США з відгуками \| Freelance UA | 5 | 0 | 1/0 | brief@0:brief×2<br>featureList@1:feature-list×4 | — |
 | shkiper-drop | landing | `/cases/it/shkiper-drop` | Shkiper Drop — лендінг дроп-магазину з каталогом і Telegram-CTA \| Freelance UA | 7 | 0 | 1/1 | brief@0:brief×2<br>featureList@1:feature-list×5 | — |
+| soul-retreats-bali | landing | `/cases/it/soul-retreats-bali` | SOUL RETREATS — лендінг ретриту на Балі \| Freelance UA | 8 | 0 | 2/0 | brief@0:brief×2<br>featureList@1:feature-list×7<br>links@3:links×1 | — |
 | stretching-ch | saas-telegram | `/cases/it/stretching-ch` | Stretching.ch — Instagram DM бот для лідогенерації у фітнесі \| Freelance UA | 2 | 0 | 1/1 | brief@0:brief×2<br>featureList@1:feature-list×1<br>gallery@3:gallery×1<br>links@4:links×1 | — |
 | voltone-pro | ecommerce | `/cases/it/voltone-pro` | Voltone.pro — каталог, кабінет і доставка павербанків \| Freelance UA | 7 | 0 | 1/1 | brief@0:brief×2<br>featureList@1:feature-list×5<br>links@3:links×1 | — |
 
@@ -108,6 +109,7 @@
 | sheglam-freedom-fest | ai | `/cases/video/sheglam-freedom-fest` | Промо SHEGLAM Freedom Fest \| Freelance UA | 2 | 1 | 0/0 | brief@0:brief×2 | — |
 | sheglam-promo | ai | `/cases/video/sheglam-promo` | Промо SHEGLAM \| Freelance UA | 3 | 1 | 0/0 | brief@0:brief×2 | — |
 | skool-10-features | youtube | `/cases/video/skool-10-features` | Огляд Skool 10 Features \| Freelance UA | 7 | 0 | 1/0 | links@0:links×1<br>brief@1:brief×2<br>gallery@3:gallery×7 | — |
+| stork-sticker-pack | motion | `/cases/video/stork-sticker-pack` | Анімований стікерпак «Лелека» для Telegram \| Freelance UA | 10 | 5 | 0/0 | videoGrid@0:video-gallery×4<br>brief@1:brief×2 | — |
 | taranenko-trade | youtube | `/cases/video/taranenko-trade` | Торгівля Тараненко \| Freelance UA | 3 | 2 | 0/0 | brief@0:brief×2 | — |
 | telegram-emoji-stickers | motion | `/cases/video/telegram-emoji-stickers` | Emoji стікери для Telegram \| Freelance UA | 4 | 3 | 0/0 | videoGrid@0:video-gallery×2<br>brief@1:brief×2 | — |
 | travel-vlog-turkey | youtube | `/cases/video/travel-vlog-turkey` | Travel Vlog — Туреччина \| Freelance UA | 6 | 0 | 1/0 | links@0:links×1<br>brief@1:brief×2<br>gallery@3:gallery×6 | — |

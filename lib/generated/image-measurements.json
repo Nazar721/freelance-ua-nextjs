@@ -2334,10 +2334,60 @@
     "height": 366,
     "mime": "image/png"
   },
+  "/media/cases/soul-retreats-bali/faq.webp": {
+    "width": 1440,
+    "height": 900,
+    "mime": "image/webp"
+  },
+  "/media/cases/soul-retreats-bali/form.webp": {
+    "width": 1440,
+    "height": 900,
+    "mime": "image/webp"
+  },
+  "/media/cases/soul-retreats-bali/hero-mobile.webp": {
+    "width": 390,
+    "height": 844,
+    "mime": "image/webp"
+  },
+  "/media/cases/soul-retreats-bali/hero-screen.webp": {
+    "width": 1440,
+    "height": 900,
+    "mime": "image/webp"
+  },
+  "/media/cases/soul-retreats-bali/mentor.webp": {
+    "width": 1440,
+    "height": 900,
+    "mime": "image/webp"
+  },
+  "/media/cases/soul-retreats-bali/program.webp": {
+    "width": 1440,
+    "height": 900,
+    "mime": "image/webp"
+  },
+  "/media/cases/soul-retreats-bali/soul-retreats-mockup.webp": {
+    "width": 964,
+    "height": 570,
+    "mime": "image/webp"
+  },
   "/media/cases/stickers-conference.webp": {
     "width": 2390,
     "height": 1382,
     "mime": "image/webp"
+  },
+  "/media/cases/stork-sticker-pack/card-poster.webp": {
+    "width": 1280,
+    "height": 720,
+    "mime": "image/webp"
+  },
+  "/media/cases/stork-sticker-pack/full-poster.jpg": {
+    "width": 720,
+    "height": 1564,
+    "mime": "image/jpeg"
+  },
+  "/media/cases/stork-sticker-pack/og.jpg": {
+    "width": 1200,
+    "height": 630,
+    "mime": "image/jpeg"
   },
   "/media/cases/stretching-ch-mocap.png": {
     "width": 1254,

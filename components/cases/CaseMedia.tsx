@@ -622,7 +622,11 @@ export function CaseVideoGrid({
             section.items.length >= 3
               ? "grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5"
               : section.items.length === 1
-                ? "mx-auto grid max-w-3xl grid-cols-1 gap-4"
+                ? // A lone portrait tile keeps the phone-frame width (same as
+                  // the 9/16 hero); a lone landscape tile spans the text column.
+                  section.ratio === "9/16"
+                  ? "mx-auto grid max-w-[315px] grid-cols-1 gap-4"
+                  : "mx-auto grid max-w-3xl grid-cols-1 gap-4"
                 : "grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5"
           }
         />

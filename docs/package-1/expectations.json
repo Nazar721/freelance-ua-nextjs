@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T15:05:54.433Z",
+  "generatedAt": "2026-11-01T21:07:53.611Z",
   "base": "https://freelance-ua.agency",
   "entries": [
     {
@@ -570,6 +570,22 @@
       "hreflang": {
         "uk": "/cases/it/shkiper-drop",
         "en": "/en/cases/it/shkiper-drop"
+      }
+    },
+    {
+      "path": "/cases/it/soul-retreats-bali",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/it/soul-retreats-bali",
+      "title": "SOUL RETREATS — лендінг ретриту на Балі | Freelance UA",
+      "description": "Кейс розробки лендінгу жіночого ретриту на Балі: програма, відгуки, форма заявки, WhatsApp та інтеграція CRM.",
+      "h1": "SOUL RETREATS — лендінг жіночого ретриту на Балі з формою заявки",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/soul-retreats-bali",
+        "en": "/en/cases/it/soul-retreats-bali"
       }
     },
     {
@@ -1613,6 +1629,22 @@
       }
     },
     {
+      "path": "/cases/video/stork-sticker-pack",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/stork-sticker-pack",
+      "title": "Анімований стікерпак «Лелека» для Telegram | Freelance UA",
+      "description": "Анімований стікерпак для Telegram із персонажем-лелекою: моушн-дизайн, плавні циклічні анімації та оптимізація під месенджер",
+      "h1": "Анімований стікерпак «Лелека»",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/stork-sticker-pack",
+        "en": "/en/cases/video/stork-sticker-pack"
+      }
+    },
+    {
       "path": "/cases/video/taranenko-trade",
       "kind": "page",
       "phase": "current",
@@ -2250,6 +2282,22 @@
       "hreflang": {
         "uk": "/cases/it/shkiper-drop",
         "en": "/en/cases/it/shkiper-drop"
+      }
+    },
+    {
+      "path": "/en/cases/it/soul-retreats-bali",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/it/soul-retreats-bali",
+      "inRegistry": true,
+      "title": "SOUL RETREATS — Bali Retreat Landing Page | Freelance UA",
+      "description": "A Bali women's retreat landing page with a programme, testimonials, enquiry form, WhatsApp and CRM integration.",
+      "h1": "SOUL RETREATS — a Bali women's retreat landing page with an enquiry form",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/it/soul-retreats-bali",
+        "en": "/en/cases/it/soul-retreats-bali"
       }
     },
     {
@@ -3290,6 +3338,22 @@
       "hreflang": {
         "uk": "/cases/video/skool-10-features",
         "en": "/en/cases/video/skool-10-features"
+      }
+    },
+    {
+      "path": "/en/cases/video/stork-sticker-pack",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/stork-sticker-pack",
+      "inRegistry": true,
+      "title": "Animated Stork sticker pack for Telegram | Freelance UA",
+      "description": "Animated Telegram sticker pack with a stork character: motion design, smooth looping animations and messenger-ready optimization",
+      "h1": "Animated Stork sticker pack",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/stork-sticker-pack",
+        "en": "/en/cases/video/stork-sticker-pack"
       }
     },
     {

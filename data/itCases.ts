@@ -280,4 +280,16 @@ export const itCases: CaseEntry[] = [
     imageFit: "contain",
     itCategory: "landing",
   },
+  {
+    slug: "soul-retreats-bali",
+    categoryKey: "itCases.soulRetreats.category",
+    titleKey: "itCases.soulRetreats.title",
+    descriptionKey: "itCases.soulRetreats.shortDesc",
+    href: "/cases/it/soul-retreats-bali",
+    glowColor: "rgba(20, 184, 166, 0.12)",
+    glowColorStrong: "rgba(20, 184, 166, 0.28)",
+    image: "/media/cases/soul-retreats-bali/soul-retreats-mockup.webp",
+    imageFit: "contain",
+    itCategory: "landing",
+  },
 ];
