@@ -253,8 +253,13 @@ const HWF_CSS = `
   background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1px;
   background-repeat: no-repeat; background-position: 0 100%;
   transition: opacity .25s ease, background-size .35s cubic-bezier(.2,.7,.1,1);
+  /* No iOS fast-tap delay, and a thumb-sized hit area kept visually identical
+     via negative margins (Apple HIG minimum is 44px). */
+  touch-action: manipulation;
+  -webkit-user-select: none; user-select: none;
 }
 .hwf-col li { min-width: 0; }
+.hwf-col a { padding: 12px 0; margin: -12px 0; }
 .hwf-col a:hover, .hwf-up:hover { opacity: 1; background-size: 100% 1px; }
 .hwf-col a:focus-visible, .hwf-up:focus-visible {
   outline: 2px solid var(--hwf-accent); outline-offset: 4px; border-radius: 3px; opacity: 1;
@@ -267,7 +272,12 @@ const HWF_CSS = `
   border-top: 1px solid color-mix(in srgb, var(--hwf-ink) 14%, transparent);
 }
 .hwf-copy { font-size: 13px; opacity: .5; }
-.hwf-up { font-size: 13.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+.hwf-up {
+  font-size: 13.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+  /* Same thumb-sized hit area as the footer links: visual look unchanged. */
+  padding: 12px 14px; margin: -12px -14px;
+  position: relative; z-index: 2;
+}
 .hwf-mark { position: relative; margin-top: clamp(16px, 2.4vw, 32px); height: clamp(64px, 11vw, 150px); }
 .hwf-mark canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; max-width: none; }
 .hwf-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

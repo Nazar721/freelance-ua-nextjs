@@ -129,7 +129,7 @@ export default function HeroSection() {
           initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[16px] sm:text-lg md:text-xl text-muted-foreground max-w-xl sm:max-w-2xl mx-auto mb-4 sm:mb-8 leading-relaxed px-1"
+          className="hero-subtitle text-[16px] sm:text-lg md:text-xl max-w-xl sm:max-w-2xl mx-auto mb-4 sm:mb-8 leading-relaxed px-1"
         >
           {t("hero.desc")}
         </motion.p>

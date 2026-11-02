@@ -2,18 +2,26 @@ import { Testimonial } from "@/types";
 
 export const testimonials: Testimonial[] = [
   // ── Video & Audio testimonials ──
+  // Both Asandra Soul voice reviews lead the list — two separate projects,
+  // each with its own recording (Bali retreat landing / Telegram Mini App).
+  {
+    id: 55,
+    textKey: "",
+    author: "Asandra Soul",
+    audio: "/media/testimonials/asandra-bali-retreat.m4a",
+  },
+  {
+    id: 22,
+    textKey: "testimonial.22.text",
+    audio: "/media/testimonials/voice.m4a",
+    author: "Asandra Soul",
+    serviceKey: "Програмування • Mini App in Telegram",
+  },
   {
     id: 54,
     textKey: "",
     author: "Alex | SEO",
     audio: "/media/testimonials/voice-2026-10-27.m4a",
-  },
-  {
-    id: 55,
-    textKey: "",
-    author: "Асандра",
-    audio: "/media/testimonials/asandra-bali-retreat.m4a",
-    serviceKey: "Програмування • Лендінг ретриту",
   },
   {
     id: 30,
@@ -42,13 +50,6 @@ export const testimonials: Testimonial[] = [
     video: "/media/testimonials/video-3.mp4",
     author: "Alina",
     serviceKey: "Hope Media Group — Дизайн",
-  },
-  {
-    id: 22,
-    textKey: "testimonial.22.text",
-    audio: "/media/testimonials/voice.m4a",
-    author: "Asandra Soul",
-    serviceKey: "Програмування • Mini App in Telegram",
   },
   {
     id: 31,

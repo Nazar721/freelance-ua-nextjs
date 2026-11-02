@@ -344,6 +344,39 @@ body {
       radial-gradient(60% 50% at 22% 68%, rgba(99, 102, 241, 0.1), transparent 72%);
   }
 
+  /* Hero subtitle — the liquid-metal ribbon behind the first screen is busy,
+     so the line sits on a soft dark scrim (a white halo in the light theme)
+     and reads at near-foreground contrast in both themes. */
+  .hero-subtitle {
+    position: relative;
+    isolation: isolate;
+    color: color-mix(in srgb, var(--foreground) 88%, transparent);
+  }
+
+  .hero-subtitle::before {
+    content: "";
+    position: absolute;
+    inset: -0.55em -1.1em;
+    border-radius: 1.2em;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(8, 8, 16, 0.42) 0%,
+      rgba(8, 8, 16, 0.24) 55%,
+      transparent 78%
+    );
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  [data-theme="light"] .hero-subtitle::before {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0.38) 55%,
+      transparent 78%
+    );
+  }
+
   .gradient-text-motion {
     background-size: 180% 180%;
     animation: gradient-drift 10s cubic-bezier(0.37, 0, 0.63, 1) infinite;

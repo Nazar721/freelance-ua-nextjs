@@ -810,6 +810,158 @@ export default function TestimonialsSection() {
     });
   }, [isMobile]);
 
+  /* ── Mobile strip auto-advance ──
+     Once the user has not touched the strip for AUTO_IDLE_MS, the strip glides
+     to the next review every AUTO_STEP_MS — a dwell long enough to actually
+     read a card. Any touch/drag, a manual scroll, an open modal or a playing
+     audio/video pauses it; AUTO_IDLE_MS after the interaction ends it resumes.
+     Never runs under prefers-reduced-motion (the strip itself is not rendered
+     then) and never while the section is off-screen or the tab is hidden. */
+  useEffect(() => {
+    if (!isMobile || reducedMotion || openItem) return;
+    const strip = stripRef.current;
+    const section = sectionRef.current;
+    if (!strip || !section) return;
+
+    const AUTO_IDLE_MS = 1500;
+    const AUTO_STEP_MS = 5000;
+    const GLIDE_MS = 650;
+
+    let timer = 0;
+    let glideRaf = 0;
+    let interacting = false; // finger down on the strip
+    let autoScrolling = false;
+    let inView = true;
+
+    const clearTimers = () => {
+      if (timer) { window.clearTimeout(timer); timer = 0; }
+    };
+
+    const cancelGlide = () => {
+      if (glideRaf) { cancelAnimationFrame(glideRaf); glideRaf = 0; }
+      strip.style.scrollSnapType = "";
+      autoScrolling = false;
+    };
+
+    const mediaPlaying = () =>
+      Array.from(section.querySelectorAll("audio, video")).some(
+        (m) => m instanceof HTMLMediaElement && !m.paused,
+      );
+
+    const centeredIndex = () => {
+      const box = strip.getBoundingClientRect();
+      const center = box.left + strip.clientWidth / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      for (let i = 0; i < strip.children.length; i += 1) {
+        const r = (strip.children[i] as HTMLElement).getBoundingClientRect();
+        const d = Math.abs(r.left + r.width / 2 - center);
+        if (d < bestDist) { bestDist = d; best = i; }
+      }
+      return best;
+    };
+
+    /* Glide one card over with an rAF tween instead of native smooth
+       scrolling: `behavior: "smooth"` is unevenly supported (and cannot be
+       timed), while the tween is identical on every device. Scroll-snap is
+       suspended for the glide — a mandatory snap re-snaps every intermediate
+       frame and would freeze the tween — and restored on the snap point. */
+    const glideTo = (index: number) => {
+      const child = strip.children[index] as HTMLElement | undefined;
+      if (!child) return;
+      const targetLeft = child.offsetLeft - (strip.clientWidth - child.clientWidth) / 2;
+      const startLeft = strip.scrollLeft;
+      const dist = targetLeft - startLeft;
+      if (Math.abs(dist) < 2) return;
+      cancelGlide();
+      autoScrolling = true;
+      strip.style.scrollSnapType = "none";
+      const t0 = performance.now();
+      const step = (now: number) => {
+        const p = Math.min(1, (now - t0) / GLIDE_MS);
+        const eased = 1 - Math.pow(1 - p, 3);
+        strip.scrollLeft = startLeft + dist * eased;
+        if (p < 1) {
+          glideRaf = requestAnimationFrame(step);
+        } else {
+          glideRaf = 0;
+          strip.style.scrollSnapType = "";
+          window.setTimeout(() => { autoScrolling = false; }, 120);
+        }
+      };
+      glideRaf = requestAnimationFrame(step);
+    };
+
+    const tick = () => {
+      timer = 0;
+      if (document.hidden || !inView || interacting || autoScrolling || mediaPlaying()) {
+        schedule(AUTO_IDLE_MS);
+        return;
+      }
+      const max = strip.scrollWidth - strip.clientWidth;
+      const next =
+        strip.scrollLeft >= max - 8
+          ? 0
+          : Math.min(centeredIndex() + 1, strip.children.length - 1);
+      glideTo(next);
+      schedule(AUTO_STEP_MS);
+    };
+
+    const schedule = (delay: number) => {
+      clearTimers();
+      timer = window.setTimeout(tick, delay);
+    };
+
+    const onStripScroll = () => {
+      // A scroll we did not start is the user dragging the strip — restart the
+      // idle window. The glide's own events are ignored via `autoScrolling`.
+      if (!autoScrolling) schedule(AUTO_IDLE_MS);
+    };
+    const onDown = () => { interacting = true; cancelGlide(); clearTimers(); };
+    const onUp = () => { interacting = false; schedule(AUTO_IDLE_MS); };
+    const onMediaPlay = () => { if (!autoScrolling) schedule(AUTO_IDLE_MS); };
+    const onVisibility = () => { schedule(AUTO_IDLE_MS); };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        inView = entries[0]?.isIntersecting ?? true;
+        if (inView) schedule(AUTO_IDLE_MS);
+        else clearTimers();
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(strip);
+
+    strip.addEventListener("scroll", onStripScroll, { passive: true });
+    strip.addEventListener("touchstart", onDown, { passive: true });
+    strip.addEventListener("touchend", onUp, { passive: true });
+    strip.addEventListener("touchcancel", onUp, { passive: true });
+    strip.addEventListener("pointerdown", onDown, { passive: true });
+    strip.addEventListener("pointerup", onUp, { passive: true });
+    strip.addEventListener("pointercancel", onUp, { passive: true });
+    // Media events do not bubble — a capture listener on the section catches
+    // the start of any audio/video playback inside the reviews block.
+    section.addEventListener("play", onMediaPlay, true);
+    document.addEventListener("visibilitychange", onVisibility);
+
+    schedule(AUTO_IDLE_MS);
+
+    return () => {
+      clearTimers();
+      cancelGlide();
+      io.disconnect();
+      strip.removeEventListener("scroll", onStripScroll);
+      strip.removeEventListener("touchstart", onDown);
+      strip.removeEventListener("touchend", onUp);
+      strip.removeEventListener("touchcancel", onUp);
+      strip.removeEventListener("pointerdown", onDown);
+      strip.removeEventListener("pointerup", onUp);
+      strip.removeEventListener("pointercancel", onUp);
+      section.removeEventListener("play", onMediaPlay, true);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, [isMobile, reducedMotion, openItem]);
+
   // Desktop carousel: keep audible state in sync when the centred card changes.
   useEffect(() => {
     if (isMobile || reducedMotion) return;
