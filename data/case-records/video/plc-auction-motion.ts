@@ -3,9 +3,8 @@ import { key, text, type CaseRecord } from "../types";
 /**
  * video/plc-auction-motion — motion-відеоінструкція для сайту автомобільного
  * аукціону PLC Auction. Hero — легке 4-секундне прев'ю (card.mp4), повний
- * ролик зі звуком (hero.mp4) відкривається плеєром і окремо стоїть у секції
- * «Повний ролик». Відгук — реальний скріншот повідомлення Kristina Honchar.
- * Склад команди не зазначено: замовник надасть його окремо.
+ * ролик зі звуком (hero.mp4) відкривається плеєром.
+ * Відгук — реальний скріншот повідомлення Kristina Honchar.
  */
 export const plcAuctionMotion: CaseRecord = {
   id: "video/plc-auction-motion",
@@ -55,20 +54,6 @@ export const plcAuctionMotion: CaseRecord = {
       solution: key("videoCases.plcAuction.solution"),
     },
     {
-      kind: "videoGrid",
-      title: key("videoCases.plcAuction.fullTitle"),
-      intro: key("videoCases.plcAuction.fullDesc"),
-      ratio: "9/16",
-      items: [
-        {
-          src: "/media/cases/plc-auction-motion/hero.mp4",
-          poster: "/media/cases/plc-auction-motion/full-poster.webp",
-          duration: text("~20 с", "~20 s"),
-          format: "9:16",
-        },
-      ],
-    },
-    {
       kind: "results",
       title: text("Виконана робота", "Work delivered"),
       columns: 1,
@@ -84,11 +69,11 @@ export const plcAuctionMotion: CaseRecord = {
   review: {
     kind: "screenshot",
     title: key("videoCases.plcAuction.reviewTitle"),
-    src: "/media/cases/plc-auction-motion/review.webp",
+    src: "/media/cases/plc-auction-motion/review-full.webp",
     alt: text("Відгук Kristina Honchar у Telegram", "Review from Kristina Honchar in Telegram"),
     text: key("videoCases.plcAuction.reviewText"),
     w: 1146,
-    h: 278,
+    h: 572,
     author: key("videoCases.plcAuction.reviewAuthor"),
   },
 
