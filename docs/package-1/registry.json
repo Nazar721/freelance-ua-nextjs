@@ -1,24 +1,24 @@
 {
-  "generatedAt": "2026-11-01T21:07:53.611Z",
+  "generatedAt": "2026-11-03T13:11:59.237Z",
   "counts": {
-    "routes": 107,
+    "routes": 108,
     "byDirection": {
       "it": 24,
       "design": 25,
-      "video": 58
+      "video": 59
     },
-    "inSitemap": 107,
-    "inData": 107,
-    "withFullTranslation": 107,
+    "inSitemap": 108,
+    "inData": 108,
+    "withFullTranslation": 108,
     "withMissingMedia": 0,
     "withExternalLinks": 33,
     "withManualReview": 4,
-    "withBlocks": 107,
-    "sitemapPaths": 226,
-    "i18nUkKeys": 2654,
-    "i18nEnKeys": 2654,
+    "withBlocks": 108,
+    "sitemapPaths": 228,
+    "i18nUkKeys": 2666,
+    "i18nEnKeys": 2666,
     "i18nMissingEn": [],
-    "mediaRefsTracked": 418,
+    "mediaRefsTracked": 415,
     "reusedMediaFiles": 1
   },
   "staticRoutes": [
@@ -1975,6 +1975,27 @@
       ]
     },
     {
+      "path": "/media/cases/plc-auction-motion/full-poster.webp",
+      "useCount": 1,
+      "cases": [
+        "video/plc-auction-motion"
+      ]
+    },
+    {
+      "path": "/media/cases/plc-auction-motion/hero.mp4",
+      "useCount": 1,
+      "cases": [
+        "video/plc-auction-motion"
+      ]
+    },
+    {
+      "path": "/media/cases/plc-auction-motion/review.webp",
+      "useCount": 1,
+      "cases": [
+        "video/plc-auction-motion"
+      ]
+    },
+    {
       "path": "/media/cases/podcast-editing/review-avatar.jpg",
       "useCount": 1,
       "cases": [
@@ -2605,56 +2626,14 @@
       ]
     },
     {
-      "path": "/media/cases/stork-sticker-pack/poster-love.jpg",
+      "path": "/media/cases/stork-sticker-pack/full-poster.jpg",
       "useCount": 1,
       "cases": [
         "video/stork-sticker-pack"
       ]
     },
     {
-      "path": "/media/cases/stork-sticker-pack/poster-reading.jpg",
-      "useCount": 1,
-      "cases": [
-        "video/stork-sticker-pack"
-      ]
-    },
-    {
-      "path": "/media/cases/stork-sticker-pack/poster-warning.jpg",
-      "useCount": 1,
-      "cases": [
-        "video/stork-sticker-pack"
-      ]
-    },
-    {
-      "path": "/media/cases/stork-sticker-pack/poster-wave.jpg",
-      "useCount": 1,
-      "cases": [
-        "video/stork-sticker-pack"
-      ]
-    },
-    {
-      "path": "/media/cases/stork-sticker-pack/sticker-love.mp4",
-      "useCount": 1,
-      "cases": [
-        "video/stork-sticker-pack"
-      ]
-    },
-    {
-      "path": "/media/cases/stork-sticker-pack/sticker-reading.mp4",
-      "useCount": 1,
-      "cases": [
-        "video/stork-sticker-pack"
-      ]
-    },
-    {
-      "path": "/media/cases/stork-sticker-pack/sticker-warning.mp4",
-      "useCount": 1,
-      "cases": [
-        "video/stork-sticker-pack"
-      ]
-    },
-    {
-      "path": "/media/cases/stork-sticker-pack/sticker-wave.mp4",
+      "path": "/media/cases/stork-sticker-pack/hero.mp4",
       "useCount": 1,
       "cases": [
         "video/stork-sticker-pack"
@@ -10869,6 +10848,102 @@
       "fromRecord": true
     },
     {
+      "id": "video/plc-auction-motion",
+      "direction": "video",
+      "slug": "plc-auction-motion",
+      "uaPath": "/cases/video/plc-auction-motion",
+      "enPath": "/en/cases/video/plc-auction-motion",
+      "inSitemap": true,
+      "inData": true,
+      "dataSlug": "plc-auction-motion",
+      "subcategory": "motion",
+      "titleKey": "videoCases.plcAuction.title",
+      "descriptionKey": "videoCases.plcAuction.shortDesc",
+      "meta": {
+        "title": "PLC Auction — motion-відеоінструкція для сайту | Freelance UA",
+        "description": "Motion-відеоінструкція для сайту автомобільного аукціону PLC Auction: анімований покроковий показ того, як розмістити авто та обрати формат його продажу.",
+        "canonical": "/cases/video/plc-auction-motion",
+        "ogImage": "/media/cases/plc-auction-motion/og.jpg",
+        "fromRecord": true
+      },
+      "enMetaTitle": "PLC Auction — motion video instruction for a website | Freelance UA",
+      "enMetaDescription": "A motion video instruction for the PLC Auction car-auction website: an animated, step-by-step walkthrough of listing a car and choosing its selling format.",
+      "h1Uk": "PLC Auction — motion-відеоінструкція для сайту",
+      "h1En": "PLC Auction — Motion Video Instruction for a Website",
+      "cardStyle": {
+        "glowColor": "rgba(220, 38, 38, 0.15)",
+        "glowColorStrong": "rgba(220, 38, 38, 0.3)",
+        "imageFit": null,
+        "objectPosition": null,
+        "hoverImage": null,
+        "badge": null,
+        "hideCta": false
+      },
+      "cardMedia": {
+        "image": null,
+        "galleryImages": [],
+        "heroVideo": "/media/cases/plc-auction-motion/card.mp4",
+        "previewVideo": null,
+        "poster": "/media/cases/plc-auction-motion/card-poster.webp",
+        "thumbnail": null,
+        "screenshot": null,
+        "processVideos": [],
+        "duration": null,
+        "format": "9:16"
+      },
+      "mediaCount": 5,
+      "mediaByType": {
+        "mp4": 2,
+        "webp": 3
+      },
+      "videoCount": 2,
+      "mediaMissing": [],
+      "mediaPathIssues": [],
+      "unparsedMedia": [],
+      "unparsedMediaCount": 0,
+      "externalLinks": {
+        "fromPage": [],
+        "fromI18n": []
+      },
+      "blocks": [
+        {
+          "name": "brief@0",
+          "kind": "brief",
+          "line": null,
+          "itemCount": 2,
+          "fromRecord": true
+        },
+        {
+          "name": "videoGrid@1",
+          "kind": "videoGallery",
+          "line": null,
+          "itemCount": 1,
+          "fromRecord": true
+        },
+        {
+          "name": "results@2",
+          "kind": "textKeys",
+          "line": null,
+          "itemCount": 4,
+          "fromRecord": true
+        }
+      ],
+      "inlineMedia": [],
+      "i18nKeyPrefixes": [
+        "videoCases.plcAuction",
+        "videoCases.websiteMessageAnimation",
+        "videoCases.backToList"
+      ],
+      "missingEn": [],
+      "unknownKeys": [],
+      "hasReview": true,
+      "hasTeam": false,
+      "needsManualReview": false,
+      "reviewFlags": [],
+      "hasBothTranslations": true,
+      "fromRecord": true
+    },
+    {
       "id": "video/podcast-editing",
       "direction": "video",
       "slug": "podcast-editing",
@@ -12015,12 +12090,13 @@
         "duration": null,
         "format": "16:9"
       },
-      "mediaCount": 10,
+      "mediaCount": 4,
       "mediaByType": {
-        "mp4": 5,
-        "jpg": 5
+        "mp4": 2,
+        "webp": 1,
+        "jpg": 1
       },
-      "videoCount": 5,
+      "videoCount": 2,
       "mediaMissing": [],
       "mediaPathIssues": [],
       "unparsedMedia": [],
@@ -12034,7 +12110,7 @@
           "name": "videoGrid@0",
           "kind": "videoGallery",
           "line": null,
-          "itemCount": 4,
+          "itemCount": 1,
           "fromRecord": true
         },
         {

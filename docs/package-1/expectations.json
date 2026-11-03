@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T21:07:53.611Z",
+  "generatedAt": "2026-11-03T13:11:59.237Z",
   "base": "https://freelance-ua.agency",
   "entries": [
     {
@@ -1450,6 +1450,22 @@
       "hreflang": {
         "uk": "/cases/video/passive-income-video",
         "en": "/en/cases/video/passive-income-video"
+      }
+    },
+    {
+      "path": "/cases/video/plc-auction-motion",
+      "kind": "page",
+      "phase": "current",
+      "lang": "uk",
+      "canonical": "https://freelance-ua.agency/cases/video/plc-auction-motion",
+      "title": "PLC Auction — motion-відеоінструкція для сайту | Freelance UA",
+      "description": "Motion-відеоінструкція для сайту автомобільного аукціону PLC Auction: анімований покроковий показ того, як розмістити авто та обрати формат його продажу.",
+      "h1": "PLC Auction — motion-відеоінструкція для сайту",
+      "inRegistry": true,
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/plc-auction-motion",
+        "en": "/en/cases/video/plc-auction-motion"
       }
     },
     {
@@ -3162,6 +3178,22 @@
       "hreflang": {
         "uk": "/cases/video/passive-income-video",
         "en": "/en/cases/video/passive-income-video"
+      }
+    },
+    {
+      "path": "/en/cases/video/plc-auction-motion",
+      "kind": "page",
+      "phase": "current",
+      "lang": "en",
+      "canonical": "https://freelance-ua.agency/en/cases/video/plc-auction-motion",
+      "inRegistry": true,
+      "title": "PLC Auction — motion video instruction for a website | Freelance UA",
+      "description": "A motion video instruction for the PLC Auction car-auction website: an animated, step-by-step walkthrough of listing a car and choosing its selling format.",
+      "h1": "PLC Auction — Motion Video Instruction for a Website",
+      "bilingualPair": true,
+      "hreflang": {
+        "uk": "/cases/video/plc-auction-motion",
+        "en": "/en/cases/video/plc-auction-motion"
       }
     },
     {

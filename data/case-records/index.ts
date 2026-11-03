@@ -120,6 +120,7 @@ import { evaCodeReels } from "./video/eva-code-reels";
 import { barvyInteriorReels } from "./video/barvy-interior-reels";
 import { websiteMessageAnimation } from "./video/website-message-animation";
 import { storkStickerPack } from "./video/stork-sticker-pack";
+import { plcAuctionMotion } from "./video/plc-auction-motion";
 
 export type {
   BriefSection,
@@ -259,7 +260,8 @@ export const caseRecords: CaseRecord[] = [
   nailArtistStoryCarousel,
   brunetkaaHair,
   soulRetreatsBali,
-  storkStickerPack
+  storkStickerPack,
+  plcAuctionMotion
 ];
 
 const byId = new Map<string, CaseRecord>(caseRecords.map((r) => [r.id, r]));

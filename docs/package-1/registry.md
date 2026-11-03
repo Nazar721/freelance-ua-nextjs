@@ -1,12 +1,12 @@
 # Реєстр кейсів Freelance UA (генеровано scripts/inventory.mjs v2)
 
-Згенеровано: 2026-11-01T21:07:53.611Z
+Згенеровано: 2026-11-03T13:11:59.237Z
 
 | Напрям | Кейсів | У sitemap | У data | Повний EN | З відео | З відгуком | З блоками | Потребує звірки |
 |---|---|---|---|---|---|---|---|---|
 | it | 24 | 24 | 24 | 24 | 1 | 23 | 24 | 4 |
 | design | 25 | 25 | 25 | 25 | 4 | 24 | 25 | 0 |
-| video | 58 | 58 | 58 | 58 | 50 | 56 | 58 | 0 |
+| video | 59 | 59 | 59 | 59 | 51 | 57 | 59 | 0 |
 
 ## IT
 
@@ -98,6 +98,7 @@
 | motion-reels | motion | `/cases/video/motion-reels` | Моушн Reels \| Freelance UA | 2 | 2 | 0/0 | brief@0:brief×2 | — |
 | nikita-sheremet-crypto | reels | `/cases/video/nikita-sheremet-crypto` | Нікіта Шеремет \| Freelance UA | 6 | 4 | 0/0 | brief@0:brief×2 | — |
 | passive-income-video | youtube | `/cases/video/passive-income-video` | Пасивний дохід \| Freelance UA | 2 | 1 | 0/0 | brief@0:brief×2 | — |
+| plc-auction-motion | motion | `/cases/video/plc-auction-motion` | PLC Auction — motion-відеоінструкція для сайту \| Freelance UA | 5 | 2 | 0/0 | brief@0:brief×2<br>videoGrid@1:video-gallery×1 | — |
 | podcast-editing | youtube | `/cases/video/podcast-editing` | Монтаж подкасту \| Freelance UA | 7 | 0 | 1/0 | links@0:links×1<br>brief@1:brief×2<br>gallery@3:gallery×6 | — |
 | presentation-animation | motion | `/cases/video/presentation-animation` | Анімація презентації \| Freelance UA | 2 | 1 | 0/0 | brief@0:brief×2 | — |
 | sales-bible-promo | motion | `/cases/video/sales-bible-promo` | Біблія продавця \| Freelance UA | 2 | 1 | 0/0 | brief@0:brief×2 | — |
@@ -109,7 +110,7 @@
 | sheglam-freedom-fest | ai | `/cases/video/sheglam-freedom-fest` | Промо SHEGLAM Freedom Fest \| Freelance UA | 2 | 1 | 0/0 | brief@0:brief×2 | — |
 | sheglam-promo | ai | `/cases/video/sheglam-promo` | Промо SHEGLAM \| Freelance UA | 3 | 1 | 0/0 | brief@0:brief×2 | — |
 | skool-10-features | youtube | `/cases/video/skool-10-features` | Огляд Skool 10 Features \| Freelance UA | 7 | 0 | 1/0 | links@0:links×1<br>brief@1:brief×2<br>gallery@3:gallery×7 | — |
-| stork-sticker-pack | motion | `/cases/video/stork-sticker-pack` | Анімований стікерпак «Лелека» для Telegram \| Freelance UA | 10 | 5 | 0/0 | videoGrid@0:video-gallery×4<br>brief@1:brief×2 | — |
+| stork-sticker-pack | motion | `/cases/video/stork-sticker-pack` | Анімований стікерпак «Лелека» для Telegram \| Freelance UA | 4 | 2 | 0/0 | videoGrid@0:video-gallery×1<br>brief@1:brief×2 | — |
 | taranenko-trade | youtube | `/cases/video/taranenko-trade` | Торгівля Тараненко \| Freelance UA | 3 | 2 | 0/0 | brief@0:brief×2 | — |
 | telegram-emoji-stickers | motion | `/cases/video/telegram-emoji-stickers` | Emoji стікери для Telegram \| Freelance UA | 4 | 3 | 0/0 | videoGrid@0:video-gallery×2<br>brief@1:brief×2 | — |
 | travel-vlog-turkey | youtube | `/cases/video/travel-vlog-turkey` | Travel Vlog — Туреччина \| Freelance UA | 6 | 0 | 1/0 | links@0:links×1<br>brief@1:brief×2<br>gallery@3:gallery×6 | — |

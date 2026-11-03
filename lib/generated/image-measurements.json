@@ -1724,6 +1724,31 @@
     "height": 951,
     "mime": "image/webp"
   },
+  "/media/cases/plc-auction-motion/card-poster.webp": {
+    "width": 1280,
+    "height": 720,
+    "mime": "image/webp"
+  },
+  "/media/cases/plc-auction-motion/full-poster.webp": {
+    "width": 720,
+    "height": 1280,
+    "mime": "image/webp"
+  },
+  "/media/cases/plc-auction-motion/hero-poster.webp": {
+    "width": 720,
+    "height": 1280,
+    "mime": "image/webp"
+  },
+  "/media/cases/plc-auction-motion/og.jpg": {
+    "width": 1200,
+    "height": 630,
+    "mime": "image/jpeg"
+  },
+  "/media/cases/plc-auction-motion/review.webp": {
+    "width": 1146,
+    "height": 278,
+    "mime": "image/webp"
+  },
   "/media/cases/podcast-editing/review-avatar.jpg": {
     "width": 761,
     "height": 311,

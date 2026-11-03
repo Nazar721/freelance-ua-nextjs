@@ -91,6 +91,7 @@
 | video | `/cases/video/motion-reels` | `/en/cases/video/motion-reels` | так | так |
 | video | `/cases/video/nikita-sheremet-crypto` | `/en/cases/video/nikita-sheremet-crypto` | так | так |
 | video | `/cases/video/passive-income-video` | `/en/cases/video/passive-income-video` | так | так |
+| video | `/cases/video/plc-auction-motion` | `/en/cases/video/plc-auction-motion` | так | так |
 | video | `/cases/video/podcast-editing` | `/en/cases/video/podcast-editing` | так | так |
 | video | `/cases/video/presentation-animation` | `/en/cases/video/presentation-animation` | так | так |
 | video | `/cases/video/sales-bible-promo` | `/en/cases/video/sales-bible-promo` | так | так |

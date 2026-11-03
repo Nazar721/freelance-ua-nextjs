@@ -105,6 +105,7 @@ export const BILINGUAL_UA_PATHS: readonly string[] = [
   "/cases/video/motion-reels",
   "/cases/video/nikita-sheremet-crypto",
   "/cases/video/passive-income-video",
+  "/cases/video/plc-auction-motion",
   "/cases/video/podcast-editing",
   "/cases/video/presentation-animation",
   "/cases/video/sales-bible-promo",
